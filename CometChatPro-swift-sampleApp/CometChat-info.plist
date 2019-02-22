@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Authentication</key>
+	<dict>
+		<key>API_KEY</key>
+		<string>ENTER API KEY</string>
+		<key>APP_ID</key>
+		<string>ENTER APP ID</string>
+	</dict>
+	<key>UIApperance</key>
+	<string>PersianBlue</string>
+	<key>UIAppearanceFont</key>
+	<dict>
+		<key>regular</key>
+		<string>HelveticaNeue-Medium</string>
+		<key>bold</key>
+		<string>HelveticaNeue-Bold</string>
+		<key>italic</key>
+		<string>HelveticaNeue-MediumItalic</string>
+	</dict>
+	<key>UIAppearanceSize</key>
+	<dict>
+		<key>CORNER_RADIUS</key>
+		<integer>25</integer>
+		<key>Padding</key>
+		<integer>15</integer>
+	</dict>
+	<key>UIAppearanceColor</key>
+	<dict>
+		<key>NAVIGATION_BAR_COLOR</key>
+		<string>FF4500</string>
+		<key>NAVIGATION_BAR_TITLE_COLOR</key>
+		<string>FFFFFF</string>
+		<key>NAVIGATION_BAR_BUTTON_TINT_COLOR</key>
+		<string>FFFFFF</string>
+		<key>BACKGROUND_COLOR</key>
+		<string>FF4500</string>
+		<key>LOGIN_BUTTON_TINT_COLOR</key>
+		<string>FF4500</string>
+		<key>LOGO_TINT_COLOR</key>
+		<string>FFFFFF</string>
+		<key>RIGHT_BUBBLE_BACKGROUND_COLOR</key>
+		<string>FF4500</string>
+		<key>SEARCH_BAR_STYLE_LIGHT_CONTENT</key>
+		<false/>
+	</dict>
+</dict>
+</plist>
