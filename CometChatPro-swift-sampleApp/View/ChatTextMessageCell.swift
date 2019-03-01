@@ -18,11 +18,10 @@ class ChatTextMessageCell: UITableViewCell {
     let messageBackgroundView = UIView()
     let messageTimeLabel = UILabel()
     let userAvatarImageView = UIImageView()
-    var leadingConstraint : NSLayoutConstraint!
-    var trailingConstraint : NSLayoutConstraint!
+    var messageLabelLeadingConstraint : NSLayoutConstraint!
+    var messageLabelTrailingConstraint : NSLayoutConstraint!
     var timeLabelLeadingConstraint : NSLayoutConstraint!
     var timeLabelTrailingConstraint : NSLayoutConstraint!
-    
     var enableOutGoingConstraintForbubble = Bool()
     
     
@@ -34,21 +33,18 @@ class ChatTextMessageCell: UITableViewCell {
             userNameLabel.font = userNameLabel.font.withSize(15)
             messageTimeLabel.text = chatMessage.time
             
+           
             if(chatMessage.avatarURL != ""){
-                userAvatarImageView.downloaded(from: chatMessage.avatarURL)
-                //  url = NSURL(string: chatMessage.avatarURL)
-                //  data = try? Data(contentsOf: self.url! as URL) as NSData //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                //                DispatchQueue.main.async {
-                //                    self.userAvatarImageView.image = UIImage(data: self.data! as Data)
-                //                }
+                url = NSURL(string: chatMessage.avatarURL)
+                userAvatarImageView.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
             }else{
                 userAvatarImageView.image = UIImage(named: "default_user")
             }
             
             if(chatMessage.isSelf){
                 
-                leadingConstraint.isActive = false
-                trailingConstraint.isActive = true
+                messageLabelLeadingConstraint.isActive = false
+                messageLabelTrailingConstraint.isActive = true
                 timeLabelTrailingConstraint.isActive = true
                 timeLabelLeadingConstraint.isActive = false
                 userNameLabel.textColor = UIColor.darkGray
@@ -80,8 +76,8 @@ class ChatTextMessageCell: UITableViewCell {
                 
             }else {
                 
-                leadingConstraint.isActive = true
-                trailingConstraint.isActive = false
+                messageLabelLeadingConstraint.isActive = true
+                messageLabelTrailingConstraint.isActive = false
                 timeLabelTrailingConstraint.isActive = false
                 timeLabelLeadingConstraint.isActive = true
                 userNameLabel.textColor = UIColor.darkGray
@@ -155,8 +151,8 @@ class ChatTextMessageCell: UITableViewCell {
         messageBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant:12).isActive = true
         messageBackgroundView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 12).isActive = true
         
-        leadingConstraint =  messageLabel.leadingAnchor.constraint(equalTo: userAvatarImageView.trailingAnchor, constant: 17)
-        trailingConstraint = messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+        messageLabelLeadingConstraint =  messageLabel.leadingAnchor.constraint(equalTo: userAvatarImageView.trailingAnchor, constant: 17)
+        messageLabelTrailingConstraint = messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
         
         messageTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         timeLabelLeadingConstraint = messageTimeLabel.leadingAnchor.constraint(equalTo: messageBackgroundView.trailingAnchor, constant: 5)

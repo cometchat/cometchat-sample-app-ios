@@ -74,6 +74,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 if(group.hasJoined == true){
                     self.joinedChatRoomList.append(group)
                     print("joinedChatRoomList is:",self.joinedChatRoomList)
+                   
                 }else{
                     self.othersChatRoomList.append(group)
                     print("othersChatRoomList is:",self.othersChatRoomList)
@@ -226,8 +227,8 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         }
         
         cell.groupName.text = group.name
-        let groupIconURL:String = group.icon ?? "null"
-        cell.groupAvtar.downloaded(from: groupIconURL)
+        let groupIconURL = NSURL(string: group.icon ?? "")
+        cell.groupAvtar.sd_setImage(with: groupIconURL as URL?, placeholderImage: #imageLiteral(resourceName: "default_user_icon"))
         cell.groupParticipants.text = group.groupDescription
         cell.UID = group.guid
         cell.groupType = group.groupType.rawValue

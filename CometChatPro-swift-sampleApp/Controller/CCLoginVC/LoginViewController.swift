@@ -113,8 +113,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
             //Navigate to Next VC
             UserDefaults.standard.set(current_user.uid, forKey: "LoggedInUserUID")
-        
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)

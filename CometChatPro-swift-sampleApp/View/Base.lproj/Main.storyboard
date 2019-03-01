@@ -1362,8 +1362,19 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9e-ED-rLM">
                                         <rect key="frame" x="50" y="9" width="265" height="42"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6e-99-5N8">
+                                                <rect key="frame" x="230" y="7" width="33" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="kfT-O0-U2b"/>
+                                                </constraints>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button" image="mic"/>
+                                                <connections>
+                                                    <action selector="micButtonPressed:" destination="3Zc-kv-7OJ" eventType="touchUpInside" id="MDd-e5-e5L"/>
+                                                </connections>
+                                            </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="n8Z-bI-fs5">
-                                                <rect key="frame" x="10" y="2" width="245" height="38"/>
+                                                <rect key="frame" x="10" y="2" width="215" height="38"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1371,12 +1382,15 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="R6e-99-5N8" firstAttribute="leading" secondItem="n8Z-bI-fs5" secondAttribute="trailing" constant="5" id="02f-dA-Nhc"/>
+                                            <constraint firstAttribute="trailing" secondItem="R6e-99-5N8" secondAttribute="trailing" constant="2" id="D6G-0C-WYT"/>
                                             <constraint firstItem="n8Z-bI-fs5" firstAttribute="leading" secondItem="K9e-ED-rLM" secondAttribute="leading" constant="10" id="DfU-Xg-lXR"/>
                                             <constraint firstAttribute="height" constant="42" id="LG7-Ay-xVI"/>
                                             <constraint firstAttribute="bottom" secondItem="n8Z-bI-fs5" secondAttribute="bottom" constant="2" id="LgF-1K-hkJ"/>
                                             <constraint firstItem="n8Z-bI-fs5" firstAttribute="top" secondItem="K9e-ED-rLM" secondAttribute="top" constant="2" id="Mnr-r7-PFE"/>
                                             <constraint firstItem="n8Z-bI-fs5" firstAttribute="centerY" secondItem="K9e-ED-rLM" secondAttribute="centerY" id="NZu-5B-UYa"/>
-                                            <constraint firstAttribute="trailing" secondItem="n8Z-bI-fs5" secondAttribute="trailing" constant="10" id="XUg-Zk-wQF"/>
+                                            <constraint firstAttribute="trailing" secondItem="n8Z-bI-fs5" secondAttribute="trailing" constant="40" id="XUg-Zk-wQF"/>
+                                            <constraint firstItem="R6e-99-5N8" firstAttribute="centerY" secondItem="K9e-ED-rLM" secondAttribute="centerY" id="ih8-WX-BWf"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKP-ie-iSw">
@@ -1396,13 +1410,22 @@
                                             <action selector="sendButton:" destination="3Zc-kv-7OJ" eventType="touchUpInside" id="1qk-Hg-Whn"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording...   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JT9-cU-ynC">
+                                        <rect key="frame" x="65" y="19" width="200" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="1" green="0.037429042760000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="JT9-cU-ynC" firstAttribute="centerY" secondItem="fjm-6E-h6n" secondAttribute="centerY" id="3Sv-zu-n23"/>
                                     <constraint firstItem="K9e-ED-rLM" firstAttribute="leading" secondItem="lCd-Pp-51o" secondAttribute="trailing" constant="5" id="8M4-KN-irP"/>
+                                    <constraint firstItem="R6e-99-5N8" firstAttribute="leading" secondItem="JT9-cU-ynC" secondAttribute="trailing" constant="15" id="Feu-js-zXv"/>
                                     <constraint firstAttribute="trailing" secondItem="oKP-ie-iSw" secondAttribute="trailing" constant="10" id="UhS-iI-nga"/>
                                     <constraint firstItem="oKP-ie-iSw" firstAttribute="centerY" secondItem="fjm-6E-h6n" secondAttribute="centerY" id="Zr8-Kc-PYy"/>
                                     <constraint firstItem="oKP-ie-iSw" firstAttribute="leading" secondItem="K9e-ED-rLM" secondAttribute="trailing" constant="10" id="h8f-1X-2H6"/>
+                                    <constraint firstItem="JT9-cU-ynC" firstAttribute="leading" secondItem="lCd-Pp-51o" secondAttribute="trailing" constant="20" id="rgt-Eh-oMB"/>
                                     <constraint firstItem="K9e-ED-rLM" firstAttribute="centerY" secondItem="fjm-6E-h6n" secondAttribute="centerY" id="tCz-19-yvj"/>
                                     <constraint firstAttribute="height" constant="60" id="tR4-mr-GWm"/>
                                     <constraint firstItem="lCd-Pp-51o" firstAttribute="centerY" secondItem="fjm-6E-h6n" secondAttribute="centerY" id="uwP-kT-mTe"/>
@@ -1462,6 +1485,8 @@
                         <outlet property="chatInputView" destination="n8Z-bI-fs5" id="d0c-XS-iuG"/>
                         <outlet property="chatTableview" destination="Uiz-xV-HqC" id="f6B-8g-VJC"/>
                         <outlet property="chatView" destination="K9e-ED-rLM" id="ePb-ci-1aK"/>
+                        <outlet property="micButton" destination="R6e-99-5N8" id="Veg-wZ-WcN"/>
+                        <outlet property="recordingLabel" destination="JT9-cU-ynC" id="vFd-uS-ROK"/>
                         <outlet property="sendBtn" destination="oKP-ie-iSw" id="Nh6-76-Fl3"/>
                         <outlet property="videoCallBtn" destination="4NT-ax-RBb" id="I41-6Z-V4P"/>
                     </connections>
@@ -2141,6 +2166,7 @@
         <image name="icons8-eye-96" width="21" height="15"/>
         <image name="icons8-lock-52" width="15" height="17"/>
         <image name="menu" width="24" height="24"/>
+        <image name="mic" width="24" height="24"/>
         <image name="send" width="21" height="18"/>
         <image name="video_callokg." width="16" height="16"/>
     </resources>

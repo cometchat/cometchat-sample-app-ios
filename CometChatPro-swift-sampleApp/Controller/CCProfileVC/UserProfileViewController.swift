@@ -53,8 +53,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     typealias CompletionHandler = (_ success:Bool) -> Void
     var isViewMyProfile:Bool!
    
-    
-    
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,14 +62,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             getUserName = userInfo["username"] as? String
             getUserStatus = userInfo["userStatus"] as? String
             url = NSURL(string: userInfo?["userAvtar"] as! String)
-            
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: self.url! as URL) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                DispatchQueue.main.async {
-                    self.userProfileAvtar.image = UIImage(data: data!)
-                }
-            }
-
+            print("url is: \(url)")
+            userProfileAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
         }
         
         // Assigning Delegates

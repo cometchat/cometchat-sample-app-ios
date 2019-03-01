@@ -7,9 +7,19 @@
 //
 
 import UIKit
+import YPImagePicker
+import AVFoundation
+import AVKit
+import Photos
 import CometChatPro
+import WebKit
+import MobileCoreServices
+import AudioToolbox
 
-class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource {
+
+
+class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource, UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate,AVAudioPlayerDelegate,AVAudioRecorderDelegate,UIGestureRecognizerDelegate{
+
 
     //Outlets Declarations
     @IBOutlet weak var videoCallBtn: UIBarButtonItem!
@@ -21,8 +31,11 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var chatInputView: UITextView!
     @IBOutlet weak var chatTableview: UITableView!
+    @IBOutlet weak var micButton: UIButton!
     
     // Variable Declarations
+    var count = 10
+
     var buddyUID:String!
     var buddyNameString:String!
     var buddyStatusString:String!
@@ -32,10 +45,26 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     var buddyStatus:UILabel!
     let modelName = UIDevice.modelName
     var imagePicker = UIImagePickerController()
+    var selectedItems = [YPMediaItem]()
+    let selectedImageV = UIImageView()
+    let pickButton = UIButton()
+    let resultsButton = UIButton()
+    var videoURL:URL!
+    var audioURL:URL!
     var chatMessage = [Message]()
-    fileprivate let cellID = "chatCell"
+    fileprivate let textCellID = "textCCell"
     fileprivate let imageCellID = "imageCell"
+    fileprivate let videoCellID = "videoCell"
+    fileprivate let fileCellID = "fileCell"
+    fileprivate let audioCellID = "audioCell"
+    
+    var soundRecorder : AVAudioRecorder!
+    var soundPlayer : AVAudioPlayer!
+    var fileName: String = "audioFile1.m4a"
+    @IBOutlet weak var recordingLabel: UILabel!
+    
     private var messageRequest:MessagesRequest!
+    var docController: UIDocumentInteractionController!
     public typealias sendMessageResponse = (_ success:getSendMessageResponse? , _ error:CometChatException?) -> Void
     public typealias userMessageResponse = (_ user:getMessageResponse? , _ error:CometChatException?) ->Void
     public typealias groupMessageResponse = (_ group:[BaseMessage]? , _ error:CometChatException?) ->Void
@@ -60,22 +89,122 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         chatTableview.delegate = self
         chatTableview.dataSource = self
         CometChat.messagedelegate = self
+        
         //registerCell
-        chatTableview.register(ChatTextMessageCell.self, forCellReuseIdentifier: cellID)
-       // chatTableview.register(ChatImageMessageCell.self, forCellReuseIdentifier: imageCellID)
+        chatTableview.register(ChatTextMessageCell.self, forCellReuseIdentifier: textCellID)
+        chatTableview.register(ChatImageMessageCell.self, forCellReuseIdentifier: imageCellID)
+        chatTableview.register(ChatVideoMessageCell.self, forCellReuseIdentifier: videoCellID)
+        let fileNib = UINib.init(nibName: "ChatFileMessageCell", bundle: nil)
+        self.chatTableview.register(fileNib, forCellReuseIdentifier: "fileCell")
+        let audioNib  = UINib.init(nibName: "ChatAudioMessageCell", bundle: nil)
+        self.chatTableview.register(audioNib, forCellReuseIdentifier: "audioCell")
+        
+        
         chatTableview.separatorStyle = .none
-        chatTableview.allowsSelection = false
         
         fetchUserMessages(userUID: buddyUID, isGroup: isGroup) { (message, error) in
             let messages = message?.messages
             self.chatMessage = messages!
+            
+            print("messages are: \(messages)")
             DispatchQueue.main.async{
               self.chatTableview.reloadData()
             }
         }
         imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
+        setupRecorder()
+        let audioSession = AVAudioSession.sharedInstance()
+        do{
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, mode: AVAudioSessionModeDefault, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
+        }catch{print("\(error)")}
+    }
+    
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func setupRecorder() {
+        let audioFilename = getDocumentsDirectory().appendingPathComponent(fileName)
+        let recordSetting = [ AVFormatIDKey : kAudioFormatAppleLossless,
+                              AVEncoderAudioQualityKey : AVAudioQuality.max.rawValue,
+                              AVEncoderBitRateKey : 320000,
+                              AVNumberOfChannelsKey : 2,
+                              AVSampleRateKey : 44100.2] as [String : Any]
         
+        do {
+            soundRecorder = try AVAudioRecorder(url: audioFilename, settings: recordSetting )
+            soundRecorder.delegate = self
+            soundRecorder.prepareToRecord()
+        } catch {
+            print(error)
+        }
+    }
+    
+    func setupPlayer() {
+        let audioFilename = getDocumentsDirectory().appendingPathComponent(fileName)
+        do {
+            soundPlayer = try AVAudioPlayer(contentsOf: audioFilename)
+            soundPlayer.delegate = self
+            soundPlayer.prepareToPlay()
+            soundPlayer.volume = 1.0
+            audioURL = audioFilename
+           
+        } catch {
+            print(error)
+        }
+    }
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+       // playAudio.isEnabled = true
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+       // recordAudio.isEnabled = true
+      //  playAudio.setTitle("Play", for: .normal)
+    }
+    
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        let myURL = url as URL
+        print("import result : \(myURL)")
+        
+        sendMediaMessage(toUserUID: buddyUID, mediaURL: "\(myURL.absoluteString)", isGroup: isGroup, messageType: .file) { (message, error) in
+            
+            let sendMessage =  message?.messages
+            print("here the fileMessage is \(String(describing: sendMessage))")
+            self.chatMessage.append(sendMessage!)
+            print("ChatMessageArray:\(self.chatMessage)")
+            
+            DispatchQueue.main.async{
+                self.chatTableview.beginUpdates()
+                self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
+                
+                self.chatTableview.endUpdates()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+            }
+        }
+    }
+    
+    
+    public func documentMenu(_ documentMenu:UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
+        documentPicker.delegate = self
+        present(documentPicker, animated: true, completion: nil)
+    }
+    
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print("view was cancelled")
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func clickFunction(){
+        
+        let importMenu = UIDocumentMenuViewController(documentTypes: [kUTTypePDF as String], in: .import)
+        importMenu.delegate = self
+        importMenu.modalPresentationStyle = .formSheet
+        self.present(importMenu, animated: true, completion: nil)
     }
     
     func fetchUserMessages(userUID: String, isGroup: String, completionHandler:@escaping userMessageResponse) {
@@ -89,6 +218,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         messageRequest.fetchPrevious(onSuccess: { (messages) in
             
             let userMessagesArray = messages
+            print("messages fetchPrevious: \(String(describing: messages))")
             
             do{
                 let response = try getMessageResponse(myMessageData: userMessagesArray!)
@@ -111,7 +241,6 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         }
         
         CometChat.sendTextMessage(message: textMessage, onSuccess: { (message) in
-            
             do {
                 let response = try getSendMessageResponse(myMessageData: message)
                 completionHandler(response, nil)
@@ -119,6 +248,31 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         }) { (error) in
             completionHandler(nil,error)
         }
+    }
+    
+    func sendMediaMessage(toUserUID: String, mediaURL : String ,isGroup : String, messageType: CometChat.messageType ,completionHandler:@escaping sendMessageResponse){
+        
+        var mediaMessage : MediaMessage
+        
+        if(isGroup == "1"){
+            mediaMessage = MediaMessage(receiverUid: toUserUID, fileurl: mediaURL, messageType: messageType, receiverType: .group)
+        }else {
+            mediaMessage = MediaMessage(receiverUid: toUserUID, fileurl: mediaURL, messageType: messageType, receiverType: .user)
+        }
+        
+        CometChat.sendMediaMessage(message: mediaMessage, onSuccess: { (message) in
+            
+            print("sendMediaMessage onSuccess\(String(describing: message.url))")
+            do {
+                let response = try getSendMessageResponse(myMessageData: message)
+                completionHandler(response, nil)
+            } catch {}
+        }) { (error) in
+            
+            print("sendMediaMessage error\(String(describing: error))")
+            
+        }
+
     }
     
     
@@ -173,6 +327,11 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         //Audio Button:
         audioCallButton.image =  UIImage.init(named: "audio_call.png")
         audioCallButton.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        
+        //Mic Button:
+        micButton.setImage(#imageLiteral(resourceName: "micNormal"), for: .normal)
+        let audioRecorder = UILongPressGestureRecognizer(target: self, action: #selector(audioRecord(_:)))
+        micButton.addGestureRecognizer(audioRecorder)
         
         //Send button:
         switch AppAppearance{
@@ -246,7 +405,78 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         titleView.addGestureRecognizer(tapOnTitleView)
         
     }
+    
 
+    @objc func audioRecord(_ sender: UIGestureRecognizer){
+        print("Long tap")
+        
+        var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(UIMenuController.update), userInfo: nil, repeats: true)
+        if sender.state == .ended {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            soundRecorder.stop()
+            count = 0
+            self.setupPlayer()
+            print("UIGestureRecognizerStateEnded")
+             micButton.setImage(#imageLiteral(resourceName: "micNormal"), for: .normal)
+            recordingLabel.isHidden = true
+            
+            self.chatInputView.text = "Type a message..."
+            let alertController = UIAlertController(
+                title: "Send AudioFile", message: "Are you sure want to send this Audio note.", preferredStyle: .alert)
+            let OkAction = UIAlertAction(title: "Send", style: .default
+                , handler: { (UIAlertAction) in
+                    
+                    print("AudioURL is : \(String(describing: self.audioURL))")
+                    self.sendMediaMessage(toUserUID: self.buddyUID, mediaURL:"\(String(describing: self.audioURL.absoluteString))", isGroup: self.isGroup, messageType: .audio, completionHandler: { (message, error) in
+                        
+                        let sendMessage =  message?.messages
+                        print("here the audioMessage is \(String(describing: sendMessage))")
+                        self.chatMessage.append(sendMessage!)
+                        print("ChatMessageArray:\(self.chatMessage)")
+                        
+                        DispatchQueue.main.async {
+                            self.chatTableview.beginUpdates()
+                            self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
+                            
+                            self.chatTableview.endUpdates()
+                            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                            self.chatInputView.text = ""
+                        }
+                    })
+            })
+            let defaultAction = UIAlertAction(
+                title: "Cancel", style: .destructive, handler: nil)
+            
+            //you can add custom actions as well
+            alertController.addAction(defaultAction)
+            alertController.addAction(OkAction)
+            
+            
+            present(alertController, animated: true, completion: nil)
+            
+            //Do Whatever You want on End of Gesture
+        }
+        else if sender.state == .began {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            soundRecorder.record()
+            print("UIGestureRecognizerStateBegan.")
+            micButton.setImage(#imageLiteral(resourceName: "micSelected"), for: .normal)
+            self.chatInputView.text = ""
+            recordingLabel.isHidden = false
+            recordingLabel.text = "Recording...   \(count)"
+            
+                        //Do Whatever You want on Began of Gesture
+        }
+    }
+    
+     @objc func update() {
+        if(count > 0) {
+            count += 1
+            recordingLabel.text = "Recording...   \(count)"
+        }
+    }
+    
+    
     @objc func UserAvtarClicked(tapGestureRecognizer: UITapGestureRecognizer)
     {
         
@@ -347,28 +577,142 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         }
     }
     
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chatMessage.count
     }
     
+    func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
+   
+    func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+        
+        
+    }
+
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatTextMessageCell
-        
-        cell.selectionStyle = .none
+        let cell:UITableViewCell = UITableViewCell()
         
         let messageData = chatMessage[indexPath.row]
 
-        if(messageData.messageType == "media"){
+        if(messageData.messageType == "text"){
+       
+            var textMessageCell = ChatTextMessageCell()
+            print("added textCell")
+
+            textMessageCell = tableView.dequeueReusableCell(withIdentifier: textCellID, for: indexPath) as! ChatTextMessageCell
+            textMessageCell.chatMessage = messageData
+            textMessageCell.selectionStyle = .none
+            return textMessageCell
             
-            cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatTextMessageCell
+        }else if(messageData.messageType == "image"){
+            print("added imageCell")
+            var imageMessageCell = ChatImageMessageCell()
+            imageMessageCell = tableView.dequeueReusableCell(withIdentifier: imageCellID , for: indexPath) as! ChatImageMessageCell
+            imageMessageCell.chatMessage = messageData
+            let url = NSURL(string: messageData.messageText.decodeUrl()!)
+            imageMessageCell.chatImage.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_Pending"))
+            imageMessageCell.selectionStyle = .none
+            return imageMessageCell
             
+        }else if(messageData.messageType == "video"){
+            
+             print("added videoCell")
+            var videoMessageCell = ChatVideoMessageCell()
+            videoMessageCell = tableView.dequeueReusableCell(withIdentifier: videoCellID , for: indexPath) as! ChatVideoMessageCell
+            videoMessageCell.chatMessage = messageData
+            let url = NSURL(string: messageData.messageText.decodeUrl()!)
+            var image:UIImage = UIImage()
+//            image = self.getThumbnailImage(forUrl: url! as URL)!
+//            videoMessageCell.chatImage.image = image
+            videoMessageCell.selectionStyle = .none
+            
+            return videoMessageCell
+        }else if(messageData.messageType == "file"){
+        
+            print("added fileCell")
+            var fileCell = ChatFileMessageCell()
+            fileCell = tableView.dequeueReusableCell(withIdentifier: "fileCell" , for: indexPath) as! ChatFileMessageCell
+            let filename: String = messageData.messageText.decodeUrl()!
+            let pathExtention = filename.pathExtension
+            let pathPrefix = filename.lastPathComponent
+            fileCell.userNameLabel.text = "\(messageData.userName):"
+            fileCell.fileNameLabel.text = pathPrefix
+            fileCell.fileTypeLabel.text = pathExtention.uppercased()
+            fileCell.timeLabel.text = messageData.time
+            fileCell.timeLabel1.text = messageData.time
+            fileCell.chatMessage = messageData
+            fileCell.isSelf = messageData.isSelf
+            fileCell.isGroup = messageData.isGroup
+            fileCell.selectionStyle = .none
+            let url = NSURL(string: messageData.avatarURL.decodeUrl()!)
+            fileCell.userAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
+            return fileCell
+        }else if(messageData.messageType == "audio"){
+            
+            print("added audioCell")
+            var audioCell = ChatAudioMessageCell()
+            audioCell = tableView.dequeueReusableCell(withIdentifier: "audioCell" , for: indexPath) as! ChatAudioMessageCell
+            audioCell.chatMessage = messageData
+            let url = NSURL(string: messageData.avatarURL.decodeUrl()!)
+            audioCell.userNameLabel.text = "\(messageData.userName):"
+            audioCell.timeLabel.text = messageData.time
+            audioCell.timeLabel1.text = messageData.time
+            audioCell.userAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
+            audioCell.selectionStyle = .none
+            return audioCell
         }
-        
-        cell.chatMessage = messageData
-        //cell.isIncomingMessage = messageData.isSelf
         return cell
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        print("didSelectisWorking")
+        let messageData = chatMessage[indexPath.row]
+        
+        if(messageData.messageType == "image"){
+        let imageCell:ChatImageMessageCell = tableView.cellForRow(at: indexPath) as! ChatImageMessageCell
+            
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileAvtarViewController = storyboard.instantiateViewController(withIdentifier: "ccprofileAvtarViewController") as! CCprofileAvtarViewController
+            navigationController?.pushViewController(profileAvtarViewController, animated: true)
+            profileAvtarViewController.profileAvtar =  imageCell.chatImage.image
+            profileAvtarViewController.hidesBottomBarWhenPushed = true
+
+        }else if(messageData.messageType == "video"){
+            
+            print("Calling from Video Cell")
+            let videoURL = URL(string: messageData.messageText.decodeUrl()!)
+            let player = AVPlayer(url: videoURL!)
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+            self.present(playerViewController, animated: true) {
+                playerViewController.player!.play()
+            }
+        }else if(messageData.messageType == "file"){
+            
+            let url = NSURL.fileURL(withPath:messageData.messageText.decodeUrl()!)
+            
+            let activityViewController = UIActivityViewController(activityItems: [url] , applicationActivities: nil)
+            
+            DispatchQueue.main.async {
+                
+                self.present(activityViewController, animated: true, completion: nil)
+            }
+        }
     }
     
     
@@ -382,7 +726,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         }else{
 
            sendMessage(toUserUID: buddyUID, message: message, isGroup: isGroup) { (message, error) in
-                
+            
                 print("here the message is \(String(describing: message?.messages))")
                 let sendMessage =  message?.messages
                 self.chatMessage.append(sendMessage!)
@@ -399,33 +743,216 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         }
     }
     
+  
+    @IBAction func micButtonPressed(_ sender: Any) {
+        //The code is written in TapANdHoldGestureRecognizer
+    }
+    
+
+    
     @IBAction func attachementButtonPressed(_ sender: Any) {
         
         
         let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cameraAction: UIAlertAction = UIAlertAction(title: "Camera", style: .default) { action -> Void in
 
-            self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
-            //imag.mediaTypes = [kUTTypeImage];
-            self.imagePicker.allowsEditing = false
-            self.present(self.imagePicker, animated: true, completion: nil)
+            var config = YPImagePickerConfiguration()
+            config.library.mediaType = .photoAndVideo
+            config.wordings.cancel = "Cancel"
+            config.wordings.next = "Next"
+            config.wordings.videoTitle = "Video"
+            config.wordings.albumsTitle = "Albums"
+            config.wordings.libraryTitle = "Library"
+            config.wordings.cameraTitle = "Camera"
+            config.wordings.cover = "Cover"
+            config.wordings.ok = "Ok"
+            config.wordings.done = "Done"
+            config.wordings.save = "Save"
+            config.wordings.processing = "Processing"
+            config.wordings.trim = "Trim"
+            config.wordings.cover = "Cover"
+            config.wordings.filter = "Filter"
+            config.wordings.crop = "Crop"
+            config.wordings.warningMaxItemsLimit = "Limit Reached"
+            config.wordings.libraryTitle = "Gallery"
+            
+            config.shouldSaveNewPicturesToAlbum = false
+            
+            /* Choose the videoCompression. Defaults to AVAssetExportPresetHighestQuality */
+            config.video.compression = AVAssetExportPresetMediumQuality
+            config.startOnScreen = .library
+            config.screens = [.photo,.video]
+            config.video.libraryTimeLimit = 500.0
+            config.showsCrop = .none
+            config.hidesStatusBar = false
+            config.hidesBottomBar = false
+            config.library.maxNumberOfItems = 5
+            
+            let picker = YPImagePicker(configuration: config)
+            
+            /* Multiple media implementation */
+            picker.didFinishPicking { [unowned picker] items, cancelled in
+                
+                if cancelled {
+                    print("Picker was canceled")
+                    picker.dismiss(animated: true, completion: nil)
+                    return
+                }
+                _ = items.map { print("🧀 \($0)") }
+                self.selectedItems = items
+                if let firstItem = items.first {
+                    switch firstItem {
+                    case .photo(let photo):
+                        self.selectedImageV.image = photo.image
+                        let imageData = UIImagePNGRepresentation(photo.image)!
+                        let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                        let imageURL = docDir.appendingPathComponent("tmp.png")
+                        try! imageData.write(to: imageURL)
+                        picker.dismiss(animated: true, completion: nil)
+                        
+                        
+                        self.sendMediaMessage(toUserUID: self.buddyUID, mediaURL: imageURL.absoluteString, isGroup: self.isGroup, messageType: .image, completionHandler: { (message, error) in
+                         
+                            let sendMessage =  message?.messages
+                               print("here the imageMessage is \(String(describing: sendMessage))")
+                            self.chatMessage.append(sendMessage!)
+                            print("ChatMessageArray:\(self.chatMessage)")
+                           
+                            DispatchQueue.main.async{
+                                self.chatTableview.beginUpdates()
+                                self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
+                                
+                                self.chatTableview.endUpdates()
+                                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                                self.chatInputView.text = ""
+                            }
+                        })
+                    case .video(let video):
+                        self.selectedImageV.image = video.thumbnail
+                        let assetURL = video.url
+                        self.videoURL = video.url
+                        
+                        picker.dismiss(animated: true, completion: { [weak self] in
+                            print("😀 \(String(describing: self?.resolutionForLocalVideo(url: assetURL)!))")
+                        })
+                    }
+                }
+            }
+            
+            self.present(picker, animated: true, completion: nil)
+
         }
         cameraAction.setValue(UIImage(named: "camera.png"), forKey: "image")
         
         let photoLibraryAction: UIAlertAction = UIAlertAction(title: "Photo & Video Library", style: .default) { action -> Void in
             
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary){
-                
-                self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
-                //imag.mediaTypes = [kUTTypeImage];
-                self.imagePicker.allowsEditing = false
-                self.present(self.imagePicker, animated: true, completion: nil)
-            }
+
+            var config = YPImagePickerConfiguration()
+            config.library.mediaType = .photoAndVideo
+            config.wordings.cancel = "Cancel"
+            config.wordings.next = "Next"
+            config.wordings.videoTitle = "Video"
+            config.wordings.albumsTitle = "Albums"
+            config.wordings.libraryTitle = "Library"
+            config.wordings.cameraTitle = "Camera"
+            config.wordings.cover = "Cover"
+            config.wordings.ok = "Ok"
+            config.wordings.done = "Done"
+            config.wordings.save = "Save"
+            config.wordings.processing = "Processing"
+            config.wordings.trim = "Trim"
+            config.wordings.cover = "Cover"
+            config.wordings.filter = "Filter"
+            config.wordings.crop = "Crop"
+            config.wordings.warningMaxItemsLimit = "Limit Reached"
+            config.wordings.libraryTitle = "Gallery"
             
+            config.shouldSaveNewPicturesToAlbum = false
+            
+            /* Choose the videoCompression. Defaults to AVAssetExportPresetHighestQuality */
+            config.video.compression = AVAssetExportPresetMediumQuality
+            config.startOnScreen = .library
+            config.screens = [.library]
+            config.video.libraryTimeLimit = 500.0
+            config.showsCrop = .none
+            config.hidesStatusBar = false
+            config.hidesBottomBar = true
+            config.library.maxNumberOfItems = 5
+            
+            let picker = YPImagePicker(configuration: config)
+            
+            /* Multiple media implementation */
+            picker.didFinishPicking { [unowned picker] items, cancelled in
+                
+                if cancelled {
+                    print("Picker was canceled")
+                    picker.dismiss(animated: true, completion: nil)
+                    return
+                }
+                _ = items.map { print("🧀 \($0)") }
+                self.selectedItems = items
+                if let firstItem = items.first {
+                    switch firstItem {
+                    case .photo(let photo):
+                        self.selectedImageV.image = photo.image
+                        let imageData = UIImagePNGRepresentation(photo.image)!
+                        let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                        let imageURL = docDir.appendingPathComponent("tmp.png")
+                        try! imageData.write(to: imageURL)
+                        picker.dismiss(animated: true, completion: nil)
+                        
+                        self.sendMediaMessage(toUserUID: self.buddyUID, mediaURL: imageURL.absoluteString, isGroup: self.isGroup, messageType: .image, completionHandler: { (message, error) in
+                            
+                            let sendMessage =  message?.messages
+                            print("here the imageMessage is \(String(describing: sendMessage))")
+                            self.chatMessage.append(sendMessage!)
+                            print("ChatMessageArray:\(self.chatMessage)")
+                            
+                            DispatchQueue.main.async{
+                                self.chatTableview.beginUpdates()
+                                self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
+                                
+                                self.chatTableview.endUpdates()
+                                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                                self.chatInputView.text = ""
+                            }
+                        })
+                    case .video(let video):
+                        self.selectedImageV.image = video.thumbnail
+                        let assetURL = video.url
+                        self.videoURL = video.url
+                        
+                        picker.dismiss(animated: true, completion: { [weak self] in
+                            print("😀 \(String(describing: self?.resolutionForLocalVideo(url: assetURL)!))")
+                           
+                            self!.sendMediaMessage(toUserUID: (self?.buddyUID)!, mediaURL: assetURL.absoluteString, isGroup: (self?.isGroup)!, messageType: .video, completionHandler: { (message, error) in
+                                let sendMessage =  message?.messages
+                                print("here the video is \(String(describing: sendMessage))")
+                                self!.chatMessage.append(sendMessage!)
+                                print("ChatMessageArray:\(self!.chatMessage)")
+                                
+                                DispatchQueue.main.async{
+                                    self!.chatTableview.beginUpdates()
+                                    self!.chatTableview.insertRows(at: [IndexPath.init(row: self!.chatMessage.count-1, section: 0)], with: .automatic)
+                                    
+                                    self!.chatTableview.endUpdates()
+                                    self?.chatTableview.scrollToRow(at: IndexPath.init(row: self!.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                                    
+                                }
+           
+                            })
+                        })
+
+                        }
+                    }
+                }
+             self.present(picker, animated: true, completion: nil)
         }
         photoLibraryAction.setValue(UIImage(named: "gallery.png"), forKey: "image")
         
         let documentAction: UIAlertAction = UIAlertAction(title: "Document", style: .default) { action -> Void in
+            
+            self.clickFunction()
             
         }
         documentAction.setValue(UIImage(named: "document.png"), forKey: "image")
@@ -506,11 +1033,28 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             }
         }
     }
+    
+    func getThumbnailImage(forUrl url: URL) -> UIImage? {
+        let asset: AVAsset = AVAsset(url: url)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        
+        do {
+            let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(1, 60) , actualTime: nil)
+            return UIImage(cgImage: thumbnailImage)
+        } catch let error {
+            print(error)
+        }
+        
+        return nil
+    }
+
 }
 
 extension OneOnOneChatViewController : CometChatMessageDelegate {
     
     func onTextMessageReceived(textMessage: TextMessage?, error: CometChatException?) {
+        
+        print("MEsage is : \(String(describing: textMessage?.stringValue()))")
         
         var messageDict = [String : Any]()
         let date = Date(timeIntervalSince1970: TimeInterval(textMessage!.sentAt))
@@ -522,15 +1066,10 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
         print("formatted date is =  \(dateString)")
         
         if(textMessage!.receiverType == CometChat.receiverType.group){
-            
             messageDict["isGroup"] = true
-            
         }else {
-            
             messageDict["isGroup"] = false
-            
         }
-        
         messageDict["userID"] = textMessage!.receiverUid
         messageDict["userName"] = textMessage?.sender?.name
         messageDict["messageText"] = textMessage!.text
@@ -540,6 +1079,65 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
         messageDict["avatarURL"] = textMessage?.sender?.avatar
         print("MessageDict \(messageDict)")
         
+        print("buddyUID: \(String(describing: buddyUID))")
+        print("receiverUid: \(textMessage!.receiverUid)")
+       //if(buddyUID! == "\(textMessage!.sender?.uid)"){
+        print("Iserting text Message")
+        let receivedMessage = Message(dict: messageDict)
+        self.chatMessage.append(receivedMessage!)
+        
+        DispatchQueue.main.async{
+            self.chatTableview.beginUpdates()
+            self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
+            
+            self.chatTableview.endUpdates()
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+            }
+      // }
+    }
+    
+    func onMediaMessageReceived(mediaMessage: MediaMessage?, error: CometChatException?)
+    {
+        
+        var messageDict = [String : Any]()
+        let date = Date(timeIntervalSince1970: TimeInterval(mediaMessage!.sentAt))
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "HH:mm a"
+        
+        dateFormatter1.timeZone = NSTimeZone.local
+        let dateString : String = dateFormatter1.string(from: date)
+        print("formatted date is =  \(dateString)")
+        
+        if(mediaMessage!.receiverType == CometChat.receiverType.group){
+            
+            messageDict["isGroup"] = true
+            
+        }else {
+            
+            messageDict["isGroup"] = false
+            
+        }
+        messageDict["userID"] = mediaMessage!.receiverUid
+        messageDict["userName"] = mediaMessage?.sender?.name
+        messageDict["messageText"] = (mediaMessage!.url?.decodeUrl())!
+        messageDict["isSelf"] = false
+        messageDict["time"] = dateString
+        
+        if(mediaMessage?.messageType == CometChat.messageType.image){
+            messageDict["messageType"] = "image"
+        }else if(mediaMessage?.messageType == CometChat.messageType.video){
+          messageDict["messageType"] = "video"
+        }else if(mediaMessage?.messageType == CometChat.messageType.audio){
+            messageDict["messageType"] = "audio"
+        }else if(mediaMessage?.messageType == CometChat.messageType.file){
+            messageDict["messageType"] = "file"
+        }else{
+            messageDict["messageType"] = ""
+        }
+        messageDict["avatarURL"] = mediaMessage?.sender?.avatar
+        print("MessageDict \(messageDict)")
+        
+      //  if(buddyUID == mediaMessage?.receiverUid){
         let receivedMessage = Message(dict: messageDict)
         self.chatMessage.append(receivedMessage!)
         
@@ -550,13 +1148,28 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
             self.chatTableview.endUpdates()
             self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
         }
-        
-    }
-    
-    func onMediaMessageReceived(mediaMessage: MediaMessage?, error: CometChatException?)
-    {
-        
-        
-        
+       // }
     }
 }
+extension OneOnOneChatViewController {
+    /* Gives a resolution for the video by URL */
+    func resolutionForLocalVideo(url: URL) -> CGSize? {
+        guard let track = AVURLAsset(url: url).tracks(withMediaType: AVMediaType.video).first else { return nil }
+        let size = track.naturalSize.applying(track.preferredTransform)
+        return CGSize(width: abs(size.width), height: abs(size.height))
+    }
+}
+
+
+extension String {
+    var fileURL: URL {
+        return URL(fileURLWithPath: self)
+    }
+    var pathExtension: String {
+        return fileURL.pathExtension
+    }
+    var lastPathComponent: String {
+        return fileURL.lastPathComponent
+    }
+}
+

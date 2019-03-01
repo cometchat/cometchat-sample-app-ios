@@ -196,19 +196,9 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
              cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "4AB680")
         }
         
-        // User Avtar :
-        
-//        url = NSURL(string: buddyData.avatar as! String)
-//
-//        DispatchQueue.global().async {
-//            let data = try? Data(contentsOf: self.url! as URL) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-//            DispatchQueue.main.async {
-//                cell.buddyAvtar.image = UIImage(data: data!)
-//            }
-//        }
-        
-     cell.buddyAvtar.downloaded(from: buddyData.avatar ?? "")
-        
+        let url  = NSURL(string: buddyData.avatar ?? "")
+        cell.buddyAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
+
         return cell
     }
     
@@ -307,6 +297,10 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //announcement button Pressed
     @IBAction func announcementPressed(_ sender: Any) {
       
+        
+        
+        
+        
     }
     
     //More button Pressed
