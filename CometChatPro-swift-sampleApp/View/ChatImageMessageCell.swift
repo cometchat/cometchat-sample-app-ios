@@ -27,12 +27,11 @@ class ChatImageMessageCell: UITableViewCell {
             urlString = chatMessage.messageText
            // chatImage.image = #imageLiteral(resourceName: "default_Pending")
             userNameLabel.text = "\(chatMessage.userName):"
-            userNameLabel.font = userNameLabel.font.withSize(15)
+            userNameLabel.font = userNameLabel.font.withSize(12)
             userNameLabel.textColor = UIColor.darkGray
             userNameLabel.isHidden = true
             print("urlString: \(urlString)")
             url = NSURL(string: urlString)
-            
             if(chatMessage.avatarURL != ""){
                 url = NSURL(string: chatMessage.avatarURL)
                 userAvatarImageView.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
@@ -51,7 +50,7 @@ class ChatImageMessageCell: UITableViewCell {
                 userAvatarImageView.isHidden = true
 
             } else {
-                
+                userAvatarImageView.isHidden = false
                 aleadingConstraint.isActive = true
                 atrailingConstraint.isActive = false
                 timeLabelLeadingConstraint.isActive = true
@@ -80,9 +79,7 @@ class ChatImageMessageCell: UITableViewCell {
         chatImage.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         // lets set up some constraints for our label
-        
-       
-       
+  
         
         let constraints = [
             
@@ -93,8 +90,8 @@ class ChatImageMessageCell: UITableViewCell {
             
             chatImage.topAnchor.constraint(equalTo: topAnchor, constant: 30),
             chatImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -13),
-            chatImage.widthAnchor.constraint(lessThanOrEqualToConstant: 250),
-            chatImage.heightAnchor.constraint(lessThanOrEqualToConstant: 250),
+            chatImage.widthAnchor.constraint(equalToConstant: 250),
+            chatImage.heightAnchor.constraint(equalToConstant: 250),
             
             bubbleBackgroundView.topAnchor.constraint(equalTo: chatImage.topAnchor, constant: 0),
             bubbleBackgroundView.leadingAnchor.constraint(equalTo: chatImage.leadingAnchor, constant: 0),
@@ -102,6 +99,7 @@ class ChatImageMessageCell: UITableViewCell {
             bubbleBackgroundView.trailingAnchor.constraint(equalTo: chatImage.trailingAnchor, constant: 0),
             ]
         NSLayoutConstraint.activate(constraints)
+        
         
         aleadingConstraint = chatImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32)
         aleadingConstraint.isActive = false

@@ -33,49 +33,70 @@ class EmbeddedViewController: UIViewController{
 // Calling Delegates 
 
 extension EmbeddedViewController : CometChatCallDelegate {
-    
-    
-    
+
     func onIncomingCallReceived(incomingCall: Call?, error: CometChatException?) {
      
         print("I m in onIncomingCallReceived");
         
-                var isAudioCall:Bool!
                 print(" Incoming call " + incomingCall!.stringValue());
                 print("incomingCall?.callType.rawValue \(String(describing: incomingCall?.callType.rawValue))")
         
-                if(incomingCall?.callType.rawValue == 1){
-                    print("I m in videoCall");
-                    isAudioCall = false
-                }else{
-                     print("I m in audioCall");
-                    isAudioCall = true
-                }
-        
                 DispatchQueue.main.async {
         
-                    if incomingCall != nil {
-        
+                    if incomingCall != nil && incomingCall?.receiverType == .user {
+                        print ("I m in user csll");
                         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
                         if let CallingViewController = storyBoard.instantiateViewController(withIdentifier: "callingViewController") as? CallingViewController {
         
                             CallingViewController.receivedCall = incomingCall
-        
+                            if let callInitiator = (incomingCall!.callInitiator as? User) {
+                                
+                                CallingViewController.callingString = "Incoming Call"
+                                CallingViewController.userNameString = callInitiator.name
+                                CallingViewController.isIncoming = true
+                                CallingViewController.isGroupCall = false
+                                if(incomingCall?.callType.rawValue == 1){
+                                    CallingViewController.isAudioCall = "0"
+                                }else{
+                                    CallingViewController.isAudioCall = "1"
+                                }
+                                CallingViewController.avtarURLString = callInitiator.avatar
+                                print("Callinitialtor avtar: \(String(describing: callInitiator.avatar))")
+                            }
+
                            self.present(CallingViewController, animated: true, completion: { () in
         
-                            if let callInitiator = (incomingCall!.callInitiator as? User) {
-        
-                                    CallingViewController.callingString = "Incoming Call"
-                                    CallingViewController.userNameString = callInitiator.name
-                                    CallingViewController.isIncoming = true
-                                    CallingViewController.isAudioCall = isAudioCall
-                                    CallingViewController.avtarURLString = callInitiator.avatar
-                                print("Callinitialtor avtar: \(String(describing: callInitiator.avatar))")
-                                }
                             })
                         }
-                     }
+                    }else if incomingCall != nil && incomingCall?.receiverType == .group{
+                        
+                        print ("I m in group call : ")
+                        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        if let CallingViewController = storyBoard.instantiateViewController(withIdentifier: "callingViewController") as? CallingViewController {
+                            
+                            CallingViewController.receivedCall = incomingCall
+                            
+                            if let callReceiver = (incomingCall!.callReceiver as? Group) {
+                                
+                                  print ("I m in group call 111: \(callReceiver.stringValue())")
+                                CallingViewController.callingString = "Incoming Call"
+                                CallingViewController.userNameString = callReceiver.name
+                                CallingViewController.isIncoming = true
+                                CallingViewController.isGroupCall = true
+                                if(incomingCall?.callType.rawValue == 1){
+                                    CallingViewController.isAudioCall = "0"
+                                }else{
+                                    CallingViewController.isAudioCall = "1"
+                                }
+                                CallingViewController.avtarURLString = callReceiver.icon
+                            }
+                            self.present(CallingViewController, animated: true, completion: { () in
+                                
+                            })
+                        }
+                    }
                   }
     }
     

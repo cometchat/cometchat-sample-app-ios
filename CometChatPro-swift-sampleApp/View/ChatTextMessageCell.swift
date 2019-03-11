@@ -30,7 +30,7 @@ class ChatTextMessageCell: UITableViewCell {
 
             messageLabel.text = chatMessage.messageText
             userNameLabel.text = "\(chatMessage.userName):"
-            userNameLabel.font = userNameLabel.font.withSize(15)
+            userNameLabel.font = userNameLabel.font.withSize(12)
             messageTimeLabel.text = chatMessage.time
             
            

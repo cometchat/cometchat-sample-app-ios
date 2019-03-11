@@ -11,9 +11,11 @@ import UIKit
 class GroupTableViewCell: UITableViewCell {
 
     //Outlets Declarations
+    @IBOutlet weak var passwordProtected: UIImageView!
     @IBOutlet weak var groupAvtar: UIImageView!
     @IBOutlet weak var groupName: UILabel!
     @IBOutlet weak var groupParticipants: UILabel!
+    @IBOutlet weak var recentMessageCount: UIImageView!
     var UID:String!
     var groupType : Int!
     

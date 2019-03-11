@@ -19,6 +19,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     @IBOutlet weak var leftPadding: NSLayoutConstraint!
     @IBOutlet weak var rightPadding: NSLayoutConstraint!
     
+  
     //Variable Declarations
     var nameArray:[String]!
     var imageArray:[UIImage]!
@@ -28,6 +29,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     var othersChatRoomList = [Group]()
     var  groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 10).build()
     var searchController:UISearchController!
+    var refreshControl: UIRefreshControl!
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
@@ -35,7 +37,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         //Function Calling
         self.fetchGroupList()
-        
         groupTableView.reloadData()
         
         //Assigning Delegates
@@ -56,6 +57,18 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
            print("Calling froup isNewGroup")
             self.fetchGroupList()
             UserDefaults.standard.removeObject(forKey: "newGroupCreated")
+        }
+        
+        var isGroupLeave:String!
+        if((UserDefaults.standard.value(forKey: "leaveGroupAction")) != nil){
+            isGroupLeave = (UserDefaults.standard.value(forKey: "leaveGroupAction") as! String)
+        }else{
+            isGroupLeave = "0"
+        }
+        if(isGroupLeave == "1"){
+            print("Calling froup isGroupLeave")
+            self.fetchGroupList()
+            UserDefaults.standard.removeObject(forKey: "leaveGroupAction")
         }
 
         //Calling Function
@@ -84,10 +97,23 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             
         }) { (exception) in
             
+             DispatchQueue.main.async(execute: {
+                self.view.makeToast("\(String(describing: exception!.errorDescription))")
+             })
             print(exception?.errorDescription as Any)
         }
     }
     
+    
+    @objc func refresh(_ sender: Any) {
+        print("refreshing")
+        
+        if(joinedChatRoomList.isEmpty && othersChatRoomList.isEmpty){
+            print("empty")
+            fetchGroupList()
+        }
+        refreshControl.endRefreshing()
+    }
     
     
     //This method handles the UI customization for handleGroupListVC
@@ -95,6 +121,15 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         // ViewController Appearance
          view.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
+        
+        //Refresh Control
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            groupTableView.refreshControl = refreshControl
+        } else {
+            groupTableView.addSubview(refreshControl)
+        }
         
         //TableView Appearance
         self.groupTableView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
@@ -134,7 +169,8 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         //notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-        
+        refreshControl.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+         
         // SearchBar Apperance
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
@@ -226,6 +262,12 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             print("othersChatRoomList\(group.name)")
         }
         
+        if(group.groupType == .password){
+            cell.passwordProtected.isHidden = false
+        }else{
+            cell.passwordProtected.isHidden = true
+        }
+        
         cell.groupName.text = group.name
         let groupIconURL = NSURL(string: group.icon ?? "")
         cell.groupAvtar.sd_setImage(with: groupIconURL as URL?, placeholderImage: #imageLiteral(resourceName: "default_user_icon"))
@@ -242,19 +284,59 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
          if(indexPath.section != 0){
             
-            CometChat.joinGroup(GUID: selectedCell.UID, groupType: .public, password: nil, onSuccess: { (success) in
-                DispatchQueue.main.async{
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
-                    // oneOnOneChatViewController.buddyStatusString = selectedCell.groupName.text
-                    oneOnOneChatViewController.buddyAvtar = selectedCell.groupAvtar.image
-                    oneOnOneChatViewController.buddyNameString = selectedCell.groupName.text
-                    oneOnOneChatViewController.buddyUID = selectedCell.UID!
-                    oneOnOneChatViewController.isGroup = "1"
-                    self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
+            if(selectedCell.groupType == 2){
+                
+                let alertController = UIAlertController(title: "Enter Password", message: "Kindly, Enter the password to proceed.", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addTextField { (textField : UITextField!) -> Void in
+                    textField.placeholder = "Enter Password"
+                    textField.isSecureTextEntry = true
                 }
-            }) { (error) in
-                print("Failed to join group")
+                let saveAction = UIAlertAction(title: "Join", style: UIAlertActionStyle.default, handler: { alert -> Void in
+                    let passwordTextfield = alertController.textFields![0] as UITextField
+                    CometChat.joinGroup(GUID: selectedCell.UID, groupType: .password, password: passwordTextfield.text, onSuccess: { (success) in
+                        DispatchQueue.main.async{
+                            self.view.makeToast("Group Joined Sucessfully.")
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
+                            // oneOnOneChatViewController.buddyStatusString = selectedCell.groupName.text
+                            oneOnOneChatViewController.buddyAvtar = selectedCell.groupAvtar.image
+                            oneOnOneChatViewController.buddyNameString = selectedCell.groupName.text
+                            oneOnOneChatViewController.buddyUID = selectedCell.UID!
+                            oneOnOneChatViewController.isGroup = "1"
+                            self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
+                        }
+                    }) { (error) in
+                        DispatchQueue.main.async {
+                            self.view.makeToast("Failed to join group")
+                        }
+                    }
+                    
+                })
+                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: {
+                    (action : UIAlertAction!) -> Void in })
+
+                alertController.addAction(cancelAction)
+                alertController.addAction(saveAction)
+                self.present(alertController, animated: true, completion: nil)
+                
+            }else{
+                CometChat.joinGroup(GUID: selectedCell.UID, groupType: .public, password: nil, onSuccess: { (success) in
+                    DispatchQueue.main.async{
+                        self.view.makeToast("Group Joined Sucessfully.")
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
+                        // oneOnOneChatViewController.buddyStatusString = selectedCell.groupName.text
+                        oneOnOneChatViewController.buddyAvtar = selectedCell.groupAvtar.image
+                        oneOnOneChatViewController.buddyNameString = selectedCell.groupName.text
+                        oneOnOneChatViewController.buddyUID = selectedCell.UID!
+                        oneOnOneChatViewController.isGroup = "1"
+                        self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
+                    }
+                }) { (error) in
+                    DispatchQueue.main.async {
+                        self.view.makeToast("Failed to join group")
+                    }
+                }
             }
          }else{
             
@@ -272,8 +354,8 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        
-        if(indexPath.row == (joinedChatRoomList.count + othersChatRoomList.count) - 2){
+        print("WillDisplay is calling ")
+        if(indexPath.row == (joinedChatRoomList.count + othersChatRoomList.count) - 5){
              self.fetchGroupList()
         }
 }
@@ -298,23 +380,26 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let action =  UIContextualAction(style: .normal, title: "Files", handler: { (action,view,completionHandler ) in
+        let deleteAction =  UIContextualAction(style: .normal, title: "Files", handler: { (action,view,completionHandler ) in
             //do stuff
             completionHandler(true)
         })
-        action.image = UIImage(named: "delete.png")
-        action.backgroundColor = .red
+        deleteAction.image = UIImage(named: "delete.png")
+        deleteAction.backgroundColor = .red
         
         
-        let deleteAction =  UIContextualAction(style: .normal, title: "Files1", handler: { (deleteAction,view,completionHandler ) in
+        let leaveAction =  UIContextualAction(style: .normal, title: "Files1", handler: { (deleteAction,view,completionHandler ) in
             //do stuff
             completionHandler(true)
         })
-        deleteAction.image = UIImage(named: "block.png")
-        deleteAction.backgroundColor = .orange
+        leaveAction.image = UIImage(named: "leaveGroup.png")
+        leaveAction.backgroundColor = .orange
         
-        let confrigation = UISwipeActionsConfiguration(actions: [action])
+        var confrigation:UISwipeActionsConfiguration?
         
+        if(indexPath.section == 0){
+            confrigation = UISwipeActionsConfiguration(actions: [deleteAction,leaveAction])
+        }
         return confrigation
     }
     
@@ -322,23 +407,45 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let action =  UIContextualAction(style: .normal, title: "Files", handler: { (action,view,completionHandler ) in
+        let selectedCell:GroupTableViewCell = tableView.cellForRow(at: indexPath) as! GroupTableViewCell
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
+        
+        let videoCall =  UIContextualAction(style: .normal, title: "Files", handler: { (action,view,completionHandler ) in
+            completionHandler(true)
+            CallingViewController.isAudioCall = "0"
+            CallingViewController.isIncoming = false
+            CallingViewController.userAvtarImage = selectedCell.groupAvtar.image
+            CallingViewController.userNameString = selectedCell.groupName.text
+            CallingViewController.callingString = "Calling ..."
+            CallingViewController.callerUID = selectedCell.UID
+            CallingViewController.isGroupCall = true
+            self.present(CallingViewController, animated: true, completion: nil)
+        })
+        videoCall.image = UIImage(named: "video_call.png")
+        videoCall.backgroundColor = .green
+        
+        
+        let audioCall =  UIContextualAction(style: .normal, title: "Files1", handler: { (deleteAction,view,completionHandler ) in
             //do stuff
             completionHandler(true)
+            CallingViewController.isAudioCall = "1"
+            CallingViewController.isIncoming = false
+            CallingViewController.userAvtarImage = selectedCell.groupAvtar.image
+            CallingViewController.userNameString = selectedCell.groupName.text
+            CallingViewController.callingString = "Calling ..."
+            CallingViewController.callerUID = selectedCell.UID
+            CallingViewController.isGroupCall = true
+            self.present(CallingViewController, animated: true, completion: nil)
         })
-        action.image = UIImage(named: "video_call.png")
-        action.backgroundColor = .green
+        audioCall.image = UIImage(named: "audio_call.png")
+        audioCall.backgroundColor = .blue
         
+        var confrigation:UISwipeActionsConfiguration?
         
-        let deleteAction =  UIContextualAction(style: .normal, title: "Files1", handler: { (deleteAction,view,completionHandler ) in
-            //do stuff
-            completionHandler(true)
-        })
-        deleteAction.image = UIImage(named: "audio_call.png")
-        deleteAction.backgroundColor = .blue
-        
-        let confrigation = UISwipeActionsConfiguration(actions: [action,deleteAction])
-        
+        if(indexPath.section == 0){
+            confrigation = UISwipeActionsConfiguration(actions: [videoCall,audioCall])
+        }
         return confrigation
     }
     

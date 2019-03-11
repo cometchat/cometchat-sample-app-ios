@@ -14,6 +14,7 @@ class UserProfileViewCell: UITableViewCell {
     @IBOutlet weak var CellTitle: UILabel!
     @IBOutlet weak var CellRightImage: UIImageView!
     @IBOutlet weak var cellBackgroundView: UIView!
+    @IBOutlet weak var leftIconBackgroundView: UIView!
     
     
     

@@ -28,7 +28,7 @@ class ChatVideoMessageCell: UITableViewCell {
         didSet {
             videoURL = URL(string: chatMessage.messageText.decodeUrl()!) as! NSURL
             userNameLabel.text = "\(chatMessage.userName):"
-            userNameLabel.font = userNameLabel.font.withSize(15)
+            userNameLabel.font = userNameLabel.font.withSize(12)
             userNameLabel.textColor = UIColor.darkGray
             userNameLabel.isHidden = true
             print("video : urlString: \(videoURL)")
@@ -52,7 +52,7 @@ class ChatVideoMessageCell: UITableViewCell {
                 userAvatarImageView.isHidden = true
                 
             } else {
-                
+                userAvatarImageView.isHidden = false
                 aleadingConstraint.isActive = true
                 atrailingConstraint.isActive = false
                 timeLabelLeadingConstraint.isActive = true
@@ -97,8 +97,8 @@ class ChatVideoMessageCell: UITableViewCell {
             
             chatImage.topAnchor.constraint(equalTo: topAnchor, constant: 30),
             chatImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -13),
-            chatImage.widthAnchor.constraint(lessThanOrEqualToConstant: 250),
-            chatImage.heightAnchor.constraint(lessThanOrEqualToConstant: 250),
+            chatImage.widthAnchor.constraint(equalToConstant: 250),
+            chatImage.heightAnchor.constraint(equalToConstant: 250),
             
             bubbleBackgroundView.topAnchor.constraint(equalTo: chatImage.topAnchor, constant: 0),
             bubbleBackgroundView.leadingAnchor.constraint(equalTo: chatImage.leadingAnchor, constant: 0),

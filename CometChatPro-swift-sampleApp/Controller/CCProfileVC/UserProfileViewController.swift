@@ -23,8 +23,6 @@ class UserProfileCell {
     static let LEAVE_GROUP_CELL = 8
     static let DELETE_GROUP_CELL = 9
     
-    
-    
 }
 
 class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
@@ -52,18 +50,22 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     var data: NSData!
     typealias CompletionHandler = (_ success:Bool) -> Void
     var isViewMyProfile:Bool!
+    var groupMemberRequest:GroupMembersRequest!
    
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if isDisplayType == "MoreSettingViewProfile"{
-        userInfo = UserDefaults.standard.object(forKey: "LoggedInUserInfo") as? [String : Any]
+            userProfileAvtar.image = #imageLiteral(resourceName: "default_user")
+            userInfo = UserDefaults.standard.object(forKey: "LoggedInUserInfo") as? [String : Any]
             getUserName = userInfo["username"] as? String
-            getUserStatus = userInfo["userStatus"] as? String
+            getUserStatus = "Online"
             url = NSURL(string: userInfo?["userAvtar"] as! String)
             print("url is: \(url)")
             userProfileAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
+            
+           
         }
         
         // Assigning Delegates
@@ -93,12 +95,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             
             profileItems.append(UserProfileCell.MY_STATUS_MESSAGE_CELL)
             profileItems.append(UserProfileCell.MY_SET_STATUS_CELL)
-            
-            
         }
         else if isDisplayType == "GroupView"{
             profileItems.append(UserProfileCell.VIEW_MEMBER_CELL)
-            profileItems.append(UserProfileCell.ADD_MEMBER_CELL)
             profileItems.append(UserProfileCell.UNBAN_MEMBERS_CELL)
             profileItems.append(UserProfileCell.RENAME_GROUPS_CELL)
             profileItems.append(UserProfileCell.LEAVE_GROUP_CELL)
@@ -141,7 +140,20 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
         
         // User Profile BAckground
-        profileAvtarBackground.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
+        
+        switch AppAppearance {
+        case .AzureRadiance:
+             profileAvtarBackground.backgroundColor = UIColor.init(hexFromString: "F3F3F3")
+        case .MountainMeadow:
+            profileAvtarBackground.backgroundColor = UIColor.init(hexFromString: "F3F3F3")
+        case .PersianBlue:
+            profileAvtarBackground.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
+        case .Custom:
+            profileAvtarBackground.backgroundColor = UIColor.init(hexFromString: "F3F3F3")
+        }
+      
+        
+       
         
         // UserProfile Name
         userName.text = getUserName
@@ -155,9 +167,12 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         userProfileAvtar.clipsToBounds = true
         
         //TableView APpearance
-        self.userProfileTableView.separatorColor = UIColor.clear
+       // self.userProfileTableView.separatorColor = UIColor.clear
+        userProfileTableView.tableFooterView = UIView()
         userProfileTableView.backgroundColor = UIColor.clear
         userProfileTableView.tintColor = UIColor.clear
+        userProfileTableView.showsHorizontalScrollIndicator = false
+        userProfileTableView.showsVerticalScrollIndicator = false
     }
     
     
@@ -175,39 +190,38 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         print("Count in index\(profileItems[indexPath.row])")
         switch profileItems[indexPath.row]{
         case UserProfileCell.AUDIO_CALL_CELL:
-            cell.CellLeftImage.isHidden = true
-            cell.CellTitle.text = "Audio Call"
-            let image = UIImage(named: "audio_call")!.withRenderingMode(.alwaysTemplate)
-            cell.CellRightImage.image = image
-            cell.CellRightImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+            cell.CellRightImage.isHidden = false
+            cell.CellTitle.text = "          Audio Call"
+            cell.CellLeftImage.image = UIImage(named: "audio_call")
+            cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
+            cell.CellLeftImage.tintColor = UIColor.white
             
         case UserProfileCell.VIDEO_CALL_CELL:
-            cell.CellLeftImage.isHidden = true
-            cell.CellTitle.text = "Video Call"
-            let image = UIImage(named: "video_call")!.withRenderingMode(.alwaysTemplate)
-            cell.CellRightImage.image = image
-            cell.CellRightImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+            cell.CellRightImage.isHidden = false
+            cell.CellTitle.text = "          Video Call"
+            cell.CellLeftImage.image = UIImage(named: "video_call")
+            cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
+            cell.CellLeftImage.tintColor = UIColor.white
             
         case UserProfileCell.MY_STATUS_MESSAGE_CELL:
             cell.CellRightImage.isHidden=true
             cell.CellTitle.text = "Status Message"
-            let image = UIImage(named: "status_message")!.withRenderingMode(.alwaysTemplate)
-            cell.CellLeftImage.image = image
-            cell.CellLeftImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+            cell.CellLeftImage.image = UIImage(named: "status_message")
+            cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
+            cell.CellLeftImage.tintColor = UIColor.white
             
         case UserProfileCell.MY_SET_STATUS_CELL:
             cell.CellRightImage.isHidden=true
             cell.CellTitle.text = "Set Status"
-            let image = UIImage(named: "set_status")!.withRenderingMode(.alwaysTemplate)
-            cell.CellLeftImage.image = image
-            cell.CellLeftImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+            cell.CellLeftImage.image = UIImage(named: "set_status")
+            cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
+            cell.CellLeftImage.tintColor = UIColor.white
             
         case UserProfileCell.VIEW_MEMBER_CELL:
-            cell.CellRightImage.isHidden=true
+            cell.CellRightImage.isHidden = true
             cell.CellTitle.text = "View Member"
-            let image = UIImage(named: "view_member")!.withRenderingMode(.alwaysTemplate)
-            cell.CellLeftImage.image = image
-            cell.CellLeftImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+            cell.CellLeftImage.image = UIImage(named: "view_member")
+            cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
             
             
         case UserProfileCell.ADD_MEMBER_CELL:
@@ -215,116 +229,174 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             cell.CellTitle.text = "Add Member"
             let image = UIImage(named: "add_member")!.withRenderingMode(.alwaysTemplate)
             cell.CellLeftImage.image = image
-            cell.CellLeftImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+            cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
+            cell.CellLeftImage.tintColor = UIColor.white
         
         case UserProfileCell.UNBAN_MEMBERS_CELL:
             cell.CellRightImage.isHidden=true
             cell.CellTitle.text = "Unban Member"
-            let image = UIImage(named: "add_member")!.withRenderingMode(.alwaysTemplate)
+            let image = UIImage(named: "unban")!.withRenderingMode(.alwaysTemplate)
             cell.CellLeftImage.image = image
-            cell.CellLeftImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+            cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
+            cell.CellLeftImage.tintColor = UIColor.white
        
         case UserProfileCell.RENAME_GROUPS_CELL:
             cell.CellRightImage.isHidden=true
             cell.CellTitle.text = "Rename Group"
             let image = UIImage(named: "rename_group")!.withRenderingMode(.alwaysTemplate)
             cell.CellLeftImage.image = image
-            cell.CellLeftImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+            cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
+            cell.CellLeftImage.tintColor = UIColor.white
             
             
         case UserProfileCell.LEAVE_GROUP_CELL:
             cell.CellRightImage.isHidden=true
             cell.CellTitle.text = "Leave Group"
-            let image = UIImage(named: "leave_group")!.withRenderingMode(.alwaysTemplate)
+            let image = UIImage(named: "leave")!.withRenderingMode(.alwaysTemplate)
             cell.CellLeftImage.image = image
-            cell.CellLeftImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+            cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
+            cell.CellLeftImage.tintColor = UIColor.white
        
         case UserProfileCell.DELETE_GROUP_CELL:
             cell.CellRightImage.isHidden=true
             cell.CellTitle.text = "Delete Group"
             let image = UIImage(named: "delete_group")!.withRenderingMode(.alwaysTemplate)
             cell.CellLeftImage.image = image
-            cell.CellLeftImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+            cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
+            cell.CellLeftImage.tintColor = UIColor.white
             
         default:
             cell.CellTitle.text = ""
             
         }
         
-        
+        var totalRow = tableView.numberOfRows(inSection: indexPath.section)
+        if(indexPath.row == totalRow - 1){
+           cell.roundCorners([.layerMaxXMaxYCorner,.layerMinXMaxYCorner], radius: 15, borderColor: UIColor.clear, borderWidth: 0, withBackgroundColor: "FFFFFF")
+             cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width, 0, 0)
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 75
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        
         switch profileItems[indexPath.row]
         {
         case UserProfileCell.VIEW_MEMBER_CELL:
             self.onViewMember()
-        default:
-            onViewMember()
+         case UserProfileCell.AUDIO_CALL_CELL:break
+         case UserProfileCell.VIDEO_CALL_CELL:break
+         case UserProfileCell.MY_STATUS_MESSAGE_CELL:break
+         case UserProfileCell.MY_SET_STATUS_CELL:break
+         case UserProfileCell.ADD_MEMBER_CELL:break
+         case UserProfileCell.UNBAN_MEMBERS_CELL:
+             self.onViewMember()
+         case UserProfileCell.RENAME_GROUPS_CELL:break
+         case UserProfileCell.LEAVE_GROUP_CELL:
+             self.leaveGroup()
+         case UserProfileCell.DELETE_GROUP_CELL:
+            self.deleteGroup()
+        default: break
+            
         }
     }
-    func onViewMember()
-    {
+    
+    func audioCallAction(){
         
-        print ("Here 1122211")
-        fetchGroupMembers { (sucess) in
+    }
+    
+    func videoCallAction(){
+        
+    }
+    
+    func leaveGroup(){
+       print("Im in leave group")
+        CometChat.leaveGroup(GUID: guid, onSuccess: { (sucess) in
+            print("leaveGroup \(sucess)")
+
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self
+                    else { return }
+                strongSelf.view.makeToast("Group left Sucessfully.")
+                UserDefaults.standard.set("1", forKey: "leaveGroupAction")
+                if strongSelf.presentingViewController != nil {
+                    strongSelf.dismiss(animated: false, completion: {
+                        strongSelf.navigationController!.popToRootViewController(animated: true)
+                    })
+                }
+                else {
+                    strongSelf.navigationController!.popToRootViewController(animated: true)
+                }
+                
+            }
+        }) { (CometChatException) in
             
+            DispatchQueue.main.async {
+                self.view.makeToast("Fail to leave Group.")
+            }
+        }
+        
+        
+    }
+    
+    func deleteGroup(){
+        
+        CometChat.deleteGroup(GUID: guid, onSuccess: { (sucess) in
+            
+          self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.async {
+                self.view.makeToast("Group deleted Sucessfully.")
+            }
+        }) { (CometChatException) in
+            DispatchQueue.main.async {
+                self.view.makeToast("Fail to delete Group.")
+            }
+        }
+
+    }
+    
+    func onViewMember(){
+        
+        fetchGroupMembers(guid: guid) { (sucess) in
             if(sucess == true){
                 let storyboard = UIStoryboard(name:"Main", bundle:nil)
                 let viewMemberViewController = storyboard.instantiateViewController(withIdentifier: "viewMemberViewController") as! ViewMemberViewController
                 viewMemberViewController.guid = self.guid
                 viewMemberViewController.members = self.groupMember
                 DispatchQueue.main.async {
-                self.navigationController?.pushViewController(viewMemberViewController, animated: true)
+                    self.navigationController?.pushViewController(viewMemberViewController, animated: true)
                 }
             }
+
         }
+
     }
     
    
     
-    func fetchGroupMembers(success completionHandler: @escaping CompletionHandler){
+    func fetchGroupMembers(guid:String,  success completionHandler: @escaping CompletionHandler){
         
         groupMember = [GroupMember]()
-    
-        fetchGroupData().fetchGroupMembers(guid: guid) { (groupMembers, error) in
-            
-            guard groupMembers != nil else
-            {
-                print(error!.errorDescription)
-                return
+        groupMemberRequest = GroupMembersRequest.GroupMembersRequestBuilder(guid: guid).setLimit(limit: 20).build()
+        groupMemberRequest.fetchNext(onSuccess: { (groupMember) in
+           
+            for member in groupMember {
+                
+                self.groupMember.append(member)
             }
-            for members in groupMembers! {
-                print("Im in groupMembers: \(String(describing: members))")
-                self.groupMember.append(members)
-            }
-            
             let flag = true
             completionHandler(flag)
+            
+        }) { (error) in
+            
+            print("Group Member list fetching failed with exception:" + error!.errorDescription);
         }
     }
 }
 
-class fetchGroupData {
-    
-    private var groupMemberRequest:GroupMembersRequest!
-    public typealias groupMemberResponse = (_ group:[GroupMember]? , _ error:CometChatException?) ->Void
-    
-    func fetchGroupMembers(guid:String, completionHandler:@escaping groupMemberResponse){
-        
-        groupMemberRequest = GroupMembersRequest.GroupMembersRequestBuilder(guid: guid).setLimit(limit: 20).build()
-        
-        groupMemberRequest.fetchNext(onSuccess: { (groupMembers) in
-            
-            let groupMembersArray = groupMembers
-            completionHandler(groupMembersArray,nil)
-        }) { (error) in
-            completionHandler(nil,error)
-        }
-    }
-}
 

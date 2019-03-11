@@ -43,3 +43,8 @@
 
 #import "XMPPRoomMemoryStorage.h"
 #import "XMPPvCardTemp.h"
+#import "XMPPMessage+XEP_0085.h"
+#import "XMPPMessageDeliveryReceipts.h"
+#import "XMPPMessage+XEP_0184.h"
+#import "NSXMLElement+XEP_0335.h"
+

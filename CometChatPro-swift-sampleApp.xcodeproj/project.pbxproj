@@ -53,6 +53,9 @@
 		B22301C721D271EF00483CC7 /* Product Sans Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C621D271EA00483CC7 /* Product Sans Italic.ttf */; };
 		B270B7102200B0F600A2B3F3 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B270B70F2200B0F600A2B3F3 /* Toast.swift */; };
 		B2753A3521DD0554004D895F /* CallingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2753A3421DD0554004D895F /* CallingViewController.swift */; };
+		B28A325E222FB3EA00D3FC54 /* ChatActionMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28A325C222FB3EA00D3FC54 /* ChatActionMessageCell.swift */; };
+		B28A325F222FB3EA00D3FC54 /* ChatActionMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B28A325D222FB3EA00D3FC54 /* ChatActionMessageCell.xib */; };
+		B28A3261222FFE0300D3FC54 /* Log.plist in Resources */ = {isa = PBXBuildFile; fileRef = B28A3260222FFE0300D3FC54 /* Log.plist */; };
 		B28B1A7C221ABFBE00F5FD4C /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28B1A7B221ABFBE00F5FD4C /* UIWindow.swift */; };
 		B28B1A7E221AC4B000F5FD4C /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28B1A7D221AC4B000F5FD4C /* NavigationViewController.swift */; };
 		B291CDC5221EC2A300462FAC /* ChatImageMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291CDC4221EC2A300462FAC /* ChatImageMessageCell.swift */; };
@@ -69,7 +72,7 @@
 		B2BB032721DF374500B2479D /* MoreSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB032621DF374500B2479D /* MoreSettingTableViewCell.swift */; };
 		B2E1101E2226CA1C00FFF7BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2E1101D2226CA1B00FFF7BD /* GoogleService-Info.plist */; };
 		B2FB0F0C21EC880C00CEDD4A /* CometChat-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2FB0F0B21EC880C00CEDD4A /* CometChat-info.plist */; };
-		D34408F207032817C2B1EABE /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2356DFAF9CC17693FC39BF07 /* libPods-CometChatPro-swift-sampleApp.a */; };
+		C07A25295063FC2ABDA507BF /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 903556801A74C377AEFF7B2D /* libPods-CometChatPro-swift-sampleApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,8 +92,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		020784F99CCADFF3F1AC30AC /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.release.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.release.xcconfig"; sourceTree = "<group>"; };
-		2356DFAF9CC17693FC39BF07 /* libPods-CometChatPro-swift-sampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CometChatPro-swift-sampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		582FB5722223D17B0051E365 /* ChatFileMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFileMessageCell.swift; sourceTree = "<group>"; };
 		582FB5732223D17B0051E365 /* ChatFileMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatFileMessageCell.xib; sourceTree = "<group>"; };
 		584900AC21B2AA7C009BB669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,6 +132,9 @@
 		7169F45021D9538800A82954 /* ChatVCCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVCCallback.swift; sourceTree = "<group>"; };
 		71ADB0EA21D375A1002443A7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		71ADB0EC21D41216002443A7 /* ChatTextMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextMessageCell.swift; sourceTree = "<group>"; };
+		73D05B6296EB07E0E38FE8BE /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.release.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		863ACA6FF42AFD2B9D27D280 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		903556801A74C377AEFF7B2D /* libPods-CometChatPro-swift-sampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CometChatPro-swift-sampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8296FB42202F68300D7010C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A83BD0E022071F4500034D54 /* ViewMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMemberTableViewCell.swift; sourceTree = "<group>"; };
 		A83BD0E422071FBB00034D54 /* ViewMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMemberViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,9 @@
 		B22301C621D271EA00483CC7 /* Product Sans Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Italic.ttf"; sourceTree = "<group>"; };
 		B270B70F2200B0F600A2B3F3 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		B2753A3421DD0554004D895F /* CallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingViewController.swift; sourceTree = "<group>"; };
+		B28A325C222FB3EA00D3FC54 /* ChatActionMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatActionMessageCell.swift; sourceTree = "<group>"; };
+		B28A325D222FB3EA00D3FC54 /* ChatActionMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatActionMessageCell.xib; sourceTree = "<group>"; };
+		B28A3260222FFE0300D3FC54 /* Log.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Log.plist; sourceTree = "<group>"; };
 		B28B1A7B221ABFBE00F5FD4C /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		B28B1A7D221AC4B000F5FD4C /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		B291CDC4221EC2A300462FAC /* ChatImageMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatImageMessageCell.swift; sourceTree = "<group>"; };
@@ -151,7 +158,6 @@
 		B2BC6095219DACF9002C24D3 /* CometChatPro-swift-sampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CometChatPro-swift-sampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E1101D2226CA1B00FFF7BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2FB0F0B21EC880C00CEDD4A /* CometChat-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CometChat-info.plist"; sourceTree = "<group>"; };
-		C85F73FC4A2094E7C6CD7B3D /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +172,7 @@
 				B291CDCC221EC30400462FAC /* YPImagePicker.framework in Frameworks */,
 				B291CDD2221EC31000462FAC /* YPImagePicker.framework in Frameworks */,
 				B291CDCB221EC30400462FAC /* PryntTrimmerView.framework in Frameworks */,
-				D34408F207032817C2B1EABE /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */,
+				C07A25295063FC2ABDA507BF /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +202,7 @@
 				7169F44F21D9535800A82954 /* Callback */,
 				5891248F21B2AC6C003500B5 /* Resources */,
 				589124AD21B2AC6C003500B5 /* Extensions */,
+				B28A3260222FFE0300D3FC54 /* Log.plist */,
 			);
 			path = "CometChatPro-swift-sampleApp";
 			sourceTree = "<group>";
@@ -337,6 +344,8 @@
 				582FB5732223D17B0051E365 /* ChatFileMessageCell.xib */,
 				5866BC6B2225600C00E6AE43 /* ChatAudioMessageCell.swift */,
 				5866BC6C2225600C00E6AE43 /* ChatAudioMessageCell.xib */,
+				B28A325C222FB3EA00D3FC54 /* ChatActionMessageCell.swift */,
+				B28A325D222FB3EA00D3FC54 /* ChatActionMessageCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,11 +366,11 @@
 			path = Callback;
 			sourceTree = "<group>";
 		};
-		8386368C02DC13607920A44D /* Pods */ = {
+		79709A7C2871203881749358 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C85F73FC4A2094E7C6CD7B3D /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */,
-				020784F99CCADFF3F1AC30AC /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */,
+				863ACA6FF42AFD2B9D27D280 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */,
+				73D05B6296EB07E0E38FE8BE /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -381,7 +390,7 @@
 				584900AC21B2AA7C009BB669 /* Info.plist */,
 				B2BC6096219DACF9002C24D3 /* Products */,
 				F6E363A875DDF7C42980A40F /* Frameworks */,
-				8386368C02DC13607920A44D /* Pods */,
+				79709A7C2871203881749358 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -397,7 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				588950B92221A5DB007D2CBF /* ImageIO.framework */,
-				2356DFAF9CC17693FC39BF07 /* libPods-CometChatPro-swift-sampleApp.a */,
+				903556801A74C377AEFF7B2D /* libPods-CometChatPro-swift-sampleApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -409,12 +418,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2BC60A7219DACFA002C24D3 /* Build configuration list for PBXNativeTarget "CometChatPro-swift-sampleApp" */;
 			buildPhases = (
-				7DB56933CDE70E4D27A425D0 /* [CP] Check Pods Manifest.lock */,
+				9E3D0F43EBF27696C5F1387A /* [CP] Check Pods Manifest.lock */,
 				B2BC6091219DACF9002C24D3 /* Sources */,
 				B2BC6092219DACF9002C24D3 /* Frameworks */,
 				B2BC6093219DACF9002C24D3 /* Resources */,
 				B28990F021BAC96F002C885E /* Embed Frameworks */,
-				A80E82897A70D5A0CFC84BEB /* [CP] Embed Pods Frameworks */,
+				EF14332123801C45C37F6755 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -482,8 +491,10 @@
 				B22301C521D26B8300483CC7 /* Product Sans Bold.ttf in Resources */,
 				589124D321B2AC6C003500B5 /* Main.storyboard in Resources */,
 				5866BC6E2225600C00E6AE43 /* ChatAudioMessageCell.xib in Resources */,
+				B28A3261222FFE0300D3FC54 /* Log.plist in Resources */,
 				B2FB0F0C21EC880C00CEDD4A /* CometChat-info.plist in Resources */,
 				A8296FB52202F68300D7010C /* Assets.xcassets in Resources */,
+				B28A325F222FB3EA00D3FC54 /* ChatActionMessageCell.xib in Resources */,
 				582FB5752223D17B0051E365 /* ChatFileMessageCell.xib in Resources */,
 				589124D221B2AC6C003500B5 /* LaunchScreen.storyboard in Resources */,
 				B22301C721D271EF00483CC7 /* Product Sans Italic.ttf in Resources */,
@@ -493,7 +504,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7DB56933CDE70E4D27A425D0 /* [CP] Check Pods Manifest.lock */ = {
+		9E3D0F43EBF27696C5F1387A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -515,7 +526,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A80E82897A70D5A0CFC84BEB /* [CP] Embed Pods Frameworks */ = {
+		EF14332123801C45C37F6755 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -553,6 +564,7 @@
 				589124C121B2AC6C003500B5 /* CustomLaunchViewController.swift in Sources */,
 				589124D021B2AC6C003500B5 /* CCExtensions.swift in Sources */,
 				589124CC21B2AC6C003500B5 /* AppDelegate.swift in Sources */,
+				B28A325E222FB3EA00D3FC54 /* ChatActionMessageCell.swift in Sources */,
 				7115443321E52C8B0017FE23 /* MessageResponse.swift in Sources */,
 				B22301C121D1FCEC00483CC7 /* UIAppearance.swift in Sources */,
 				589124C021B2AC6C003500B5 /* LoginViewController.swift in Sources */,
@@ -667,7 +679,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -722,7 +734,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -734,7 +746,7 @@
 		};
 		B2BC60A8219DACFA002C24D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C85F73FC4A2094E7C6CD7B3D /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */;
+			baseConfigurationReference = 863ACA6FF42AFD2B9D27D280 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -770,7 +782,7 @@
 		};
 		B2BC60A9219DACFA002C24D3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 020784F99CCADFF3F1AC30AC /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */;
+			baseConfigurationReference = 73D05B6296EB07E0E38FE8BE /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

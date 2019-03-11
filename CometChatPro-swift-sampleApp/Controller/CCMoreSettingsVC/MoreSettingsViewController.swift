@@ -218,7 +218,7 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
     {
          print("onLogout")
         
-        let alert = UIAlertController(title: "Logout", message: "Do you want to Logout", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to Logout?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:
@@ -232,8 +232,6 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
                 
             case .destructive:
                 print("destructive")
-                
-                
             }}))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         
