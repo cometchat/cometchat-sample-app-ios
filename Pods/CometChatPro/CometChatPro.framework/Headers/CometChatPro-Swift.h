@@ -181,8 +181,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
-enum messageType : NSInteger;
-enum receiverType : NSInteger;
+enum MessageType : NSInteger;
+enum ReceiverType : NSInteger;
 enum MessageCategory : NSInteger;
 @class User;
 
@@ -192,8 +192,10 @@ SWIFT_CLASS("_TtC12CometChatPro11BaseMessage")
 @property (nonatomic, copy) NSString * _Nonnull muid;
 @property (nonatomic, copy) NSString * _Nonnull senderUid;
 @property (nonatomic, copy) NSString * _Nonnull receiverUid;
-@property (nonatomic) enum messageType messageType;
-@property (nonatomic) enum receiverType receiverType;
+@property (nonatomic) enum MessageType messageType;
+@property (nonatomic) enum ReceiverType receiverType;
+@property (nonatomic) double deliveredAt;
+@property (nonatomic) double readAt;
 @property (nonatomic) NSInteger sentAt;
 @property (nonatomic, copy) NSString * _Nonnull status;
 @property (nonatomic) enum MessageCategory messageCategory;
@@ -201,7 +203,7 @@ SWIFT_CLASS("_TtC12CometChatPro11BaseMessage")
 @property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable metaData;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
-- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid messageType:(enum messageType)messageType receiverType:(enum receiverType)receiverType OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid messageType:(enum MessageType)messageType receiverType:(enum ReceiverType)receiverType OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class AppEntity;
@@ -213,7 +215,7 @@ SWIFT_CLASS("_TtC12CometChatPro13ActionMessage")
 @property (nonatomic, strong) AppEntity * _Nullable actionOn;
 @property (nonatomic, copy) NSString * _Nullable message;
 @property (nonatomic, copy) NSString * _Nullable rawData;
-- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid messageType:(enum messageType)messageType receiverType:(enum receiverType)receiverType SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid messageType:(enum MessageType)messageType receiverType:(enum ReceiverType)receiverType SWIFT_UNAVAILABLE;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -274,9 +276,9 @@ SWIFT_CLASS("_TtC12CometChatPro4Call")
 @property (nonatomic) double joinedAt;
 @property (nonatomic, strong) AppEntity * _Nullable callInitiator;
 @property (nonatomic, strong) AppEntity * _Nullable callReceiver;
-- (nonnull instancetype)initWithReceiverId:(NSString * _Nonnull)receiverId callType:(enum CallType)callType receiverType:(enum receiverType)receiverType OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithReceiverId:(NSString * _Nonnull)receiverId callType:(enum CallType)callType receiverType:(enum ReceiverType)receiverType OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid messageType:(enum messageType)messageType receiverType:(enum receiverType)receiverType SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid messageType:(enum MessageType)messageType receiverType:(enum ReceiverType)receiverType SWIFT_UNAVAILABLE;
 @end
 
 
@@ -289,16 +291,6 @@ SWIFT_CLASS("_TtC12CometChatPro9CometChat")
 
 
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
-@end
-
-typedef SWIFT_ENUM(NSInteger, groupType, closed) {
-  groupTypePublic = 0,
-  groupTypePrivate = 1,
-  groupTypePassword = 2,
-};
-
-
-@interface CometChat (SWIFT_EXTENSION(CometChatPro))
 + (void)getUserWithUID:(NSString * _Nonnull)UID onSuccess:(void (^ _Nonnull)(User * _Nullable))onSuccess onError:(void (^ _Nonnull)(CometChatException * _Nullable))onError;
 @end
 
@@ -306,14 +298,19 @@ typedef SWIFT_ENUM(NSInteger, groupType, closed) {
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, messageType, closed) {
-  messageTypeText = 0,
-  messageTypeImage = 1,
-  messageTypeVideo = 2,
-  messageTypeAudio = 3,
-  messageTypeFile = 4,
-  messageTypeHandwrite = 5,
-  messageTypeGroupMember = 6,
+typedef SWIFT_ENUM(NSInteger, MemberScope, closed) {
+  MemberScopeAdmin = 0,
+  MemberScopeModerator = 1,
+  MemberScopeParticipant = 2,
+};
+
+
+@interface CometChat (SWIFT_EXTENSION(CometChatPro))
+@end
+
+typedef SWIFT_ENUM(NSInteger, CallType, closed) {
+  CallTypeAudio = 0,
+  CallTypeVideo = 1,
 };
 
 
@@ -325,6 +322,8 @@ typedef SWIFT_ENUM(NSInteger, MessageCategory, closed) {
   MessageCategoryAction = 1,
   MessageCategoryCall = 2,
 };
+
+
 
 
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
@@ -344,28 +343,20 @@ typedef SWIFT_ENUM(NSInteger, actionType, closed) {
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, CallType, closed) {
-  CallTypeAudio = 0,
-  CallTypeVideo = 1,
+typedef SWIFT_ENUM(NSInteger, GroupMemberScopeType, closed) {
+  GroupMemberScopeTypeAdmin = 0,
+  GroupMemberScopeTypeModerator = 1,
+  GroupMemberScopeTypeParticipant = 2,
 };
 
 
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, MemberScope, closed) {
-  MemberScopeAdmin = 0,
-  MemberScopeModerator = 1,
-  MemberScopeParticipant = 2,
-};
-
-
-@interface CometChat (SWIFT_EXTENSION(CometChatPro))
-@end
-
-typedef SWIFT_ENUM(NSInteger, receiverType, closed) {
-  receiverTypeUser = 0,
-  receiverTypeGroup = 1,
+typedef SWIFT_ENUM(NSInteger, groupType, closed) {
+  groupTypePublic = 0,
+  groupTypePrivate = 1,
+  groupTypePassword = 2,
 };
 
 
@@ -383,15 +374,36 @@ typedef SWIFT_ENUM(NSInteger, callStatus, closed) {
 };
 
 
+@interface CometChat (SWIFT_EXTENSION(CometChatPro))
++ (void)markMessageAsReadWithMessage:(BaseMessage * _Nonnull)message;
+@end
 
 
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, GroupMemberScopeType, closed) {
-  GroupMemberScopeTypeAdmin = 0,
-  GroupMemberScopeTypeModerator = 1,
-  GroupMemberScopeTypeParticipant = 2,
+typedef SWIFT_ENUM(NSInteger, ReceiverType, closed) {
+  ReceiverTypeUser = 0,
+  ReceiverTypeGroup = 1,
+};
+
+typedef SWIFT_ENUM(NSInteger, XMPPMsgType, closed) {
+  XMPPMsgTypeChat = 0,
+  XMPPMsgTypeGroupChat = 1,
+};
+
+
+@interface CometChat (SWIFT_EXTENSION(CometChatPro))
+@end
+
+typedef SWIFT_ENUM(NSInteger, MessageType, closed) {
+  MessageTypeText = 0,
+  MessageTypeImage = 1,
+  MessageTypeVideo = 2,
+  MessageTypeAudio = 3,
+  MessageTypeFile = 4,
+  MessageTypeHandwrite = 5,
+  MessageTypeGroupMember = 6,
 };
 
 @class TextMessage;
@@ -400,6 +412,13 @@ typedef SWIFT_ENUM(NSInteger, GroupMemberScopeType, closed) {
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 + (void)sendTextMessageWithMessage:(TextMessage * _Nonnull)message onSuccess:(void (^ _Nonnull)(TextMessage * _Nonnull))onSuccess onError:(void (^ _Nonnull)(CometChatException * _Nullable))onError;
 + (void)sendMediaMessageWithMessage:(MediaMessage * _Nonnull)message onSuccess:(void (^ _Nonnull)(MediaMessage * _Nonnull))onSuccess onError:(void (^ _Nonnull)(CometChatException * _Nullable))onError;
+@end
+
+@class TypingIndicator;
+
+@interface CometChat (SWIFT_EXTENSION(CometChatPro))
++ (void)startTypingWithIndicator:(TypingIndicator * _Nonnull)indicator;
++ (void)endTypingWithIndicator:(TypingIndicator * _Nonnull)indicator;
 @end
 
 
@@ -456,7 +475,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) BOOL isCallOngoing;)
 + (BOOL)isCallOngoing SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Call * _Nullable currentCall;)
 + (Call * _Nullable)currentCall SWIFT_WARN_UNUSED_RESULT;
-+ (NSInteger)getLatestDeliveredMessageId SWIFT_WARN_UNUSED_RESULT;
++ (NSInteger)getLastDeliveredMessageId SWIFT_WARN_UNUSED_RESULT;
++ (User * _Nullable)getLoggedInUser SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @protocol CometChatMessageDelegate;
@@ -515,11 +535,17 @@ SWIFT_PROTOCOL("_TtP12CometChatPro22CometChatGroupDelegate_")
 - (void)onGroupMemberScopeChangedWithUser:(User * _Nonnull)user scopeChangedTo:(NSString * _Nonnull)scopeChangedTo scopeChangedFrom:(NSString * _Nonnull)scopeChangedFrom group:(Group * _Nonnull)group;
 @end
 
+@class MessageReceipt;
 
 SWIFT_PROTOCOL("_TtP12CometChatPro24CometChatMessageDelegate_")
 @protocol CometChatMessageDelegate
+@optional
 - (void)onTextMessageReceivedWithTextMessage:(TextMessage * _Nullable)textMessage error:(CometChatException * _Nullable)error;
 - (void)onMediaMessageReceivedWithMediaMessage:(MediaMessage * _Nullable)mediaMessage error:(CometChatException * _Nullable)error;
+- (void)onTypingStarted:(TypingIndicator * _Nonnull)typingDetails;
+- (void)onTypingEnded:(TypingIndicator * _Nonnull)typingDetails;
+- (void)onMessageDeliveredWithReceipt:(MessageReceipt * _Nonnull)receipt;
+- (void)onMessageReadWithReceipt:(MessageReceipt * _Nonnull)receipt;
 @end
 
 
@@ -532,8 +558,8 @@ SWIFT_PROTOCOL("_TtP12CometChatPro21CometChatUserDelegate_")
 
 SWIFT_CLASS("_TtC12CometChatPro4User")
 @interface User : AppEntity
-@property (nonatomic, copy) NSString * _Nonnull uid;
-@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, copy) NSString * _Nullable uid;
+@property (nonatomic, copy) NSString * _Nullable name;
 @property (nonatomic, copy) NSString * _Nullable email;
 @property (nonatomic, copy) NSString * _Nullable avatar;
 @property (nonatomic, copy) NSString * _Nullable link;
@@ -633,11 +659,25 @@ SWIFT_CLASS("_TtCC12CometChatPro13GroupsRequest20GroupsRequestBuilder")
 
 SWIFT_CLASS("_TtC12CometChatPro12MediaMessage")
 @interface MediaMessage : BaseMessage
-- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid fileurl:(NSString * _Nonnull)fileurl messageType:(enum messageType)messageType receiverType:(enum receiverType)receiverType OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, copy) NSString * _Nullable url;
+- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid fileurl:(NSString * _Nonnull)fileurl messageType:(enum MessageType)messageType receiverType:(enum ReceiverType)receiverType OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid messageType:(enum messageType)messageType receiverType:(enum receiverType)receiverType SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid messageType:(enum MessageType)messageType receiverType:(enum ReceiverType)receiverType SWIFT_UNAVAILABLE;
 @end
+
+enum ReceiptType : NSInteger;
+
+SWIFT_CLASS("_TtC12CometChatPro14MessageReceipt")
+@interface MessageReceipt : NSObject
+- (nonnull instancetype)initWithMessageId:(NSString * _Nonnull)messageId sender:(User * _Nonnull)sender receiverId:(NSString * _Nonnull)receiverId receiverType:(enum ReceiverType)receiverType receiptType:(enum ReceiptType)receiptType timeStamp:(NSInteger)timeStamp OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, ReceiptType, closed) {
+  ReceiptTypeDelivered = 0,
+  ReceiptTypeRead = 1,
+};
 
 @class MessageRequestBuilder;
 
@@ -666,9 +706,17 @@ SWIFT_CLASS("_TtCC12CometChatPro15MessagesRequest21MessageRequestBuilder")
 SWIFT_CLASS("_TtC12CometChatPro11TextMessage")
 @interface TextMessage : BaseMessage
 @property (nonatomic, copy) NSString * _Nonnull text;
-- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid text:(NSString * _Nonnull)text messageType:(enum messageType)messageType receiverType:(enum receiverType)receiverType OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid text:(NSString * _Nonnull)text messageType:(enum MessageType)messageType receiverType:(enum ReceiverType)receiverType OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid messageType:(enum messageType)messageType receiverType:(enum receiverType)receiverType SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithReceiverUid:(NSString * _Nonnull)receiverUid messageType:(enum MessageType)messageType receiverType:(enum ReceiverType)receiverType SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC12CometChatPro15TypingIndicator")
+@interface TypingIndicator : NSObject
+- (nonnull instancetype)initWithReceiverID:(NSString * _Nonnull)receiverID receiverType:(enum ReceiverType)receiverType metadata:(NSDictionary<NSString *, id> * _Nullable)metadata OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
 

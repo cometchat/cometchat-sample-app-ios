@@ -19,16 +19,13 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
     var buddyName:[String]!
     var guid:String!
     var members:[GroupMember]!
-    
+    var myUID:String!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
         print("members are: \(members)")
         
-        buddyName = []
-        buddyName.append("Superhero53")
-        buddyName.append("Superhero1")
-        buddyName.append("Superhero2")
         
         // Do any additional setup after loading the view.
     }
@@ -70,15 +67,24 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
-        var groupMember:GroupMember = self.members[indexPath.row]
+        let groupMember:GroupMember = self.members[indexPath.row]
         
      let cell = viewMemberTableView.dequeueReusableCell(withIdentifier: "viewMemberCell", for: indexPath) as! ViewMemberTableViewCell
         
         if(groupMember.scope == CometChat.GroupMemberScopeType.admin){
+             cell.buddyScope.text = "Admin"
+        }else if(groupMember.scope == CometChat.GroupMemberScopeType.moderator){
+            cell.buddyScope.text = "Moderator"
+        }else if(groupMember.scope == CometChat.GroupMemberScopeType.participant){
+            cell.buddyScope.text = "Participant"
+        }
+        if(groupMember.uid == myUID){
              cell.buddyName.text = "You"
         }else{
-            cell.buddyName.text = groupMember.user?.name
+               cell.buddyName.text = groupMember.user?.name
         }
+        let url = NSURL(string: groupMember.user?.avatar ?? "")
+        cell.buddyAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
         cell.buddyAvtar.downloaded(from: (groupMember.user?.avatar ?? ""))
         cell.memberScope = groupMember.scope
         cell.uid = groupMember.user?.uid

@@ -33,44 +33,68 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     var imageArray:[UIImage]!
     var statusArray:[String]!
     var usersArray = [User]()
-    var userRequest = UsersRequest.UsersRequestBuilder(limit: 10).build()
+    var userRequest = UsersRequest.UsersRequestBuilder(limit: 20).build()
     var buddyData:User!
     let data:NSData! = nil
     var url:NSURL!
+    var refreshControl: UIRefreshControl!
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Function Calling
         self.fetchUsersList()
-        CometChat.userdelegate = self
+        
         oneOneOneTableView.reloadData()
         
         //Assigning Delegates
+        CometChat.userdelegate = self
         oneOneOneTableView.delegate = self
         oneOneOneTableView.dataSource = self
        // CometChat.userdelegate = self
    
+       
     }
     
+    @objc func refresh(_ sender: Any) {
+        print("refreshing")
+        
+        if(usersArray.isEmpty){
+             print("empty")
+            fetchUsersList()
+        }
+         refreshControl.endRefreshing()
+        }
+    
     override func viewWillAppear(_ animated: Bool) {
-
+        print("viewWillAppear")
+        
+        if(usersArray.isEmpty){
+            print("empty")
+            fetchUsersList()
+        }
+        
+       oneOneOneTableView.reloadData()
+        
         //Function Calling
         self.handleContactListVCAppearance()
+    
     }
 
     func fetchUsersList(){
         // This Method fetch the users from the Server.
         userRequest.fetchNext(onSuccess: { (userList) in
-            
+
             for user in userList {
                 print("Im in users: \(String(describing: userList))")
                 self.usersArray.append(user)
             }
-            DispatchQueue.main.async(execute: { self.oneOneOneTableView.reloadData() })
+          DispatchQueue.main.async(execute: { self.oneOneOneTableView.reloadData() })
         }) { (exception) in
             
+            DispatchQueue.main.async(execute: {
+                self.view .makeToast("\(String(describing: exception!.errorDescription))")
+            })
              print(exception?.errorDescription as Any)
         }
     }
@@ -92,6 +116,15 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         case .MountainMeadow:break
         case .PersianBlue:break
         case .Custom:break
+        }
+        
+        // Refresh control
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            oneOneOneTableView.refreshControl = refreshControl
+        } else {
+            oneOneOneTableView.addSubview(refreshControl)
         }
         
         // NavigationBar Appearance
@@ -121,6 +154,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
        // notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        refreshControl.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         
         
         // SearchBar Apperance
@@ -238,6 +272,9 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let action =  UIContextualAction(style: .normal, title: "Files", handler: { (action,view,completionHandler ) in
             completionHandler(true)
+            
+            
+            // Here you can perform the action 
         })
         action.image = UIImage(named: "delete.png")
         action.backgroundColor = .red
@@ -264,12 +301,13 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let videoCall =  UIContextualAction(style: .normal, title: "Files", handler: { (action,view,completionHandler ) in
             completionHandler(true)
-            CallingViewController.isAudioCall = false
+            CallingViewController.isAudioCall = "0"
             CallingViewController.isIncoming = false
             CallingViewController.userAvtarImage = selectedCell.buddyAvtar.image
             CallingViewController.userNameString = selectedCell.buddyName.text
             CallingViewController.callingString = "Calling ..."
             CallingViewController.callerUID = selectedCell.UID
+            CallingViewController.isGroupCall = false
             self.present(CallingViewController, animated: true, completion: nil)
             
         })
@@ -278,12 +316,13 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let audioCall =  UIContextualAction(style: .normal, title: "Files1", handler: { (deleteAction,view,completionHandler ) in
             completionHandler(true)
-            CallingViewController.isAudioCall = true
+            CallingViewController.isAudioCall = "1"
             CallingViewController.isIncoming = false
             CallingViewController.userAvtarImage = selectedCell.buddyAvtar.image
             CallingViewController.userNameString = selectedCell.buddyName.text
             CallingViewController.callingString = "Calling ..."
             CallingViewController.callerUID = selectedCell.UID
+            CallingViewController.isGroupCall = false
             self.present(CallingViewController, animated: true, completion: nil)
         })
         audioCall.image = UIImage(named: "audio_call.png")

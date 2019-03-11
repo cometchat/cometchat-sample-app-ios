@@ -32,7 +32,7 @@ class CallingViewController: UIViewController {
     var avtarURLString:String!
     var userAvtarImage:UIImage!
     var callerUID:String!
-    var isAudioCall:Bool!
+    var isAudioCall:String!
     var receiverUid:String!
     var aNewCall:Call! = nil
     var callType:CallType!
@@ -55,19 +55,17 @@ class CallingViewController: UIViewController {
         super.viewDidLoad()
 
         //Assigning Delegate
-      
-        //Function Calling
-        
+       
         if(isIncoming == false){
             callAcceptView.removeFromSuperview()
             callSpeakerView.removeFromSuperview()
              self.sendCallRequest()
         }
+        
+     //Function Calling
         self.handleCallingVCApperance()
-        print("callerUID \(String(describing: callerUID))")
-        print("isAudioCall \(isAudioCall)")
-        
-        
+
+
         // HandleCameraSession
         captureSession.sessionPreset = AVCaptureSession.Preset.high
         if let devices = AVCaptureDevice.devices() as? [AVCaptureDevice]
@@ -113,7 +111,7 @@ class CallingViewController: UIViewController {
             print("error: \(error.localizedDescription)")
         }
        
-        if(isAudioCall == false){
+        if(isAudioCall == "0"){
              print("isAudioCall No")
             let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             self.callingBackgroundImage.layer.addSublayer(previewLayer)
@@ -121,26 +119,25 @@ class CallingViewController: UIViewController {
             captureSession.startRunning()
         }else{
              print("isAudioCall YEs")
-            callingBackgroundImage.image = userAvtarImage
-            callingBackgroundImage.addBlur()
+             callingBackgroundImage.image = userAvtarImage
+             callingBackgroundImage.addBlur()
         }
        
     }
 
-
     
     func sendCallRequest(){
        
-        if(isAudioCall == true && isGroupCall == false){
+        if(isAudioCall == "1" && isGroupCall == false){
             print(" oneOnOneAudio sendCallRequest  ");
             aNewCall = Call(receiverId:callerUID!, callType: .audio, receiverType: .user)
-        }else if (isAudioCall == true && isGroupCall == true){
+        }else if (isAudioCall == "1" && isGroupCall == true){
              print(" groupAudio sendCallRequest  ");
             aNewCall = Call(receiverId:callerUID!, callType: .audio, receiverType: .group)
-        }else if(isAudioCall == false && isGroupCall == false){
+        }else if(isAudioCall == "0" && isGroupCall == false){
              print(" oneOnOneVideo sendCallRequest  ");
             aNewCall = Call(receiverId:callerUID!, callType: .video, receiverType: .user)
-        }else if(isAudioCall == false && isGroupCall == true){
+        }else if(isAudioCall == "0" && isGroupCall == true){
              print(" groupVideo sendCallRequest  ");
             aNewCall = Call(receiverId:callerUID!, callType: .video, receiverType: .group)
         }
@@ -159,7 +156,6 @@ class CallingViewController: UIViewController {
     func handleCallingVCApperance(){
         
         var url: NSURL!
-        var data: NSData!
         userNameLabel.text = userNameString
         callingLabel.text = callingString
         if(avtarURLString == nil){
@@ -168,18 +164,10 @@ class CallingViewController: UIViewController {
             url = NSURL(string: avtarURLString)
             
         }
-        
-
+        self.callingBackgroundImage.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
         if(isIncoming == true && avtarURLString != nil){
             print("isIncoming confirmed")
-            DispatchQueue.global().async {
-                data = NSData(contentsOf: url as URL)
-                DispatchQueue.main.async {
-                    self.userAvtar.image = UIImage(data: data! as Data)
-                }
-            }
-            print("setImageFromURl: \(String(describing: avtarURLString))")
-//            self.userAvtar.downloaded(from: avtarURLString)
+            self.userAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
         }else{
             userAvtar.image = userAvtarImage
         }

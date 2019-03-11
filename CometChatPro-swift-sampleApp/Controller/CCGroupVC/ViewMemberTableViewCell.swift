@@ -12,6 +12,7 @@ import CometChatPro
 class ViewMemberTableViewCell: UITableViewCell {
     @IBOutlet weak var buddyAvtar: UIImageView!
     @IBOutlet weak var buddyName: UILabel!
+    @IBOutlet weak var buddyScope: UILabel!
     
     var memberScope:CometChat.GroupMemberScopeType!
     var uid:String!

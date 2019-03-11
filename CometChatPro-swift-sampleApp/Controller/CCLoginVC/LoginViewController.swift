@@ -8,6 +8,7 @@
 
 import UIKit
 import CometChatPro
+import Firebase
 
 class LoginViewController: UIViewController ,UITextFieldDelegate {
     
@@ -102,9 +103,13 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             self.activityIndicator.stopAnimating()
         
         var loggedInUserInfo:Dictionary = [String:Any]()
-        let username:String = current_user.name
+        let username:String = current_user.name ?? ""
         let userAvtar:String = current_user.avatar ?? ""
         let userStatus:String = current_user.status ?? ""
+        
+        Messaging.messaging().subscribe(toTopic: "user_pushpsen") { error in
+            print("Subscribed to user_pushpsen topic")
+        }
         
         loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
         UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
