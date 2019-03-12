@@ -826,6 +826,8 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
 }
 
     
+    
+    
     @IBAction func sendButton(_ sender: Any) {
         print(chatInputView.text!)
         
