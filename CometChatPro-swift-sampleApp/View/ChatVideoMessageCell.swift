@@ -39,7 +39,11 @@ class ChatVideoMessageCell: UITableViewCell {
             }else{
                 userAvatarImageView.image = UIImage(named: "default_user")
             }
-            chatImage.sd_setImage(with: videoURL as URL?, placeholderImage: #imageLiteral(resourceName: "default_video"))
+            
+            if let thumbnailImage = getThumbnailImage(forUrl: videoURL) {
+                chatImage.image = thumbnailImage
+            }
+            //chatImage.sd_setImage(with: videoURL as URL?, placeholderImage: #imageLiteral(resourceName: "default_video"))
             messageTimeLabel.text = chatMessage.time
             chatImage.contentMode = .scaleAspectFill
             bubbleBackgroundView.backgroundColor = chatMessage.isSelf ? .white : UIColor(white: 0.80, alpha: 1)

@@ -73,8 +73,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
 
         //Calling Function
         self.handleGroupListVCAppearance()
-        
-        
     }
     
     func fetchGroupList(){

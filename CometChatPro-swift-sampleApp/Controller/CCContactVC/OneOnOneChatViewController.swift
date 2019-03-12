@@ -15,12 +15,12 @@ import CometChatPro
 import WebKit
 import MobileCoreServices
 import AudioToolbox
+import QuickLook
 
 
 
-class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource, UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate,AVAudioPlayerDelegate,AVAudioRecorderDelegate,UIGestureRecognizerDelegate{
-    
-    
+class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource, UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate,AVAudioPlayerDelegate,AVAudioRecorderDelegate,UIGestureRecognizerDelegate,QLPreviewControllerDataSource,QLPreviewControllerDelegate  {
+
     //Outlets Declarations
     @IBOutlet weak var videoCallBtn: UIBarButtonItem!
     @IBOutlet weak var audioCallButton: UIBarButtonItem!
@@ -51,9 +51,11 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     let resultsButton = UIButton()
     var videoURL:URL!
     var audioURL:URL!
+    var fileURL: URL?
     var messages:[Message]?
     var chatMessage = [Message]()
     var refreshControl: UIRefreshControl!
+    var previewURL:String!
     fileprivate let textCellID = "textCCell"
     fileprivate let imageCellID = "imageCell"
     fileprivate let videoCellID = "videoCell"
@@ -68,7 +70,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     
     private var messageRequest:MessagesRequest!
     var docController: UIDocumentInteractionController!
-    
+    let previewQL = QLPreviewController()
     public typealias sendMessageResponse = (_ success:getSendMessageResponse? , _ error:CometChatException?) -> Void
     public typealias userMessageResponse = (_ user:getMessageResponse? , _ error:CometChatException?) ->Void
     public typealias groupMessageResponse = (_ group:[BaseMessage]? , _ error:CometChatException?) ->Void
@@ -109,6 +111,9 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         self.chatTableview.register(audioNib, forCellReuseIdentifier: "audioCell")
         let actionNib  = UINib.init(nibName: "ChatActionMessageCell", bundle: nil)
         self.chatTableview.register(actionNib, forCellReuseIdentifier: "actionCell")
+        
+        //QickLookController
+        previewQL.dataSource = self
         
         
         chatTableview.separatorStyle = .none
@@ -696,13 +701,10 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             var videoMessageCell = ChatVideoMessageCell()
             videoMessageCell = tableView.dequeueReusableCell(withIdentifier: videoCellID , for: indexPath) as! ChatVideoMessageCell
             videoMessageCell.chatMessage = messageData
-            let url = NSURL(string: messageData.messageText.decodeUrl()!)
-            var image:UIImage = UIImage()
-            //            image = self.getThumbnailImage(forUrl: url! as URL)!
-            //            videoMessageCell.chatImage.image = image
             videoMessageCell.selectionStyle = .none
             
             return videoMessageCell
+            
         }else if(messageData.messageType == "file"){
             
             print("added fileCell")
@@ -740,7 +742,6 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             print("added actionCell")
             var actionCell = ChatActionMessageCell()
             actionCell = tableView.dequeueReusableCell(withIdentifier: "actionCell" , for: indexPath) as! ChatActionMessageCell
-            //            actionCell.chatMessage = messageData
             actionCell.actionMessageLabel.text = messageData.messageText
             actionCell.selectionStyle = .none
             return actionCell
@@ -752,19 +753,23 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         print("didSelectisWorking")
         let messageData = chatMessage[indexPath.row]
         
         if(messageData.messageType == "image"){
-            let imageCell:ChatImageMessageCell = tableView.cellForRow(at: indexPath) as! ChatImageMessageCell
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let profileAvtarViewController = storyboard.instantiateViewController(withIdentifier: "ccprofileAvtarViewController") as! CCprofileAvtarViewController
-            navigationController?.pushViewController(profileAvtarViewController, animated: true)
-            profileAvtarViewController.profileAvtar =  imageCell.chatImage.image
-            profileAvtarViewController.hidesBottomBarWhenPushed = true
+            let url = NSURL.fileURL(withPath:messageData.messageText.decodeUrl()!)
+            previewURL = messageData.messageText.decodeUrl();
             
+            let fileExtention = url.absoluteString.pathExtension
+            let pathPrefix = url.absoluteString.lastPathComponent
+            let fileName = URL(fileURLWithPath: pathPrefix).deletingPathExtension().lastPathComponent
+            let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension(fileExtention)
+            print("filePath 111: \(fileURL!.path)")
+            previewQL.currentPreviewItemIndex = indexPath.row
+            show(previewQL, sender: nil)
+        
         }else if(messageData.messageType == "video"){
             
             print("Calling from Video Cell")
@@ -778,18 +783,48 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         }else if(messageData.messageType == "file"){
             
             let url = NSURL.fileURL(withPath:messageData.messageText.decodeUrl()!)
+            previewURL = messageData.messageText.decodeUrl();
             
-            let activityViewController = UIActivityViewController(activityItems: [url] , applicationActivities: nil)
-            
-            DispatchQueue.main.async {
-                
-                self.present(activityViewController, animated: true, completion: nil)
-            }
+            let fileExtention = url.absoluteString.pathExtension
+            let pathPrefix = url.absoluteString.lastPathComponent
+            let fileName = URL(fileURLWithPath: pathPrefix).deletingPathExtension().lastPathComponent
+            let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension(fileExtention)
+            print("filePath 111: \(fileURL!.path)")
+            previewQL.currentPreviewItemIndex = indexPath.row
+            show(previewQL, sender: nil)
         }
     }
     
     
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
     
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+    
+        
+        let filenameWithExtention = previewURL.lastPathComponent;
+        
+        let filename = getDocumentsDirectory().appendingPathComponent(filenameWithExtention);
+    
+        if !(FileManager.default.fileExists(atPath: filename.absoluteString)) {
+            
+            var fileData: Data? = nil
+            let url = previewURL.decodeUrl()
+           
+            do{
+                try fileData = Data(contentsOf: (URL(string:url ?? "")!))
+                try fileData?.write(to: filename, options:.atomicWrite);
+            }catch{
+                print(error)
+            }
+        }
+        
+        return filename as QLPreviewItem
+
+}
+
     
     @IBAction func sendButton(_ sender: Any) {
         print(chatInputView.text!)
@@ -1086,16 +1121,19 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     
     
     func getThumbnailImage(forUrl url: URL) -> UIImage? {
+       
         let asset: AVAsset = AVAsset(url: url)
         let imageGenerator = AVAssetImageGenerator(asset: asset)
-        
+        DispatchQueue.global(qos: .background).async {
         do {
             let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(1, 60) , actualTime: nil)
+            DispatchQueue.main.async{
             return UIImage(cgImage: thumbnailImage)
+            }
         } catch let error {
             print(error)
         }
-        
+        }
         return nil
     }
     
