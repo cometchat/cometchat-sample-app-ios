@@ -1,6 +1,6 @@
 # Change Log
 
-### v1.2.0 (March 11, 2019)
+### v1.2.0 (March 12, 2019)
 - Added SDK version v1.2.0
 - Added fetch Previous Messages
 - Miscellaneous bug Fixes
