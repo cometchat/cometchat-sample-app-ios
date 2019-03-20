@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CometChatPro
 
 class GroupTableViewCell: UITableViewCell {
 
@@ -18,6 +19,8 @@ class GroupTableViewCell: UITableViewCell {
     @IBOutlet weak var recentMessageCount: UIImageView!
     var UID:String!
     var groupType : Int!
+    var group: Group!
+    var groupScope : Int!
     
     override func awakeFromNib() {
         super.awakeFromNib()

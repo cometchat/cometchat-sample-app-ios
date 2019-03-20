@@ -8,6 +8,7 @@
 
 import UIKit
 import CometChatPro
+import Firebase
 
 class GroupListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource, UISearchBarDelegate{
 
@@ -27,13 +28,16 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     var groupArray:Array<Group>!
     var joinedChatRoomList = [Group]()
     var othersChatRoomList = [Group]()
-    var  groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 10).build()
+    var groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 10).build()
     var searchController:UISearchController!
     var refreshControl: UIRefreshControl!
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Notification Observer
+         NotificationCenter.default.addObserver(self, selector: #selector(self.createGroupObserver(notification:)), name: Notification.Name("com.newGroupData"), object: nil)
         
         //Function Calling
         self.fetchGroupList()
@@ -46,18 +50,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     
 
     override func viewWillAppear(_ animated: Bool) {
-        
-        var isNewGroup:String!
-        if((UserDefaults.standard.value(forKey: "newGroupCreated")) != nil){
-            isNewGroup = (UserDefaults.standard.value(forKey: "newGroupCreated") as! String)
-        }else{
-          isNewGroup = "0"
-        }
-        if(isNewGroup == "1"){
-           print("Calling froup isNewGroup")
-            self.fetchGroupList()
-            UserDefaults.standard.removeObject(forKey: "newGroupCreated")
-        }
         
         var isGroupLeave:String!
         if((UserDefaults.standard.value(forKey: "leaveGroupAction")) != nil){
@@ -73,6 +65,26 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
 
         //Calling Function
         self.handleGroupListVCAppearance()
+    }
+    
+
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "com.pushNotificationData"), object: nil)
+    }
+    
+    @objc func onDidReceiveData(_ notification: Notification)
+    {
+        print("onDidReceiveData Called : \(notification.userInfo)")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
+         oneOnOneChatViewController.buddyStatusString = "online"
+        oneOnOneChatViewController.buddyAvtar =  #imageLiteral(resourceName: "default_user")
+        oneOnOneChatViewController.buddyNameString = "SUPERHERO61"
+        oneOnOneChatViewController.buddyUID = "SUPERHERO61"
+        oneOnOneChatViewController.isGroup = "0"
+        self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
+        
     }
     
     func fetchGroupList(){
@@ -100,6 +112,16 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
              })
             print(exception?.errorDescription as Any)
         }
+    }
+    
+    
+    @objc func createGroupObserver(notification: Notification) {
+        
+        let newGroup:Group = notification.userInfo?["groupData"] as! Group
+        
+        print("new group is: \(newGroup.stringValue())")
+        joinedChatRoomList.append(newGroup)
+        DispatchQueue.main.async {self.groupTableView.reloadData()}
     }
     
     
@@ -254,10 +276,10 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         if(indexPath.section == 0){
             group = joinedChatRoomList[indexPath.row]
-            print("joinedChatRoomList\(group.name)")
+            print("joinedChatRoomList\(String(describing: group.name))")
         }else{
             group = othersChatRoomList[indexPath.row]
-            print("othersChatRoomList\(group.name)")
+            print("othersChatRoomList\(String(describing: group.name))")
         }
         
         if(group.groupType == .password){
@@ -265,25 +287,33 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         }else{
             cell.passwordProtected.isHidden = true
         }
-        
+        cell.group = group
+        cell.groupScope = group.scope.rawValue
         cell.groupName.text = group.name
         let groupIconURL = NSURL(string: group.icon ?? "")
         cell.groupAvtar.sd_setImage(with: groupIconURL as URL?, placeholderImage: #imageLiteral(resourceName: "default_user_icon"))
         cell.groupParticipants.text = group.groupDescription
         cell.UID = group.guid
         cell.groupType = group.groupType.rawValue
-        print("GUID of group\(group.guid)")
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let selectedCell:GroupTableViewCell = tableView.cellForRow(at: indexPath) as! GroupTableViewCell
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
+        oneOnOneChatViewController.buddyAvtar = selectedCell.groupAvtar.image
+        oneOnOneChatViewController.buddyNameString = selectedCell.groupName.text
+        oneOnOneChatViewController.buddyUID = selectedCell.UID!
+        oneOnOneChatViewController.isGroup = "1"
         
-         if(indexPath.section != 0){
-            
+        if let scope = selectedCell.groupScope {
+            oneOnOneChatViewController.groupScope = scope
+        }
+        
+        if(indexPath.section != 0){
             if(selectedCell.groupType == 2){
-                
                 let alertController = UIAlertController(title: "Enter Password", message: "Kindly, Enter the password to proceed.", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addTextField { (textField : UITextField!) -> Void in
                     textField.placeholder = "Enter Password"
@@ -292,16 +322,20 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 let saveAction = UIAlertAction(title: "Join", style: UIAlertActionStyle.default, handler: { alert -> Void in
                     let passwordTextfield = alertController.textFields![0] as UITextField
                     CometChat.joinGroup(GUID: selectedCell.UID, groupType: .password, password: passwordTextfield.text, onSuccess: { (success) in
+                        
+                        let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
+                        let groupID:String = selectedCell.UID
+                        let topic: String = APP_ID + "_group_" + groupID + "_ios"
                         DispatchQueue.main.async{
+                            Messaging.messaging().subscribe(toTopic: topic) { error in
+                                print("Subscribed to \(topic) topic")
+                            }
                             self.view.makeToast("Group Joined Sucessfully.")
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
-                            // oneOnOneChatViewController.buddyStatusString = selectedCell.groupName.text
-                            oneOnOneChatViewController.buddyAvtar = selectedCell.groupAvtar.image
-                            oneOnOneChatViewController.buddyNameString = selectedCell.groupName.text
-                            oneOnOneChatViewController.buddyUID = selectedCell.UID!
-                            oneOnOneChatViewController.isGroup = "1"
                             self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
+                            self.othersChatRoomList.remove(at: indexPath.row)
+                            tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.joinedChatRoomList.append(selectedCell.group)
+                            self.groupTableView.reloadData()
                         }
                     }) { (error) in
                         DispatchQueue.main.async {
@@ -319,16 +353,21 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 
             }else{
                 CometChat.joinGroup(GUID: selectedCell.UID, groupType: .public, password: nil, onSuccess: { (success) in
+                   
+                    let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
+                    let groupID:String = selectedCell.UID
+                    let topic: String = APP_ID + "_group_" + groupID + "_ios"
                     DispatchQueue.main.async{
+                        Messaging.messaging().subscribe(toTopic: topic) { error in
+                            print("Subscribed to \(topic) topic")
+                        }
                         self.view.makeToast("Group Joined Sucessfully.")
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
-                        // oneOnOneChatViewController.buddyStatusString = selectedCell.groupName.text
-                        oneOnOneChatViewController.buddyAvtar = selectedCell.groupAvtar.image
-                        oneOnOneChatViewController.buddyNameString = selectedCell.groupName.text
-                        oneOnOneChatViewController.buddyUID = selectedCell.UID!
-                        oneOnOneChatViewController.isGroup = "1"
+                       
                         self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
+                        self.othersChatRoomList.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                        self.joinedChatRoomList.append(selectedCell.group)
+                        self.groupTableView.reloadData()
                     }
                 }) { (error) in
                     DispatchQueue.main.async {
@@ -337,15 +376,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 }
             }
          }else{
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
-            // oneOnOneChatViewController.buddyStatusString = selectedCell.groupName.text
-            oneOnOneChatViewController.buddyAvtar = selectedCell.groupAvtar.image
-            oneOnOneChatViewController.buddyNameString = selectedCell.groupName.text
-            print("uid of the group is \(String(describing: selectedCell.UID!))")
-            oneOnOneChatViewController.buddyUID = selectedCell.UID
-            oneOnOneChatViewController.isGroup = "1"
             self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
         }
     }
@@ -353,7 +383,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         print("WillDisplay is calling ")
-        if(indexPath.row == (joinedChatRoomList.count + othersChatRoomList.count) - 5){
+        if(indexPath.row == (joinedChatRoomList.count + othersChatRoomList.count) - 1){
              self.fetchGroupList()
         }
 }
@@ -374,12 +404,29 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         return 70
     }
     
+    
+  
+    
     //trailingSwipeActionsConfigurationForRowAt indexPath -->
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
+        let selectedCell:GroupTableViewCell = tableView.cellForRow(at: indexPath) as! GroupTableViewCell
+      
         let deleteAction =  UIContextualAction(style: .normal, title: "Files", handler: { (action,view,completionHandler ) in
-            //do stuff
+            
+            CometChat.deleteGroup(GUID: selectedCell.UID, onSuccess: { (sucess) in
+                DispatchQueue.main.async {
+                    self.view.makeToast("\(sucess)")
+                    self.joinedChatRoomList.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    self.groupTableView.reloadData()
+                }
+            }, onError: { (error) in
+                DispatchQueue.main.async {
+                    self.view.makeToast("\(error.debugDescription)")
+                }
+            })
             completionHandler(true)
         })
         deleteAction.image = UIImage(named: "delete.png")
@@ -387,7 +434,22 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         
         let leaveAction =  UIContextualAction(style: .normal, title: "Files1", handler: { (deleteAction,view,completionHandler ) in
-            //do stuff
+            
+            CometChat.leaveGroup(GUID: selectedCell.UID, onSuccess: { (sucess) in
+                DispatchQueue.main.async {
+                     self.view.makeToast("\(sucess)")
+                     self.joinedChatRoomList.remove(at: indexPath.row)
+                     tableView.deleteRows(at: [indexPath], with: .fade)
+                     self.othersChatRoomList.insert(selectedCell.group, at: 0)
+                     self.groupTableView.reloadData()
+                }
+            }, onError: { (error) in
+                DispatchQueue.main.async {
+                    self.view.makeToast("\(error.debugDescription)")
+                }
+            })
+            
+            
             completionHandler(true)
         })
         leaveAction.image = UIImage(named: "leaveGroup.png")
@@ -396,7 +458,15 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         var confrigation:UISwipeActionsConfiguration?
         
         if(indexPath.section == 0){
-            confrigation = UISwipeActionsConfiguration(actions: [deleteAction,leaveAction])
+            if(selectedCell.groupScope == 0){
+                print("I'm admin")
+                confrigation = UISwipeActionsConfiguration(actions: [deleteAction,leaveAction])
+            }else{
+                print("I'm user")
+                confrigation = UISwipeActionsConfiguration(actions: [leaveAction])
+            }
+        }else{
+            confrigation = UISwipeActionsConfiguration(actions: [])
         }
         return confrigation
     }
@@ -455,13 +525,24 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     }
     
     //MoreSettinngs  Button Pressed
-    @IBAction func morePressed(_ sender: Any) {
+    @IBAction func morePressed(_ sender: UIView) {
         
+//        let controller = MoreTableViewController()
+//        controller.preferredContentSize = CGSize(width: 300, height: 200)
+//        showPopup(controller, sourceView: sender)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CCWebviewController = storyboard.instantiateViewController(withIdentifier: "moreSettingsViewController") as! MoreSettingsViewController
         navigationController?.pushViewController(CCWebviewController, animated: true)
         CCWebviewController.title = "More"
         CCWebviewController.hidesBottomBarWhenPushed = true
+    }
+    
+    private func showPopup(_ controller: UIViewController, sourceView: UIView) {
+        let presentationController = AlwaysPresentAsPopover.configurePresentation(forController: controller)
+        presentationController.sourceView = sourceView
+        presentationController.sourceRect = sourceView.bounds
+        presentationController.permittedArrowDirections = [.down, .up]
+        self.present(controller, animated: true)
     }
     
     //CreateGroup Button Pressed

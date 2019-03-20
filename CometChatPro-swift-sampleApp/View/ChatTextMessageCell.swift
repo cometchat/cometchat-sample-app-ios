@@ -24,7 +24,6 @@ class ChatTextMessageCell: UITableViewCell {
     var timeLabelTrailingConstraint : NSLayoutConstraint!
     var enableOutGoingConstraintForbubble = Bool()
     
-    
     var chatMessage : Message! {
         didSet{
 
@@ -42,7 +41,6 @@ class ChatTextMessageCell: UITableViewCell {
             }
             
             if(chatMessage.isSelf){
-                
                 messageLabelLeadingConstraint.isActive = false
                 messageLabelTrailingConstraint.isActive = true
                 timeLabelTrailingConstraint.isActive = true
@@ -51,7 +49,7 @@ class ChatTextMessageCell: UITableViewCell {
                 userAvatarImageView.isHidden = true
                 userNameLabel.isHidden = true
                 
-                switch AppAppearance{
+            switch AppAppearance{
                     
                 case .AzureRadiance:
                     self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)

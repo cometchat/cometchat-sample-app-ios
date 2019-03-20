@@ -20,21 +20,30 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
     var guid:String!
     var members:[GroupMember]!
     var myUID:String!
+    var isViewMember:Bool!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
         print("members are: \(members)")
         
+        for member in members{
+            print("member uid: \(member.uid)")
+            print("member name: \(member.name)")
+            print("member scope: \(member.status)")
+            
+        }
         
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.handleMoreSettingsVCAppearance()
+        self.handleViewMembersVCAppearance()
     }
     
-    func  handleMoreSettingsVCAppearance(){
+    func  handleViewMembersVCAppearance(){
         
         // ViewController Appearance
         self.title = "View Member"
@@ -66,35 +75,35 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     
+        
         let groupMember:GroupMember = self.members[indexPath.row]
         
-     let cell = viewMemberTableView.dequeueReusableCell(withIdentifier: "viewMemberCell", for: indexPath) as! ViewMemberTableViewCell
+        let cell = viewMemberTableView.dequeueReusableCell(withIdentifier: "viewMemberCell", for: indexPath) as! ViewMemberTableViewCell
         
         if(groupMember.scope == CometChat.GroupMemberScopeType.admin){
-             cell.buddyScope.text = "Admin"
+            cell.buddyScope.text = "Admin"
         }else if(groupMember.scope == CometChat.GroupMemberScopeType.moderator){
             cell.buddyScope.text = "Moderator"
         }else if(groupMember.scope == CometChat.GroupMemberScopeType.participant){
             cell.buddyScope.text = "Participant"
         }
         if(groupMember.uid == myUID){
-             cell.buddyName.text = "You"
+            cell.buddyName.text = "You"
         }else{
-               cell.buddyName.text = groupMember.user?.name
+            cell.buddyName.text = groupMember.name
         }
-        let url = NSURL(string: groupMember.user?.avatar ?? "")
+        let url = NSURL(string: groupMember.avatar ?? "")
         cell.buddyAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
-        cell.buddyAvtar.downloaded(from: (groupMember.user?.avatar ?? ""))
+        cell.buddyAvtar.downloaded(from: (groupMember.avatar ?? ""))
         cell.memberScope = groupMember.scope
-        cell.uid = groupMember.user?.uid
-        print("groupMember.scope: \(groupMember.scope)")
+        cell.uid = groupMember.uid
         
         return cell
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        var groupMember:GroupMember = self.members[indexPath.row]
+        let groupMember:GroupMember = self.members[indexPath.row]
         
         let selectedCell:ViewMemberTableViewCell = tableView.cellForRow(at: indexPath) as! ViewMemberTableViewCell
         
@@ -103,26 +112,72 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
         let banAction: UIAlertAction = UIAlertAction(title: "Ban User", style: .default) { action -> Void in
             
             CometChat.banGroupMember(UID: selectedCell.uid, GUID: self.guid, onSuccess: { (response) in
-                 print("banGroupMember onSuccess\(response)")
+                
+                DispatchQueue.main.async(execute: { self.view.makeToast("\(response)")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {self.navigationController?.popViewController(animated: true)}
+                })
             }, onError: { (error) in
-                print("banGroupMember onError\(String(describing: error))")
+                DispatchQueue.main.async(execute: {
+                    DispatchQueue.main.async(execute: { self.view.makeToast("\(String(describing: error!.errorDescription))") })
+                })
             })
         }
-//        ban.setValue(UIImage(named: "camera.png"), forKey: "image")
+        //        ban.setValue(UIImage(named: "camera.png"), forKey: "image")
         
         let kickAction: UIAlertAction = UIAlertAction(title: "Kick User", style: .default) { action -> Void in
             
             CometChat.kickGroupMember(UID: selectedCell.uid, GUID: self.guid, onSuccess: { (response) in
-                
-                print("kickGroupMember onSuccess\(response)")
-                
+                DispatchQueue.main.async(execute: { self.view.makeToast("\(response)")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {self.navigationController?.popViewController(animated: true)}
+                })
             }) { (error) in
-                
-                // Error
-                print("Group member kicking failed with exception:  " + error!.errorDescription);
+                DispatchQueue.main.async(execute: { self.view.makeToast("\(String(describing: error!.errorDescription))") })
             }
         }
         //kickAction.setValue(UIImage(named: "gallery.png"), forKey: "image")
+        let updateScope: UIAlertAction = UIAlertAction(title: "Update Scope", style: .default) { action -> Void in
+            
+            let updateScopeAction: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let admin: UIAlertAction = UIAlertAction(title: "Admin", style: .default) { action -> Void in
+                
+                CometChat.updateGroupMemberScope(UID: selectedCell.uid, GUID: self.guid, scope: .admin, onSuccess: { (sucess) in
+                    DispatchQueue.main.async(execute: { self.view.makeToast("\(sucess)")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {self.navigationController?.popViewController(animated: true)}
+                    })
+                }, onError: { (error) in
+                    DispatchQueue.main.async(execute: { self.view.makeToast("\(String(describing: error!.errorDescription))") })
+                })
+                
+            }
+            let modorator: UIAlertAction = UIAlertAction(title: "Modorator", style: .default) { action -> Void in
+                CometChat.updateGroupMemberScope(UID: selectedCell.uid, GUID: self.guid, scope: .moderator, onSuccess: { (sucess) in
+                    DispatchQueue.main.async(execute: { self.view.makeToast("\(sucess)")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {self.navigationController?.popViewController(animated: true)}
+                    })
+                }, onError: { (error) in
+                    DispatchQueue.main.async(execute: { self.view.makeToast("\(String(describing: error!.errorDescription))") })
+                })
+            }
+            let participant: UIAlertAction = UIAlertAction(title: "Participant", style: .default) { action -> Void in
+                CometChat.updateGroupMemberScope(UID: selectedCell.uid, GUID: self.guid, scope: .participant, onSuccess: { (sucess) in
+                    DispatchQueue.main.async(execute: { self.view.makeToast("\(sucess)")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {self.navigationController?.popViewController(animated: true)}
+                    })
+                }, onError: { (error) in
+                    DispatchQueue.main.async(execute: { self.view.makeToast("\(String(describing: error!.errorDescription))") })
+                })
+            }
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+                print("Cancel")
+            }
+            updateScopeAction.addAction(admin)
+            updateScopeAction.addAction(modorator)
+            updateScopeAction.addAction(participant)
+            updateScopeAction.addAction(cancelAction)
+            self.present(updateScopeAction, animated: true, completion: nil)
+        }
+        
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
             print("Cancel")
@@ -130,17 +185,21 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
         actionSheetController.addAction(banAction)
         actionSheetController.addAction(kickAction)
+        actionSheetController.addAction(updateScope)
         actionSheetController.addAction(cancelAction)
         
-        if(groupMember.scope == CometChat.GroupMemberScopeType.admin){
-            if(selectedCell.memberScope == CometChat.GroupMemberScopeType.admin){
-                print("Cannot kick or ban admin")
+        if(isViewMember == true){
+            if(groupMember.scope == CometChat.GroupMemberScopeType.admin || groupMember.scope == CometChat.GroupMemberScopeType.moderator){
+                DispatchQueue.main.async(execute: {
+                    self.view.makeToast("Cannot kick or ban Modarator")
+                })
+            }else if groupMember.uid == myUID{
+                self.view.makeToast("Cannot perform action on Yourself.")
             }else{
                 present(actionSheetController, animated: true, completion: nil)
             }
-        }else{
-            print("You're not admin")
-        }    
+        }
+       
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -148,3 +207,5 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
         return 70
     }
 }
+
+

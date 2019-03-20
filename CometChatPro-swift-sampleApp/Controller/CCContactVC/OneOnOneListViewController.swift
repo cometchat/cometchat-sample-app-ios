@@ -69,6 +69,9 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear")
         
+        // Observe Notifications:
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: NSNotification.Name(rawValue: "com.pushNotificationData"), object: nil)
+        
         if(usersArray.isEmpty){
             print("empty")
             fetchUsersList()
@@ -79,6 +82,24 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         //Function Calling
         self.handleContactListVCAppearance()
     
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "com.pushNotificationData"), object: nil)
+    }
+    
+    @objc func onDidReceiveData(_ notification: Notification)
+    {
+
+        print("onDidReceiveData Called : \(notification.userInfo)")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
+        oneOnOneChatViewController.buddyStatusString = "online"
+        oneOnOneChatViewController.buddyAvtar =  #imageLiteral(resourceName: "default_user")
+        oneOnOneChatViewController.buddyNameString = "SUPERHERO61"
+        oneOnOneChatViewController.buddyUID = "SUPERHERO61"
+        oneOnOneChatViewController.isGroup = "0"
+        self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
     }
 
     func fetchUsersList(){
@@ -295,7 +316,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-         let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
+        let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
         

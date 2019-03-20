@@ -31,7 +31,7 @@ class ChatVideoMessageCell: UITableViewCell {
             userNameLabel.font = userNameLabel.font.withSize(12)
             userNameLabel.textColor = UIColor.darkGray
             userNameLabel.isHidden = true
-            print("video : urlString: \(videoURL)")
+            print("video : urlString: \(String(describing: videoURL))")
 
             if(chatMessage.avatarURL != ""){
                let  url = NSURL(string: chatMessage.avatarURL)
@@ -40,10 +40,7 @@ class ChatVideoMessageCell: UITableViewCell {
                 userAvatarImageView.image = UIImage(named: "default_user")
             }
             
-            if let thumbnailImage = getThumbnailImage(forUrl: videoURL) {
-                chatImage.image = thumbnailImage
-            }
-            //chatImage.sd_setImage(with: videoURL as URL?, placeholderImage: #imageLiteral(resourceName: "default_video"))
+            chatImage.sd_setImage(with: videoURL as URL?, placeholderImage: #imageLiteral(resourceName: "default_video"))
             messageTimeLabel.text = chatMessage.time
             chatImage.contentMode = .scaleAspectFill
             bubbleBackgroundView.backgroundColor = chatMessage.isSelf ? .white : UIColor(white: 0.80, alpha: 1)

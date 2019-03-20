@@ -108,16 +108,15 @@ class CreateGroupcontroller: UIViewController {
             self.view.makeToast("Group created successfully.")
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.navigationController?.popViewController(animated: true)
-            UserDefaults.standard.set("1", forKey: "newGroupCreated")
             }
             }
             print("Group created successfully." + group.stringValue())
-            
+            let group:[String: Group] = ["groupData": group]
+            NotificationCenter.default.post(name: Notification.Name("com.newGroupData"), object: nil, userInfo: group)
         }) { (error) in
            DispatchQueue.main.async {
-            self.view.makeToast("Failed to create Group.")
+            self.view.makeToast("\(error!.errorDescription)")
            }
-           print("Group creation failed with exception:" + error!.errorDescription)
         }
   
     }

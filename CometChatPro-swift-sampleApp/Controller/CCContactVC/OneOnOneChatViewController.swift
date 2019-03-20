@@ -21,7 +21,7 @@ import QuickLook
 
 class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource, UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate,AVAudioPlayerDelegate,AVAudioRecorderDelegate,UIGestureRecognizerDelegate,QLPreviewControllerDataSource,QLPreviewControllerDelegate  {
 
-    //Outlets Declarations
+    //Outlets Declarations:
     @IBOutlet weak var videoCallBtn: UIBarButtonItem!
     @IBOutlet weak var audioCallButton: UIBarButtonItem!
     @IBOutlet weak var attachmentBtn: UIButton!
@@ -35,11 +35,11 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     
     // Variable Declarations
     var count = 10
-    
     var buddyUID:String!
     var buddyNameString:String!
     var buddyStatusString:String!
     var isGroup:String!
+    var groupScope:Int!
     var buddyAvtar:UIImage!
     var buddyName:UILabel!
     var buddyStatus:UILabel!
@@ -79,10 +79,14 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
         chatTableview.addSubview(refreshControl)
-        print("UID is: \(String(describing: buddyUID))")
         
         //Function Calling
         self.handleOneOnOneChatVCApperance()
@@ -126,8 +130,13 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
         fetchPreviousMessages(messageReq: messageRequest) { (message, error) in
             
-            self.messages = message?.messages ?? nil
-            self.chatMessage = (self.messages ?? nil)!
+//            self.messages = message?.messages ?? nil
+//            self.chatMessage = (self.messages ?? nil)!
+            
+            guard  let sendMessage =  message?.messages else{
+                return
+            }
+             self.chatMessage = sendMessage
             
             print("messages are: \(String(describing: self.messages))")
             DispatchQueue.main.async{
@@ -316,17 +325,57 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
     }
     
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+         print("viewDidAppear Chat")
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear Chat")
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: NSNotification.Name(rawValue: "com.pushNotificationData"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        
+         print("viewWillDisappear Chat")
+         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "com.pushNotificationData"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
+    }
+    
+    // MARK: - Notification oberserver methods
+    
+    @objc func didBecomeActive() {
+        print("view did become active")
+       
+    }
+    
+    @objc func willEnterForeground() {
+        print("view will enter foreground")
+    }
+    
+    @objc func onDidReceiveData(_ notification: Notification)
+    {
+        
+        print("onDidReceiveData Called : \(notification.userInfo)")
+        fetchPreviousMessages(messageReq: messageRequest) { (message, error) in
+            
+            guard let messages = message else{
+                return
+            }
+            let oldMessageArray =  messages.messages
+            self.chatMessage.insert(contentsOf: oldMessageArray, at: 0)
+            print("messages are added: \(String(describing: self.messages))")
+            
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+            }
+        }  
     }
     
     
@@ -354,8 +403,8 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         backButtonImage.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         let backBTN = UIBarButtonItem(image: backButtonImage.image,
                                       style: .plain,
-                                      target: navigationController,
-                                      action: #selector(UINavigationController.popViewController(animated:)))
+                                      target: self,
+                                      action: #selector(backButtonPressed))
         navigationItem.leftBarButtonItem = backBTN
         backBTN.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
@@ -384,6 +433,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         case .Custom:
             sendBtn.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
         }
+    
         
         
         //BuddyAvtar Apperance
@@ -445,6 +495,11 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
     }
     
+    @objc func backButtonPressed(){
+        print("backButtonPressed")
+        navigationController?.popViewController(animated: true)
+        
+    }
     
     @objc func audioRecord(_ sender: UIGestureRecognizer){
         print("Long tap")
@@ -535,6 +590,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         let UserProfileViewController = storyboard.instantiateViewController(withIdentifier: "userProfileViewController") as! UserProfileViewController
         navigationController?.pushViewController(UserProfileViewController, animated: true)
         UserProfileViewController.title = "View Profile"
+        UserProfileViewController.groupScope = groupScope
         UserProfileViewController.getUserProfileAvtar = buddyAvtar
         UserProfileViewController.getUserName = buddyName.text
         UserProfileViewController.getUserStatus = buddyStatus.text
@@ -544,6 +600,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         }
         else{
             UserProfileViewController.isDisplayType = "OneOneOneViewProfile"
+            UserProfileViewController.guid = buddyUID
         }
         UserProfileViewController.hidesBottomBarWhenPushed = true
         
@@ -825,8 +882,6 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
 
 }
 
-    
-    
     
     @IBAction func sendButton(_ sender: Any) {
         print(chatInputView.text!)
@@ -1148,17 +1203,15 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
         switch textMessage!.messageCategory{
             
         case .message:
-            print("MEsage is : \(String(describing: textMessage?.stringValue()))")
+            print("Mesage is : \(String(describing: textMessage?.stringValue()))")
             
             var messageDict = [String : Any]()
             let date = Date(timeIntervalSince1970: TimeInterval(textMessage!.sentAt))
             let dateFormatter1 = DateFormatter()
             dateFormatter1.dateFormat = "HH:mm a"
-            
             dateFormatter1.timeZone = NSTimeZone.local
             let dateString : String = dateFormatter1.string(from: date)
             print("formatted date is =  \(dateString)")
-            
             if(textMessage!.receiverType == CometChat.ReceiverType.group){
                 messageDict["isGroup"] = true
             }else {
@@ -1288,29 +1341,32 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
 
 extension OneOnOneChatViewController : CometChatGroupDelegate {
     
-    func onGroupMemberJoined(joinedUser: User, joinedGroup: Group) {
+    func onGroupMemberJoined(action: ActionMessage, joinedUser: User, joinedGroup: Group) {
         
     }
     
-    func onGroupMemberLeft(leftUser: User, leftGroup: Group) {
+    func onGroupMemberLeft(action: ActionMessage, leftUser: User, leftGroup: Group) {
         
     }
     
-    func onGroupMemberKicked(kickedUser: User, kickedBy: User, kickedFrom: Group) {
+    func onGroupMemberKicked(action: ActionMessage, kickedUser: User, kickedBy: User, kickedFrom: Group) {
         
     }
     
-    func onGroupMemberBanned(bannedUser: User, bannedBy: User, bannedFrom: Group) {
+    func onGroupMemberBanned(action: ActionMessage, bannedUser: User, bannedBy: User, bannedFrom: Group) {
         
     }
     
-    func onGroupMemberUnbanned(unbannedUser: User, unbannedBy: User, unbannedFrom: Group) {
+    func onGroupMemberUnbanned(action: ActionMessage, unbannedUser: User, unbannedBy: User, unbannedFrom: Group) {
         
     }
     
-    func onGroupMemberScopeChanged(user: User, scopeChangedTo: String, scopeChangedFrom: String, group: Group) {
+    func onGroupMemberScopeChanged(action: ActionMessage, user: User, scopeChangedTo: String, scopeChangedFrom: String, group: Group) {
         
     }
+    
+   
+    
 }
 
 extension OneOnOneChatViewController : CometChatUserDelegate {

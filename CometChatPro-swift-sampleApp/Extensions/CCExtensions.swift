@@ -529,3 +529,11 @@ extension Double {
         return String(s[..<s.index(s.endIndex, offsetBy: offset)])
     }
 }
+
+extension Array where Element: Equatable {
+    
+    func whatFunction(_ value :  Element) -> [Int] {
+        return self.indices.filter {self[$0] == value}
+    }
+    
+}

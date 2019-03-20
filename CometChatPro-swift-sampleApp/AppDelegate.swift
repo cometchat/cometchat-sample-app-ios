@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // [START set_messaging_delegate]
         Messaging.messaging().delegate = self
+        
         // [END set_messaging_delegate]
         // Register for remote notifications. This shows a permission dialog on first run, to
         // show the dialog at a more appropriate time move this registration accordingly.
@@ -153,6 +154,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
        
+         CometChat.startServices()
     }
 
 
@@ -191,15 +193,37 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
+    
+//        print("message: \(userInfo)")
+//        let message:String = userInfo["message"] as! String
+//        print("message isss \(message)")
+//        let data:NSData = message.data(using: String.Encoding.utf8)! as NSData
+//        do {
+//        let json = try JSONSerialization.jsonObject(with: data as Data, options: []) as! [String: AnyObject]
+//            print("json is : \(json)")
+//
+//            var receiverType:String = json["receiverType"] as! String
+//            var sender:String = json["sender"] as! String
+
+//        }catch let error as NSError {
+//            print("Failed to load: \(error.localizedDescription)")
+//        }
+        
+        let state : UIApplicationState =  UIApplication.shared.applicationState
+        switch state {
+        case .active:
+            print("active state")
+        case .inactive:
+            
+           NotificationCenter.default.post(name: NSNotification.Name(rawValue: "com.pushNotificationData"), object: self, userInfo: userInfo)
+
+            print("inactive state")
+        case .background:
+            print("background state")
         }
-        
-        // Print full message.
-        print(userInfo)
-        
         completionHandler()
     }
+    
 }
 // [END ios_10_message_handling]
 

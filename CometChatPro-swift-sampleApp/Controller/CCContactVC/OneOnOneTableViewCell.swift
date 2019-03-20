@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CometChatPro
 
 class OneOnOneTableViewCell: UITableViewCell {
 
@@ -19,6 +20,7 @@ class OneOnOneTableViewCell: UITableViewCell {
     
     //variable Declarations
     var UID:String!
+    var group:Group!
     
     //This methods getting called when the cell is loaded in the TableView
     override func awakeFromNib() {

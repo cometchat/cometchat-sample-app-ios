@@ -25,38 +25,38 @@ struct getMessageResponse {
             case .message:
                 
                 switch myData.messageType{
-
+                    
                 case .text:
                     let date = Date(timeIntervalSince1970: TimeInterval(myData.sentAt))
                     let dateFormatter1 = DateFormatter()
                     dateFormatter1.dateFormat = "HH:mm:a"
-
+                    
                     dateFormatter1.timeZone = NSTimeZone.local
                     let dateString : String = dateFormatter1.string(from: date)
                     print("formatted date is =  \(dateString)")
-
+                    
                     let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
                     let isSelf : Bool
-
+                    
                     if(myUID == myData.sender?.uid){
-
+                        
                         isSelf = true
-
+                        
                     }else {
-
+                        
                         isSelf = false
                     }
-
+                    
                     if(myData.receiverType == .group){
-
+                        
                         messageDict["isGroup"] = true
-
+                        
                     }else {
-
+                        
                         messageDict["isGroup"] = false
-
+                        
                     }
-
+                    
                     let myMessage = (myData as? TextMessage)
                     print("myMessage is \(String(describing: myMessage?.text))")
                     messageDict["userID"] = myMessage?.sender?.uid
@@ -70,86 +70,86 @@ struct getMessageResponse {
                     guard let message = Message(dict: messageDict) else { continue }
                     print("MyMessage is 22222 \(message)")
                     messages.append(message)
-
+                    
                 case .image:
-
-                let date = Date(timeIntervalSince1970: TimeInterval(myData.sentAt))
-                let dateFormatter1 = DateFormatter()
-                dateFormatter1.dateFormat = "HH:mm:a"
-
-                dateFormatter1.timeZone = NSTimeZone.local
-                let dateString : String = dateFormatter1.string(from: date)
-                print("formatted date is =  \(dateString)")
-
-                let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
-                let isSelf : Bool
-
-                if(myUID == myData.sender?.uid){
-
-                    isSelf = true
-
-                }else {
-
-                    isSelf = false
-                }
-
-                if(myData.receiverType == .group){
-
-                    messageDict["isGroup"] = true
-
-                }else {
-
-                    messageDict["isGroup"] = false
-
-                }
-
-                let myMessage = (myData as? MediaMessage)
-                let urlString = myMessage?.url?.decodeUrl()
-                print("myMessage is \(String(describing: myMessage?.url))")
-                messageDict["userID"] = myMessage?.sender?.uid
-                messageDict["userName"] = myMessage?.sender?.name
-                messageDict["messageText"] = urlString
-                messageDict["messageType"] = "image" //
-                messageDict["isSelf"] = isSelf
-                messageDict["time"] = dateString
-                messageDict["avatarURL"] = myMessage?.sender?.avatar
-                print("myDict is \(messageDict)")
-                guard let message = Message(dict: messageDict) else { continue }
-                print("MyMessage is 22222 \(message)")
-                messages.append(message)
-
-                case .video:
-
+                    
                     let date = Date(timeIntervalSince1970: TimeInterval(myData.sentAt))
                     let dateFormatter1 = DateFormatter()
                     dateFormatter1.dateFormat = "HH:mm:a"
-
+                    
                     dateFormatter1.timeZone = NSTimeZone.local
                     let dateString : String = dateFormatter1.string(from: date)
                     print("formatted date is =  \(dateString)")
-
+                    
                     let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
                     let isSelf : Bool
-
+                    
                     if(myUID == myData.sender?.uid){
-
+                        
                         isSelf = true
-
+                        
                     }else {
-
+                        
                         isSelf = false
                     }
-
+                    
                     if(myData.receiverType == .group){
-
+                        
                         messageDict["isGroup"] = true
-
+                        
                     }else {
-
+                        
                         messageDict["isGroup"] = false
-
+                        
                     }
-
+                    
+                    let myMessage = (myData as? MediaMessage)
+                    let urlString = myMessage?.url?.decodeUrl()
+                    print("myMessage is \(String(describing: myMessage?.url))")
+                    messageDict["userID"] = myMessage?.sender?.uid
+                    messageDict["userName"] = myMessage?.sender?.name
+                    messageDict["messageText"] = urlString
+                    messageDict["messageType"] = "image" //
+                    messageDict["isSelf"] = isSelf
+                    messageDict["time"] = dateString
+                    messageDict["avatarURL"] = myMessage?.sender?.avatar
+                    print("myDict is \(messageDict)")
+                    guard let message = Message(dict: messageDict) else { continue }
+                    print("MyMessage is 22222 \(message)")
+                    messages.append(message)
+                    
+                case .video:
+                    
+                    let date = Date(timeIntervalSince1970: TimeInterval(myData.sentAt))
+                    let dateFormatter1 = DateFormatter()
+                    dateFormatter1.dateFormat = "HH:mm:a"
+                    
+                    dateFormatter1.timeZone = NSTimeZone.local
+                    let dateString : String = dateFormatter1.string(from: date)
+                    print("formatted date is =  \(dateString)")
+                    
+                    let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
+                    let isSelf : Bool
+                    
+                    if(myUID == myData.sender?.uid){
+                        
+                        isSelf = true
+                        
+                    }else {
+                        
+                        isSelf = false
+                    }
+                    
+                    if(myData.receiverType == .group){
+                        
+                        messageDict["isGroup"] = true
+                        
+                    }else {
+                        
+                        messageDict["isGroup"] = false
+                        
+                    }
+                    
                     let myMessage = (myData as? MediaMessage)
                     let urlString = myMessage?.url?.decodeUrl()
                     print("myMessage is \(String(describing: myMessage?.url))")
@@ -164,39 +164,39 @@ struct getMessageResponse {
                     guard let message = Message(dict: messageDict) else { continue }
                     print("MyMessage is 22222 \(message)")
                     messages.append(message)
-
+                    
                 case .audio:
-
+                    
                     let date = Date(timeIntervalSince1970: TimeInterval(myData.sentAt))
                     let dateFormatter1 = DateFormatter()
                     dateFormatter1.dateFormat = "HH:mm:a"
-
+                    
                     dateFormatter1.timeZone = NSTimeZone.local
                     let dateString : String = dateFormatter1.string(from: date)
                     print("formatted date is =  \(dateString)")
-
+                    
                     let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
                     let isSelf : Bool
-
+                    
                     if(myUID == myData.sender?.uid){
-
+                        
                         isSelf = true
-
+                        
                     }else {
-
+                        
                         isSelf = false
                     }
-
+                    
                     if(myData.receiverType == .group){
-
+                        
                         messageDict["isGroup"] = true
-
+                        
                     }else {
-
+                        
                         messageDict["isGroup"] = false
-
+                        
                     }
-
+                    
                     let myMessage = (myData as? MediaMessage)
                     let urlString = myMessage?.url?.decodeUrl()
                     print("myMessage is \(String(describing: myMessage?.url))")
@@ -211,39 +211,39 @@ struct getMessageResponse {
                     guard let message = Message(dict: messageDict) else { continue }
                     print("MyMessage is 22222 \(message)")
                     messages.append(message)
-
+                    
                 case .file:
-
+                    
                     let date = Date(timeIntervalSince1970: TimeInterval(myData.sentAt))
                     let dateFormatter1 = DateFormatter()
                     dateFormatter1.dateFormat = "HH:mm:a"
-
+                    
                     dateFormatter1.timeZone = NSTimeZone.local
                     let dateString : String = dateFormatter1.string(from: date)
                     print("formatted date is =  \(dateString)")
-
+                    
                     let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
                     let isSelf : Bool
-
+                    
                     if(myUID == myData.sender?.uid){
-
+                        
                         isSelf = true
-
+                        
                     }else {
-
+                        
                         isSelf = false
                     }
-
+                    
                     if(myData.receiverType == .group){
-
+                        
                         messageDict["isGroup"] = true
-
+                        
                     }else {
-
+                        
                         messageDict["isGroup"] = false
-
+                        
                     }
-
+                    
                     let myMessage = (myData as? MediaMessage)
                     let urlString = myMessage?.url?.decodeUrl()
                     print("myMessage is \(String(describing: myMessage?.url))")
@@ -258,11 +258,11 @@ struct getMessageResponse {
                     guard let message = Message(dict: messageDict) else { continue }
                     print("MyMessage is 22222 \(message)")
                     messages.append(message)
-
-                case .handwrite:break
-
+                    
+                case .custom:break
+                    
                 case .groupMember:break
-
+                    
                 }
                 
                 
@@ -313,49 +313,49 @@ struct getMessageResponse {
                 
             case .call:
                 
-                  print("I am in Call Action Messages");
+                print("I am in Call Action Messages");
                 
-                  let date = Date(timeIntervalSince1970: TimeInterval(myData.sentAt))
-                  let dateFormatter1 = DateFormatter()
-                  dateFormatter1.dateFormat = "HH:mm:a"
-                  
-                  dateFormatter1.timeZone = NSTimeZone.local
-                  let dateString : String = dateFormatter1.string(from: date)
-                  print("formatted date is =  \(dateString)")
-                  
-                  let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
-                  let isSelf : Bool
-                  
-                  if(myUID == myData.sender?.uid){
+                let date = Date(timeIntervalSince1970: TimeInterval(myData.sentAt))
+                let dateFormatter1 = DateFormatter()
+                dateFormatter1.dateFormat = "HH:mm:a"
+                
+                dateFormatter1.timeZone = NSTimeZone.local
+                let dateString : String = dateFormatter1.string(from: date)
+                print("formatted date is =  \(dateString)")
+                
+                let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
+                let isSelf : Bool
+                
+                if(myUID == myData.sender?.uid){
                     
                     isSelf = true
                     
-                  }else {
+                }else {
                     
                     isSelf = false
-                  }
-                  
-                  if(myData.receiverType == .group){
+                }
+                
+                if(myData.receiverType == .group){
                     
                     messageDict["isGroup"] = true
                     
-                  }else {
+                }else {
                     
                     messageDict["isGroup"] = false
                     
-                  }
-                  let myMessage = (myData as? ActionMessage)
-                  messageDict["userID"] = myMessage?.sender?.uid
-                  messageDict["userName"] = myMessage?.sender?.name
-                  messageDict["messageText"] = myMessage?.message
-                  messageDict["messageType"] = "action"
-                  messageDict["isSelf"] = isSelf
-                  messageDict["time"] = dateString
-                  messageDict["avatarURL"] = myMessage?.sender?.avatar
-                  print("myDict is \(messageDict)")
-                  guard let message = Message(dict: messageDict) else { continue }
-                  print("MyMessage is 22222 \(message)")
-                  messages.append(message)
+                }
+                let myMessage = (myData as? ActionMessage)
+                messageDict["userID"] = myMessage?.sender?.uid
+                messageDict["userName"] = myMessage?.sender?.name
+                messageDict["messageText"] = myMessage?.message
+                messageDict["messageType"] = "action"
+                messageDict["isSelf"] = isSelf
+                messageDict["time"] = dateString
+                messageDict["avatarURL"] = myMessage?.sender?.avatar
+                print("myDict is \(messageDict)")
+                guard let message = Message(dict: messageDict) else { continue }
+                print("MyMessage is 22222 \(message)")
+                messages.append(message)
             }
         }
         self.messages = messages
@@ -409,7 +409,7 @@ struct getSendMessageResponse {
             messageDict["avatarURL"] = myMessage?.sender?.avatar
             print("myDict is \(messageDict)")
             guard let message = Message(dict: messageDict) else { return nil  }
-            print("MyMessage is new \(message)")
+            print("MyMessage is new 111\(message)")
             self.messages = message
             
         }else if(myMessageData .isKind(of: MediaMessage.self)) && myMessageData.messageType == .image {
@@ -506,7 +506,7 @@ struct getSendMessageResponse {
             self.messages = message
             
         }else if(myMessageData .isKind(of: MediaMessage.self)) && myMessageData.messageType == .file {
-        
+            
             print("It is a type of File message")
             
             print("here my timestam \(myMessageData.sentAt)")

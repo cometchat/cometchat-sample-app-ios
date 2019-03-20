@@ -38,7 +38,7 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         SettingsItems = []
         self.handleSettingsItems()
       
-        print("LoggedIn: \(UserDefaults.standard.object(forKey: "loggedInUserInfo"))") 
+        print("LoggedIn: \(UserDefaults.standard.object(forKey: "loggedInUserInfo"))")
         
 
     }
@@ -62,10 +62,9 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
     
     //This method handles the UI customization for MoreSettingsVC
     func  handleMoreSettingsVCAppearance(){
-        
         // ViewController Appearance
         
-       moreSettingsTableView.tableFooterView = UIView()
+        moreSettingsTableView.tableFooterView = UIView()
         self.hidesBottomBarWhenPushed = true
         
         if #available(iOS 11.0, *) {
@@ -88,7 +87,7 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "moreSettingsCell", for: indexPath) as! MoreSettingTableViewCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.settingsLogo.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
@@ -135,11 +134,11 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SettingsItems.count
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 60
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch SettingsItems[indexPath.row]
         {
         case MoreSettingsCell.VIEW_PROFILE_CELL:
@@ -165,11 +164,7 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
             
         default:
             self.defaultCase()
-            
-            
-            
-            
-            
+   
         }
         
     }
@@ -222,11 +217,17 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:
-                CometChat.stopServices()
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let CustomLaunchViewController = storyBoard.instantiateViewController(withIdentifier: "customLaunchViewController") as! CustomLaunchViewController
-                self.present(CustomLaunchViewController, animated:true, completion:nil)
                 
+                CometChat.logout(onSuccess: { (sucess) in
+                   CometChat.stopServices()
+                    self.resetDefaults()
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                    let CustomLaunchViewController = storyBoard.instantiateViewController(withIdentifier: "customLaunchViewController") as! CustomLaunchViewController
+                    self.present(CustomLaunchViewController, animated:true, completion:nil)
+                }, onError: { (error) in
+                    
+                })
+               
             case .cancel:
                 print("cancel")
                 
@@ -244,6 +245,13 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         
     }
     
+    func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
+    }
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        switch SettingsItems[indexPath.row]

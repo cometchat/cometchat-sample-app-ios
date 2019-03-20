@@ -11,7 +11,6 @@ import CometChatPro
 
 
 class UserProfileCell {
-    
     static let AUDIO_CALL_CELL = 0
     static let VIDEO_CALL_CELL = 1
     static let MY_STATUS_MESSAGE_CELL = 2
@@ -22,7 +21,6 @@ class UserProfileCell {
     static let RENAME_GROUPS_CELL = 7
     static let LEAVE_GROUP_CELL = 8
     static let DELETE_GROUP_CELL = 9
-    
 }
 
 class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
@@ -34,8 +32,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var userProfileTableView: UITableView!
     @IBOutlet weak var profileAvtarBackground: UIView!
     
-    
-    
     //Variable Declarations
     var getUserProfileAvtar:UIImage!
     var getUserName:String!
@@ -44,6 +40,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     var isDisplayType:String!
     var myInfo:Data!
     var guid:String!
+    var groupScope:Int!
     var groupMember:[GroupMember]!
     var userInfo:[String:Any]!
     var url: NSURL!
@@ -51,21 +48,19 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     typealias CompletionHandler = (_ success:Bool) -> Void
     var isViewMyProfile:Bool!
     var groupMemberRequest:GroupMembersRequest!
+    var bannedGroupMembersRequest:BannedGroupMembersRequest!
    
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if isDisplayType == "MoreSettingViewProfile"{
             userProfileAvtar.image = #imageLiteral(resourceName: "default_user")
             userInfo = UserDefaults.standard.object(forKey: "LoggedInUserInfo") as? [String : Any]
             getUserName = userInfo["username"] as? String
             getUserStatus = "Online"
             url = NSURL(string: userInfo?["userAvtar"] as! String)
-            print("url is: \(url)")
             userProfileAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
-            
-           
         }
         
         // Assigning Delegates
@@ -74,7 +69,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         profileItems = []
         self.handleProfileItems()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,23 +80,23 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     //This method handles the UI customization for WebVC
     func handleProfileItems()
     {
-    print("IS display  \(isDisplayType)")
         if isDisplayType == "OneOneOneViewProfile"{
             profileItems.append(UserProfileCell.AUDIO_CALL_CELL)
             profileItems.append(UserProfileCell.VIDEO_CALL_CELL)
         }
         else if isDisplayType == "MoreSettingViewProfile"{
-            
             profileItems.append(UserProfileCell.MY_STATUS_MESSAGE_CELL)
             profileItems.append(UserProfileCell.MY_SET_STATUS_CELL)
         }
         else if isDisplayType == "GroupView"{
             profileItems.append(UserProfileCell.VIEW_MEMBER_CELL)
-            profileItems.append(UserProfileCell.UNBAN_MEMBERS_CELL)
-            profileItems.append(UserProfileCell.RENAME_GROUPS_CELL)
+            if(groupScope! == 0 || groupScope! == 1){
+                profileItems.append(UserProfileCell.UNBAN_MEMBERS_CELL)
+        }
             profileItems.append(UserProfileCell.LEAVE_GROUP_CELL)
-            profileItems.append(UserProfileCell.DELETE_GROUP_CELL)
-            
+            if(groupScope! == 0 || groupScope! == 1){
+                profileItems.append(UserProfileCell.DELETE_GROUP_CELL)
+        }
         }
     }
     
@@ -288,13 +282,15 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         {
         case UserProfileCell.VIEW_MEMBER_CELL:
             self.onViewMember()
-         case UserProfileCell.AUDIO_CALL_CELL:break
-         case UserProfileCell.VIDEO_CALL_CELL:break
+         case UserProfileCell.AUDIO_CALL_CELL:
+            self.audioCallAction()
+         case UserProfileCell.VIDEO_CALL_CELL:
+            self.videoCallAction()
          case UserProfileCell.MY_STATUS_MESSAGE_CELL:break
          case UserProfileCell.MY_SET_STATUS_CELL:break
          case UserProfileCell.ADD_MEMBER_CELL:break
          case UserProfileCell.UNBAN_MEMBERS_CELL:
-             self.onViewMember()
+             self.UnbanUsers()
          case UserProfileCell.RENAME_GROUPS_CELL:break
          case UserProfileCell.LEAVE_GROUP_CELL:
              self.leaveGroup()
@@ -306,12 +302,34 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func audioCallAction(){
+      
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
+        CallingViewController.isAudioCall = "1"
+        CallingViewController.isIncoming = false
+        CallingViewController.userAvtarImage = userProfileAvtar.image
+        CallingViewController.userNameString = userName.text
+        CallingViewController.callingString = "Calling ..."
+        CallingViewController.callerUID = guid
+        CallingViewController.isGroupCall = false
+        self.present(CallingViewController, animated: true, completion: nil)
         
     }
     
     func videoCallAction(){
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
+            CallingViewController.isAudioCall = "0"
+            CallingViewController.isIncoming = false
+            CallingViewController.userAvtarImage = userProfileAvtar.image
+            CallingViewController.userNameString = userName.text
+            CallingViewController.callingString = "Calling ..."
+            CallingViewController.callerUID = guid
+            CallingViewController.isGroupCall = false
+            self.present(CallingViewController, animated: true, completion: nil)
     }
+    
     
     func leaveGroup(){
        print("Im in leave group")
@@ -334,23 +352,28 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
                 
             }
         }) { (CometChatException) in
-            
-            DispatchQueue.main.async {
-                self.view.makeToast("Fail to leave Group.")
-            }
+            DispatchQueue.main.async { self.view.makeToast("Fail to leave Group.")}
         }
-        
-        
     }
     
     func deleteGroup(){
         
         CometChat.deleteGroup(GUID: guid, onSuccess: { (sucess) in
             
-          self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-            
-            DispatchQueue.main.async {
-                self.view.makeToast("Group deleted Sucessfully.")
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self
+                    else { return }
+                strongSelf.view.makeToast("Group deleted Sucessfully.")
+                print("\(sucess)")
+                UserDefaults.standard.set("1", forKey: "leaveGroupAction")
+                if strongSelf.presentingViewController != nil {
+                    strongSelf.dismiss(animated: false, completion: {
+                        strongSelf.navigationController!.popToRootViewController(animated: true)
+                    })
+                }
+                else {
+                    strongSelf.navigationController!.popToRootViewController(animated: true)
+                }
             }
         }) { (CometChatException) in
             DispatchQueue.main.async {
@@ -368,6 +391,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
                 let viewMemberViewController = storyboard.instantiateViewController(withIdentifier: "viewMemberViewController") as! ViewMemberViewController
                 viewMemberViewController.guid = self.guid
                 viewMemberViewController.members = self.groupMember
+                viewMemberViewController.isViewMember = true
                 DispatchQueue.main.async {
                     self.navigationController?.pushViewController(viewMemberViewController, animated: true)
                 }
@@ -377,6 +401,21 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
 
     }
     
+    func UnbanUsers(){
+        print("UnbanUsers")
+        getUnbanGroupMembers(guid: guid) { (sucess) in
+            if(sucess == true){
+                let storyboard = UIStoryboard(name:"Main", bundle:nil)
+                let unbanUserListController = storyboard.instantiateViewController(withIdentifier: "viewMemberViewController") as! ViewMemberViewController
+                unbanUserListController.members = self.groupMember
+                unbanUserListController.title = "Unban Members"
+                unbanUserListController.isViewMember = false
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(unbanUserListController, animated: true)
+                }
+            }
+        }
+    }
    
     
     func fetchGroupMembers(guid:String,  success completionHandler: @escaping CompletionHandler){
@@ -386,7 +425,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         groupMemberRequest.fetchNext(onSuccess: { (groupMember) in
            
             for member in groupMember {
-                
                 self.groupMember.append(member)
             }
             let flag = true
@@ -395,6 +433,29 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         }) { (error) in
             
             print("Group Member list fetching failed with exception:" + error!.errorDescription);
+        }
+    }
+    
+    
+    
+    func getUnbanGroupMembers(guid:String,  success completionHandler: @escaping CompletionHandler){
+        
+        groupMember = [GroupMember]()
+        let bannedGroupMembersRequest = BannedGroupMembersRequest.BannedGroupMembersRequestBuilder(guid: guid).setLimit(limit: 20).build()
+        
+        bannedGroupMembersRequest.fetchNext(onSuccess: { (groupMembers) in
+            
+            // received banned group members
+            
+            for bannedMember in groupMembers {
+                 self.groupMember.append(bannedMember)
+            }
+            let flag = true
+            completionHandler(flag)
+            
+        }) { (error) in
+            // Error
+            print("Banned Group Member list fetching failed with exception: " + error!.errorDescription);
         }
     }
 }
