@@ -9,12 +9,12 @@
 import UIKit
 
 class RecentNavigationController: UINavigationController {
-
+    
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-   
-
+    
+    
+    
 }

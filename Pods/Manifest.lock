@@ -1,6 +1,7 @@
 PODS:
   - CometChatPro (1.3.0):
     - JitsiMeetSDK
+  - FastScroll (1.1.0)
   - Firebase/Core (5.18.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.7.0)
@@ -70,6 +71,7 @@ PODS:
 
 DEPENDENCIES:
   - CometChatPro
+  - FastScroll
   - Firebase/Core
   - Firebase/Messaging
   - SDWebImage (~> 4.0)
@@ -77,6 +79,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CometChatPro
+    - FastScroll
     - Firebase
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
@@ -92,6 +95,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CometChatPro: 47bdf6d38bd19ce65031e3990423d3e7c3d4898f
+  FastScroll: fc73e3a1bf28adf02623859c5e6163fab6efa2f9
   Firebase: 02f3281965c075426141a0ce1277e9de6649cab9
   FirebaseAnalytics: 23851fe602c872130a2c5c55040b302120346cc2
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
@@ -105,6 +109,6 @@ SPEC CHECKSUMS:
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
 
-PODFILE CHECKSUM: 968a6340865d2a0a5d41e3a5905ad4a4cbb8ceb6
+PODFILE CHECKSUM: b920516b063c38d3dee773eb00e8c07917a1b66a
 
 COCOAPODS: 1.6.0.beta.2

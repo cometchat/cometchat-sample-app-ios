@@ -13,16 +13,15 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-   
+    
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-       
         self.initialization()
         FirebaseApp.configure()
-
+        
         // [START set_messaging_delegate]
         Messaging.messaging().delegate = self
         
@@ -81,10 +80,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initialization(){
         CometChat(appId: AuthenticationDict?["APP_ID"] as! String, onSuccess: { (Success) in
-            print("initialization Success")
+            CometChatLog.print(items: "initialization Success: \(Success)")
             
         }) { (error) in
-            print("Initialization Error \(error.errorDescription)")
+            CometChatLog.print(items: "Initialization Error \(error.errorDescription)")
         }
     }
     
@@ -98,70 +97,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Print message ID.
         
         if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
+            CometChatLog.print(items: "Message ID: \(messageID)")
         }
-        
-        // Print full message.
-        print(userInfo)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-     
-        print("userInfo: \(userInfo)")
+        
         if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
+            CometChatLog.print(items: "Message ID: \(messageID)")
         }
         // Print full message.
-        print(userInfo)
-        
         completionHandler(UIBackgroundFetchResult.newData)
     }
     // [END receive_message]
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Unable to register for remote notifications: \(error.localizedDescription)")
+        CometChatLog.print(items: "Unable to register for remote notifications: \(error.localizedDescription)")
     }
     
     // This function is added here only for debugging purposes, and can be removed if swizzling is enabled.
     // If swizzling is disabled then this function must be implemented so that the APNs token can be paired to
     // the FCM registration token.
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("APNs token retrieved: \(deviceToken)")
+        CometChatLog.print(items: "APNs token retrieved: \(deviceToken)")
         
         let   tokenString = deviceToken.reduce("", {$0 + String(format: "%02X",    $1)})
         // kDeviceToken=tokenString
-        print("deviceToken: \(tokenString)")
+        CometChatLog.print(items: "deviceToken: \(tokenString)")
         // With swizzling disabled you must set the APNs token here.
         // Messaging.messaging().apnsToken = deviceToken
     }
-
-
+    
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         
         CometChat.startServices()
         
     }
     
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
-      
+        
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
-       
+        
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
-       
-         CometChat.startServices()
+        
+        CometChat.startServices()
     }
-
-
+    
+    
     func applicationWillTerminate(_ application: UIApplication) {
-       
+        
     }
-
+    
 }
 
 // [START ios_10_message_handling]
@@ -173,12 +166,12 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
-        print("userInfo: \(userInfo)")
+        CometChatLog.print(items: "userInfo: \(userInfo)")
         // With swizzling disabled you must let Messaging know about the message, for Analytics
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
+            CometChatLog.print(items: "Message ID: \(messageID)")
         }
         
         // Print full message.
@@ -191,36 +184,8 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
-        let userInfo = response.notification.request.content.userInfo
+        _ = response.notification.request.content.userInfo
         // Print message ID.
-    
-//        print("message: \(userInfo)")
-//        let message:String = userInfo["message"] as! String
-//        print("message isss \(message)")
-//        let data:NSData = message.data(using: String.Encoding.utf8)! as NSData
-//        do {
-//        let json = try JSONSerialization.jsonObject(with: data as Data, options: []) as! [String: AnyObject]
-//            print("json is : \(json)")
-//
-//            var receiverType:String = json["receiverType"] as! String
-//            var sender:String = json["sender"] as! String
-
-//        }catch let error as NSError {
-//            print("Failed to load: \(error.localizedDescription)")
-//        }
-        
-        let state : UIApplicationState =  UIApplication.shared.applicationState
-        switch state {
-        case .active:
-            print("active state")
-        case .inactive:
-            
-           NotificationCenter.default.post(name: NSNotification.Name(rawValue: "com.pushNotificationData"), object: self, userInfo: userInfo)
-
-            print("inactive state")
-        case .background:
-            print("background state")
-        }
         completionHandler()
     }
     
@@ -234,20 +199,15 @@ extension AppDelegate : MessagingDelegate {
         
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
-        // TODO: If necessary send token to application server.
-        // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
-    // [END refresh_token]
-    // [START ios_10_data_message]
-    // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
-    // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
+    
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
         print("Received data message: \(remoteMessage.appData)")
     }
     // [END ios_10_data_message]
 }
 
-    
+
 
 
 

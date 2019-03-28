@@ -9,7 +9,7 @@
 import UIKit
 
 class UserProfileViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var CellLeftImage: UIImageView!
     @IBOutlet weak var CellTitle: UILabel!
     @IBOutlet weak var CellRightImage: UIImageView!
@@ -25,11 +25,11 @@ class UserProfileViewCell: UITableViewCell {
         //cellBackgroundView.clipsToBounds = true
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

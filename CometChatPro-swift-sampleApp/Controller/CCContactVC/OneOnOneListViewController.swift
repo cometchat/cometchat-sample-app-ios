@@ -8,14 +8,15 @@
 
 import UIKit
 import CometChatPro
-class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatUserDelegate, UISearchBarDelegate{
+
+class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatUserDelegate, UISearchBarDelegate {
     
     func onUserOnline(user: User) {
-    
+        
     }
     
     func onUserOffline(user: User) {
-
+        
     }
     
     //Outlets Declarations
@@ -42,6 +43,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Function Calling
         self.fetchUsersList()
         
@@ -51,72 +53,48 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         CometChat.userdelegate = self
         oneOneOneTableView.delegate = self
         oneOneOneTableView.dataSource = self
-       // CometChat.userdelegate = self
-   
-       
+        // CometChat.userdelegate = self
     }
     
     @objc func refresh(_ sender: Any) {
-        print("refreshing")
         
         if(usersArray.isEmpty){
-             print("empty")
             fetchUsersList()
         }
-         refreshControl.endRefreshing()
-        }
+        refreshControl.endRefreshing()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
-        
-        // Observe Notifications:
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: NSNotification.Name(rawValue: "com.pushNotificationData"), object: nil)
         
         if(usersArray.isEmpty){
-            print("empty")
             fetchUsersList()
         }
         
-       oneOneOneTableView.reloadData()
+        oneOneOneTableView.reloadData()
         
         //Function Calling
         self.handleContactListVCAppearance()
-    
+        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "com.pushNotificationData"), object: nil)
-    }
     
-    @objc func onDidReceiveData(_ notification: Notification)
-    {
-
-        print("onDidReceiveData Called : \(notification.userInfo)")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
-        oneOnOneChatViewController.buddyStatusString = "online"
-        oneOnOneChatViewController.buddyAvtar =  #imageLiteral(resourceName: "default_user")
-        oneOnOneChatViewController.buddyNameString = "SUPERHERO61"
-        oneOnOneChatViewController.buddyUID = "SUPERHERO61"
-        oneOnOneChatViewController.isGroup = "0"
-        self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
-    }
-
+    
     func fetchUsersList(){
         // This Method fetch the users from the Server.
         userRequest.fetchNext(onSuccess: { (userList) in
-
+            
             for user in userList {
-                print("Im in users: \(String(describing: userList))")
+                CometChatLog.print(items: "users are: \(String(describing: userList))")
                 self.usersArray.append(user)
             }
-          DispatchQueue.main.async(execute: { self.oneOneOneTableView.reloadData() })
+            DispatchQueue.main.async(execute: { self.oneOneOneTableView.reloadData()
+            })
         }) { (exception) in
             
             DispatchQueue.main.async(execute: {
                 self.view .makeToast("\(String(describing: exception!.errorDescription))")
             })
-             print(exception?.errorDescription as Any)
+            CometChatLog.print(items:exception?.errorDescription as Any)
         }
     }
     
@@ -158,21 +136,21 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         navigationController?.navigationBar.barTintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
         
         if #available(iOS 11.0, *) {
-                navigationController?.navigationBar.prefersLargeTitles = true
-                let letlargeTitleforNavigationBar = [
+            navigationController?.navigationBar.prefersLargeTitles = true
+            let letlargeTitleforNavigationBar = [
                 NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),
                 NSAttributedString.Key.font: UIFont(name: SystemFont.bold.value, size: 40)!]
-                navigationController?.navigationBar.largeTitleTextAttributes = letlargeTitleforNavigationBar
+            navigationController?.navigationBar.largeTitleTextAttributes = letlargeTitleforNavigationBar
         } else {
             
         }
         
-     // NavigationBar Buttons Appearance
-       // notifyButton.setImage(UIImage(named: "bell.png"), for: .normal)
+        // NavigationBar Buttons Appearance
+        // notifyButton.setImage(UIImage(named: "bell.png"), for: .normal)
         createButton.setImage(UIImage(named: "new.png"), for: .normal)
         moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
         
-       // notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        // notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         refreshControl.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
@@ -186,7 +164,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
             UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
         }else{
-          UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
         }
         
         
@@ -196,7 +174,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         let SearchImage = UIImage(named: "icons8-search-30")!.withRenderingMode(.alwaysTemplate)
         SearchImageView.image = SearchImage
         SearchImageView.tintColor = UIColor.init(white: 1, alpha: 0.5)
-       
+        
         searchController.searchBar.setImage(SearchImageView.image, for: UISearchBarIcon.search, state: .normal)
         if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
             textfield.textColor = UIColor.white
@@ -213,47 +191,63 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         } else {
-           
+            
         }
         
     }
     
     
-   //TableView Methods
+    //TableView Methods
     
     //numberOfRowsInSection:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return usersArray.count
-       // return 0
+        
+        if usersArray.isEmpty{
+            DispatchQueue.main.async(execute: {
+                AMShimmer.start(for: self.oneOneOneTableView)
+            })
+            return 15
+        }else{
+            DispatchQueue.main.async(execute: {
+                AMShimmer.stop(for: self.oneOneOneTableView)
+            })
+            return usersArray.count
+        }
+        
+        // return 0
     }
     
     //cellForRowAt indexPath :
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        buddyData = self.usersArray[indexPath.row]
-    
+        
         let cell = oneOneOneTableView.dequeueReusableCell(withIdentifier: "oneOnOneTableViewCell") as! OneOnOneTableViewCell
         
-        //User Name:
-        cell.buddyName.text = buddyData.name
-        
-         //User Status:
-        cell.buddyStatus.text = buddyData.status
-        cell.UID = buddyData.uid
-        //User status Icon:
-        if(buddyData.status == "offline"){
-            cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "808080")
-        }else if(buddyData.status == "busy"){
-             cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "E45163")
-        }else if(buddyData.status == "away"){
-             cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "EBC04F")
-        }else if(buddyData.status == "online"){
-             cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "4AB680")
+        if !usersArray.isEmpty {
+            
+            buddyData = self.usersArray[indexPath.row]
+            //User Name:
+            cell.buddyName.text = buddyData.name
+            
+            //User Status:
+            cell.buddyStatus.text = buddyData.status
+            cell.UID = buddyData.uid
+            //User status Icon:
+            if(buddyData.status == "offline"){
+                cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "808080")
+            }else if(buddyData.status == "busy"){
+                cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "E45163")
+            }else if(buddyData.status == "away"){
+                cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "EBC04F")
+            }else if(buddyData.status == "online"){
+                cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "4AB680")
+            }
+            
+            let url  = NSURL(string: buddyData.avatar ?? "")
+            cell.buddyAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
+        }else{
+            
         }
-        
-        let url  = NSURL(string: buddyData.avatar ?? "")
-        cell.buddyAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
-
         return cell
     }
     
@@ -265,10 +259,9 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         }
     }
     
-
+    
     //didSelectRowAt indexPath
-func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
@@ -279,9 +272,9 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         oneOnOneChatViewController.isGroup = "0"
         navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
     }
-
     
-     //heightForRowAt indexPath
+    
+    //heightForRowAt indexPath
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
@@ -306,8 +299,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         deleteAction.image = UIImage(named: "block.png")
         deleteAction.backgroundColor = .orange
-        
-        let confrigation = UISwipeActionsConfiguration(actions: [action,deleteAction])
+        let confrigation = UISwipeActionsConfiguration(actions: [])
+        // let confrigation = UISwipeActionsConfiguration(actions: [action,deleteAction])
         return confrigation
     }
     
@@ -349,14 +342,20 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         audioCall.image = UIImage(named: "audio_call.png")
         audioCall.backgroundColor = .blue
         
-        let confrigation = UISwipeActionsConfiguration(actions: [videoCall,audioCall])
+        let confrigation:UISwipeActionsConfiguration!
+        if AMShimmer.isAnimating == false{
+            confrigation  = UISwipeActionsConfiguration(actions: [videoCall,audioCall])
+        }else{
+            confrigation = UISwipeActionsConfiguration(actions: [])
+        }
+        
         return confrigation
     }
     
     
     //announcement button Pressed
     @IBAction func announcementPressed(_ sender: Any) {
-      
+        
         
         
         
@@ -370,7 +369,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(CCMoreViewController, animated: true)
         CCMoreViewController.title = "More"
         CCMoreViewController.hidesBottomBarWhenPushed = true
-
+        
     }
     
     //createContact button Pressed
@@ -388,5 +387,5 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actionSheetController.addAction(cancelAction)
         present(actionSheetController, animated: true, completion: nil)
     }
-
+    
 }

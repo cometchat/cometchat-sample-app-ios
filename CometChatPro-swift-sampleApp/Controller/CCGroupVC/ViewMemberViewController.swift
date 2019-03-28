@@ -27,16 +27,8 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
         super.viewDidLoad()
         
         myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
-        print("members are: \(members)")
+        CometChatLog.print(items:"members are: \(String(describing: members))")
         
-        for member in members{
-            print("member uid: \(member.uid)")
-            print("member name: \(member.name)")
-            print("member scope: \(member.status)")
-            
-        }
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -169,7 +161,6 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
                 })
             }
             let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
-                print("Cancel")
             }
             updateScopeAction.addAction(admin)
             updateScopeAction.addAction(modorator)
@@ -180,7 +171,6 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
         
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
-            print("Cancel")
         }
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
         actionSheetController.addAction(banAction)
@@ -199,7 +189,7 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
                 present(actionSheetController, animated: true, completion: nil)
             }
         }
-       
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat

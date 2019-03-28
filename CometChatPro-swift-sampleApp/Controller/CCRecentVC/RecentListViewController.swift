@@ -24,7 +24,6 @@ class RecentListViewController: UIViewController ,UISearchControllerDelegate {
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("i m in RecentListViewController")
         
     }
     
@@ -34,12 +33,12 @@ class RecentListViewController: UIViewController ,UISearchControllerDelegate {
         self.handleRecentListVCAppearance()
     }
     
-
+    
     //This method handles the UI customization for RecentListVC
-     func  handleRecentListVCAppearance(){
-
+    func  handleRecentListVCAppearance(){
+        
         // ViewController Appearance
-         view.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
+        view.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
         
         //TableView Appearance
         self.recentTableView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
@@ -52,8 +51,8 @@ class RecentListViewController: UIViewController ,UISearchControllerDelegate {
         case .PersianBlue:break
         case .Custom:break
         }
-       
-//        // NavigationBar Appearance
+        
+        //        // NavigationBar Appearance
         navigationItem.title = "Recent"
         let normalTitleforNavigationBar = [
             NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),
@@ -68,14 +67,14 @@ class RecentListViewController: UIViewController ,UISearchControllerDelegate {
                 NSAttributedString.Key.font: UIFont(name: SystemFont.bold.value, size: 40)!]
             navigationController?.navigationBar.largeTitleTextAttributes = letlargeTitleforNavigationBar
         }
-//
-//         // NavigationBar Buttons Appearance
-//
-         notifyButton.setImage(UIImage(named: "bell.png"), for: .normal)
-         moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
-
-         notifyButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        //
+        //         // NavigationBar Buttons Appearance
+        //
+        notifyButton.setImage(UIImage(named: "bell.png"), for: .normal)
+        moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
+        
+        notifyButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
     }
     
     
@@ -93,7 +92,7 @@ class RecentListViewController: UIViewController ,UISearchControllerDelegate {
         CCWebviewController.hidesBottomBarWhenPushed = true
     }
     
-
     
-
+    
+    
 }

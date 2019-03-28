@@ -10,11 +10,11 @@ import UIKit
 import  CometChatPro
 
 class CCTabbar: UITabBarController {
-
+    
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
 }

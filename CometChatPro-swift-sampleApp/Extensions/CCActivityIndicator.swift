@@ -161,7 +161,7 @@ public final class CCActivityIndicator: UIView {
         replicatorLayer.removeAnimation(forKey: "rotate")
         segmentLayer.removeAnimation(forKey: "start")
         //segmentLayer.removeAnimation(forKey: "end")
-//        segmentLayer.removeAnimation(forKey: "fade")
+        //        segmentLayer.removeAnimation(forKey: "fade")
         
         if hidesWhenStopped {
             self.isHidden = true

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CometChatPro
 
 class ChatTextMessageCell: UITableViewCell {
-
+    
     let messageLabel = UILabel()
     let userNameLabel = UILabel()
     var url: NSURL!
@@ -24,23 +25,26 @@ class ChatTextMessageCell: UITableViewCell {
     var timeLabelTrailingConstraint : NSLayoutConstraint!
     var enableOutGoingConstraintForbubble = Bool()
     
-    var chatMessage : Message! {
+    var chatMessage : TextMessage! {
         didSet{
-
-            messageLabel.text = chatMessage.messageText
-            userNameLabel.text = "\(chatMessage.userName):"
-            userNameLabel.font = userNameLabel.font.withSize(12)
-            messageTimeLabel.text = chatMessage.time
             
-           
-            if(chatMessage.avatarURL != ""){
-                url = NSURL(string: chatMessage.avatarURL)
+            messageLabel.text = chatMessage.text
+            userNameLabel.text = (chatMessage.sender?.name ?? " ") + " :"
+            userNameLabel.font = userNameLabel.font.withSize(12)
+            let date = Date(timeIntervalSince1970: TimeInterval(chatMessage.sentAt))
+            let dateFormatter1 = DateFormatter()
+            dateFormatter1.dateFormat = "HH:mm:a"
+            dateFormatter1.timeZone = NSTimeZone.local
+            let dateString : String = dateFormatter1.string(from: date)
+            messageTimeLabel.text =  dateString
+            if(chatMessage.sender?.avatar != ""){
+                url = NSURL(string: ((chatMessage.sender?.avatar) ?? nil) ?? " ")
                 userAvatarImageView.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
             }else{
                 userAvatarImageView.image = UIImage(named: "default_user")
             }
-            
-            if(chatMessage.isSelf){
+            let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
+            if(chatMessage.senderUid == myUID){
                 messageLabelLeadingConstraint.isActive = false
                 messageLabelTrailingConstraint.isActive = true
                 timeLabelTrailingConstraint.isActive = true
@@ -49,27 +53,27 @@ class ChatTextMessageCell: UITableViewCell {
                 userAvatarImageView.isHidden = true
                 userNameLabel.isHidden = true
                 
-            switch AppAppearance{
+                switch AppAppearance{
                     
                 case .AzureRadiance:
                     self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
-                        messageLabel.textColor = UIColor.white
+                    messageLabel.textColor = UIColor.white
                     
                 case .MountainMeadow:
                     
-                        self.messageBackgroundView.layer.cornerRadius = 15
-                        messageBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
-                        messageLabel.textColor = UIColor.white
+                    self.messageBackgroundView.layer.cornerRadius = 15
+                    messageBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
+                    messageLabel.textColor = UIColor.white
                     
                 case .PersianBlue:
                     self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
                     
-                       messageLabel.textColor = UIColor.white
+                    messageLabel.textColor = UIColor.white
                 case .Custom:
                     
-                        self.messageBackgroundView.layer.cornerRadius = 15
-                        messageBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
-                        messageLabel.textColor = UIColor.white
+                    self.messageBackgroundView.layer.cornerRadius = 15
+                    messageBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
+                    messageLabel.textColor = UIColor.white
                 }
                 
             }else {
@@ -80,7 +84,7 @@ class ChatTextMessageCell: UITableViewCell {
                 timeLabelLeadingConstraint.isActive = true
                 userNameLabel.textColor = UIColor.darkGray
                 userAvatarImageView.isHidden = false
-                if(chatMessage.isGroup == true){
+                if(chatMessage.receiverType == .group){
                     userNameLabel.isHidden = false
                 }else{
                     userNameLabel.isHidden = true
@@ -90,18 +94,18 @@ class ChatTextMessageCell: UITableViewCell {
                     
                 case .AzureRadiance:
                     
-                     self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: "E6E9ED")
-                        messageLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
+                    self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: "E6E9ED")
+                    messageLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
                     
                 case .MountainMeadow:
                     
-                        self.messageBackgroundView.layer.cornerRadius = 15
-                        messageBackgroundView.backgroundColor = UIColor.init(hexFromString: "E6E9ED")
-                        messageLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
+                    self.messageBackgroundView.layer.cornerRadius = 15
+                    messageBackgroundView.backgroundColor = UIColor.init(hexFromString: "E6E9ED")
+                    messageLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
                     
                 case .PersianBlue:
-                
-                self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: "E6E9ED")
+                    
+                    self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: "E6E9ED")
                     messageLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
                     
                 case .Custom:
@@ -139,9 +143,9 @@ class ChatTextMessageCell: UITableViewCell {
         userNameLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
         
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 18).isActive = true
+        messageLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 10).isActive = true
         
-        messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -25).isActive = true
+        messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15).isActive = true
         messageLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
         
         messageBackgroundView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -12).isActive = true
@@ -155,24 +159,21 @@ class ChatTextMessageCell: UITableViewCell {
         messageTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         timeLabelLeadingConstraint = messageTimeLabel.leadingAnchor.constraint(equalTo: messageBackgroundView.trailingAnchor, constant: 5)
         timeLabelTrailingConstraint = messageTimeLabel.trailingAnchor.constraint(equalTo: messageBackgroundView.leadingAnchor, constant: -5)
-        messageTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12).isActive = true
+        messageTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
         messageTimeLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50).isActive = true
         messageTimeLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 12).isActive = true
         messageTimeLabel.font = messageTimeLabel.font.withSize(10)
         messageTimeLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
-        
-        
         addSubview(userAvatarImageView)
-        
         userAvatarImageView.translatesAutoresizingMaskIntoConstraints = false
         userAvatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        userAvatarImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        userAvatarImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
         userAvatarImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 25).isActive = true
         userAvatarImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 25).isActive = true
         userAvatarImageView.clipsToBounds = true
         userAvatarImageView.layer.cornerRadius = 12.5
-        
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

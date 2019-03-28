@@ -6,15 +6,15 @@
 //
 
 import UIKit
-
+import CometChatPro
 class ChatImageMessageCell: UITableViewCell {
-   
+    
     var url: NSURL!
     var data: NSData!
     let chatImage = UIImageView()
     var urlString = String()
     let bubbleBackgroundView = UIView()
-     let userNameLabel = UILabel()
+    let userNameLabel = UILabel()
     let messageTimeLabel = UILabel()
     let userAvatarImageView = UIImageView()
     private var aleadingConstraint: NSLayoutConstraint!
@@ -22,33 +22,36 @@ class ChatImageMessageCell: UITableViewCell {
     var timeLabelLeadingConstraint : NSLayoutConstraint!
     var timeLabelTrailingConstraint : NSLayoutConstraint!
     
-    var chatMessage:Message! {
+    var chatMessage:MediaMessage! {
         didSet {
-            urlString = chatMessage.messageText
-           // chatImage.image = #imageLiteral(resourceName: "default_Pending")
-            userNameLabel.text = "\(chatMessage.userName):"
+            urlString = (chatMessage.url?.decodeUrl())!
+            userNameLabel.text = (chatMessage.sender?.name ?? " ") + " :"
             userNameLabel.font = userNameLabel.font.withSize(12)
             userNameLabel.textColor = UIColor.darkGray
             userNameLabel.isHidden = true
-            print("urlString: \(urlString)")
             url = NSURL(string: urlString)
-            if(chatMessage.avatarURL != ""){
-                url = NSURL(string: chatMessage.avatarURL)
+            if(chatMessage.sender?.avatar != ""){
+                url = NSURL(string: (chatMessage.sender?.avatar ?? " "))
                 userAvatarImageView.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
             }else{
                 userAvatarImageView.image = UIImage(named: "default_user")
             }
-            messageTimeLabel.text = chatMessage.time
+            let date = Date(timeIntervalSince1970: TimeInterval(chatMessage.sentAt))
+            let dateFormatter1 = DateFormatter()
+            dateFormatter1.dateFormat = "HH:mm:a"
+            dateFormatter1.timeZone = NSTimeZone.local
+            let dateString : String = dateFormatter1.string(from: date)
+            messageTimeLabel.text =  dateString
             chatImage.contentMode = .scaleAspectFill
-            bubbleBackgroundView.backgroundColor = chatMessage.isSelf ? .white : UIColor(white: 0.80, alpha: 1)
+            let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
+            bubbleBackgroundView.backgroundColor = chatMessage.senderUid == myUID ? .white : UIColor(white: 0.80, alpha: 1)
             
-            if chatMessage.isSelf == true {
+            if chatMessage.senderUid == myUID {
                 aleadingConstraint.isActive = false
                 atrailingConstraint.isActive = true
                 timeLabelLeadingConstraint.isActive = false
                 timeLabelTrailingConstraint.isActive = true
                 userAvatarImageView.isHidden = true
-
             } else {
                 userAvatarImageView.isHidden = false
                 aleadingConstraint.isActive = true
@@ -65,7 +68,7 @@ class ChatImageMessageCell: UITableViewCell {
         
         backgroundColor = .clear
         chatImage.layer.cornerRadius = 20
-        chatImage.clipsToBounds=true
+        chatImage.clipsToBounds = true
         chatImage.translatesAutoresizingMaskIntoConstraints = false
         bubbleBackgroundView.backgroundColor = .yellow
         bubbleBackgroundView.layer.cornerRadius = 20
@@ -79,7 +82,7 @@ class ChatImageMessageCell: UITableViewCell {
         chatImage.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         // lets set up some constraints for our label
-  
+        
         
         let constraints = [
             
@@ -133,8 +136,8 @@ class ChatImageMessageCell: UITableViewCell {
         messageTimeLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50).isActive = true
         messageTimeLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 12).isActive = true
         messageTimeLabel.font = messageTimeLabel.font.withSize(12)
-       // messageTimeLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
-       // time label constrains //
+        // messageTimeLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
+        // time label constrains //
     }
     
     required init?(coder aDecoder: NSCoder) {

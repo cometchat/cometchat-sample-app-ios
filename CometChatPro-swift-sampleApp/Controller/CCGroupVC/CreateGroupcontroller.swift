@@ -10,7 +10,7 @@ import UIKit
 import CometChatPro
 
 class CreateGroupcontroller: UIViewController {
-
+    
     //Outlets Declaration
     @IBOutlet weak var groupIDView: UIView!
     @IBOutlet weak var groupNameView: UIView!
@@ -37,11 +37,11 @@ class CreateGroupcontroller: UIViewController {
         self.hideKeyboardWhenTappedAround()
     }
     
-     //This method handles the UI customization for CreateGroupVC
+    //This method handles the UI customization for CreateGroupVC
     func handleCreateGroupVCAppearance() {
         
         // ViewController Appearance
-
+        
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = false
             navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
@@ -85,7 +85,7 @@ class CreateGroupcontroller: UIViewController {
         groupTypeView.isUserInteractionEnabled = true
         groupTypeView.addGestureRecognizer(tapOnSelectGroupType)
     }
-
+    
     //Cancel Button Pressed
     @IBAction func cancelPressed(_ sender: Any) {
         
@@ -105,20 +105,20 @@ class CreateGroupcontroller: UIViewController {
         
         CometChat.createGroup(group: group, onSuccess: { (group) in
             DispatchQueue.main.async {
-            self.view.makeToast("Group created successfully.")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.navigationController?.popViewController(animated: true)
+                self.view.makeToast("Group created successfully.")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
-            }
-            print("Group created successfully." + group.stringValue())
+            CometChatLog.print(items:"Group created successfully." + group.stringValue())
             let group:[String: Group] = ["groupData": group]
             NotificationCenter.default.post(name: Notification.Name("com.newGroupData"), object: nil, userInfo: group)
         }) { (error) in
-           DispatchQueue.main.async {
-            self.view.makeToast("\(error!.errorDescription)")
-           }
+            DispatchQueue.main.async {
+                self.view.makeToast("\(error!.errorDescription)")
+            }
         }
-  
+        
     }
     
     //selectGroupType Button Pressed
@@ -133,26 +133,24 @@ class CreateGroupcontroller: UIViewController {
         }
         let passwordProtectedGroup: UIAlertAction = UIAlertAction(title: "Password - Protected", style: .default) { action -> Void in
             
-             self.groupType.text = "Password - Protected"
-             self.groupPasswordView.isHidden = false
+            self.groupType.text = "Password - Protected"
+            self.groupPasswordView.isHidden = false
             
         }
         let privateGroup: UIAlertAction = UIAlertAction(title: "Private Group", style: .default) { action -> Void in
             
-             self.groupPasswordView.isHidden = true
-             self.groupType.text = "Private Group"
+            self.groupPasswordView.isHidden = true
+            self.groupType.text = "Private Group"
             
         }
-
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
-            print("Cancel")
-           
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in           
             
         }
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
         actionSheetController.addAction(publicGroup)
         actionSheetController.addAction(passwordProtectedGroup)
-         actionSheetController.addAction(privateGroup)
+        actionSheetController.addAction(privateGroup)
         actionSheetController.addAction(cancelAction)
         present(actionSheetController, animated: true, completion: nil)
         

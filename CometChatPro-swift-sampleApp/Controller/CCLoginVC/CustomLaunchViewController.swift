@@ -9,12 +9,12 @@
 import UIKit
 
 class CustomLaunchViewController: UIViewController {
-
+    
     //Outlets Declarations
     @IBOutlet weak var cometChatLogo: UIImageView!
     @IBOutlet weak var bottomV: UIView!
     
-     //Variable Declarations
+    //Variable Declarations
     var CCtabBarViewController = CCTabbar()
     
     //This method is called when controller has loaded its view into memory.
@@ -41,7 +41,7 @@ class CustomLaunchViewController: UIViewController {
             self.CCtabBarViewController = self.storyboard?.instantiateViewController(withIdentifier: "CCtabBar") as! CCTabbar
             self.present(self.CCtabBarViewController, animated: false, completion: nil)
         })
-
+        
     }
-  
+    
 }

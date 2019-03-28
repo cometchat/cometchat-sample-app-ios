@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CometChatPro
 
 class ChatFileMessageCell: UITableViewCell {
-
+    
     // Outlets Declarations
     @IBOutlet weak var fileMessageView: UIView!
     @IBOutlet weak var userAvtar: UIImageView!
@@ -26,22 +27,24 @@ class ChatFileMessageCell: UITableViewCell {
     @IBOutlet weak var timeLabelTrailingConstraints: NSLayoutConstraint!
     @IBOutlet weak var timeLabelWidthConstraint: NSLayoutConstraint!
     
-
+    
     var isSelf:Bool!
     var isGroup:Bool!
     
-    var chatMessage : Message! {
+    var chatMessage : MediaMessage! {
         didSet{
-        
-            print("chatMessage File: \(chatMessage.messageText)")
-            isSelf = chatMessage.isSelf
-            isGroup = chatMessage.isGroup
-            print("isSelf value is \(isSelf)")
-            if  isSelf == true {
+            
+            let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
+            if chatMessage.senderUid == myUID{
+                isSelf = true
+            }else{
+                isSelf = false
+            }
+            
+            if chatMessage.senderUid == myUID {
                 
                 userAvtar.isHidden = true
                 timeLabel1.isHidden = false
-              //  fileMessageViewTrailingConstrant.constant = 10
                 
                 switch AppAppearance{
                     
@@ -100,16 +103,16 @@ class ChatFileMessageCell: UITableViewCell {
                 }
             }
             
-            if(isGroup == true){
+            if(chatMessage.receiverType == .group){
                 userNameLabel.isHidden = false
             }else{
                 userNameLabel.isHidden = true
             }
-          
+            
         }
     }
-        
-        
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -118,8 +121,8 @@ class ChatFileMessageCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-       
-       // timeLabel.removeFromSuperview()
+        
+        // timeLabel.removeFromSuperview()
         
         
     }
@@ -128,12 +131,12 @@ class ChatFileMessageCell: UITableViewCell {
         super.awakeFromNib()
         userNameLabel.isHidden = true
         
-       
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         if(isSelf == true){
             userNameLabel.isHidden = true
             timeLabel.isHidden = true
@@ -145,10 +148,10 @@ class ChatFileMessageCell: UITableViewCell {
             //timeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
         }
         
-    
-    }
-
         
-
-    
     }
+    
+    
+    
+    
+}

@@ -69,39 +69,18 @@ class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextField
         }
         
         bottomController?.delegate = self
-        
-        bottomController?.onPanelExpanded = {
-            print("Panel Expanded in closure")
-        }
-        
-        bottomController?.onPanelCollapsed = {
-            print("Panel Collapsed in closure")
-        }
-        
-        bottomController?.onPanelMoved = { offset in
-            print("Panel moved in closure " + offset.description)
-        }
-        
-        //Uncomment to specify top margin on expanded panel
-        //bottomController?.setExpandedTopMargin(pixels: 30)
-        
-        if bottomController?.currentState == .collapsed
-        {
-            //do anything, i don't care
-        }
+        bottomController?.onPanelExpanded = {}
+        bottomController?.onPanelCollapsed = {}
+        bottomController?.onPanelMoved = { offset in }
     }
-    
     
     func handleAnimations(){
         
     // This function deals with the handling of the animations and transitions  of view .
         swipeUpLbel.isHidden = true
-       activity.stopAnimating()
-        
+        activity.stopAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() ) { // change 2 to desired number of seconds
-//            self.activity.stopAnimating()
             self.swipeUpLbel.isHidden = false
-            //self.bottomView.shake()
             
             UIView.animate(withDuration: 2.0, delay: 0, usingSpringWithDamping: 2.0, initialSpringVelocity: 2.0, options: .curveEaseInOut, animations: {
                 
@@ -113,17 +92,13 @@ class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextField
                 self.swipeUpLbel.layer.add(animation, forKey: "shake")
             }, completion: {
                 (value: Bool) in
-                //self.swipeUpLbel.isHidden = true
             })
-            
         }
-        
     }
     
     func handleLogoDistance(){
         
     //This function deals with the distance of the CometChatLogo accroding with the particular device size.
-        
         if(modelName == "iPhone 5" || modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone SE" ){
             
             CClogoTop.constant = 4
@@ -137,10 +112,8 @@ class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextField
         }else if (modelName == "iPhone X" || modelName == "iPhone XS") {
             CClogoTop.constant = 102
         }else if(modelName == "iPhone XR"){
-            print("I'm here")
             CClogoTop.constant = 144
         }else if(modelName == "iPad Pro (12.9-inch) (2nd generation)"){
-            print("I'm here")
             CClogoTop.constant = 200
         }else{
             CClogoTop.constant = 54
@@ -155,21 +128,17 @@ class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextField
     }
     
     func didPanelCollapse() {
-         print("didPanelCollapse")
     }
     
     func didPanelExpand() {
-         print("didPanelExpand")
         bottomController?.anchorPanel()
        
     }
     
     func didPanelAnchor() {
-         print("didPanelAnchor")
     }
     
     func didPanelMove(panelOffset: CGFloat) {
-        print("didPanelMove : \(panelOffset)")
         self.swipeUpLbel.isHidden = true
     }
     

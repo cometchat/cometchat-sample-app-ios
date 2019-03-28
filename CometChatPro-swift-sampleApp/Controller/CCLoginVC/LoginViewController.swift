@@ -34,13 +34,13 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //Register Notifications
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-
-       //Funtion Calling
+        
+        //Funtion Calling
         self.handleLoginVCApperance()
         self.hideKeyboardWhenTappedAround()
         
@@ -60,12 +60,12 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             if self.view.frame.origin.y == 0 {
                 if (modelName == "iPhone X" || modelName == "iPhone XS") || (modelName == "iPhone XS Max"){
-               self.view.frame.origin.y -= 100
+                    self.view.frame.origin.y -= 100
                 }else {
-                self.view.frame.origin.y -= 45
+                    self.view.frame.origin.y -= 45
                 }
             }
-    }
+        }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -105,7 +105,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     }
     
     @IBAction func login(_ sender: Any) {
-        print("login pressed: ")
+        CometChatLog.print(items: "login button pressed")
         let API_KEY:String = AuthenticationDict?["API_KEY"] as! String
         let UID:String = userName.text!
         let trimmedUID = UID.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -115,47 +115,46 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         }else if(API_KEY.contains("Enter") || API_KEY.contains("ENTER") || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
             showAlert(title: "Warning!", msg: "Please fill the APP-ID and API-KEY in CometChat-info.plist file.")
         }else{
-       
-       CometChat.login(UID: trimmedUID, apiKey: API_KEY, onSuccess: { (current_user) in
-        
-        var loggedInUserInfo:Dictionary = [String:Any]()
-        let username:String = current_user.name ?? ""
-        let userAvtar:String = current_user.avatar ?? ""
-        let userStatus:String = current_user.status ?? ""
-        
-        let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
-        let userID:String = current_user.uid!
-        let topic: String = APP_ID + "_user_" + userID + "_ios"
-        print("Topic is: \(topic)")
-        Messaging.messaging().subscribe(toTopic: topic) { error in
-            print("Subscribed to \(topic) topic")
-        }
-        loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
-        UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
-            //UIButton State Change
-            self.loginButton.setTitle("Login Sucessful", for: .normal)
-            self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
-            //Navigate to Next VC
-            UserDefaults.standard.set(current_user.uid, forKey: "LoggedInUserUID")
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let embeddedViewContrroller = storyboard.instantiateViewController(withIdentifier: "embeddedViewContrroller") as! EmbeddedViewController
-                self.navigationController?.pushViewController(embeddedViewContrroller, animated: true)
-            }
-
-        }){ (error) in
-
-             print("login error:\(error.errorDescription)")
-             print("login error: \(String(describing: error.debugDescription))")
-            DispatchQueue.main.async { [unowned self] in
-                self.loginButton.backgroundColor = UIColor.init(hexFromString: "FF0000")
-                self.loginButton.setTitle("Login Failure", for: .normal)
+            
+            CometChat.login(UID: trimmedUID, apiKey: API_KEY, onSuccess: { (current_user) in
+                
+                var loggedInUserInfo:Dictionary = [String:Any]()
+                let username:String = current_user.name ?? ""
+                let userAvtar:String = current_user.avatar ?? ""
+                let userStatus:String = current_user.status ?? ""
+                
+                let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
+                let userID:String = current_user.uid!
+                let topic: String = APP_ID + "_user_" + userID + "_ios"
+                Messaging.messaging().subscribe(toTopic: topic) { error in
+                    CometChatLog.print(items:"Subscribed to \(topic) topic")
+                }
+                loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
+                UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
+                //UIButton State Change
+                self.loginButton.setTitle("Login Sucessful", for: .normal)
+                self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
+                //Navigate to Next VC
+                UserDefaults.standard.set(current_user.uid, forKey: "LoggedInUserUID")
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let embeddedViewContrroller = storyboard.instantiateViewController(withIdentifier: "embeddedViewContrroller") as! EmbeddedViewController
+                    self.navigationController?.pushViewController(embeddedViewContrroller, animated: true)
+                }
+                
+            }){ (error) in
+                
+                CometChatLog.print(items:"login error:\(error.errorDescription)")
+                CometChatLog.print(items:"login error: \(String(describing: error.debugDescription))")
+                DispatchQueue.main.async { [unowned self] in
+                    self.loginButton.backgroundColor = UIColor.init(hexFromString: "FF0000")
+                    self.loginButton.setTitle("Login Failure", for: .normal)
+                }
             }
         }
     }
-}
     
     @objc func LoginWithSuperHero1(tapGestureRecognizer: UITapGestureRecognizer)
     {
@@ -163,15 +162,18 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         userName.text = "superhero1"
         let API_KEY:String = AuthenticationDict?["API_KEY"] as! String
         CometChat.login(UID: "superhero1", apiKey: API_KEY, onSuccess: { (current_user) in
-           self.loginButton.setTitle("Login Sucessful", for: .normal)
-           self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
+            self.loginButton.setTitle("Login Sucessful", for: .normal)
+            self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
             var loggedInUserInfo:Dictionary = [String:Any]()
             let username:String = current_user.name ?? ""
             let userAvtar:String = current_user.avatar ?? ""
             let userStatus:String = current_user.status ?? ""
             
-            Messaging.messaging().subscribe(toTopic: "user_pushpsen") { error in
-                print("Subscribed to user_pushpsen topic")
+            let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
+            let userID:String = current_user.uid!
+            let topic: String = APP_ID + "_user_" + userID + "_ios"
+            Messaging.messaging().subscribe(toTopic: topic) { error in
+                CometChatLog.print(items:"Subscribed to \(topic) topic")
             }
             
             loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
@@ -188,7 +190,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
                 let embeddedViewContrroller = storyboard.instantiateViewController(withIdentifier: "embeddedViewContrroller") as! EmbeddedViewController
                 self.navigationController?.pushViewController(embeddedViewContrroller, animated: true)
             }
-
+            
         }) { (error) in
             DispatchQueue.main.async { [unowned self] in
                 self.loginButton.backgroundColor = UIColor.init(hexFromString: "FF0000")
@@ -211,8 +213,11 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             let userAvtar:String = current_user.avatar ?? ""
             let userStatus:String = current_user.status ?? ""
             
-            Messaging.messaging().subscribe(toTopic: "user_pushpsen") { error in
-                print("Subscribed to user_pushpsen topic")
+            let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
+            let userID:String = current_user.uid!
+            let topic: String = APP_ID + "_user_" + userID + "_ios"
+            Messaging.messaging().subscribe(toTopic: topic) { error in
+                CometChatLog.print(items:"Subscribed to \(topic) topic")
             }
             
             loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
@@ -236,14 +241,14 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
                 self.loginButton.setTitle("Login Failure", for: .normal)
             }
         }
-  
-
+        
+        
     }
     
     @objc func LoginWithSuperHero3(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let API_KEY:String = AuthenticationDict?["API_KEY"] as! String
-       self.loginButton.setTitle("Login with Superhero3", for: .normal)
+        self.loginButton.setTitle("Login with Superhero3", for: .normal)
         userName.text = "superhero3"
         CometChat.login(UID: "superhero3", apiKey: API_KEY, onSuccess: { (current_user) in
             self.loginButton.setTitle("Login Sucessful", for: .normal)
@@ -253,8 +258,11 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             let userAvtar:String = current_user.avatar ?? ""
             let userStatus:String = current_user.status ?? ""
             
-            Messaging.messaging().subscribe(toTopic: "user_pushpsen") { error in
-                print("Subscribed to user_pushpsen topic")
+            let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
+            let userID:String = current_user.uid!
+            let topic: String = APP_ID + "_user_" + userID + "_ios"
+            Messaging.messaging().subscribe(toTopic: topic) { error in
+                CometChatLog.print(items:"Subscribed to \(topic) topic")
             }
             
             loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
@@ -284,7 +292,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     @objc func LoginWithSuperHero4(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let API_KEY:String = AuthenticationDict?["API_KEY"] as! String
-      self.loginButton.setTitle("Login with Superhero4", for: .normal)
+        self.loginButton.setTitle("Login with Superhero4", for: .normal)
         userName.text = "superhero4"
         CometChat.login(UID: "superhero4", apiKey: API_KEY, onSuccess: { (current_user) in
             self.loginButton.setTitle("Login Sucessful", for: .normal)
@@ -294,8 +302,11 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             let userAvtar:String = current_user.avatar ?? ""
             let userStatus:String = current_user.status ?? ""
             
-            Messaging.messaging().subscribe(toTopic: "user_pushpsen") { error in
-                print("Subscribed to user_pushpsen topic")
+            let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
+            let userID:String = current_user.uid!
+            let topic: String = APP_ID + "_user_" + userID + "_ios"
+            Messaging.messaging().subscribe(toTopic: topic) { error in
+                CometChatLog.print(items:"Subscribed to \(topic) topic")
             }
             
             loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
@@ -324,15 +335,15 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         
     }
     
-
-   
+    
+    
     @IBAction func guestLogin(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let embeddedViewContrroller = storyboard.instantiateViewController(withIdentifier: "embeddedViewContrroller") as! EmbeddedViewController
         self.navigationController?.pushViewController(embeddedViewContrroller, animated: true)
     }
-
+    
     
     func handleTopViewDistance(){
         
@@ -353,10 +364,10 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             
         }
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
-   
+    
 }

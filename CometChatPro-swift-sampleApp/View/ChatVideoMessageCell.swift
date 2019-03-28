@@ -8,6 +8,7 @@
 import UIKit
 import  AVKit
 import AVFoundation
+import CometChatPro
 
 class ChatVideoMessageCell: UITableViewCell {
     
@@ -24,28 +25,34 @@ class ChatVideoMessageCell: UITableViewCell {
     var timeLabelLeadingConstraint : NSLayoutConstraint!
     var timeLabelTrailingConstraint : NSLayoutConstraint!
     
-    var chatMessage:Message! {
+    var chatMessage:MediaMessage! {
         didSet {
-            videoURL = URL(string: chatMessage.messageText.decodeUrl()!) as! NSURL
-            userNameLabel.text = "\(chatMessage.userName):"
+            
+            videoURL = URL(string: chatMessage.url!.decodeUrl()!) as NSURL?
+            userNameLabel.text = (chatMessage.sender?.name ?? " ") + " :"
             userNameLabel.font = userNameLabel.font.withSize(12)
             userNameLabel.textColor = UIColor.darkGray
             userNameLabel.isHidden = true
-            print("video : urlString: \(String(describing: videoURL))")
-
-            if(chatMessage.avatarURL != ""){
-               let  url = NSURL(string: chatMessage.avatarURL)
+            
+            if(chatMessage.sender?.avatar != ""){
+                let url = NSURL(string: (chatMessage.sender?.avatar ?? " "))
                 userAvatarImageView.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
             }else{
                 userAvatarImageView.image = UIImage(named: "default_user")
             }
             
             chatImage.sd_setImage(with: videoURL as URL?, placeholderImage: #imageLiteral(resourceName: "default_video"))
-            messageTimeLabel.text = chatMessage.time
+            let date = Date(timeIntervalSince1970: TimeInterval(chatMessage.sentAt))
+            let dateFormatter1 = DateFormatter()
+            dateFormatter1.dateFormat = "HH:mm:a"
+            dateFormatter1.timeZone = NSTimeZone.local
+            let dateString : String = dateFormatter1.string(from: date)
+            messageTimeLabel.text =  dateString
             chatImage.contentMode = .scaleAspectFill
-            bubbleBackgroundView.backgroundColor = chatMessage.isSelf ? .white : UIColor(white: 0.80, alpha: 1)
+            let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
+            bubbleBackgroundView.backgroundColor = chatMessage.senderUid == myUID ? .white : UIColor(white: 0.80, alpha: 1)
             
-            if chatMessage.isSelf == true {
+            if chatMessage.senderUid == myUID {
                 aleadingConstraint.isActive = false
                 atrailingConstraint.isActive = true
                 timeLabelLeadingConstraint.isActive = false
@@ -78,7 +85,7 @@ class ChatVideoMessageCell: UITableViewCell {
         addSubview(bubbleBackgroundView)
         addSubview(messageTimeLabel)
         addSubview(chatImage)
-      //  addSubview(playButton)
+        //  addSubview(playButton)
         
         chatImage.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false

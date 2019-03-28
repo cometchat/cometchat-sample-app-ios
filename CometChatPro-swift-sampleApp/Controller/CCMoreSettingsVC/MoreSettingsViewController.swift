@@ -37,10 +37,8 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         super.viewDidLoad()
         SettingsItems = []
         self.handleSettingsItems()
-      
-        print("LoggedIn: \(UserDefaults.standard.object(forKey: "loggedInUserInfo"))")
         
-
+        CometChatLog.print(items: "LoggedIn: \(String(describing: UserDefaults.standard.object(forKey: "loggedInUserInfo")))")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,7 +85,7 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "moreSettingsCell", for: indexPath) as! MoreSettingTableViewCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.settingsLogo.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
@@ -134,11 +132,11 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SettingsItems.count
     }
-     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 60
     }
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch SettingsItems[indexPath.row]
         {
         case MoreSettingsCell.VIEW_PROFILE_CELL:
@@ -164,54 +162,41 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
             
         default:
             self.defaultCase()
-   
+            
         }
         
     }
     func defaultCase()
     {
-        print("defaultCase")
     }
     
     func viewProfile()
     {
-        print("viewProfile")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let UserProfileViewController = storyboard.instantiateViewController(withIdentifier: "userProfileViewController") as! UserProfileViewController
         navigationController?.pushViewController(UserProfileViewController, animated: true)
         UserProfileViewController.title = "View Profile"
-        
-        //        UserProfileViewController.getUserProfileAvtar = UserDefaults.standard.string(forKey: "myAvatar")
         UserProfileViewController.isDisplayType = "MoreSettingViewProfile"
-
-        //        UserProfileViewController.getUserName = UserDefaults.standard.string(forKey: "myname")
-        //        UserProfileViewController.getUserStatus = UserDefaults.standard.string(forKey: "mystatus")
         UserProfileViewController.hidesBottomBarWhenPushed = true
         
     }
     func viewBots()
     {
-        print("viewBots")
     }
     func viewChatSettings()
     {
-        print("viewChatSettings")
     }
     func viewNotification()
     {
-        print("viewNotification")
     }
     func viewBlockedUser()
     {
-        print("viewBlockedUser")
     }
     func viewGames()
     {
-        print("viewGames")
     }
     func onLogout()
     {
-         print("onLogout")
         
         let alert = UIAlertController(title: "Logout", message: "Are you sure you want to Logout?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -219,7 +204,7 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
             case .default:
                 
                 CometChat.logout(onSuccess: { (sucess) in
-                   CometChat.stopServices()
+                    CometChat.stopServices()
                     self.resetDefaults()
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let CustomLaunchViewController = storyBoard.instantiateViewController(withIdentifier: "customLaunchViewController") as! CustomLaunchViewController
@@ -227,22 +212,13 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
                 }, onError: { (error) in
                     
                 })
-               
-            case .cancel:
-                print("cancel")
                 
-            case .destructive:
-                print("destructive")
+            case .cancel: break
+                
+            case .destructive: break
             }}))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        
-
         self.present(alert, animated: true, completion: nil)
-        
-    
-        
-        
-        
     }
     
     func resetDefaults() {
@@ -252,116 +228,5 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
             defaults.removeObject(forKey: key)
         }
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        switch SettingsItems[indexPath.row]
-//        {
-//        case MoreSettingsCell.VIEW_PROFILE_CELL:
-//            self.viewProfile()
-//
-//        case MoreSettingsCell.BOTS_CELL:
-//            self.viewBots()
-//
-//        case MoreSettingsCell.CHAT_SETTINGS_CELL:
-//            self.viewChatSettings()
-//
-//        case MoreSettingsCell.NOTIFICATION_CELL:
-//            self.viewNotification()
-//
-//        case MoreSettingsCell.BLOCKED_USER_CELL:
-//            self.viewBlockedUser()
-//
-//        case MoreSettingsCell.GAMES_CELL:
-//            self.viewGames()
-//        case MoreSettingsCell.LOGOUT_CELL:
-//            self.onLogout()
-//
-//
-//        default:
-//            self.defaultCase()
-//
-//
-//
-//
-//
-//        }
-//
-//    }
-//    func defaultCase()
-//    {
-//        print("defaultCase")
-//    }
-//
-//    func viewProfile()
-//    {
-//        print("viewProfile")
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let UserProfileViewController = storyboard.instantiateViewController(withIdentifier: "userProfileViewController") as! UserProfileViewController
-//        navigationController?.pushViewController(UserProfileViewController, animated: true)
-//        UserProfileViewController.title = "View Profile"
-//
-//        //        UserProfileViewController.getUserProfileAvtar = UserDefaults.standard.string(forKey: "myAvatar")
-//        UserProfileViewController.isViewMyProfile = true
-//        //        UserProfileViewController.getUserName = UserDefaults.standard.string(forKey: "myname")
-//        //        UserProfileViewController.getUserStatus = UserDefaults.standard.string(forKey: "mystatus")
-//        UserProfileViewController.hidesBottomBarWhenPushed = true
-//
-//    }
-//    func viewBots()
-//    {
-//        print("viewBots")
-//    }
-//    func viewChatSettings()
-//    {
-//        print("viewChatSettings")
-//    }
-//    func viewNotification()
-//    {
-//        print("viewNotification")
-//    }
-//    func viewBlockedUser()
-//    {
-//        print("viewBlockedUser")
-//    }
-//    func viewGames()
-//    {
-//        print("viewGames")
-//    }
-//    func onLogout()
-//    {
-//        print("onLogout")
-//
-//        let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
-//
-//        // Create the actions
-//        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
-//            UIAlertAction in
-//            NSLog("OK Pressed")
-//
-//            CometChat.logout(onSuccess: { (User) in
-//                NSLog("logout onSuccess \(User)")
-//                CometChat.stopServices()
-//                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//                let CCTabbar = storyBoard.instantiateViewController(withIdentifier: "CCtabBar") as! CCTabbar
-//                self.present(CCTabbar, animated:true, completion:nil)
-//
-//            }, onError: { (CometChatException) in
-//                NSLog("logout onError \(CometChatException)")
-//            })
-//        }
-//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
-//            UIAlertAction in
-//            NSLog("Cancel Pressed")
-//        }
-//
-//        // Add the actions
-//        alertController.addAction(okAction)
-//        alertController.addAction(cancelAction)
-//
-//        // Present the controller
-//        self.present(alertController, animated: true, completion: nil)
-//    }
-//
-    
 }
 

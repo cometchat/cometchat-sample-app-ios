@@ -9,7 +9,7 @@
 import UIKit
 
 class CCprofileAvtarViewController: UIViewController {
-
+    
     //Outlets Declarations
     @IBOutlet weak var profileAvtarView: UIImageView!
     
@@ -25,7 +25,7 @@ class CCprofileAvtarViewController: UIViewController {
         //Function Calling
         self.handleCCProfileAvtarVCAppearance()
     }
-
+    
     //This method handles the UI customization for WebVC
     func  handleCCProfileAvtarVCAppearance(){
         
@@ -37,7 +37,7 @@ class CCprofileAvtarViewController: UIViewController {
         guard (UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView) != nil else {
             return
         }
-
+        
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = false
@@ -63,6 +63,6 @@ class CCprofileAvtarViewController: UIViewController {
         profileAvtarView.image = profileAvtar
         
     }
-
-
+    
+    
 }

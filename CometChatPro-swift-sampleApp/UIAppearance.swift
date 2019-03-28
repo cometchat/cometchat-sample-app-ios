@@ -18,7 +18,7 @@ public enum Appearance{
 extension String {
     
     var getApperance:Appearance? {
-    
+        
         switch self{
         case "AzureRadiance":
             return Appearance.AzureRadiance
@@ -37,8 +37,8 @@ extension String {
 internal var UIAppearanceFontDict:[String:Any]? {
     if let path = Bundle.main.path(forResource: "CometChat-info", ofType: "plist") {
         if let dict = NSDictionary(contentsOfFile: path) as? [String:Any] {
-           if let UIAppearanceFontDict  =  dict["UIAppearanceFont"] as? [String:Any] {
-            return UIAppearanceFontDict
+            if let UIAppearanceFontDict  =  dict["UIAppearanceFont"] as? [String:Any] {
+                return UIAppearanceFontDict
             }
         }
     }
@@ -80,7 +80,7 @@ internal var AuthenticationDict:[String:Any]? {
 
 var  AppAppearance:Appearance {
     
-let RootDictionary = NSDictionary.init(contentsOfFile: Bundle.main.path(forResource: "CometChat-info", ofType: "plist")!)
+    let RootDictionary = NSDictionary.init(contentsOfFile: Bundle.main.path(forResource: "CometChat-info", ofType: "plist")!)
     if let UIAppearance = RootDictionary?.object(forKey: "UIApperance") as? String {
         
         return UIAppearance.getApperance ?? .PersianBlue
@@ -111,17 +111,17 @@ public enum SystemFont{
     var value:String {
         
         switch self {
-   
+            
         case .regular:
             switch AppAppearance{
-                case .AzureRadiance:
-                    return fontTypes.AzureRadianceRegular.rawValue
-                case .MountainMeadow:
-                    return fontTypes.MountainMeadowRegular.rawValue
-                case .PersianBlue:
-                    return fontTypes.PersianBlueRegular.rawValue
-                case .Custom:
-                    return UIAppearanceFontDict?["regular"] as! String  ?? "HelveticaNeue-Medium"
+            case .AzureRadiance:
+                return fontTypes.AzureRadianceRegular.rawValue
+            case .MountainMeadow:
+                return fontTypes.MountainMeadowRegular.rawValue
+            case .PersianBlue:
+                return fontTypes.PersianBlueRegular.rawValue
+            case .Custom:
+                return UIAppearanceFontDict?["regular"] as! String  ?? "HelveticaNeue-Medium"
             }
         case .bold:
             
@@ -178,20 +178,20 @@ class UIAppearanceFont {
 
 class UIAppearanceSize{
     
-   static var CORNER_RADIUS:Double {
-    
-    switch AppAppearance{
+    static var CORNER_RADIUS:Double {
         
-    case .AzureRadiance:
-        return 12.0
-    case .MountainMeadow:
-        return 0.0
-    case .PersianBlue:
-        return 20.0
-    case .Custom:
-        return UIAppearanceSizeDict?["CORNER_RADIUS"] as! Double ?? 0.0
+        switch AppAppearance{
+            
+        case .AzureRadiance:
+            return 12.0
+        case .MountainMeadow:
+            return 0.0
+        case .PersianBlue:
+            return 20.0
+        case .Custom:
+            return UIAppearanceSizeDict?["CORNER_RADIUS"] as! Double ?? 0.0
+        }
     }
-}
     
     static var Padding:Double {
         
@@ -207,7 +207,7 @@ class UIAppearanceSize{
             return UIAppearanceSizeDict?["Padding"] as! Double ?? 0.0
         }
     }
-
+    
 }
 
 class UIAppearanceColor{
@@ -229,22 +229,22 @@ class UIAppearanceColor{
     
     static let NAVIGATION_BAR_TITLE_COLOR:String = {
         
-    switch AppAppearance{
+        switch AppAppearance{
             
         case .AzureRadiance:
-             return "000000"
+            return "000000"
         case .MountainMeadow:
             return "000000"
         case .PersianBlue:
             return "FFFFFF"
         case .Custom:
-             return UIAppearanceColorDict?["NAVIGATION_BAR_TITLE_COLOR"] as! String ?? "FFFFFF"
+            return UIAppearanceColorDict?["NAVIGATION_BAR_TITLE_COLOR"] as! String ?? "FFFFFF"
         }
     }()
     
     static let NAVIGATION_BAR_BUTTON_TINT_COLOR:String = {
         
-    switch AppAppearance{
+        switch AppAppearance{
             
         case .AzureRadiance:
             return "0084FF"
@@ -274,7 +274,7 @@ class UIAppearanceColor{
     
     static let LOGIN_BUTTON_TINT_COLOR:String = {
         
-    switch AppAppearance{
+        switch AppAppearance{
             
         case .AzureRadiance:
             return "0084FF"
@@ -308,9 +308,9 @@ class UIAppearanceColor{
         switch AppAppearance{
             
         case .AzureRadiance:
-           return "0084FF"
+            return "0084FF"
         case .MountainMeadow:
-           return "25D366"
+            return "25D366"
         case .PersianBlue:
             return "2636BE"
         case .Custom:
@@ -331,7 +331,7 @@ class UIAppearanceColor{
             return ((UIAppearanceColorDict?["SEARCH_BAR_STYLE_LIGHT_CONTENT"]) != nil)
         }
     }()
-   
-    }
+    
+}
 
 

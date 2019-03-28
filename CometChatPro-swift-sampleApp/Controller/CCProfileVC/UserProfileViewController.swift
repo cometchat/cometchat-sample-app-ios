@@ -49,11 +49,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     var isViewMyProfile:Bool!
     var groupMemberRequest:GroupMembersRequest!
     var bannedGroupMembersRequest:BannedGroupMembersRequest!
-   
+    
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if isDisplayType == "MoreSettingViewProfile"{
             userProfileAvtar.image = #imageLiteral(resourceName: "default_user")
             userInfo = UserDefaults.standard.object(forKey: "LoggedInUserInfo") as? [String : Any]
@@ -92,11 +92,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             profileItems.append(UserProfileCell.VIEW_MEMBER_CELL)
             if(groupScope! == 0 || groupScope! == 1){
                 profileItems.append(UserProfileCell.UNBAN_MEMBERS_CELL)
-        }
+            }
             profileItems.append(UserProfileCell.LEAVE_GROUP_CELL)
             if(groupScope! == 0 || groupScope! == 1){
                 profileItems.append(UserProfileCell.DELETE_GROUP_CELL)
-        }
+            }
         }
     }
     
@@ -137,7 +137,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         switch AppAppearance {
         case .AzureRadiance:
-             profileAvtarBackground.backgroundColor = UIColor.init(hexFromString: "F3F3F3")
+            profileAvtarBackground.backgroundColor = UIColor.init(hexFromString: "F3F3F3")
         case .MountainMeadow:
             profileAvtarBackground.backgroundColor = UIColor.init(hexFromString: "F3F3F3")
         case .PersianBlue:
@@ -145,9 +145,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         case .Custom:
             profileAvtarBackground.backgroundColor = UIColor.init(hexFromString: "F3F3F3")
         }
-      
         
-       
+        
+        
         
         // UserProfile Name
         userName.text = getUserName
@@ -161,7 +161,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         userProfileAvtar.clipsToBounds = true
         
         //TableView APpearance
-       // self.userProfileTableView.separatorColor = UIColor.clear
+        // self.userProfileTableView.separatorColor = UIColor.clear
         userProfileTableView.tableFooterView = UIView()
         userProfileTableView.backgroundColor = UIColor.clear
         userProfileTableView.tintColor = UIColor.clear
@@ -225,7 +225,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             cell.CellLeftImage.image = image
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
             cell.CellLeftImage.tintColor = UIColor.white
-        
+            
         case UserProfileCell.UNBAN_MEMBERS_CELL:
             cell.CellRightImage.isHidden=true
             cell.CellTitle.text = "Unban Member"
@@ -233,7 +233,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             cell.CellLeftImage.image = image
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
             cell.CellLeftImage.tintColor = UIColor.white
-       
+            
         case UserProfileCell.RENAME_GROUPS_CELL:
             cell.CellRightImage.isHidden=true
             cell.CellTitle.text = "Rename Group"
@@ -250,7 +250,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             cell.CellLeftImage.image = image
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
             cell.CellLeftImage.tintColor = UIColor.white
-       
+            
         case UserProfileCell.DELETE_GROUP_CELL:
             cell.CellRightImage.isHidden=true
             cell.CellTitle.text = "Delete Group"
@@ -266,8 +266,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         var totalRow = tableView.numberOfRows(inSection: indexPath.section)
         if(indexPath.row == totalRow - 1){
-           cell.roundCorners([.layerMaxXMaxYCorner,.layerMinXMaxYCorner], radius: 15, borderColor: UIColor.clear, borderWidth: 0, withBackgroundColor: "FFFFFF")
-             cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width, 0, 0)
+            cell.roundCorners([.layerMaxXMaxYCorner,.layerMinXMaxYCorner], radius: 15, borderColor: UIColor.clear, borderWidth: 0, withBackgroundColor: "FFFFFF")
+            cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width, 0, 0)
         }
         return cell
     }
@@ -276,25 +276,25 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         return 75
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+        
         
         switch profileItems[indexPath.row]
         {
         case UserProfileCell.VIEW_MEMBER_CELL:
             self.onViewMember()
-         case UserProfileCell.AUDIO_CALL_CELL:
+        case UserProfileCell.AUDIO_CALL_CELL:
             self.audioCallAction()
-         case UserProfileCell.VIDEO_CALL_CELL:
+        case UserProfileCell.VIDEO_CALL_CELL:
             self.videoCallAction()
-         case UserProfileCell.MY_STATUS_MESSAGE_CELL:break
-         case UserProfileCell.MY_SET_STATUS_CELL:break
-         case UserProfileCell.ADD_MEMBER_CELL:break
-         case UserProfileCell.UNBAN_MEMBERS_CELL:
-             self.UnbanUsers()
-         case UserProfileCell.RENAME_GROUPS_CELL:break
-         case UserProfileCell.LEAVE_GROUP_CELL:
-             self.leaveGroup()
-         case UserProfileCell.DELETE_GROUP_CELL:
+        case UserProfileCell.MY_STATUS_MESSAGE_CELL:break
+        case UserProfileCell.MY_SET_STATUS_CELL:break
+        case UserProfileCell.ADD_MEMBER_CELL:break
+        case UserProfileCell.UNBAN_MEMBERS_CELL:
+            self.UnbanUsers()
+        case UserProfileCell.RENAME_GROUPS_CELL:break
+        case UserProfileCell.LEAVE_GROUP_CELL:
+            self.leaveGroup()
+        case UserProfileCell.DELETE_GROUP_CELL:
             self.deleteGroup()
         default: break
             
@@ -302,7 +302,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func audioCallAction(){
-      
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
         CallingViewController.isAudioCall = "1"
@@ -320,22 +320,22 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
-            CallingViewController.isAudioCall = "0"
-            CallingViewController.isIncoming = false
-            CallingViewController.userAvtarImage = userProfileAvtar.image
-            CallingViewController.userNameString = userName.text
-            CallingViewController.callingString = "Calling ..."
-            CallingViewController.callerUID = guid
-            CallingViewController.isGroupCall = false
-            self.present(CallingViewController, animated: true, completion: nil)
+        CallingViewController.isAudioCall = "0"
+        CallingViewController.isIncoming = false
+        CallingViewController.userAvtarImage = userProfileAvtar.image
+        CallingViewController.userNameString = userName.text
+        CallingViewController.callingString = "Calling ..."
+        CallingViewController.callerUID = guid
+        CallingViewController.isGroupCall = false
+        self.present(CallingViewController, animated: true, completion: nil)
     }
     
     
     func leaveGroup(){
-       print("Im in leave group")
+        print("Im in leave group")
         CometChat.leaveGroup(GUID: guid, onSuccess: { (sucess) in
             print("leaveGroup \(sucess)")
-
+            
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self
                     else { return }
@@ -380,7 +380,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
                 self.view.makeToast("Fail to delete Group.")
             }
         }
-
+        
     }
     
     func onViewMember(){
@@ -396,9 +396,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
                     self.navigationController?.pushViewController(viewMemberViewController, animated: true)
                 }
             }
-
+            
         }
-
+        
     }
     
     func UnbanUsers(){
@@ -416,14 +416,14 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     }
-   
+    
     
     func fetchGroupMembers(guid:String,  success completionHandler: @escaping CompletionHandler){
         
         groupMember = [GroupMember]()
         groupMemberRequest = GroupMembersRequest.GroupMembersRequestBuilder(guid: guid).setLimit(limit: 20).build()
         groupMemberRequest.fetchNext(onSuccess: { (groupMember) in
-           
+            
             for member in groupMember {
                 self.groupMember.append(member)
             }
@@ -448,7 +448,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             // received banned group members
             
             for bannedMember in groupMembers {
-                 self.groupMember.append(bannedMember)
+                self.groupMember.append(bannedMember)
             }
             let flag = true
             completionHandler(flag)

@@ -10,7 +10,7 @@ import UIKit
 import CometChatPro
 
 class GroupTableViewCell: UITableViewCell {
-
+    
     //Outlets Declarations
     @IBOutlet weak var passwordProtected: UIImageView!
     @IBOutlet weak var groupAvtar: UIImageView!
@@ -24,7 +24,7 @@ class GroupTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        
         //Function Calling
         self.handleGroupTableViewCellAppearance()
     }
@@ -34,12 +34,12 @@ class GroupTableViewCell: UITableViewCell {
         groupAvtar.layer.cornerRadius = 27.5
         groupAvtar.clipsToBounds = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
-     
-
+    
+    
 }

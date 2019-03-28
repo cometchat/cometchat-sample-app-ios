@@ -97,7 +97,6 @@ public class CCBottomSlideController : NSObject, UIGestureRecognizerDelegate
     
     deinit
     {
-        print("Bottom panel deiniting");
         removeConstraintChangeKVO()
         
         if scrollView != nil{

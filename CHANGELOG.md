@@ -1,5 +1,9 @@
 # Change Log
 
+### v1.3.1 (March 28, 2019)
+- Performance Optimization
+- Miscellaneous bug Fixes
+
 ### v1.3.0 (March 20, 2019)
 - Added SDK version v1.3.0
 - Added Sample Users for Login

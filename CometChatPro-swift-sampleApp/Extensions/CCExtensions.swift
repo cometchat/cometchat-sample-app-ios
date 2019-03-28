@@ -16,7 +16,7 @@ class DesignableLabel: UILabel {
 }
 
 extension UIView {
-   // Specifies Corner Radius for the UIView directly from Storyboard
+    // Specifies Corner Radius for the UIView directly from Storyboard
     @IBInspectable
     var cornerRadius: CGFloat {
         get {
@@ -38,7 +38,7 @@ extension UIView {
         }
     }
     
-     // Specifies borderColor for the UIView directly from Storyboard
+    // Specifies borderColor for the UIView directly from Storyboard
     @IBInspectable
     var borderColor: UIColor? {
         get {
@@ -56,7 +56,7 @@ extension UIView {
         }
     }
     
-     // Specifies shadowRadius for the UIView directly from Storyboard
+    // Specifies shadowRadius for the UIView directly from Storyboard
     @IBInspectable
     var shadowRadius: CGFloat {
         get {
@@ -78,7 +78,7 @@ extension UIView {
         }
     }
     
-      // Specifies shadowOffset for the UIView directly from Storyboard
+    // Specifies shadowOffset for the UIView directly from Storyboard
     @IBInspectable
     var shadowOffset: CGSize {
         get {
@@ -89,7 +89,7 @@ extension UIView {
         }
     }
     
-     // Specifies shadowColor for the UIView directly from Storyboard
+    // Specifies shadowColor for the UIView directly from Storyboard
     @IBInspectable
     var shadowColor: UIColor? {
         get {
@@ -125,21 +125,21 @@ extension UIView {
 }
 
 extension UIView {
-     // Specifies shake() animation (UP-DOWN) for the UIView. If you call this function for that perticular view then the shake() animation will be applied.
-        func shake() {
-            let animation = CAKeyframeAnimation(keyPath: "transform.translation.y")
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-            animation.duration = 5
-            animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
-            layer.add(animation, forKey: "shake")
-        }
-
+    // Specifies shake() animation (UP-DOWN) for the UIView. If you call this function for that perticular view then the shake() animation will be applied.
+    func shake() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.y")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.duration = 5
+        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
+        layer.add(animation, forKey: "shake")
+    }
+    
 }
 
 
 extension UIColor {
     
-     // Specifies hexadecimal value of type string for the UIColor. If you call this function at the time of UIColor initialization with the hex code then the color will be applied.
+    // Specifies hexadecimal value of type string for the UIColor. If you call this function at the time of UIColor initialization with the hex code then the color will be applied.
     
     convenience init(hexFromString:String, alpha:CGFloat = 1.0) {
         var cString:String = hexFromString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -165,7 +165,7 @@ extension UIColor {
 
 extension UIImageView {
     
- // This function defines the image which directly load from the URL. If you call this to load the image from specific URL then the URL will be load directly.
+    // This function defines the image which directly load from the URL. If you call this to load the image from specific URL then the URL will be load directly.
     
     public func imageFromURL(urlString: String) {
         
@@ -191,7 +191,7 @@ extension UIImageView {
             let imageV = UIView()
             imageV.backgroundColor = UIColor.init(hexFromString: "007AFF")
             
-//            let image = UIImage(named: "ic_person")
+            //            let image = UIImage(named: "ic_person")
             self.addSubview(containView)
         }
         
@@ -479,8 +479,8 @@ extension UILabel {
 // show Alert
 extension UIViewController {
     func showAlert(title : String?, msg : String,
-                    style: UIAlertControllerStyle = .alert,
-                    dontRemindKey : String? = nil) {
+                   style: UIAlertControllerStyle = .alert,
+                   dontRemindKey : String? = nil) {
         if dontRemindKey != nil,
             UserDefaults.standard.bool(forKey: dontRemindKey!) == true {
             return
