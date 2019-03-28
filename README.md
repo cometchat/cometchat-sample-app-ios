@@ -33,7 +33,7 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
 
 # Screenshots
 
-<img align="left" src="https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/Screenshots/ScreenShots.png">
+<img align="left" src="https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/Screenshots/Screenshots.png">
    
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 
