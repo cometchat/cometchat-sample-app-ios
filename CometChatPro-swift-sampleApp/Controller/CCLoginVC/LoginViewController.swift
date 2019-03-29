@@ -8,7 +8,7 @@
 
 import UIKit
 import CometChatPro
-import Firebase
+
 
 class LoginViewController: UIViewController ,UITextFieldDelegate {
     
@@ -122,13 +122,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
                 let username:String = current_user.name ?? ""
                 let userAvtar:String = current_user.avatar ?? ""
                 let userStatus:String = current_user.status ?? ""
-                
-                let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
-                let userID:String = current_user.uid!
-                let topic: String = APP_ID + "_user_" + userID + "_ios"
-                Messaging.messaging().subscribe(toTopic: topic) { error in
-                    CometChatLog.print(items:"Subscribed to \(topic) topic")
-                }
+
                 loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
                 UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
                 //UIButton State Change
@@ -168,14 +162,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             let username:String = current_user.name ?? ""
             let userAvtar:String = current_user.avatar ?? ""
             let userStatus:String = current_user.status ?? ""
-            
-            let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
-            let userID:String = current_user.uid!
-            let topic: String = APP_ID + "_user_" + userID + "_ios"
-            Messaging.messaging().subscribe(toTopic: topic) { error in
-                CometChatLog.print(items:"Subscribed to \(topic) topic")
-            }
-            
+    
             loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
             UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
             //UIButton State Change
@@ -212,14 +199,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             let username:String = current_user.name ?? ""
             let userAvtar:String = current_user.avatar ?? ""
             let userStatus:String = current_user.status ?? ""
-            
-            let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
-            let userID:String = current_user.uid!
-            let topic: String = APP_ID + "_user_" + userID + "_ios"
-            Messaging.messaging().subscribe(toTopic: topic) { error in
-                CometChatLog.print(items:"Subscribed to \(topic) topic")
-            }
-            
+     
             loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
             UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
             //UIButton State Change
@@ -258,13 +238,6 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             let userAvtar:String = current_user.avatar ?? ""
             let userStatus:String = current_user.status ?? ""
             
-            let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
-            let userID:String = current_user.uid!
-            let topic: String = APP_ID + "_user_" + userID + "_ios"
-            Messaging.messaging().subscribe(toTopic: topic) { error in
-                CometChatLog.print(items:"Subscribed to \(topic) topic")
-            }
-            
             loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
             UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
             //UIButton State Change
@@ -301,14 +274,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             let username:String = current_user.name ?? ""
             let userAvtar:String = current_user.avatar ?? ""
             let userStatus:String = current_user.status ?? ""
-            
-            let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
-            let userID:String = current_user.uid!
-            let topic: String = APP_ID + "_user_" + userID + "_ios"
-            Messaging.messaging().subscribe(toTopic: topic) { error in
-                CometChatLog.print(items:"Subscribed to \(topic) topic")
-            }
-            
+     
             loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
             UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
             //UIButton State Change

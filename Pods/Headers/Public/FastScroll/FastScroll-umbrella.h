@@ -1,1 +1,1 @@
-/Users/admin1/Documents/CometChat Pro/PrivateRepo2/cometchat-pro-ios-ui/ios-swift-chat-app/Pods/Target Support Files/FastScroll/FastScroll-umbrella.h
+/Users/admin1/Documents/CometChat Pro/PrivateRepo/cometchat-pro-ios-ui/ios-swift-chat-app/Pods/Target Support Files/FastScroll/FastScroll-umbrella.h

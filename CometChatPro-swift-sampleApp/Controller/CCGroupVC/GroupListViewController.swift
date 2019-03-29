@@ -8,7 +8,7 @@
 
 import UIKit
 import CometChatPro
-import Firebase
+
 
 class GroupListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource, UISearchBarDelegate{
     
@@ -22,10 +22,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     
     
     //Variable Declarations
-    var nameArray:[String]!
-    var imageArray:[UIImage]!
-    var statusArray:[String]!
-    var groupArray:Array<Group>!
     var joinedChatRoomList = [Group]()
     var othersChatRoomList = [Group]()
     var groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 10).build()
@@ -74,6 +70,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         groupRequest.fetchNext(onSuccess: { (groupList) in
             
+          if !groupList.isEmpty{
             for group in groupList {
                 if(group.hasJoined == true){
                     self.joinedChatRoomList.append(group)
@@ -86,7 +83,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             }
             DispatchQueue.main.async(execute: { self.groupTableView.reloadData()
             })
-            
+           }
         }) { (exception) in
             
             DispatchQueue.main.async(execute: {
@@ -259,10 +256,10 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         let cell = groupTableView.dequeueReusableCell(withIdentifier: "groupTableViewCell") as! GroupTableViewCell
         
-        if !joinedChatRoomList.isEmpty  && !othersChatRoomList.isEmpty{
-            
+   if !joinedChatRoomList.isEmpty  || !othersChatRoomList.isEmpty {
+    
             var group:Group!
-            
+        
             if(indexPath.section == 0){
                 group = joinedChatRoomList[indexPath.row]
             }else{
@@ -282,7 +279,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             cell.groupParticipants.text = group.groupDescription
             cell.UID = group.guid
             cell.groupType = group.groupType.rawValue
-            
+    
         }else{}
         
         return cell
@@ -312,14 +309,9 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 let saveAction = UIAlertAction(title: "Join", style: UIAlertActionStyle.default, handler: { alert -> Void in
                     let passwordTextfield = alertController.textFields![0] as UITextField
                     CometChat.joinGroup(GUID: selectedCell.UID, groupType: .password, password: passwordTextfield.text, onSuccess: { (success) in
-                        
-                        let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
-                        let groupID:String = selectedCell.UID
-                        let topic: String = APP_ID + "_group_" + groupID + "_ios"
+    
                         DispatchQueue.main.async{
-                            Messaging.messaging().subscribe(toTopic: topic) { error in
-                                CometChatLog.print(items:"Subscribed to \(topic) topic")
-                            }
+                           
                             self.view.makeToast("Group Joined Sucessfully.")
                             self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
                             self.othersChatRoomList.remove(at: indexPath.row)
@@ -343,16 +335,9 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 
             }else{
                 CometChat.joinGroup(GUID: selectedCell.UID, groupType: .public, password: nil, onSuccess: { (success) in
-                    
-                    let APP_ID:String = AuthenticationDict?["APP_ID"] as! String
-                    let groupID:String = selectedCell.UID
-                    let topic: String = APP_ID + "_group_" + groupID + "_ios"
-                    DispatchQueue.main.async{
-                        Messaging.messaging().subscribe(toTopic: topic) { error in
-                            CometChatLog.print(items:"Subscribed to \(topic) topic")
-                        }
-                        self.view.makeToast("Group Joined Sucessfully.")
-                        
+
+                      DispatchQueue.main.async{
+                    self.view.makeToast("Group Joined Sucessfully.")
                         self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
                         self.othersChatRoomList.remove(at: indexPath.row)
                         tableView.deleteRows(at: [indexPath], with: .fade)
@@ -372,7 +357,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        if(indexPath.row == (joinedChatRoomList.count + othersChatRoomList.count) - 2){
+        if(indexPath.row == (joinedChatRoomList.count + othersChatRoomList.count) - 1) {
             self.fetchGroupList()
         }
     }

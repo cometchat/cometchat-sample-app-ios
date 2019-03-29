@@ -46,8 +46,6 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     var imagePicker = UIImagePickerController()
     var selectedItems = [YPMediaItem]()
     let selectedImageV = UIImageView()
-    let pickButton = UIButton()
-    let resultsButton = UIButton()
     var videoURL:URL!
     var audioURL:URL!
     var fileURL: URL?
@@ -112,11 +110,11 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         chatTableview.register(ChatImageMessageCell.self, forCellReuseIdentifier: imageCellID)
         chatTableview.register(ChatVideoMessageCell.self, forCellReuseIdentifier: videoCellID)
         let fileNib = UINib.init(nibName: "ChatFileMessageCell", bundle: nil)
-        self.chatTableview.register(fileNib, forCellReuseIdentifier: "fileCell")
+        self.chatTableview.register(fileNib, forCellReuseIdentifier: fileCellID)
         let audioNib  = UINib.init(nibName: "ChatAudioMessageCell", bundle: nil)
-        self.chatTableview.register(audioNib, forCellReuseIdentifier: "audioCell")
+        self.chatTableview.register(audioNib, forCellReuseIdentifier: audioCellID)
         let actionNib  = UINib.init(nibName: "ChatActionMessageCell", bundle: nil)
-        self.chatTableview.register(actionNib, forCellReuseIdentifier: "actionCell")
+        self.chatTableview.register(actionNib, forCellReuseIdentifier: actionCellID)
         
         //QickLookController
         
@@ -667,7 +665,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
                 var audioCell = ChatFileMessageCell()
                 
                 let mediaMessage = (messageData as? MediaMessage)!
-                audioCell = tableView.dequeueReusableCell(withIdentifier: "fileCell" , for: indexPath) as! ChatFileMessageCell
+                audioCell = tableView.dequeueReusableCell(withIdentifier: fileCellID , for: indexPath) as! ChatFileMessageCell
                 let filename: String = mediaMessage.url!.decodeUrl()!
                 let pathExtention = filename.pathExtension
                 let pathPrefix = filename.lastPathComponent
@@ -696,7 +694,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
                 var fileCell = ChatFileMessageCell()
                 
                 let mediaMessage = (messageData as? MediaMessage)!
-                fileCell = tableView.dequeueReusableCell(withIdentifier: "fileCell" , for: indexPath) as! ChatFileMessageCell
+                fileCell = tableView.dequeueReusableCell(withIdentifier: fileCellID , for: indexPath) as! ChatFileMessageCell
                 let filename: String = mediaMessage.url!.decodeUrl()!
                 let pathExtention = filename.pathExtension
                 let pathPrefix = filename.lastPathComponent
@@ -730,7 +728,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             
             var actionCell = ChatActionMessageCell()
             let actionMessage = (messageData as? ActionMessage)!
-            actionCell = tableView.dequeueReusableCell(withIdentifier: "actionCell" , for: indexPath) as! ChatActionMessageCell
+            actionCell = tableView.dequeueReusableCell(withIdentifier: actionCellID, for: indexPath) as! ChatActionMessageCell
             actionCell.actionMessageLabel.text = actionMessage.message
             actionCell.selectionStyle = .none
             return actionCell
@@ -739,7 +737,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             
             var actionCell = ChatActionMessageCell()
             let callMessage = (messageData as? Call)!
-            actionCell = tableView.dequeueReusableCell(withIdentifier: "actionCell" , for: indexPath) as! ChatActionMessageCell
+            actionCell = tableView.dequeueReusableCell(withIdentifier: actionCellID , for: indexPath) as! ChatActionMessageCell
             
             switch callMessage.callStatus{
                 
@@ -1274,9 +1272,6 @@ extension OneOnOneChatViewController : CometChatGroupDelegate {
             self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
         }
     }
-    
-    
-    
 }
 
 extension OneOnOneChatViewController : CometChatUserDelegate {

@@ -80,8 +80,8 @@ public class AMShimmer : NSObject {
     @objc
     public class func start(for tableView: UITableView) {
         tableView.visibleCells.forEach { search(view: $0) }
-        // tableView.isUserInteractionEnabled = true
-        // tableView.allowsSelection = false
+        tableView.isUserInteractionEnabled = true
+         tableView.allowsSelection = false
         isAnimating = true
         
     }

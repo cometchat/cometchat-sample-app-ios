@@ -30,9 +30,6 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     //Variable Declarations
     private var _blurView: UIVisualEffectView?
     var searchController:UISearchController!
-    var nameArray:[String]!
-    var imageArray:[UIImage]!
-    var statusArray:[String]!
     var usersArray = [User]()
     var userRequest = UsersRequest.UsersRequestBuilder(limit: 20).build()
     var buddyData:User!
@@ -46,7 +43,6 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         
         //Function Calling
         self.fetchUsersList()
-        
         oneOneOneTableView.reloadData()
         
         //Assigning Delegates
@@ -83,12 +79,11 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         // This Method fetch the users from the Server.
         userRequest.fetchNext(onSuccess: { (userList) in
             
-            for user in userList {
-                CometChatLog.print(items: "users are: \(String(describing: userList))")
-                self.usersArray.append(user)
+        if !userList.isEmpty{
+           self.usersArray.append(contentsOf: userList)
+           DispatchQueue.main.async(execute: { self.oneOneOneTableView.reloadData()
+           })
             }
-            DispatchQueue.main.async(execute: { self.oneOneOneTableView.reloadData()
-            })
         }) { (exception) in
             
             DispatchQueue.main.async(execute: {
@@ -251,7 +246,6 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         return cell
     }
     
-    //willDisplaycell
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if(indexPath.row == usersArray.count - 5){
