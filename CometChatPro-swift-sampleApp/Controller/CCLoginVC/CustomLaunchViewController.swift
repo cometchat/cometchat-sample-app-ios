@@ -3,7 +3,7 @@
 //  CometChatUI
 //
 //  Created by pushpsen airekar on 17/11/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit

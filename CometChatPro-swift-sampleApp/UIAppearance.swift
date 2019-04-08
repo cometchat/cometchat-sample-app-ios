@@ -1,9 +1,9 @@
 //
 //  UIAppearance.swift
-//  CometChatPulse-swift-sampleApp
+//  CometChatPro-swift-sampleApp
 //
-//  Created by Admin1 on 25/12/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Created by Pushpsen Airekar on 25/12/18.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import Foundation

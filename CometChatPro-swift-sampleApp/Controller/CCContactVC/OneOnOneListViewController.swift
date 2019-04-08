@@ -3,21 +3,13 @@
 //  CometChatUI
 //
 //  Created by pushpsen airekar on 18/11/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit
 import CometChatPro
 
 class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatUserDelegate, UISearchBarDelegate {
-    
-    func onUserOnline(user: User) {
-        
-    }
-    
-    func onUserOffline(user: User) {
-        
-    }
     
     //Outlets Declarations
     @IBOutlet weak var oneOneOneTableView: UITableView!
@@ -49,10 +41,26 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         CometChat.userdelegate = self
         oneOneOneTableView.delegate = self
         oneOneOneTableView.dataSource = self
-        // CometChat.userdelegate = self
     }
     
-    @objc func refresh(_ sender: Any) {
+    func onUserOnline(user: User) {
+        
+        if let row = self.usersArray.index(where: {$0.uid == user.uid}) {
+            usersArray[row] = user
+            let indexPath = IndexPath(row: row, section: 0)
+            oneOneOneTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func onUserOffline(user: User) {
+        if let row = self.usersArray.index(where: {$0.uid == user.uid}) {
+            usersArray[row] = user
+            let indexPath = IndexPath(row: row, section: 0)
+            oneOneOneTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    @objc func refresh(_ sender: Any){
         
         if(usersArray.isEmpty){
             fetchUsersList()
@@ -62,10 +70,10 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     
     override func viewWillAppear(_ animated: Bool) {
         
-        if(usersArray.isEmpty){
-            fetchUsersList()
-        }
-        
+//        if(usersArray.isEmpty){
+//            fetchUsersList()
+//        }
+   
         oneOneOneTableView.reloadData()
         
         //Function Calling
@@ -79,11 +87,10 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         // This Method fetch the users from the Server.
         userRequest.fetchNext(onSuccess: { (userList) in
             
-        if !userList.isEmpty{
            self.usersArray.append(contentsOf: userList)
            DispatchQueue.main.async(execute: { self.oneOneOneTableView.reloadData()
            })
-            }
+           
         }) { (exception) in
             
             DispatchQueue.main.async(execute: {
@@ -143,6 +150,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         // NavigationBar Buttons Appearance
         // notifyButton.setImage(UIImage(named: "bell.png"), for: .normal)
         createButton.setImage(UIImage(named: "new.png"), for: .normal)
+        createButton.isHidden = true
         moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
         
         // notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
@@ -225,19 +233,16 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
             cell.buddyName.text = buddyData.name
             
             //User Status:
-            cell.buddyStatus.text = buddyData.status
+             cell.buddyStatus.text = buddyData.status == .online ? "Online" : "Offline"
             cell.UID = buddyData.uid
             //User status Icon:
-            if(buddyData.status == "offline"){
-                cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "808080")
-            }else if(buddyData.status == "busy"){
-                cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "E45163")
-            }else if(buddyData.status == "away"){
-                cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "EBC04F")
-            }else if(buddyData.status == "online"){
-                cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "4AB680")
+            switch buddyData.status{
+                
+            case .online:
+                 cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "9ACD32")
+            case .offline:
+                cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "#F5C11F")
             }
-            
             let url  = NSURL(string: buddyData.avatar ?? "")
             cell.buddyAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
         }else{
@@ -246,9 +251,13 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         return cell
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if(indexPath.row == usersArray.count - 5){
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height {
             self.fetchUsersList()
         }
     }
@@ -256,6 +265,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     
     //didSelectRowAt indexPath
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        oneOneOneTableView.deselectRow(at: indexPath, animated: true)
         let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
@@ -365,6 +375,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         CCMoreViewController.hidesBottomBarWhenPushed = true
         
     }
+    
     
     //createContact button Pressed
     @IBAction func createContactPressed(_ sender: Any) {

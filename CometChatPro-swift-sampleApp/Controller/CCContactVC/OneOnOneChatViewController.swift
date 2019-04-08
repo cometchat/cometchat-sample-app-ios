@@ -3,7 +3,7 @@
 //  CCPulse-CometChatUI-ios-master
 //
 //  Created by pushpsen airekar on 02/12/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit
@@ -31,6 +31,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     @IBOutlet weak var chatInputView: UITextView!
     @IBOutlet weak var chatTableview: FastScrollTableView!
     @IBOutlet weak var micButton: UIButton!
+    @IBOutlet weak var recordingLabel: UILabel!
     
     // Variable Declarations
     var count = 10
@@ -58,11 +59,13 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     fileprivate let fileCellID = "fileCell"
     fileprivate let audioCellID = "audioCell"
     fileprivate let actionCellID = "actionCell"
-    
     var soundRecorder : AVAudioRecorder!
     var soundPlayer : AVAudioPlayer!
     var fileName: String = "audioFile1.m4a"
-    @IBOutlet weak var recordingLabel: UILabel!
+    var containView:UIView!
+    var typingIndicator: TypingIndicator!
+    var animation:CAKeyframeAnimation!
+    
     
     private var messageRequest:MessagesRequest!
     var docController: UIDocumentInteractionController!
@@ -76,6 +79,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
@@ -143,6 +147,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         do{
             try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, mode: AVAudioSessionModeDefault, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
         }catch{CometChatLog.print(items:"\(error)")}
+        
     }
     
     
@@ -268,6 +273,11 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
         messageReq.fetchPrevious(onSuccess: { (messages) in
             
+            for message in messages!{
+               if message.deliveredAt != 0 && message.readAt != 0{
+                    CometChat.markMessageAsRead(message: message)
+                }
+            }
             CometChatLog.print(items:"messages fetchPrevious: \(String(describing: messages))")
             completionHandler(messages,nil)
             
@@ -398,7 +408,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
         
         //BuddyAvtar Apperance
-        let containView = UIView(frame: CGRect(x: -10 , y: 0, width: 38, height: 38))
+        containView = UIView(frame: CGRect(x: -10 , y: 0, width: 38, height: 38))
         containView.backgroundColor = UIColor.white
         containView.layer.cornerRadius = 19
         containView.layer.masksToBounds = true
@@ -454,10 +464,20 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         titleView.isUserInteractionEnabled = true
         titleView.addGestureRecognizer(tapOnTitleView)
         
+        
+        //TypingIndicator:
+        if(isGroup == "1"){
+            typingIndicator = TypingIndicator(receiverID: buddyUID, receiverType: .group)
+        }else{
+            typingIndicator = TypingIndicator(receiverID: buddyUID, receiverType: .user)
+        }
     }
     
     @objc func backButtonPressed(){
         navigationController?.popViewController(animated: true)
+        CometChat.endTyping(indicator: typingIndicator)
+        let oneOne = OneOnOneChatViewController()
+        oneOne.removeFromParentViewController()
         
     }
     
@@ -591,17 +611,26 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             chatInputView.text = ""
             chatInputView.textColor = UIColor.black
         }
+        
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        
+
         if chatInputView.text == ""{
             chatInputView.text = "Type a message..."
             chatInputView.textColor = UIColor.lightGray
+            CometChat.endTyping(indicator: typingIndicator)
         }
     }
+
     
+    func textViewDidChange(_ textView: UITextView) {
+
+        CometChat.startTyping(indicator: typingIndicator)
+ 
+    }
     
+  
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -700,7 +729,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
                 let pathPrefix = filename.lastPathComponent
                 fileCell.userNameLabel.text = (mediaMessage.sender?.name)! + " :"
                 fileCell.fileNameLabel.text = pathPrefix
-                
+                fileCell.fileIcon.image = UIImage(named: "file.png")
                 let date = Date(timeIntervalSince1970: TimeInterval(mediaMessage.sentAt))
                 let dateFormatter1 = DateFormatter()
                 dateFormatter1.dateFormat = "HH:mm:a"
@@ -776,22 +805,17 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             
         case .image:
             
-            let imageMessage = (messageData as? MediaMessage)
-            let url = NSURL.fileURL(withPath:imageMessage!.url!.decodeUrl()!)
-            previewURL = imageMessage!.url!.decodeUrl()!
-            let fileExtention = url.pathExtension
-            let pathPrefix = url.lastPathComponent
-            let fileName = URL(fileURLWithPath: pathPrefix).deletingPathExtension().lastPathComponent
-            let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension(fileExtention)
-            previewQL.reloadData()
-            previewQL.currentPreviewItemIndex = indexPath.row
-            show(previewQL, sender: nil)
+            let imageCell:ChatImageMessageCell = tableView.cellForRow(at: indexPath) as! ChatImageMessageCell
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let profileAvtarViewController = storyboard.instantiateViewController(withIdentifier: "ccprofileAvtarViewController") as! CCprofileAvtarViewController
+            navigationController?.pushViewController(profileAvtarViewController, animated: true)
+            profileAvtarViewController.profileAvtar =  imageCell.chatImage.image
+            profileAvtarViewController.hidesBottomBarWhenPushed = true
             
         case .video:
             
             let videoMessage = (messageData as? MediaMessage)
-            let videoURL = URL(string: (videoMessage?.url!.decodeUrl()!)!)
+            let videoURL = URL(string: (videoMessage?.url!.decodeUrl() ?? ""))
             let player = AVPlayer(url: videoURL!)
             let playerViewController = AVPlayerViewController()
             playerViewController.player = player
@@ -800,29 +824,31 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             }
         case .audio:
             
+          
             let audioMessage = (messageData as? MediaMessage)
-            let url = NSURL.fileURL(withPath:audioMessage!.url!.decodeUrl()!)
+            let url = NSURL.fileURL(withPath:audioMessage!.url!.decodeUrl() ?? "")
             previewURL = audioMessage!.url!.decodeUrl()!
             let fileExtention = url.pathExtension
             let pathPrefix = url.lastPathComponent
             let fileName = URL(fileURLWithPath: pathPrefix).deletingPathExtension().lastPathComponent
             let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension(fileExtention)
-            previewQL.reloadData()
+            previewQL.refreshCurrentPreviewItem()
             previewQL.currentPreviewItemIndex = indexPath.row
             show(previewQL, sender: nil)
             
-        case .file:
             
+        case .file:
+           
             let fileMessage = (messageData as? MediaMessage)
-            let url = NSURL.fileURL(withPath:fileMessage!.url!.decodeUrl()!)
+            let url = NSURL.fileURL(withPath:fileMessage!.url!.decodeUrl() ?? "")
             previewURL = fileMessage!.url!.decodeUrl()!
             let fileExtention = url.pathExtension
             let pathPrefix = url.lastPathComponent
             let fileName = URL(fileURLWithPath: pathPrefix).deletingPathExtension().lastPathComponent
             let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension(fileExtention)
-            previewQL.reloadData()
+            previewQL.refreshCurrentPreviewItem()
             previewQL.currentPreviewItemIndex = indexPath.row
             show(previewQL, sender: nil)
             
@@ -1208,7 +1234,41 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
             self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
         }
     }
+        
+    func onTypingStarted(_ typingDetails : TypingIndicator) {
+        
+        animation = CAKeyframeAnimation(keyPath: "transform.scale")
+        animation.values = [1.0, 1.2, 1.0]
+        animation.keyTimes = [0, 0.5, 1]
+        animation.duration = 1.5
+        animation.repeatCount = Float.infinity
+            // received typing indicator
+        switch typingDetails.receiverType {
+        case .user:
+            buddyStatus.text = "Typing..."
+            containView.layer.add(animation, forKey: nil)
+            
+        case .group:
+            buddyStatus.text = "\(String(describing: typingDetails.sender?.name))Typing..."
+            containView.layer.add(animation, forKey: nil)
+        }
+            print("Typing started received successfully")
+    }
+        
+    func onTypingEnded(_ typingDetails : TypingIndicator) {
+            
+            // received typing indicator
+        switch typingDetails.receiverType {
+        case .user:
+            buddyStatus.text = "Online"
+            containView.layer.removeAllAnimations()
+        case .group:
+            buddyStatus.text = ""
+            containView.layer.removeAllAnimations()
+        }
+    }
 }
+
 
 extension OneOnOneChatViewController : CometChatGroupDelegate {
     
@@ -1278,7 +1338,7 @@ extension OneOnOneChatViewController : CometChatUserDelegate {
     
     func onUserOnline(user: User) {
         if user.uid == buddyUID{
-            if user.status == "online" {
+            if user.status == .online {
                 buddyStatus.text = "Online"
             }
         }
@@ -1287,7 +1347,7 @@ extension OneOnOneChatViewController : CometChatUserDelegate {
     func onUserOffline(user: User) {
         
         if user.uid == buddyUID{
-            if user.status == "offline" {
+            if user.status == .offline {
                 buddyStatus.text = "Offline"
             }
         }

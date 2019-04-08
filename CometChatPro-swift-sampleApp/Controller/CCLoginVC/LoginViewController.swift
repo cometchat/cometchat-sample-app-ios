@@ -2,8 +2,8 @@
 //  LoginViewController.swift
 //  CometChatUI
 //
-//  Created by Admin1 on 16/11/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Created by Pushpsen Airekar on 16/11/18.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit
@@ -30,6 +30,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     //Variable Declarations
     var cometchat:CometChat!
     let modelName = UIDevice.modelName
+   
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
@@ -118,13 +119,6 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             
             CometChat.login(UID: trimmedUID, apiKey: API_KEY, onSuccess: { (current_user) in
                 
-                var loggedInUserInfo:Dictionary = [String:Any]()
-                let username:String = current_user.name ?? ""
-                let userAvtar:String = current_user.avatar ?? ""
-                let userStatus:String = current_user.status ?? ""
-
-                loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
-                UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
                 //UIButton State Change
                 self.loginButton.setTitle("Login Sucessful", for: .normal)
                 self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
@@ -158,13 +152,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         CometChat.login(UID: "superhero1", apiKey: API_KEY, onSuccess: { (current_user) in
             self.loginButton.setTitle("Login Sucessful", for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
-            var loggedInUserInfo:Dictionary = [String:Any]()
-            let username:String = current_user.name ?? ""
-            let userAvtar:String = current_user.avatar ?? ""
-            let userStatus:String = current_user.status ?? ""
-    
-            loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
-            UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
+           
             //UIButton State Change
             self.loginButton.setTitle("Login Sucessful", for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
@@ -195,13 +183,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         CometChat.login(UID: "superhero2", apiKey: API_KEY, onSuccess: { (current_user) in
             self.loginButton.setTitle("Login Sucessful", for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
-            var loggedInUserInfo:Dictionary = [String:Any]()
-            let username:String = current_user.name ?? ""
-            let userAvtar:String = current_user.avatar ?? ""
-            let userStatus:String = current_user.status ?? ""
-     
-            loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
-            UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
+            
             //UIButton State Change
             self.loginButton.setTitle("Login Sucessful", for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
@@ -233,13 +215,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         CometChat.login(UID: "superhero3", apiKey: API_KEY, onSuccess: { (current_user) in
             self.loginButton.setTitle("Login Sucessful", for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
-            var loggedInUserInfo:Dictionary = [String:Any]()
-            let username:String = current_user.name ?? ""
-            let userAvtar:String = current_user.avatar ?? ""
-            let userStatus:String = current_user.status ?? ""
             
-            loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
-            UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
             //UIButton State Change
             self.loginButton.setTitle("Login Sucessful", for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
@@ -262,6 +238,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         
     }
     
+    
     @objc func LoginWithSuperHero4(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let API_KEY:String = AuthenticationDict?["API_KEY"] as! String
@@ -270,13 +247,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         CometChat.login(UID: "superhero4", apiKey: API_KEY, onSuccess: { (current_user) in
             self.loginButton.setTitle("Login Sucessful", for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
-            var loggedInUserInfo:Dictionary = [String:Any]()
-            let username:String = current_user.name ?? ""
-            let userAvtar:String = current_user.avatar ?? ""
-            let userStatus:String = current_user.status ?? ""
-     
-            loggedInUserInfo = ["username":username,"userAvtar":userAvtar,"userStatus":userStatus]
-            UserDefaults.standard.set(loggedInUserInfo, forKey: "LoggedInUserInfo")
+            
             //UIButton State Change
             self.loginButton.setTitle("Login Sucessful", for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
@@ -284,12 +255,12 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             UserDefaults.standard.set(current_user.uid, forKey: "LoggedInUserUID")
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                
+
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let embeddedViewContrroller = storyboard.instantiateViewController(withIdentifier: "embeddedViewContrroller") as! EmbeddedViewController
                 self.navigationController?.pushViewController(embeddedViewContrroller, animated: true)
             }
-            
+ 
         }) { (error) in
             DispatchQueue.main.async { [unowned self] in
                 self.loginButton.backgroundColor = UIColor.init(hexFromString: "FF0000")

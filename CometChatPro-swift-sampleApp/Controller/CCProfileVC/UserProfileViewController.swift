@@ -1,9 +1,9 @@
 //
 //  UserProfileViewController.swift
-//  CometChatPulse-swift-sampleApp
+//  CometChatPro-swift-sampleApp
 //
 //  Created by pushpsen airekar on 08/12/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit
@@ -45,6 +45,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     var userInfo:[String:Any]!
     var url: NSURL!
     var data: NSData!
+    var user:User!
     typealias CompletionHandler = (_ success:Bool) -> Void
     var isViewMyProfile:Bool!
     var groupMemberRequest:GroupMembersRequest!
@@ -55,11 +56,19 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         if isDisplayType == "MoreSettingViewProfile"{
-            userProfileAvtar.image = #imageLiteral(resourceName: "default_user")
-            userInfo = UserDefaults.standard.object(forKey: "LoggedInUserInfo") as? [String : Any]
-            getUserName = userInfo["username"] as? String
-            getUserStatus = "Online"
-            url = NSURL(string: userInfo?["userAvtar"] as! String)
+            
+            user = CometChat.getLoggedInUser()
+            getUserName = user.name
+           
+            switch user.status {
+                
+            case .online:
+                getUserStatus = "Online"
+            case .offline:
+                getUserStatus = "Online"
+            }
+            
+            url = NSURL(string: user.avatar ?? "")
             userProfileAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
         }
         
@@ -127,8 +136,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         backButtonImage.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         let backBTN = UIBarButtonItem(image: backButtonImage.image,
                                       style: .plain,
-                                      target: navigationController,
-                                      action: #selector(UINavigationController.popViewController(animated:)))
+                                      target: self,
+                                      action: #selector(backButtonPressed))
         navigationItem.leftBarButtonItem = backBTN
         backBTN.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
@@ -167,6 +176,10 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         userProfileTableView.tintColor = UIColor.clear
         userProfileTableView.showsHorizontalScrollIndicator = false
         userProfileTableView.showsVerticalScrollIndicator = false
+    }
+    
+    @objc func backButtonPressed(){
+        navigationController?.popViewController(animated: true)
     }
     
     
@@ -277,7 +290,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
+        userProfileTableView.deselectRow(at: indexPath, animated: true)
         switch profileItems[indexPath.row]
         {
         case UserProfileCell.VIEW_MEMBER_CELL:
@@ -286,19 +299,31 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             self.audioCallAction()
         case UserProfileCell.VIDEO_CALL_CELL:
             self.videoCallAction()
-        case UserProfileCell.MY_STATUS_MESSAGE_CELL:break
-        case UserProfileCell.MY_SET_STATUS_CELL:break
         case UserProfileCell.ADD_MEMBER_CELL:break
         case UserProfileCell.UNBAN_MEMBERS_CELL:
             self.UnbanUsers()
         case UserProfileCell.RENAME_GROUPS_CELL:break
         case UserProfileCell.LEAVE_GROUP_CELL:
             self.leaveGroup()
-        case UserProfileCell.DELETE_GROUP_CELL:
-            self.deleteGroup()
+        case UserProfileCell.MY_SET_STATUS_CELL:
+            self.setStatus()
+        case UserProfileCell.MY_STATUS_MESSAGE_CELL:
+            self.statusMessage()
+            
+            
         default: break
             
         }
+    }
+    
+    func setStatus(){
+        
+         DispatchQueue.main.async { self.view.makeToast("This feature has not been added yet.")}
+    }
+    
+    func statusMessage(){
+        
+          DispatchQueue.main.async { self.view.makeToast("This feature has not been added yet.")}
     }
     
     func audioCallAction(){
@@ -421,7 +446,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     func fetchGroupMembers(guid:String,  success completionHandler: @escaping CompletionHandler){
         
         groupMember = [GroupMember]()
-        groupMemberRequest = GroupMembersRequest.GroupMembersRequestBuilder(guid: guid).setLimit(limit: 20).build()
+        groupMemberRequest = GroupMembersRequest.GroupMembersRequestBuilder(guid: guid).set(limit: 20).build()
         groupMemberRequest.fetchNext(onSuccess: { (groupMember) in
             
             for member in groupMember {
@@ -441,7 +466,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     func getUnbanGroupMembers(guid:String,  success completionHandler: @escaping CompletionHandler){
         
         groupMember = [GroupMember]()
-        let bannedGroupMembersRequest = BannedGroupMembersRequest.BannedGroupMembersRequestBuilder(guid: guid).setLimit(limit: 20).build()
+        let bannedGroupMembersRequest = BannedGroupMembersRequest.BannedGroupMembersRequestBuilder(guid: guid).set(limit: 20).build()
         
         bannedGroupMembersRequest.fetchNext(onSuccess: { (groupMembers) in
             

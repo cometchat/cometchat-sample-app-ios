@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  CometChatUI
 //
-//  Created by Admin1 on 15/11/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Created by Pushpsen Airekar on 15/11/18.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit

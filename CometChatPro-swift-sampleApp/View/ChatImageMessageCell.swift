@@ -1,8 +1,9 @@
 //
 //  ChatMessageCell.swift
-//  ImageChatApp
+//  CometChatPro-swift-sampleApp
 //
-//  Copyright © 2018 MacDevs. All rights reserved.
+//  Created by Pushpsen Airekar on 27/12/18.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit
@@ -17,6 +18,7 @@ class ChatImageMessageCell: UITableViewCell {
     let userNameLabel = UILabel()
     let messageTimeLabel = UILabel()
     let userAvatarImageView = UIImageView()
+    let readRecipts = UIImageView()
     private var aleadingConstraint: NSLayoutConstraint!
     private var atrailingConstraint: NSLayoutConstraint!
     var timeLabelLeadingConstraint : NSLayoutConstraint!
@@ -52,6 +54,7 @@ class ChatImageMessageCell: UITableViewCell {
                 timeLabelLeadingConstraint.isActive = false
                 timeLabelTrailingConstraint.isActive = true
                 userAvatarImageView.isHidden = true
+                readRecipts.isHidden = false
             } else {
                 userAvatarImageView.isHidden = false
                 aleadingConstraint.isActive = true
@@ -59,6 +62,7 @@ class ChatImageMessageCell: UITableViewCell {
                 timeLabelLeadingConstraint.isActive = true
                 timeLabelTrailingConstraint.isActive = false
                 userNameLabel.isHidden = false
+                readRecipts.isHidden = true
             }
         }
     }
@@ -78,6 +82,7 @@ class ChatImageMessageCell: UITableViewCell {
         addSubview(bubbleBackgroundView)
         addSubview(messageTimeLabel)
         addSubview(chatImage)
+        addSubview(readRecipts)
         
         chatImage.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -115,6 +120,14 @@ class ChatImageMessageCell: UITableViewCell {
         atrailingConstraint = chatImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
         
         addSubview(userAvatarImageView)
+        
+        readRecipts.translatesAutoresizingMaskIntoConstraints = false
+        readRecipts.widthAnchor.constraint(lessThanOrEqualToConstant: 20).isActive = true
+        readRecipts.heightAnchor.constraint(lessThanOrEqualToConstant: 20).isActive = true
+        readRecipts.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -3).isActive = true
+        readRecipts.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -13).isActive = true
+        readRecipts.clipsToBounds = true
+        readRecipts.image = #imageLiteral(resourceName: "readReceiptDelivered")
         
         userAvatarImageView.translatesAutoresizingMaskIntoConstraints = false
         userAvatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 13).isActive = true

@@ -20,6 +20,7 @@ class ChatVideoMessageCell: UITableViewCell {
     let playButton = UIButton()
     let messageTimeLabel = UILabel()
     let userAvatarImageView = UIImageView()
+    let readRecipts = UIImageView()
     private var aleadingConstraint: NSLayoutConstraint!
     private var atrailingConstraint: NSLayoutConstraint!
     var timeLabelLeadingConstraint : NSLayoutConstraint!
@@ -58,6 +59,7 @@ class ChatVideoMessageCell: UITableViewCell {
                 timeLabelLeadingConstraint.isActive = false
                 timeLabelTrailingConstraint.isActive = true
                 userAvatarImageView.isHidden = true
+                readRecipts.isHidden = false
                 
             } else {
                 userAvatarImageView.isHidden = false
@@ -66,6 +68,7 @@ class ChatVideoMessageCell: UITableViewCell {
                 timeLabelLeadingConstraint.isActive = true
                 timeLabelTrailingConstraint.isActive = false
                 userNameLabel.isHidden = false
+                readRecipts.isHidden = true
             }
         }
     }
@@ -85,7 +88,7 @@ class ChatVideoMessageCell: UITableViewCell {
         addSubview(bubbleBackgroundView)
         addSubview(messageTimeLabel)
         addSubview(chatImage)
-        //  addSubview(playButton)
+        addSubview(readRecipts)
         
         chatImage.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -137,7 +140,13 @@ class ChatVideoMessageCell: UITableViewCell {
         userAvatarImageView.image = UIImage(named: "default_user")
         
         // user avatar constrains //
-        
+        readRecipts.translatesAutoresizingMaskIntoConstraints = false
+        readRecipts.widthAnchor.constraint(lessThanOrEqualToConstant: 20).isActive = true
+        readRecipts.heightAnchor.constraint(lessThanOrEqualToConstant: 20).isActive = true
+        readRecipts.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -3).isActive = true
+        readRecipts.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -13).isActive = true
+        readRecipts.clipsToBounds = true
+        readRecipts.image = #imageLiteral(resourceName: "readReceiptSent")
         
         // time label constrains //
         messageTimeLabel.translatesAutoresizingMaskIntoConstraints = false

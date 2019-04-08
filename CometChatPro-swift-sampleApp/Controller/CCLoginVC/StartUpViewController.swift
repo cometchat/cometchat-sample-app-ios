@@ -2,13 +2,15 @@
 //  ViewController.swift
 //  CometChatUI
 //
-//  Created by Admin1 on 15/11/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Created by Pushpsen Airekar on 15/11/18.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit
+import SPPermission
 
-class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextFieldDelegate{
+
+class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextFieldDelegate, SPPermissionDialogDelegate{
 
     // Outlets Declarations
     @IBOutlet weak var swipeUpLbel: UILabel!
@@ -22,19 +24,24 @@ class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextField
     var logoImage: UIImage!
     var logoImageView:UIImageView!
     let modelName = UIDevice.modelName
+    var isFirstTime:Bool!
 
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-       
+        
         //Function Calling
+        if UIApplication.isFirstLaunch(){
+            SPPermission.Dialog.request(with: [.camera, .photoLibrary, .microphone], on: self,delegate: self,dataSource: self)
+        }
+        
         self.hideKeyboardWhenTappedAround()
         self.handleStartUpVCApperance()
         self.handleBottomView()
         self.handleAnimations()
         self.handleLogoDistance()
+        
     }
     
     func handleStartUpVCApperance() {
@@ -145,6 +152,60 @@ class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextField
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         bottomController?.viewWillTransition(to: size, with: coordinator)
+    }
+}
+
+extension startUpViewController: SPPermissionDialogColorSource{
+    
+    var baseColor: UIColor {
+        return UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
+    }
+    
+    var blackColor: UIColor {
+        return UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
+    }
+}
+
+extension startUpViewController: SPPermissionDialogDataSource {
+    
+    var dialogComment: String {
+        return "CometChatPro Sample App reqires above permissions to perform the necessory actions."
+    }
+    
+    var dialogTitle: String {
+        return "COMETCHAT PRO"
+    }
+    
+    func image(for permission: SPPermissionType) -> UIImage? {
+        
+        switch permission{
+            
+        case .camera:break
+
+        case .photoLibrary: break
+            
+        case .notification:break
+            
+        case .microphone:break
+            
+        case .calendar:break
+            
+        case .contacts:break
+            
+        case .reminders:break
+            
+        case .speech:break
+            
+        case .locationWhenInUse:break
+            
+        case .locationAlwaysAndWhenInUse:break
+            
+        case .motion:break
+            
+        case .mediaLibrary:break
+            
+        }
+         return nil
     }
 }
 

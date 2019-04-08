@@ -2,8 +2,8 @@
 //  NavigationViewController.swift
 //  CometChatPro-swift-sampleApp
 //
-//  Created by Admin1 on 18/02/19.
-//  Copyright © 2019 Admin1. All rights reserved.
+//  Created by Pushpsen Airekar on 18/02/19.
+//  Copyright © 2019 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit

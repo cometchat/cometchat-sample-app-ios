@@ -12,15 +12,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OneOnOneChatViewController" customModule="CometChatPro_swift_sampleApp" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="fileCell" selectionStyle="default" indentationWidth="10" rowHeight="118" id="KGk-i7-Jjw" customClass="ChatFileMessageCell" customModule="CometChatPro_swift_sampleApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="fileCell" selectionStyle="default" indentationWidth="10" rowHeight="104" id="KGk-i7-Jjw" customClass="ChatFileMessageCell" customModule="CometChatPro_swift_sampleApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="117.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="103.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yj-q9-DjK">
-                        <rect key="frame" x="30" y="24" width="230" height="70"/>
+                        <rect key="frame" x="30" y="17" width="230" height="70"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="file" translatesAutoresizingMaskIntoConstraints="NO" id="52H-98-wD1">
                                 <rect key="frame" x="8" y="5" width="50" height="60"/>
@@ -67,7 +67,7 @@
                         </constraints>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_user" translatesAutoresizingMaskIntoConstraints="NO" id="HHS-7b-HMt">
-                        <rect key="frame" x="4" y="72" width="22" height="22"/>
+                        <rect key="frame" x="4" y="65" width="22" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="0Au-rs-k8l"/>
                             <constraint firstAttribute="width" constant="22" id="EJM-O3-BUs"/>
@@ -79,7 +79,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:11 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Hb-qt-CHm">
-                        <rect key="frame" x="262" y="82" width="56" height="12"/>
+                        <rect key="frame" x="262" y="75" width="56" height="12"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="56" id="1qj-Zf-1X5"/>
                         </constraints>
@@ -88,13 +88,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSd-JG-7eb">
-                        <rect key="frame" x="30" y="5" width="230" height="17"/>
+                        <rect key="frame" x="30" y="2" width="230" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:11 AM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hW1-dO-hhN">
-                        <rect key="frame" x="-30" y="82" width="56" height="12"/>
+                        <rect key="frame" x="-30" y="75" width="56" height="12"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="56" id="fWa-R6-XVj"/>
                         </constraints>
@@ -102,21 +102,30 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="readReceiptDelivered" translatesAutoresizingMaskIntoConstraints="NO" id="b5y-wc-nP8">
+                        <rect key="frame" x="266" y="77" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="CR6-C3-8yY"/>
+                            <constraint firstAttribute="width" constant="10" id="fiR-OW-PXS"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="HHS-7b-HMt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="8PI-kA-V2B"/>
                     <constraint firstItem="HHS-7b-HMt" firstAttribute="bottom" secondItem="6yj-q9-DjK" secondAttribute="bottom" id="GUR-AM-zgL"/>
+                    <constraint firstItem="b5y-wc-nP8" firstAttribute="leading" secondItem="6yj-q9-DjK" secondAttribute="trailing" constant="6" id="IeJ-GD-Yt1"/>
                     <constraint firstItem="hW1-dO-hhN" firstAttribute="bottom" secondItem="6yj-q9-DjK" secondAttribute="bottom" id="KG4-Jm-bNI"/>
                     <constraint firstItem="6yj-q9-DjK" firstAttribute="leading" secondItem="HHS-7b-HMt" secondAttribute="trailing" constant="4" id="NAE-WT-kOB"/>
                     <constraint firstAttribute="trailing" secondItem="6Hb-qt-CHm" secondAttribute="trailing" constant="2" id="OQN-er-fG8"/>
                     <constraint firstItem="hW1-dO-hhN" firstAttribute="trailing" secondItem="HHS-7b-HMt" secondAttribute="trailing" id="Pej-nQ-YXX"/>
                     <constraint firstItem="MSd-JG-7eb" firstAttribute="leading" secondItem="6yj-q9-DjK" secondAttribute="leading" id="USR-cO-SrB"/>
-                    <constraint firstItem="MSd-JG-7eb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Xq6-tU-Psv"/>
+                    <constraint firstItem="MSd-JG-7eb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="Xq6-tU-Psv"/>
                     <constraint firstItem="6Hb-qt-CHm" firstAttribute="leading" secondItem="6yj-q9-DjK" secondAttribute="trailing" constant="2" id="YZG-hw-8yj"/>
                     <constraint firstItem="MSd-JG-7eb" firstAttribute="trailing" secondItem="6yj-q9-DjK" secondAttribute="trailing" id="ixq-hv-gtX"/>
                     <constraint firstItem="6yj-q9-DjK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lc3-ew-0VB"/>
                     <constraint firstItem="6Hb-qt-CHm" firstAttribute="bottom" secondItem="6yj-q9-DjK" secondAttribute="bottom" id="lnH-fg-rIr"/>
-                    <constraint firstItem="6yj-q9-DjK" firstAttribute="firstBaseline" secondItem="MSd-JG-7eb" secondAttribute="baseline" constant="5" id="rK2-Ie-jHN"/>
+                    <constraint firstItem="6yj-q9-DjK" firstAttribute="firstBaseline" secondItem="MSd-JG-7eb" secondAttribute="baseline" constant="2" id="rK2-Ie-jHN"/>
+                    <constraint firstItem="b5y-wc-nP8" firstAttribute="bottom" secondItem="6yj-q9-DjK" secondAttribute="bottom" id="sde-lw-mGB"/>
                     <constraint firstItem="6yj-q9-DjK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="tH7-4g-Czx"/>
                 </constraints>
             </tableViewCellContentView>
@@ -128,6 +137,7 @@
                 <outlet property="fileMessageViewTrailingConstrant" destination="YZG-hw-8yj" id="YYv-O2-qN0"/>
                 <outlet property="fileNameLabel" destination="CIf-56-qCA" id="UvT-Pk-HKe"/>
                 <outlet property="fileTypeLabel" destination="wCV-b5-dFY" id="gBq-2b-EX9"/>
+                <outlet property="readReceipts" destination="b5y-wc-nP8" id="5qN-9Y-W7s"/>
                 <outlet property="timeLabel" destination="6Hb-qt-CHm" id="TML-0B-9j1"/>
                 <outlet property="timeLabel1" destination="hW1-dO-hhN" id="fu6-w5-UjK"/>
                 <outlet property="timeLabelTrailingConstraints" destination="OQN-er-fG8" id="2nJ-ki-TiN"/>
@@ -135,11 +145,12 @@
                 <outlet property="userAvtar" destination="HHS-7b-HMt" id="ICC-K9-lsg"/>
                 <outlet property="userNameLabel" destination="MSd-JG-7eb" id="4oz-KF-lD0"/>
             </connections>
-            <point key="canvasLocation" x="299" y="156"/>
+            <point key="canvasLocation" x="297.60000000000002" y="148.42578710644679"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="default_user" width="612" height="612"/>
         <image name="file" width="36" height="36"/>
+        <image name="readReceiptDelivered" width="10" height="10"/>
     </resources>
 </document>

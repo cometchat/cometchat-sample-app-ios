@@ -1,9 +1,9 @@
 //
 //  ChatTextMessageCell.swift
-//  CometChatPulse-swift-sampleApp
+//  CometChatPro-swift-sampleApp
 //
-//  Created by Jeet Kapadia on 27/12/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Created by Pushpsen Airekar on 27/12/18.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit
@@ -19,11 +19,13 @@ class ChatTextMessageCell: UITableViewCell {
     let messageBackgroundView = UIView()
     let messageTimeLabel = UILabel()
     let userAvatarImageView = UIImageView()
+    let readRecipts = UIImageView()
     var messageLabelLeadingConstraint : NSLayoutConstraint!
     var messageLabelTrailingConstraint : NSLayoutConstraint!
     var timeLabelLeadingConstraint : NSLayoutConstraint!
     var timeLabelTrailingConstraint : NSLayoutConstraint!
     var enableOutGoingConstraintForbubble = Bool()
+    
     
     var chatMessage : TextMessage! {
         didSet{
@@ -37,6 +39,9 @@ class ChatTextMessageCell: UITableViewCell {
             dateFormatter1.timeZone = NSTimeZone.local
             let dateString : String = dateFormatter1.string(from: date)
             messageTimeLabel.text =  dateString
+            
+            readRecipts.image = #imageLiteral(resourceName: "readReceiptDelivered")
+            
             if(chatMessage.sender?.avatar != ""){
                 url = NSURL(string: ((chatMessage.sender?.avatar) ?? nil) ?? " ")
                 userAvatarImageView.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
@@ -52,7 +57,7 @@ class ChatTextMessageCell: UITableViewCell {
                 userNameLabel.textColor = UIColor.darkGray
                 userAvatarImageView.isHidden = true
                 userNameLabel.isHidden = true
-                
+                readRecipts.isHidden = false
                 switch AppAppearance{
                     
                 case .AzureRadiance:
@@ -77,7 +82,7 @@ class ChatTextMessageCell: UITableViewCell {
                 }
                 
             }else {
-                
+                readRecipts.isHidden = true
                 messageLabelLeadingConstraint.isActive = true
                 messageLabelTrailingConstraint.isActive = false
                 timeLabelTrailingConstraint.isActive = false
@@ -130,9 +135,19 @@ class ChatTextMessageCell: UITableViewCell {
         addSubview(messageBackgroundView)
         addSubview(messageLabel)
         addSubview(messageTimeLabel)
+        addSubview(readRecipts)
         
         messageLabel.backgroundColor = UIColor.clear
         messageLabel.numberOfLines = 0
+        
+        readRecipts.translatesAutoresizingMaskIntoConstraints = false
+        readRecipts.widthAnchor.constraint(lessThanOrEqualToConstant: 20).isActive = true
+        readRecipts.heightAnchor.constraint(lessThanOrEqualToConstant: 20).isActive = true
+        readRecipts.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -3).isActive = true
+        readRecipts.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3).isActive = true
+        readRecipts.clipsToBounds = true
+        
+       
         
         //Setting Constraints for MessageLabel
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -147,14 +162,13 @@ class ChatTextMessageCell: UITableViewCell {
         
         messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15).isActive = true
         messageLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
-        
         messageBackgroundView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -12).isActive = true
         messageBackgroundView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -12).isActive = true
         messageBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant:12).isActive = true
         messageBackgroundView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 12).isActive = true
         
         messageLabelLeadingConstraint =  messageLabel.leadingAnchor.constraint(equalTo: userAvatarImageView.trailingAnchor, constant: 17)
-        messageLabelTrailingConstraint = messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+        messageLabelTrailingConstraint = messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
         
         messageTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         timeLabelLeadingConstraint = messageTimeLabel.leadingAnchor.constraint(equalTo: messageBackgroundView.trailingAnchor, constant: 5)
@@ -172,6 +186,8 @@ class ChatTextMessageCell: UITableViewCell {
         userAvatarImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 25).isActive = true
         userAvatarImageView.clipsToBounds = true
         userAvatarImageView.layer.cornerRadius = 12.5
+        
+        
     }
     
     

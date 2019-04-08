@@ -2,8 +2,8 @@
 //  ChatFileMessageCell.swift
 //  CometChatPro-swift-sampleApp
 //
-//  Created by pushpsen airekar on 25/02/19.
-//  Copyright © 2019 Admin1. All rights reserved.
+//  Created by Pushpsen Airekar on 27/12/18.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit
@@ -20,6 +20,7 @@ class ChatFileMessageCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var timeLabel1: UILabel!
+    @IBOutlet weak var readReceipts: UIImageView!
     
     // NSLayoutConstraints Declarations
     @IBOutlet weak var fileMessageViewTrailingConstrant: NSLayoutConstraint!
@@ -74,7 +75,7 @@ class ChatFileMessageCell: UITableViewCell {
                 }
             } else {
                 userAvtar.isHidden = false
-                
+                timeLabel1.isHidden = true
                 switch AppAppearance{
                     
                 case .AzureRadiance:
@@ -138,14 +139,18 @@ class ChatFileMessageCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         if(isSelf == true){
+            readReceipts.isHidden = false
             userNameLabel.isHidden = true
-            timeLabel.isHidden = true
             timeLabelWidthConstraint.constant = 0
             timeLabelTrailingConstraints.constant = 10
-            fileMessageViewTrailingConstrant.constant = 0
+            fileMessageViewTrailingConstrant.constant = 10
             //fileMessageView.widthConstraint?.constant = 230
             fileMessageViewLeadingConstraint.constant = 65
             //timeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
+        }else{
+            readReceipts.isHidden = true
+            userNameLabel.isHidden = false
+        
         }
         
         

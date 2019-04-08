@@ -2,8 +2,8 @@
 //  MoreSettingsViewController.swift
 //  CometChatUI
 //
-//  Created by Admin1 on 19/11/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Created by Pushpsen Airekar on 19/11/18.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit
@@ -137,6 +137,8 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         return 60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        moreSettingsTableView.deselectRow(at: indexPath, animated: true)
         switch SettingsItems[indexPath.row]
         {
         case MoreSettingsCell.VIEW_PROFILE_CELL:
@@ -182,18 +184,23 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     func viewBots()
     {
+        DispatchQueue.main.async(execute: { self.view.makeToast("This feature has not been added yet")})
     }
     func viewChatSettings()
     {
+        DispatchQueue.main.async(execute: { self.view.makeToast("This feature has not been added yet")})
     }
     func viewNotification()
     {
+         DispatchQueue.main.async(execute: { self.view.makeToast("This feature has not been added yet")})
     }
     func viewBlockedUser()
     {
+         DispatchQueue.main.async(execute: { self.view.makeToast("This feature has not been added yet")})
     }
     func viewGames()
     {
+         DispatchQueue.main.async(execute: { self.view.makeToast("This feature has not been added yet")})
     }
     func onLogout()
     {
@@ -205,12 +212,12 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
                 
                 CometChat.logout(onSuccess: { (sucess) in
                     CometChat.stopServices()
-                    self.resetDefaults()
+                    UserDefaults.standard.removeObject(forKey: "LoggedInUserUID")
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let CustomLaunchViewController = storyBoard.instantiateViewController(withIdentifier: "customLaunchViewController") as! CustomLaunchViewController
                     self.present(CustomLaunchViewController, animated:true, completion:nil)
                 }, onError: { (error) in
-                    
+                     DispatchQueue.main.async(execute: { self.view.makeToast("Fail to logout at this moment.")})
                 })
                 
             case .cancel: break
@@ -221,12 +228,6 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         self.present(alert, animated: true, completion: nil)
     }
     
-    func resetDefaults() {
-        let defaults = UserDefaults.standard
-        let dictionary = defaults.dictionaryRepresentation()
-        dictionary.keys.forEach { key in
-            defaults.removeObject(forKey: key)
-        }
-    }
+
 }
 

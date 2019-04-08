@@ -3,7 +3,7 @@
 //  CometChatPro-swift-sampleApp
 //
 //  Created by Inscripts mac mini  on 03/02/19.
-//  Copyright © 2019 Admin1. All rights reserved.
+//  Copyright © 2019 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit

@@ -537,3 +537,15 @@ extension Array where Element: Equatable {
     }
     
 }
+
+
+extension UIApplication {
+    class func isFirstLaunch() -> Bool {
+        if !UserDefaults.standard.bool(forKey: "HasAtLeastLaunchedOnce") {
+            UserDefaults.standard.set(true, forKey: "HasAtLeastLaunchedOnce")
+            UserDefaults.standard.synchronize()
+            return true
+        }
+        return false
+    }
+}

@@ -1,9 +1,9 @@
 //
 //  UserProfileViewCell.swift
-//  CometChatPulse-swift-sampleApp
+//  CometChatPro-swift-sampleApp
 //
 //  Created by pushpsen airekar on 08/12/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit

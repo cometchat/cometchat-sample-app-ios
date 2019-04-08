@@ -3,7 +3,7 @@
 //  CometChatUI
 //
 //  Created by pushpsen airekar on 18/11/18.
-//  Copyright © 2018 Admin1. All rights reserved.
+//  Copyright © 2018 Pushpsen Airekar. All rights reserved.
 //
 
 import UIKit
@@ -287,6 +287,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        groupTableView.deselectRow(at: indexPath, animated: true)
         let selectedCell:GroupTableViewCell = tableView.cellForRow(at: indexPath) as! GroupTableViewCell
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
@@ -315,7 +316,9 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                             self.view.makeToast("Group Joined Sucessfully.")
                             self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
                             self.othersChatRoomList.remove(at: indexPath.row)
+                            if !self.othersChatRoomList.isEmpty {
                             tableView.deleteRows(at: [indexPath], with: .fade)
+                            }
                             self.joinedChatRoomList.append(selectedCell.group)
                             self.groupTableView.reloadData()
                         }
@@ -340,7 +343,9 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                     self.view.makeToast("Group Joined Sucessfully.")
                         self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
                         self.othersChatRoomList.remove(at: indexPath.row)
+                         if !self.othersChatRoomList.isEmpty {
                         tableView.deleteRows(at: [indexPath], with: .fade)
+                        }
                         self.joinedChatRoomList.append(selectedCell.group)
                         self.groupTableView.reloadData()
                     }
@@ -355,11 +360,17 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if(indexPath.row == (joinedChatRoomList.count + othersChatRoomList.count) - 1) {
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height {
             self.fetchGroupList()
         }
+        
     }
     
     //titleForHeaderInSection indexPath -->
@@ -393,7 +404,9 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 DispatchQueue.main.async {
                     self.view.makeToast("\(sucess)")
                     self.joinedChatRoomList.remove(at: indexPath.row)
+                    if !self.joinedChatRoomList.isEmpty{
                     tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
                     self.groupTableView.reloadData()
                 }
             }, onError: { (error) in
@@ -413,7 +426,10 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 DispatchQueue.main.async {
                     self.view.makeToast("\(sucess)")
                     self.joinedChatRoomList.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    
+                    if !self.joinedChatRoomList.isEmpty {
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
                     self.othersChatRoomList.insert(selectedCell.group, at: 0)
                     self.groupTableView.reloadData()
                 }
