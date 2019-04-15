@@ -47,6 +47,10 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         
+        if((UserDefaults.standard.value(forKey: "changeLanguageAction")) != nil){
+        groupTableView.reloadData()
+        }
+        
         var isGroupLeave:String!
         if((UserDefaults.standard.value(forKey: "leaveGroupAction")) != nil){
             isGroupLeave = (UserDefaults.standard.value(forKey: "leaveGroupAction") as! String)
@@ -62,8 +66,11 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         self.handleGroupListVCAppearance()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        UserDefaults.standard.removeObject(forKey: "changeLanguageAction")
+    }
     
-    
+
     func fetchGroupList(){
         
         //This method fetches the grouplist from the server
@@ -142,7 +149,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         }
         
         // NavigationBar Appearance
-        navigationItem.title = "Groups"
+        navigationItem.title = NSLocalizedString("Groups", comment: "")
         let normalTitleforNavigationBar = [
             NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),
             NSAttributedString.Key.font: UIFont(name: SystemFont.regular.value, size: 21)!]
@@ -174,9 +181,9 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
         
         if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
         }else{
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
         }
         
         
@@ -302,18 +309,18 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         if(indexPath.section != 0){
             if(selectedCell.groupType == 2){
-                let alertController = UIAlertController(title: "Enter Password", message: "Kindly, Enter the password to proceed.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: NSLocalizedString("Enter Password", comment: ""), message:NSLocalizedString("Kindly, Enter the password to proceed.", comment: "") , preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addTextField { (textField : UITextField!) -> Void in
-                    textField.placeholder = "Enter Password"
+                    textField.placeholder = NSLocalizedString("Enter Password", comment: "")
                     textField.isSecureTextEntry = true
                 }
-                let saveAction = UIAlertAction(title: "Join", style: UIAlertActionStyle.default, handler: { alert -> Void in
+                let saveAction = UIAlertAction(title: NSLocalizedString("Join", comment: ""), style: UIAlertActionStyle.default, handler: { alert -> Void in
                     let passwordTextfield = alertController.textFields![0] as UITextField
                     CometChat.joinGroup(GUID: selectedCell.UID, groupType: .password, password: passwordTextfield.text, onSuccess: { (success) in
     
                         DispatchQueue.main.async{
                            
-                            self.view.makeToast("Group Joined Sucessfully.")
+                            self.view.makeToast(NSLocalizedString("Group Joined Sucessfully.", comment: ""))
                             self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
                             self.othersChatRoomList.remove(at: indexPath.row)
                             if !self.othersChatRoomList.isEmpty {
@@ -324,12 +331,12 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                         }
                     }) { (error) in
                         DispatchQueue.main.async {
-                            self.view.makeToast("Failed to join group")
+                            self.view.makeToast(NSLocalizedString("Failed to join group", comment: ""))
                         }
                     }
                     
                 })
-                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: {
+                let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.destructive, handler: {
                     (action : UIAlertAction!) -> Void in })
                 
                 alertController.addAction(cancelAction)
@@ -340,7 +347,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 CometChat.joinGroup(GUID: selectedCell.UID, groupType: .public, password: nil, onSuccess: { (success) in
 
                       DispatchQueue.main.async{
-                    self.view.makeToast("Group Joined Sucessfully.")
+                    self.view.makeToast(NSLocalizedString("Group Joined Sucessfully.", comment: ""))
                         self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
                         self.othersChatRoomList.remove(at: indexPath.row)
                          if !self.othersChatRoomList.isEmpty {
@@ -351,7 +358,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                     }
                 }) { (error) in
                     DispatchQueue.main.async {
-                        self.view.makeToast("Failed to join group")
+                        self.view.makeToast(NSLocalizedString("Failed to join group", comment: ""))
                     }
                 }
             }
@@ -377,10 +384,10 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if(section == 0) {
-            return "Joined Groups"
+            return NSLocalizedString("Joined Groups", comment: "")
         }
         else {
-            return "Other Groups"
+            return NSLocalizedString("Other Groups", comment: "")
         }
     }
     
@@ -477,7 +484,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             CallingViewController.isIncoming = false
             CallingViewController.userAvtarImage = selectedCell.groupAvtar.image
             CallingViewController.userNameString = selectedCell.groupName.text
-            CallingViewController.callingString = "Calling ..."
+            CallingViewController.callingString = NSLocalizedString("Calling ...", comment: "")
             CallingViewController.callerUID = selectedCell.UID
             CallingViewController.isGroupCall = true
             self.present(CallingViewController, animated: true, completion: nil)
@@ -493,7 +500,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             CallingViewController.isIncoming = false
             CallingViewController.userAvtarImage = selectedCell.groupAvtar.image
             CallingViewController.userNameString = selectedCell.groupName.text
-            CallingViewController.callingString = "Calling ..."
+            CallingViewController.callingString = NSLocalizedString("Calling ...", comment: "")
             CallingViewController.callerUID = selectedCell.UID
             CallingViewController.isGroupCall = true
             self.present(CallingViewController, animated: true, completion: nil)
@@ -525,7 +532,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CCWebviewController = storyboard.instantiateViewController(withIdentifier: "moreSettingsViewController") as! MoreSettingsViewController
         navigationController?.pushViewController(CCWebviewController, animated: true)
-        CCWebviewController.title = "More"
+        CCWebviewController.title = NSLocalizedString("More", comment: "")
         CCWebviewController.hidesBottomBarWhenPushed = true
     }
     
@@ -541,18 +548,17 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     @IBAction func createGroupPressed(_ sender: Any) {
         
         let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let createGroupAction: UIAlertAction = UIAlertAction(title: "Create Group", style: .default) { action -> Void in
+        let createGroupAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Create Group", comment: ""), style: .default) { action -> Void in
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let createGroupcontroller = storyboard.instantiateViewController(withIdentifier: "createGroupcontroller") as! CreateGroupcontroller
             self.navigationController?.pushViewController(createGroupcontroller, animated: false)
-            createGroupcontroller.title = "Create Group"
+            createGroupcontroller.title = NSLocalizedString("Create Group", comment: "")
             createGroupcontroller.hidesBottomBarWhenPushed = true
         }
         createGroupAction.setValue(UIImage(named: "createGroup.png"), forKey: "image")
         
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
-            print("Cancel")
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { action -> Void in
         }
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
         
@@ -561,4 +567,13 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         present(actionSheetController, animated: true, completion: nil)
     }
     
+}
+
+extension UIViewController {
+    func reloadViewFromNib() {
+        let parent = view.superview
+        view.removeFromSuperview()
+        view = nil
+        parent?.addSubview(view) // This line causes the view to be reloaded
+    }
 }

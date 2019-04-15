@@ -1,5 +1,11 @@
 # Change Log
 
+### v1.3.2 (April 15, 2019)
+- Added Localization
+- Added Read-Delivery Receipt
+- Added Typing Indicator
+- Miscellaneous bug Fixes
+
 ### v1.3.1 (March 28, 2019)
 - Performance Optimization
 - Miscellaneous bug Fixes

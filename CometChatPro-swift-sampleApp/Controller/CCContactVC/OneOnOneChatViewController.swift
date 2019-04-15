@@ -61,7 +61,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     fileprivate let actionCellID = "actionCell"
     var soundRecorder : AVAudioRecorder!
     var soundPlayer : AVAudioPlayer!
-    var fileName: String = "audioFile1.m4a"
+    var fileName: String = "audioFile2.m4a"
     var containView:UIView!
     var typingIndicator: TypingIndicator!
     var animation:CAKeyframeAnimation!
@@ -79,7 +79,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
@@ -100,7 +100,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         self.chatView.layer.cornerRadius = 20.0
         self.chatView.clipsToBounds = true
         self.chatInputView.delegate = self
-        chatInputView.text = "Type a message..."
+        chatInputView.text = NSLocalizedString("Type a message...", comment: "")
         chatInputView.textColor = UIColor.lightGray
         
         chatTableview.delegate = self
@@ -134,6 +134,12 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             
             guard  let sendMessage = message else{
                 return
+            }
+            
+            for msg in sendMessage{
+                if msg.readAt <= 0 {
+                    CometChat.markMessageAsRead(message: msg)
+                }                
             }
             self.chatMessage = sendMessage
             DispatchQueue.main.async{
@@ -274,7 +280,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         messageReq.fetchPrevious(onSuccess: { (messages) in
             
             for message in messages!{
-               if message.deliveredAt != 0 && message.readAt != 0{
+                if message.deliveredAt != 0 && message.readAt != 0{
                     CometChat.markMessageAsRead(message: message)
                 }
             }
@@ -491,10 +497,10 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             micButton.setImage(#imageLiteral(resourceName: "micNormal"), for: .normal)
             recordingLabel.isHidden = true
             
-            self.chatInputView.text = "Type a message..."
+            self.chatInputView.text = NSLocalizedString("Type a message...", comment: "")
             let alertController = UIAlertController(
-                title: "Send AudioFile", message: "Are you sure want to send this Audio note.", preferredStyle: .alert)
-            let OkAction = UIAlertAction(title: "Send", style: .default
+                title: NSLocalizedString("Send AudioFile", comment: ""), message:  NSLocalizedString("Are you sure want to send this Audio note.", comment: ""), preferredStyle: .alert)
+            let OkAction = UIAlertAction(title: NSLocalizedString("Send", comment: ""), style: .default
                 , handler: { (UIAlertAction) in
                     
                     CometChatLog.print(items: "AudioURL is : \(String(describing: self.audioURL))")
@@ -517,7 +523,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             })
             
             let defaultAction = UIAlertAction(
-                title: "Cancel", style: .destructive, handler: nil)
+                title: NSLocalizedString("Cancel", comment: ""), style: .destructive, handler: nil)
             
             //you can add custom actions as well
             alertController.addAction(defaultAction)
@@ -534,7 +540,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             micButton.setImage(#imageLiteral(resourceName: "micSelected"), for: .normal)
             self.chatInputView.text = ""
             recordingLabel.isHidden = false
-            recordingLabel.text = "Recording..."
+            recordingLabel.text = NSLocalizedString("Recording...", comment: "")
             
             //Do Whatever You want on Began of Gesture
         }
@@ -562,7 +568,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let UserProfileViewController = storyboard.instantiateViewController(withIdentifier: "userProfileViewController") as! UserProfileViewController
         navigationController?.pushViewController(UserProfileViewController, animated: true)
-        UserProfileViewController.title = "View Profile"
+        UserProfileViewController.title = NSLocalizedString("View Profile", comment: "")
         UserProfileViewController.groupScope = groupScope
         UserProfileViewController.getUserProfileAvtar = buddyAvtar
         UserProfileViewController.getUserName = buddyName.text
@@ -615,22 +621,22 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-
+        
         if chatInputView.text == ""{
-            chatInputView.text = "Type a message..."
+            chatInputView.text = NSLocalizedString("Type a message...", comment: "")
             chatInputView.textColor = UIColor.lightGray
             CometChat.endTyping(indicator: typingIndicator)
         }
     }
-
+    
     
     func textViewDidChange(_ textView: UITextView) {
-
+        
         CometChat.startTyping(indicator: typingIndicator)
- 
+        
     }
     
-  
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -771,19 +777,19 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             switch callMessage.callStatus{
                 
             case .initiated:
-                actionCell.actionMessageLabel.text = "Call Initiated"
+                actionCell.actionMessageLabel.text = NSLocalizedString("Call Initiated", comment: "")
             case .ongoing:
-                actionCell.actionMessageLabel.text = "Call Ongoing"
+                actionCell.actionMessageLabel.text = NSLocalizedString("Call Ongoing", comment: "")
             case .unanswered:
-                actionCell.actionMessageLabel.text = "Call Unanswered"
+                actionCell.actionMessageLabel.text = NSLocalizedString("Call Unanswered", comment: "")
             case .rejected:
-                actionCell.actionMessageLabel.text = "Call Rejected"
+                actionCell.actionMessageLabel.text = NSLocalizedString("Call Rejected", comment: "")
             case .busy:
-                actionCell.actionMessageLabel.text = "Call Busy"
+                actionCell.actionMessageLabel.text = NSLocalizedString("Call Busy", comment: "")
             case .cancelled:
-                actionCell.actionMessageLabel.text = "Call Cancelled"
+                actionCell.actionMessageLabel.text = NSLocalizedString("Call Cancelled", comment: "")
             case .ended:
-                actionCell.actionMessageLabel.text = "Call Ended"
+                actionCell.actionMessageLabel.text = NSLocalizedString("Call Ended", comment: "")
             }
             
             actionCell.selectionStyle = .none
@@ -824,7 +830,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             }
         case .audio:
             
-          
+            
             let audioMessage = (messageData as? MediaMessage)
             let url = NSURL.fileURL(withPath:audioMessage!.url!.decodeUrl() ?? "")
             previewURL = audioMessage!.url!.decodeUrl()!
@@ -839,7 +845,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
             
             
         case .file:
-           
+            
             let fileMessage = (messageData as? MediaMessage)
             let url = NSURL.fileURL(withPath:fileMessage!.url!.decodeUrl() ?? "")
             previewURL = fileMessage!.url!.decodeUrl()!
@@ -893,7 +899,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
         let message:String = chatInputView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if(message.count == 0 || message == "Type a message..."){
+        if(message.count == 0 || message == NSLocalizedString("Type a message...", comment: "")){
             
         }else{
             sendMessage(toUserUID: buddyUID, message: message, isGroup: isGroup) { (message, error) in
@@ -901,6 +907,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
                 guard  let sendMessage =  message else{
                     return
                 }
+                CometChat.endTyping(indicator: self.typingIndicator)
                 self.chatMessage.append(sendMessage)
                 DispatchQueue.main.async{
                     self.chatInputView.text = ""
@@ -921,27 +928,27 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     @IBAction func attachementButtonPressed(_ sender: Any) {
         
         let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let cameraAction: UIAlertAction = UIAlertAction(title: "Camera", style: .default) { action -> Void in
+        let cameraAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Camera", comment: ""), style: .default) { action -> Void in
             
             var config = YPImagePickerConfiguration()
             config.library.mediaType = .photoAndVideo
-            config.wordings.cancel = "Cancel"
-            config.wordings.next = "Next"
-            config.wordings.videoTitle = "Video"
-            config.wordings.albumsTitle = "Albums"
-            config.wordings.libraryTitle = "Library"
-            config.wordings.cameraTitle = "Camera"
-            config.wordings.cover = "Cover"
-            config.wordings.ok = "Ok"
-            config.wordings.done = "Done"
-            config.wordings.save = "Save"
-            config.wordings.processing = "Processing"
-            config.wordings.trim = "Trim"
-            config.wordings.cover = "Cover"
-            config.wordings.filter = "Filter"
-            config.wordings.crop = "Crop"
-            config.wordings.warningMaxItemsLimit = "Limit Reached"
-            config.wordings.libraryTitle = "Gallery"
+            config.wordings.cancel = NSLocalizedString("Cancel", comment: "")
+            config.wordings.next = NSLocalizedString("Next", comment: "")
+            config.wordings.videoTitle = NSLocalizedString("Video", comment: "")
+            config.wordings.albumsTitle = NSLocalizedString("Albums", comment: "")
+            config.wordings.libraryTitle = NSLocalizedString("Library", comment: "")
+            config.wordings.cameraTitle = NSLocalizedString("Camera", comment: "")
+            config.wordings.cover = NSLocalizedString("Cover", comment: "")
+            config.wordings.ok = NSLocalizedString("Ok", comment: "")
+            config.wordings.done = NSLocalizedString("Done", comment: "")
+            config.wordings.save = NSLocalizedString("Save", comment: "")
+            config.wordings.processing = NSLocalizedString("Processing", comment: "")
+            config.wordings.trim = NSLocalizedString("Trim", comment: "")
+            config.wordings.cover = NSLocalizedString("Cover", comment: "")
+            config.wordings.filter = NSLocalizedString("Filter", comment: "")
+            config.wordings.crop = NSLocalizedString("Crop", comment: "")
+            config.wordings.warningMaxItemsLimit = NSLocalizedString("Limit Reached", comment: "")
+            config.wordings.libraryTitle = NSLocalizedString("Gallery", comment: "")
             
             config.shouldSaveNewPicturesToAlbum = false
             
@@ -1024,27 +1031,27 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         }
         cameraAction.setValue(UIImage(named: "camera.png"), forKey: "image")
         
-        let photoLibraryAction: UIAlertAction = UIAlertAction(title: "Photo & Video Library", style: .default) { action -> Void in
+        let photoLibraryAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Photo & Video Library", comment: ""), style: .default) { action -> Void in
             
             var config = YPImagePickerConfiguration()
             config.library.mediaType = .photoAndVideo
-            config.wordings.cancel = "Cancel"
-            config.wordings.next = "Next"
-            config.wordings.videoTitle = "Video"
-            config.wordings.albumsTitle = "Albums"
-            config.wordings.libraryTitle = "Library"
-            config.wordings.cameraTitle = "Camera"
-            config.wordings.cover = "Cover"
-            config.wordings.ok = "Ok"
-            config.wordings.done = "Done"
-            config.wordings.save = "Save"
-            config.wordings.processing = "Processing"
-            config.wordings.trim = "Trim"
-            config.wordings.cover = "Cover"
-            config.wordings.filter = "Filter"
-            config.wordings.crop = "Crop"
-            config.wordings.warningMaxItemsLimit = "Limit Reached"
-            config.wordings.libraryTitle = "Gallery"
+            config.wordings.cancel =  NSLocalizedString("Cancel", comment: "")
+            config.wordings.next = NSLocalizedString("Next", comment: "")
+            config.wordings.videoTitle = NSLocalizedString("Video", comment: "")
+            config.wordings.albumsTitle = NSLocalizedString("Albums", comment: "")
+            config.wordings.libraryTitle = NSLocalizedString("Library", comment: "")
+            config.wordings.cameraTitle = NSLocalizedString("Camera", comment: "")
+            config.wordings.cover = NSLocalizedString("Cover", comment: "")
+            config.wordings.ok = NSLocalizedString("Ok", comment: "")
+            config.wordings.done = NSLocalizedString("Done", comment: "")
+            config.wordings.save = NSLocalizedString("Save", comment: "")
+            config.wordings.processing = NSLocalizedString("Processing", comment: "")
+            config.wordings.trim = NSLocalizedString("Trim", comment: "")
+            config.wordings.cover = NSLocalizedString("Cover", comment: "")
+            config.wordings.filter = NSLocalizedString("Filter", comment: "")
+            config.wordings.crop = NSLocalizedString("Crop", comment: "")
+            config.wordings.warningMaxItemsLimit = NSLocalizedString("Limit Reached", comment: "")
+            config.wordings.libraryTitle = NSLocalizedString("Gallery", comment: "")
             
             config.shouldSaveNewPicturesToAlbum = false
             
@@ -1127,14 +1134,14 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         }
         photoLibraryAction.setValue(UIImage(named: "gallery.png"), forKey: "image")
         
-        let documentAction: UIAlertAction = UIAlertAction(title: "Document", style: .default) { action -> Void in
+        let documentAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Document", comment: ""), style: .default) { action -> Void in
             
             self.clickFunction()
             
         }
         documentAction.setValue(UIImage(named: "document.png"), forKey: "image")
         
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { action -> Void in
         }
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
         actionSheetController.addAction(cameraAction)
@@ -1169,7 +1176,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     
     func presentCalling(CallingViewController:CallingViewController) -> Void {
         CallingViewController.userAvtarImage = buddyAvtar
-        CallingViewController.callingString = "Calling ..."
+        CallingViewController.callingString = NSLocalizedString("Calling ...", comment: "")
         CallingViewController.userNameString = buddyName.text
         CallingViewController.isIncoming = false
         CallingViewController.callerUID = buddyUID
@@ -1193,31 +1200,17 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
 extension OneOnOneChatViewController : CometChatMessageDelegate {
     
     func onTextMessageReceived(textMessage: TextMessage?, error: CometChatException?) {
-        
-        switch textMessage!.messageCategory{
-            
-        case .message:
-            
+        if textMessage?.sender?.uid == buddyUID && textMessage?.receiverType.rawValue == Int(isGroup){
+            CometChat.markMessageAsRead(message: textMessage!)
             self.chatMessage.append(textMessage!)
-            
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
                 self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
             }
             
-        case .action:
-            
+        }else if textMessage?.receiverUid == buddyUID && textMessage?.receiverType.rawValue == Int(isGroup){
+            CometChat.markMessageAsRead(message: textMessage!)
             self.chatMessage.append(textMessage!)
-            
-            DispatchQueue.main.async{
-                self.chatTableview.reloadData()
-                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
-            }
-            
-        case .call:
-            
-            self.chatMessage.append(textMessage!)
-            
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
                 self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
@@ -1227,14 +1220,23 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
     
     func onMediaMessageReceived(mediaMessage: MediaMessage?, error: CometChatException?)
     {
-        self.chatMessage.append(mediaMessage!)
-        
-        DispatchQueue.main.async{
-            self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+        if mediaMessage?.sender?.uid == buddyUID && mediaMessage?.receiverType.rawValue == Int(isGroup){
+            CometChat.markMessageAsRead(message: mediaMessage!)
+            self.chatMessage.append(mediaMessage!)
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+            }
+        }else if mediaMessage?.receiverUid == buddyUID && mediaMessage?.receiverType.rawValue == Int(isGroup){
+            CometChat.markMessageAsRead(message: mediaMessage!)
+            self.chatMessage.append(mediaMessage!)
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+            }
         }
     }
-        
+    
     func onTypingStarted(_ typingDetails : TypingIndicator) {
         
         animation = CAKeyframeAnimation(keyPath: "transform.scale")
@@ -1242,31 +1244,63 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
         animation.keyTimes = [0, 0.5, 1]
         animation.duration = 1.5
         animation.repeatCount = Float.infinity
-            // received typing indicator
-        switch typingDetails.receiverType {
-        case .user:
-            buddyStatus.text = "Typing..."
-            containView.layer.add(animation, forKey: nil)
-            
-        case .group:
-            buddyStatus.text = "\(String(describing: typingDetails.sender?.name))Typing..."
-            containView.layer.add(animation, forKey: nil)
-        }
-            print("Typing started received successfully")
-    }
+        // received typing indicator:
         
-    func onTypingEnded(_ typingDetails : TypingIndicator) {
-            
-            // received typing indicator
         switch typingDetails.receiverType {
         case .user:
-            buddyStatus.text = "Online"
-            containView.layer.removeAllAnimations()
-        case .group:
-            buddyStatus.text = ""
-            containView.layer.removeAllAnimations()
+            buddyStatus.text = NSLocalizedString("Typing...", comment: "")
+            containView.layer.add(animation, forKey: nil)
+            
+
+        case .group:break
+      //   buddyStatus.text = "\(String(describing: typingDetails.sender?.name))\(NSLocalizedString("Typing...", comment: ""))"
+     //    containView.layer.add(animation, forKey: nil)
         }
     }
+    
+    func onTypingEnded(_ typingDetails : TypingIndicator) {
+        
+        // received typing indicator:
+        
+        switch typingDetails.receiverType {
+        case .user:
+            buddyStatus.text = NSLocalizedString("Online", comment: "")
+            containView.layer.removeAllAnimations()
+        case .group:break
+            //            buddyStatus.text = ""
+            //            containView.layer.removeAllAnimations()
+        }
+    }
+    
+    func onMessageDelivered(receipt : MessageReceipt) {
+        
+        
+        if let row = self.chatMessage.index(where: {$0.id == Int(receipt.messageId)}) {
+            
+            chatMessage[row].deliveredAt = Double(receipt.timeStamp)
+            let indexPath = IndexPath(row: row, section: 0)
+            // chatTableview.reloadRows(at: [indexPath], with: .none)
+            
+        }
+        
+        
+    }
+    
+    func onMessageRead(receipt : MessageReceipt) {
+        
+        if let row = self.chatMessage.index(where: {$0.id == Int(receipt.messageId)}) {
+            
+            if receipt.receiptType == .read {
+                chatMessage[row].readAt = Double(receipt.timeStamp)
+            }
+            let indexPath = IndexPath(row: row, section: 0)
+            chatTableview.reloadRows(at: [indexPath], with: .none)
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: false)
+        }
+        
+        
+    }
+    
 }
 
 
@@ -1339,7 +1373,7 @@ extension OneOnOneChatViewController : CometChatUserDelegate {
     func onUserOnline(user: User) {
         if user.uid == buddyUID{
             if user.status == .online {
-                buddyStatus.text = "Online"
+                buddyStatus.text = NSLocalizedString("Online", comment: "")
             }
         }
     }
@@ -1348,7 +1382,7 @@ extension OneOnOneChatViewController : CometChatUserDelegate {
         
         if user.uid == buddyUID{
             if user.status == .offline {
-                buddyStatus.text = "Offline"
+                buddyStatus.text = NSLocalizedString("Offline", comment: "")
             }
         }
     }

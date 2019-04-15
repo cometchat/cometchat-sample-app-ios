@@ -38,7 +38,7 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
     func  handleViewMembersVCAppearance(){
         
         // ViewController Appearance
-        self.title = "View Member"
+        self.title =  NSLocalizedString("View Member", comment: "")
         viewMemberTableView.tableFooterView = UIView()
         self.hidesBottomBarWhenPushed = true
         
@@ -73,14 +73,14 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
         let cell = viewMemberTableView.dequeueReusableCell(withIdentifier: "viewMemberCell", for: indexPath) as! ViewMemberTableViewCell
         
         if(groupMember.scope == CometChat.GroupMemberScopeType.admin){
-            cell.buddyScope.text = "Admin"
+            cell.buddyScope.text = NSLocalizedString("Admin", comment: "")
         }else if(groupMember.scope == CometChat.GroupMemberScopeType.moderator){
-            cell.buddyScope.text = "Moderator"
+            cell.buddyScope.text = NSLocalizedString("Moderator", comment: "")
         }else if(groupMember.scope == CometChat.GroupMemberScopeType.participant){
-            cell.buddyScope.text = "Participant"
+            cell.buddyScope.text = NSLocalizedString("Participant", comment: "")
         }
         if(groupMember.uid == myUID){
-            cell.buddyName.text = "You"
+            cell.buddyName.text = NSLocalizedString("You", comment: "")
         }else{
             cell.buddyName.text = groupMember.name
         }
@@ -103,7 +103,7 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
         
         let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let banAction: UIAlertAction = UIAlertAction(title: "Ban User", style: .default) { action -> Void in
+        let banAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Ban User", comment: ""), style: .default) { action -> Void in
             
             CometChat.banGroupMember(UID: selectedCell.uid, GUID: self.guid, onSuccess: { (response) in
                 
@@ -118,7 +118,7 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
         }
         //        ban.setValue(UIImage(named: "camera.png"), forKey: "image")
         
-        let kickAction: UIAlertAction = UIAlertAction(title: "Kick User", style: .default) { action -> Void in
+        let kickAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Kick User", comment: ""), style: .default) { action -> Void in
             
             CometChat.kickGroupMember(UID: selectedCell.uid, GUID: self.guid, onSuccess: { (response) in
                 DispatchQueue.main.async(execute: { self.view.makeToast("\(response)")
@@ -129,11 +129,11 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
             }
         }
         //kickAction.setValue(UIImage(named: "gallery.png"), forKey: "image")
-        let updateScope: UIAlertAction = UIAlertAction(title: "Update Scope", style: .default) { action -> Void in
+        let updateScope: UIAlertAction = UIAlertAction(title: NSLocalizedString("Update Scope", comment: ""), style: .default) { action -> Void in
             
             let updateScopeAction: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
-            let admin: UIAlertAction = UIAlertAction(title: "Admin", style: .default) { action -> Void in
+            let admin: UIAlertAction = UIAlertAction(title: NSLocalizedString("Admin", comment: ""), style: .default) { action -> Void in
                 
                 CometChat.updateGroupMemberScope(UID: selectedCell.uid, GUID: self.guid, scope: .admin, onSuccess: { (sucess) in
                     DispatchQueue.main.async(execute: { self.view.makeToast("\(sucess)")
@@ -144,7 +144,7 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
                 })
                 
             }
-            let modorator: UIAlertAction = UIAlertAction(title: "Modorator", style: .default) { action -> Void in
+            let modorator: UIAlertAction = UIAlertAction(title: NSLocalizedString("Moderator", comment: ""), style: .default) { action -> Void in
                 CometChat.updateGroupMemberScope(UID: selectedCell.uid, GUID: self.guid, scope: .moderator, onSuccess: { (sucess) in
                     DispatchQueue.main.async(execute: { self.view.makeToast("\(sucess)")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {self.navigationController?.popViewController(animated: true)}
@@ -153,7 +153,7 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
                     DispatchQueue.main.async(execute: { self.view.makeToast("\(String(describing: error!.errorDescription))") })
                 })
             }
-            let participant: UIAlertAction = UIAlertAction(title: "Participant", style: .default) { action -> Void in
+            let participant: UIAlertAction = UIAlertAction(title: NSLocalizedString("Participant", comment: ""), style: .default) { action -> Void in
                 CometChat.updateGroupMemberScope(UID: selectedCell.uid, GUID: self.guid, scope: .participant, onSuccess: { (sucess) in
                     DispatchQueue.main.async(execute: { self.view.makeToast("\(sucess)")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {self.navigationController?.popViewController(animated: true)}
@@ -162,7 +162,7 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
                     DispatchQueue.main.async(execute: { self.view.makeToast("\(String(describing: error!.errorDescription))") })
                 })
             }
-            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { action -> Void in
             }
             updateScopeAction.addAction(admin)
             updateScopeAction.addAction(modorator)
@@ -172,7 +172,7 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
         }
         
         
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { action -> Void in
         }
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
         actionSheetController.addAction(banAction)
@@ -183,10 +183,10 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
         if(isViewMember == true){
             if(groupMember.scope == CometChat.GroupMemberScopeType.admin || groupMember.scope == CometChat.GroupMemberScopeType.moderator){
                 DispatchQueue.main.async(execute: {
-                    self.view.makeToast("Cannot kick or ban Modarator")
+                    self.view.makeToast(NSLocalizedString("Cannot kick or ban Modarator", comment: ""))
                 })
             }else if groupMember.uid == myUID{
-                self.view.makeToast("Cannot perform action on Yourself.")
+                self.view.makeToast(NSLocalizedString("Cannot perform action on Yourself.", comment: ""))
             }else{
                 present(actionSheetController, animated: true, completion: nil)
             }

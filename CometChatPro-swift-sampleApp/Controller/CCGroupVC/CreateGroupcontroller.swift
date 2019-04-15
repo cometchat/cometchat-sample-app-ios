@@ -95,17 +95,17 @@ class CreateGroupcontroller: UIViewController {
     //CreateGroup Button Pressed
     @IBAction func createGroupPressed(_ sender: Any) {
         
-        if(groupType.text == "Public Group"){
+        if(groupType.text == NSLocalizedString("Public Group", comment: "")){
             group = Group(guid: groupIDTxtFld.text!, name: groupNameTxtFld.text!, groupType: .public, password:nil)
-        }else if(groupType.text == "Password - Protected"){
+        }else if(groupType.text == NSLocalizedString("Password - Protected", comment: "")){
             group = Group(guid: groupIDTxtFld.text!, name: groupNameTxtFld.text!, groupType: .password, password: groupPasswordTxtFld.text!)
-        }else if(groupType.text == "Private Group"){
+        }else if(groupType.text == NSLocalizedString("Private Group", comment: "")){
             group = Group(guid: groupIDTxtFld.text!, name: groupNameTxtFld.text!, groupType: .private, password:nil)
         }
         
         CometChat.createGroup(group: group, onSuccess: { (group) in
             DispatchQueue.main.async {
-                self.view.makeToast("Group created successfully.")
+                self.view.makeToast(NSLocalizedString("Group created successfully.", comment: ""))
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -115,7 +115,7 @@ class CreateGroupcontroller: UIViewController {
             NotificationCenter.default.post(name: Notification.Name("com.newGroupData"), object: nil, userInfo: group)
         }) { (error) in
             DispatchQueue.main.async {
-                self.view.makeToast("\(error!.errorDescription)")
+                self.view.makeToast(NSLocalizedString("Fail to create Group.", comment: ""))
             }
         }
         
@@ -125,26 +125,26 @@ class CreateGroupcontroller: UIViewController {
     @objc func selectGroupTypeClicked(tapGestureRecognizer: UITapGestureRecognizer){
         
         let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let publicGroup: UIAlertAction = UIAlertAction(title: "Public Group", style: .default) { action -> Void in
+        let publicGroup: UIAlertAction = UIAlertAction(title: NSLocalizedString("Public Group", comment: ""), style: .default) { action -> Void in
             
             self.groupPasswordView.isHidden = true
-            self.groupType.text = "Public Group"
+            self.groupType.text = NSLocalizedString("Public Group", comment: "")
             
         }
-        let passwordProtectedGroup: UIAlertAction = UIAlertAction(title: "Password - Protected", style: .default) { action -> Void in
+        let passwordProtectedGroup: UIAlertAction = UIAlertAction(title: NSLocalizedString("Password - Protected", comment: ""), style: .default) { action -> Void in
             
-            self.groupType.text = "Password - Protected"
+            self.groupType.text = NSLocalizedString("Password - Protected", comment: "")
             self.groupPasswordView.isHidden = false
             
         }
-        let privateGroup: UIAlertAction = UIAlertAction(title: "Private Group", style: .default) { action -> Void in
+        let privateGroup: UIAlertAction = UIAlertAction(title: NSLocalizedString("Private Group", comment: ""), style: .default) { action -> Void in
             
             self.groupPasswordView.isHidden = true
-            self.groupType.text = "Private Group"
+            self.groupType.text = NSLocalizedString("Private Group", comment: "")
             
         }
         
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in           
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { action -> Void in
             
         }
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")

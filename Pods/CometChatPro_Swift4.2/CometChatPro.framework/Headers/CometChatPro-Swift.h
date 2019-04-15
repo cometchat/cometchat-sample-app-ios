@@ -590,11 +590,11 @@ SWIFT_CLASS("_TtC12CometChatPro4User")
 @property (nonatomic) NSInteger credits;
 @property (nonatomic) enum UserStatus status;
 @property (nonatomic, copy) NSString * _Nullable statusMessage;
-@property (nonatomic) NSInteger lastActiveAt;
+@property (nonatomic) double lastActiveAt;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 - (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(NSInteger)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -602,7 +602,7 @@ SWIFT_CLASS("_TtC12CometChatPro4User")
 SWIFT_CLASS("_TtC12CometChatPro11CurrentUser")
 @interface CurrentUser : User
 - (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(NSInteger)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -646,7 +646,7 @@ SWIFT_CLASS("_TtC12CometChatPro11GroupMember")
 @property (nonatomic) NSInteger joinedAt;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name SWIFT_UNAVAILABLE;
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(NSInteger)lastActiveAt SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt SWIFT_UNAVAILABLE;
 @end
 
 @class GroupMembersRequestBuilder;

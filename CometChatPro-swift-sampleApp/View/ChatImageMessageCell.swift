@@ -64,6 +64,12 @@ class ChatImageMessageCell: UITableViewCell {
                 userNameLabel.isHidden = false
                 readRecipts.isHidden = true
             }
+            
+            if chatMessage.receiverType == .group{
+                userNameLabel.isHidden = false
+            }else{
+                userNameLabel.isHidden = true
+            }
         }
     }
     
@@ -127,7 +133,22 @@ class ChatImageMessageCell: UITableViewCell {
         readRecipts.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -3).isActive = true
         readRecipts.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -13).isActive = true
         readRecipts.clipsToBounds = true
-        readRecipts.image = #imageLiteral(resourceName: "readReceiptDelivered")
+        readRecipts.image = #imageLiteral(resourceName: "sent")
+        
+        DispatchQueue.main.async {  [weak self] in
+            guard let strongSelf = self
+                else
+            {
+                return
+            }
+            
+            if strongSelf.chatMessage.readAt > 0 {
+                strongSelf.readRecipts.image = #imageLiteral(resourceName: "readReceiptDelivered")
+            }
+            else {
+                strongSelf.readRecipts.image = #imageLiteral(resourceName: "readReceiptSent")
+            }
+        }
         
         userAvatarImageView.translatesAutoresizingMaskIntoConstraints = false
         userAvatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 13).isActive = true

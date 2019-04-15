@@ -39,8 +39,22 @@ class ChatTextMessageCell: UITableViewCell {
             dateFormatter1.timeZone = NSTimeZone.local
             let dateString : String = dateFormatter1.string(from: date)
             messageTimeLabel.text =  dateString
+            readRecipts.image = #imageLiteral(resourceName: "sent")
             
-            readRecipts.image = #imageLiteral(resourceName: "readReceiptDelivered")
+            DispatchQueue.main.async {  [weak self] in
+                guard let strongSelf = self
+                    else
+                {
+                    return
+                }
+                
+                if strongSelf.chatMessage.readAt > 0 {
+                    strongSelf.readRecipts.image = #imageLiteral(resourceName: "readReceiptDelivered")
+                }
+                else {
+                    strongSelf.readRecipts.image = #imageLiteral(resourceName: "readReceiptSent")
+                }
+            }
             
             if(chatMessage.sender?.avatar != ""){
                 url = NSURL(string: ((chatMessage.sender?.avatar) ?? nil) ?? " ")
@@ -89,6 +103,7 @@ class ChatTextMessageCell: UITableViewCell {
                 timeLabelLeadingConstraint.isActive = true
                 userNameLabel.textColor = UIColor.darkGray
                 userAvatarImageView.isHidden = false
+                
                 if(chatMessage.receiverType == .group){
                     userNameLabel.isHidden = false
                 }else{
@@ -147,7 +162,7 @@ class ChatTextMessageCell: UITableViewCell {
         readRecipts.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3).isActive = true
         readRecipts.clipsToBounds = true
         
-       
+        
         
         //Setting Constraints for MessageLabel
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false

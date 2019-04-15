@@ -46,6 +46,7 @@
 		B22301C421D26B8000483CC7 /* Product Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C221D2659C00483CC7 /* Product Sans Regular.ttf */; };
 		B22301C521D26B8300483CC7 /* Product Sans Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C321D265A600483CC7 /* Product Sans Bold.ttf */; };
 		B22301C721D271EF00483CC7 /* Product Sans Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C621D271EA00483CC7 /* Product Sans Italic.ttf */; };
+		B22B37B3225CB4B900F27841 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B22B37B5225CB4B900F27841 /* Localizable.strings */; };
 		B231764E2225CFCEBCAEB38C /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C772843A75386E47A0EFF22 /* libPods-CometChatPro-swift-sampleApp.a */; };
 		B23F83A4223BE4B2003978B3 /* PopOverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23F83A3223BE4B2003978B3 /* PopOverController.swift */; };
 		B260F1E7224CCA9D00CDCDBA /* CometChatLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260F1E6224CCA9D00CDCDBA /* CometChatLog.swift */; };
@@ -133,6 +134,14 @@
 		B22301C221D2659C00483CC7 /* Product Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Regular.ttf"; sourceTree = "<group>"; };
 		B22301C321D265A600483CC7 /* Product Sans Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Bold.ttf"; sourceTree = "<group>"; };
 		B22301C621D271EA00483CC7 /* Product Sans Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Italic.ttf"; sourceTree = "<group>"; };
+		B22B37A2225C927D00F27841 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B22B37A3225C927E00F27841 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		B22B37A4225C929A00F27841 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B22B37A5225C929A00F27841 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Main.strings; sourceTree = "<group>"; };
+		B22B37A7225CAA6600F27841 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		B22B37B4225CB4B900F27841 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B22B37B6225CB4BD00F27841 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B22B37B7225CB4BE00F27841 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B23F83A3223BE4B2003978B3 /* PopOverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverController.swift; sourceTree = "<group>"; };
 		B260F1E6224CCA9D00CDCDBA /* CometChatLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CometChatLog.swift; sourceTree = "<group>"; };
 		B270B70F2200B0F600A2B3F3 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -198,6 +207,7 @@
 				B22301C221D2659C00483CC7 /* Product Sans Regular.ttf */,
 				B22301C321D265A600483CC7 /* Product Sans Bold.ttf */,
 				B22301C621D271EA00483CC7 /* Product Sans Italic.ttf */,
+				B22B37B5225CB4B900F27841 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -445,6 +455,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				hi,
 			);
 			mainGroup = B2BC608C219DACF9002C24D3;
 			productRefGroup = B2BC6096219DACF9002C24D3 /* Products */;
@@ -463,6 +475,7 @@
 			files = (
 				B22301C421D26B8000483CC7 /* Product Sans Regular.ttf in Resources */,
 				B2E1101E2226CA1C00FFF7BD /* GoogleService-Info.plist in Resources */,
+				B22B37B3225CB4B900F27841 /* Localizable.strings in Resources */,
 				B22301C521D26B8300483CC7 /* Product Sans Bold.ttf in Resources */,
 				589124D321B2AC6C003500B5 /* Main.storyboard in Resources */,
 				B2FB0F0C21EC880C00CEDD4A /* CometChat-info.plist in Resources */,
@@ -585,6 +598,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				589124B621B2AC6C003500B5 /* Base */,
+				B22B37A2225C927D00F27841 /* fr */,
+				B22B37A4225C929A00F27841 /* hi */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -593,8 +608,21 @@
 			isa = PBXVariantGroup;
 			children = (
 				589124B821B2AC6C003500B5 /* Base */,
+				B22B37A3225C927E00F27841 /* fr */,
+				B22B37A5225C929A00F27841 /* hi */,
+				B22B37A7225CAA6600F27841 /* en */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B22B37B5225CB4B900F27841 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B22B37B4225CB4B900F27841 /* en */,
+				B22B37B6225CB4BD00F27841 /* fr */,
+				B22B37B7225CB4BE00F27841 /* hi */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -604,6 +632,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -665,6 +694,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

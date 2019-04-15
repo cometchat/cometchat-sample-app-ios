@@ -133,6 +133,11 @@ extension EmbeddedViewController : CometChatCallDelegate {
     }
     
     func onIncomingCallCancelled(canceledCall: Call?, error: CometChatException?) {
+        
+        if((self.presentingViewController) != nil){
+            self.dismiss(animated: false, completion: nil)
+            print("cancel")
+        }
         CometChatLog.print(items: canceledCall?.stringValue() as Any)
     }
     

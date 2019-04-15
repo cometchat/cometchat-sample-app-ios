@@ -112,15 +112,15 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         let trimmedUID = UID.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if(trimmedUID.count == 0){
-            showAlert(title: "Warning!", msg: "UID cannot be Empty")
+            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("UID cannot be Empty", comment: ""))
         }else if(API_KEY.contains("Enter") || API_KEY.contains("ENTER") || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
-            showAlert(title: "Warning!", msg: "Please fill the APP-ID and API-KEY in CometChat-info.plist file.")
+            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in CometChat-info.plist file.", comment: ""))
         }else{
             
             CometChat.login(UID: trimmedUID, apiKey: API_KEY, onSuccess: { (current_user) in
                 
                 //UIButton State Change
-                self.loginButton.setTitle("Login Sucessful", for: .normal)
+                self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
                 self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
                 //Navigate to Next VC
                 UserDefaults.standard.set(current_user.uid, forKey: "LoggedInUserUID")
@@ -138,7 +138,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
                 CometChatLog.print(items:"login error: \(String(describing: error.debugDescription))")
                 DispatchQueue.main.async { [unowned self] in
                     self.loginButton.backgroundColor = UIColor.init(hexFromString: "FF0000")
-                    self.loginButton.setTitle("Login Failure", for: .normal)
+                    self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
                 }
             }
         }
@@ -146,7 +146,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     
     @objc func LoginWithSuperHero1(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        self.loginButton.setTitle("Login with Superhero1", for: .normal)
+        self.loginButton.setTitle("\(NSLocalizedString("Login with", comment: "")) Superhero1", for: .normal)
         userName.text = "superhero1"
         let API_KEY:String = AuthenticationDict?["API_KEY"] as! String
         CometChat.login(UID: "superhero1", apiKey: API_KEY, onSuccess: { (current_user) in
@@ -154,7 +154,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
            
             //UIButton State Change
-            self.loginButton.setTitle("Login Sucessful", for: .normal)
+            self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
             //Navigate to Next VC
             UserDefaults.standard.set(current_user.uid, forKey: "LoggedInUserUID")
@@ -169,7 +169,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         }) { (error) in
             DispatchQueue.main.async { [unowned self] in
                 self.loginButton.backgroundColor = UIColor.init(hexFromString: "FF0000")
-                self.loginButton.setTitle("Login Failure", for: .normal)
+                self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
             }
         }
         
@@ -178,10 +178,10 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     @objc func LoginWithSuperHero2(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let API_KEY:String = AuthenticationDict?["API_KEY"] as! String
-        self.loginButton.setTitle("Login with Superhero2", for: .normal)
+        self.loginButton.setTitle("\(NSLocalizedString("Login with", comment: "")) Superhero2", for: .normal)
         userName.text = "superhero2"
         CometChat.login(UID: "superhero2", apiKey: API_KEY, onSuccess: { (current_user) in
-            self.loginButton.setTitle("Login Sucessful", for: .normal)
+            self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
             
             //UIButton State Change
@@ -200,7 +200,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         }) { (error) in
             DispatchQueue.main.async { [unowned self] in
                 self.loginButton.backgroundColor = UIColor.init(hexFromString: "FF0000")
-                self.loginButton.setTitle("Login Failure", for: .normal)
+                self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
             }
         }
         
@@ -210,10 +210,10 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     @objc func LoginWithSuperHero3(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let API_KEY:String = AuthenticationDict?["API_KEY"] as! String
-        self.loginButton.setTitle("Login with Superhero3", for: .normal)
+        self.loginButton.setTitle("\(NSLocalizedString("Login with", comment: "")) Superhero3", for: .normal)
         userName.text = "superhero3"
         CometChat.login(UID: "superhero3", apiKey: API_KEY, onSuccess: { (current_user) in
-            self.loginButton.setTitle("Login Sucessful", for: .normal)
+            self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
             
             //UIButton State Change
@@ -232,7 +232,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         }) { (error) in
             DispatchQueue.main.async { [unowned self] in
                 self.loginButton.backgroundColor = UIColor.init(hexFromString: "FF0000")
-                self.loginButton.setTitle("Login Failure", for: .normal)
+                self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
             }
         }
         
@@ -242,10 +242,10 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     @objc func LoginWithSuperHero4(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let API_KEY:String = AuthenticationDict?["API_KEY"] as! String
-        self.loginButton.setTitle("Login with Superhero4", for: .normal)
+        self.loginButton.setTitle("\(NSLocalizedString("Login with", comment: "")) Superhero4", for: .normal)
         userName.text = "superhero4"
         CometChat.login(UID: "superhero4", apiKey: API_KEY, onSuccess: { (current_user) in
-            self.loginButton.setTitle("Login Sucessful", for: .normal)
+            self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
             
             //UIButton State Change
@@ -264,7 +264,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         }) { (error) in
             DispatchQueue.main.async { [unowned self] in
                 self.loginButton.backgroundColor = UIColor.init(hexFromString: "FF0000")
-                self.loginButton.setTitle("Login Failure", for: .normal)
+                self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
             }
         }
         

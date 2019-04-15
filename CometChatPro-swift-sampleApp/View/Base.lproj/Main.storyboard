@@ -1268,17 +1268,31 @@
                                     <outlet property="delegate" destination="zTz-97-04n" id="fgu-b6-XKT"/>
                                 </connections>
                             </tableView>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLz-pd-TYa">
+                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="MoI-Ke-hoO"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="zTz-97-04n" id="LRg-J9-eTA"/>
+                                    <outlet property="delegate" destination="zTz-97-04n" id="GRy-9g-bkh"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fLz-pd-TYa" firstAttribute="trailing" secondItem="9Gm-e9-eYz" secondAttribute="trailing" id="6fe-Is-glp"/>
                             <constraint firstItem="HgV-J2-ZIA" firstAttribute="leading" secondItem="9Gm-e9-eYz" secondAttribute="leading" id="R4P-Hh-69c"/>
                             <constraint firstItem="HgV-J2-ZIA" firstAttribute="trailing" secondItem="9Gm-e9-eYz" secondAttribute="trailing" id="bAS-FL-TvS"/>
+                            <constraint firstItem="9Gm-e9-eYz" firstAttribute="bottom" secondItem="fLz-pd-TYa" secondAttribute="bottom" id="cLW-Tb-7sW"/>
                             <constraint firstItem="HgV-J2-ZIA" firstAttribute="bottom" secondItem="9Gm-e9-eYz" secondAttribute="bottom" id="luz-Bn-hej"/>
                             <constraint firstItem="HgV-J2-ZIA" firstAttribute="top" secondItem="9Gm-e9-eYz" secondAttribute="top" id="mCy-Rl-tWa"/>
+                            <constraint firstItem="fLz-pd-TYa" firstAttribute="leading" secondItem="9Gm-e9-eYz" secondAttribute="leading" id="zLQ-7i-oMr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Gm-e9-eYz"/>
                     </view>
                     <connections>
+                        <outlet property="launguagePicker" destination="fLz-pd-TYa" id="Klv-et-OaT"/>
                         <outlet property="moreSettingsTableView" destination="HgV-J2-ZIA" id="jz8-f1-CgX"/>
                     </connections>
                 </viewController>

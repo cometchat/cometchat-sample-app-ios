@@ -169,12 +169,97 @@ extension startUpViewController: SPPermissionDialogColorSource{
 extension startUpViewController: SPPermissionDialogDataSource {
     
     var dialogComment: String {
-        return "CometChatPro Sample App reqires above permissions to perform the necessory actions."
+        
+        return NSLocalizedString("CometChat Pro Sample App requires above permissions to perform the necessary actions.", comment: "")
     }
     
     var dialogTitle: String {
-        return "COMETCHAT PRO"
+        return NSLocalizedString("COMETCHAT PRO", comment: "")
     }
+    
+    func deniedTitle(for permission: SPPermissionType) -> String? {
+        return NSLocalizedString("Permission denied", comment: "")
+    }
+    
+    func deniedSubtitle(for permission: SPPermissionType) -> String? {
+        return NSLocalizedString("Please, go to Settings and allow permissions", comment: "")
+    }
+    
+    var cancelTitle: String {
+        return NSLocalizedString("Cancel", comment: "")
+    }
+    
+    var settingsTitle: String {
+        return NSLocalizedString("Settings", comment: "")
+    }
+    
+    var allowTitle: String {
+        return NSLocalizedString("Allow", comment: "")
+    }
+    
+    var allowedTitle: String {
+        return NSLocalizedString("Allowed", comment: "")
+    }
+    
+    var dialogSubtitle: String {
+        return NSLocalizedString("Permissions Request", comment: "")
+    }
+    
+    func name(for permission: SPPermissionType) -> String? {
+        switch permission {
+        case .camera:
+            return NSLocalizedString("Camera", comment: "")
+        case .photoLibrary:
+            return NSLocalizedString("Photo Library", comment: "")
+        case .notification:
+            return NSLocalizedString("Notification", comment: "")
+        case .microphone:
+            return NSLocalizedString("Microphone", comment: "")
+        case .calendar:
+            return NSLocalizedString("Calendar", comment: "")
+        case .contacts:
+            return NSLocalizedString("Contacts", comment: "")
+        case .reminders:
+            return NSLocalizedString("Reminders", comment: "")
+        case .speech:
+            return NSLocalizedString("Speech", comment: "")
+        case .locationWhenInUse, .locationAlwaysAndWhenInUse:
+            return NSLocalizedString("Location", comment: "")
+        case .motion:
+            return NSLocalizedString("Motion", comment: "")
+        case .mediaLibrary:
+            return NSLocalizedString("Media Library", comment: "")
+        }
+    }
+    
+    func description(for permission: SPPermissionType) -> String? {
+        switch permission {
+        case .camera:
+            return NSLocalizedString("Allow app for use camera", comment: "")
+        case .calendar:
+            return NSLocalizedString("Application can add events to calendar", comment: "")
+        case .contacts:
+            return NSLocalizedString("Access for your contacts and phones", comment: "")
+        case .microphone:
+            return NSLocalizedString("Allow record voice from app", comment: "")
+        case .notification:
+            return NSLocalizedString("Get important information without opening app.", comment: "")
+        case .photoLibrary:
+            return NSLocalizedString("Access for save photos in your gallery", comment: "")
+        case .reminders:
+            return NSLocalizedString("Application can create new task", comment: "")
+        case .speech:
+            return NSLocalizedString("Allow check you voice", comment: "")
+        case .locationWhenInUse, .locationAlwaysAndWhenInUse:
+            return NSLocalizedString("App will can check your location", comment: "")
+        case .motion:
+            return NSLocalizedString("Allow reports motion and environment-related data", comment: "")
+        case .mediaLibrary:
+            return NSLocalizedString("Allow check your media", comment: "")
+        }
+    }
+    
+    
     
     func image(for permission: SPPermissionType) -> UIImage? {
         

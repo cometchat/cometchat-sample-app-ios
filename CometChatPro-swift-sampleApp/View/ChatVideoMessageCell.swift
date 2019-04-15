@@ -67,8 +67,13 @@ class ChatVideoMessageCell: UITableViewCell {
                 atrailingConstraint.isActive = false
                 timeLabelLeadingConstraint.isActive = true
                 timeLabelTrailingConstraint.isActive = false
-                userNameLabel.isHidden = false
                 readRecipts.isHidden = true
+            }
+            
+            if(chatMessage.receiverType == .group && chatMessage.senderUid != myUID){
+                userNameLabel.isHidden = false
+            }else{
+                userNameLabel.isHidden = true
             }
         }
     }
@@ -146,7 +151,22 @@ class ChatVideoMessageCell: UITableViewCell {
         readRecipts.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -3).isActive = true
         readRecipts.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -13).isActive = true
         readRecipts.clipsToBounds = true
-        readRecipts.image = #imageLiteral(resourceName: "readReceiptSent")
+        readRecipts.image = #imageLiteral(resourceName: "sent")
+        
+        DispatchQueue.main.async {  [weak self] in
+            guard let strongSelf = self
+                else
+            {
+                return
+            }
+            
+            if strongSelf.chatMessage.readAt > 0 {
+                strongSelf.readRecipts.image = #imageLiteral(resourceName: "readReceiptDelivered")
+            }
+            else {
+                strongSelf.readRecipts.image = #imageLiteral(resourceName: "readReceiptSent")
+            }
+        }
         
         // time label constrains //
         messageTimeLabel.translatesAutoresizingMaskIntoConstraints = false

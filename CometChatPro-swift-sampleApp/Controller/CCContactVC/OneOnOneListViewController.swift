@@ -69,10 +69,6 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-//        if(usersArray.isEmpty){
-//            fetchUsersList()
-//        }
    
         oneOneOneTableView.reloadData()
         
@@ -130,7 +126,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         
         // NavigationBar Appearance
         
-        navigationItem.title = "Contacts"
+        navigationItem.title = NSLocalizedString("Contacts", comment: "")
         let normalTitleforNavigationBar = [
             NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),
             NSAttributedString.Key.font: UIFont(name: SystemFont.regular.value, size: 21)!]
@@ -165,9 +161,9 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
         
         if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
         }else{
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
         }
         
         
@@ -233,7 +229,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
             cell.buddyName.text = buddyData.name
             
             //User Status:
-             cell.buddyStatus.text = buddyData.status == .online ? "Online" : "Offline"
+             cell.buddyStatus.text = buddyData.status == .online ? NSLocalizedString("Online", comment: "") : NSLocalizedString("Offline", comment: "")
             cell.UID = buddyData.uid
             //User status Icon:
             switch buddyData.status{
@@ -323,7 +319,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
             CallingViewController.isIncoming = false
             CallingViewController.userAvtarImage = selectedCell.buddyAvtar.image
             CallingViewController.userNameString = selectedCell.buddyName.text
-            CallingViewController.callingString = "Calling ..."
+            CallingViewController.callingString = NSLocalizedString("Calling ...", comment: "")
             CallingViewController.callerUID = selectedCell.UID
             CallingViewController.isGroupCall = false
             self.present(CallingViewController, animated: true, completion: nil)
@@ -338,7 +334,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
             CallingViewController.isIncoming = false
             CallingViewController.userAvtarImage = selectedCell.buddyAvtar.image
             CallingViewController.userNameString = selectedCell.buddyName.text
-            CallingViewController.callingString = "Calling ..."
+            CallingViewController.callingString = NSLocalizedString("Calling ...", comment: "")
             CallingViewController.callerUID = selectedCell.UID
             CallingViewController.isGroupCall = false
             self.present(CallingViewController, animated: true, completion: nil)
@@ -371,7 +367,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CCMoreViewController = storyboard.instantiateViewController(withIdentifier: "moreSettingsViewController") as! MoreSettingsViewController
         navigationController?.pushViewController(CCMoreViewController, animated: true)
-        CCMoreViewController.title = "More"
+        CCMoreViewController.title = NSLocalizedString("More", comment: "")
         CCMoreViewController.hidesBottomBarWhenPushed = true
         
     }

@@ -42,8 +42,24 @@ class ChatFileMessageCell: UITableViewCell {
                 isSelf = false
             }
             
-            if chatMessage.senderUid == myUID {
+            readReceipts.image = #imageLiteral(resourceName: "sent")
+            DispatchQueue.main.async {  [weak self] in
+                guard let strongSelf = self
+                    else
+                {
+                    return
+                }
                 
+                if strongSelf.chatMessage.readAt > 0 {
+                    strongSelf.readReceipts.image = #imageLiteral(resourceName: "readReceiptDelivered")
+                }
+                else {
+                    strongSelf.readReceipts.image = #imageLiteral(resourceName: "readReceiptSent")
+                }
+            }
+            
+            if chatMessage.senderUid == myUID {
+                userNameLabel.isHidden = true
                 userAvtar.isHidden = true
                 timeLabel1.isHidden = false
                 
@@ -74,6 +90,7 @@ class ChatFileMessageCell: UITableViewCell {
                     fileTypeLabel.textColor = UIColor.white
                 }
             } else {
+                userNameLabel.isHidden = false
                 userAvtar.isHidden = false
                 timeLabel1.isHidden = true
                 switch AppAppearance{
@@ -131,8 +148,7 @@ class ChatFileMessageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         userNameLabel.isHidden = true
-        
-        
+        userAvtar.contentMode = .scaleAspectFit
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -144,13 +160,15 @@ class ChatFileMessageCell: UITableViewCell {
             timeLabelWidthConstraint.constant = 0
             timeLabelTrailingConstraints.constant = 10
             fileMessageViewTrailingConstrant.constant = 10
-            //fileMessageView.widthConstraint?.constant = 230
             fileMessageViewLeadingConstraint.constant = 65
-            //timeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
         }else{
             readReceipts.isHidden = true
-            userNameLabel.isHidden = false
+        }
         
+        if(chatMessage.receiverType == .group && isSelf == false){
+            userNameLabel.isHidden = false
+        }else{
+            userNameLabel.isHidden = true
         }
         
         

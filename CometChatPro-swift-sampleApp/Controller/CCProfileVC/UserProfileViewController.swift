@@ -63,9 +63,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             switch user.status {
                 
             case .online:
-                getUserStatus = "Online"
+                getUserStatus = NSLocalizedString("Online", comment: "")
             case .offline:
-                getUserStatus = "Online"
+                getUserStatus = NSLocalizedString("Online", comment: "")
             }
             
             url = NSURL(string: user.avatar ?? "")
@@ -198,42 +198,42 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         switch profileItems[indexPath.row]{
         case UserProfileCell.AUDIO_CALL_CELL:
             cell.CellRightImage.isHidden = false
-            cell.CellTitle.text = "          Audio Call"
+            cell.CellTitle.text = "          " + NSLocalizedString("Audio Call", comment: "")
             cell.CellLeftImage.image = UIImage(named: "audio_call")
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
             cell.CellLeftImage.tintColor = UIColor.white
             
         case UserProfileCell.VIDEO_CALL_CELL:
             cell.CellRightImage.isHidden = false
-            cell.CellTitle.text = "          Video Call"
+            cell.CellTitle.text = "          " + NSLocalizedString("Video Call", comment: "")
             cell.CellLeftImage.image = UIImage(named: "video_call")
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
             cell.CellLeftImage.tintColor = UIColor.white
             
         case UserProfileCell.MY_STATUS_MESSAGE_CELL:
             cell.CellRightImage.isHidden=true
-            cell.CellTitle.text = "Status Message"
+            cell.CellTitle.text = NSLocalizedString("Status Message", comment: "")
             cell.CellLeftImage.image = UIImage(named: "status_message")
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
             cell.CellLeftImage.tintColor = UIColor.white
             
         case UserProfileCell.MY_SET_STATUS_CELL:
             cell.CellRightImage.isHidden=true
-            cell.CellTitle.text = "Set Status"
+            cell.CellTitle.text = NSLocalizedString("Set Status", comment: "")
             cell.CellLeftImage.image = UIImage(named: "set_status")
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
             cell.CellLeftImage.tintColor = UIColor.white
             
         case UserProfileCell.VIEW_MEMBER_CELL:
             cell.CellRightImage.isHidden = true
-            cell.CellTitle.text = "View Member"
+            cell.CellTitle.text = NSLocalizedString("View Member", comment: "")
             cell.CellLeftImage.image = UIImage(named: "view_member")
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
             
             
         case UserProfileCell.ADD_MEMBER_CELL:
             cell.CellRightImage.isHidden=true
-            cell.CellTitle.text = "Add Member"
+            cell.CellTitle.text = NSLocalizedString("Add Member", comment: "")
             let image = UIImage(named: "add_member")!.withRenderingMode(.alwaysTemplate)
             cell.CellLeftImage.image = image
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
@@ -241,7 +241,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             
         case UserProfileCell.UNBAN_MEMBERS_CELL:
             cell.CellRightImage.isHidden=true
-            cell.CellTitle.text = "Unban Member"
+            cell.CellTitle.text = NSLocalizedString("Unban Member", comment: "")
             let image = UIImage(named: "unban")!.withRenderingMode(.alwaysTemplate)
             cell.CellLeftImage.image = image
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
@@ -249,7 +249,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             
         case UserProfileCell.RENAME_GROUPS_CELL:
             cell.CellRightImage.isHidden=true
-            cell.CellTitle.text = "Rename Group"
+            cell.CellTitle.text = NSLocalizedString("Rename Group", comment: "")
             let image = UIImage(named: "rename_group")!.withRenderingMode(.alwaysTemplate)
             cell.CellLeftImage.image = image
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
@@ -258,7 +258,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             
         case UserProfileCell.LEAVE_GROUP_CELL:
             cell.CellRightImage.isHidden=true
-            cell.CellTitle.text = "Leave Group"
+            cell.CellTitle.text = NSLocalizedString("Leave Group", comment: "")
             let image = UIImage(named: "leave")!.withRenderingMode(.alwaysTemplate)
             cell.CellLeftImage.image = image
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
@@ -266,7 +266,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             
         case UserProfileCell.DELETE_GROUP_CELL:
             cell.CellRightImage.isHidden=true
-            cell.CellTitle.text = "Delete Group"
+            cell.CellTitle.text = NSLocalizedString("Delete Group", comment: "")
             let image = UIImage(named: "delete_group")!.withRenderingMode(.alwaysTemplate)
             cell.CellLeftImage.image = image
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
@@ -318,12 +318,12 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     func setStatus(){
         
-         DispatchQueue.main.async { self.view.makeToast("This feature has not been added yet.")}
+         DispatchQueue.main.async { self.view.makeToast(NSLocalizedString("This feature has not been added yet.", comment: ""))}
     }
     
     func statusMessage(){
         
-          DispatchQueue.main.async { self.view.makeToast("This feature has not been added yet.")}
+          DispatchQueue.main.async { self.view.makeToast(NSLocalizedString("This feature has not been added yet.", comment: ""))}
     }
     
     func audioCallAction(){
@@ -334,7 +334,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         CallingViewController.isIncoming = false
         CallingViewController.userAvtarImage = userProfileAvtar.image
         CallingViewController.userNameString = userName.text
-        CallingViewController.callingString = "Calling ..."
+        CallingViewController.callingString = NSLocalizedString("Calling ...", comment: "")
         CallingViewController.callerUID = guid
         CallingViewController.isGroupCall = false
         self.present(CallingViewController, animated: true, completion: nil)
@@ -349,7 +349,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         CallingViewController.isIncoming = false
         CallingViewController.userAvtarImage = userProfileAvtar.image
         CallingViewController.userNameString = userName.text
-        CallingViewController.callingString = "Calling ..."
+        CallingViewController.callingString = NSLocalizedString("Calling ...", comment: "")
         CallingViewController.callerUID = guid
         CallingViewController.isGroupCall = false
         self.present(CallingViewController, animated: true, completion: nil)
@@ -364,7 +364,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self
                     else { return }
-                strongSelf.view.makeToast("Group left Sucessfully.")
+                strongSelf.view.makeToast(NSLocalizedString("Group left Sucessfully.", comment: ""))
                 UserDefaults.standard.set("1", forKey: "leaveGroupAction")
                 if strongSelf.presentingViewController != nil {
                     strongSelf.dismiss(animated: false, completion: {
@@ -377,7 +377,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
                 
             }
         }) { (CometChatException) in
-            DispatchQueue.main.async { self.view.makeToast("Fail to leave Group.")}
+            DispatchQueue.main.async { self.view.makeToast(NSLocalizedString("Fail to leave Group.", comment: ""))}
         }
     }
     
@@ -388,7 +388,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self
                     else { return }
-                strongSelf.view.makeToast("Group deleted Sucessfully.")
+                strongSelf.view.makeToast(NSLocalizedString("Group deleted Sucessfully.", comment: ""))
                 print("\(sucess)")
                 UserDefaults.standard.set("1", forKey: "leaveGroupAction")
                 if strongSelf.presentingViewController != nil {
@@ -402,7 +402,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }) { (CometChatException) in
             DispatchQueue.main.async {
-                self.view.makeToast("Fail to delete Group.")
+                self.view.makeToast(NSLocalizedString("Fail to delete Group.", comment: ""))
             }
         }
         
@@ -433,7 +433,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
                 let storyboard = UIStoryboard(name:"Main", bundle:nil)
                 let unbanUserListController = storyboard.instantiateViewController(withIdentifier: "viewMemberViewController") as! ViewMemberViewController
                 unbanUserListController.members = self.groupMember
-                unbanUserListController.title = "Unban Members"
+                unbanUserListController.title = NSLocalizedString("Unban Members", comment: "")
                 unbanUserListController.isViewMember = false
                 DispatchQueue.main.async {
                     self.navigationController?.pushViewController(unbanUserListController, animated: true)

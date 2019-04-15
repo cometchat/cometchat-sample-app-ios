@@ -23,6 +23,7 @@ class CCTabBarController: UITabBarController,UITabBarControllerDelegate {
         self.handleViewControllers()
     }
     
+ 
     func handleViewControllers(){
         
         //This function handles the view controller appearance in tabbars.
@@ -36,18 +37,18 @@ class CCTabBarController: UITabBarController,UITabBarControllerDelegate {
         tab3 = storyboard?.instantiateViewController(withIdentifier: "groupNavigationController") as? GroupNavigationController
         
         
-        let recentIcon = UITabBarItem(title: "Chats", image: UIImage(named: "recent.png"), selectedImage: UIImage(named: "recent.png"))
+        let recentIcon = UITabBarItem(title: NSLocalizedString("Chats", comment: ""), image: UIImage(named: "recent.png"), selectedImage: UIImage(named: "recent.png"))
         
-        let contactIcon = UITabBarItem(title: "Contacts", image: UIImage(named: "contact.png"), selectedImage: UIImage(named: "contact.png"))
+        let contactIcon = UITabBarItem(title: NSLocalizedString("Contacts", comment: ""), image: UIImage(named: "contact.png"), selectedImage: UIImage(named: "contact.png"))
         
-        let groupIcon = UITabBarItem(title: "Groups", image: UIImage(named: "Groups.png"), selectedImage: UIImage(named: "Groups.png"))
+        let groupIcon = UITabBarItem(title: NSLocalizedString("Groups", comment: ""), image: UIImage(named: "Groups.png"), selectedImage: UIImage(named: "Groups.png"))
         
         tab1.tabBarItem = recentIcon
         tab2.tabBarItem = contactIcon
         tab3.tabBarItem = groupIcon
         
         
-        let controllers = [tab3,tab2] as [Any]  //array of the root view controllers displayed by the tab bar interface
+        let controllers = [tab2 ,tab3] as [Any]  //array of the root view controllers displayed by the tab bar interface
         self.viewControllers = controllers as? [UIViewController]
         // tabBarController?.selectedIndex = 1
     }

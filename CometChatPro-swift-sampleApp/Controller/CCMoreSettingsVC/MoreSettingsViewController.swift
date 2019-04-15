@@ -21,23 +21,28 @@ class MoreSettingsCell {
     
 }
 
-class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource  {
+class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource{
+   
+    
     
     //Outlets Declarations
-    
-    
+    @IBOutlet weak var launguagePicker: UIPickerView!
     @IBOutlet weak var moreSettingsTableView: UITableView!
+    
     //Variable Declarations
     var SettingsItems:[Int]!
     var buddyAvtar:UIImage!
     var buddyNameString:String!
     var buddyStatusString:String!
+    var pickerData:[String]!
+    
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
         SettingsItems = []
-        self.handleSettingsItems()
+        pickerData = ["English","French","Hindi"]
         
+        self.handleSettingsItems()
         CometChatLog.print(items: "LoggedIn: \(String(describing: UserDefaults.standard.object(forKey: "loggedInUserInfo")))")
     }
     
@@ -92,31 +97,31 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         switch SettingsItems[indexPath.row]
         {
         case MoreSettingsCell.VIEW_PROFILE_CELL:
-            cell.settingsLabel.text = "View Profile"
+            cell.settingsLabel.text = NSLocalizedString("View Profile", comment: "")
             let image = UIImage(named: "view_profile")!.withRenderingMode(.alwaysTemplate)
             cell.settingsLogo.image = image
         case MoreSettingsCell.BOTS_CELL:
-            cell.settingsLabel.text = "Bots"
+            cell.settingsLabel.text = NSLocalizedString("Bots", comment: "")
             let image = UIImage(named: "video_call")!.withRenderingMode(.alwaysTemplate)
             cell.settingsLogo.image = image
         case MoreSettingsCell.CHAT_SETTINGS_CELL:
-            cell.settingsLabel.text = "Chat Settings"
+            cell.settingsLabel.text = NSLocalizedString("Chat Settings", comment: "")
             let image = UIImage(named: "chat_settings")!.withRenderingMode(.alwaysTemplate)
             cell.settingsLogo.image = image
         case MoreSettingsCell.NOTIFICATION_CELL:
-            cell.settingsLabel.text = "Notification"
+            cell.settingsLabel.text = NSLocalizedString("Notification", comment: "")
             let image = UIImage(named: "notification")!.withRenderingMode(.alwaysTemplate)
             cell.settingsLogo.image = image
         case MoreSettingsCell.BLOCKED_USER_CELL:
-            cell.settingsLabel.text = "Blocked User"
+            cell.settingsLabel.text = NSLocalizedString("Blocked User", comment: "")
             let image = UIImage(named: "block_user")!.withRenderingMode(.alwaysTemplate)
             cell.settingsLogo.image = image
         case MoreSettingsCell.GAMES_CELL:
-            cell.settingsLabel.text = "Games"
+            cell.settingsLabel.text = NSLocalizedString("Change Language", comment: "")
             let image = UIImage(named: "games")!.withRenderingMode(.alwaysTemplate)
             cell.settingsLogo.image = image
         case MoreSettingsCell.LOGOUT_CELL:
-            cell.settingsLabel.text = "Logout"
+            cell.settingsLabel.text = NSLocalizedString("Logout", comment: "")
             let image = UIImage(named: "logout")!.withRenderingMode(.alwaysTemplate)
             cell.settingsLogo.image = image
             
@@ -177,36 +182,70 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let UserProfileViewController = storyboard.instantiateViewController(withIdentifier: "userProfileViewController") as! UserProfileViewController
         navigationController?.pushViewController(UserProfileViewController, animated: true)
-        UserProfileViewController.title = "View Profile"
+        UserProfileViewController.title = NSLocalizedString("View Profile", comment: "")
         UserProfileViewController.isDisplayType = "MoreSettingViewProfile"
         UserProfileViewController.hidesBottomBarWhenPushed = true
         
     }
     func viewBots()
     {
-        DispatchQueue.main.async(execute: { self.view.makeToast("This feature has not been added yet")})
+        DispatchQueue.main.async(execute: { self.view.makeToast(NSLocalizedString("This feature has not been added yet", comment: ""))})
     }
     func viewChatSettings()
     {
-        DispatchQueue.main.async(execute: { self.view.makeToast("This feature has not been added yet")})
-    }
+        DispatchQueue.main.async(execute: { self.view.makeToast(NSLocalizedString("This feature has not been added yet", comment: ""))})}
     func viewNotification()
     {
-         DispatchQueue.main.async(execute: { self.view.makeToast("This feature has not been added yet")})
-    }
+         DispatchQueue.main.async(execute: { self.view.makeToast(NSLocalizedString("This feature has not been added yet", comment: ""))}) }
     func viewBlockedUser()
     {
-         DispatchQueue.main.async(execute: { self.view.makeToast("This feature has not been added yet")})
+      DispatchQueue.main.async(execute: { self.view.makeToast(NSLocalizedString("This feature has not been added yet", comment: ""))})
+        
     }
     func viewGames()
     {
-         DispatchQueue.main.async(execute: { self.view.makeToast("This feature has not been added yet")})
+        launguagePicker.isHidden = false
     }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        let launguage = pickerData[row]
+        
+        if launguage == "English" {
+            AnyLanguageBundle.setLanguage("en")
+            UserDefaults.standard.set("en", forKey: "getLanguage")
+            moreSettingsTableView.reloadData()
+        }else if launguage == "French" {
+            AnyLanguageBundle.setLanguage("fr")
+            UserDefaults.standard.set("fr", forKey: "getLanguage")
+            moreSettingsTableView.reloadData()
+        }else if launguage == "Hindi"  {
+            AnyLanguageBundle.setLanguage("hi")
+            UserDefaults.standard.set("hi", forKey: "getLanguage")
+            moreSettingsTableView.reloadData()
+        }
+        pickerView.isHidden = true
+        navigationItem.title = NSLocalizedString("More", comment: "")
+        UserDefaults.standard.set("1", forKey: "changeLanguageAction")
+    }
+    
+    
+    
     func onLogout()
     {
         
-        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to Logout?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        let alert = UIAlertController(title: NSLocalizedString("Logout", comment: ""), message: NSLocalizedString("Are you sure you want to Logout?", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { action in
             switch action.style{
             case .default:
                 
@@ -217,14 +256,14 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
                     let CustomLaunchViewController = storyBoard.instantiateViewController(withIdentifier: "customLaunchViewController") as! CustomLaunchViewController
                     self.present(CustomLaunchViewController, animated:true, completion:nil)
                 }, onError: { (error) in
-                     DispatchQueue.main.async(execute: { self.view.makeToast("Fail to logout at this moment.")})
+                     DispatchQueue.main.async(execute: { self.view.makeToast(NSLocalizedString("Fail to logout at this moment.", comment: ""))})
                 })
                 
             case .cancel: break
                 
             case .destructive: break
             }}))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel",comment: ""), style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
