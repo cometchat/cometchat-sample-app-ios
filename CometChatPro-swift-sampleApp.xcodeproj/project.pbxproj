@@ -69,7 +69,6 @@
 		B291CDD3221EC31000462FAC /* YPImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDC9221EC30400462FAC /* YPImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B2BB032721DF374500B2479D /* MoreSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB032621DF374500B2479D /* MoreSettingTableViewCell.swift */; };
 		B2CD3E8F224A255700135D4F /* AMShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CD3E8E224A255600135D4F /* AMShimmer.swift */; };
-		B2E1101E2226CA1C00FFF7BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2E1101D2226CA1B00FFF7BD /* GoogleService-Info.plist */; };
 		B2FB0F0C21EC880C00CEDD4A /* CometChat-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2FB0F0B21EC880C00CEDD4A /* CometChat-info.plist */; };
 /* End PBXBuildFile section */
 
@@ -158,7 +157,6 @@
 		B2BB032621DF374500B2479D /* MoreSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreSettingTableViewCell.swift; sourceTree = "<group>"; };
 		B2BC6095219DACF9002C24D3 /* CometChatPro-swift-sampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CometChatPro-swift-sampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2CD3E8E224A255600135D4F /* AMShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMShimmer.swift; sourceTree = "<group>"; };
-		B2E1101D2226CA1B00FFF7BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2FB0F0B21EC880C00CEDD4A /* CometChat-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CometChat-info.plist"; sourceTree = "<group>"; };
 		C5B9E6B9A7597EF8A6D41C02 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,7 +187,6 @@
 				589124AC21B2AC6C003500B5 /* AppDelegate.swift */,
 				B22301C021D1FCEC00483CC7 /* UIAppearance.swift */,
 				B2FB0F0B21EC880C00CEDD4A /* CometChat-info.plist */,
-				B2E1101D2226CA1B00FFF7BD /* GoogleService-Info.plist */,
 				B260F1E5224CCA8A00CDCDBA /* Modal */,
 				589124B421B2AC6C003500B5 /* View */,
 				5891249121B2AC6C003500B5 /* Controller */,
@@ -474,7 +471,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B22301C421D26B8000483CC7 /* Product Sans Regular.ttf in Resources */,
-				B2E1101E2226CA1C00FFF7BD /* GoogleService-Info.plist in Resources */,
 				B22B37B3225CB4B900F27841 /* Localizable.strings in Resources */,
 				B22301C521D26B8300483CC7 /* Product Sans Bold.ttf in Resources */,
 				589124D321B2AC6C003500B5 /* Main.storyboard in Resources */,
