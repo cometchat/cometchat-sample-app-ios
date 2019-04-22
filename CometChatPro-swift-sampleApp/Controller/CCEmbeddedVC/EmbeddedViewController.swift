@@ -99,7 +99,7 @@ extension EmbeddedViewController : CometChatCallDelegate {
     
     func onOutgoingCallAccepted(acceptedCall: Call?, error: CometChatException?) {
         
-        CometChatLog.print(items:"onOutgoingCallAccepted \(acceptedCall?.stringValue())");
+        CometChatLog.print(items:"onOutgoingCallAccepted \(String(describing: acceptedCall?.stringValue()))");
         guard let sessionID = acceptedCall?.sessionID else {
             return;
         }

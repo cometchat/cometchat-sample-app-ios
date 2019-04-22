@@ -116,7 +116,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         }else if(API_KEY.contains("Enter") || API_KEY.contains("ENTER") || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
             showAlert(title: "Warning!", msg: "Please fill the APP-ID and API-KEY in CometChat-info.plist file.")
         }else{
-            loginWithUID(UID: "trimmedUID")
+            loginWithUID(UID: trimmedUID)
         }
     }
     

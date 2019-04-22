@@ -62,7 +62,7 @@
 "Group Joined Sucessfully." = "Join";
 "Failed to join group" =  "Failed to join group";
 "Joined Groups" = "Joined Groups";
-"Other Groups" = "Joined Groups";
+"Other Groups" = "Other Groups";
 "Calling ..." = "Calling ...";
 "More" = "More";
 "Create Group" = "Create Group";
@@ -87,7 +87,7 @@
 "Send" = "Send";
 "Recording..." = "Recording...";
 "View Profile" = "View Profile";
-"Call Initiated" = "View Profile";
+"Call Initiated" = "Call Initiated";
 "View Profile" = "View Profile";
 "Call Unanswered" = "Call Unanswered";
 "Call Rejected" = "Call Rejected";

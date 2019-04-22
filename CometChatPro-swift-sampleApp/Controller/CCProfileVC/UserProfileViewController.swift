@@ -9,7 +9,6 @@
 import UIKit
 import CometChatPro
 
-
 class UserProfileCell {
     static let AUDIO_CALL_CELL = 0
     static let VIDEO_CALL_CELL = 1
@@ -176,6 +175,21 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         userProfileTableView.tintColor = UIColor.clear
         userProfileTableView.showsHorizontalScrollIndicator = false
         userProfileTableView.showsVerticalScrollIndicator = false
+        
+        let tapOnProfileAvtar = UITapGestureRecognizer(target: self, action: #selector(UserAvtarClicked(tapGestureRecognizer:)))
+        userProfileAvtar.isUserInteractionEnabled = true
+        userProfileAvtar.addGestureRecognizer(tapOnProfileAvtar)
+        
+    }
+    
+    @objc func UserAvtarClicked(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileAvtarViewController = storyboard.instantiateViewController(withIdentifier: "ccprofileAvtarViewController") as! CCprofileAvtarViewController
+        navigationController?.pushViewController(profileAvtarViewController, animated: true)
+        profileAvtarViewController.title = getUserName
+        profileAvtarViewController.profileAvtar = userProfileAvtar.image
+        profileAvtarViewController.hidesBottomBarWhenPushed = true
     }
     
     @objc func backButtonPressed(){
@@ -277,7 +291,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             
         }
         
-        var totalRow = tableView.numberOfRows(inSection: indexPath.section)
+        let totalRow = tableView.numberOfRows(inSection: indexPath.section)
         if(indexPath.row == totalRow - 1){
             cell.roundCorners([.layerMaxXMaxYCorner,.layerMinXMaxYCorner], radius: 15, borderColor: UIColor.clear, borderWidth: 0, withBackgroundColor: "FFFFFF")
             cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width, 0, 0)

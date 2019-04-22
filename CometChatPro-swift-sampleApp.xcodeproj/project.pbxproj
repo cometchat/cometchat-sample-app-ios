@@ -50,7 +50,6 @@
 		B231764E2225CFCEBCAEB38C /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C772843A75386E47A0EFF22 /* libPods-CometChatPro-swift-sampleApp.a */; };
 		B23F83A4223BE4B2003978B3 /* PopOverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23F83A3223BE4B2003978B3 /* PopOverController.swift */; };
 		B260F1E7224CCA9D00CDCDBA /* CometChatLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260F1E6224CCA9D00CDCDBA /* CometChatLog.swift */; };
-		B270B7102200B0F600A2B3F3 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B270B70F2200B0F600A2B3F3 /* Toast.swift */; };
 		B2753A3521DD0554004D895F /* CallingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2753A3421DD0554004D895F /* CallingViewController.swift */; };
 		B28A325E222FB3EA00D3FC54 /* ChatActionMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28A325C222FB3EA00D3FC54 /* ChatActionMessageCell.swift */; };
 		B28A325F222FB3EA00D3FC54 /* ChatActionMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B28A325D222FB3EA00D3FC54 /* ChatActionMessageCell.xib */; };
@@ -58,17 +57,15 @@
 		B28B1A7E221AC4B000F5FD4C /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28B1A7D221AC4B000F5FD4C /* NavigationViewController.swift */; };
 		B291CDC5221EC2A300462FAC /* ChatImageMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291CDC4221EC2A300462FAC /* ChatImageMessageCell.swift */; };
 		B291CDC7221EC2AA00462FAC /* ChatVideoMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291CDC6221EC2AA00462FAC /* ChatVideoMessageCell.swift */; };
-		B291CDCB221EC30400462FAC /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDC8221EC30200462FAC /* PryntTrimmerView.framework */; };
 		B291CDCC221EC30400462FAC /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDC9221EC30400462FAC /* YPImagePicker.framework */; };
-		B291CDCD221EC30400462FAC /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDCA221EC30400462FAC /* Stevia.framework */; };
 		B291CDCE221EC31000462FAC /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDC8221EC30200462FAC /* PryntTrimmerView.framework */; };
 		B291CDCF221EC31000462FAC /* PryntTrimmerView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDC8221EC30200462FAC /* PryntTrimmerView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B291CDD0221EC31000462FAC /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDCA221EC30400462FAC /* Stevia.framework */; };
 		B291CDD1221EC31000462FAC /* Stevia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDCA221EC30400462FAC /* Stevia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B291CDD2221EC31000462FAC /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDC9221EC30400462FAC /* YPImagePicker.framework */; };
 		B291CDD3221EC31000462FAC /* YPImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDC9221EC30400462FAC /* YPImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B2BB032721DF374500B2479D /* MoreSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB032621DF374500B2479D /* MoreSettingTableViewCell.swift */; };
 		B2CD3E8F224A255700135D4F /* AMShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CD3E8E224A255600135D4F /* AMShimmer.swift */; };
+		B2EECA8D226866B6005DD7FD /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B270B70F2200B0F600A2B3F3 /* Toast.swift */; };
 		B2FB0F0C21EC880C00CEDD4A /* CometChat-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2FB0F0B21EC880C00CEDD4A /* CometChat-info.plist */; };
 /* End PBXBuildFile section */
 
@@ -169,10 +166,7 @@
 				588950BA2221A5DB007D2CBF /* ImageIO.framework in Frameworks */,
 				B291CDCE221EC31000462FAC /* PryntTrimmerView.framework in Frameworks */,
 				B291CDD0221EC31000462FAC /* Stevia.framework in Frameworks */,
-				B291CDCD221EC30400462FAC /* Stevia.framework in Frameworks */,
 				B291CDCC221EC30400462FAC /* YPImagePicker.framework in Frameworks */,
-				B291CDD2221EC31000462FAC /* YPImagePicker.framework in Frameworks */,
-				B291CDCB221EC30400462FAC /* PryntTrimmerView.framework in Frameworks */,
 				B231764E2225CFCEBCAEB38C /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,7 +417,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Admin1;
 				TargetAttributes = {
 					B2BC6094219DACF9002C24D3 = {
@@ -568,14 +562,13 @@
 				B23F83A4223BE4B2003978B3 /* PopOverController.swift in Sources */,
 				589124BD21B2AC6C003500B5 /* RecentListViewController.swift in Sources */,
 				589124BC21B2AC6C003500B5 /* RecentTableViewCell.swift in Sources */,
-				B270B7102200B0F600A2B3F3 /* Toast.swift in Sources */,
+				B2EECA8D226866B6005DD7FD /* Toast.swift in Sources */,
 				582FB5742223D17B0051E365 /* ChatFileMessageCell.swift in Sources */,
 				B2CD3E8F224A255700135D4F /* AMShimmer.swift in Sources */,
 				A83BD0E522071FBB00034D54 /* ViewMemberViewController.swift in Sources */,
 				B28B1A7E221AC4B000F5FD4C /* NavigationViewController.swift in Sources */,
 				B28B1A7C221ABFBE00F5FD4C /* UIWindow.swift in Sources */,
 				B291CDC5221EC2A300462FAC /* ChatImageMessageCell.swift in Sources */,
-				B270B7102200B0F600A2B3F3 /* Toast.swift in Sources */,
 				58C1D1AC21BBDCF900B64915 /* UserProfileViewController.swift in Sources */,
 				589124C821B2AC6C003500B5 /* OneOnOneListViewController.swift in Sources */,
 				589124BA21B2AC6C003500B5 /* MoreSettingsViewController.swift in Sources */,
@@ -777,7 +770,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CometChatPro-swift-sampleApp/Resources/CometChatPro-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -816,7 +809,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CometChatPro-swift-sampleApp/Resources/CometChatPro-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

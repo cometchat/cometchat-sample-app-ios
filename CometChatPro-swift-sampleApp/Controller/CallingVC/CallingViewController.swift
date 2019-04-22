@@ -222,7 +222,7 @@ class CallingViewController: UIViewController {
                         
                     }, callEnded: { [weak self](call_ended) in
                         
-                        guard let strongSelf = self
+                        guard self != nil
                             else
                         {
                             return

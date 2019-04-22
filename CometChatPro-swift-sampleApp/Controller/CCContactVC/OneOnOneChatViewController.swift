@@ -65,8 +65,9 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     var containView:UIView!
     var typingIndicator: TypingIndicator!
     var animation:CAKeyframeAnimation!
+    let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
     
-    
+
     private var messageRequest:MessagesRequest!
     var docController: UIDocumentInteractionController!
     var previewQL = QLPreviewController()
@@ -280,7 +281,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         messageReq.fetchPrevious(onSuccess: { (messages) in
             
             for message in messages!{
-                if message.deliveredAt != 0 && message.readAt != 0{
+                if message.deliveredAt != 0 && message.readAt == 0 && message.sender?.uid != self.myUID{
                     CometChat.markMessageAsRead(message: message)
                 }
             }
@@ -821,16 +822,18 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         case .video:
             
             let videoMessage = (messageData as? MediaMessage)
-            let videoURL = URL(string: (videoMessage?.url!.decodeUrl() ?? ""))
-            let player = AVPlayer(url: videoURL!)
+            var player = AVPlayer()
+            if let videoURL = videoMessage?.url?.decodeUrl(),
+                let url = URL(string: videoURL) {
+                player = AVPlayer(url: url)
+            }
             let playerViewController = AVPlayerViewController()
             playerViewController.player = player
             self.present(playerViewController, animated: true) {
                 playerViewController.player!.play()
             }
         case .audio:
-            
-            
+
             let audioMessage = (messageData as? MediaMessage)
             let url = NSURL.fileURL(withPath:audioMessage!.url!.decodeUrl() ?? "")
             previewURL = audioMessage!.url!.decodeUrl()!

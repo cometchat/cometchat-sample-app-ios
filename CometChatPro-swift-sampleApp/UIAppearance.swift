@@ -121,7 +121,7 @@ public enum SystemFont{
             case .PersianBlue:
                 return fontTypes.PersianBlueRegular.rawValue
             case .Custom:
-                return UIAppearanceFontDict?["regular"] as! String  ?? "HelveticaNeue-Medium"
+                return UIAppearanceFontDict?["regular"] as! String  
             }
         case .bold:
             
@@ -134,7 +134,7 @@ public enum SystemFont{
             case .PersianBlue:
                 return fontTypes.PersianBlueBold.rawValue
             case .Custom:
-                return UIAppearanceFontDict?["bold"] as! String ?? "HelveticaNeue-Bold"
+                return UIAppearanceFontDict?["bold"] as! String 
             }
             
         case .italic:
@@ -148,7 +148,7 @@ public enum SystemFont{
             case .PersianBlue:
                 return fontTypes.PersianBlueItalic.rawValue
             case .Custom:
-                return UIAppearanceFontDict?["italic"] as! String ?? "HelveticaNeue-MediumItalic"
+                return UIAppearanceFontDict?["italic"] as! String 
             }
         }
     }
@@ -189,7 +189,7 @@ class UIAppearanceSize{
         case .PersianBlue:
             return 20.0
         case .Custom:
-            return UIAppearanceSizeDict?["CORNER_RADIUS"] as! Double ?? 0.0
+            return UIAppearanceSizeDict?["CORNER_RADIUS"] as! Double 
         }
     }
     
@@ -204,7 +204,7 @@ class UIAppearanceSize{
         case .PersianBlue:
             return 10.0
         case .Custom:
-            return UIAppearanceSizeDict?["Padding"] as! Double ?? 0.0
+            return UIAppearanceSizeDict?["Padding"] as! Double 
         }
     }
     
@@ -223,7 +223,7 @@ class UIAppearanceColor{
         case .PersianBlue:
             return "2636BE"
         case .Custom:
-            return UIAppearanceColorDict?["NAVIGATION_BAR_COLOR"] as! String ?? "FFFFFF"
+            return UIAppearanceColorDict?["NAVIGATION_BAR_COLOR"] as! String 
         }
     }()
     
@@ -238,7 +238,7 @@ class UIAppearanceColor{
         case .PersianBlue:
             return "FFFFFF"
         case .Custom:
-            return UIAppearanceColorDict?["NAVIGATION_BAR_TITLE_COLOR"] as! String ?? "FFFFFF"
+            return UIAppearanceColorDict?["NAVIGATION_BAR_TITLE_COLOR"] as! String 
         }
     }()
     
@@ -253,7 +253,7 @@ class UIAppearanceColor{
         case .PersianBlue:
             return "FFFFFF"
         case .Custom:
-            return UIAppearanceColorDict?["NAVIGATION_BAR_BUTTON_TINT_COLOR"] as! String ?? "FFFFFF"
+            return UIAppearanceColorDict?["NAVIGATION_BAR_BUTTON_TINT_COLOR"] as! String 
         }
     }()
     
@@ -268,7 +268,7 @@ class UIAppearanceColor{
         case .PersianBlue:
             return "2636BE"
         case .Custom:
-            return UIAppearanceColorDict?["BACKGROUND_COLOR"] as! String ?? "FFFFFF"
+            return UIAppearanceColorDict?["BACKGROUND_COLOR"] as! String 
         }
     }()
     
@@ -283,7 +283,7 @@ class UIAppearanceColor{
         case .PersianBlue:
             return "2636BE"
         case .Custom:
-            return UIAppearanceColorDict?["LOGIN_BUTTON_TINT_COLOR"] as! String ?? "FFFFFF"
+            return UIAppearanceColorDict?["LOGIN_BUTTON_TINT_COLOR"] as! String 
         }
     }()
     
@@ -299,7 +299,7 @@ class UIAppearanceColor{
         case .PersianBlue:
             return "FFFFFF"
         case .Custom:
-            return UIAppearanceColorDict?["LOGO_TINT_COLOR"] as! String ?? "FFFFFF"
+            return UIAppearanceColorDict?["LOGO_TINT_COLOR"] as! String 
         }
     }()
     
@@ -314,7 +314,7 @@ class UIAppearanceColor{
         case .PersianBlue:
             return "2636BE"
         case .Custom:
-            return UIAppearanceColorDict?["RIGHT_BUBBLE_BACKGROUND_COLOR"] as! String ?? "FFFFFF"
+            return UIAppearanceColorDict?["RIGHT_BUBBLE_BACKGROUND_COLOR"] as! String 
         }
     }()
     
