@@ -168,7 +168,17 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
             updateScopeAction.addAction(modorator)
             updateScopeAction.addAction(participant)
             updateScopeAction.addAction(cancelAction)
-            self.present(updateScopeAction, animated: true, completion: nil)
+            if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad ){
+                
+                if let currentPopoverpresentioncontroller = updateScopeAction.popoverPresentationController{
+                    currentPopoverpresentioncontroller.sourceView = self.view
+                    currentPopoverpresentioncontroller.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                    currentPopoverpresentioncontroller.permittedArrowDirections = []
+                }
+                self.present(updateScopeAction, animated: true, completion: nil)
+            }else{
+                self.present(updateScopeAction, animated: true, completion: nil)
+            }
         }
         
         
@@ -188,7 +198,18 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
             }else if groupMember.uid == myUID{
                 self.view.makeToast(NSLocalizedString("Cannot perform action on Yourself.", comment: ""))
             }else{
-                present(actionSheetController, animated: true, completion: nil)
+                
+                if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad ){
+                    
+                    if let currentPopoverpresentioncontroller = actionSheetController.popoverPresentationController{
+                        currentPopoverpresentioncontroller.sourceView = self.view
+                        currentPopoverpresentioncontroller.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                        currentPopoverpresentioncontroller.permittedArrowDirections = []
+                    }
+                    self.present(actionSheetController, animated: true, completion: nil)
+                }else{
+                    self.present(actionSheetController, animated: true, completion: nil)
+                }
             }
         }
         

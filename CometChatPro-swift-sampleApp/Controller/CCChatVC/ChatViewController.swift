@@ -1,5 +1,5 @@
 //
-//  OneOnOneChatViewController.swift
+//  ChatViewController.swift
 //  CCPulse-CometChatUI-ios-master
 //
 //  Created by pushpsen airekar on 02/12/18.
@@ -18,7 +18,7 @@ import AudioToolbox
 import QuickLook
 import FastScroll
 
-class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource, UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate,AVAudioPlayerDelegate,AVAudioRecorderDelegate,UIGestureRecognizerDelegate,QLPreviewControllerDataSource,QLPreviewControllerDelegate  {
+class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource, UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate,AVAudioPlayerDelegate,AVAudioRecorderDelegate,UIGestureRecognizerDelegate,QLPreviewControllerDataSource,QLPreviewControllerDelegate  {
     
     //Outlets Declarations:
     @IBOutlet weak var videoCallBtn: UIBarButtonItem!
@@ -56,9 +56,8 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     fileprivate let textCellID = "textCCell"
     fileprivate let imageCellID = "imageCell"
     fileprivate let videoCellID = "videoCell"
-    fileprivate let fileCellID = "fileCell"
-    fileprivate let audioCellID = "audioCell"
     fileprivate let actionCellID = "actionCell"
+    fileprivate let mediaCellID = "mediaCell"
     var soundRecorder : AVAudioRecorder!
     var soundPlayer : AVAudioPlayer!
     var fileName: String = "audioFile2.m4a"
@@ -114,10 +113,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         chatTableview.register(ChatTextMessageCell.self, forCellReuseIdentifier: textCellID)
         chatTableview.register(ChatImageMessageCell.self, forCellReuseIdentifier: imageCellID)
         chatTableview.register(ChatVideoMessageCell.self, forCellReuseIdentifier: videoCellID)
-        let fileNib = UINib.init(nibName: "ChatFileMessageCell", bundle: nil)
-        self.chatTableview.register(fileNib, forCellReuseIdentifier: fileCellID)
-        let audioNib  = UINib.init(nibName: "ChatAudioMessageCell", bundle: nil)
-        self.chatTableview.register(audioNib, forCellReuseIdentifier: audioCellID)
+        chatTableview.register(ChatMediaMessageCell.self, forCellReuseIdentifier: mediaCellID)
         let actionNib  = UINib.init(nibName: "ChatActionMessageCell", bundle: nil)
         self.chatTableview.register(actionNib, forCellReuseIdentifier: actionCellID)
         
@@ -273,7 +269,21 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         let importMenu = UIDocumentMenuViewController(documentTypes: [kUTTypePDF as String], in: .import)
         importMenu.delegate = self
         importMenu.modalPresentationStyle = .formSheet
-        self.present(importMenu, animated: true, completion: nil)
+        
+        if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad ){
+            
+            if let currentPopoverpresentioncontroller = importMenu.popoverPresentationController{
+                currentPopoverpresentioncontroller.sourceView = self.view
+                currentPopoverpresentioncontroller.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                currentPopoverpresentioncontroller.permittedArrowDirections = []
+                self.present(importMenu, animated: true, completion: nil)
+            }
+        }else{
+            self.present(importMenu, animated: true, completion: nil)
+        }
+        
+        
+        //self.present(importMenu, animated: true, completion: nil)
     }
     
     func fetchPreviousMessages(messageReq:MessagesRequest, completionHandler:@escaping sendMessageResponse) {
@@ -429,7 +439,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         self.navigationItem.leftBarButtonItems?.append(leftBarButton)
         
         //TitleView Apperance
-        let  titleView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
+        let  titleView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: (self.navigationController?.navigationBar.bounds.size.width)! - 200, height: 50))
         
         self.navigationItem.titleView = titleView
         buddyName = UILabel(frame: CGRect(x:0,y: 3,width: 150 ,height: 21))
@@ -483,7 +493,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     @objc func backButtonPressed(){
         navigationController?.popViewController(animated: true)
         CometChat.endTyping(indicator: typingIndicator)
-        let oneOne = OneOnOneChatViewController()
+        let oneOne = ChatViewController()
         oneOne.removeFromParentViewController()
         
     }
@@ -698,61 +708,21 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
                 
             case .audio:
                 
-                var audioCell = ChatFileMessageCell()
-                
-                let mediaMessage = (messageData as? MediaMessage)!
-                audioCell = tableView.dequeueReusableCell(withIdentifier: fileCellID , for: indexPath) as! ChatFileMessageCell
-                let filename: String = mediaMessage.url!.decodeUrl()!
-                let pathExtention = filename.pathExtension
-                let pathPrefix = filename.lastPathComponent
-                audioCell.userNameLabel.text = (mediaMessage.sender?.name)! + " :"
-                audioCell.fileNameLabel.text = pathPrefix
-                
-                let date = Date(timeIntervalSince1970: TimeInterval(mediaMessage.sentAt))
-                let dateFormatter1 = DateFormatter()
-                dateFormatter1.dateFormat = "HH:mm:a"
-                dateFormatter1.timeZone = NSTimeZone.local
-                let dateString : String = dateFormatter1.string(from: date)
-                audioCell.timeLabel.text =  dateString
-                audioCell.timeLabel.text =  dateString
-                audioCell.fileIcon.image = UIImage(named: "play.png")
-                audioCell.fileTypeLabel.text = pathExtention.uppercased()
-                audioCell.timeLabel.text = dateString
-                audioCell.timeLabel1.text = dateString
-                audioCell.chatMessage = mediaMessage
-                audioCell.selectionStyle = .none
-                let url = NSURL(string: filename)
-                audioCell.userAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
-                return audioCell
+                var mediaMessageCell = ChatMediaMessageCell()
+                mediaMessageCell = tableView.dequeueReusableCell(withIdentifier: mediaCellID, for: indexPath) as! ChatMediaMessageCell
+                mediaMessageCell.chatMessage = (messageData as? MediaMessage)!
+                mediaMessageCell.selectionStyle = .none
+                mediaMessageCell.fileIconImageView.image = #imageLiteral(resourceName: "play")
+                return mediaMessageCell
                 
             case .file:
                 
-                var fileCell = ChatFileMessageCell()
-                
-                let mediaMessage = (messageData as? MediaMessage)!
-                fileCell = tableView.dequeueReusableCell(withIdentifier: fileCellID , for: indexPath) as! ChatFileMessageCell
-                let filename: String = mediaMessage.url!.decodeUrl()!
-                let pathExtention = filename.pathExtension
-                let pathPrefix = filename.lastPathComponent
-                fileCell.userNameLabel.text = (mediaMessage.sender?.name)! + " :"
-                fileCell.fileNameLabel.text = pathPrefix
-                fileCell.fileIcon.image = UIImage(named: "file.png")
-                let date = Date(timeIntervalSince1970: TimeInterval(mediaMessage.sentAt))
-                let dateFormatter1 = DateFormatter()
-                dateFormatter1.dateFormat = "HH:mm:a"
-                dateFormatter1.timeZone = NSTimeZone.local
-                let dateString : String = dateFormatter1.string(from: date)
-                fileCell.timeLabel.text =  dateString
-                fileCell.timeLabel.text =  dateString
-                
-                fileCell.fileTypeLabel.text = pathExtention.uppercased()
-                fileCell.timeLabel.text = dateString
-                fileCell.timeLabel1.text = dateString
-                fileCell.chatMessage = mediaMessage
-                fileCell.selectionStyle = .none
-                let url = NSURL(string: filename)
-                fileCell.userAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
-                return fileCell
+                var mediaMessageCell = ChatMediaMessageCell()
+                mediaMessageCell = tableView.dequeueReusableCell(withIdentifier: mediaCellID, for: indexPath) as! ChatMediaMessageCell
+                mediaMessageCell.chatMessage = (messageData as? MediaMessage)!
+                mediaMessageCell.selectionStyle = .none
+                mediaMessageCell.fileIconImageView.image = #imageLiteral(resourceName: "file")
+                return mediaMessageCell
                 
             case .groupMember: break
                 
@@ -1154,9 +1124,28 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
         if self.view.frame.origin.y != 0 {
             dismissKeyboard()
-            present(actionSheetController, animated: true, completion: nil)
+
+            if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad ){
+                
+                if let currentPopoverpresentioncontroller = actionSheetController.popoverPresentationController{
+                    currentPopoverpresentioncontroller.sourceView = sender as? UIView
+                    currentPopoverpresentioncontroller.sourceRect = (sender as AnyObject).bounds
+                    self.present(actionSheetController, animated: true, completion: nil)
+                }
+            }else{
+                self.present(actionSheetController, animated: true, completion: nil)
+            }
         }else{
-            present(actionSheetController, animated: true, completion: nil)
+            if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad ){
+                
+                if let currentPopoverpresentioncontroller = actionSheetController.popoverPresentationController{
+                    currentPopoverpresentioncontroller.sourceView = sender as? UIView
+                    currentPopoverpresentioncontroller.sourceRect = (sender as AnyObject).bounds
+                    self.present(actionSheetController, animated: true, completion: nil)
+                }
+            }else{
+                self.present(actionSheetController, animated: true, completion: nil)
+            }
         }
         
         
@@ -1200,7 +1189,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     
 }
 
-extension OneOnOneChatViewController : CometChatMessageDelegate {
+extension ChatViewController : CometChatMessageDelegate {
     
     func onTextMessageReceived(textMessage: TextMessage?, error: CometChatException?) {
         if textMessage?.sender?.uid == buddyUID && textMessage?.receiverType.rawValue == Int(isGroup){
@@ -1253,11 +1242,9 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
         case .user:
             buddyStatus.text = NSLocalizedString("Typing...", comment: "")
             containView.layer.add(animation, forKey: nil)
-            
-
+    
         case .group:break
-      //   buddyStatus.text = "\(String(describing: typingDetails.sender?.name))\(NSLocalizedString("Typing...", comment: ""))"
-     //    containView.layer.add(animation, forKey: nil)
+
         }
     }
     
@@ -1270,8 +1257,6 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
             buddyStatus.text = NSLocalizedString("Online", comment: "")
             containView.layer.removeAllAnimations()
         case .group:break
-            //            buddyStatus.text = ""
-            //            containView.layer.removeAllAnimations()
         }
     }
     
@@ -1282,8 +1267,7 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
             
             chatMessage[row].deliveredAt = Double(receipt.timeStamp)
             let indexPath = IndexPath(row: row, section: 0)
-            // chatTableview.reloadRows(at: [indexPath], with: .none)
-            
+   
         }
         
         
@@ -1307,7 +1291,7 @@ extension OneOnOneChatViewController : CometChatMessageDelegate {
 }
 
 
-extension OneOnOneChatViewController : CometChatGroupDelegate {
+extension ChatViewController : CometChatGroupDelegate {
     
     func onGroupMemberJoined(action: ActionMessage, joinedUser: User, joinedGroup: Group) {
         
@@ -1371,7 +1355,7 @@ extension OneOnOneChatViewController : CometChatGroupDelegate {
     }
 }
 
-extension OneOnOneChatViewController : CometChatUserDelegate {
+extension ChatViewController : CometChatUserDelegate {
     
     func onUserOnline(user: User) {
         if user.uid == buddyUID{
@@ -1391,7 +1375,7 @@ extension OneOnOneChatViewController : CometChatUserDelegate {
     }
 }
 
-extension OneOnOneChatViewController {
+extension ChatViewController {
     /* Gives a resolution for the video by URL */
     func resolutionForLocalVideo(url: URL) -> CGSize? {
         guard let track = AVURLAsset(url: url).tracks(withMediaType: AVMediaType.video).first else { return nil }
@@ -1401,7 +1385,7 @@ extension OneOnOneChatViewController {
 }
 
 
-extension OneOnOneChatViewController : UIScrollViewDelegate {
+extension ChatViewController : UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView : UIScrollView) {
         chatTableview.scrollViewDidScroll(scrollView)

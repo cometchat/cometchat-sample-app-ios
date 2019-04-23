@@ -297,14 +297,14 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         groupTableView.deselectRow(at: indexPath, animated: true)
         let selectedCell:GroupTableViewCell = tableView.cellForRow(at: indexPath) as! GroupTableViewCell
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
-        oneOnOneChatViewController.buddyAvtar = selectedCell.groupAvtar.image
-        oneOnOneChatViewController.buddyNameString = selectedCell.groupName.text
-        oneOnOneChatViewController.buddyUID = selectedCell.UID!
-        oneOnOneChatViewController.isGroup = "1"
+        let chatViewController = storyboard.instantiateViewController(withIdentifier: "chatViewController") as! ChatViewController
+        chatViewController.buddyAvtar = selectedCell.groupAvtar.image
+        chatViewController.buddyNameString = selectedCell.groupName.text
+        chatViewController.buddyUID = selectedCell.UID!
+        chatViewController.isGroup = "1"
         
         if let scope = selectedCell.groupScope {
-            oneOnOneChatViewController.groupScope = scope
+            chatViewController.groupScope = scope
         }
         
         if(indexPath.section != 0){
@@ -321,7 +321,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                         DispatchQueue.main.async{
                            
                             self.view.makeToast(NSLocalizedString("Group Joined Sucessfully.", comment: ""))
-                            self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
+                            self.navigationController?.pushViewController(chatViewController, animated: true)
                             self.othersChatRoomList.remove(at: indexPath.row)
                             if !self.othersChatRoomList.isEmpty {
                             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -348,7 +348,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
 
                       DispatchQueue.main.async{
                     self.view.makeToast(NSLocalizedString("Group Joined Sucessfully.", comment: ""))
-                        self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
+                        self.navigationController?.pushViewController(chatViewController, animated: true)
                         self.othersChatRoomList.remove(at: indexPath.row)
                          if !self.othersChatRoomList.isEmpty {
                         tableView.deleteRows(at: [indexPath], with: .fade)
@@ -363,7 +363,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 }
             }
         }else{
-            self.navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
+            self.navigationController?.pushViewController(chatViewController, animated: true)
         }
     }
     
@@ -564,7 +564,17 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         actionSheetController.addAction(createGroupAction)
         actionSheetController.addAction(cancelAction)
-        present(actionSheetController, animated: true, completion: nil)
+        
+        if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad ){
+            
+            if let currentPopoverpresentioncontroller = actionSheetController.popoverPresentationController{
+                currentPopoverpresentioncontroller.sourceView = sender as? UIView
+                currentPopoverpresentioncontroller.sourceRect = (sender as AnyObject).bounds
+                self.present(actionSheetController, animated: true, completion: nil)
+            }
+        }else{
+           self.present(actionSheetController, animated: true, completion: nil)
+        }
     }
     
 }

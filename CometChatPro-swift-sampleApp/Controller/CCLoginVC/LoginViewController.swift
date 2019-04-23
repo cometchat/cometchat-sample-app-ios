@@ -209,11 +209,10 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             bottomViewTop.constant = 0
         }else if(modelName == "iPhone XR"){
             bottomViewTop.constant = 0
-        }else if(modelName == "iPad Pro (12.9-inch) (2nd generation)"){
-            bottomViewTop.constant = 0
+        }else if(modelName.contains("iPad")){
+            bottomViewTop.constant = 50
         }else{
             bottomViewTop.constant = 0
-            
         }
     }
     

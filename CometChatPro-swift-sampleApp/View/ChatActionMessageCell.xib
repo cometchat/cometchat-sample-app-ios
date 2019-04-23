@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnU-XB-zKH">
-                        <rect key="frame" x="60" y="10" width="200" height="53.5"/>
+                        <rect key="frame" x="60" y="5" width="200" height="53.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action MessageAction MessageAction MessageAction MessageAction" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTl-mt-Fa0">
                                 <rect key="frame" x="10" y="7" width="180" height="39.5"/>
@@ -61,7 +61,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="pnU-XB-zKH" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="d3U-mq-AoY"/>
-                    <constraint firstItem="pnU-XB-zKH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="eA4-wo-KYX"/>
+                    <constraint firstItem="pnU-XB-zKH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="eA4-wo-KYX"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

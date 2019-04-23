@@ -152,7 +152,19 @@ class CreateGroupcontroller: UIViewController {
         actionSheetController.addAction(passwordProtectedGroup)
         actionSheetController.addAction(privateGroup)
         actionSheetController.addAction(cancelAction)
-        present(actionSheetController, animated: true, completion: nil)
+        
+        if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad ){
+            
+            if let currentPopoverpresentioncontroller = actionSheetController.popoverPresentationController{
+                currentPopoverpresentioncontroller.sourceView = self.view
+                currentPopoverpresentioncontroller.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                currentPopoverpresentioncontroller.permittedArrowDirections = []
+            }
+             self.present(actionSheetController, animated: true, completion: nil)
+        }else{
+            self.present(actionSheetController, animated: true, completion: nil)
+        }
+        
         
     }
 }

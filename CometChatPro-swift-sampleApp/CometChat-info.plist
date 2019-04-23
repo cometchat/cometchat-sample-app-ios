@@ -7,9 +7,9 @@
 	<key>Authentication</key>
 	<dict>
 		<key>API_KEY</key>
-		<string>7b98476e295b2fb3952dab04408cae570629d8ce</string>
+		<string>ENTER API KEY</string>
 		<key>APP_ID</key>
-		<string>338d7fb95a736</string>
+		<string>ENTER APP ID</string>
 	</dict>
 	<key>UIApperance</key>
 	<string>PersianBlue</string>

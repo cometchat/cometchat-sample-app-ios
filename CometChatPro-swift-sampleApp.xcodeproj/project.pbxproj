@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		582FB5742223D17B0051E365 /* ChatFileMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582FB5722223D17B0051E365 /* ChatFileMessageCell.swift */; };
-		582FB5752223D17B0051E365 /* ChatFileMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 582FB5732223D17B0051E365 /* ChatFileMessageCell.xib */; };
 		5889505822219F96007D2CBF /* ImageCacheLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5889505722219F95007D2CBF /* ImageCacheLoader.swift */; };
 		588950BA2221A5DB007D2CBF /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588950B92221A5DB007D2CBF /* ImageIO.framework */; };
 		589124BA21B2AC6C003500B5 /* MoreSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891249321B2AC6C003500B5 /* MoreSettingsViewController.swift */; };
@@ -35,13 +33,14 @@
 		589124D021B2AC6C003500B5 /* CCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589124B121B2AC6C003500B5 /* CCExtensions.swift */; };
 		589124D221B2AC6C003500B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 589124B521B2AC6C003500B5 /* LaunchScreen.storyboard */; };
 		589124D321B2AC6C003500B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 589124B721B2AC6C003500B5 /* Main.storyboard */; };
-		589124DB21B3B2FD003500B5 /* OneOnOneChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589124DA21B3B2FD003500B5 /* OneOnOneChatViewController.swift */; };
+		589124DB21B3B2FD003500B5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589124DA21B3B2FD003500B5 /* ChatViewController.swift */; };
 		58C1D1AC21BBDCF900B64915 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D1AB21BBDCF900B64915 /* UserProfileViewController.swift */; };
 		58C1D1AE21BBF0D800B64915 /* UserProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */; };
 		71ADB0ED21D41217002443A7 /* ChatTextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ADB0EC21D41216002443A7 /* ChatTextMessageCell.swift */; };
 		A8296FB52202F68300D7010C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8296FB42202F68300D7010C /* Assets.xcassets */; };
 		A83BD0E122071F4500034D54 /* ViewMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD0E022071F4500034D54 /* ViewMemberTableViewCell.swift */; };
 		A83BD0E522071FBB00034D54 /* ViewMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD0E422071FBB00034D54 /* ViewMemberViewController.swift */; };
+		B20FF538226EFDD100720936 /* ChatMediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20FF537226EFDD100720936 /* ChatMediaMessageCell.swift */; };
 		B22301C121D1FCEC00483CC7 /* UIAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22301C021D1FCEC00483CC7 /* UIAppearance.swift */; };
 		B22301C421D26B8000483CC7 /* Product Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C221D2659C00483CC7 /* Product Sans Regular.ttf */; };
 		B22301C521D26B8300483CC7 /* Product Sans Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C321D265A600483CC7 /* Product Sans Bold.ttf */; };
@@ -87,8 +86,6 @@
 
 /* Begin PBXFileReference section */
 		41608623357BC812271BA9CF /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.release.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.release.xcconfig"; sourceTree = "<group>"; };
-		582FB5722223D17B0051E365 /* ChatFileMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFileMessageCell.swift; sourceTree = "<group>"; };
-		582FB5732223D17B0051E365 /* ChatFileMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatFileMessageCell.xib; sourceTree = "<group>"; };
 		584900AC21B2AA7C009BB669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5866BC0A2223F8D000E6AE43 /* CometChatPro-swift-sampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CometChatPro-swift-sampleApp.entitlements"; sourceTree = "<group>"; };
 		5889505722219F95007D2CBF /* ImageCacheLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheLoader.swift; sourceTree = "<group>"; };
@@ -117,7 +114,7 @@
 		589124B121B2AC6C003500B5 /* CCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCExtensions.swift; sourceTree = "<group>"; };
 		589124B621B2AC6C003500B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		589124B821B2AC6C003500B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		589124DA21B3B2FD003500B5 /* OneOnOneChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneOnOneChatViewController.swift; sourceTree = "<group>"; };
+		589124DA21B3B2FD003500B5 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		58A081A22221DA32001C70A5 /* CometChatPro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CometChatPro-Bridging-Header.h"; sourceTree = "<group>"; };
 		58C1D1AB21BBDCF900B64915 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewCell.swift; sourceTree = "<group>"; };
@@ -126,6 +123,7 @@
 		A8296FB42202F68300D7010C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A83BD0E022071F4500034D54 /* ViewMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMemberTableViewCell.swift; sourceTree = "<group>"; };
 		A83BD0E422071FBB00034D54 /* ViewMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMemberViewController.swift; sourceTree = "<group>"; };
+		B20FF537226EFDD100720936 /* ChatMediaMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMediaMessageCell.swift; sourceTree = "<group>"; };
 		B22301C021D1FCEC00483CC7 /* UIAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAppearance.swift; sourceTree = "<group>"; };
 		B22301C221D2659C00483CC7 /* Product Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Regular.ttf"; sourceTree = "<group>"; };
 		B22301C321D265A600483CC7 /* Product Sans Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Bold.ttf"; sourceTree = "<group>"; };
@@ -206,6 +204,8 @@
 		5891249121B2AC6C003500B5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B20FF53A226F56A200720936 /* CCViewMemberVC */,
+				B20FF539226F565F00720936 /* CCChatVC */,
 				5891249221B2AC6C003500B5 /* CCMoreSettingsVC */,
 				5891249421B2AC6C003500B5 /* CCRecentVC */,
 				5891249821B2AC6C003500B5 /* CCLoginVC */,
@@ -257,8 +257,6 @@
 				5891249F21B2AC6C003500B5 /* CreateGroupcontroller.swift */,
 				589124A021B2AC6C003500B5 /* GroupTableViewCell.swift */,
 				589124A121B2AC6C003500B5 /* GroupNavigationController.swift */,
-				A83BD0E022071F4500034D54 /* ViewMemberTableViewCell.swift */,
-				A83BD0E422071FBB00034D54 /* ViewMemberViewController.swift */,
 			);
 			path = CCGroupVC;
 			sourceTree = "<group>";
@@ -277,7 +275,6 @@
 			children = (
 				589124A521B2AC6C003500B5 /* OneOnOneTableViewCell.swift */,
 				589124A621B2AC6C003500B5 /* OneOnOneListViewController.swift */,
-				589124DA21B3B2FD003500B5 /* OneOnOneChatViewController.swift */,
 				589124A721B2AC6C003500B5 /* ContactsNavigationController.swift */,
 			);
 			path = CCContactVC;
@@ -326,10 +323,9 @@
 				71ADB0EC21D41216002443A7 /* ChatTextMessageCell.swift */,
 				B291CDC4221EC2A300462FAC /* ChatImageMessageCell.swift */,
 				B291CDC6221EC2AA00462FAC /* ChatVideoMessageCell.swift */,
-				582FB5722223D17B0051E365 /* ChatFileMessageCell.swift */,
-				582FB5732223D17B0051E365 /* ChatFileMessageCell.xib */,
 				B28A325C222FB3EA00D3FC54 /* ChatActionMessageCell.swift */,
 				B28A325D222FB3EA00D3FC54 /* ChatActionMessageCell.xib */,
+				B20FF537226EFDD100720936 /* ChatMediaMessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +337,23 @@
 				41608623357BC812271BA9CF /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B20FF539226F565F00720936 /* CCChatVC */ = {
+			isa = PBXGroup;
+			children = (
+				589124DA21B3B2FD003500B5 /* ChatViewController.swift */,
+			);
+			path = CCChatVC;
+			sourceTree = "<group>";
+		};
+		B20FF53A226F56A200720936 /* CCViewMemberVC */ = {
+			isa = PBXGroup;
+			children = (
+				A83BD0E022071F4500034D54 /* ViewMemberTableViewCell.swift */,
+				A83BD0E422071FBB00034D54 /* ViewMemberViewController.swift */,
+			);
+			path = CCViewMemberVC;
 			sourceTree = "<group>";
 		};
 		B260F1E5224CCA8A00CDCDBA /* Modal */ = {
@@ -471,7 +484,6 @@
 				B2FB0F0C21EC880C00CEDD4A /* CometChat-info.plist in Resources */,
 				A8296FB52202F68300D7010C /* Assets.xcassets in Resources */,
 				B28A325F222FB3EA00D3FC54 /* ChatActionMessageCell.xib in Resources */,
-				582FB5752223D17B0051E365 /* ChatFileMessageCell.xib in Resources */,
 				589124D221B2AC6C003500B5 /* LaunchScreen.storyboard in Resources */,
 				B22301C721D271EF00483CC7 /* Product Sans Italic.ttf in Resources */,
 			);
@@ -554,6 +566,7 @@
 				589124C621B2AC6C003500B5 /* EmbeddedViewController.swift in Sources */,
 				71ADB0ED21D41217002443A7 /* ChatTextMessageCell.swift in Sources */,
 				589124C721B2AC6C003500B5 /* OneOnOneTableViewCell.swift in Sources */,
+				B20FF538226EFDD100720936 /* ChatMediaMessageCell.swift in Sources */,
 				589124CA21B2AC6C003500B5 /* CCTabBarController.swift in Sources */,
 				A83BD0E122071F4500034D54 /* ViewMemberTableViewCell.swift in Sources */,
 				589124CD21B2AC6C003500B5 /* CCBottomSlideController.swift in Sources */,
@@ -563,7 +576,6 @@
 				589124BD21B2AC6C003500B5 /* RecentListViewController.swift in Sources */,
 				589124BC21B2AC6C003500B5 /* RecentTableViewCell.swift in Sources */,
 				B2EECA8D226866B6005DD7FD /* Toast.swift in Sources */,
-				582FB5742223D17B0051E365 /* ChatFileMessageCell.swift in Sources */,
 				B2CD3E8F224A255700135D4F /* AMShimmer.swift in Sources */,
 				A83BD0E522071FBB00034D54 /* ViewMemberViewController.swift in Sources */,
 				B28B1A7E221AC4B000F5FD4C /* NavigationViewController.swift in Sources */,
@@ -572,7 +584,7 @@
 				58C1D1AC21BBDCF900B64915 /* UserProfileViewController.swift in Sources */,
 				589124C821B2AC6C003500B5 /* OneOnOneListViewController.swift in Sources */,
 				589124BA21B2AC6C003500B5 /* MoreSettingsViewController.swift in Sources */,
-				589124DB21B3B2FD003500B5 /* OneOnOneChatViewController.swift in Sources */,
+				589124DB21B3B2FD003500B5 /* ChatViewController.swift in Sources */,
 				B2BB032721DF374500B2479D /* MoreSettingTableViewCell.swift in Sources */,
 				589124C321B2AC6C003500B5 /* CreateGroupcontroller.swift in Sources */,
 				B260F1E7224CCA9D00CDCDBA /* CometChatLog.swift in Sources */,
@@ -770,7 +782,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CometChatPro-swift-sampleApp/Resources/CometChatPro-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -809,7 +821,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CometChatPro-swift-sampleApp/Resources/CometChatPro-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

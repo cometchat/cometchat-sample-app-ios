@@ -264,13 +264,13 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         oneOneOneTableView.deselectRow(at: indexPath, animated: true)
         let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
-        oneOnOneChatViewController.buddyStatusString = selectedCell.buddyStatus.text
-        oneOnOneChatViewController.buddyAvtar = selectedCell.buddyAvtar.image
-        oneOnOneChatViewController.buddyNameString = selectedCell.buddyName.text
-        oneOnOneChatViewController.buddyUID = selectedCell.UID
-        oneOnOneChatViewController.isGroup = "0"
-        navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
+        let chatViewController = storyboard.instantiateViewController(withIdentifier: "chatViewController") as! ChatViewController
+        chatViewController.buddyStatusString = selectedCell.buddyStatus.text
+        chatViewController.buddyAvtar = selectedCell.buddyAvtar.image
+        chatViewController.buddyNameString = selectedCell.buddyName.text
+        chatViewController.buddyUID = selectedCell.UID
+        chatViewController.isGroup = "0"
+        navigationController?.pushViewController(chatViewController, animated: true)
     }
     
     
