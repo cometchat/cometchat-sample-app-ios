@@ -35,7 +35,6 @@ class CallingViewController: UIViewController {
     var isAudioCall:String!
     var receiverUid:String!
     var aNewCall:Call! = nil
-    var callType:CallType!
     var isIncoming:Bool!
     var isGroupCall:Bool!
     var inComingCall:Call!

@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06408B86226FD09100731A01 /* CometChatPro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06408B85226FD09100731A01 /* CometChatPro.framework */; };
+		06408B89226FD09A00731A01 /* JitsiMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06408B87226FD09A00731A01 /* JitsiMeet.framework */; };
+		06408B8A226FD09A00731A01 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06408B88226FD09A00731A01 /* WebRTC.framework */; };
+		06408B8B226FD0A500731A01 /* JitsiMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06408B87226FD09A00731A01 /* JitsiMeet.framework */; };
+		06408B8C226FD0A500731A01 /* JitsiMeet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06408B87226FD09A00731A01 /* JitsiMeet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		06408B8D226FD0A500731A01 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06408B88226FD09A00731A01 /* WebRTC.framework */; };
+		06408B8E226FD0A500731A01 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06408B88226FD09A00731A01 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		06408B8F226FD0A500731A01 /* CometChatPro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06408B85226FD09100731A01 /* CometChatPro.framework */; };
+		06408B90226FD0A500731A01 /* CometChatPro.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06408B85226FD09100731A01 /* CometChatPro.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		06A736A722701496006AD31C /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A736A622701496006AD31C /* YPImagePicker.framework */; };
+		06A736AF22701AAF006AD31C /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A736A622701496006AD31C /* YPImagePicker.framework */; };
+		06A736B022701AAF006AD31C /* YPImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06A736A622701496006AD31C /* YPImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5889505822219F96007D2CBF /* ImageCacheLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5889505722219F95007D2CBF /* ImageCacheLoader.swift */; };
 		588950BA2221A5DB007D2CBF /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588950B92221A5DB007D2CBF /* ImageIO.framework */; };
 		589124BA21B2AC6C003500B5 /* MoreSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891249321B2AC6C003500B5 /* MoreSettingsViewController.swift */; };
@@ -56,12 +68,10 @@
 		B28B1A7E221AC4B000F5FD4C /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28B1A7D221AC4B000F5FD4C /* NavigationViewController.swift */; };
 		B291CDC5221EC2A300462FAC /* ChatImageMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291CDC4221EC2A300462FAC /* ChatImageMessageCell.swift */; };
 		B291CDC7221EC2AA00462FAC /* ChatVideoMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291CDC6221EC2AA00462FAC /* ChatVideoMessageCell.swift */; };
-		B291CDCC221EC30400462FAC /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDC9221EC30400462FAC /* YPImagePicker.framework */; };
 		B291CDCE221EC31000462FAC /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDC8221EC30200462FAC /* PryntTrimmerView.framework */; };
 		B291CDCF221EC31000462FAC /* PryntTrimmerView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDC8221EC30200462FAC /* PryntTrimmerView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B291CDD0221EC31000462FAC /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDCA221EC30400462FAC /* Stevia.framework */; };
 		B291CDD1221EC31000462FAC /* Stevia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDCA221EC30400462FAC /* Stevia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B291CDD3221EC31000462FAC /* YPImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B291CDC9221EC30400462FAC /* YPImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B2BB032721DF374500B2479D /* MoreSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB032621DF374500B2479D /* MoreSettingTableViewCell.swift */; };
 		B2CD3E8F224A255700135D4F /* AMShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CD3E8E224A255600135D4F /* AMShimmer.swift */; };
 		B2EECA8D226866B6005DD7FD /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B270B70F2200B0F600A2B3F3 /* Toast.swift */; };
@@ -76,8 +86,11 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B291CDD1221EC31000462FAC /* Stevia.framework in Embed Frameworks */,
-				B291CDD3221EC31000462FAC /* YPImagePicker.framework in Embed Frameworks */,
+				06408B8C226FD0A500731A01 /* JitsiMeet.framework in Embed Frameworks */,
+				06408B8E226FD0A500731A01 /* WebRTC.framework in Embed Frameworks */,
+				06A736B022701AAF006AD31C /* YPImagePicker.framework in Embed Frameworks */,
 				B291CDCF221EC31000462FAC /* PryntTrimmerView.framework in Embed Frameworks */,
+				06408B90226FD0A500731A01 /* CometChatPro.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +98,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		06408B85226FD09100731A01 /* CometChatPro.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CometChatPro.framework; sourceTree = "<group>"; };
+		06408B87226FD09A00731A01 /* JitsiMeet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JitsiMeet.framework; sourceTree = "<group>"; };
+		06408B88226FD09A00731A01 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
+		06A736A622701496006AD31C /* YPImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YPImagePicker.framework; sourceTree = "<group>"; };
 		41608623357BC812271BA9CF /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.release.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		584900AC21B2AA7C009BB669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5866BC0A2223F8D000E6AE43 /* CometChatPro-swift-sampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CometChatPro-swift-sampleApp.entitlements"; sourceTree = "<group>"; };
@@ -147,7 +164,6 @@
 		B291CDC4221EC2A300462FAC /* ChatImageMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatImageMessageCell.swift; sourceTree = "<group>"; };
 		B291CDC6221EC2AA00462FAC /* ChatVideoMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVideoMessageCell.swift; sourceTree = "<group>"; };
 		B291CDC8221EC30200462FAC /* PryntTrimmerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PryntTrimmerView.framework; sourceTree = "<group>"; };
-		B291CDC9221EC30400462FAC /* YPImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YPImagePicker.framework; sourceTree = "<group>"; };
 		B291CDCA221EC30400462FAC /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stevia.framework; sourceTree = "<group>"; };
 		B2BB032621DF374500B2479D /* MoreSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreSettingTableViewCell.swift; sourceTree = "<group>"; };
 		B2BC6095219DACF9002C24D3 /* CometChatPro-swift-sampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CometChatPro-swift-sampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,11 +177,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06A736A722701496006AD31C /* YPImagePicker.framework in Frameworks */,
 				588950BA2221A5DB007D2CBF /* ImageIO.framework in Frameworks */,
 				B291CDCE221EC31000462FAC /* PryntTrimmerView.framework in Frameworks */,
 				B291CDD0221EC31000462FAC /* Stevia.framework in Frameworks */,
-				B291CDCC221EC30400462FAC /* YPImagePicker.framework in Frameworks */,
+				06408B8D226FD0A500731A01 /* WebRTC.framework in Frameworks */,
+				06408B8F226FD0A500731A01 /* CometChatPro.framework in Frameworks */,
+				06408B8A226FD09A00731A01 /* WebRTC.framework in Frameworks */,
+				06408B89226FD09A00731A01 /* JitsiMeet.framework in Frameworks */,
+				06408B8B226FD0A500731A01 /* JitsiMeet.framework in Frameworks */,
+				06A736AF22701AAF006AD31C /* YPImagePicker.framework in Frameworks */,
 				B231764E2225CFCEBCAEB38C /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */,
+				06408B86226FD09100731A01 /* CometChatPro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +199,9 @@
 			isa = PBXGroup;
 			children = (
 				5866BC0A2223F8D000E6AE43 /* CometChatPro-swift-sampleApp.entitlements */,
+				06408B87226FD09A00731A01 /* JitsiMeet.framework */,
+				06408B88226FD09A00731A01 /* WebRTC.framework */,
+				06408B85226FD09100731A01 /* CometChatPro.framework */,
 				589124AC21B2AC6C003500B5 /* AppDelegate.swift */,
 				B22301C021D1FCEC00483CC7 /* UIAppearance.swift */,
 				B2FB0F0B21EC880C00CEDD4A /* CometChat-info.plist */,
@@ -301,6 +327,7 @@
 		589124AD21B2AC6C003500B5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				06A736A622701496006AD31C /* YPImagePicker.framework */,
 				B2CD3E8E224A255600135D4F /* AMShimmer.swift */,
 				B270B70F2200B0F600A2B3F3 /* Toast.swift */,
 				589124AE21B2AC6C003500B5 /* CCBottomSlideController.swift */,
@@ -309,7 +336,6 @@
 				B28B1A7B221ABFBE00F5FD4C /* UIWindow.swift */,
 				B291CDC8221EC30200462FAC /* PryntTrimmerView.framework */,
 				B291CDCA221EC30400462FAC /* Stevia.framework */,
-				B291CDC9221EC30400462FAC /* YPImagePicker.framework */,
 				5889505722219F95007D2CBF /* ImageCacheLoader.swift */,
 			);
 			path = Extensions;
@@ -412,7 +438,6 @@
 				B2BC6092219DACF9002C24D3 /* Frameworks */,
 				B2BC6093219DACF9002C24D3 /* Resources */,
 				B28990F021BAC96F002C885E /* Embed Frameworks */,
-				A263FE78F816CBDC12261AFB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -512,32 +537,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A263FE78F816CBDC12261AFB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp-frameworks.sh",
-				"${PODS_ROOT}/CometChatPro_Swift4.2/CometChatPro.framework",
-				"${PODS_ROOT}/JitsiMeetSDK/jitsi-meet-ios-sdk-releases-2.0.0/Frameworks/JitsiMeet.framework",
-				"${PODS_ROOT}/JitsiMeetSDK/jitsi-meet-ios-sdk-releases-2.0.0/Frameworks/WebRTC.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CometChatPro.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JitsiMeet.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

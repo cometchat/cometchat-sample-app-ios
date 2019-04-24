@@ -1,11 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/CometChatPro_Swift4.2" "${PODS_ROOT}/JitsiMeetSDK/jitsi-meet-ios-sdk-releases-2.0.0/Frameworks"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/FastScroll" "${PODS_ROOT}/Headers/Public/SDWebImage" $(SDKROOT)/usr/include/libxml2
-LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/FastScroll" "${PODS_ROOT}/Headers/Public/SDWebImage"
 LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/FastScroll" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage" "${PODS_CONFIGURATION_BUILD_DIR}/SPPermission"
 OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/FastScroll/FastScroll.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/SPPermission/SPPermission.modulemap"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"FastScroll" -l"SDWebImage" -l"SPPermission" -l"sqlite3" -l"xml2.2" -l"z" -framework "CometChatPro" -framework "Foundation" -framework "ImageIO" -framework "JitsiMeet" -framework "UIKit" -framework "WebRTC"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"FastScroll" -l"SDWebImage" -l"SPPermission" -framework "Foundation" -framework "ImageIO" -framework "UIKit"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/FastScroll/FastScroll.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/SPPermission/SPPermission.modulemap"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
