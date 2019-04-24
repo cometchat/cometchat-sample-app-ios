@@ -44,31 +44,19 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
    
    ```
    $ pod install
-   ```
-   Build and run the Sample App.
    
+  ```   
    
    ### Add CometChatPro SDK in project
    
-   ### CocoaPods:
-   
-   We recommend using CocoaPods, as they are the most advanced way of managing iOS project dependencies. Open a terminal   window, move to your project directory, and then update the SDK  by running the following command.
-   
-   ```
-   $ pod install
-   ```
-   
-   If the pod installation fails due to Cocoapods dependancy issue then use the below command to install the framework through cocoapods.
-  
-  ```
-   pod install --repo-update
-   ```
-   
+
    ### Manually:
    
    You can download the CometChatPro SDK from link below and manually add it in the project.
    
    Download CometChatPro SDK from [ios-chat-sdk](https://github.com/cometchat-pro/ios-chat-sdk)
+   
+   Add CometChatPro.Framework, JitsiMeet.framework,WebRTC.framework to Embedded Binaries, then build and run the project.
    
  <br></br>  
 
