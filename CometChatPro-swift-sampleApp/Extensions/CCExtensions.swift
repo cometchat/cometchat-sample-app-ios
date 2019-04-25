@@ -128,7 +128,7 @@ extension UIView {
     // Specifies shake() animation (UP-DOWN) for the UIView. If you call this function for that perticular view then the shake() animation will be applied.
     func shake() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.y")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         animation.duration = 5
         animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
         layer.add(animation, forKey: "shake")
@@ -169,7 +169,7 @@ extension UIImageView {
     
     public func imageFromURL(urlString: String) {
         
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.frame = CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         activityIndicator.startAnimating()
         
@@ -212,7 +212,7 @@ extension UIImageView {
 }
 
 extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
+    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
         contentMode = mode
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard
@@ -226,7 +226,7 @@ extension UIImageView {
             }
             }.resume()
     }
-    func downloaded(from link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
+    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)
     }
@@ -479,7 +479,7 @@ extension UILabel {
 // show Alert
 extension UIViewController {
     func showAlert(title : String?, msg : String,
-                   style: UIAlertControllerStyle = .alert,
+                   style: UIAlertController.Style = .alert,
                    dontRemindKey : String? = nil) {
         if dontRemindKey != nil,
             UserDefaults.standard.bool(forKey: dontRemindKey!) == true {

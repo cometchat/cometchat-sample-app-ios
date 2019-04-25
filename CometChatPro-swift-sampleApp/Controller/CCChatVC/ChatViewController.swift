@@ -81,8 +81,8 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         super.viewDidLoad()
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         
         refreshControl = UIRefreshControl()
@@ -148,7 +148,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         setupRecorder()
         let audioSession = AVAudioSession.sharedInstance()
         do{
-            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, mode: AVAudioSessionModeDefault, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
+            try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
         }catch{CometChatLog.print(items:"\(error)")}
         
     }
@@ -247,7 +247,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
                 
                 self.chatTableview.endUpdates()
-                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
                 self.chatInputView.text = ""
             }
         })
@@ -346,14 +346,14 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     
     override func viewWillDisappear(_ animated: Bool) {
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
@@ -380,8 +380,8 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = false
-            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         } else {
             
         }
@@ -494,7 +494,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         navigationController?.popViewController(animated: true)
         CometChat.endTyping(indicator: typingIndicator)
         let oneOne = ChatViewController()
-        oneOne.removeFromParentViewController()
+        oneOne.removeFromParent()
         
     }
     
@@ -527,7 +527,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                             self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
                             
                             self.chatTableview.endUpdates()
-                            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
                             self.chatInputView.text = ""
                         }
                     })
@@ -599,7 +599,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         
         if let userinfo = notification.userInfo
         {
-            let keyboardFrame = (userinfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+            let keyboardFrame = (userinfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
             ChatViewBottomconstraint.constant = (keyboardFrame?.height)!
             
             
@@ -885,7 +885,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 DispatchQueue.main.async{
                     self.chatInputView.text = ""
                     self.chatTableview.reloadData()
-                    self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                    self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
                     
                 }
             }
@@ -950,7 +950,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                     switch firstItem {
                     case .photo(let photo):
                         self.selectedImageV.image = photo.image
-                        let imageData = UIImagePNGRepresentation(photo.image)!
+                        let imageData = photo.image.pngData()!
                         let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                         let imageURL = docDir.appendingPathComponent("tmp.png")
                         try! imageData.write(to: imageURL)
@@ -967,7 +967,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                                 self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
                                 
                                 self.chatTableview.endUpdates()
-                                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
                                 self.chatInputView.text = ""
                             }
                         })
@@ -991,7 +991,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                                     self!.chatTableview.insertRows(at: [IndexPath.init(row: self!.chatMessage.count-1, section: 0)], with: .automatic)
                                     
                                     self!.chatTableview.endUpdates()
-                                    self!.chatTableview.scrollToRow(at: IndexPath.init(row: self!.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                                    self!.chatTableview.scrollToRow(at: IndexPath.init(row: self!.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
                                     self!.chatInputView.text = ""
                                 }
                             })
@@ -1053,7 +1053,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                     switch firstItem {
                     case .photo(let photo):
                         self.selectedImageV.image = photo.image
-                        let imageData = UIImagePNGRepresentation(photo.image)!
+                        let imageData = photo.image.pngData()!
                         let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                         let imageURL = docDir.appendingPathComponent("tmp.png")
                         try! imageData.write(to: imageURL)
@@ -1070,7 +1070,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                                 self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
                                 
                                 self.chatTableview.endUpdates()
-                                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
                                 self.chatInputView.text = ""
                             }
                         })
@@ -1094,7 +1094,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                                     self!.chatTableview.insertRows(at: [IndexPath.init(row: self!.chatMessage.count-1, section: 0)], with: .automatic)
                                     
                                     self!.chatTableview.endUpdates()
-                                    self!.chatTableview.scrollToRow(at: IndexPath.init(row: self!.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                                    self!.chatTableview.scrollToRow(at: IndexPath.init(row: self!.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
                                     self!.chatInputView.text = ""
                                 }
                             })
@@ -1197,7 +1197,7 @@ extension ChatViewController : CometChatMessageDelegate {
             self.chatMessage.append(textMessage!)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
-                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
             }
             
         }else if textMessage?.receiverUid == buddyUID && textMessage?.receiverType.rawValue == Int(isGroup){
@@ -1205,7 +1205,7 @@ extension ChatViewController : CometChatMessageDelegate {
             self.chatMessage.append(textMessage!)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
-                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
             }
         }
     }
@@ -1217,14 +1217,14 @@ extension ChatViewController : CometChatMessageDelegate {
             self.chatMessage.append(mediaMessage!)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
-                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
             }
         }else if mediaMessage?.receiverUid == buddyUID && mediaMessage?.receiverType.rawValue == Int(isGroup){
             CometChat.markMessageAsRead(message: mediaMessage!)
             self.chatMessage.append(mediaMessage!)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
-                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
             }
         }
     }
@@ -1282,7 +1282,7 @@ extension ChatViewController : CometChatMessageDelegate {
             }
             let indexPath = IndexPath(row: row, section: 0)
             chatTableview.reloadRows(at: [indexPath], with: .none)
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: false)
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: false)
         }
         
         
@@ -1299,7 +1299,7 @@ extension ChatViewController : CometChatGroupDelegate {
         
         DispatchQueue.main.async{
             self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
         }
     }
     
@@ -1309,7 +1309,7 @@ extension ChatViewController : CometChatGroupDelegate {
         
         DispatchQueue.main.async{
             self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
         }
     }
     
@@ -1319,7 +1319,7 @@ extension ChatViewController : CometChatGroupDelegate {
         
         DispatchQueue.main.async{
             self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
         }
         
     }
@@ -1330,7 +1330,7 @@ extension ChatViewController : CometChatGroupDelegate {
         
         DispatchQueue.main.async{
             self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
         }
     }
     
@@ -1340,7 +1340,7 @@ extension ChatViewController : CometChatGroupDelegate {
         
         DispatchQueue.main.async{
             self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
         }
     }
     
@@ -1350,7 +1350,7 @@ extension ChatViewController : CometChatGroupDelegate {
         
         DispatchQueue.main.async{
             self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
         }
     }
 }

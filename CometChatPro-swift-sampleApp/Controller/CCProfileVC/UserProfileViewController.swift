@@ -115,7 +115,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.titleTextAttributes  = [NSAttributedStringKey.foregroundColor: UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)]
+        navigationController?.navigationBar.titleTextAttributes  = [NSAttributedString.Key.foregroundColor: UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)]
         guard (UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView) != nil else {
             return
         }
@@ -123,8 +123,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = false
-            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         } else {
             
         }
@@ -294,7 +294,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         let totalRow = tableView.numberOfRows(inSection: indexPath.section)
         if(indexPath.row == totalRow - 1){
             cell.roundCorners([.layerMaxXMaxYCorner,.layerMinXMaxYCorner], radius: 15, borderColor: UIColor.clear, borderWidth: 0, withBackgroundColor: "FFFFFF")
-            cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width, 0, 0)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: cell.bounds.size.width, bottom: 0, right: 0)
         }
         return cell
     }

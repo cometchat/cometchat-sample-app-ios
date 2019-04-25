@@ -181,20 +181,20 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
         
         if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
         }else{
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
         }
         
         
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         let SearchImageView = UIImageView.init()
         let SearchImage = UIImage(named: "icons8-search-30")!.withRenderingMode(.alwaysTemplate)
         SearchImageView.image = SearchImage
         SearchImageView.tintColor = UIColor.init(white: 1, alpha: 0.5)
         
-        searchController.searchBar.setImage(SearchImageView.image, for: UISearchBarIcon.search, state: .normal)
+        searchController.searchBar.setImage(SearchImageView.image, for: UISearchBar.Icon.search, state: .normal)
         if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
             textfield.textColor = UIColor.white
             if let backgroundview = textfield.subviews.first{
@@ -309,12 +309,12 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         if(indexPath.section != 0){
             if(selectedCell.groupType == 2){
-                let alertController = UIAlertController(title: NSLocalizedString("Enter Password", comment: ""), message:NSLocalizedString("Kindly, Enter the password to proceed.", comment: "") , preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: NSLocalizedString("Enter Password", comment: ""), message:NSLocalizedString("Kindly, Enter the password to proceed.", comment: "") , preferredStyle: UIAlertController.Style.alert)
                 alertController.addTextField { (textField : UITextField!) -> Void in
                     textField.placeholder = NSLocalizedString("Enter Password", comment: "")
                     textField.isSecureTextEntry = true
                 }
-                let saveAction = UIAlertAction(title: NSLocalizedString("Join", comment: ""), style: UIAlertActionStyle.default, handler: { alert -> Void in
+                let saveAction = UIAlertAction(title: NSLocalizedString("Join", comment: ""), style: UIAlertAction.Style.default, handler: { alert -> Void in
                     let passwordTextfield = alertController.textFields![0] as UITextField
                     CometChat.joinGroup(GUID: selectedCell.UID, groupType: .password, password: passwordTextfield.text, onSuccess: { (success) in
     
@@ -336,7 +336,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                     }
                     
                 })
-                let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.destructive, handler: {
+                let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertAction.Style.destructive, handler: {
                     (action : UIAlertAction!) -> Void in })
                 
                 alertController.addAction(cancelAction)

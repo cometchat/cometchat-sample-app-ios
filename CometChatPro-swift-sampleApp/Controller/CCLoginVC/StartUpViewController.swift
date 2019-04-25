@@ -92,7 +92,7 @@ class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextField
             UIView.animate(withDuration: 2.0, delay: 0, usingSpringWithDamping: 2.0, initialSpringVelocity: 2.0, options: .curveEaseInOut, animations: {
                 
                 let animation = CAKeyframeAnimation(keyPath: "transform.translation.y")
-                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
                 animation.duration = 3.0
                 animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
                 self.bottomView.layer.add(animation, forKey: "shake")
