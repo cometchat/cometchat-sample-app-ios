@@ -172,7 +172,7 @@ public class SPPermissionDialogController: UIViewController {
                     alertController.addAction(UIAlertAction.init(title: self.dataSource?.settingsTitle ?? "Settings", style: UIAlertAction.Style.default, handler: { (action) in
                         
                         UIApplication.shared.open(
-                            URL.init(string: UIApplicationOpenSettingsURLString)!,
+                            URL.init(string: UIApplication.openSettingsURLString)!,
                             options: [:],
                             completionHandler: nil
                         )

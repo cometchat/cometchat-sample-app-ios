@@ -191,11 +191,11 @@ extension SPPermission {
     fileprivate struct SPMicrophonePermission: SPPermissionInterface {
         
         var isAuthorized: Bool {
-            return AVAudioSession.sharedInstance().recordPermission() == .granted
+            return AVAudioSession.sharedInstance().recordPermission == .granted
         }
         
         var isDenied: Bool {
-            return AVAudioSession.sharedInstance().recordPermission() == .denied
+            return AVAudioSession.sharedInstance().recordPermission == .denied
         }
         
         func request(withComlectionHandler complectionHandler: @escaping ()->()?) {

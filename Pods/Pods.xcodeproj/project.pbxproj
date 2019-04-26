@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -131,7 +131,7 @@
 		1784DB10B689FBDE86C97FE8A7F2733D /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderOperation.m; path = SDWebImage/SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
 		1B1EDB5F492031676563A9B333818FE2 /* SPPermission.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPPermission.swift; path = Source/SPPermission/SPPermission.swift; sourceTree = "<group>"; };
 		1F7E02C69A6492B89EEA506A828F6516 /* SPPermissionBlurView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPPermissionBlurView.swift; path = Source/SPPermission/Dialog/Views/SPPermissionBlurView.swift; sourceTree = "<group>"; };
-		1FDBC9E89238BDDB3DE8935B2709A9DB /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FDBC9E89238BDDB3DE8935B2709A9DB /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSDWebImage.a; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2333FE5030A51BF72D73AAC443ED91E7 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+HighlightedWebCache.h"; path = "SDWebImage/UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
 		267804A90767BF2E87543ACA6BD196F3 /* SDWebImageCodersManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCodersManager.m; path = SDWebImage/SDWebImageCodersManager.m; sourceTree = "<group>"; };
 		28068FC1CE3A11DDBA468C18E675E1F9 /* FastScroll.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FastScroll.xcconfig; sourceTree = "<group>"; };
@@ -146,10 +146,10 @@
 		3D840C17184E7A10B3C8BD9E132AD7AB /* SDWebImageCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCoder.m; path = SDWebImage/SDWebImageCoder.m; sourceTree = "<group>"; };
 		4127218B383AB0776836CD5DCAA8D226 /* SPPermissionIconView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPPermissionIconView.swift; path = Source/SPPermission/Dialog/Views/SPPermissionIconView.swift; sourceTree = "<group>"; };
 		413629A25E10C09E8675CFEB1A06D70F /* SPPermission.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SPPermission.xcconfig; sourceTree = "<group>"; };
-		41F0A2610134A61D4E4A5822E3901806 /* libPods-CometChatPro-swift-sampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CometChatPro-swift-sampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41F0A2610134A61D4E4A5822E3901806 /* libPods-CometChatPro-swift-sampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-CometChatPro-swift-sampleApp.a"; path = "libPods-CometChatPro-swift-sampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		423AA441533B3CF2EEE991890EEAB424 /* SPPermission-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SPPermission-umbrella.h"; sourceTree = "<group>"; };
 		44830CF0620FA6EEE88BCE5FEC9F31D9 /* SPPermissionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPPermissionType.swift; path = Source/SPPermission/SPPermissionType.swift; sourceTree = "<group>"; };
-		4666C4E792551B312C7FF77C5BE1E024 /* libSPPermission.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSPPermission.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4666C4E792551B312C7FF77C5BE1E024 /* libSPPermission.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSPPermission.a; path = libSPPermission.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A64897CB1250C728733ACCFA5576E6E /* SPPermissionStyleColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPPermissionStyleColors.swift; path = Source/SPPermission/Dialog/Style/SPPermissionStyleColors.swift; sourceTree = "<group>"; };
 		502220C9EBB46BEF13BE6E6D7058E202 /* NSButton+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSButton+WebCache.m"; path = "SDWebImage/NSButton+WebCache.m"; sourceTree = "<group>"; };
 		525516C213030A0A9098B1C6248CD706 /* SPPermission.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SPPermission.modulemap; sourceTree = "<group>"; };
@@ -180,9 +180,9 @@
 		8C0A1A712EE9D2D90BB22F51AEBC3BAD /* SDWebImageTransition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageTransition.m; path = SDWebImage/SDWebImageTransition.m; sourceTree = "<group>"; };
 		906BDAB0DFE98748414ED6EFFA3B5C2A /* SDWebImageImageIOCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageImageIOCoder.h; path = SDWebImage/SDWebImageImageIOCoder.h; sourceTree = "<group>"; };
 		91CF080380ED2779AA0024C41EFA6946 /* SDWebImageCompat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCompat.h; path = SDWebImage/SDWebImageCompat.h; sourceTree = "<group>"; };
-		986A7DF90B58FADC4EC4D81B9260A747 /* libFastScroll.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFastScroll.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		986A7DF90B58FADC4EC4D81B9260A747 /* libFastScroll.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFastScroll.a; path = libFastScroll.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C9BC336F12F787E0DD6D34D844E7404 /* FastScroll.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FastScroll.modulemap; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A34CC1584549A4DDA6DFA8D1114B78BE /* SDAnimatedImageRep.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageRep.m; path = SDWebImage/SDAnimatedImageRep.m; sourceTree = "<group>"; };
 		A6DDD099EF190E7D2A388A707162CA00 /* FastScroll-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FastScroll-umbrella.h"; sourceTree = "<group>"; };
 		AEBACA1B07C56901742038DD28046DE9 /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CometChatPro-swift-sampleApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -349,6 +349,7 @@
 				623D907F701B181015D15C40BE2D6523 /* SPRequestPermissionLocationHandler.swift */,
 				74BB49B29B4EA8ECFFFC3F89A9BEB330 /* Support Files */,
 			);
+			name = SPPermission;
 			path = SPPermission;
 			sourceTree = "<group>";
 		};
@@ -389,6 +390,7 @@
 				FCDD8268E51A5E669CAA0EC6821503E2 /* Core */,
 				542E1C436C16E6E1B58E30044C770F91 /* Support Files */,
 			);
+			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -400,6 +402,7 @@
 				CCF3E6318094873A6CA3A085778ED522 /* FastScrollTableView.swift */,
 				B7CF8611AAD9349B1822A8B264B96817 /* Support Files */,
 			);
+			name = FastScroll;
 			path = FastScroll;
 			sourceTree = "<group>";
 		};
@@ -611,14 +614,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
@@ -791,6 +793,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0F7E14F4E3F36B53A31270E4785119A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33677A7A68D6852FB74C59ED6075FBED /* SDWebImage.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = SDWebImage;
+				PRODUCT_NAME = SDWebImage;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		1AFF22A80DA64131796CCBB77AE0E57F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EF14BC4B95982A196162BAE86E909253 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */;
@@ -840,7 +866,7 @@
 			};
 			name = Release;
 		};
-		2CA03D7E13FC8666D7893C9B9913A50A /* Release */ = {
+		41D9D085F75B64A9F0E84E8F98452F32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33677A7A68D6852FB74C59ED6075FBED /* SDWebImage.xcconfig */;
 			buildSettings = {
@@ -849,7 +875,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -859,7 +885,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -869,7 +895,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -919,7 +944,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -950,31 +976,7 @@
 			};
 			name = Debug;
 		};
-		6D6E781866F4D4D75AFDA52E3F933070 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 33677A7A68D6852FB74C59ED6075FBED /* SDWebImage.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = SDWebImage;
-				PRODUCT_NAME = SDWebImage;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		A99149695EAA1B30F49E8B5D38744CEE /* Release */ = {
+		AB1CD770ACD1D69CAD9CC5D6FEC6BA14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 413629A25E10C09E8675CFEB1A06D70F /* SPPermission.xcconfig */;
 			buildSettings = {
@@ -995,17 +997,15 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
 		D418BCB9D402219D02DC27BA96471B50 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1066,7 +1066,31 @@
 			};
 			name = Debug;
 		};
-		DA46737EF7FFDFDEA86929BD422F177C /* Debug */ = {
+		DBD57A844EAB09288B6CC77EB281A716 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEBACA1B07C56901742038DD28046DE9 /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ECBB807DDD9AE91D5BC0D514300350A2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 413629A25E10C09E8675CFEB1A06D70F /* SPPermission.xcconfig */;
 			buildSettings = {
@@ -1087,30 +1111,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		DBD57A844EAB09288B6CC77EB281A716 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEBACA1B07C56901742038DD28046DE9 /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1140,8 +1141,8 @@
 		64AF6266C1DA52006301F77817AACAF7 /* Build configuration list for PBXNativeTarget "SDWebImage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6D6E781866F4D4D75AFDA52E3F933070 /* Debug */,
-				2CA03D7E13FC8666D7893C9B9913A50A /* Release */,
+				0F7E14F4E3F36B53A31270E4785119A0 /* Debug */,
+				41D9D085F75B64A9F0E84E8F98452F32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1158,8 +1159,8 @@
 		73374AE2BAEA2A4D8BBD6555378742D2 /* Build configuration list for PBXNativeTarget "SPPermission" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DA46737EF7FFDFDEA86929BD422F177C /* Debug */,
-				A99149695EAA1B30F49E8B5D38744CEE /* Release */,
+				AB1CD770ACD1D69CAD9CC5D6FEC6BA14 /* Debug */,
+				ECBB807DDD9AE91D5BC0D514300350A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
