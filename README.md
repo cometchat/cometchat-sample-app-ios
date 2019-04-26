@@ -21,15 +21,15 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
 
 2. [Installation](#Installation)
 
-2. [Running the sample app](#Running-the-sample-app)
+3. [Running the sample app](#Running-the-sample-app)
 
 4. [Customizing the UI](#Customizing-the-UI)
 
 5. [Integrating this sample into your own app](#Integrating-this-sample-into-your-own-app)
 
-4. [Troubleshoot](#Troubleshoot)
+6. [Troubleshoot](#Troubleshoot)
 
-4. [Contributing](#Contributing)
+7. [Contributing](#Contributing)
 
 
 # Screenshots
