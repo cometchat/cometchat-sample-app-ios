@@ -27,6 +27,8 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
 
 5. [Integrating this sample into your own app](#Integrating-this-sample-into-your-own-app)
 
+4. [Troubleshoot](#Troubleshoot)
+
 4. [Contributing](#Contributing)
 
 
@@ -153,6 +155,9 @@ To customize the appearance of the App.
 
 - Also, you can refer the sample app and intergate the functionality as required in your iOS app.
 
+# Troubleshoot  
+
+Facing any issues while running or installing the app.[Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/troubleshoot.md)
 
 # Contribute 
    
