@@ -1,5 +1,7 @@
 # Change Log
 
+### v1.4.1 (May 2, 2019)
+- Added SDK version v1.4.1
 
 ### v1.3.4 (April 24, 2019)
 - Added Swift 5.0 support
