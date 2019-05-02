@@ -18,3 +18,14 @@ FOUNDATION_EXPORT const unsigned char CometChatSDKVersionString[];
 
 #import <CometChatPro/XMPPFramework.h>
 #import <CometChatPro/FMDB.h>
+#import "FM.h"
+#import "FMIceLink.swift3.h"
+#import "FMIceLinkCocoa.swift3.h"
+#import "FMWebSync.swift3.h"
+#import "FMWebSyncSubscribers.h"
+#import "FMIceLinkWebSync4.swift3.h"
+#import "FMIceLinkYuv.swift3.h"
+#import "FMIceLinkVpx.swift3.h"
+#import "FMIceLinkOpus.swift3.h"
+#import "ExceptionWrapper.h"
+

@@ -493,6 +493,7 @@ typedef SWIFT_ENUM(NSInteger, XMPPMsgType, closed) {
 + (void)startCallWithSessionID:(NSString * _Nonnull)sessionID inView:(UIView * _Nonnull)inView userJoined:(void (^ _Nonnull)(User * _Nullable))userJoined userLeft:(void (^ _Nonnull)(User * _Nullable))userLeft onError:(void (^ _Nonnull)(CometChatException * _Nullable))onError callEnded:(void (^ _Nonnull)(Call * _Nullable))callEnded;
 @end
 
+@protocol CometChatExtension;
 
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 + (void)startServices;
@@ -503,6 +504,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Call * _Null
 + (Call * _Nullable)currentCall SWIFT_WARN_UNUSED_RESULT;
 + (NSInteger)getLastDeliveredMessageId SWIFT_WARN_UNUSED_RESULT;
 + (User * _Nullable)getLoggedInUser SWIFT_WARN_UNUSED_RESULT;
++ (void)toggleCamera;
++ (void)muteAudio:(BOOL)muteAudio;
++ (void)switchSpeakers:(BOOL)switchSpeaker;
++ (void)pauseVideo:(BOOL)pauseVideo;
++ (void)addWithExtension:(id <CometChatExtension> _Nonnull)extension;
++ (BOOL)isExtensionEnabledWithExtensionId:(NSString * _Nonnull)extensionId SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @protocol CometChatMessageDelegate;
@@ -548,6 +555,64 @@ SWIFT_CLASS("_TtC12CometChatPro18CometChatException")
 @property (nonatomic, copy) NSString * _Nonnull errorCode;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+/// This is the base protocol to all the custom CometChatExtensions. This protocol defines certain hooks which can be used to perform specific task. This task will be performed on or before or after certain execution of the events
+SWIFT_PROTOCOL("_TtP12CometChatPro18CometChatExtension_")
+@protocol CometChatExtension
+/// This is to identify the each extension ID uniquely. Format of the Extension ID will similar to bundle identifier.
+/// e.g. com.cometchat.<name of the extension>
+///
+/// returns:
+/// returns the extensionID
+- (NSString * _Nonnull)getExtensionID SWIFT_WARN_UNUSED_RESULT;
+@optional
+/// onInit hook will be called when the extensions are added inside the sdk.
+/// \param user currently logged-in (inside sdk) User object
+///
+/// \param appID AppID of the which is registered on CometChat Dashboard.
+///
+- (void)onInitWithAppID:(NSString * _Nonnull)appID user:(User * _Nullable)user;
+/// onLogin hook will be called after the user is LoggedIn inside the sdk.
+/// \param user currently logged-in (inside sdk) User object
+///
+- (void)onLoginWithUser:(User * _Nonnull)user;
+/// beforeMessageSent hook will be called just before sending a message to sever.
+/// \param message pass a message object of type BaseMessage which you want to send.
+///
+///
+/// returns:
+/// It returns a message object of type BaseMessage
+- (BaseMessage * _Nonnull)beforeMessageSent:(BaseMessage * _Nonnull)message SWIFT_WARN_UNUSED_RESULT;
+/// afterMessageSent hook will be called just after sent the message to server.
+/// \param message pass a message object of type BaseMessage which you want to send.
+///
+///
+/// returns:
+/// It returns a message object of type BaseMessage
+- (BaseMessage * _Nonnull)afterMessageSent:(BaseMessage * _Nonnull)message SWIFT_WARN_UNUSED_RESULT;
+/// onMessageReceived hook will be called just after sent the message to server.
+/// \param message pass a message object of type BaseMessage which you want to send.
+///
+///
+/// returns:
+/// It returns a message object of type BaseMessage
+- (BaseMessage * _Nonnull)onMessageReceived:(BaseMessage * _Nonnull)message SWIFT_WARN_UNUSED_RESULT;
+/// onMessageListFetched hook will be called just after sent the message to server.
+/// \param message pass a message object of type BaseMessage which you want to send.
+///
+///
+/// returns:
+/// It returns a message object of type BaseMessage
+- (NSArray<BaseMessage *> * _Nonnull)onMessageListFetched:(NSArray<BaseMessage *> * _Nonnull)messages SWIFT_WARN_UNUSED_RESULT;
+/// onLogout hook will be called after user hits the logout.
+/// <ul>
+///   <li>
+///     Use: For cleanup and some housekeeping task after logout.
+///   </li>
+/// </ul>
+- (void)onLogout;
 @end
 
 
@@ -598,16 +663,12 @@ SWIFT_CLASS("_TtC12CometChatPro4User")
 @property (nonatomic) double lastActiveAt;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 SWIFT_CLASS("_TtC12CometChatPro11CurrentUser")
 @interface CurrentUser : User
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -650,8 +711,6 @@ SWIFT_CLASS("_TtC12CometChatPro11GroupMember")
 @property (nonatomic) enum GroupMemberScopeType scope;
 @property (nonatomic) NSInteger joinedAt;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name SWIFT_UNAVAILABLE;
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt SWIFT_UNAVAILABLE;
 @end
 
 @class GroupMembersRequestBuilder;
@@ -1292,6 +1351,7 @@ typedef SWIFT_ENUM(NSInteger, XMPPMsgType, closed) {
 + (void)startCallWithSessionID:(NSString * _Nonnull)sessionID inView:(UIView * _Nonnull)inView userJoined:(void (^ _Nonnull)(User * _Nullable))userJoined userLeft:(void (^ _Nonnull)(User * _Nullable))userLeft onError:(void (^ _Nonnull)(CometChatException * _Nullable))onError callEnded:(void (^ _Nonnull)(Call * _Nullable))callEnded;
 @end
 
+@protocol CometChatExtension;
 
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 + (void)startServices;
@@ -1302,6 +1362,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Call * _Null
 + (Call * _Nullable)currentCall SWIFT_WARN_UNUSED_RESULT;
 + (NSInteger)getLastDeliveredMessageId SWIFT_WARN_UNUSED_RESULT;
 + (User * _Nullable)getLoggedInUser SWIFT_WARN_UNUSED_RESULT;
++ (void)toggleCamera;
++ (void)muteAudio:(BOOL)muteAudio;
++ (void)switchSpeakers:(BOOL)switchSpeaker;
++ (void)pauseVideo:(BOOL)pauseVideo;
++ (void)addWithExtension:(id <CometChatExtension> _Nonnull)extension;
++ (BOOL)isExtensionEnabledWithExtensionId:(NSString * _Nonnull)extensionId SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @protocol CometChatMessageDelegate;
@@ -1347,6 +1413,64 @@ SWIFT_CLASS("_TtC12CometChatPro18CometChatException")
 @property (nonatomic, copy) NSString * _Nonnull errorCode;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+/// This is the base protocol to all the custom CometChatExtensions. This protocol defines certain hooks which can be used to perform specific task. This task will be performed on or before or after certain execution of the events
+SWIFT_PROTOCOL("_TtP12CometChatPro18CometChatExtension_")
+@protocol CometChatExtension
+/// This is to identify the each extension ID uniquely. Format of the Extension ID will similar to bundle identifier.
+/// e.g. com.cometchat.<name of the extension>
+///
+/// returns:
+/// returns the extensionID
+- (NSString * _Nonnull)getExtensionID SWIFT_WARN_UNUSED_RESULT;
+@optional
+/// onInit hook will be called when the extensions are added inside the sdk.
+/// \param user currently logged-in (inside sdk) User object
+///
+/// \param appID AppID of the which is registered on CometChat Dashboard.
+///
+- (void)onInitWithAppID:(NSString * _Nonnull)appID user:(User * _Nullable)user;
+/// onLogin hook will be called after the user is LoggedIn inside the sdk.
+/// \param user currently logged-in (inside sdk) User object
+///
+- (void)onLoginWithUser:(User * _Nonnull)user;
+/// beforeMessageSent hook will be called just before sending a message to sever.
+/// \param message pass a message object of type BaseMessage which you want to send.
+///
+///
+/// returns:
+/// It returns a message object of type BaseMessage
+- (BaseMessage * _Nonnull)beforeMessageSent:(BaseMessage * _Nonnull)message SWIFT_WARN_UNUSED_RESULT;
+/// afterMessageSent hook will be called just after sent the message to server.
+/// \param message pass a message object of type BaseMessage which you want to send.
+///
+///
+/// returns:
+/// It returns a message object of type BaseMessage
+- (BaseMessage * _Nonnull)afterMessageSent:(BaseMessage * _Nonnull)message SWIFT_WARN_UNUSED_RESULT;
+/// onMessageReceived hook will be called just after sent the message to server.
+/// \param message pass a message object of type BaseMessage which you want to send.
+///
+///
+/// returns:
+/// It returns a message object of type BaseMessage
+- (BaseMessage * _Nonnull)onMessageReceived:(BaseMessage * _Nonnull)message SWIFT_WARN_UNUSED_RESULT;
+/// onMessageListFetched hook will be called just after sent the message to server.
+/// \param message pass a message object of type BaseMessage which you want to send.
+///
+///
+/// returns:
+/// It returns a message object of type BaseMessage
+- (NSArray<BaseMessage *> * _Nonnull)onMessageListFetched:(NSArray<BaseMessage *> * _Nonnull)messages SWIFT_WARN_UNUSED_RESULT;
+/// onLogout hook will be called after user hits the logout.
+/// <ul>
+///   <li>
+///     Use: For cleanup and some housekeeping task after logout.
+///   </li>
+/// </ul>
+- (void)onLogout;
 @end
 
 
@@ -1397,16 +1521,12 @@ SWIFT_CLASS("_TtC12CometChatPro4User")
 @property (nonatomic) double lastActiveAt;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 SWIFT_CLASS("_TtC12CometChatPro11CurrentUser")
 @interface CurrentUser : User
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -1449,8 +1569,6 @@ SWIFT_CLASS("_TtC12CometChatPro11GroupMember")
 @property (nonatomic) enum GroupMemberScopeType scope;
 @property (nonatomic) NSInteger joinedAt;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name SWIFT_UNAVAILABLE;
-- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt SWIFT_UNAVAILABLE;
 @end
 
 @class GroupMembersRequestBuilder;

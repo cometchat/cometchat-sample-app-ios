@@ -41,10 +41,6 @@
 		71ADB0ED21D41217002443A7 /* ChatTextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ADB0EC21D41216002443A7 /* ChatTextMessageCell.swift */; };
 		A74FEC2B22723B9E00BB31D5 /* CometChatPro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A74FEC252272350400BB31D5 /* CometChatPro.framework */; };
 		A74FEC2C22723B9E00BB31D5 /* CometChatPro.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A74FEC252272350400BB31D5 /* CometChatPro.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A74FEC2D22723B9E00BB31D5 /* JitsiMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A74FEC262272350400BB31D5 /* JitsiMeet.framework */; };
-		A74FEC2E22723B9E00BB31D5 /* JitsiMeet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A74FEC262272350400BB31D5 /* JitsiMeet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A74FEC2F22723B9E00BB31D5 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A74FEC272272350500BB31D5 /* WebRTC.framework */; };
-		A74FEC3022723B9E00BB31D5 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A74FEC272272350500BB31D5 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8296FB52202F68300D7010C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8296FB42202F68300D7010C /* Assets.xcassets */; };
 		A83BD0E122071F4500034D54 /* ViewMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD0E022071F4500034D54 /* ViewMemberTableViewCell.swift */; };
 		A83BD0E522071FBB00034D54 /* ViewMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD0E422071FBB00034D54 /* ViewMemberViewController.swift */; };
@@ -84,9 +80,7 @@
 				B291CDD1221EC31000462FAC /* Stevia.framework in Embed Frameworks */,
 				06A736B022701AAF006AD31C /* YPImagePicker.framework in Embed Frameworks */,
 				B291CDCF221EC31000462FAC /* PryntTrimmerView.framework in Embed Frameworks */,
-				A74FEC2E22723B9E00BB31D5 /* JitsiMeet.framework in Embed Frameworks */,
 				A74FEC2C22723B9E00BB31D5 /* CometChatPro.framework in Embed Frameworks */,
-				A74FEC3022723B9E00BB31D5 /* WebRTC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,8 +125,6 @@
 		71ADB0EC21D41216002443A7 /* ChatTextMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextMessageCell.swift; sourceTree = "<group>"; };
 		8C772843A75386E47A0EFF22 /* libPods-CometChatPro-swift-sampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CometChatPro-swift-sampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A74FEC252272350400BB31D5 /* CometChatPro.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CometChatPro.framework; sourceTree = SOURCE_ROOT; };
-		A74FEC262272350400BB31D5 /* JitsiMeet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JitsiMeet.framework; sourceTree = SOURCE_ROOT; };
-		A74FEC272272350500BB31D5 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = SOURCE_ROOT; };
 		A8296FB42202F68300D7010C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A83BD0E022071F4500034D54 /* ViewMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMemberTableViewCell.swift; sourceTree = "<group>"; };
 		A83BD0E422071FBB00034D54 /* ViewMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMemberViewController.swift; sourceTree = "<group>"; };
@@ -176,9 +168,7 @@
 				06A736A722701496006AD31C /* YPImagePicker.framework in Frameworks */,
 				588950BA2221A5DB007D2CBF /* ImageIO.framework in Frameworks */,
 				B291CDCE221EC31000462FAC /* PryntTrimmerView.framework in Frameworks */,
-				A74FEC2F22723B9E00BB31D5 /* WebRTC.framework in Frameworks */,
 				B291CDD0221EC31000462FAC /* Stevia.framework in Frameworks */,
-				A74FEC2D22723B9E00BB31D5 /* JitsiMeet.framework in Frameworks */,
 				B231764E2225CFCEBCAEB38C /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */,
 				A74FEC2B22723B9E00BB31D5 /* CometChatPro.framework in Frameworks */,
 			);
@@ -191,8 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				A74FEC252272350400BB31D5 /* CometChatPro.framework */,
-				A74FEC262272350400BB31D5 /* JitsiMeet.framework */,
-				A74FEC272272350500BB31D5 /* WebRTC.framework */,
 				5866BC0A2223F8D000E6AE43 /* CometChatPro-swift-sampleApp.entitlements */,
 				589124AC21B2AC6C003500B5 /* AppDelegate.swift */,
 				B22301C021D1FCEC00483CC7 /* UIAppearance.swift */,
