@@ -145,6 +145,10 @@ To customize the appearance of the App.
 | SEARCH_BAR_STYLE_LIGHT_CONTENT | This field specifies the seach bar appearance used in app. |
  
 
+## Localization 
+
+Want to add localization in your app. [Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/Localization.md)
+
 # Integrating this sample into your own app       
 
 - Copy the  **CometChatPro-swift-sampleApp** folder in your app.
@@ -157,7 +161,7 @@ To customize the appearance of the App.
 
 # Troubleshoot  
 
-Facing any issues while running or installing the app.[Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/troubleshoot.md)
+Facing any issues while running or installing the app. [Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/troubleshoot.md)
 
 # Contribute 
    
