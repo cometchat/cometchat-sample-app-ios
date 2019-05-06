@@ -1,26 +1,34 @@
 PODS:
+  - CometChatPro (1.4.3):
+    - JitsiMeetSDK (= 2.1.0)
   - FastScroll (1.1.0)
+  - JitsiMeetSDK (2.1.0)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
   - SPPermission (3.0.5)
 
 DEPENDENCIES:
+  - CometChatPro (~> 1.4.3)
   - FastScroll
   - SDWebImage (~> 4.0)
   - SPPermission
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - CometChatPro
     - FastScroll
+    - JitsiMeetSDK
     - SDWebImage
     - SPPermission
 
 SPEC CHECKSUMS:
+  CometChatPro: cf3142ac71fdd9841dab6747107b35b6a0f8c487
   FastScroll: fc73e3a1bf28adf02623859c5e6163fab6efa2f9
+  JitsiMeetSDK: 3e66564af7f38a19142338955dd7f581801852b3
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SPPermission: 6a6fcd3f5625dcb13c24de0d43fbfc4114f49532
 
-PODFILE CHECKSUM: 5716fcebf07339441f45757edd608e127d6ff99d
+PODFILE CHECKSUM: 56b860978d47b043d176c81de4f29fb50adfc7bb
 
 COCOAPODS: 1.6.1

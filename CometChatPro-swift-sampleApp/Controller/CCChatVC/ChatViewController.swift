@@ -600,9 +600,12 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         if let userinfo = notification.userInfo
         {
             let keyboardFrame = (userinfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
-            ChatViewBottomconstraint.constant = (keyboardFrame?.height)!
             
-            
+            if (modelName == "iPhone X" || modelName == "iPhone XS" || modelName == "iPhone XR"){
+               ChatViewBottomconstraint.constant = (keyboardFrame?.height)! + 20
+            }else{
+                ChatViewBottomconstraint.constant = (keyboardFrame?.height)!
+            }
         }
         
     }
@@ -802,8 +805,9 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             self.present(playerViewController, animated: true) {
                 playerViewController.player!.play()
             }
+            
         case .audio:
-
+            
             let audioMessage = (messageData as? MediaMessage)
             let url = NSURL.fileURL(withPath:audioMessage!.url!.decodeUrl() ?? "")
             previewURL = audioMessage!.url!.decodeUrl()!

@@ -120,9 +120,8 @@ extension EmbeddedViewController : CometChatCallDelegate {
             
         }) { (ended_call) in
             
-            DispatchQueue.main.async {
-                
-                UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+            if((self.presentingViewController) != nil){
+                self.dismiss(animated: false, completion: nil)
                 
             }
         }

@@ -153,14 +153,14 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${PODS_ROOT}/CometChatPro_Swift4.2/CometChatPro.framework"
-  install_framework "${PODS_ROOT}/JitsiMeetSDK/jitsi-meet-ios-sdk-releases-2.0.0/Frameworks/JitsiMeet.framework"
-  install_framework "${PODS_ROOT}/JitsiMeetSDK/jitsi-meet-ios-sdk-releases-2.0.0/Frameworks/WebRTC.framework"
+  install_framework "${PODS_ROOT}/CometChatPro/CometChatPro.framework"
+  install_framework "${PODS_ROOT}/JitsiMeetSDK/Frameworks/JitsiMeet.framework"
+  install_framework "${PODS_ROOT}/JitsiMeetSDK/Frameworks/WebRTC.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${PODS_ROOT}/CometChatPro_Swift4.2/CometChatPro.framework"
-  install_framework "${PODS_ROOT}/JitsiMeetSDK/jitsi-meet-ios-sdk-releases-2.0.0/Frameworks/JitsiMeet.framework"
-  install_framework "${PODS_ROOT}/JitsiMeetSDK/jitsi-meet-ios-sdk-releases-2.0.0/Frameworks/WebRTC.framework"
+  install_framework "${PODS_ROOT}/CometChatPro/CometChatPro.framework"
+  install_framework "${PODS_ROOT}/JitsiMeetSDK/Frameworks/JitsiMeet.framework"
+  install_framework "${PODS_ROOT}/JitsiMeetSDK/Frameworks/WebRTC.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
