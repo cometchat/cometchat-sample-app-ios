@@ -15,7 +15,7 @@ Localization is the process of making your app adapt to different languages, reg
 ## Adding New Language
 Add new language support using, click “+” button under Localizations section in Project Info tab. Then choose a language you want to support.
 
-<img align="left" src=""https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/Screenshots/2.png">	
+<img align="left" src="https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/Screenshots/2.png">	
 
 ##Separating Text From Code
 iOS uses files with the .strings file extension to store all of the localized strings used within the app, one or more for each supported language. A simple function call will retrieve the requested string based on the current language in use on the device.
