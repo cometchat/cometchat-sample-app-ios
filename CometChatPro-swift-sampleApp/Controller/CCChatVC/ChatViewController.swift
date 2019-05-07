@@ -1235,17 +1235,17 @@ extension ChatViewController : CometChatMessageDelegate {
     
     func onTypingStarted(_ typingDetails : TypingIndicator) {
         
-        animation = CAKeyframeAnimation(keyPath: "transform.scale")
-        animation.values = [1.0, 1.2, 1.0]
-        animation.keyTimes = [0, 0.5, 1]
-        animation.duration = 1.5
-        animation.repeatCount = Float.infinity
+//        animation = CAKeyframeAnimation(keyPath: "transform.scale")
+//        animation.values = [1.0, 1.2, 1.0]
+//        animation.keyTimes = [0, 0.5, 1]
+//        animation.duration = 1.5
+//        animation.repeatCount = Float.infinity
         // received typing indicator:
         
         switch typingDetails.receiverType {
         case .user:
             buddyStatus.text = NSLocalizedString("Typing...", comment: "")
-            containView.layer.add(animation, forKey: nil)
+          //  containView.layer.add(animation, forKey: nil)
     
         case .group:break
 
@@ -1259,7 +1259,7 @@ extension ChatViewController : CometChatMessageDelegate {
         switch typingDetails.receiverType {
         case .user:
             buddyStatus.text = NSLocalizedString("Online", comment: "")
-            containView.layer.removeAllAnimations()
+           // containView.layer.removeAllAnimations()
         case .group:break
         }
     }
@@ -1267,10 +1267,10 @@ extension ChatViewController : CometChatMessageDelegate {
     func onMessageDelivered(receipt : MessageReceipt) {
         
         
-        if let row = self.chatMessage.index(where: {$0.id == Int(receipt.messageId)}) {
+        if let row = self.chatMessage.firstIndex(where: {$0.id == Int(receipt.messageId)}) {
             
             chatMessage[row].deliveredAt = Double(receipt.timeStamp)
-            let indexPath = IndexPath(row: row, section: 0)
+            _ = IndexPath(row: row, section: 0)
    
         }
         
@@ -1279,7 +1279,7 @@ extension ChatViewController : CometChatMessageDelegate {
     
     func onMessageRead(receipt : MessageReceipt) {
         
-        if let row = self.chatMessage.index(where: {$0.id == Int(receipt.messageId)}) {
+        if let row = self.chatMessage.firstIndex(where: {$0.id == Int(receipt.messageId)}) {
             
             if receipt.receiptType == .read {
                 chatMessage[row].readAt = Double(receipt.timeStamp)

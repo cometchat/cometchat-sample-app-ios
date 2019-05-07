@@ -120,10 +120,10 @@ extension EmbeddedViewController : CometChatCallDelegate {
             
         }) { (ended_call) in
             
-            if((self.presentingViewController) != nil){
-                self.dismiss(animated: false, completion: nil)
-                
-            }
+//            if((self.presentingViewController) != nil){
+//                self.dismiss(animated: false, completion: nil)
+//                
+//            }
         }
     }
     
