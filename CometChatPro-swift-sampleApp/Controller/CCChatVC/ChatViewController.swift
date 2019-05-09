@@ -16,7 +16,6 @@ import WebKit
 import MobileCoreServices
 import AudioToolbox
 import QuickLook
-import FastScroll
 
 class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource, UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate,AVAudioPlayerDelegate,AVAudioRecorderDelegate,UIGestureRecognizerDelegate,QLPreviewControllerDataSource,QLPreviewControllerDelegate  {
     
@@ -29,7 +28,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
     @IBOutlet weak var chatView: UIView!
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var chatInputView: UITextView!
-    @IBOutlet weak var chatTableview: FastScrollTableView!
+    @IBOutlet weak var chatTableview: UITableView!
     @IBOutlet weak var micButton: UIButton!
     @IBOutlet weak var recordingLabel: UILabel!
     
@@ -93,7 +92,6 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         //Function Calling
         self.handleOneOnOneChatVCApperance()
         self.hideKeyboardWhenTappedOnTableView()
-        self.configFastScroll()
         
         self.chatView.layer.borderWidth = 1
         self.chatView.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
@@ -169,25 +167,25 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         refreshControl.endRefreshing()
     }
     
-    fileprivate func configFastScroll() {
-        
-        //bubble
-        chatTableview.deactivateBubble = true
-        
-        //handle
-        chatTableview.handleImage = UIImage.init(named: "cursor")
-        chatTableview.handleHeight = 40.0
-        chatTableview.handleWidth = 44.0
-        chatTableview.handleRadius = 0.0
-        chatTableview.handleMarginRight = 0
-        chatTableview.handleColor = UIColor.clear
-        
-        //scrollbar
-        chatTableview.scrollbarWidth = 0.0
-        chatTableview.scrollbarMarginTop = 10.0
-        chatTableview.scrollbarMarginBottom = 60.0
-        chatTableview.scrollbarMarginRight = 10.0
-    }
+//    fileprivate func configFastScroll() {
+//
+//        //bubble
+//        chatTableview.deactivateBubble = true
+//
+//        //handle
+//        chatTableview.handleImage = UIImage.init(named: "cursor")
+//        chatTableview.handleHeight = 40.0
+//        chatTableview.handleWidth = 44.0
+//        chatTableview.handleRadius = 0.0
+//        chatTableview.handleMarginRight = 0
+//        chatTableview.handleColor = UIColor.clear
+//
+//        //scrollbar
+//        chatTableview.scrollbarWidth = 0.0
+//        chatTableview.scrollbarMarginTop = 10.0
+//        chatTableview.scrollbarMarginBottom = 60.0
+//        chatTableview.scrollbarMarginRight = 10.0
+//    }
     
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -603,8 +601,14 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             
             if (modelName == "iPhone X" || modelName == "iPhone XS" || modelName == "iPhone XR"){
                ChatViewBottomconstraint.constant = (keyboardFrame?.height)! + 20
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                }
             }else{
                 ChatViewBottomconstraint.constant = (keyboardFrame?.height)!
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                }
             }
         }
         
@@ -613,6 +617,10 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             ChatViewBottomconstraint.constant = 0
+            UIView.animate(withDuration: 0.25
+            ) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
@@ -622,6 +630,9 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         chatInputView.resignFirstResponder()
         if self.view.frame.origin.y != 0 {
             ChatViewBottomconstraint.constant = 0
+            UIView.animate(withDuration: 0.25) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
@@ -740,6 +751,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             actionCell = tableView.dequeueReusableCell(withIdentifier: actionCellID, for: indexPath) as! ChatActionMessageCell
             actionCell.actionMessageLabel.text = actionMessage.message
             actionCell.selectionStyle = .none
+            actionCell.isUserInteractionEnabled = false
             return actionCell
             
         case .call:
@@ -767,6 +779,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             }
             
             actionCell.selectionStyle = .none
+            actionCell.isUserInteractionEnabled = false
             return actionCell
             
         }
@@ -1235,32 +1248,17 @@ extension ChatViewController : CometChatMessageDelegate {
     
     func onTypingStarted(_ typingDetails : TypingIndicator) {
         
-//        animation = CAKeyframeAnimation(keyPath: "transform.scale")
-//        animation.values = [1.0, 1.2, 1.0]
-//        animation.keyTimes = [0, 0.5, 1]
-//        animation.duration = 1.5
-//        animation.repeatCount = Float.infinity
-        // received typing indicator:
-        
-        switch typingDetails.receiverType {
-        case .user:
-            buddyStatus.text = NSLocalizedString("Typing...", comment: "")
-          //  containView.layer.add(animation, forKey: nil)
-    
-        case .group:break
-
+        if typingDetails.sender?.uid == buddyUID {
+        buddyStatus.text = NSLocalizedString("Typing...", comment: "")
         }
+       
     }
     
     func onTypingEnded(_ typingDetails : TypingIndicator) {
         
         // received typing indicator:
-        
-        switch typingDetails.receiverType {
-        case .user:
+        if typingDetails.sender?.uid == buddyUID {
             buddyStatus.text = NSLocalizedString("Online", comment: "")
-           // containView.layer.removeAllAnimations()
-        case .group:break
         }
     }
     
@@ -1385,26 +1383,6 @@ extension ChatViewController {
         guard let track = AVURLAsset(url: url).tracks(withMediaType: AVMediaType.video).first else { return nil }
         let size = track.naturalSize.applying(track.preferredTransform)
         return CGSize(width: abs(size.width), height: abs(size.height))
-    }
-}
-
-
-extension ChatViewController : UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView : UIScrollView) {
-        chatTableview.scrollViewDidScroll(scrollView)
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView : UIScrollView) {
-        chatTableview.scrollViewWillBeginDragging(scrollView)
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView : UIScrollView) {
-        chatTableview.scrollViewDidEndDecelerating(scrollView)
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView : UIScrollView, willDecelerate decelerate : Bool) {
-        chatTableview.scrollViewDidEndDragging(scrollView, willDecelerate : decelerate)
     }
 }
 

@@ -1,5 +1,9 @@
 # Change Log
 
+### v1.4.4 (May 9, 2019)
+- Minor UI Improvements
+- Added changes related to Consistancy
+
 ### v1.4.3 (May 6, 2019)
 - Added SDK version v1.4.3
 - Minor Fixes for Audio/Video Calling 

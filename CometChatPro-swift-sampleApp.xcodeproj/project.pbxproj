@@ -18,7 +18,6 @@
 		589124BE21B2AC6C003500B5 /* StartUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891249921B2AC6C003500B5 /* StartUpViewController.swift */; };
 		589124BF21B2AC6C003500B5 /* CCTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891249A21B2AC6C003500B5 /* CCTabbar.swift */; };
 		589124C021B2AC6C003500B5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891249B21B2AC6C003500B5 /* LoginViewController.swift */; };
-		589124C121B2AC6C003500B5 /* CustomLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891249C21B2AC6C003500B5 /* CustomLaunchViewController.swift */; };
 		589124C221B2AC6C003500B5 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891249E21B2AC6C003500B5 /* GroupListViewController.swift */; };
 		589124C321B2AC6C003500B5 /* CreateGroupcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891249F21B2AC6C003500B5 /* CreateGroupcontroller.swift */; };
 		589124C421B2AC6C003500B5 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589124A021B2AC6C003500B5 /* GroupTableViewCell.swift */; };
@@ -98,7 +97,6 @@
 		5891249921B2AC6C003500B5 /* StartUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartUpViewController.swift; sourceTree = "<group>"; };
 		5891249A21B2AC6C003500B5 /* CCTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTabbar.swift; sourceTree = "<group>"; };
 		5891249B21B2AC6C003500B5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		5891249C21B2AC6C003500B5 /* CustomLaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLaunchViewController.swift; sourceTree = "<group>"; };
 		5891249E21B2AC6C003500B5 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		5891249F21B2AC6C003500B5 /* CreateGroupcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupcontroller.swift; sourceTree = "<group>"; };
 		589124A021B2AC6C003500B5 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 				5891249921B2AC6C003500B5 /* StartUpViewController.swift */,
 				5891249A21B2AC6C003500B5 /* CCTabbar.swift */,
 				5891249B21B2AC6C003500B5 /* LoginViewController.swift */,
-				5891249C21B2AC6C003500B5 /* CustomLaunchViewController.swift */,
 			);
 			path = CCLoginVC;
 			sourceTree = "<group>";
@@ -549,7 +546,6 @@
 			files = (
 				589124C921B2AC6C003500B5 /* ContactsNavigationController.swift in Sources */,
 				B291CDC7221EC2AA00462FAC /* ChatVideoMessageCell.swift in Sources */,
-				589124C121B2AC6C003500B5 /* CustomLaunchViewController.swift in Sources */,
 				589124D021B2AC6C003500B5 /* CCExtensions.swift in Sources */,
 				589124CC21B2AC6C003500B5 /* AppDelegate.swift in Sources */,
 				B28A325E222FB3EA00D3FC54 /* ChatActionMessageCell.swift in Sources */,

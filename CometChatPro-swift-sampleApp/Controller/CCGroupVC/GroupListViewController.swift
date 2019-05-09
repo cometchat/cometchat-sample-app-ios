@@ -25,8 +25,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     var joinedChatRoomList = [Group]()
     var othersChatRoomList = [Group]()
     var groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 10).build()
-    var searchController:UISearchController!
-    var refreshControl: UIRefreshControl!
+  
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
@@ -111,14 +110,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     }
     
     
-    @objc func refresh(_ sender: Any) {
-        
-        if(joinedChatRoomList.isEmpty && othersChatRoomList.isEmpty){
-            fetchGroupList()
-        }
-        refreshControl.endRefreshing()
-    }
-    
+  
     
     //This method handles the UI customization for handleGroupListVC
     func  handleGroupListVCAppearance(){
@@ -126,14 +118,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         // ViewController Appearance
         view.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
         
-        //Refresh Control
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        if #available(iOS 10.0, *) {
-            groupTableView.refreshControl = refreshControl
-        } else {
-            groupTableView.addSubview(refreshControl)
-        }
+
         
         //TableView Appearance
         self.groupTableView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
@@ -173,46 +158,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         //notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-        refreshControl.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-        
-        // SearchBar Apperance
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
-        
-        if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
-        }else{
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
-        }
-        
-        
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
-        let SearchImageView = UIImageView.init()
-        let SearchImage = UIImage(named: "icons8-search-30")!.withRenderingMode(.alwaysTemplate)
-        SearchImageView.image = SearchImage
-        SearchImageView.tintColor = UIColor.init(white: 1, alpha: 0.5)
-        
-        searchController.searchBar.setImage(SearchImageView.image, for: UISearchBar.Icon.search, state: .normal)
-        if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
-            textfield.textColor = UIColor.white
-            if let backgroundview = textfield.subviews.first{
-                
-                // Background color
-                backgroundview.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
-                // Rounded corner
-                backgroundview.layer.cornerRadius = 10;
-                backgroundview.clipsToBounds = true;
-            }
-        }
-        
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = searchController
-        } else {
-            
-        }
-        
+     
     }
     
     //TableView Methods:

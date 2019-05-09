@@ -1,6 +1,0 @@
-module FastScroll {
-  umbrella header "FastScroll-umbrella.h"
-
-  export *
-  module * { export * }
-}

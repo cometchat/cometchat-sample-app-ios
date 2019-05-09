@@ -21,13 +21,11 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     
     //Variable Declarations
     private var _blurView: UIVisualEffectView?
-    var searchController:UISearchController!
     var usersArray = [User]()
     var userRequest = UsersRequest.UsersRequestBuilder(limit: 20).build()
     var buddyData:User!
     let data:NSData! = nil
     var url:NSURL!
-    var refreshControl: UIRefreshControl!
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
@@ -45,7 +43,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     
     func onUserOnline(user: User) {
         
-        if let row = self.usersArray.index(where: {$0.uid == user.uid}) {
+        if let row = self.usersArray.firstIndex(where: {$0.uid == user.uid}) {
             usersArray[row] = user
             let indexPath = IndexPath(row: row, section: 0)
             oneOneOneTableView.reloadRows(at: [indexPath], with: .automatic)
@@ -53,24 +51,17 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     }
     
     func onUserOffline(user: User) {
-        if let row = self.usersArray.index(where: {$0.uid == user.uid}) {
+        if let row = self.usersArray.firstIndex(where: {$0.uid == user.uid}) {
             usersArray[row] = user
             let indexPath = IndexPath(row: row, section: 0)
             oneOneOneTableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
-    
-    @objc func refresh(_ sender: Any){
-        
-        if(usersArray.isEmpty){
-            fetchUsersList()
-        }
-        refreshControl.endRefreshing()
-    }
+
     
     override func viewWillAppear(_ animated: Bool) {
    
-        oneOneOneTableView.reloadData()
+       // oneOneOneTableView.reloadData()
         
         //Function Calling
         self.handleContactListVCAppearance()
@@ -115,14 +106,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         case .Custom:break
         }
         
-        // Refresh control
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        if #available(iOS 10.0, *) {
-            oneOneOneTableView.refreshControl = refreshControl
-        } else {
-            oneOneOneTableView.addSubview(refreshControl)
-        }
+     
         
         // NavigationBar Appearance
         
@@ -152,47 +136,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         // notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-        refreshControl.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-        
-        
-        // SearchBar Apperance
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
-        
-        if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
-        }else{
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
-        }
-        
-        
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
-        let SearchImageView = UIImageView.init()
-        let SearchImage = UIImage(named: "icons8-search-30")!.withRenderingMode(.alwaysTemplate)
-        SearchImageView.image = SearchImage
-        SearchImageView.tintColor = UIColor.init(white: 1, alpha: 0.5)
-        
-        searchController.searchBar.setImage(SearchImageView.image, for: UISearchBar.Icon.search, state: .normal)
-        if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
-            textfield.textColor = UIColor.white
-            if let backgroundview = textfield.subviews.first{
-                
-                // Background color
-                backgroundview.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
-                // Rounded corner
-                backgroundview.layer.cornerRadius = 10
-                backgroundview.clipsToBounds = true;
-            }
-        }
-        
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = searchController
-        } else {
-            
-        }
-        
+ 
     }
     
     

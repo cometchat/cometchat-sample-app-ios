@@ -15,6 +15,9 @@ class ChatActionMessageCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    
+        contentView.isUserInteractionEnabled = false
+        
         // Initialization code
     }
     

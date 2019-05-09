@@ -16,7 +16,7 @@ class MoreSettingsCell {
     static let CHAT_SETTINGS_CELL = 2
     static let NOTIFICATION_CELL = 3
     static let BLOCKED_USER_CELL = 4
-    static let GAMES_CELL = 5
+    static let CHANGE_LANGUAGE = 5
     static let LOGOUT_CELL = 6
     
 }
@@ -59,7 +59,7 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         SettingsItems.append(MoreSettingsCell.CHAT_SETTINGS_CELL)
         SettingsItems.append(MoreSettingsCell.NOTIFICATION_CELL)
         SettingsItems.append(MoreSettingsCell.BLOCKED_USER_CELL)
-        SettingsItems.append(MoreSettingsCell.GAMES_CELL)
+//        SettingsItems.append(MoreSettingsCell.CHANGE_LANGUAGE)
         SettingsItems.append(MoreSettingsCell.LOGOUT_CELL)
     }
     
@@ -116,7 +116,7 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
             cell.settingsLabel.text = NSLocalizedString("Blocked User", comment: "")
             let image = UIImage(named: "block_user")!.withRenderingMode(.alwaysTemplate)
             cell.settingsLogo.image = image
-        case MoreSettingsCell.GAMES_CELL:
+        case MoreSettingsCell.CHANGE_LANGUAGE:
             cell.settingsLabel.text = NSLocalizedString("Change Language", comment: "")
             let image = UIImage(named: "games")!.withRenderingMode(.alwaysTemplate)
             cell.settingsLogo.image = image
@@ -161,8 +161,8 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
         case MoreSettingsCell.BLOCKED_USER_CELL:
             self.viewBlockedUser()
             
-        case MoreSettingsCell.GAMES_CELL:
-            self.viewGames()
+        case MoreSettingsCell.CHANGE_LANGUAGE:
+            self.changeLanguage()
         case MoreSettingsCell.LOGOUT_CELL:
             self.onLogout()
             
@@ -202,7 +202,7 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
       DispatchQueue.main.async(execute: { self.view.makeToast(NSLocalizedString("This feature has not been added yet", comment: ""))})
         
     }
-    func viewGames()
+    func changeLanguage()
     {
         launguagePicker.isHidden = false
     }
@@ -253,8 +253,8 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
                     CometChat.stopServices()
                     UserDefaults.standard.removeObject(forKey: "LoggedInUserUID")
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                    let CustomLaunchViewController = storyBoard.instantiateViewController(withIdentifier: "customLaunchViewController") as! CustomLaunchViewController
-                    self.present(CustomLaunchViewController, animated:true, completion:nil)
+                    let CCtabBar = storyBoard.instantiateViewController(withIdentifier: "CCtabBar") as! CCTabbar
+                    self.present(CCtabBar, animated:true, completion:nil)
                 }, onError: { (error) in
                      DispatchQueue.main.async(execute: { self.view.makeToast(NSLocalizedString("Fail to logout at this moment.", comment: ""))})
                 })
