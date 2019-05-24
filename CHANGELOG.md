@@ -1,5 +1,9 @@
 # Change Log
 
+### v1.5.1 (May 24, 2019)
+- Added SDK version v1.5.1
+
+
 ### v1.4.4 (May 9, 2019)
 - Minor UI Improvements
 - Added changes related to Consistancy

@@ -8,7 +8,7 @@
 
 [![Platform](https://img.shields.io/badge/platform-iOS-orange.svg)](https://cocoapods.org/pods/CometChatPulseSDK)
 [![Languages](https://img.shields.io/badge/language-Objective--C%20%7C%20Swift-orange.svg)](https://github.com/CometChat-Pulse/ios-swift-chat-app)
-[![CocoaPods](https://img.shields.io/badge/pod-v0.0.5-green.svg)](https://cocoapods.org/pods/CometChatPulseSDK)
+[![CocoaPods](https://img.shields.io/badge/pod-v1.5.1-green.svg)](https://cocoapods.org/pods/CometChatPulseSDK)
 
 ## Documentation
 
@@ -23,7 +23,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target 'MyApp' do
-  pod 'CometChatPro', '~> 1.4.0'
+  pod 'CometChatPro', '~> 1.5.1'
 end 
 ```
 ## Install Manually
@@ -36,7 +36,7 @@ Add `CometChatPro.Framework` to Embedded Binaries as shown below:
 <div style="width:100%">
 	<div style="width:50%; display:inline-block">
 		<p align="center">
-		<img align="center" width="100%" height="400" alt="" src="https://files.readme.io/ae8fe0e-Screenshot_2019-04-29_at_4.23.37_PM.png">	
+		<img align="center" width="100%" height="400" alt="" src="https://files.readme.io/6e172a4-embeddedBinaries.png">	
 		</p>	
 	</div>	
 </div>
