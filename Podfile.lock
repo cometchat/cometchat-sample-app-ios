@@ -1,5 +1,5 @@
 PODS:
-  - CometChatPro (1.5.1):
+  - CometChatPro (1.5.2):
     - JitsiMeetSDK (= 2.1.0)
   - JitsiMeetSDK (2.1.0)
   - SDWebImage (4.4.6):
@@ -7,7 +7,7 @@ PODS:
   - SDWebImage/Core (4.4.6)
 
 DEPENDENCIES:
-  - CometChatPro (~> 1.5.1)
+  - CometChatPro (~> 1.5.2)
   - SDWebImage (~> 4.0)
 
 SPEC REPOS:
@@ -17,10 +17,10 @@ SPEC REPOS:
     - SDWebImage
 
 SPEC CHECKSUMS:
-  CometChatPro: 57bdc338eb8176e7475a6d61cc94ec0083bd2cac
+  CometChatPro: efe167dd1a4348c4d2da90fa890f33922c2b1f17
   JitsiMeetSDK: 3e66564af7f38a19142338955dd7f581801852b3
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
 
-PODFILE CHECKSUM: 765b47bc288847fb1a8be7445b0c24e77c39d7a4
+PODFILE CHECKSUM: 35912aa69f7bea31d9af99d55c5a3db1c7a16ac6
 
 COCOAPODS: 1.6.1

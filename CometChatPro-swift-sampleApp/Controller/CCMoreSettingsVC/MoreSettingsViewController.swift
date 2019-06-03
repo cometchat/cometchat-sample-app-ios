@@ -197,10 +197,13 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
     func viewNotification()
     {
          DispatchQueue.main.async(execute: { self.view.makeToast(NSLocalizedString("This feature has not been added yet", comment: ""))}) }
+   
     func viewBlockedUser()
     {
-      DispatchQueue.main.async(execute: { self.view.makeToast(NSLocalizedString("This feature has not been added yet", comment: ""))})
-        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let BlockedUsersVC = storyBoard.instantiateViewController(withIdentifier: "blockedUsersVC") as! BlockedUsersVC
+        self.navigationController?.pushViewController(BlockedUsersVC, animated: true)
+        BlockedUsersVC.title = "Blocked Users"
     }
     func changeLanguage()
     {

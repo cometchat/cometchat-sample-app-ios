@@ -1,5 +1,10 @@
 # Change Log
 
+### v1.5.2 (June 3, 2019)
+- Added SDK version v1.5.2
+- Added Block/Unblock User
+
+
 ### v1.5.1 (May 24, 2019)
 - Added SDK version v1.5.1
 

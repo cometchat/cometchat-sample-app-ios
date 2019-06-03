@@ -55,7 +55,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2258" y="-1316"/>
+            <point key="canvasLocation" x="1558" y="-1314"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="NFI-hg-eN4">
@@ -648,7 +648,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6pr-Q6-5tY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3077" y="-1316"/>
+            <point key="canvasLocation" x="2344" y="-1314"/>
+        </scene>
+        <!--Blocked UsersVC-->
+        <scene sceneID="Zh7-Ci-TFP">
+            <objects>
+                <tableViewController storyboardIdentifier="blockedUsersVC" id="b6L-lQ-9gU" customClass="BlockedUsersVC" customModule="CometChatPro_swift_sampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HGb-aj-F2w">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="b6L-lQ-9gU" id="9l2-iR-tap"/>
+                            <outlet property="delegate" destination="b6L-lQ-9gU" id="0Xy-iI-Zrp"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IXu-vU-p5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3123.75" y="-1346.8309859154929"/>
         </scene>
         <!--Item-->
         <scene sceneID="O55-Cb-3zb">
@@ -667,7 +685,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="481-69-im6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="-1316"/>
+            <point key="canvasLocation" x="848" y="-1314"/>
         </scene>
         <!--Embedded View Controller-->
         <scene sceneID="cL5-dM-u8p">
@@ -714,7 +732,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugx-JR-j2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="-1316"/>
+            <point key="canvasLocation" x="128" y="-1314"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Egt-Hk-w2a">
@@ -1255,10 +1273,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YbD-hF-yJy">
-                                <rect key="frame" x="20" y="50" width="319" height="380"/>
+                                <rect key="frame" x="20" y="50" width="280" height="380"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rt0-JP-vg9">
-                                        <rect key="frame" x="0.0" y="0.0" width="319" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_person" translatesAutoresizingMaskIntoConstraints="NO" id="Lkj-w3-yei">
                                                 <rect key="frame" x="20" y="21" width="18" height="18"/>
@@ -1268,7 +1286,7 @@
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter GUID" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="eGa-OY-kll">
-                                                <rect key="frame" x="46" y="10" width="265" height="40"/>
+                                                <rect key="frame" x="46" y="10" width="226" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="8at-v7-3zy"/>
                                                 </constraints>
@@ -1306,7 +1324,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KmU-Xf-ybC">
-                                        <rect key="frame" x="0.0" y="80" width="319" height="60"/>
+                                        <rect key="frame" x="0.0" y="80" width="280" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_person" translatesAutoresizingMaskIntoConstraints="NO" id="nv6-3u-Plz">
                                                 <rect key="frame" x="20" y="21" width="18" height="18"/>
@@ -1316,7 +1334,7 @@
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Group Name" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Ymg-3D-d7N">
-                                                <rect key="frame" x="46" y="10" width="265" height="40"/>
+                                                <rect key="frame" x="46" y="10" width="226" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="sJS-0C-Ajr"/>
                                                 </constraints>
@@ -1353,7 +1371,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QML-BL-WpR">
-                                        <rect key="frame" x="0.0" y="160" width="319" height="60"/>
+                                        <rect key="frame" x="0.0" y="160" width="280" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attachment" translatesAutoresizingMaskIntoConstraints="NO" id="lbx-kp-ZwK">
                                                 <rect key="frame" x="20" y="17.5" width="25" height="25"/>
@@ -1407,7 +1425,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmp-nb-B22">
-                                        <rect key="frame" x="0.0" y="240" width="319" height="60"/>
+                                        <rect key="frame" x="0.0" y="240" width="280" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="EZ0-XX-i0O">
                                                 <rect key="frame" x="20" y="21" width="18" height="18"/>
@@ -1417,7 +1435,7 @@
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="V2A-px-cA5">
-                                                <rect key="frame" x="46" y="10" width="265" height="40"/>
+                                                <rect key="frame" x="46" y="10" width="226" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="wfb-Eg-Un8"/>
                                                 </constraints>
@@ -1454,10 +1472,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gnc-IG-GTd">
-                                        <rect key="frame" x="0.0" y="320" width="319" height="60"/>
+                                        <rect key="frame" x="0.0" y="320" width="280" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9c-vz-b5s">
-                                                <rect key="frame" x="0.0" y="0.0" width="149.5" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="60"/>
                                                 <state key="normal" title="Cancel"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1484,7 +1502,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pP-mw-mld">
-                                                <rect key="frame" x="169.5" y="0.0" width="149.5" height="60"/>
+                                                <rect key="frame" x="150" y="0.0" width="130" height="60"/>
                                                 <state key="normal" title="Create Group">
                                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>

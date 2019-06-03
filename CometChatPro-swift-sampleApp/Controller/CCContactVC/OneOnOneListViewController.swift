@@ -10,6 +10,7 @@ import UIKit
 import CometChatPro
 
 class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatUserDelegate, UISearchBarDelegate {
+   
     
     //Outlets Declarations
     @IBOutlet weak var oneOneOneTableView: UITableView!
@@ -39,6 +40,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         CometChat.userdelegate = self
         oneOneOneTableView.delegate = self
         oneOneOneTableView.dataSource = self
+
     }
     
     func onUserOnline(user: User) {
@@ -57,27 +59,47 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
             oneOneOneTableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
+    
 
     
     override func viewWillAppear(_ animated: Bool) {
-   
-       // oneOneOneTableView.reloadData()
         
         //Function Calling
         self.handleContactListVCAppearance()
         
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
     
     func fetchUsersList(){
         // This Method fetch the users from the Server.
         userRequest.fetchNext(onSuccess: { (userList) in
-            
            self.usersArray.append(contentsOf: userList)
-           DispatchQueue.main.async(execute: { self.oneOneOneTableView.reloadData()
-           })
-           
+           DispatchQueue.main.async(execute: {
+            self.oneOneOneTableView.reloadData()
+           }) 
+        }) { (exception) in
+            
+            DispatchQueue.main.async(execute: {
+                self.view .makeToast("\(String(describing: exception!.errorDescription))")
+            })
+            CometChatLog.print(items:exception?.errorDescription as Any)
+        }
+    }
+    
+    func refreshUserList(){
+    
+        self.usersArray.removeAll()
+        userRequest = UsersRequest.UsersRequestBuilder(limit: 20).build()
+        userRequest.fetchNext(onSuccess: { (userList) in
+            
+            self.usersArray.append(contentsOf: userList)
+            DispatchQueue.main.async(execute: {
+                self.oneOneOneTableView.reloadData()
+            })
+            
         }) { (exception) in
             
             DispatchQueue.main.async(execute: {
@@ -106,8 +128,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         case .Custom:break
         }
         
-     
-        
+
         // NavigationBar Appearance
         
         navigationItem.title = NSLocalizedString("Contacts", comment: "")
@@ -227,24 +248,33 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     //trailingSwipeActionsConfigurationForRowAt indexPath
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
         
-        let action =  UIContextualAction(style: .normal, title: "Files", handler: { (action,view,completionHandler ) in
-            completionHandler(true)
+        let blockAction =  UIContextualAction(style: .normal, title: "Files1", handler: { (deleteAction,view,completionHandler ) in
             
-            
-            // Here you can perform the action 
-        })
-        action.image = UIImage(named: "delete.png")
-        action.backgroundColor = .red
-        
-        let deleteAction =  UIContextualAction(style: .normal, title: "Files1", handler: { (deleteAction,view,completionHandler ) in
+            var blockUsers = [String]()
+            let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
+            blockUsers.append(selectedCell.UID)
+            CometChat.blockUsers(blockUsers, onSuccess: { (User) in
+               // if !self.usersArray.isEmpty{
+                    DispatchQueue.main.async {
+                         self.view.makeToast("User blocked sucessfully.")
+                         self.usersArray.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                         self.oneOneOneTableView.reloadData()
+                        blockUsers.removeAll()
+                    }
+                //}
+            }, onError: { (Error) in
+               DispatchQueue.main.async { self.view.makeToast("Unable to block user") }
+            })
             completionHandler(true)
         })
         
-        deleteAction.image = UIImage(named: "block.png")
-        deleteAction.backgroundColor = .orange
-        let confrigation = UISwipeActionsConfiguration(actions: [])
-        // let confrigation = UISwipeActionsConfiguration(actions: [action,deleteAction])
+        blockAction.image = UIImage(named: "block.png")
+        blockAction.backgroundColor = .red
+    
+        let confrigation = UISwipeActionsConfiguration(actions: [blockAction])
         return confrigation
     }
     
