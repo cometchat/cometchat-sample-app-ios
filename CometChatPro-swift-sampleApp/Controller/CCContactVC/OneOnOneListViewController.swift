@@ -19,6 +19,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var leftPadding: NSLayoutConstraint!
     @IBOutlet weak var rightPadding: NSLayoutConstraint!
+
     
     //Variable Declarations
     private var _blurView: UIVisualEffectView?
@@ -27,10 +28,13 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     var buddyData:User!
     let data:NSData! = nil
     var url:NSURL!
+    var tabBadgeCount:Int = 0
+    var unreadCount = [String]()
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         //Function Calling
         self.fetchUsersList()
@@ -92,6 +96,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     func refreshUserList(){
     
         self.usersArray.removeAll()
+        self.unreadCount.removeAll()
         userRequest = UsersRequest.UsersRequestBuilder(limit: 20).build()
         userRequest.fetchNext(onSuccess: { (userList) in
             
@@ -106,6 +111,19 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
                 self.view .makeToast("\(String(describing: exception!.errorDescription))")
             })
             CometChatLog.print(items:exception?.errorDescription as Any)
+        }
+        
+    }
+    
+    func setTabbarCount(){
+
+        if let tabItems = tabBarController?.tabBar.items {
+            // In this case we want to modify the badge number of the third tab:
+            let tabItem = tabItems[0]
+            tabItem.badgeValue = "\(tabBadgeCount)"
+            if tabBadgeCount == 0{
+                tabItem.badgeValue = nil
+            }
         }
     }
     
@@ -204,8 +222,34 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
             case .offline:
                 cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "#F5C11F")
             }
+
+            if buddyData.blockedByMe == true{
+                cell.blockedLabel.isHidden = false
+            }else{
+                cell.blockedLabel.isHidden = true
+            }
+        
             let url  = NSURL(string: buddyData.avatar ?? "")
             cell.buddyAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
+            cell.getUnreadCountForAllUsers(UID: buddyData.uid!) { (count, error) in
+                
+                DispatchQueue.main.async {
+                    if count == 0 {
+                        cell.unreadCountBadge.isHidden = true
+                    }else{
+                        cell.unreadCountBadge.isHidden = false
+                       
+                        if !self.unreadCount.contains(cell.UID){
+                            self.unreadCount.append(cell.UID)
+                            self.tabBadgeCount = self.unreadCount.count
+                            print("array: \(self.unreadCount)")
+                            print("arrayCount: \(self.unreadCount.count)")
+                        self.setTabbarCount()
+                    }
+                    cell.unreadCountLabel.text = "\(String(describing: count!))"
+                }
+            }
+        }
         }else{
             
         }
@@ -214,11 +258,11 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+
         let height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-        if distanceFromBottom < height {
+        if distanceFromBottom < height && usersArray.count > 7{
             self.fetchUsersList()
         }
     }
@@ -228,6 +272,13 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         oneOneOneTableView.deselectRow(at: indexPath, animated: true)
         let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
+        selectedCell.unreadCountBadge.isHidden = true
+        
+        if(unreadCount.contains(selectedCell.UID)){
+           unreadCount.removeFirstElementEqual(to: selectedCell.UID)
+            tabBadgeCount = unreadCount.count
+            setTabbarCount()
+        }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let chatViewController = storyboard.instantiateViewController(withIdentifier: "chatViewController") as! ChatViewController
         chatViewController.buddyStatusString = selectedCell.buddyStatus.text
@@ -258,10 +309,9 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
             CometChat.blockUsers(blockUsers, onSuccess: { (User) in
                // if !self.usersArray.isEmpty{
                     DispatchQueue.main.async {
+                        selectedCell.blockedLabel.isHidden = false
                          self.view.makeToast("User blocked sucessfully.")
-                         self.usersArray.remove(at: indexPath.row)
-                        tableView.deleteRows(at: [indexPath], with: .fade)
-                         self.oneOneOneTableView.reloadData()
+//                         self.oneOneOneTableView.reloadData()
                         blockUsers.removeAll()
                     }
                 //}
@@ -364,3 +414,4 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     }
     
 }
+

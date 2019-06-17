@@ -57,7 +57,7 @@ class BlockedUsersVC: UITableViewController {
         navigationItem.leftBarButtonItem = backBTN
         backBTN.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         
-       doneBTN = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(unblockAction))
+       doneBTN = UIBarButtonItem(title: "Unblock", style: .plain, target: self, action: #selector(unblockAction))
     }
     
     @objc fileprivate func unblockAction() {

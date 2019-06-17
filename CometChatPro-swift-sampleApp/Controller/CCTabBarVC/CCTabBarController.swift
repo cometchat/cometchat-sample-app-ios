@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CometChatPro
 
 class CCTabBarController: UITabBarController,UITabBarControllerDelegate {
     
@@ -21,6 +22,8 @@ class CCTabBarController: UITabBarController,UITabBarControllerDelegate {
         
         //Function Calling
         self.handleViewControllers()
+        self.getUnreadCountForGroup()
+        self.getUnreadCountForUser()
     }
     
  
@@ -48,9 +51,44 @@ class CCTabBarController: UITabBarController,UITabBarControllerDelegate {
         tab3.tabBarItem = groupIcon
         
         
-        let controllers = [tab2 ,tab3] as [Any]  //array of the root view controllers displayed by the tab bar interface
+        let controllers = [tab2,tab3] as [Any]  //array of the root view controllers displayed by the tab bar interface
         self.viewControllers = controllers as? [UIViewController]
         // tabBarController?.selectedIndex = 1
+    }
+    
+    func getUnreadCountForUser(){
+        CometChat.getUnreadMessageCountForAllUsers(onSuccess: { response in
+            
+            print("get unread count for All users...\(response)")
+            DispatchQueue.main.async {
+                if response.count == 0 {
+                    self.tab2.tabBarItem.badgeValue = nil
+                }else{
+                    self.tab2.tabBarItem.badgeValue = "\(response.count)"
+                }
+            }
+        }) { (error) in
+            
+            print("error in fetching unread count for all users")
+        }
+    }
+    
+    func getUnreadCountForGroup(){
+        
+        CometChat.getUnreadMessageCountForAllGroups(onSuccess: { (response) in
+            
+            print("get unread count for All Group...\(response)")
+            DispatchQueue.main.async {
+                if response.count == 0 {
+                     self.tab3.tabBarItem.badgeValue = nil
+                }else{
+                  self.tab3.tabBarItem.badgeValue = "\(response.count)"
+                }
+            }
+        }) { (error) in
+             print("error in fetching unread count for all Group")
+        }
+        
     }
     
     //Delegate methods

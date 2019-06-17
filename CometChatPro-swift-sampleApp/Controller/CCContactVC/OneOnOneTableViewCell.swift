@@ -16,20 +16,35 @@ class OneOnOneTableViewCell: UITableViewCell {
     @IBOutlet weak var buddyName: UILabel!
     @IBOutlet weak var buddyStatus: UILabel!
     @IBOutlet weak var buddyStatusIcon: UIImageView!
+    @IBOutlet weak var blockedLabel: UIView!
+    @IBOutlet weak var unreadCountBadge: UIView!
+    @IBOutlet weak var unreadCountLabel: UILabel!
     
     
     //variable Declarations
     var UID:String!
     var group:Group!
-    
+    public typealias unreadMessageCountResponse = (_ count:Int? , _ error:CometChatException?) ->Void
     //This methods getting called when the cell is loaded in the TableView
     override func awakeFromNib() {
         super.awakeFromNib()
         
         //Function Calling
         self.handleOneOnOneTableViewCellAppearance()
-        
     }
+    
+    
+    func getUnreadCountForAllUsers(UID:String, completionHandler:@escaping unreadMessageCountResponse) {
+    
+        CometChat.getUnreadMessageCountForAllUsers(onSuccess: { (response) in
+            let count:Int = response[UID] as? Int ?? 0
+            completionHandler(count,nil)
+        }) { (error) in
+            completionHandler(nil,error)
+        }
+    }
+    
+    
     
     //This method handles the UI customization for nOneTableViewCell
     func handleOneOnOneTableViewCellAppearance(){

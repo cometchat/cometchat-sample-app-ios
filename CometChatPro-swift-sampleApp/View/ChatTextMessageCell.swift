@@ -47,12 +47,14 @@ class ChatTextMessageCell: UITableViewCell {
                 {
                     return
                 }
-                
-                if strongSelf.chatMessage.readAt > 0 {
-                    strongSelf.readRecipts.image = #imageLiteral(resourceName: "readReceiptDelivered")
+
+                if strongSelf.chatMessage.readByMeAt > 0.0 {
+                    strongSelf.readRecipts.image = #imageLiteral(resourceName: "seen")
                 }
-                else {
-                    strongSelf.readRecipts.image = #imageLiteral(resourceName: "readReceiptSent")
+                else if strongSelf.chatMessage.deliveredToMeAt > 0.0 {
+                    strongSelf.readRecipts.image = #imageLiteral(resourceName: "delivered")
+                }else{
+                     strongSelf.readRecipts.image = #imageLiteral(resourceName: "sent")
                 }
             }
             

@@ -24,8 +24,11 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     //Variable Declarations
     var joinedChatRoomList = [Group]()
     var othersChatRoomList = [Group]()
+    var tabBadgeCount:Int = 0
+    var unreadCount = [String]()
     var groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 10).build()
-  
+    var refreshControl: UIRefreshControl!
+    
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
@@ -47,7 +50,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     override func viewWillAppear(_ animated: Bool) {
         
         if((UserDefaults.standard.value(forKey: "changeLanguageAction")) != nil){
-        groupTableView.reloadData()
+            groupTableView.reloadData()
         }
         
         var isGroupLeave:String!
@@ -69,33 +72,85 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         UserDefaults.standard.removeObject(forKey: "changeLanguageAction")
     }
     
-
+    @objc func refresh(_ sender: Any) {
+        
+            refreshGroupList()
+        
+        refreshControl.endRefreshing()
+    }
+    
+    
     func fetchGroupList(){
         
         //This method fetches the grouplist from the server
         
         groupRequest.fetchNext(onSuccess: { (groupList) in
             
-          if !groupList.isEmpty{
-            for group in groupList {
-                if(group.hasJoined == true){
-                    self.joinedChatRoomList.append(group)
-                    CometChatLog.print(items: "joinedChatRoomList is:",self.joinedChatRoomList)
-                    
-                }else{
-                    self.othersChatRoomList.append(group)
-                    CometChatLog.print(items:"othersChatRoomList is:",self.othersChatRoomList)
+            if !groupList.isEmpty{
+                for group in groupList {
+                    if(group.hasJoined == true){
+                        self.joinedChatRoomList.append(group)
+                        CometChatLog.print(items: "joinedChatRoomList is:",self.joinedChatRoomList)
+                        
+                    }else{
+                        self.othersChatRoomList.append(group)
+                        CometChatLog.print(items:"othersChatRoomList is:",self.othersChatRoomList)
+                    }
                 }
+                DispatchQueue.main.async(execute: { self.groupTableView.reloadData()
+                })
             }
-            DispatchQueue.main.async(execute: { self.groupTableView.reloadData()
-            })
-           }
         }) { (exception) in
             
             DispatchQueue.main.async(execute: {
                 self.view.makeToast("\(String(describing: exception!.errorDescription))")
             })
             CometChatLog.print(items:exception?.errorDescription as Any)
+        }
+    }
+    
+    func refreshGroupList(){
+        
+        //This method fetches the grouplist from the server
+        self.joinedChatRoomList.removeAll()
+        self.othersChatRoomList.removeAll()
+        self.unreadCount.removeAll()
+        groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 20).build()
+        
+        groupRequest.fetchNext(onSuccess: { (groupList) in
+            
+            if !groupList.isEmpty{
+                for group in groupList {
+                    if(group.hasJoined == true){
+                        self.joinedChatRoomList.append(group)
+                        CometChatLog.print(items: "joinedChatRoomList is:",self.joinedChatRoomList)
+                        
+                    }else{
+                        self.othersChatRoomList.append(group)
+                        CometChatLog.print(items:"othersChatRoomList is:",self.othersChatRoomList)
+                    }
+                }
+                DispatchQueue.main.async(execute: { self.groupTableView.reloadData()
+                })
+            }
+        }) { (exception) in
+            
+            DispatchQueue.main.async(execute: {
+                self.view.makeToast("\(String(describing: exception!.errorDescription))")
+            })
+            CometChatLog.print(items:exception?.errorDescription as Any)
+        }
+    }
+    
+    func setTabbarCount(){
+        
+        if let tabItems = tabBarController?.tabBar.items {
+            // In this case we want to modify the badge number of the third tab:
+            let tabItem = tabItems[1]
+            tabItem.badgeValue = "\(tabBadgeCount)"
+            if tabBadgeCount == 0{
+                tabItem.badgeValue = nil
+            }
         }
     }
     
@@ -110,7 +165,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     }
     
     
-  
+    
     
     //This method handles the UI customization for handleGroupListVC
     func  handleGroupListVCAppearance(){
@@ -118,7 +173,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         // ViewController Appearance
         view.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
         
-
+        
         
         //TableView Appearance
         self.groupTableView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
@@ -148,6 +203,14 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 NSAttributedString.Key.font: UIFont(name: SystemFont.bold.value, size: 40)!]
             navigationController?.navigationBar.largeTitleTextAttributes = letlargeTitleforNavigationBar
         }
+        //Refresh Control
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            groupTableView.refreshControl = refreshControl
+        } else {
+            groupTableView.addSubview(refreshControl)
+        }
         
         // NavigationBar Buttons Appearance
         
@@ -158,7 +221,9 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         //notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-     
+        refreshControl.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        
+       
     }
     
     //TableView Methods:
@@ -209,10 +274,10 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         let cell = groupTableView.dequeueReusableCell(withIdentifier: "groupTableViewCell") as! GroupTableViewCell
         
-   if !joinedChatRoomList.isEmpty  || !othersChatRoomList.isEmpty {
-    
+        if !joinedChatRoomList.isEmpty  || !othersChatRoomList.isEmpty {
+            
             var group:Group!
-        
+            
             if(indexPath.section == 0){
                 group = joinedChatRoomList[indexPath.row]
             }else{
@@ -232,7 +297,26 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             cell.groupParticipants.text = group.groupDescription
             cell.UID = group.guid
             cell.groupType = group.groupType.rawValue
-    
+            cell.getUnreadCountForAllGroups(UID: group.guid) { (count, error) in
+                
+                DispatchQueue.main.async {
+                    if count == 0 {
+                        cell.unreadCountBadge.isHidden = true
+                    }else{
+                        cell.unreadCountBadge.isHidden = false
+                        
+                        if !self.unreadCount.contains(cell.UID){
+                            self.unreadCount.append(cell.UID)
+                            self.tabBadgeCount = self.unreadCount.count
+                            print("array: \(self.unreadCount)")
+                            print("arrayCount: \(self.unreadCount.count)")
+                            self.setTabbarCount()
+                        }
+                        cell.unreadCountLabel.text = "\(String(describing: count!))"
+                    }
+                }
+            }
+            
         }else{}
         
         return cell
@@ -242,6 +326,13 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         groupTableView.deselectRow(at: indexPath, animated: true)
         let selectedCell:GroupTableViewCell = tableView.cellForRow(at: indexPath) as! GroupTableViewCell
+        selectedCell.unreadCountBadge.isHidden = true
+        
+        if(unreadCount.contains(selectedCell.UID)){
+            unreadCount.removeFirstElementEqual(to: selectedCell.UID)
+            tabBadgeCount = unreadCount.count
+            setTabbarCount()
+        }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let chatViewController = storyboard.instantiateViewController(withIdentifier: "chatViewController") as! ChatViewController
         chatViewController.buddyAvtar = selectedCell.groupAvtar.image
@@ -263,14 +354,14 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 let saveAction = UIAlertAction(title: NSLocalizedString("Join", comment: ""), style: UIAlertAction.Style.default, handler: { alert -> Void in
                     let passwordTextfield = alertController.textFields![0] as UITextField
                     CometChat.joinGroup(GUID: selectedCell.UID, groupType: .password, password: passwordTextfield.text, onSuccess: { (success) in
-    
+                        
                         DispatchQueue.main.async{
-                           
+                            
                             self.view.makeToast(NSLocalizedString("Group Joined Sucessfully.", comment: ""))
                             self.navigationController?.pushViewController(chatViewController, animated: true)
                             self.othersChatRoomList.remove(at: indexPath.row)
                             if !self.othersChatRoomList.isEmpty {
-                            tableView.deleteRows(at: [indexPath], with: .fade)
+                                tableView.deleteRows(at: [indexPath], with: .fade)
                             }
                             self.joinedChatRoomList.append(selectedCell.group)
                             self.groupTableView.reloadData()
@@ -291,13 +382,13 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 
             }else{
                 CometChat.joinGroup(GUID: selectedCell.UID, groupType: .public, password: nil, onSuccess: { (success) in
-
-                      DispatchQueue.main.async{
-                    self.view.makeToast(NSLocalizedString("Group Joined Sucessfully.", comment: ""))
+                    
+                    DispatchQueue.main.async{
+                        self.view.makeToast(NSLocalizedString("Group Joined Sucessfully.", comment: ""))
                         self.navigationController?.pushViewController(chatViewController, animated: true)
                         self.othersChatRoomList.remove(at: indexPath.row)
-                         if !self.othersChatRoomList.isEmpty {
-                        tableView.deleteRows(at: [indexPath], with: .fade)
+                        if !self.othersChatRoomList.isEmpty {
+                            tableView.deleteRows(at: [indexPath], with: .fade)
                         }
                         self.joinedChatRoomList.append(selectedCell.group)
                         self.groupTableView.reloadData()
@@ -313,7 +404,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         }
     }
     
-
+    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -358,7 +449,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                     self.view.makeToast("\(sucess)")
                     self.joinedChatRoomList.remove(at: indexPath.row)
                     if !self.joinedChatRoomList.isEmpty{
-                    tableView.deleteRows(at: [indexPath], with: .fade)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
                     }
                     self.groupTableView.reloadData()
                 }
@@ -440,7 +531,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         
         let audioCall =  UIContextualAction(style: .normal, title: "Files1", handler: { (deleteAction,view,completionHandler ) in
-            //do stuff
             completionHandler(true)
             CallingViewController.isAudioCall = "1"
             CallingViewController.isIncoming = false
@@ -519,7 +609,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 self.present(actionSheetController, animated: true, completion: nil)
             }
         }else{
-           self.present(actionSheetController, animated: true, completion: nil)
+            self.present(actionSheetController, animated: true, completion: nil)
         }
     }
     

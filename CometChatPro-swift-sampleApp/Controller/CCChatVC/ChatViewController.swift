@@ -132,7 +132,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             }
             
             for msg in sendMessage{
-                if msg.readAt <= 0 {
+                if msg.readAt == 0 && msg.senderUid != self.myUID{
                     CometChat.markMessageAsRead(message: msg)
                 }                
             }
@@ -167,25 +167,6 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         refreshControl.endRefreshing()
     }
     
-//    fileprivate func configFastScroll() {
-//
-//        //bubble
-//        chatTableview.deactivateBubble = true
-//
-//        //handle
-//        chatTableview.handleImage = UIImage.init(named: "cursor")
-//        chatTableview.handleHeight = 40.0
-//        chatTableview.handleWidth = 44.0
-//        chatTableview.handleRadius = 0.0
-//        chatTableview.handleMarginRight = 0
-//        chatTableview.handleColor = UIColor.clear
-//
-//        //scrollbar
-//        chatTableview.scrollbarWidth = 0.0
-//        chatTableview.scrollbarMarginTop = 10.0
-//        chatTableview.scrollbarMarginBottom = 60.0
-//        chatTableview.scrollbarMarginRight = 10.0
-//    }
     
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -280,8 +261,6 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             self.present(importMenu, animated: true, completion: nil)
         }
         
-        
-        //self.present(importMenu, animated: true, completion: nil)
     }
     
     func fetchPreviousMessages(messageReq:MessagesRequest, completionHandler:@escaping sendMessageResponse) {
@@ -493,7 +472,6 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         CometChat.endTyping(indicator: typingIndicator)
         let oneOne = ChatViewController()
         oneOne.removeFromParent()
-        
     }
     
     @objc func audioRecord(_ sender: UIGestureRecognizer){
@@ -665,7 +643,9 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return chatMessage.count
+        
     }
     
     func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
@@ -738,7 +718,6 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 mediaMessageCell.fileIconImageView.image = #imageLiteral(resourceName: "file")
                 return mediaMessageCell
                 
-            case .groupMember: break
                 
             case .custom: break
                 
@@ -847,8 +826,6 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             previewQL.refreshCurrentPreviewItem()
             previewQL.currentPreviewItemIndex = indexPath.row
             show(previewQL, sender: nil)
-            
-        case .groupMember: break
             
         case .custom: break
             
@@ -969,16 +946,18 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                         self.selectedImageV.image = photo.image
                         let imageData = photo.image.pngData()!
                         let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                        let imageURL = docDir.appendingPathComponent("tmp.png")
+                        var imageURL = docDir.appendingPathComponent("temp.png")
                         try! imageData.write(to: imageURL)
                         picker.dismiss(animated: true, completion: nil)
                         
                         self.sendMediaMessage(toUserUID: self.buddyUID, mediaURL: imageURL.absoluteString, isGroup: self.isGroup, messageType: .image, completionHandler: { (message, error) in
-                            
+                            imageURL.removeAllCachedResourceValues()
                             guard  let sendMessage =  message else{
                                 return
                             }
+                            
                             self.chatMessage.append(sendMessage)
+                            
                             DispatchQueue.main.async {
                                 self.chatTableview.beginUpdates()
                                 self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
@@ -1248,17 +1227,21 @@ extension ChatViewController : CometChatMessageDelegate {
     
     func onTypingStarted(_ typingDetails : TypingIndicator) {
         
-        if typingDetails.sender?.uid == buddyUID {
+        if typingDetails.sender?.uid == buddyUID && typingDetails.receiverType == .user{
         buddyStatus.text = NSLocalizedString("Typing...", comment: "")
+        }else if typingDetails.receiverType == .group  && isGroup == "1"{
+            let user = typingDetails.sender?.uid
+            buddyStatus.text = NSLocalizedString("\(user!) is Typing...", comment: "")
         }
-       
     }
     
     func onTypingEnded(_ typingDetails : TypingIndicator) {
         
         // received typing indicator:
-        if typingDetails.sender?.uid == buddyUID {
+        if typingDetails.sender?.uid == buddyUID && typingDetails.receiverType == .user{
             buddyStatus.text = NSLocalizedString("Online", comment: "")
+        }else if typingDetails.receiverType == .group  && isGroup == "1"{
+            buddyStatus.text = NSLocalizedString("", comment: "")
         }
     }
     
@@ -1267,9 +1250,12 @@ extension ChatViewController : CometChatMessageDelegate {
         
         if let row = self.chatMessage.firstIndex(where: {$0.id == Int(receipt.messageId)}) {
             
-            chatMessage[row].deliveredAt = Double(receipt.timeStamp)
-            _ = IndexPath(row: row, section: 0)
-   
+            if receipt.receiptType == .delivered {
+                chatMessage[row].deliveredToMeAt = Double(receipt.timeStamp)
+            }
+            let indexPath = IndexPath(row: row, section: 0)
+            chatTableview.reloadRows(at: [indexPath], with: .none)
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: false)
         }
         
         
@@ -1280,7 +1266,7 @@ extension ChatViewController : CometChatMessageDelegate {
         if let row = self.chatMessage.firstIndex(where: {$0.id == Int(receipt.messageId)}) {
             
             if receipt.receiptType == .read {
-                chatMessage[row].readAt = Double(receipt.timeStamp)
+                chatMessage[row].readByMeAt = Double(receipt.timeStamp)
             }
             let indexPath = IndexPath(row: row, section: 0)
             chatTableview.reloadRows(at: [indexPath], with: .none)

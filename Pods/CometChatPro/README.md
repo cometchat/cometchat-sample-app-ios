@@ -8,7 +8,7 @@
 
 [![Platform](https://img.shields.io/badge/platform-iOS-orange.svg)](https://cocoapods.org/pods/CometChatPro)
 [![Languages](https://img.shields.io/badge/language-Objective--C%20%7C%20Swift-orange.svg)](https://github.com/cometchat-pro/ios-chat-sdk)
-[![CocoaPods](https://img.shields.io/badge/pod-v1.6.1-green.svg)](https://cocoapods.org/pods/CometChatPro)
+[![CocoaPods](https://img.shields.io/badge/pod-v1.7.0-green.svg)](https://cocoapods.org/pods/CometChatPro)
 
 ## Documentation
 
@@ -23,12 +23,12 @@ platform :ios, '10.0'
 use_frameworks!
 
 target 'MyApp' do
-  pod 'CometChatPro', '~> 1.6.1'
+  pod 'CometChatPro', '~> 1.7.0'
 end 
 ```
 ## Install Manually
 
-## First: Download CometChatPro [Here](https://github.com/cometchat-pro/ios-chat-sdk/archive/1.6.1.zip)
+## First: Download CometChatPro [Here](https://github.com/cometchat-pro/ios-chat-sdk/archive/1.7.0.zip)
 ## Second :
 Drag and drop `CometChatPro.Framework` to the root level of your project.
 

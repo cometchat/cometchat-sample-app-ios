@@ -582,3 +582,11 @@ extension UIApplication {
         return false
     }
 }
+
+extension RangeReplaceableCollection where Element: Equatable {
+    @discardableResult
+    mutating func removeFirstElementEqual(to element: Element) -> Element? {
+        guard let index = firstIndex(of: element) else { return nil }
+        return remove(at: index)
+    }
+}

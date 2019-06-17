@@ -1,5 +1,12 @@
 # Change Log
 
+
+### v1.7.1 (June 17, 2019)
+- Added SDK version v1.7.0
+- Added Unread Message Count
+- Added User list filter for blocked Users
+
+
 ### v1.6.1 (June 10, 2019)
 - Added SDK version v1.6.1
 

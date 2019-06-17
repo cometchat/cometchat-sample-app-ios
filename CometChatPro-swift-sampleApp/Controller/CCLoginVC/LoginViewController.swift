@@ -24,6 +24,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     @IBOutlet weak var superHero2View: UIView!
     @IBOutlet weak var superHero3View: UIView!
     @IBOutlet weak var superHero4View: UIView!
+    @IBOutlet weak var activityIndicator: CCActivityIndicator!
     
     
     //Variable Declarations
@@ -116,6 +117,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         }else if(API_KEY.contains("Enter") || API_KEY.contains("ENTER") || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
             showAlert(title: "Warning!", msg: "Please fill the APP-ID and API-KEY in CometChat-info.plist file.")
         }else{
+            self.loginButton.setTitle("\(NSLocalizedString("Processing...", comment: ""))", for: .normal)
             loginWithUID(UID: trimmedUID)
         }
     }
@@ -125,7 +127,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         if(API_KEY.contains(NSLocalizedString("Enter", comment: "")) || API_KEY.contains(NSLocalizedString("ENTER", comment: "")) || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
             showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in CometChat-info.plist file.", comment: ""))
         }else{
-            self.loginButton.setTitle("\(NSLocalizedString("Login with", comment: "")) Superhero1", for: .normal)
+            self.loginButton.setTitle("\(NSLocalizedString("Processing...", comment: ""))", for: .normal)
             userName.text = "superhero1"
             loginWithUID(UID: "superhero1")
         }
@@ -136,7 +138,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         if(API_KEY.contains(NSLocalizedString("Enter", comment: "")) || API_KEY.contains(NSLocalizedString("ENTER", comment: "")) || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
             showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in CometChat-info.plist file.", comment: ""))
         }else{
-            self.loginButton.setTitle("\(NSLocalizedString("Login with", comment: "")) Superhero2", for: .normal)
+            self.loginButton.setTitle("\(NSLocalizedString("Processing...", comment: ""))", for: .normal)
             userName.text = "superhero2"
             loginWithUID(UID: "superhero2")
         }
@@ -147,7 +149,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         if(API_KEY.contains(NSLocalizedString("Enter", comment: "")) || API_KEY.contains(NSLocalizedString("ENTER", comment: "")) || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
             showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in CometChat-info.plist file.", comment: ""))
         }else{
-            self.loginButton.setTitle("\(NSLocalizedString("Login with", comment: "")) Superhero3", for: .normal)
+            self.loginButton.setTitle("\(NSLocalizedString("Processing...", comment: ""))", for: .normal)
             userName.text = "superhero3"
             loginWithUID(UID: "superhero3")
         }
@@ -159,7 +161,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         if(API_KEY.contains(NSLocalizedString("Enter", comment: "")) || API_KEY.contains(NSLocalizedString("ENTER", comment: "")) || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
             showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in CometChat-info.plist file.", comment: ""))
         }else{
-            self.loginButton.setTitle("\(NSLocalizedString("Login with", comment: "")) Superhero4", for: .normal)
+            self.loginButton.setTitle("\(NSLocalizedString("Processing...", comment: ""))", for: .normal)
             userName.text = "superhero4"
             loginWithUID(UID: "superhero4")
         }
@@ -168,9 +170,11 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     
     
     private func loginWithUID(UID:String){
-        
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         CometChat.login(UID: UID, apiKey: API_KEY, onSuccess: { (current_user) in
-            
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
             self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
             UserDefaults.standard.set(current_user.uid, forKey: "LoggedInUserUID")
@@ -182,6 +186,8 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
             }
         }) { (error) in
             DispatchQueue.main.async { [unowned self] in
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
                 self.loginButton.backgroundColor = UIColor.init(hexFromString: "FF0000")
                 self.loginButton.setTitle(NSLocalizedString("Login Failure", comment: ""), for: .normal)
             }
