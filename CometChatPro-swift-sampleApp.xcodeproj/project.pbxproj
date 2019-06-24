@@ -65,9 +65,15 @@
 		B2CD3E8F224A255700135D4F /* AMShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CD3E8E224A255600135D4F /* AMShimmer.swift */; };
 		B2EECA8D226866B6005DD7FD /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B270B70F2200B0F600A2B3F3 /* Toast.swift */; };
 		B2FB0F0C21EC880C00CEDD4A /* CometChat-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2FB0F0B21EC880C00CEDD4A /* CometChat-info.plist */; };
+		DBAECBAC22C0BB0E00F7FE5C /* XLActionController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAECBAB22C0BB0E00F7FE5C /* XLActionController.framework */; };
+		DBAECBAE22C0BC5000F7FE5C /* XLActionController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAECBAB22C0BB0E00F7FE5C /* XLActionController.framework */; };
+		DBAECBAF22C0BC5000F7FE5C /* XLActionController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DBAECBAB22C0BB0E00F7FE5C /* XLActionController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DBB7C13D229C0DB400FA04E5 /* BlockedUsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB7C13C229C0DB400FA04E5 /* BlockedUsersVC.swift */; };
 		DBB7C144229C23EF00FA04E5 /* BlockedUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB7C142229C23EF00FA04E5 /* BlockedUserCell.swift */; };
 		DBB7C145229C23EF00FA04E5 /* BlockedUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBB7C143229C23EF00FA04E5 /* BlockedUserCell.xib */; };
+		DBF5628D22BB72D20094F7CD /* Skype.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF5628B22BB72D20094F7CD /* Skype.swift */; };
+		DBF5628E22BB72D20094F7CD /* SkypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBF5628C22BB72D20094F7CD /* SkypeCell.xib */; };
+		DBF5629922BCD2030094F7CD /* ChatDeletedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF5629822BCD2030094F7CD /* ChatDeletedMessageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,6 +85,7 @@
 			files = (
 				B291CDD1221EC31000462FAC /* Stevia.framework in Embed Frameworks */,
 				06A736B022701AAF006AD31C /* YPImagePicker.framework in Embed Frameworks */,
+				DBAECBAF22C0BC5000F7FE5C /* XLActionController.framework in Embed Frameworks */,
 				B291CDCF221EC31000462FAC /* PryntTrimmerView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -155,9 +162,13 @@
 		B2CD3E8E224A255600135D4F /* AMShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMShimmer.swift; sourceTree = "<group>"; };
 		B2FB0F0B21EC880C00CEDD4A /* CometChat-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CometChat-info.plist"; sourceTree = "<group>"; };
 		C5B9E6B9A7597EF8A6D41C02 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		DBAECBAB22C0BB0E00F7FE5C /* XLActionController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XLActionController.framework; sourceTree = "<group>"; };
 		DBB7C13C229C0DB400FA04E5 /* BlockedUsersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersVC.swift; sourceTree = "<group>"; };
 		DBB7C142229C23EF00FA04E5 /* BlockedUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUserCell.swift; sourceTree = "<group>"; };
 		DBB7C143229C23EF00FA04E5 /* BlockedUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlockedUserCell.xib; sourceTree = "<group>"; };
+		DBF5628B22BB72D20094F7CD /* Skype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skype.swift; sourceTree = "<group>"; };
+		DBF5628C22BB72D20094F7CD /* SkypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkypeCell.xib; sourceTree = "<group>"; };
+		DBF5629822BCD2030094F7CD /* ChatDeletedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDeletedMessageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +176,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBAECBAC22C0BB0E00F7FE5C /* XLActionController.framework in Frameworks */,
 				06A736A722701496006AD31C /* YPImagePicker.framework in Frameworks */,
+				DBAECBAE22C0BC5000F7FE5C /* XLActionController.framework in Frameworks */,
 				588950BA2221A5DB007D2CBF /* ImageIO.framework in Frameworks */,
 				B291CDCE221EC31000462FAC /* PryntTrimmerView.framework in Frameworks */,
 				B291CDD0221EC31000462FAC /* Stevia.framework in Frameworks */,
@@ -305,6 +318,7 @@
 		589124AD21B2AC6C003500B5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DBAECBAB22C0BB0E00F7FE5C /* XLActionController.framework */,
 				06A736A622701496006AD31C /* YPImagePicker.framework */,
 				B2CD3E8E224A255600135D4F /* AMShimmer.swift */,
 				B270B70F2200B0F600A2B3F3 /* Toast.swift */,
@@ -322,9 +336,12 @@
 		589124B421B2AC6C003500B5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DBF5628B22BB72D20094F7CD /* Skype.swift */,
+				DBF5628C22BB72D20094F7CD /* SkypeCell.xib */,
 				589124B521B2AC6C003500B5 /* LaunchScreen.storyboard */,
 				589124B721B2AC6C003500B5 /* Main.storyboard */,
 				71ADB0EC21D41216002443A7 /* ChatTextMessageCell.swift */,
+				DBF5629822BCD2030094F7CD /* ChatDeletedMessageCell.swift */,
 				B291CDC4221EC2A300462FAC /* ChatImageMessageCell.swift */,
 				B291CDC6221EC2AA00462FAC /* ChatVideoMessageCell.swift */,
 				B28A325C222FB3EA00D3FC54 /* ChatActionMessageCell.swift */,
@@ -493,6 +510,7 @@
 			files = (
 				B22301C421D26B8000483CC7 /* Product Sans Regular.ttf in Resources */,
 				DBB7C145229C23EF00FA04E5 /* BlockedUserCell.xib in Resources */,
+				DBF5628E22BB72D20094F7CD /* SkypeCell.xib in Resources */,
 				B22B37B3225CB4B900F27841 /* Localizable.strings in Resources */,
 				B22301C521D26B8300483CC7 /* Product Sans Bold.ttf in Resources */,
 				589124D321B2AC6C003500B5 /* Main.storyboard in Resources */,
@@ -588,6 +606,7 @@
 				589124CD21B2AC6C003500B5 /* CCBottomSlideController.swift in Sources */,
 				589124CB21B2AC6C003500B5 /* CCprofileAvtarViewController.swift in Sources */,
 				589124C521B2AC6C003500B5 /* GroupNavigationController.swift in Sources */,
+				DBF5629922BCD2030094F7CD /* ChatDeletedMessageCell.swift in Sources */,
 				B23F83A4223BE4B2003978B3 /* PopOverController.swift in Sources */,
 				589124BD21B2AC6C003500B5 /* RecentListViewController.swift in Sources */,
 				589124BC21B2AC6C003500B5 /* RecentTableViewCell.swift in Sources */,
@@ -596,6 +615,7 @@
 				A83BD0E522071FBB00034D54 /* ViewMemberViewController.swift in Sources */,
 				B28B1A7E221AC4B000F5FD4C /* NavigationViewController.swift in Sources */,
 				B28B1A7C221ABFBE00F5FD4C /* UIWindow.swift in Sources */,
+				DBF5628D22BB72D20094F7CD /* Skype.swift in Sources */,
 				B291CDC5221EC2A300462FAC /* ChatImageMessageCell.swift in Sources */,
 				58C1D1AC21BBDCF900B64915 /* UserProfileViewController.swift in Sources */,
 				589124C821B2AC6C003500B5 /* OneOnOneListViewController.swift in Sources */,
@@ -697,7 +717,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -753,7 +773,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

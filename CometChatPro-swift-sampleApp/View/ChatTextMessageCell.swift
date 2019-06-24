@@ -29,8 +29,19 @@ class ChatTextMessageCell: UITableViewCell {
     
     var chatMessage : TextMessage! {
         didSet{
+            let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
+            if chatMessage.deletedAt > 0.0 {
+                if chatMessage.sender?.uid == myUID{
+                    messageLabel.text = "⚠️ You deleted this message."
+                }else{
+                    messageLabel.text = "⚠️ This message was deleted."
+                }
+                messageLabel.font = UIFont.myItalicSystemFont(ofSize: 15)
+            }else{
+                messageLabel.text = chatMessage.text
+                messageLabel.font = UIFont.mySystemFont(ofSize: 15)
+            }
             
-            messageLabel.text = chatMessage.text
             userNameLabel.text = (chatMessage.sender?.name ?? " ") + " :"
             userNameLabel.font = userNameLabel.font.withSize(12)
             let date = Date(timeIntervalSince1970: TimeInterval(chatMessage.sentAt))
@@ -39,7 +50,6 @@ class ChatTextMessageCell: UITableViewCell {
             dateFormatter1.timeZone = NSTimeZone.local
             let dateString : String = dateFormatter1.string(from: date)
             messageTimeLabel.text =  dateString
-            readRecipts.image = #imageLiteral(resourceName: "sent")
             
             DispatchQueue.main.async {  [weak self] in
                 guard let strongSelf = self
@@ -47,14 +57,19 @@ class ChatTextMessageCell: UITableViewCell {
                 {
                     return
                 }
-
-                if strongSelf.chatMessage.readByMeAt > 0.0 {
-                    strongSelf.readRecipts.image = #imageLiteral(resourceName: "seen")
-                }
-                else if strongSelf.chatMessage.deliveredToMeAt > 0.0 {
-                    strongSelf.readRecipts.image = #imageLiteral(resourceName: "delivered")
+                
+                if self!.chatMessage.deletedAt >  0.0{
+                    self!.readRecipts.image = #imageLiteral(resourceName: "blank")
                 }else{
-                     strongSelf.readRecipts.image = #imageLiteral(resourceName: "sent")
+                    self!.readRecipts.image = #imageLiteral(resourceName: "sent")
+                    if strongSelf.chatMessage.readByMeAt > 0.0 {
+                        strongSelf.readRecipts.image = #imageLiteral(resourceName: "seen")
+                    }
+                    else if strongSelf.chatMessage.deliveredToMeAt > 0.0 {
+                        strongSelf.readRecipts.image = #imageLiteral(resourceName: "delivered")
+                    }else{
+                        strongSelf.readRecipts.image = #imageLiteral(resourceName: "sent")
+                    }
                 }
             }
             
@@ -64,7 +79,7 @@ class ChatTextMessageCell: UITableViewCell {
             }else{
                 userAvatarImageView.image = UIImage(named: "default_user")
             }
-            let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
+            
             if(chatMessage.senderUid == myUID){
                 messageLabelLeadingConstraint.isActive = false
                 messageLabelTrailingConstraint.isActive = true
@@ -84,6 +99,10 @@ class ChatTextMessageCell: UITableViewCell {
                     
                     self.messageBackgroundView.layer.cornerRadius = 15
                     messageBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
+                    messageLabel.textColor = UIColor.white
+                
+                case .PersianBlue where chatMessage.deletedAt > 0.0:
+                    self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: "959dea")
                     messageLabel.textColor = UIColor.white
                     
                 case .PersianBlue:

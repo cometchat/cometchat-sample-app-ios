@@ -9,7 +9,7 @@
 import UIKit
 import CometChatPro
 
-class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatUserDelegate, UISearchBarDelegate {
+class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatUserDelegate {
    
     
     //Outlets Declarations
@@ -24,17 +24,18 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     //Variable Declarations
     private var _blurView: UIVisualEffectView?
     var usersArray = [User]()
+    var filteredUsersArray = [User]()
     var userRequest = UsersRequest.UsersRequestBuilder(limit: 20).build()
     var buddyData:User!
     let data:NSData! = nil
     var url:NSURL!
     var tabBadgeCount:Int = 0
     var unreadCount = [String]()
+    var searchController:UISearchController = UISearchController(searchResultsController: nil)
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         //Function Calling
         self.fetchUsersList()
@@ -67,14 +68,19 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
 
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.refreshUserList()
         //Function Calling
         self.handleContactListVCAppearance()
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
+    override func viewDidDisappear(_ animated: Bool) {
+        searchController.searchBar.resignFirstResponder()
+        searchController.searchBar.endEditing(true)
+        searchController.isActive = false
+        searchController.searchBar.delegate = nil
+        searchController.searchResultsUpdater = nil
+        super.viewDidDisappear(true)
     }
     
     func fetchUsersList(){
@@ -176,8 +182,57 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
  
+        // SearchBar Apperance
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchController.searchBar.delegate = self
+        searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
+
+        if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search User", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+        }else{
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search User", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
+        }
+        
+        
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
+        let SearchImageView = UIImageView.init()
+        let SearchImage = UIImage(named: "icons8-search-30")!.withRenderingMode(.alwaysTemplate)
+        SearchImageView.image = SearchImage
+        SearchImageView.tintColor = UIColor.init(white: 1, alpha: 0.5)
+
+        searchController.searchBar.setImage(SearchImageView.image, for: UISearchBar.Icon.search, state: .normal)
+        if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.white
+            if let backgroundview = textfield.subviews.first{
+
+                // Background color
+                backgroundview.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
+                // Rounded corner
+                backgroundview.layer.cornerRadius = 10
+                backgroundview.clipsToBounds = true;
+            }
+        }
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            
+        }
     }
     
+    // MARK: - Private instance methods
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+    }
     
     //TableView Methods
     
@@ -193,7 +248,11 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
             DispatchQueue.main.async(execute: {
                 AMShimmer.stop(for: self.oneOneOneTableView)
             })
-            return usersArray.count
+            
+            if isFiltering(){
+                return filteredUsersArray.count
+            }
+                return usersArray.count
         }
         
         // return 0
@@ -207,7 +266,12 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         
         if !usersArray.isEmpty {
             
-            buddyData = self.usersArray[indexPath.row]
+            if isFiltering() {
+                buddyData = self.filteredUsersArray[indexPath.row]
+            } else {
+                buddyData = self.usersArray[indexPath.row]
+            }
+            
             //User Name:
             cell.buddyName.text = buddyData.name
             
@@ -279,6 +343,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
             tabBadgeCount = unreadCount.count
             setTabbarCount()
         }
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let chatViewController = storyboard.instantiateViewController(withIdentifier: "chatViewController") as! ChatViewController
         chatViewController.buddyStatusString = selectedCell.buddyStatus.text
@@ -379,11 +444,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     
     //announcement button Pressed
     @IBAction func announcementPressed(_ sender: Any) {
-        
-        
-        
-        
-        
+
     }
     
     //More button Pressed
@@ -415,3 +476,32 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     
 }
 
+extension OneOnOneListViewController : UISearchBarDelegate {
+    // MARK: - UISearchBar Delegate
+//    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+//        filterContentForSearchText(searchBar.text!)
+//    }
+}
+
+extension OneOnOneListViewController : UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        userRequest = UsersRequest.UsersRequestBuilder(limit: 20).set(searchKeyword: searchController.searchBar.text ?? "").build()
+        userRequest.fetchNext(onSuccess: { (userList) in
+            
+            self.filteredUsersArray = userList
+
+            DispatchQueue.main.async(execute: {
+                self.oneOneOneTableView.reloadData()
+            })
+            
+        }) { (exception) in
+            
+            DispatchQueue.main.async(execute: {
+                self.view .makeToast("\(String(describing: exception!.errorDescription))")
+            })
+            CometChatLog.print(items:exception?.errorDescription as Any)
+        }
+    }
+}

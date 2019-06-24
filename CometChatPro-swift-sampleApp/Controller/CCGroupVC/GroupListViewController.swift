@@ -10,7 +10,7 @@ import UIKit
 import CometChatPro
 
 
-class GroupListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource, UISearchBarDelegate{
+class GroupListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource , UISearchBarDelegate {
     
     //Outlets Declarations
     @IBOutlet weak var groupTableView: UITableView!
@@ -24,10 +24,12 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     //Variable Declarations
     var joinedChatRoomList = [Group]()
     var othersChatRoomList = [Group]()
+    var filteredGroupList = [Group]()
     var tabBadgeCount:Int = 0
     var unreadCount = [String]()
     var groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 10).build()
     var refreshControl: UIRefreshControl!
+    var searchController:UISearchController = UISearchController(searchResultsController: nil)
     
     
     //This method is called when controller has loaded its view into memory.
@@ -48,7 +50,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.refreshGroupList()
         if((UserDefaults.standard.value(forKey: "changeLanguageAction")) != nil){
             groupTableView.reloadData()
         }
@@ -72,9 +74,19 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         UserDefaults.standard.removeObject(forKey: "changeLanguageAction")
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        searchController.searchBar.resignFirstResponder()
+        searchController.searchBar.endEditing(true)
+        searchController.isActive = false
+        searchController.searchBar.delegate = nil
+        searchController.searchResultsUpdater = nil
+        super.viewDidDisappear(true)
+    }
+    
+    
     @objc func refresh(_ sender: Any) {
         
-            refreshGroupList()
+        refreshGroupList()
         
         refreshControl.endRefreshing()
     }
@@ -223,7 +235,54 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         refreshControl.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         
-       
+        // SearchBar Apperance
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchController.searchBar.delegate = self
+        searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
+        
+        if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Group", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+        }else{
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Group", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
+        }
+        
+        
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        let SearchImageView = UIImageView.init()
+        let SearchImage = UIImage(named: "icons8-search-30")!.withRenderingMode(.alwaysTemplate)
+        SearchImageView.image = SearchImage
+        SearchImageView.tintColor = UIColor.init(white: 1, alpha: 0.5)
+        
+        searchController.searchBar.setImage(SearchImageView.image, for: UISearchBar.Icon.search, state: .normal)
+        if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.white
+            if let backgroundview = textfield.subviews.first{
+                
+                // Background color
+                backgroundview.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
+                // Rounded corner
+                backgroundview.layer.cornerRadius = 10
+                backgroundview.clipsToBounds = true;
+            }
+        }
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            
+        }
+    }
+    
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && (!searchBarIsEmpty())
     }
     
     //TableView Methods:
@@ -231,7 +290,11 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     //numberOfSections -->
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 2
+        if isFiltering(){
+            return 1
+        }else{
+             return 2
+        }
     }
     
     //numberOfRowsInSection -->
@@ -242,6 +305,11 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             return 15
         }else{
             AMShimmer.stop(for: groupTableView)
+            
+            if isFiltering(){
+                return filteredGroupList.count
+            }
+            
             if (section == 0) {
                 return joinedChatRoomList.count
             } else {
@@ -278,10 +346,14 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             
             var group:Group!
             
-            if(indexPath.section == 0){
-                group = joinedChatRoomList[indexPath.row]
-            }else{
-                group = othersChatRoomList[indexPath.row]
+            if isFiltering() {
+                group = self.filteredGroupList[indexPath.row]
+            } else {
+                if(indexPath.section == 0){
+                    group = joinedChatRoomList[indexPath.row]
+                }else{
+                    group = othersChatRoomList[indexPath.row]
+                }
             }
             
             if(group.groupType == .password){
@@ -344,7 +416,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             chatViewController.groupScope = scope
         }
         
-        if(indexPath.section != 0){
+        if selectedCell.group.hasJoined == false{
             if(selectedCell.groupType == 2){
                 let alertController = UIAlertController(title: NSLocalizedString("Enter Password", comment: ""), message:NSLocalizedString("Kindly, Enter the password to proceed.", comment: "") , preferredStyle: UIAlertController.Style.alert)
                 alertController.addTextField { (textField : UITextField!) -> Void in
@@ -421,7 +493,11 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if(section == 0) {
-            return NSLocalizedString("Joined Groups", comment: "")
+            if(isFiltering()){
+                return NSLocalizedString("Searched Groups", comment: "")
+            }else{
+                return NSLocalizedString("Joined Groups", comment: "")
+            }
         }
         else {
             return NSLocalizedString("Other Groups", comment: "")
@@ -621,5 +697,27 @@ extension UIViewController {
         view.removeFromSuperview()
         view = nil
         parent?.addSubview(view) // This line causes the view to be reloaded
+    }
+}
+
+extension GroupListViewController : UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+      
+        groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 20).set(searchKeyword: searchController.searchBar.text!).build()
+        
+        groupRequest.fetchNext(onSuccess: { (groupList) in
+
+            self.filteredGroupList = groupList
+            
+                DispatchQueue.main.async(execute: { self.groupTableView.reloadData()
+                })
+        }) { (exception) in
+            
+            DispatchQueue.main.async(execute: {
+                self.view.makeToast("\(String(describing: exception!.errorDescription))")
+            })
+            CometChatLog.print(items:exception?.errorDescription as Any)
+        }
     }
 }

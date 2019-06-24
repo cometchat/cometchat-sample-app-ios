@@ -716,12 +716,14 @@ SWIFT_CLASS("_TtC12CometChatPro4User")
 @property (nonatomic) BOOL blockedByMe;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 SWIFT_CLASS("_TtC12CometChatPro11CurrentUser")
 @interface CurrentUser : User
+- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -764,6 +766,7 @@ SWIFT_CLASS("_TtC12CometChatPro11GroupMember")
 @property (nonatomic) enum GroupMemberScopeType scope;
 @property (nonatomic) NSInteger joinedAt;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt SWIFT_UNAVAILABLE;
 @end
 
 @class GroupMembersRequestBuilder;
@@ -780,7 +783,7 @@ SWIFT_CLASS("_TtC12CometChatPro19GroupMembersRequest")
 SWIFT_CLASS("_TtCC12CometChatPro19GroupMembersRequest26GroupMembersRequestBuilder")
 @interface GroupMembersRequestBuilder : NSObject
 - (nonnull instancetype)initWithGuid:(NSString * _Nonnull)guid OBJC_DESIGNATED_INITIALIZER;
-- (GroupMembersRequestBuilder * _Nonnull)setSearchKeyword:(NSString * _Nonnull)searchKeyword SWIFT_WARN_UNUSED_RESULT;
+- (GroupMembersRequestBuilder * _Nonnull)setWithSearchKeyword:(NSString * _Nonnull)searchKeyword SWIFT_WARN_UNUSED_RESULT;
 - (GroupMembersRequestBuilder * _Nonnull)setWithLimit:(NSInteger)limit SWIFT_WARN_UNUSED_RESULT;
 - (GroupMembersRequest * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -802,7 +805,7 @@ SWIFT_CLASS("_TtCC12CometChatPro13GroupsRequest20GroupsRequestBuilder")
 @interface GroupsRequestBuilder : NSObject
 - (nonnull instancetype)initWithLimit:(NSInteger)limit OBJC_DESIGNATED_INITIALIZER;
 - (GroupsRequestBuilder * _Nonnull)setWithLimit:(NSInteger)limit SWIFT_WARN_UNUSED_RESULT;
-- (GroupsRequestBuilder * _Nonnull)setSearchKeyword:(NSString * _Nonnull)searchKeyword SWIFT_WARN_UNUSED_RESULT;
+- (GroupsRequestBuilder * _Nonnull)setWithSearchKeyword:(NSString * _Nonnull)searchKeyword SWIFT_WARN_UNUSED_RESULT;
 - (GroupsRequest * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
@@ -858,8 +861,8 @@ SWIFT_CLASS("_TtCC12CometChatPro15MessagesRequest21MessageRequestBuilder")
 @interface MessageRequestBuilder : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (MessageRequestBuilder * _Nonnull)setWithLimit:(NSInteger)limit SWIFT_WARN_UNUSED_RESULT;
-- (MessageRequestBuilder * _Nonnull)setWithGUID:(NSString * _Nonnull)GUID SWIFT_WARN_UNUSED_RESULT;
-- (MessageRequestBuilder * _Nonnull)setWithUID:(NSString * _Nonnull)UID SWIFT_WARN_UNUSED_RESULT;
+- (MessageRequestBuilder * _Nonnull)setWithGuid:(NSString * _Nonnull)guid SWIFT_WARN_UNUSED_RESULT;
+- (MessageRequestBuilder * _Nonnull)setWithUid:(NSString * _Nonnull)uid SWIFT_WARN_UNUSED_RESULT;
 - (MessageRequestBuilder * _Nonnull)setWithTimeStamp:(NSInteger)timeStamp SWIFT_WARN_UNUSED_RESULT;
 - (MessageRequestBuilder * _Nonnull)setWithMessageID:(NSInteger)messageID SWIFT_WARN_UNUSED_RESULT;
 - (MessageRequestBuilder * _Nonnull)setWithUnread:(BOOL)unread SWIFT_WARN_UNUSED_RESULT;
@@ -1637,12 +1640,14 @@ SWIFT_CLASS("_TtC12CometChatPro4User")
 @property (nonatomic) BOOL blockedByMe;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 SWIFT_CLASS("_TtC12CometChatPro11CurrentUser")
 @interface CurrentUser : User
+- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -1685,6 +1690,7 @@ SWIFT_CLASS("_TtC12CometChatPro11GroupMember")
 @property (nonatomic) enum GroupMemberScopeType scope;
 @property (nonatomic) NSInteger joinedAt;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithUid:(NSString * _Nonnull)uid name:(NSString * _Nonnull)name email:(NSString * _Nonnull)email avatar:(NSString * _Nonnull)avatar link:(NSString * _Nonnull)link role:(NSString * _Nonnull)role metadata:(NSDictionary<NSString *, NSString *> * _Nonnull)metadata credits:(NSInteger)credits status:(enum UserStatus)status statusMessage:(NSString * _Nonnull)statusMessage lastActiveAt:(double)lastActiveAt SWIFT_UNAVAILABLE;
 @end
 
 @class GroupMembersRequestBuilder;
@@ -1701,7 +1707,7 @@ SWIFT_CLASS("_TtC12CometChatPro19GroupMembersRequest")
 SWIFT_CLASS("_TtCC12CometChatPro19GroupMembersRequest26GroupMembersRequestBuilder")
 @interface GroupMembersRequestBuilder : NSObject
 - (nonnull instancetype)initWithGuid:(NSString * _Nonnull)guid OBJC_DESIGNATED_INITIALIZER;
-- (GroupMembersRequestBuilder * _Nonnull)setSearchKeyword:(NSString * _Nonnull)searchKeyword SWIFT_WARN_UNUSED_RESULT;
+- (GroupMembersRequestBuilder * _Nonnull)setWithSearchKeyword:(NSString * _Nonnull)searchKeyword SWIFT_WARN_UNUSED_RESULT;
 - (GroupMembersRequestBuilder * _Nonnull)setWithLimit:(NSInteger)limit SWIFT_WARN_UNUSED_RESULT;
 - (GroupMembersRequest * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -1723,7 +1729,7 @@ SWIFT_CLASS("_TtCC12CometChatPro13GroupsRequest20GroupsRequestBuilder")
 @interface GroupsRequestBuilder : NSObject
 - (nonnull instancetype)initWithLimit:(NSInteger)limit OBJC_DESIGNATED_INITIALIZER;
 - (GroupsRequestBuilder * _Nonnull)setWithLimit:(NSInteger)limit SWIFT_WARN_UNUSED_RESULT;
-- (GroupsRequestBuilder * _Nonnull)setSearchKeyword:(NSString * _Nonnull)searchKeyword SWIFT_WARN_UNUSED_RESULT;
+- (GroupsRequestBuilder * _Nonnull)setWithSearchKeyword:(NSString * _Nonnull)searchKeyword SWIFT_WARN_UNUSED_RESULT;
 - (GroupsRequest * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
@@ -1779,8 +1785,8 @@ SWIFT_CLASS("_TtCC12CometChatPro15MessagesRequest21MessageRequestBuilder")
 @interface MessageRequestBuilder : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (MessageRequestBuilder * _Nonnull)setWithLimit:(NSInteger)limit SWIFT_WARN_UNUSED_RESULT;
-- (MessageRequestBuilder * _Nonnull)setWithGUID:(NSString * _Nonnull)GUID SWIFT_WARN_UNUSED_RESULT;
-- (MessageRequestBuilder * _Nonnull)setWithUID:(NSString * _Nonnull)UID SWIFT_WARN_UNUSED_RESULT;
+- (MessageRequestBuilder * _Nonnull)setWithGuid:(NSString * _Nonnull)guid SWIFT_WARN_UNUSED_RESULT;
+- (MessageRequestBuilder * _Nonnull)setWithUid:(NSString * _Nonnull)uid SWIFT_WARN_UNUSED_RESULT;
 - (MessageRequestBuilder * _Nonnull)setWithTimeStamp:(NSInteger)timeStamp SWIFT_WARN_UNUSED_RESULT;
 - (MessageRequestBuilder * _Nonnull)setWithMessageID:(NSInteger)messageID SWIFT_WARN_UNUSED_RESULT;
 - (MessageRequestBuilder * _Nonnull)setWithUnread:(BOOL)unread SWIFT_WARN_UNUSED_RESULT;

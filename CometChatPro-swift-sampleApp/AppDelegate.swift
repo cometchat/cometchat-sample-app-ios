@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.initialization()
        
+        
+        
         if UserDefaults.standard.object(forKey: "getLanguage") != nil{
              AnyLanguageBundle.setLanguage(UserDefaults.standard.object(forKey: "getLanguage") as! String)
         }
