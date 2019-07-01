@@ -4,7 +4,7 @@
 //
 //  Created by Pushpsen Airekar on 23/04/19.
 //  Copyright © 2018 Pushpsen Airekar. All rights reserved.
-//
+
 
 import UIKit
 import CometChatPro
@@ -30,7 +30,6 @@ class ChatMediaMessageCell: UITableViewCell {
     
     var chatMessage : MediaMessage! {
         didSet{
-            
             
             let fileName:String = chatMessage.attachment?.fileName ?? "NONE"
             let fileType:String = chatMessage.attachment?.fileExtension ?? "NONE"

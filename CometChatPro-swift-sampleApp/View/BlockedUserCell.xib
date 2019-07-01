@@ -71,6 +71,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <inset key="separatorInset" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="buddyAvtar" destination="7GM-lv-W2t" id="ypb-hX-tmT"/>
                 <outlet property="buddyName" destination="1l7-lH-Swj" id="xqL-QQ-cgY"/>

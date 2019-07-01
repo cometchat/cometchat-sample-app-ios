@@ -1,5 +1,10 @@
 # Change Log
 
+### v1.8.1 (July 1, 2019)
+- Added SDK version v1.8.1
+- Added Add Members to Group
+- Fixed issue with Unban Members
+
 ### v1.7.1 (June 24, 2019)
 - Added SDK version v1.7.1
 - Added Search Users and Groups

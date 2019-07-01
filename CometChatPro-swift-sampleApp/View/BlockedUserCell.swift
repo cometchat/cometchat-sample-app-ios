@@ -30,8 +30,10 @@ class BlockedUserCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         if selected{
             check.image = #imageLiteral(resourceName: "checked")
+            self.contentView.backgroundColor = UIColor(hexFromString: "7FFF00", alpha: 0.1)
         }else{
             check.image = #imageLiteral(resourceName: "unchecked")
+            self.contentView.backgroundColor = UIColor.clear
         }
     }
     

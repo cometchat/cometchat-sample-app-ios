@@ -202,8 +202,10 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
     {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let BlockedUsersVC = storyBoard.instantiateViewController(withIdentifier: "blockedUsersVC") as! BlockedUsersVC
-        self.navigationController?.pushViewController(BlockedUsersVC, animated: true)
         BlockedUsersVC.title = "Blocked Users"
+        BlockedUsersVC.isBlockedUser = true
+        self.navigationController?.pushViewController(BlockedUsersVC, animated: true)
+       
     }
     func changeLanguage()
     {

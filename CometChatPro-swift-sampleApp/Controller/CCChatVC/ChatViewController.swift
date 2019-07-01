@@ -799,6 +799,8 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 return mediaMessageCell
                 
             case .custom: break
+            
+         case .groupMember: break
                 
             }
             
@@ -1023,8 +1025,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             show(previewQL, sender: nil)
             
         case .custom: break
-            
-       
+        case .groupMember:break
         }
         
     }
@@ -1539,6 +1540,20 @@ extension ChatViewController : CometChatMessageDelegate {
 
 
 extension ChatViewController : CometChatGroupDelegate {
+   
+    
+    func onGroupMemberScopeChanged(action: ActionMessage, scopeChangeduser: User, scopeChangedBy: User, scopeChangedTo: String, scopeChangedFrom: String, group: Group) {
+        
+    }
+    
+    func onAddedToGroup(action: ActionMessage, addedBy: User, addedTo: Group) {
+        
+    }
+    
+    func onMemberAddedToGroup(action: ActionMessage, addedBy: User, addedUser: User, addedTo: Group) {
+        
+    }
+    
     
     // This event triggers when user joins to group.
     func onGroupMemberJoined(action: ActionMessage, joinedUser: User, joinedGroup: Group) {

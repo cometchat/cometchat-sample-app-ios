@@ -102,6 +102,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 for group in groupList {
                     if(group.hasJoined == true){
                         self.joinedChatRoomList.append(group)
+                        
                         CometChatLog.print(items: "joinedChatRoomList is:",self.joinedChatRoomList)
                         
                     }else{
@@ -345,7 +346,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         if !joinedChatRoomList.isEmpty  || !othersChatRoomList.isEmpty {
             
             var group:Group!
-            
+           
             if isFiltering() {
                 group = self.filteredGroupList[indexPath.row]
             } else {
@@ -361,6 +362,8 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             }else{
                 cell.passwordProtected.isHidden = true
             }
+            print("group \(String(describing: group.name))")
+            print("group \(group.scope.rawValue)")
             cell.group = group
             cell.groupScope = group.scope.rawValue
             cell.groupName.text = group.name
@@ -380,8 +383,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                         if !self.unreadCount.contains(cell.UID){
                             self.unreadCount.append(cell.UID)
                             self.tabBadgeCount = self.unreadCount.count
-                            print("array: \(self.unreadCount)")
-                            print("arrayCount: \(self.unreadCount.count)")
                             self.setTabbarCount()
                         }
                         cell.unreadCountLabel.text = "\(String(describing: count!))"

@@ -99,12 +99,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         else if isDisplayType == "GroupView"{
             profileItems.append(UserProfileCell.VIEW_MEMBER_CELL)
             if(groupScope! == 0 || groupScope! == 1){
+                profileItems.append(UserProfileCell.ADD_MEMBER_CELL)
                 profileItems.append(UserProfileCell.UNBAN_MEMBERS_CELL)
+                 profileItems.append(UserProfileCell.DELETE_GROUP_CELL)
             }
             profileItems.append(UserProfileCell.LEAVE_GROUP_CELL)
-            if(groupScope! == 0 || groupScope! == 1){
-                profileItems.append(UserProfileCell.DELETE_GROUP_CELL)
-            }
         }
     }
     
@@ -247,7 +246,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             
         case UserProfileCell.ADD_MEMBER_CELL:
             cell.CellRightImage.isHidden=true
-            cell.CellTitle.text = NSLocalizedString("Add Member", comment: "")
+            cell.CellTitle.text = NSLocalizedString("Add Members", comment: "")
             let image = UIImage(named: "add_member")!.withRenderingMode(.alwaysTemplate)
             cell.CellLeftImage.image = image
             cell.leftIconBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
@@ -313,7 +312,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             self.audioCallAction()
         case UserProfileCell.VIDEO_CALL_CELL:
             self.videoCallAction()
-        case UserProfileCell.ADD_MEMBER_CELL:break
+        case UserProfileCell.ADD_MEMBER_CELL:
+            self.addUsers()
         case UserProfileCell.UNBAN_MEMBERS_CELL:
             self.UnbanUsers()
         case UserProfileCell.RENAME_GROUPS_CELL:break
@@ -330,6 +330,16 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func addUsers(){
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let BlockedUsersVC = storyBoard.instantiateViewController(withIdentifier: "blockedUsersVC") as! BlockedUsersVC
+        BlockedUsersVC.title = "Add Members"
+        BlockedUsersVC.isBlockedUser = false
+        BlockedUsersVC.guid = guid
+        self.navigationController?.pushViewController(BlockedUsersVC, animated: true)
+
+    }
     func setStatus(){
         
          DispatchQueue.main.async { self.view.makeToast(NSLocalizedString("This feature has not been added yet.", comment: ""))}
@@ -444,19 +454,19 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         print("UnbanUsers")
         getUnbanGroupMembers(guid: guid) { (sucess) in
             if(sucess == true){
-                let storyboard = UIStoryboard(name:"Main", bundle:nil)
-                let unbanUserListController = storyboard.instantiateViewController(withIdentifier: "viewMemberViewController") as! ViewMemberViewController
-                unbanUserListController.members = self.groupMember
-                unbanUserListController.title = NSLocalizedString("Unban Members", comment: "")
-                unbanUserListController.isViewMember = false
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(unbanUserListController, animated: true)
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let BlockedUsersVC = storyBoard.instantiateViewController(withIdentifier: "blockedUsersVC") as! BlockedUsersVC
+                BlockedUsersVC.title = "Unban Users"
+                BlockedUsersVC.isUnbanUser = true
+                BlockedUsersVC.isBlockedUser = false
+                BlockedUsersVC.unbanUsers = self.groupMember
+                BlockedUsersVC.guid = self.guid
+                self.navigationController?.pushViewController(BlockedUsersVC, animated: true)
                 }
             }
         }
-    }
-    
-    
+   
+
     func fetchGroupMembers(guid:String,  success completionHandler: @escaping CompletionHandler){
         
         groupMember = [GroupMember]()
@@ -480,12 +490,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     func getUnbanGroupMembers(guid:String,  success completionHandler: @escaping CompletionHandler){
         
         groupMember = [GroupMember]()
-        let bannedGroupMembersRequest = BannedGroupMembersRequest.BannedGroupMembersRequestBuilder(guid: guid).set(limit: 20).build()
+        bannedGroupMembersRequest = BannedGroupMembersRequest.BannedGroupMembersRequestBuilder(guid: guid).set(limit: 20).build()
         
         bannedGroupMembersRequest.fetchNext(onSuccess: { (groupMembers) in
             
             // received banned group members
-            
             for bannedMember in groupMembers {
                 self.groupMember.append(bannedMember)
             }
