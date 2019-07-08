@@ -86,10 +86,12 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     func fetchUsersList(){
         // This Method fetch the users from the Server.
         userRequest.fetchNext(onSuccess: { (userList) in
-           self.usersArray.append(contentsOf: userList)
-           DispatchQueue.main.async(execute: {
-            self.oneOneOneTableView.reloadData()
-           }) 
+            if !userList.isEmpty {
+                self.usersArray.append(contentsOf: userList)
+                DispatchQueue.main.async(execute: {
+                    self.oneOneOneTableView.reloadData()
+                })
+            }
         }) { (exception) in
             
             DispatchQueue.main.async(execute: {
@@ -105,12 +107,12 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         self.unreadCount.removeAll()
         userRequest = UsersRequest.UsersRequestBuilder(limit: 20).build()
         userRequest.fetchNext(onSuccess: { (userList) in
-            
+            if !userList.isEmpty {
             self.usersArray.append(contentsOf: userList)
             DispatchQueue.main.async(execute: {
                 self.oneOneOneTableView.reloadData()
             })
-            
+            }
         }) { (exception) in
             
             DispatchQueue.main.async(execute: {

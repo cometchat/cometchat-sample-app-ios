@@ -19,11 +19,12 @@ import QuickLook
 import XLActionController
 
 
-class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource, UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate,AVAudioPlayerDelegate,AVAudioRecorderDelegate,UIGestureRecognizerDelegate,QLPreviewControllerDataSource,QLPreviewControllerDelegate  {
+class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource, UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate,AVAudioPlayerDelegate,AVAudioRecorderDelegate,UIGestureRecognizerDelegate,QLPreviewControllerDataSource,QLPreviewControllerDelegate, UISearchBarDelegate {
     
     //Outlets Declarations:
     @IBOutlet weak var videoCallBtn: UIBarButtonItem!
     @IBOutlet weak var audioCallButton: UIBarButtonItem!
+    @IBOutlet weak var moreButton: UIBarButtonItem!
     @IBOutlet weak var attachmentBtn: UIButton!
     @IBOutlet weak var ChatViewBottomconstraint: NSLayoutConstraint!
     @IBOutlet weak var ChatViewWithComponents: UIView!
@@ -74,6 +75,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
     private var messageRequest:MessagesRequest!
     var docController: UIDocumentInteractionController!
     var previewQL = QLPreviewController()
+    var searchController:UISearchController = UISearchController(searchResultsController: nil)
     public typealias sendMessageResponse = (_ success:[BaseMessage]? , _ error:CometChatException?) -> Void
     public typealias sendTextMessageResponse = (_ success:TextMessage? , _ error:CometChatException?) -> Void
     public typealias sendEditMessageResponse = (_ success:BaseMessage? , _ error:CometChatException?) -> Void
@@ -89,7 +91,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         self.handleOneOnOneChatVCApperance()
         self.hideKeyboardWhenTappedOnTableView()
         
-       // Assigining CometChatPro Delegates
+        // Assigining CometChatPro Delegates
         CometChat.messagedelegate = self
         CometChat.userdelegate = self
         CometChat.groupdelegate = self
@@ -107,14 +109,14 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         previewQL.dataSource = self
         chatTableview.separatorStyle = .none
         
-         //Building MessagesRequest builder
+        //Building MessagesRequest builder
         if(isGroup == "1"){
             messageRequest = MessagesRequest.MessageRequestBuilder().set(guid: buddyUID).set(limit: 20).build()
         }else{
             messageRequest = MessagesRequest.MessageRequestBuilder().set(uid: buddyUID).set(limit: 20).build()
         }
         
-         //Fetching Previous Messages
+        //Fetching Previous Messages
         fetchPreviousMessages(messageReq: messageRequest) { (message, error) in
             guard  let sendMessage = message else{
                 return
@@ -123,9 +125,9 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             for msg in sendMessage{
                 
                 if (((msg as? ActionMessage) != nil) && ((msg as? ActionMessage)?.message == "Message is edited.") ||  ((msg as? ActionMessage)?.message == "Message is deleted.")){
-                   
+                    
                     //Ignoring action messages for Delete and edit action
-                     CometChat.markMessageAsRead(message: msg)
+                    CometChat.markMessageAsRead(message: msg)
                 }else{
                     
                     //Appending Other Messages
@@ -161,7 +163,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 
                 if (((msg as? ActionMessage) != nil) && ((msg as? ActionMessage)?.message == "Message is edited.") ||  ((msg as? ActionMessage)?.message == "Message is deleted.")){
                     //Ignoring action messages for Delete and edit action
-                     CometChat.markMessageAsRead(message: msg)
+                    CometChat.markMessageAsRead(message: msg)
                 }else{
                     
                     //Appending Other Messages
@@ -258,7 +260,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         present(documentPicker, animated: true, completion: nil)
     }
     
-     //UIDocumentMenuViewController: documentPickerWasCancelled
+    //UIDocumentMenuViewController: documentPickerWasCancelled
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         dismiss(animated: true, completion: nil)
     }
@@ -285,7 +287,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
     }
     
     // Function for fetching Previous Messages
-     func fetchPreviousMessages(messageReq:MessagesRequest, completionHandler:@escaping sendMessageResponse) {
+    func fetchPreviousMessages(messageReq:MessagesRequest, completionHandler:@escaping sendMessageResponse) {
         
         messageReq.fetchPrevious(onSuccess: { (messages) in
             
@@ -304,7 +306,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         }
     }
     
-     // Function for sending Text Messages
+    // Function for sending Text Messages
     func sendMessage(toUserUID: String, message : String ,isGroup : String,completionHandler:@escaping sendTextMessageResponse){
         
         var textMessage : TextMessage
@@ -367,7 +369,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
-      // Function called when viewWillDisappear
+    // Function called when viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -375,8 +377,8 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         
     }
     
-
-     // This function hadles the UI appearance for OneOnOneChatVC
+    
+    // This function hadles the UI appearance for OneOnOneChatVC
     func handleOneOnOneChatVCApperance(){
         
         // connfiguring ChatView
@@ -427,6 +429,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         audioCallButton.image =  UIImage.init(named: "audio_call.png")
         audioCallButton.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         
+        
         //Mic Button:
         micButton.setImage(#imageLiteral(resourceName: "micNormal"), for: .normal)
         let audioRecorder = UILongPressGestureRecognizer(target: self, action: #selector(audioRecord(_:)))
@@ -444,7 +447,42 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             sendBtn.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
         }
         
-
+        // SearchBar Apperance
+        searchController.searchResultsUpdater = self as? UISearchResultsUpdating
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchController.searchBar.delegate = self
+        searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
+        
+        if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Message", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+        }else{
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search Message", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
+        }
+        
+        
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        let SearchImageView = UIImageView.init()
+        let SearchImage = UIImage(named: "icons8-search-30")!.withRenderingMode(.alwaysTemplate)
+        SearchImageView.image = SearchImage
+        SearchImageView.tintColor = UIColor.init(white: 1, alpha: 0.5)
+        
+        searchController.searchBar.setImage(SearchImageView.image, for: UISearchBar.Icon.search, state: .normal)
+        if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.white
+            if let backgroundview = textfield.subviews.first{
+                
+                // Background color
+                backgroundview.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
+                // Rounded corner
+                backgroundview.layer.cornerRadius = 10
+                backgroundview.clipsToBounds = true;
+            }
+        }
+        
+        
+        
         //BuddyAvtar Apperance
         containView = UIView(frame: CGRect(x: -10 , y: 0, width: 38, height: 38))
         containView.backgroundColor = UIColor.white
@@ -463,7 +501,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         let  titleView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: (self.navigationController?.navigationBar.bounds.size.width)! - 200, height: 50))
         
         self.navigationItem.titleView = titleView
-        buddyName = UILabel(frame: CGRect(x:0,y: 3,width: 150 ,height: 21))
+        buddyName = UILabel(frame: CGRect(x:0,y: 3,width: 120 ,height: 21))
         buddyName.textColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
         buddyName.textAlignment = NSTextAlignment.left
         
@@ -515,7 +553,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
     }
     
     @objc func backButtonPressed(){
-
+        
         if (self.navigationController?.viewControllers.filter({$0.isKind(of: OneOnOneListViewController.self)}).first as? OneOnOneListViewController) != nil {
             self.navigationController?.popViewController(animated: true, completion: {
                 
@@ -571,7 +609,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             alertController.addAction(defaultAction)
             alertController.addAction(OkAction)
             present(alertController, animated: true, completion: nil)
-
+            
         }
         else if sender.state == .began {
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -672,7 +710,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         
     }
     
-     // This function called when textViewDidEndEditing
+    // This function called when textViewDidEndEditing
     func textViewDidEndEditing(_ textView: UITextView) {
         
         if chatInputView.text == ""{
@@ -682,7 +720,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         }
     }
     
-     // This function called when textViewDidChange
+    // This function called when textViewDidChange
     func textViewDidChange(_ textView: UITextView) {
         
         CometChat.startTyping(indicator: typingIndicator)
@@ -695,7 +733,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         return chatMessage.count
         
     }
-
+    
     // TableView Methods: cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -706,7 +744,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             
         case .message:
             
-         switch messageData.messageType{
+            switch messageData.messageType{
                 
             case .text:
                 
@@ -717,7 +755,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 textMessageCell.selectionStyle = .none
                 textMessageCell.isUserInteractionEnabled = true
                 return textMessageCell
-            
+                
             case .image where messageData.deletedAt > 0.0:
                 
                 // Forms Cell for message type of image Message when the message is deleted
@@ -738,10 +776,10 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 imageMessageCell.chatImage.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_Pending"))
                 imageMessageCell.selectionStyle = .none
                 return imageMessageCell
-            
+                
             case .video where messageData.deletedAt > 0.0:
                 
-                 // Forms Cell for message type of video Message when the message is deleted
+                // Forms Cell for message type of video Message when the message is deleted
                 var deletedCell = ChatDeletedMessageCell()
                 deletedCell = tableView.dequeueReusableCell(withIdentifier: deletedCellID, for: indexPath) as! ChatDeletedMessageCell
                 deletedCell.chatMessage = (messageData as? MediaMessage)!
@@ -751,13 +789,13 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 
             case .video:
                 
-                 // Forms Cell for message type of video Message
+                // Forms Cell for message type of video Message
                 var videoMessageCell = ChatVideoMessageCell()
                 videoMessageCell = tableView.dequeueReusableCell(withIdentifier: videoCellID , for: indexPath) as! ChatVideoMessageCell
                 videoMessageCell.chatMessage = (messageData as? MediaMessage)!
                 videoMessageCell.selectionStyle = .none
                 return videoMessageCell
-            
+                
             case .audio where messageData.deletedAt > 0.0:
                 
                 // Forms Cell for message type of audio Message when the video is deleted
@@ -770,17 +808,17 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 
             case .audio:
                 
-                  // Forms Cell for message type of audio Message
+                // Forms Cell for message type of audio Message
                 var mediaMessageCell = ChatMediaMessageCell()
                 mediaMessageCell = tableView.dequeueReusableCell(withIdentifier: mediaCellID, for: indexPath) as! ChatMediaMessageCell
                 mediaMessageCell.chatMessage = (messageData as? MediaMessage)!
                 mediaMessageCell.selectionStyle = .none
                 mediaMessageCell.fileIconImageView.image = #imageLiteral(resourceName: "play")
                 return mediaMessageCell
-            
+                
             case .file where messageData.deletedAt > 0.0:
                 
-                 // Forms Cell for message type of file Message when the video is deleted
+                // Forms Cell for message type of file Message when the video is deleted
                 var deletedCell = ChatDeletedMessageCell()
                 deletedCell = tableView.dequeueReusableCell(withIdentifier: deletedCellID, for: indexPath) as! ChatDeletedMessageCell
                 deletedCell.chatMessage = (messageData as? MediaMessage)!
@@ -799,8 +837,8 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 return mediaMessageCell
                 
             case .custom: break
-            
-         case .groupMember: break
+                
+            case .groupMember: break
                 
             }
             
@@ -854,11 +892,11 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         
         let messageData = chatMessage[indexPath.row]
         tableIndexPath = indexPath
-
+        
         let textMessage =  messageData as? TextMessage
         
         
-       
+        
         switch messageData.messageType{
             
         case .text where messageData.sender?.uid == myUID:
@@ -887,18 +925,18 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             actionController.addAction(deleteTextAction)
             actionController.addAction(Action("Cancel", style: .cancel, handler: nil))
             present(actionController, animated: true, completion: nil)
-          
+            
         case .text: break
             
         case .image where messageData.sender?.uid == myUID:
-
-             // Persent actionSheet when hold on imageMessage
+            
+            // Persent actionSheet when hold on imageMessage
             let imageMessage = messageData as? MediaMessage
             self.deleteMessage = imageMessage
             let tapAndHold = UILongPressGestureRecognizer(target: self, action: #selector(deleteActionTriggered))
             self.view.addGestureRecognizer(tapAndHold)
             
-             // Persent DetailView when tap on imageMessage
+            // Persent DetailView when tap on imageMessage
             let imageCell:ChatImageMessageCell = tableView.cellForRow(at: indexPath) as! ChatImageMessageCell
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let profileAvtarViewController = storyboard.instantiateViewController(withIdentifier: "ccprofileAvtarViewController") as! CCprofileAvtarViewController
@@ -916,8 +954,8 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             navigationController?.pushViewController(profileAvtarViewController, animated: true)
             profileAvtarViewController.profileAvtar =  imageCell.chatImage.image
             profileAvtarViewController.hidesBottomBarWhenPushed = true
-           
-        
+            
+            
         case .video where messageData.sender?.uid == myUID:
             
             // Persent actionSheet when hold on videoMessage
@@ -926,7 +964,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             let tapAndHold = UILongPressGestureRecognizer(target: self, action: #selector(deleteActionTriggered))
             self.view.addGestureRecognizer(tapAndHold)
             
-              // Persent AVPlayer when tap on videoMessage
+            // Persent AVPlayer when tap on videoMessage
             var player = AVPlayer()
             if let videoURL = videoMessage?.url?.decodeUrl(),
                 let url = URL(string: videoURL) {
@@ -940,7 +978,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             
         case .video:
             
-             // Persent AVPlayer when tap on videoMessage
+            // Persent AVPlayer when tap on videoMessage
             let videoMessage = (messageData as? MediaMessage)
             var player = AVPlayer()
             if let videoURL = videoMessage?.url?.decodeUrl(),
@@ -955,7 +993,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             
         case .audio where messageData.sender?.uid == myUID:
             
-             // Persent actionsheer when hold on audioMessage
+            // Persent actionsheer when hold on audioMessage
             let audioMessage = messageData as? MediaMessage
             self.deleteMessage = audioMessage
             let tapAndHold = UILongPressGestureRecognizer(target: self, action: #selector(deleteActionTriggered))
@@ -987,7 +1025,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             previewQL.refreshCurrentPreviewItem()
             previewQL.currentPreviewItemIndex = indexPath.row
             show(previewQL, sender: nil)
-
+            
         case .file where messageData.sender?.uid == myUID:
             
             // Persent actionsheet when hold on fileMessage
@@ -1011,7 +1049,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             
         case .file:
             
-             // Persent QuickLook when tap on fileMessage
+            // Persent QuickLook when tap on fileMessage
             let fileMessage = (messageData as? MediaMessage)
             let url = NSURL.fileURL(withPath:fileMessage!.url!.decodeUrl() ?? "")
             previewURL = fileMessage!.url!.decodeUrl()!
@@ -1218,7 +1256,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                         self.videoURL = video.url
                         
                         picker.dismiss(animated: true, completion: { [weak self] in
-                        
+                            
                             
                             self!.sendMediaMessage(toUserUID: self!.buddyUID, mediaURL:  self!.videoURL.absoluteString, isGroup: self!.isGroup, messageType: .video, completionHandler: { (message, error) in
                                 
@@ -1243,9 +1281,9 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             
         }
         cameraAction.setValue(UIImage(named: "camera.png"), forKey: "image")
-         // -----------  Present the Camera  End--------------//
+        // -----------  Present the Camera  End--------------//
         
-         // -----------  Present the PhotoLibrary --------------//
+        // -----------  Present the PhotoLibrary --------------//
         let photoLibraryAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Photo & Video Library", comment: ""), style: .default) { action -> Void in
             
             var config = YPImagePickerConfiguration()
@@ -1323,7 +1361,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                         self.videoURL = video.url
                         
                         picker.dismiss(animated: true, completion: { [weak self] in
-                         
+                            
                             self!.sendMediaMessage(toUserUID: self!.buddyUID, mediaURL: assetURL.absoluteString, isGroup: self!.isGroup, messageType: .video, completionHandler: { (message, error) in
                                 
                                 guard  let sendMessage =  message else{
@@ -1417,6 +1455,39 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         
     }
     
+    @IBAction func moreButtonPressed(_ sender: Any) {
+        
+        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let searchAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Search Message", comment: ""), style: .default) { action -> Void in
+            
+            if #available(iOS 11.0, *) {
+                self.navigationItem.searchController = self.searchController
+            } else {
+                
+            }
+        }
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { action -> Void in
+            
+        }
+        
+        actionSheetController.addAction(searchAction)
+        actionSheetController.addAction(cancelAction)
+        if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad ){
+            
+            if let currentPopoverpresentioncontroller = actionSheetController.popoverPresentationController{
+                currentPopoverpresentioncontroller.sourceView = self.view
+                currentPopoverpresentioncontroller.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                currentPopoverpresentioncontroller.permittedArrowDirections = []
+            }
+            self.present(actionSheetController, animated: true, completion: nil)
+        }else{
+            self.present(actionSheetController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    
     // Function presentCalling
     func presentCalling(CallingViewController:CallingViewController) -> Void {
         CallingViewController.userAvtarImage = buddyAvtar
@@ -1440,23 +1511,37 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         chatTableview.addGestureRecognizer(tap)
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = nil
+            self.ChatViewBottomconstraint.constant = 0
+            UIView.animate(withDuration: 0.25) {
+                self.view.layoutIfNeeded()
+            }
+            
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
 }
 
 extension ChatViewController : CometChatMessageDelegate {
     
     // This event triggers when new text Message receives.
-    func onTextMessageReceived(textMessage: TextMessage?, error: CometChatException?) {
-        if textMessage?.sender?.uid == buddyUID && textMessage?.receiverType.rawValue == Int(isGroup){
-            CometChat.markMessageAsRead(message: textMessage!)
-            self.chatMessage.append(textMessage!)
+    func onTextMessageReceived(textMessage: TextMessage) {
+        if textMessage.sender?.uid == buddyUID && textMessage.receiverType.rawValue == Int(isGroup){
+            CometChat.markMessageAsRead(message: textMessage)
+            self.chatMessage.append(textMessage)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
                 self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
             }
             
-        }else if textMessage?.receiverUid == buddyUID && textMessage?.receiverType.rawValue == Int(isGroup){
-            CometChat.markMessageAsRead(message: textMessage!)
-            self.chatMessage.append(textMessage!)
+        }else if textMessage.receiverUid == buddyUID && textMessage.receiverType.rawValue == Int(isGroup){
+            CometChat.markMessageAsRead(message: textMessage)
+            self.chatMessage.append(textMessage)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
                 self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
@@ -1464,25 +1549,44 @@ extension ChatViewController : CometChatMessageDelegate {
         }
     }
     
+    func onMessageEdited(message: BaseMessage) {
+         print("onMessageEdited --> \(message)")
+        if let row = self.chatMessage.firstIndex(where: {$0.id == message.id}) {
+            chatMessage[row] = message
+            let indexPath = IndexPath(row: row, section: 0)
+            chatTableview.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func onMessageDeleted(message: BaseMessage) {
+        print("onMessageDeleted --> \(message)")
+        if let row = self.chatMessage.firstIndex(where: {$0.id == message.id}) {
+            chatMessage[row] = message
+            let indexPath = IndexPath(row: row, section: 0)
+            chatTableview.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    
     // This event triggers when new Media Message receives.
-    func onMediaMessageReceived(mediaMessage: MediaMessage?, error: CometChatException?)
-    {
-        if mediaMessage?.sender?.uid == buddyUID && mediaMessage?.receiverType.rawValue == Int(isGroup){
-            CometChat.markMessageAsRead(message: mediaMessage!)
-            self.chatMessage.append(mediaMessage!)
+    func onMediaMessageReceived(mediaMessage: MediaMessage) {
+        if mediaMessage.sender?.uid == buddyUID && mediaMessage.receiverType.rawValue == Int(isGroup){
+            CometChat.markMessageAsRead(message: mediaMessage)
+            self.chatMessage.append(mediaMessage)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
                 self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
             }
-        }else if mediaMessage?.receiverUid == buddyUID && mediaMessage?.receiverType.rawValue == Int(isGroup){
-            CometChat.markMessageAsRead(message: mediaMessage!)
-            self.chatMessage.append(mediaMessage!)
+        }else if mediaMessage.receiverUid == buddyUID && mediaMessage.receiverType.rawValue == Int(isGroup){
+            CometChat.markMessageAsRead(message: mediaMessage)
+            self.chatMessage.append(mediaMessage)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
                 self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
             }
         }
     }
+    
     
     // This event triggers when user is started Typing.
     func onTypingStarted(_ typingDetails : TypingIndicator) {
@@ -1506,9 +1610,9 @@ extension ChatViewController : CometChatMessageDelegate {
         }
     }
     
-     // This event triggers when message is delivered to the user.
+    // This event triggers when message is delivered to the user.
     func onMessageDelivered(receipt : MessageReceipt) {
-
+        
         if let row = self.chatMessage.firstIndex(where: {$0.id == Int(receipt.messageId)}) {
             
             if receipt.receiptType == .delivered {
@@ -1540,51 +1644,76 @@ extension ChatViewController : CometChatMessageDelegate {
 
 
 extension ChatViewController : CometChatGroupDelegate {
-   
     
+    // This event triggers when scope of the user chaged to other scope in group.
     func onGroupMemberScopeChanged(action: ActionMessage, scopeChangeduser: User, scopeChangedBy: User, scopeChangedTo: String, scopeChangedFrom: String, group: Group) {
-        
+       
+        if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
+        self.chatMessage.append(action)
+        DispatchQueue.main.async{
+            self.chatTableview.reloadData()
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+        }
+        }
     }
-    
+    // This event triggers when new member is added in the group
     func onAddedToGroup(action: ActionMessage, addedBy: User, addedTo: Group) {
         
+        if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
+        self.chatMessage.append(action)
+        DispatchQueue.main.async{
+            self.chatTableview.reloadData()
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+        }
+        }
     }
-    
+    // This event triggers when new member is added in the group
     func onMemberAddedToGroup(action: ActionMessage, addedBy: User, addedUser: User, addedTo: Group) {
         
+        if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
+        self.chatMessage.append(action)
+        DispatchQueue.main.async{
+            self.chatTableview.reloadData()
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+        }
+        }
     }
     
     
     // This event triggers when user joins to group.
     func onGroupMemberJoined(action: ActionMessage, joinedUser: User, joinedGroup: Group) {
         
+        if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
         self.chatMessage.append(action)
-        
         DispatchQueue.main.async{
             self.chatTableview.reloadData()
             self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
         }
+        }
     }
     
-     // This event triggers when user lefts the group.
+    // This event triggers when user lefts the group.
     func onGroupMemberLeft(action: ActionMessage, leftUser: User, leftGroup: Group) {
         
+        if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
         self.chatMessage.append(action)
-        
         DispatchQueue.main.async{
             self.chatTableview.reloadData()
             self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+        }
         }
     }
     
     // This event triggers when user kicked from the group.
     func onGroupMemberKicked(action: ActionMessage, kickedUser: User, kickedBy: User, kickedFrom: Group) {
         
+        if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
         self.chatMessage.append(action)
         
         DispatchQueue.main.async{
             self.chatTableview.reloadData()
             self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+        }
         }
         
     }
@@ -1592,35 +1721,31 @@ extension ChatViewController : CometChatGroupDelegate {
     // This event triggers when user banned from the group.
     func onGroupMemberBanned(action: ActionMessage, bannedUser: User, bannedBy: User, bannedFrom: Group) {
         
+        if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
         self.chatMessage.append(action)
         
         DispatchQueue.main.async{
             self.chatTableview.reloadData()
             self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+        }
         }
     }
     
     // This event triggers when user unbanned from the group.
     func onGroupMemberUnbanned(action: ActionMessage, unbannedUser: User, unbannedBy: User, unbannedFrom: Group) {
         
+        if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
         self.chatMessage.append(action)
         
         DispatchQueue.main.async{
             self.chatTableview.reloadData()
             self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+        }
         }
     }
     
     // This event triggers when user changes the scope of the user for the group.
-    func onGroupMemberScopeChanged(action: ActionMessage, user: User, scopeChangedTo: String, scopeChangedFrom: String, group: Group) {
-        
-        self.chatMessage.append(action)
-        
-        DispatchQueue.main.async{
-            self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-        }
-    }
+    
 }
 
 extension ChatViewController : CometChatUserDelegate {
@@ -1658,3 +1783,36 @@ extension String {
     }
 }
 
+// This is we need to make it looks as a popup window on iPhone
+extension ChatViewController : UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+       
+        if(isGroup == "1"){
+            messageRequest = MessagesRequest.MessageRequestBuilder().set(guid: buddyUID).set(limit: 20).set(searchKeyword: searchController.searchBar.text!).build()
+        }else{
+            messageRequest = MessagesRequest.MessageRequestBuilder().set(uid: buddyUID).set(searchKeyword: searchController.searchBar.text!).set(limit: 20).build()
+        }
+        
+        //Fetching Previous Messages
+        fetchPreviousMessages(messageReq: messageRequest) { (message, error) in
+            guard  let sendMessage = message else{
+                return
+            }
+            var messages = [BaseMessage]()
+            for msg in sendMessage{
+                
+                if (((msg as? ActionMessage) != nil) && ((msg as? ActionMessage)?.message == "Message is edited.") ||  ((msg as? ActionMessage)?.message == "Message is deleted.")){
+                    
+                }else{
+                    //Appending Other Messages
+                    messages.append(msg)
+                }
+            }
+            self.chatMessage = messages
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+            }
+        }
+    }
+}

@@ -1,5 +1,10 @@
 # Change Log
 
+### v1.8.2 (July 8, 2019)
+- Added SDK version v1.8.2
+- Added Search Message
+- Fixed lagginess in user list 
+
 ### v1.8.1 (July 1, 2019)
 - Added SDK version v1.8.1
 - Added Add Members to Group

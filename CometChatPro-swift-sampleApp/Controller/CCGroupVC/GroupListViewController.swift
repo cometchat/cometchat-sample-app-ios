@@ -171,13 +171,10 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     @objc func createGroupObserver(notification: Notification) {
         
         let newGroup:Group = notification.userInfo?["groupData"] as! Group
-        
         CometChatLog.print(items:"new group is: \(newGroup.stringValue())")
         joinedChatRoomList.append(newGroup)
         DispatchQueue.main.async {self.groupTableView.reloadData()}
     }
-    
-    
     
     
     //This method handles the UI customization for handleGroupListVC
@@ -362,8 +359,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             }else{
                 cell.passwordProtected.isHidden = true
             }
-            print("group \(String(describing: group.name))")
-            print("group \(group.scope.rawValue)")
             cell.group = group
             cell.groupScope = group.scope.rawValue
             cell.groupName.text = group.name

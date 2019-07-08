@@ -172,17 +172,19 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     private func loginWithUID(UID:String){
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
-        CometChat.login(UID: UID, apiKey: API_KEY, onSuccess: { (current_user) in
-            self.activityIndicator.isHidden = true
-            self.activityIndicator.stopAnimating()
-            self.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
-            self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
+        CometChat.login(UID: UID, apiKey: API_KEY, onSuccess: { [weak self](current_user) in
+            
+            guard let strongSelf = self else { return }
+            strongSelf.activityIndicator.isHidden = true
+            strongSelf.activityIndicator.stopAnimating()
+            strongSelf.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
+            strongSelf.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
             UserDefaults.standard.set(current_user.uid, forKey: "LoggedInUserUID")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let embeddedViewContrroller = storyboard.instantiateViewController(withIdentifier: "embeddedViewContrroller") as! EmbeddedViewController
-                self.navigationController?.pushViewController(embeddedViewContrroller, animated: true)
+                strongSelf.navigationController?.pushViewController(embeddedViewContrroller, animated: true)
+                self?.removeFromParent()
             }
         }) { (error) in
             DispatchQueue.main.async { [unowned self] in

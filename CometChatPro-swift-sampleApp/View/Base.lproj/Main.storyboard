@@ -1298,10 +1298,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YbD-hF-yJy">
-                                <rect key="frame" x="20" y="50" width="319" height="380"/>
+                                <rect key="frame" x="20" y="50" width="280" height="380"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rt0-JP-vg9">
-                                        <rect key="frame" x="0.0" y="0.0" width="319" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_person" translatesAutoresizingMaskIntoConstraints="NO" id="Lkj-w3-yei">
                                                 <rect key="frame" x="20" y="21" width="18" height="18"/>
@@ -1311,7 +1311,7 @@
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter GUID" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="eGa-OY-kll">
-                                                <rect key="frame" x="46" y="10" width="265" height="40"/>
+                                                <rect key="frame" x="46" y="10" width="226" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="8at-v7-3zy"/>
                                                 </constraints>
@@ -1349,7 +1349,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KmU-Xf-ybC">
-                                        <rect key="frame" x="0.0" y="80" width="319" height="60"/>
+                                        <rect key="frame" x="0.0" y="80" width="280" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_person" translatesAutoresizingMaskIntoConstraints="NO" id="nv6-3u-Plz">
                                                 <rect key="frame" x="20" y="21" width="18" height="18"/>
@@ -1359,7 +1359,7 @@
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Group Name" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Ymg-3D-d7N">
-                                                <rect key="frame" x="46" y="10" width="265" height="40"/>
+                                                <rect key="frame" x="46" y="10" width="226" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="sJS-0C-Ajr"/>
                                                 </constraints>
@@ -1396,7 +1396,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QML-BL-WpR">
-                                        <rect key="frame" x="0.0" y="160" width="319" height="60"/>
+                                        <rect key="frame" x="0.0" y="160" width="280" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attachment" translatesAutoresizingMaskIntoConstraints="NO" id="lbx-kp-ZwK">
                                                 <rect key="frame" x="20" y="17.5" width="25" height="25"/>
@@ -1450,7 +1450,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmp-nb-B22">
-                                        <rect key="frame" x="0.0" y="240" width="319" height="60"/>
+                                        <rect key="frame" x="0.0" y="240" width="280" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="EZ0-XX-i0O">
                                                 <rect key="frame" x="20" y="21" width="18" height="18"/>
@@ -1460,7 +1460,7 @@
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="V2A-px-cA5">
-                                                <rect key="frame" x="46" y="10" width="265" height="40"/>
+                                                <rect key="frame" x="46" y="10" width="226" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="wfb-Eg-Un8"/>
                                                 </constraints>
@@ -1497,10 +1497,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gnc-IG-GTd">
-                                        <rect key="frame" x="0.0" y="320" width="319" height="60"/>
+                                        <rect key="frame" x="0.0" y="320" width="280" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9c-vz-b5s">
-                                                <rect key="frame" x="0.0" y="0.0" width="149.5" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="60"/>
                                                 <state key="normal" title="Cancel"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1527,7 +1527,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pP-mw-mld">
-                                                <rect key="frame" x="169.5" y="0.0" width="149.5" height="60"/>
+                                                <rect key="frame" x="150" y="0.0" width="130" height="60"/>
                                                 <state key="normal" title="Create Group">
                                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -1707,6 +1707,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="tuU-gK-QgD">
                         <rightBarButtonItems>
+                            <barButtonItem title="Item" image="more_vertical" id="DbJ-AN-HU1">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="moreButtonPressed:" destination="3Zc-kv-7OJ" id="sAO-1G-P5b"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Item" id="4NT-ax-RBb">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -1730,6 +1736,7 @@
                         <outlet property="chatTableview" destination="Uiz-xV-HqC" id="f6B-8g-VJC"/>
                         <outlet property="chatView" destination="K9e-ED-rLM" id="ePb-ci-1aK"/>
                         <outlet property="micButton" destination="R6e-99-5N8" id="Veg-wZ-WcN"/>
+                        <outlet property="moreButton" destination="DbJ-AN-HU1" id="1Dn-2C-znK"/>
                         <outlet property="recordingLabel" destination="JT9-cU-ynC" id="vFd-uS-ROK"/>
                         <outlet property="sendBtn" destination="oKP-ie-iSw" id="Nh6-76-Fl3"/>
                         <outlet property="videoCallBtn" destination="4NT-ax-RBb" id="I41-6Z-V4P"/>
@@ -2572,6 +2579,7 @@
         <image name="ironman" width="300" height="300"/>
         <image name="lock" width="15" height="17"/>
         <image name="mic" width="24" height="24"/>
+        <image name="more_vertical" width="29" height="29"/>
         <image name="send" width="21" height="18"/>
         <image name="spiderman" width="300" height="300"/>
         <image name="video_callokg." width="16" height="16"/>

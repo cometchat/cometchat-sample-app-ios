@@ -6,6 +6,7 @@
   Copyright © 2019 Pushpsen Airekar. All rights reserved.
 */
 // ------- Permissions PopUp Localization start -------//
+
 "CometChat Pro Sample App requires above permissions to perform the necessary actions." = "CometChat Pro Sample App requires above permissions to perform the necessary actions.";
 "Permission denied" ="Permission denied";
 "Please, go to Settings and allow permissions" = "Please, go to Settings and allow permissions";
@@ -35,26 +36,32 @@
 "App will can check your location" = "App will can check your location";
 "Allow reports motion and environment-related data" = "Allow reports motion and environment-related data";
 "Allow check your media" = "Allow check your media";
+
 // ------- Permissions PopUp Localization end -------//
 
 
 // ------- LoginPage Localization start -------//
+
 "Warning!" =  "Warning!";
 "UID cannot be Empty" = "UID cannot be Empty";
 "Please fill the APP-ID and API-KEY in CometChat-info.plist file." = "Please fill the APP-ID and API-KEY in CometChat-info.plist file.";
 "Login Sucessful" = "Login Sucessful";
 "Login Failure" = "Login Failure";
 "Login with" =  "Login with";
+
 // ------- LoginPage Localization end -------//
 
 // ------- Tabbar Localization start-------//
+
 "Chats" = "Chats";
 "Contacts" = "Contacts";
 "Groups" = "Groups";
+
 // ------- Tabbar Localization End-------//
 
 
 // ------- GroupList Localization start-------//
+
 "Search Name" =  "Search Name";
 "Enter Password" = "Enter Password";
 "Kindly, Enter the password to proceed." = "Kindly, Enter the password to proceed.";
@@ -76,11 +83,14 @@
 // ------- GroupList Localization End-------//
 
 // ------- UserList Localization End-------//
+
 "Online" = "Online";
 "Offline" = "Offline";
+
 // ------- UserList Localization End-------//
 
 // ------- ChatList Localization start-------//
+
 "Type a message..." = "Type a message...";
 "Send AudioFile" = "Send AudioFile";
 "Are you sure want to send this Audio note." = "Are you sure want to send this Audio note.";
@@ -113,9 +123,11 @@
 "Photo & Video Library" = "Photo & Video Library";
 "Document" = "Document";
 "Typing..." = "Typing...";
+
 // ------- ChatList Localization end-------//
 
 // ------- More Settings Localization start-------//
+
 "View Profile" =  "View Profile";
 "Bots" = "Bots";
 "Chat Settings" = "Chat Settings";
@@ -127,9 +139,11 @@
 "This feature has not been added yet" = "This feature has not been added yet";
 "Are you sure you want to Logout?" = "Are you sure you want to Logout?";
 "Fail to logout at this moment." = "Fail to logout at this moment.";
+
 // ------- More Settings Localization end-------//
 
 // ------- View Member Localization start-------//
+
 "View Member" = "View Member";
 "Admin" = "Admin";
 "Moderator" ="Moderator";
@@ -140,10 +154,12 @@
 "Update Scope" = "Update Scope";
 "Cannot kick or ban Modarator" = "Cannot kick or ban Modarator";
 "Cannot perform action on Yourself." = "Cannot perform action on Yourself.";
+
 // ------- View Member Localization end-------//
 
 
 // ------- User Profile Localization start-------//
+
 "Audio Call" =  "Audio Call";
 "Video Call" = "Video Call";
 "Status Message" = "Status Message";
@@ -159,4 +175,5 @@
 "Group deleted Sucessfully." = "Group deleted Sucessfully.";
 "Fail to delete Group." = "Fail to delete Group.";
 "Unban Members" = "Unban Members";
+
 // ------- User Profile Localization end-------//
