@@ -1,5 +1,9 @@
 # Change Log
 
+### v1.8.3 (July 22, 2019)
+- Added SDK version v1.8.3
+- Fixed issue with main thread
+
 ### v1.8.2 (July 8, 2019)
 - Added SDK version v1.8.2
 - Added Search Message

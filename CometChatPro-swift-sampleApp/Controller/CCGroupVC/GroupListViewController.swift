@@ -46,6 +46,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         //Assigning Delegates
         groupTableView.delegate = self
         groupTableView.dataSource = self
+        CometChat.groupdelegate = self
     }
     
     
@@ -353,6 +354,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                     group = othersChatRoomList[indexPath.row]
                 }
             }
+            print("group \(String(describing: group.metadata))")
             
             if(group.groupType == .password){
                 cell.passwordProtected.isHidden = false
@@ -422,9 +424,9 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 let saveAction = UIAlertAction(title: NSLocalizedString("Join", comment: ""), style: UIAlertAction.Style.default, handler: { alert -> Void in
                     let passwordTextfield = alertController.textFields![0] as UITextField
                     CometChat.joinGroup(GUID: selectedCell.UID, groupType: .password, password: passwordTextfield.text, onSuccess: { (success) in
-                        
+
                         DispatchQueue.main.async{
-                            
+
                             self.view.makeToast(NSLocalizedString("Group Joined Sucessfully.", comment: ""))
                             self.navigationController?.pushViewController(chatViewController, animated: true)
                             self.othersChatRoomList.remove(at: indexPath.row)
@@ -439,7 +441,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                             self.view.makeToast(NSLocalizedString("Failed to join group", comment: ""))
                         }
                     }
-                    
+                    self.navigationController?.pushViewController(chatViewController, animated: true)
                 })
                 let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertAction.Style.destructive, handler: {
                     (action : UIAlertAction!) -> Void in })
@@ -449,8 +451,9 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 self.present(alertController, animated: true, completion: nil)
                 
             }else{
+                
                 CometChat.joinGroup(GUID: selectedCell.UID, groupType: .public, password: nil, onSuccess: { (success) in
-                    
+
                     DispatchQueue.main.async{
                         self.view.makeToast(NSLocalizedString("Group Joined Sucessfully.", comment: ""))
                         self.navigationController?.pushViewController(chatViewController, animated: true)
@@ -466,7 +469,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                         self.view.makeToast(NSLocalizedString("Failed to join group", comment: ""))
                     }
                 }
-            }
+           }
         }else{
             self.navigationController?.pushViewController(chatViewController, animated: true)
         }
@@ -716,4 +719,56 @@ extension GroupListViewController : UISearchResultsUpdating {
             CometChatLog.print(items:exception?.errorDescription as Any)
         }
     }
+}
+
+extension GroupListViewController : CometChatGroupDelegate {
+    
+    func onGroupMemberJoined(action: ActionMessage, joinedUser: User, joinedGroup: Group) {
+        DispatchQueue.main.async {
+             self.refreshGroupList()
+        }
+    }
+    
+    func onGroupMemberLeft(action: ActionMessage, leftUser: User, leftGroup: Group) {
+        DispatchQueue.main.async {
+            self.refreshGroupList()
+        }
+    }
+    
+    func onGroupMemberKicked(action: ActionMessage, kickedUser: User, kickedBy: User, kickedFrom: Group) {
+        DispatchQueue.main.async {
+            self.refreshGroupList()
+        }
+    }
+    
+    func onGroupMemberBanned(action: ActionMessage, bannedUser: User, bannedBy: User, bannedFrom: Group) {
+        DispatchQueue.main.async {
+            self.refreshGroupList()
+        }
+    }
+    
+    func onGroupMemberUnbanned(action: ActionMessage, unbannedUser: User, unbannedBy: User, unbannedFrom: Group) {
+        DispatchQueue.main.async {
+            self.refreshGroupList()
+        }
+    }
+    
+    func onGroupMemberScopeChanged(action: ActionMessage, scopeChangeduser: User, scopeChangedBy: User, scopeChangedTo: String, scopeChangedFrom: String, group: Group) {
+        
+    }
+    
+    func onAddedToGroup(action: ActionMessage, addedBy: User, addedTo: Group) {
+        DispatchQueue.main.async {
+            self.refreshGroupList()
+        }
+    }
+    
+    func onMemberAddedToGroup(action: ActionMessage, addedBy: User, addedUser: User, addedTo: Group) {
+        DispatchQueue.main.async {
+            self.refreshGroupList()
+        }
+    }
+    
+    
+    
 }

@@ -175,10 +175,13 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
         CometChat.login(UID: UID, apiKey: API_KEY, onSuccess: { [weak self](current_user) in
             
             guard let strongSelf = self else { return }
-            strongSelf.activityIndicator.isHidden = true
-            strongSelf.activityIndicator.stopAnimating()
-            strongSelf.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
-            strongSelf.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
+            
+            DispatchQueue.main.async {
+                strongSelf.activityIndicator.isHidden = true
+                strongSelf.activityIndicator.stopAnimating()
+                strongSelf.loginButton.setTitle(NSLocalizedString("Login Sucessful", comment: ""), for: .normal)
+                strongSelf.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
+            }
             UserDefaults.standard.set(current_user.uid, forKey: "LoggedInUserUID")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)

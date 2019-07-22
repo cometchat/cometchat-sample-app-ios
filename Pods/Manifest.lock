@@ -1,11 +1,11 @@
 PODS:
-  - CometChatPro (1.8.2)
+  - CometChatPro (1.8.3)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
 
 DEPENDENCIES:
-  - CometChatPro (~> 1.8.2)
+  - CometChatPro (~> 1.8.3)
   - SDWebImage (~> 4.0)
 
 SPEC REPOS:
@@ -14,9 +14,9 @@ SPEC REPOS:
     - SDWebImage
 
 SPEC CHECKSUMS:
-  CometChatPro: a72c1412c2697e9414be7addc2afe8fdb2812b5a
+  CometChatPro: 21fd3283f3bda7abdebc3cbb227de6180222a76a
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
 
-PODFILE CHECKSUM: a22e5bfe3cc429d4aeaa159308922c2d1eba1728
+PODFILE CHECKSUM: d83201ee52600337588102aa31f8db4b198f26e5
 
 COCOAPODS: 1.6.1

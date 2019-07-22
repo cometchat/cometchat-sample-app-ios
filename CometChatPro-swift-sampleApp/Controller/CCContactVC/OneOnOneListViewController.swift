@@ -53,7 +53,9 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         if let row = self.usersArray.firstIndex(where: {$0.uid == user.uid}) {
             usersArray[row] = user
             let indexPath = IndexPath(row: row, section: 0)
-            oneOneOneTableView.reloadRows(at: [indexPath], with: .automatic)
+            DispatchQueue.main.async {
+                self.oneOneOneTableView.reloadRows(at: [indexPath], with: .automatic)
+            }
         }
     }
     
@@ -61,7 +63,9 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         if let row = self.usersArray.firstIndex(where: {$0.uid == user.uid}) {
             usersArray[row] = user
             let indexPath = IndexPath(row: row, section: 0)
-            oneOneOneTableView.reloadRows(at: [indexPath], with: .automatic)
+             DispatchQueue.main.async {
+                self.oneOneOneTableView.reloadRows(at: [indexPath], with: .automatic)
+            }
         }
     }
     
