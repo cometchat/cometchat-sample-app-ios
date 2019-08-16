@@ -11,7 +11,9 @@ import CometChatPro
 import AVFoundation
 import Foundation
 
-class CallingViewController: UIViewController {
+class CallingViewController: UIViewController, CometChatCallDelegate {
+    
+
     
     //Outlets Declarations
     @IBOutlet weak var userAvtar: UIImageView!
@@ -63,7 +65,7 @@ class CallingViewController: UIViewController {
         
         //Function Calling
         self.handleCallingVCApperance()
-        
+        CometChat.calldelegate = self
         
         // HandleCameraSession
         captureSession.sessionPreset = AVCaptureSession.Preset.high
@@ -86,12 +88,25 @@ class CallingViewController: UIViewController {
         }
     }
     
+    func onIncomingCallReceived(incomingCall: Call?, error: CometChatException?) {
+        
+    }
+
+    func onOutgoingCallAccepted(acceptedCall: Call?, error: CometChatException?) {
+        
+    }
     
+    func onOutgoingCallRejected(rejectedCall: Call?, error: CometChatException?) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func onIncomingCallCancelled(canceledCall: Call?, error: CometChatException?) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         
     }
-    
     
     func beginSession()
     {
@@ -137,10 +152,10 @@ class CallingViewController: UIViewController {
         
         CometChat.initiateCall(call: aNewCall, onSuccess: { (ongoing_call) in
             CometChatLog.print(items:"sendCallRequest onSuccess: \(String(describing: ongoing_call?.stringValue()))")
-            
+            self.aNewCall = ongoing_call
         }) { (error) in
             CometChatLog.print(items:"sendCallRequest error: \(String(describing: error.debugDescription))")
-        }  
+        }
     }
     
     func handleCallingVCApperance(){
@@ -187,9 +202,29 @@ class CallingViewController: UIViewController {
                 }
             }
         }else{
-            self.dismiss(animated: true, completion: nil)
+            
+            CometChat.rejectCall(sessionID: aNewCall.sessionID!, status: .cancelled, onSuccess: { [weak self](call) in
+                
+                CometChatLog.print(items:"rejectCall :\(String(describing: call?.stringValue()))")
+                guard let strongSelf = self
+                    else
+                {
+                    return
+                }
+                
+                if let _ = call {
+                    
+                    strongSelf.dismiss(animated: true, completion: nil)
+                }
+                
+            }) { (error) in
+                
+                CometChatLog.print(items: "Error on ending call : \(String(describing: error?.errorDescription))")
+            }
+            
+            //self.dismiss(animated: true, completion: nil)
         }
-        self.dismiss(animated: true, completion: nil)
+        //        self.dismiss(animated: true, completion: nil)
     }
     
     

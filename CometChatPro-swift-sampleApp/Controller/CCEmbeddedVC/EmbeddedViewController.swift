@@ -120,14 +120,18 @@ extension EmbeddedViewController : CometChatCallDelegate {
             
         }) { (ended_call) in
             
-//            if((self.presentingViewController) != nil){
-//                self.dismiss(animated: false, completion: nil)
-//                
-//            }
+            if((self.presentingViewController) != nil){
+                self.dismiss(animated: false, completion: nil)
+                
+            }
         }
     }
     
     func onOutgoingCallRejected(rejectedCall: Call?, error: CometChatException?) {
+       
+        if((self.presentingViewController) != nil){
+            self.dismiss(animated: false, completion: nil)
+        }
         CometChatLog.print(items: rejectedCall?.stringValue() as Any)
     }
     

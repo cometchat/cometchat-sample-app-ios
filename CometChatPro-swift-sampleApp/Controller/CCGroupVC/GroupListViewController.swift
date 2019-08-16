@@ -354,7 +354,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                     group = othersChatRoomList[indexPath.row]
                 }
             }
-            print("group \(String(describing: group.metadata))")
             
             if(group.groupType == .password){
                 cell.passwordProtected.isHidden = false

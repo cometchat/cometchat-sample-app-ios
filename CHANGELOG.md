@@ -1,5 +1,10 @@
 # Change Log
 
+### v1.8.7 (Aug 16, 2019)
+- Added SDK version v1.8.7
+- Fixed issue with 'onOutgoingCallCancelled' event
+- Fixed issue with 'onOutgoingCallRejected' event
+
 ### v1.8.3 (July 22, 2019)
 - Added SDK version v1.8.3
 - Fixed issue with main thread
