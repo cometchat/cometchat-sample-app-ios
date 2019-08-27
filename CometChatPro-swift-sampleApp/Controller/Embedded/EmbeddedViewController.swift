@@ -9,7 +9,7 @@
 import UIKit
 import CometChatPro
 
-class EmbeddedViewController: UIViewController{
+class EmbeddedViewController: UIViewController, CometChatCallDelegate {
     
     //Outlets Declarations
     
@@ -25,14 +25,15 @@ class EmbeddedViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CometChat.calldelegate = self
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+         CometChat.calldelegate = self
         
     }
-}
-
-// Calling Delegates 
-
-extension EmbeddedViewController : CometChatCallDelegate {
+    
     
     func onIncomingCallReceived(incomingCall: Call?, error: CometChatException?) {
         
@@ -99,7 +100,7 @@ extension EmbeddedViewController : CometChatCallDelegate {
     
     func onOutgoingCallAccepted(acceptedCall: Call?, error: CometChatException?) {
         
-        CometChatLog.print(items:"onOutgoingCallAccepted \(String(describing: acceptedCall?.stringValue()))");
+        CometChatLog.print(items:"onOutgoingCallAccepted: \(String(describing: acceptedCall?.stringValue()))");
         guard let sessionID = acceptedCall?.sessionID else {
             return;
         }
@@ -128,23 +129,27 @@ extension EmbeddedViewController : CometChatCallDelegate {
     }
     
     func onOutgoingCallRejected(rejectedCall: Call?, error: CometChatException?) {
-       
-        if((self.presentingViewController) != nil){
-            self.dismiss(animated: false, completion: nil)
+        
+        let presentedViewController: CallingViewController! = self.presentedViewController as? CallingViewController
+        DispatchQueue.main.async {
+            presentedViewController?.dismiss(animated: false, completion: nil)
         }
+        
+        
         CometChatLog.print(items: rejectedCall?.stringValue() as Any)
     }
     
     func onIncomingCallCancelled(canceledCall: Call?, error: CometChatException?) {
         
-        if((self.presentingViewController) != nil){
-            self.dismiss(animated: false, completion: nil)
-            print("cancel")
+        let presentedViewController: CallingViewController! = self.presentedViewController as? CallingViewController
+        DispatchQueue.main.async {
+            presentedViewController?.dismiss(animated: false, completion: nil)
         }
         CometChatLog.print(items: canceledCall?.stringValue() as Any)
     }
-    
 }
+
+
 
 
 

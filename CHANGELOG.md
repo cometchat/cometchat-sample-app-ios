@@ -1,5 +1,9 @@
 # Change Log
 
+### v1.8.8 (Aug 27, 2019)
+- Fixed issue with regarding Calling
+- Minor performance improvements
+
 ### v1.8.7 (Aug 16, 2019)
 - Added SDK version v1.8.7
 - Fixed issue with 'onOutgoingCallCancelled' event

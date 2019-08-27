@@ -41,7 +41,7 @@
 		A8296FB52202F68300D7010C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8296FB42202F68300D7010C /* Assets.xcassets */; };
 		A83BD0E122071F4500034D54 /* ViewMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD0E022071F4500034D54 /* ViewMemberTableViewCell.swift */; };
 		A83BD0E522071FBB00034D54 /* ViewMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD0E422071FBB00034D54 /* ViewMemberViewController.swift */; };
-		B046B47BA174CC062FD53FCD /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01A2741EBCF408FB02E67E7C /* libPods-CometChatPro-swift-sampleApp.a */; };
+		AE365755FEAE8D869F3D2F0B /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2197C433D6621BF56E46E0 /* libPods-CometChatPro-swift-sampleApp.a */; };
 		B20FF538226EFDD100720936 /* ChatMediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20FF537226EFDD100720936 /* ChatMediaMessageCell.swift */; };
 		B22301C121D1FCEC00483CC7 /* UIAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22301C021D1FCEC00483CC7 /* UIAppearance.swift */; };
 		B22301C421D26B8000483CC7 /* Product Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C221D2659C00483CC7 /* Product Sans Regular.ttf */; };
@@ -94,8 +94,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01A2741EBCF408FB02E67E7C /* libPods-CometChatPro-swift-sampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CometChatPro-swift-sampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		02F8B999822A0650238E1742 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		06A736A622701496006AD31C /* YPImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YPImagePicker.framework; sourceTree = "<group>"; };
+		28DB6E75D076FCFECD55F0BC /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.release.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		584900AC21B2AA7C009BB669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5866BC0A2223F8D000E6AE43 /* CometChatPro-swift-sampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CometChatPro-swift-sampleApp.entitlements"; sourceTree = "<group>"; };
 		5889505722219F95007D2CBF /* ImageCacheLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheLoader.swift; sourceTree = "<group>"; };
@@ -128,7 +129,6 @@
 		58C1D1AB21BBDCF900B64915 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewCell.swift; sourceTree = "<group>"; };
 		71ADB0EC21D41216002443A7 /* ChatTextMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextMessageCell.swift; sourceTree = "<group>"; };
-		8AACD325E1FC183A6A4DCEE7 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A8296FB42202F68300D7010C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A83BD0E022071F4500034D54 /* ViewMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMemberTableViewCell.swift; sourceTree = "<group>"; };
 		A83BD0E422071FBB00034D54 /* ViewMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMemberViewController.swift; sourceTree = "<group>"; };
@@ -161,7 +161,6 @@
 		B2BC6095219DACF9002C24D3 /* CometChatPro-swift-sampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CometChatPro-swift-sampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2CD3E8E224A255600135D4F /* AMShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMShimmer.swift; sourceTree = "<group>"; };
 		B2FB0F0B21EC880C00CEDD4A /* CometChat-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CometChat-info.plist"; sourceTree = "<group>"; };
-		D9C7BE489EF8813CB39D5BF1 /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatPro-swift-sampleApp.release.xcconfig"; path = "Target Support Files/Pods-CometChatPro-swift-sampleApp/Pods-CometChatPro-swift-sampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		DBAECBAB22C0BB0E00F7FE5C /* XLActionController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XLActionController.framework; sourceTree = "<group>"; };
 		DBB7C13C229C0DB400FA04E5 /* BlockedUsersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersVC.swift; sourceTree = "<group>"; };
 		DBB7C142229C23EF00FA04E5 /* BlockedUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUserCell.swift; sourceTree = "<group>"; };
@@ -169,6 +168,7 @@
 		DBF5628B22BB72D20094F7CD /* Skype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skype.swift; sourceTree = "<group>"; };
 		DBF5628C22BB72D20094F7CD /* SkypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkypeCell.xib; sourceTree = "<group>"; };
 		DBF5629822BCD2030094F7CD /* ChatDeletedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDeletedMessageCell.swift; sourceTree = "<group>"; };
+		EF2197C433D6621BF56E46E0 /* libPods-CometChatPro-swift-sampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CometChatPro-swift-sampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +182,7 @@
 				588950BA2221A5DB007D2CBF /* ImageIO.framework in Frameworks */,
 				B291CDCE221EC31000462FAC /* PryntTrimmerView.framework in Frameworks */,
 				B291CDD0221EC31000462FAC /* Stevia.framework in Frameworks */,
-				B046B47BA174CC062FD53FCD /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */,
+				AE365755FEAE8D869F3D2F0B /* libPods-CometChatPro-swift-sampleApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,53 +221,53 @@
 		5891249121B2AC6C003500B5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DBB7C13B229C0D7C00FA04E5 /* BlockedUsersVC */,
-				B20FF53A226F56A200720936 /* CCViewMemberVC */,
-				B20FF539226F565F00720936 /* CCChatVC */,
-				5891249221B2AC6C003500B5 /* CCMoreSettingsVC */,
-				5891249421B2AC6C003500B5 /* CCRecentVC */,
-				5891249821B2AC6C003500B5 /* CCLoginVC */,
-				5891249D21B2AC6C003500B5 /* CCGroupVC */,
-				589124A221B2AC6C003500B5 /* CCEmbeddedVC */,
-				589124A421B2AC6C003500B5 /* CCContactVC */,
-				589124A821B2AC6C003500B5 /* CCTabBarVC */,
-				589124AA21B2AC6C003500B5 /* CCProfileVC */,
-				B2753A3121DD04B5004D895F /* CallingVC */,
+				5891249821B2AC6C003500B5 /* Login */,
+				589124A221B2AC6C003500B5 /* Embedded */,
+				589124A421B2AC6C003500B5 /* Users */,
+				5891249D21B2AC6C003500B5 /* Groups */,
+				B20FF539226F565F00720936 /* Chat */,
+				B2753A3121DD04B5004D895F /* Calling */,
+				B20FF53A226F56A200720936 /* ViewMembers */,
+				DBB7C13B229C0D7C00FA04E5 /* BlockedUsers */,
+				589124AA21B2AC6C003500B5 /* Profiles */,
+				5891249221B2AC6C003500B5 /* MoreSettings */,
+				5891249421B2AC6C003500B5 /* Recents */,
+				589124A821B2AC6C003500B5 /* TabBar */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		5891249221B2AC6C003500B5 /* CCMoreSettingsVC */ = {
+		5891249221B2AC6C003500B5 /* MoreSettings */ = {
 			isa = PBXGroup;
 			children = (
 				5891249321B2AC6C003500B5 /* MoreSettingsViewController.swift */,
 				B2BB032621DF374500B2479D /* MoreSettingTableViewCell.swift */,
 				B23F83A3223BE4B2003978B3 /* PopOverController.swift */,
 			);
-			path = CCMoreSettingsVC;
+			path = MoreSettings;
 			sourceTree = "<group>";
 		};
-		5891249421B2AC6C003500B5 /* CCRecentVC */ = {
+		5891249421B2AC6C003500B5 /* Recents */ = {
 			isa = PBXGroup;
 			children = (
 				5891249521B2AC6C003500B5 /* RecentNavigationController.swift */,
 				5891249621B2AC6C003500B5 /* RecentTableViewCell.swift */,
 				5891249721B2AC6C003500B5 /* RecentListViewController.swift */,
 			);
-			path = CCRecentVC;
+			path = Recents;
 			sourceTree = "<group>";
 		};
-		5891249821B2AC6C003500B5 /* CCLoginVC */ = {
+		5891249821B2AC6C003500B5 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				5891249921B2AC6C003500B5 /* StartUpViewController.swift */,
 				5891249A21B2AC6C003500B5 /* CCTabbar.swift */,
 				5891249B21B2AC6C003500B5 /* LoginViewController.swift */,
 			);
-			path = CCLoginVC;
+			path = Login;
 			sourceTree = "<group>";
 		};
-		5891249D21B2AC6C003500B5 /* CCGroupVC */ = {
+		5891249D21B2AC6C003500B5 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
 				5891249E21B2AC6C003500B5 /* GroupListViewController.swift */,
@@ -275,44 +275,44 @@
 				589124A021B2AC6C003500B5 /* GroupTableViewCell.swift */,
 				589124A121B2AC6C003500B5 /* GroupNavigationController.swift */,
 			);
-			path = CCGroupVC;
+			path = Groups;
 			sourceTree = "<group>";
 		};
-		589124A221B2AC6C003500B5 /* CCEmbeddedVC */ = {
+		589124A221B2AC6C003500B5 /* Embedded */ = {
 			isa = PBXGroup;
 			children = (
 				589124A321B2AC6C003500B5 /* EmbeddedViewController.swift */,
 				B28B1A7D221AC4B000F5FD4C /* NavigationViewController.swift */,
 			);
-			path = CCEmbeddedVC;
+			path = Embedded;
 			sourceTree = "<group>";
 		};
-		589124A421B2AC6C003500B5 /* CCContactVC */ = {
+		589124A421B2AC6C003500B5 /* Users */ = {
 			isa = PBXGroup;
 			children = (
 				589124A521B2AC6C003500B5 /* OneOnOneTableViewCell.swift */,
 				589124A621B2AC6C003500B5 /* OneOnOneListViewController.swift */,
 				589124A721B2AC6C003500B5 /* ContactsNavigationController.swift */,
 			);
-			path = CCContactVC;
+			path = Users;
 			sourceTree = "<group>";
 		};
-		589124A821B2AC6C003500B5 /* CCTabBarVC */ = {
+		589124A821B2AC6C003500B5 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				589124A921B2AC6C003500B5 /* CCTabBarController.swift */,
 			);
-			path = CCTabBarVC;
+			path = TabBar;
 			sourceTree = "<group>";
 		};
-		589124AA21B2AC6C003500B5 /* CCProfileVC */ = {
+		589124AA21B2AC6C003500B5 /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
 				589124AB21B2AC6C003500B5 /* CCprofileAvtarViewController.swift */,
 				58C1D1AB21BBDCF900B64915 /* UserProfileViewController.swift */,
 				58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */,
 			);
-			path = CCProfileVC;
+			path = Profiles;
 			sourceTree = "<group>";
 		};
 		589124AD21B2AC6C003500B5 /* Extensions */ = {
@@ -356,27 +356,27 @@
 		79709A7C2871203881749358 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8AACD325E1FC183A6A4DCEE7 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */,
-				D9C7BE489EF8813CB39D5BF1 /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */,
+				02F8B999822A0650238E1742 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */,
+				28DB6E75D076FCFECD55F0BC /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		B20FF539226F565F00720936 /* CCChatVC */ = {
+		B20FF539226F565F00720936 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
 				589124DA21B3B2FD003500B5 /* ChatViewController.swift */,
 			);
-			path = CCChatVC;
+			path = Chat;
 			sourceTree = "<group>";
 		};
-		B20FF53A226F56A200720936 /* CCViewMemberVC */ = {
+		B20FF53A226F56A200720936 /* ViewMembers */ = {
 			isa = PBXGroup;
 			children = (
 				A83BD0E022071F4500034D54 /* ViewMemberTableViewCell.swift */,
 				A83BD0E422071FBB00034D54 /* ViewMemberViewController.swift */,
 			);
-			path = CCViewMemberVC;
+			path = ViewMembers;
 			sourceTree = "<group>";
 		};
 		B260F1E5224CCA8A00CDCDBA /* Modal */ = {
@@ -387,12 +387,12 @@
 			path = Modal;
 			sourceTree = "<group>";
 		};
-		B2753A3121DD04B5004D895F /* CallingVC */ = {
+		B2753A3121DD04B5004D895F /* Calling */ = {
 			isa = PBXGroup;
 			children = (
 				B2753A3421DD0554004D895F /* CallingViewController.swift */,
 			);
-			path = CallingVC;
+			path = Calling;
 			sourceTree = "<group>";
 		};
 		B2BC608C219DACF9002C24D3 = {
@@ -414,19 +414,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DBB7C13B229C0D7C00FA04E5 /* BlockedUsersVC */ = {
+		DBB7C13B229C0D7C00FA04E5 /* BlockedUsers */ = {
 			isa = PBXGroup;
 			children = (
 				DBB7C13C229C0DB400FA04E5 /* BlockedUsersVC.swift */,
 			);
-			path = BlockedUsersVC;
+			path = BlockedUsers;
 			sourceTree = "<group>";
 		};
 		F6E363A875DDF7C42980A40F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				588950B92221A5DB007D2CBF /* ImageIO.framework */,
-				01A2741EBCF408FB02E67E7C /* libPods-CometChatPro-swift-sampleApp.a */,
+				EF2197C433D6621BF56E46E0 /* libPods-CometChatPro-swift-sampleApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -438,12 +438,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2BC60A7219DACFA002C24D3 /* Build configuration list for PBXNativeTarget "CometChatPro-swift-sampleApp" */;
 			buildPhases = (
-				668D1E97366CF3D3F182365C /* [CP] Check Pods Manifest.lock */,
+				901895EF6898D940061A8A31 /* [CP] Check Pods Manifest.lock */,
 				B2BC6091219DACF9002C24D3 /* Sources */,
 				B2BC6092219DACF9002C24D3 /* Frameworks */,
 				B2BC6093219DACF9002C24D3 /* Resources */,
 				B28990F021BAC96F002C885E /* Embed Frameworks */,
-				C1BFAFE29825AAD0B18AFCC2 /* [CP] Embed Pods Frameworks */,
+				E876108F773D686BA310F77D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -525,7 +525,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		668D1E97366CF3D3F182365C /* [CP] Check Pods Manifest.lock */ = {
+		901895EF6898D940061A8A31 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -547,7 +547,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C1BFAFE29825AAD0B18AFCC2 /* [CP] Embed Pods Frameworks */ = {
+		E876108F773D686BA310F77D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -785,7 +785,7 @@
 		};
 		B2BC60A8219DACFA002C24D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8AACD325E1FC183A6A4DCEE7 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */;
+			baseConfigurationReference = 02F8B999822A0650238E1742 /* Pods-CometChatPro-swift-sampleApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -824,7 +824,7 @@
 		};
 		B2BC60A9219DACFA002C24D3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D9C7BE489EF8813CB39D5BF1 /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */;
+			baseConfigurationReference = 28DB6E75D076FCFECD55F0BC /* Pods-CometChatPro-swift-sampleApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;

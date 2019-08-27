@@ -56,12 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initialization(){
-        CometChat(appId: AuthenticationDict?["APP_ID"] as! String, onSuccess: { (Success) in
-            CometChatLog.print(items: "initialization Success: \(Success)")
-            
-        }) { (error) in
-            CometChatLog.print(items: "Initialization Error \(error.errorDescription)")
-        }
+        
+                CometChat(appId: AuthenticationDict?["APP_ID"] as! String, onSuccess: { (Success) in
+                    CometChatLog.print(items: "initialization Success: \(Success)")
+
+                }) { (error) in
+                    CometChatLog.print(items: "Initialization Error \(error.errorDescription)")
+                }
     }
     
 

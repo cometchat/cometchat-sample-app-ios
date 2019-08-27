@@ -14,7 +14,6 @@ class ViewMemberViewController: UIViewController,UITableViewDelegate,UITableView
     
     @IBOutlet weak var viewMemberTableView: UITableView!
     
-    
     //Variable Declarations
     var buddyName:[String]!
     var guid:String!

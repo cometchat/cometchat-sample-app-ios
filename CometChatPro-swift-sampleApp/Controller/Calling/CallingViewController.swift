@@ -11,9 +11,7 @@ import CometChatPro
 import AVFoundation
 import Foundation
 
-class CallingViewController: UIViewController, CometChatCallDelegate {
-    
-
+class CallingViewController: UIViewController {
     
     //Outlets Declarations
     @IBOutlet weak var userAvtar: UIImageView!
@@ -65,7 +63,7 @@ class CallingViewController: UIViewController, CometChatCallDelegate {
         
         //Function Calling
         self.handleCallingVCApperance()
-        CometChat.calldelegate = self
+      
         
         // HandleCameraSession
         captureSession.sessionPreset = AVCaptureSession.Preset.high
@@ -88,25 +86,12 @@ class CallingViewController: UIViewController, CometChatCallDelegate {
         }
     }
     
-    func onIncomingCallReceived(incomingCall: Call?, error: CometChatException?) {
-        
-    }
-
-    func onOutgoingCallAccepted(acceptedCall: Call?, error: CometChatException?) {
-        
-    }
+   
     
-    func onOutgoingCallRejected(rejectedCall: Call?, error: CometChatException?) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
-    func onIncomingCallCancelled(canceledCall: Call?, error: CometChatException?) {
-        self.dismiss(animated: true, completion: nil)
-    }
+   
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
+   
     
     func beginSession()
     {
@@ -211,9 +196,7 @@ class CallingViewController: UIViewController, CometChatCallDelegate {
                 {
                     return
                 }
-                
                 if let _ = call {
-                    
                     strongSelf.dismiss(animated: true, completion: nil)
                 }
                 
@@ -221,10 +204,7 @@ class CallingViewController: UIViewController, CometChatCallDelegate {
                 
                 CometChatLog.print(items: "Error on ending call : \(String(describing: error?.errorDescription))")
             }
-            
-            //self.dismiss(animated: true, completion: nil)
         }
-        //        self.dismiss(animated: true, completion: nil)
     }
     
     

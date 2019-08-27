@@ -143,29 +143,24 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 self.chatTableview.reloadData()
             }
         }
-        
         imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         setupRecorder()
         let audioSession = AVAudioSession.sharedInstance()
         do{
             try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
-        }catch{CometChatLog.print(items:"\(error)")}
+        }catch{ CometChatLog.print(items:"\(error)") }
     }
     
     // Fetching Old/Previous messages
     @objc func refresh(_ sender: Any) {
         fetchPreviousMessages(messageReq: messageRequest) { (message, error) in
-            guard let messages = message else{
-                return
-            }
+            guard let messages = message else{ return }
             var oldMessages = [BaseMessage]()
             for msg in messages{
-                
                 if (((msg as? ActionMessage) != nil) && ((msg as? ActionMessage)?.message == "Message is edited.") ||  ((msg as? ActionMessage)?.message == "Message is deleted.")){
                     //Ignoring action messages for Delete and edit action
                     CometChat.markMessageAsRead(message: msg)
                 }else{
-                    
                     //Appending Other Messages
                     oldMessages.append(msg)
                     print("messages are \(String(describing: (msg as? TextMessage)?.stringValue()))")
@@ -197,7 +192,6 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                               AVEncoderBitRateKey : 320000,
                               AVNumberOfChannelsKey : 2,
                               AVSampleRateKey : 44100.2] as [String : Any]
-        
         do {
             soundRecorder = try AVAudioRecorder(url: audioFilename, settings: recordSetting )
             soundRecorder.delegate = self
@@ -1576,7 +1570,7 @@ extension ChatViewController : CometChatMessageDelegate {
     
     
     // This event triggers when new Media Message receives.
-    func onMediaMessageReceived(mediaMessage: MediaMessage) {
+    func onMediaMessageReceived(mediaMessage: MediaMessage){
         if mediaMessage.sender?.uid == buddyUID && mediaMessage.receiverType.rawValue == Int(isGroup){
             CometChat.markMessageAsRead(message: mediaMessage)
             self.chatMessage.append(mediaMessage)
