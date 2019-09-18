@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DB74C30223311D1600566E33"
+               BuildableName = "CometChatPro-swift-sampleAppTests.xctest"
+               BlueprintName = "CometChatPro-swift-sampleAppTests"
+               ReferencedContainer = "container:CometChatPro-swift-sampleApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

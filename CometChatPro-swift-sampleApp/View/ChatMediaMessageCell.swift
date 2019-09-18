@@ -54,10 +54,10 @@ class ChatMediaMessageCell: UITableViewCell {
                     return
                 }
                 
-                if strongSelf.chatMessage.readByMeAt > 0.0 {
+                if strongSelf.chatMessage.readAt > 0.0 {
                     strongSelf.readRecipts.image = #imageLiteral(resourceName: "seen")
                 }
-                else if strongSelf.chatMessage.deliveredToMeAt > 0.0 {
+                else if strongSelf.chatMessage.deliveredAt > 0.0 {
                     strongSelf.readRecipts.image = #imageLiteral(resourceName: "delivered")
                 }else{
                     strongSelf.readRecipts.image = #imageLiteral(resourceName: "sent")
@@ -79,7 +79,11 @@ class ChatMediaMessageCell: UITableViewCell {
                 userNameLabel.textColor = UIColor.darkGray
                 userAvatarImageView.isHidden = true
                 userNameLabel.isHidden = true
-                readRecipts.isHidden = false
+                if chatMessage.receiverType == .user{
+                    readRecipts.isHidden = false
+                }else{
+                    readRecipts.isHidden = true
+                }
                 switch AppAppearance{
                     
                 case .AzureRadiance:

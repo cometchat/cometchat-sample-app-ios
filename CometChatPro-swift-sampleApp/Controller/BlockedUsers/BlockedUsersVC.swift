@@ -88,8 +88,10 @@ class BlockedUsersVC: UITableViewController {
         backButtonImage.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         let backBTN = UIBarButtonItem(image: backButtonImage.image,
                                       style: .plain,
-                                      target: navigationController,
-                                      action: #selector(UINavigationController.popViewController(animated:)))
+                                      target: self,
+                                      action: #selector(backButtonPressed))
+        
+        
         navigationItem.leftBarButtonItem = backBTN
         backBTN.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
        
@@ -99,6 +101,14 @@ class BlockedUsersVC: UITableViewController {
              doneBTN = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addMemberAction))
         }
       
+    }
+    
+    @objc func backButtonPressed(){
+        
+        print(#function)
+        DispatchQueue.main.async {
+         self.navigationController?.popViewController(animated: true)
+        }
     }
     
      @objc fileprivate func addMemberAction() {

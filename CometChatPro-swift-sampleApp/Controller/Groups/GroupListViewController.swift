@@ -51,6 +51,11 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        //Assigning Delegates
+        CometChat.groupdelegate = self
+        CometChat.messagedelegate = self
+        
         self.refreshGroupList()
         if((UserDefaults.standard.value(forKey: "changeLanguageAction")) != nil){
             groupTableView.reloadData()
@@ -84,28 +89,20 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         super.viewDidDisappear(true)
     }
     
-    
-    @objc func refresh(_ sender: Any) {
-        
+     @objc func refresh(_ sender: Any) {
         refreshGroupList()
-        
         refreshControl.endRefreshing()
     }
     
     
     func fetchGroupList(){
-        
         //This method fetches the grouplist from the server
-        
         groupRequest.fetchNext(onSuccess: { (groupList) in
-            
             if !groupList.isEmpty{
                 for group in groupList {
                     if(group.hasJoined == true){
                         self.joinedChatRoomList.append(group)
-                        
                         CometChatLog.print(items: "joinedChatRoomList is:",self.joinedChatRoomList)
-                        
                     }else{
                         self.othersChatRoomList.append(group)
                         CometChatLog.print(items:"othersChatRoomList is:",self.othersChatRoomList)
@@ -115,7 +112,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 })
             }
         }) { (exception) in
-            
             DispatchQueue.main.async(execute: {
                 self.view.makeToast("\(String(describing: exception!.errorDescription))")
             })
@@ -124,15 +120,12 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     }
     
     func refreshGroupList(){
-        
         //This method fetches the grouplist from the server
         self.joinedChatRoomList.removeAll()
         self.othersChatRoomList.removeAll()
         self.unreadCount.removeAll()
         groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 20).build()
-        
         groupRequest.fetchNext(onSuccess: { (groupList) in
-            
             if !groupList.isEmpty{
                 for group in groupList {
                     if(group.hasJoined == true){
@@ -148,7 +141,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 })
             }
         }) { (exception) in
-            
             DispatchQueue.main.async(execute: {
                 self.view.makeToast("\(String(describing: exception!.errorDescription))")
             })
@@ -157,7 +149,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     }
     
     func setTabbarCount(){
-        
         if let tabItems = tabBarController?.tabBar.items {
             // In this case we want to modify the badge number of the third tab:
             let tabItem = tabItems[1]
@@ -170,7 +161,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     
     
     @objc func createGroupObserver(notification: Notification) {
-        
         let newGroup:Group = notification.userInfo?["groupData"] as! Group
         CometChatLog.print(items:"new group is: \(newGroup.stringValue())")
         joinedChatRoomList.append(newGroup)
@@ -183,8 +173,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         // ViewController Appearance
         view.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
-        
-        
         
         //TableView Appearance
         self.groupTableView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
@@ -392,10 +380,10 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         groupTableView.deselectRow(at: indexPath, animated: true)
         let selectedCell:GroupTableViewCell = tableView.cellForRow(at: indexPath) as! GroupTableViewCell
         selectedCell.unreadCountBadge.isHidden = true
+        selectedCell.unreadCountLabel.text = "0"
         
         if(unreadCount.contains(selectedCell.UID)){
             unreadCount.removeFirstElementEqual(to: selectedCell.UID)
@@ -489,7 +477,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     
     //titleForHeaderInSection indexPath -->
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         if(section == 0) {
             if(isFiltering()){
                 return NSLocalizedString("Searched Groups", comment: "")
@@ -556,8 +543,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                     self.view.makeToast("\(error.debugDescription)")
                 }
             })
-            
-            
             completionHandler(true)
         })
         leaveAction.image = UIImage(named: "leaveGroup.png")
@@ -707,11 +692,9 @@ extension GroupListViewController : UISearchResultsUpdating {
         groupRequest.fetchNext(onSuccess: { (groupList) in
 
             self.filteredGroupList = groupList
-            
                 DispatchQueue.main.async(execute: { self.groupTableView.reloadData()
                 })
         }) { (exception) in
-            
             DispatchQueue.main.async(execute: {
                 self.view.makeToast("\(String(describing: exception!.errorDescription))")
             })
@@ -723,51 +706,195 @@ extension GroupListViewController : UISearchResultsUpdating {
 extension GroupListViewController : CometChatGroupDelegate {
     
     func onGroupMemberJoined(action: ActionMessage, joinedUser: User, joinedGroup: Group) {
-        DispatchQueue.main.async {
-             self.refreshGroupList()
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == action.receiverUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                if let actionMessageText:String = action.message {
+                   cell.groupParticipants.text = actionMessageText
+                   cell.groupParticipants.font = UIFont.italicSystemFont(ofSize: 12.0)
+                   cell.groupParticipants.textColor = UIColor.init(hexFromString: "434343")
+                   cell.reloadInputViews()
+                }
+            }
         }
     }
     
     func onGroupMemberLeft(action: ActionMessage, leftUser: User, leftGroup: Group) {
-        DispatchQueue.main.async {
-            self.refreshGroupList()
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == action.receiverUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                if let actionMessageText:String = action.message {
+                    cell.groupParticipants.text = actionMessageText
+                    cell.groupParticipants.font = UIFont.italicSystemFont(ofSize: 12.0)
+                    cell.groupParticipants.textColor = UIColor.init(hexFromString: "434343")
+                    cell.reloadInputViews()
+                }
+            }
         }
     }
     
     func onGroupMemberKicked(action: ActionMessage, kickedUser: User, kickedBy: User, kickedFrom: Group) {
-        DispatchQueue.main.async {
-            self.refreshGroupList()
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == action.receiverUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                if let actionMessageText:String = action.message {
+                    cell.groupParticipants.text = actionMessageText
+                    cell.groupParticipants.font = UIFont.italicSystemFont(ofSize: 12.0)
+                    cell.groupParticipants.textColor = UIColor.init(hexFromString: "434343")
+                    cell.reloadInputViews()
+                }
+            }
         }
     }
     
     func onGroupMemberBanned(action: ActionMessage, bannedUser: User, bannedBy: User, bannedFrom: Group) {
-        DispatchQueue.main.async {
-            self.refreshGroupList()
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == action.receiverUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                if let actionMessageText:String = action.message {
+                    cell.groupParticipants.text = actionMessageText
+                    cell.groupParticipants.font = UIFont.italicSystemFont(ofSize: 12.0)
+                    cell.groupParticipants.textColor = UIColor.init(hexFromString: "434343")
+                    cell.reloadInputViews()
+                }
+            }
         }
     }
     
     func onGroupMemberUnbanned(action: ActionMessage, unbannedUser: User, unbannedBy: User, unbannedFrom: Group) {
-        DispatchQueue.main.async {
-            self.refreshGroupList()
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == action.receiverUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                if let actionMessageText:String = action.message {
+                    cell.groupParticipants.text = actionMessageText
+                    cell.groupParticipants.font = UIFont.italicSystemFont(ofSize: 12.0)
+                    cell.groupParticipants.textColor = UIColor.init(hexFromString: "434343")
+                    cell.reloadInputViews()
+                }
+            }
         }
     }
     
     func onGroupMemberScopeChanged(action: ActionMessage, scopeChangeduser: User, scopeChangedBy: User, scopeChangedTo: String, scopeChangedFrom: String, group: Group) {
-        
-    }
-    
-    func onAddedToGroup(action: ActionMessage, addedBy: User, addedTo: Group) {
-        DispatchQueue.main.async {
-            self.refreshGroupList()
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == action.receiverUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                if let actionMessageText:String = action.message {
+                    cell.groupParticipants.text = actionMessageText
+                    cell.groupParticipants.font = UIFont.italicSystemFont(ofSize: 12.0)
+                    cell.groupParticipants.textColor = UIColor.init(hexFromString: "434343")
+                    cell.reloadInputViews()
+                }
+            }
         }
     }
+
     
     func onMemberAddedToGroup(action: ActionMessage, addedBy: User, addedUser: User, addedTo: Group) {
-        DispatchQueue.main.async {
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == action.receiverUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                if let actionMessageText:String = action.message {
+                    cell.groupParticipants.text = actionMessageText
+                    cell.groupParticipants.font = UIFont.italicSystemFont(ofSize: 12.0)
+                    cell.groupParticipants.textColor = UIColor.init(hexFromString: "434343")
+                    cell.reloadInputViews()
+                }
+            }
+        }else{
             self.refreshGroupList()
         }
     }
-    
-    
-    
+
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+extension GroupListViewController : CometChatMessageDelegate {
+    
+    func onTextMessageReceived(textMessage: TextMessage) {
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == textMessage.receiverUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                if let cellCount:String = cell.unreadCountLabel.text, let count = Int(cellCount){
+                    cell.unreadCountLabel.text = "\(count + 1)"
+                    if cell.unreadCountBadge.isHidden {
+                        cell.unreadCountBadge.isHidden = false
+                    }
+                    cell.reloadInputViews()
+                }
+            }
+        }
+    }
+    
+    func onMediaMessageReceived(mediaMessage: MediaMessage) {
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == mediaMessage.receiverUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                if let cellCount:String = cell.unreadCountLabel.text, let count = Int(cellCount){
+                    cell.unreadCountLabel.text = "\(count + 1)"
+                    if cell.unreadCountBadge.isHidden {
+                        cell.unreadCountBadge.isHidden = false
+                    }
+                    cell.reloadInputViews()
+                }
+            }
+        }
+    }
+    
+    func onCustomMessageReceived(customMessage: CustomMessage) {
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == customMessage.receiverUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                if let cellCount:String = cell.unreadCountLabel.text, let count = Int(cellCount){
+                    cell.unreadCountLabel.text = "\(count + 1)"
+                    if cell.unreadCountBadge.isHidden {
+                        cell.unreadCountBadge.isHidden = false
+                    }  
+                    cell.reloadInputViews()
+                }
+            }
+        }
+    }
+    
+    func onTypingStarted(_ typingDetails: TypingIndicator) {
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == typingDetails.receiverID}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                let user = typingDetails.sender?.name
+                cell.groupParticipants.text = NSLocalizedString("\(user!) is Typing...", comment: "")
+                cell.groupParticipants.textColor = UIColor.init(hexFromString: "9ACD32")
+                cell.groupParticipants.font = UIFont.italicSystemFont(ofSize: 15.0)
+                cell.reloadInputViews()
+            }
+        }
+    }
+    
+    func onTypingEnded(_ typingDetails: TypingIndicator) {
+        
+        if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == typingDetails.receiverID}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
+                cell.groupParticipants.text = ""
+                cell.groupParticipants.textColor = UIColor.init(hexFromString: "9ACD32")
+                cell.groupParticipants.font = UIFont.italicSystemFont(ofSize: 15.0)
+                cell.reloadInputViews()
+            }
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////

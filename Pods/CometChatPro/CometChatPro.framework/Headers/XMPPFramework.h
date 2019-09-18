@@ -49,3 +49,4 @@
 #import "NSXMLElement+XEP_0335.h"
 
 #import "XMPPPubSub.h"
+#import "XMPPMessageCarbons.h"

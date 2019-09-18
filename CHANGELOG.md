@@ -1,5 +1,19 @@
 # Change Log
 
+### v2.0.0 - beta1 (Sept 18, 2019)
+- Added SDK version v2.0.0-beta1
+- Added Message Receipts Info for Messages
+- Added isTyping in User List.
+- Added isTyping in Group List.
+- Added Auto-Incremented badge counter in User List. 
+- Added Auto-Incremented badge counter in Group List. 
+- Added real time group actions in Group List. 
+- Added Unit test cases. 
+- Changed Mark Message as Read Implementation
+- Changed delegate methods   `onMessagesDelivered()` and `onMessagesRead()`
+- Fixed Delivery and Read Receipts UI Fix For Groups
+- Minor performance improvements
+
 ### v1.8.8 (Aug 27, 2019)
 - Fixed issue with regarding Calling
 - Minor performance improvements

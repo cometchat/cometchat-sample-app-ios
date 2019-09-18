@@ -35,7 +35,7 @@
             <connections>
                 <outlet property="actionTitleLabel" destination="amS-Rr-sbk" id="3J5-Hp-FP7"/>
             </connections>
-            <point key="canvasLocation" x="307" y="109"/>
+            <point key="canvasLocation" x="305.79710144927537" y="108.48214285714285"/>
         </collectionViewCell>
     </objects>
 </document>

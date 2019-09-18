@@ -4,7 +4,6 @@
 //
 //  Created by Pushpsen Airekar on 15/11/18.
 //  Copyright © 2018 Pushpsen Airekar. All rights reserved.
-//
 
 import UIKit
 import CometChatPro
@@ -36,40 +35,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         UIFont.overrideInitialize()
-        
         switch AppAppearance{
-            
-        case .AzureRadiance:
-            break
-        case .MountainMeadow:
-            break
+        case .AzureRadiance:break
+        case .MountainMeadow:break
         case .PersianBlue:
-            
             application.statusBarStyle = .lightContent
             UINavigationBar.appearance().isTranslucent = false
             UINavigationBar.appearance().backgroundColor = .clear
-            
-        case .Custom:
-            break
-        }
+        case .Custom:break }
         return true
     }
     
     func initialization(){
         
-                CometChat(appId: AuthenticationDict?["APP_ID"] as! String, onSuccess: { (Success) in
-                    CometChatLog.print(items: "initialization Success: \(Success)")
+        let appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region: "eu").build()
+        CometChat.init(appId: AuthenticationDict?["APP_ID"] as! String, appSettings: appSettings, onSuccess: { (Success) in
+            CometChatLog.print(items: "initialization Success: \(Success)")
 
-                }) { (error) in
-                    CometChatLog.print(items: "Initialization Error \(error.errorDescription)")
-                }
+        }) { (error) in
+            CometChatLog.print(items: "Initialization Error \(error.errorDescription)")
+        }
     }
-    
-
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         
-        CometChat.startServices()
+        self.initialization()
         
     }
     
@@ -84,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         
-        CometChat.startServices()
+         self.initialization()
     }
     
     

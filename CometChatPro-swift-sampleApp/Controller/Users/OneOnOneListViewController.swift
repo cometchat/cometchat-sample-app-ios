@@ -42,7 +42,6 @@ class OneOnOneListViewController: UIViewController {
         oneOneOneTableView.reloadData()
         
         //Assigning Delegates
-        CometChat.userdelegate = self
         oneOneOneTableView.delegate = self
         oneOneOneTableView.dataSource = self
     }
@@ -51,6 +50,10 @@ class OneOnOneListViewController: UIViewController {
         self.refreshUserList()
         //Function Calling
         self.handleContactListVCAppearance()
+        
+        //Assigning Delegates
+        CometChat.userdelegate = self
+        CometChat.messagedelegate = self
         
     }
     
@@ -104,7 +107,7 @@ class OneOnOneListViewController: UIViewController {
             // In this case we want to modify the badge number of the third tab:
             let tabItem = tabItems[0]
             tabItem.badgeValue = "\(tabBadgeCount)"
-            if tabBadgeCount == 0{
+            if tabBadgeCount == 0 {
                 tabItem.badgeValue = nil
             }}
     }
@@ -263,8 +266,11 @@ extension OneOnOneListViewController : UITableViewDelegate, UITableViewDataSourc
        let cell = oneOneOneTableView.dequeueReusableCell(withIdentifier: "oneOnOneTableViewCell") as! OneOnOneTableViewCell
         if !usersArray.isEmpty {
             
-            if isFiltering() { buddyData = self.filteredUsersArray[indexPath.row]
-            } else {  buddyData = self.usersArray[indexPath.row] }
+            if isFiltering() {
+                buddyData = self.filteredUsersArray[indexPath.row]
+            } else {
+                buddyData = self.usersArray[indexPath.row]
+            }
             
             //User Name:
             cell.buddyName.text = buddyData.name
@@ -314,6 +320,7 @@ extension OneOnOneListViewController : UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         oneOneOneTableView.deselectRow(at: indexPath, animated: true)
         let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
+        selectedCell.unreadCountLabel.text = "0"
         selectedCell.unreadCountBadge.isHidden = true
         
         if(unreadCount.contains(selectedCell.UID)){
@@ -470,3 +477,82 @@ extension OneOnOneListViewController : CometChatUserDelegate {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+extension OneOnOneListViewController : CometChatMessageDelegate {
+    
+    func onTextMessageReceived(textMessage: TextMessage) {
+        if let row = self.usersArray.firstIndex(where: {$0.uid == textMessage.senderUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.oneOneOneTableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
+                if let cellCount:String = cell.unreadCountLabel.text, let count = Int(cellCount){
+                    cell.unreadCountLabel.text = "\(count + 1)"
+                    if cell.unreadCountBadge.isHidden {
+                        cell.unreadCountBadge.isHidden = false
+                    }                    
+                    cell.reloadInputViews()
+                }
+            }
+        }
+    }
+   
+    func onMediaMessageReceived(mediaMessage: MediaMessage) {
+        if let row = self.usersArray.firstIndex(where: {$0.uid == mediaMessage.senderUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.oneOneOneTableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
+                if let cellCount:String = cell.unreadCountLabel.text, let count = Int(cellCount){
+                    cell.unreadCountLabel.text = "\(count + 1)"
+                    if cell.unreadCountBadge.isHidden {
+                        cell.unreadCountBadge.isHidden = false
+                    }
+                    cell.reloadInputViews()
+                }
+            }
+        }
+    }
+    
+    func onCustomMessageReceived(customMessage: CustomMessage) {
+        if let row = self.usersArray.firstIndex(where: {$0.uid == customMessage.senderUid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.oneOneOneTableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
+                if let cellCount:String = cell.unreadCountLabel.text, let count = Int(cellCount){
+                    cell.unreadCountLabel.text = "\(count + 1)"
+                    if cell.unreadCountBadge.isHidden {
+                        cell.unreadCountBadge.isHidden = false
+                    }  
+                    cell.reloadInputViews()
+                }
+            }
+        }
+    }
+    
+    func onTypingStarted(_ typingDetails: TypingIndicator) {
+        if let row = self.usersArray.firstIndex(where: {$0.uid == typingDetails.sender?.uid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+            DispatchQueue.main.async {
+                let cell = self.oneOneOneTableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
+                cell.buddyStatus.text = "Typing..."
+                cell.buddyStatus.textColor = UIColor.init(hexFromString: "9ACD32")
+                cell.buddyStatus.font = UIFont.italicSystemFont(ofSize: 15.0)
+                cell.reloadInputViews()
+            }
+        }
+    }
+    
+    func onTypingEnded(_ typingDetails: TypingIndicator) {
+        
+        if let row = self.usersArray.firstIndex(where: {$0.uid == typingDetails.sender?.uid}) {
+            let indexPath = IndexPath(row: row, section: 0)
+           DispatchQueue.main.async {
+                let cell = self.oneOneOneTableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
+                cell.buddyStatus.text = "Online"
+                cell.buddyStatus.textColor = UIColor.init(hexFromString: "434343")
+                cell.buddyStatus.font = UIFont.systemFont(ofSize: 15.0)
+                cell.reloadInputViews()
+            }
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////

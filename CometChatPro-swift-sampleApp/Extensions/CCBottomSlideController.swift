@@ -8,7 +8,7 @@ private var ConstraintConstantKVO = 1;
 
 
 // This protocol deald with the Swipe Transitions of UIViewController.
-public protocol CCBottomSlideDelegate: class {
+public protocol CCBottomSlideDelegate: class{
     func didPanelCollapse()
     func didPanelExpand()
     func didPanelAnchor()

@@ -1,5 +1,13 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
 
 target 'CometChatPro-swift-sampleApp' do
-  pod 'CometChatPro', '~> 1.8.7'
+  pod 'CometChatPro', '~> 2.0.0.beta1'
+  pod 'SDWebImage', '~> 4.0'
+end
+
+target 'CometChatPro-swift-sampleAppTests' do
+  
+  pod 'CometChatPro', '~> 2.0.0.beta1'
   pod 'SDWebImage', '~> 4.0'
 end

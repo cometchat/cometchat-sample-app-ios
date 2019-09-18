@@ -26,7 +26,7 @@ class ChatImageMessageCell: UITableViewCell {
     
     var chatMessage:MediaMessage! {
         didSet {
-            urlString = (chatMessage.url?.decodeUrl())!
+            urlString = (chatMessage.url?.decodeUrl()) ?? ""
             userNameLabel.text = (chatMessage.sender?.name ?? " ") + " :"
             userNameLabel.font = userNameLabel.font.withSize(12)
             userNameLabel.textColor = UIColor.darkGray
@@ -54,7 +54,11 @@ class ChatImageMessageCell: UITableViewCell {
                 timeLabelLeadingConstraint.isActive = false
                 timeLabelTrailingConstraint.isActive = true
                 userAvatarImageView.isHidden = true
-                readRecipts.isHidden = false
+                if chatMessage.receiverType == .user{
+                    readRecipts.isHidden = false
+                }else{
+                    readRecipts.isHidden = true
+                }
             } else {
                 userAvatarImageView.isHidden = false
                 aleadingConstraint.isActive = true
@@ -142,10 +146,10 @@ class ChatImageMessageCell: UITableViewCell {
                 return
             }
             
-            if strongSelf.chatMessage.readByMeAt > 0.0 {
+            if strongSelf.chatMessage.readAt > 0.0 {
                 strongSelf.readRecipts.image = #imageLiteral(resourceName: "seen")
             }
-            else if strongSelf.chatMessage.deliveredToMeAt > 0.0 {
+            else if strongSelf.chatMessage.deliveredAt > 0.0 {
                 strongSelf.readRecipts.image = #imageLiteral(resourceName: "delivered")
             }else{
                 strongSelf.readRecipts.image = #imageLiteral(resourceName: "sent")

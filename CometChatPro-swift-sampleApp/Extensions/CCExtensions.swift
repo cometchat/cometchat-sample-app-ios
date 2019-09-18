@@ -3,6 +3,7 @@
 import UIKit
 import Foundation
 
+
 @IBDesignable
 class DesignableView: UIView {
 }
@@ -589,5 +590,27 @@ extension RangeReplaceableCollection where Element: Equatable {
     mutating func removeFirstElementEqual(to element: Element) -> Element? {
         guard let index = firstIndex(of: element) else { return nil }
         return remove(at: index)
+    }
+}
+
+
+extension UINavigationController {
+    
+    public func pushViewController(viewController: UIViewController, animated: Bool, completion: @escaping () -> Void){
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        pushViewController(viewController, animated: animated)
+        CATransaction.commit()
+    }
+}
+
+
+extension Date {
+    var millisecondsSince1970:Int64 {
+        return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
+    }
+    
+    init(milliseconds:Int64) {
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
     }
 }
