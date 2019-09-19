@@ -255,7 +255,14 @@ extension OneOnOneListViewController : UITableViewDelegate, UITableViewDataSourc
                 AMShimmer.stop(for: self.oneOneOneTableView)
             })
             if isFiltering(){
+                if filteredUsersArray.isEmpty {
+                    self.oneOneOneTableView.setEmptyMessage("No users found.")
+                } else {
+                    self.oneOneOneTableView.restore()
+                }
                 return filteredUsersArray.count
+            }else{
+                self.oneOneOneTableView.restore()
             }
             return usersArray.count
         }
@@ -355,16 +362,21 @@ extension OneOnOneListViewController : UITableViewDelegate, UITableViewDataSourc
             
             var blockUsers = [String]()
             let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
-            blockUsers.append(selectedCell.UID)
-            CometChat.blockUsers(blockUsers, onSuccess: { (User) in
-                DispatchQueue.main.async {
-                    selectedCell.blockedLabel.isHidden = false
-                    self.view.makeToast("User blocked sucessfully.")
-                    blockUsers.removeAll()
-                }
-            }, onError: { (Error) in
-                DispatchQueue.main.async { self.view.makeToast("Unable to block user") }
-            })
+
+            if selectedCell.blockedLabel.isHidden == true{
+                blockUsers.append(selectedCell.UID)
+                CometChat.blockUsers(blockUsers, onSuccess: { (User) in
+                    DispatchQueue.main.async {
+                        selectedCell.blockedLabel.isHidden = false
+                        self.view.makeToast("User blocked sucessfully.")
+                        blockUsers.removeAll()
+                    }
+                }, onError: { (Error) in
+                    DispatchQueue.main.async { self.view.makeToast("Unable to block user") }
+                })
+            }else{
+                 self.view.makeToast("This user is blocked already.")
+            }
             completionHandler(true)
         })
         

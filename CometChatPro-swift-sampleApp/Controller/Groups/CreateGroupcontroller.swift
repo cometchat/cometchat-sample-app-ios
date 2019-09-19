@@ -16,6 +16,7 @@ class CreateGroupcontroller: UIViewController {
     @IBOutlet weak var groupNameView: UIView!
     @IBOutlet weak var groupTypeView: UIView!
     @IBOutlet weak var groupPasswordView: UIView!
+    @IBOutlet weak var groupDescriptionView: UIView!
     @IBOutlet weak var groupType: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
@@ -23,6 +24,8 @@ class CreateGroupcontroller: UIViewController {
     @IBOutlet weak var groupIDTxtFld: UITextField!
     @IBOutlet weak var groupNameTxtFld: UITextField!
     @IBOutlet weak var groupPasswordTxtFld: UITextField!
+    @IBOutlet weak var groupDescriptionTextField: UITextField!
+    
     //Variable Declarations
     var group:Group!
     
@@ -53,10 +56,10 @@ class CreateGroupcontroller: UIViewController {
         groupNameView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
         groupIDView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
         groupPasswordView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
+        groupDescriptionView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
         groupTypeView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
         createButton.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
         cancelButton.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
-        
         groupPasswordView.isHidden = true
         
         // NavigationBar Buttons Appearance
@@ -95,12 +98,16 @@ class CreateGroupcontroller: UIViewController {
     //CreateGroup Button Pressed
     @IBAction func createGroupPressed(_ sender: Any) {
         
+        if groupIDTxtFld.text == "" && (groupNameTxtFld!.text != nil){
+          showAlert(title: "Waning!", msg: "Kindly, fill required Parameters.")
+        }else{
+        
         if(groupType.text == NSLocalizedString("Public Group", comment: "")){
-            group = Group(guid: groupIDTxtFld.text!, name: groupNameTxtFld.text!, groupType: .public, password:nil)
+            group = Group(guid: groupIDTxtFld.text!, name: groupNameTxtFld.text!, groupType: .public, password: nil, icon: "https://picsum.photos/id/\(arc4random_uniform(200))/200/200", description: groupDescriptionTextField.text ?? "")
         }else if(groupType.text == NSLocalizedString("Password - Protected", comment: "")){
-            group = Group(guid: groupIDTxtFld.text!, name: groupNameTxtFld.text!, groupType: .password, password: groupPasswordTxtFld.text!)
+            group = Group(guid: groupIDTxtFld.text!, name: groupNameTxtFld.text!, groupType: .password, password: groupPasswordTxtFld.text!, icon: "https://picsum.photos/id/\(arc4random_uniform(200))/200/200", description: groupDescriptionTextField.text ?? "")
         }else if(groupType.text == NSLocalizedString("Private Group", comment: "")){
-            group = Group(guid: groupIDTxtFld.text!, name: groupNameTxtFld.text!, groupType: .private, password:nil)
+            group = Group(guid: groupIDTxtFld.text!, name: groupNameTxtFld.text!, groupType: .private, password: nil, icon: "https://picsum.photos/id/\(arc4random_uniform(200))/200/200", description: groupDescriptionTextField.text ?? "")
         }
         
         CometChat.createGroup(group: group, onSuccess: { (group) in
@@ -116,9 +123,10 @@ class CreateGroupcontroller: UIViewController {
         }) { (error) in
             DispatchQueue.main.async {
                 self.view.makeToast(NSLocalizedString("Fail to create Group.", comment: ""))
+                print("createGroup error \(String(describing: error?.errorDescription))")
             }
         }
-        
+        }
     }
     
     //selectGroupType Button Pressed
@@ -129,6 +137,7 @@ class CreateGroupcontroller: UIViewController {
             
             self.groupPasswordView.isHidden = true
             self.groupType.text = NSLocalizedString("Public Group", comment: "")
+            self.groupPasswordTxtFld.text = ""
             
         }
         let passwordProtectedGroup: UIAlertAction = UIAlertAction(title: NSLocalizedString("Password - Protected", comment: ""), style: .default) { action -> Void in
@@ -141,6 +150,7 @@ class CreateGroupcontroller: UIViewController {
             
             self.groupPasswordView.isHidden = true
             self.groupType.text = NSLocalizedString("Private Group", comment: "")
+            self.groupPasswordTxtFld.text = ""
             
         }
         

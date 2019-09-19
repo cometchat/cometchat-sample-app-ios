@@ -294,7 +294,14 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             AMShimmer.stop(for: groupTableView)
             
             if isFiltering(){
+                if filteredGroupList.count == 0 {
+                    self.groupTableView.setEmptyMessage("No groups found.")
+                } else {
+                    self.groupTableView.restore()
+                }
                 return filteredGroupList.count
+            }else{
+                 self.groupTableView.restore()
             }
             
             if (section == 0) {

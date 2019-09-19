@@ -10,6 +10,8 @@
 		<string>ENTER API KEY</string>
 		<key>APP_ID</key>
 		<string>ENTER APP ID</string>
+		<key>REGION</key>
+		<string>ENTER REGION CODE</string>
 	</dict>
 	<key>UIApperance</key>
 	<string>PersianBlue</string>

@@ -319,6 +319,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         case UserProfileCell.RENAME_GROUPS_CELL:break
         case UserProfileCell.LEAVE_GROUP_CELL:
             self.leaveGroup()
+        case UserProfileCell.DELETE_GROUP_CELL:
+            self.deleteGroup()
         case UserProfileCell.MY_SET_STATUS_CELL:
             self.setStatus()
         case UserProfileCell.MY_STATUS_MESSAGE_CELL:

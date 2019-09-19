@@ -1,5 +1,18 @@
 # Change Log
 
+###  v2.0.0-beta1.1 (Sept 19, 2019)
+
+- Added validation is the region code is empty.
+- Added group description field while creating app.
+- Added 'No users found' for no search results in User List.
+- Added 'No groups found' for no search results in Group List.
+- Fixed alert message when we blocked the user which is already banned. 
+- Fixed delete group functionality in group details page.
+- Fixed no actions to be performed for deleted message.
+- Fixed issue with clear the password field when group type changes.
+- Fixed issue with cursor not showing in login, chat and create group page. 
+
+
 ### v2.0.0 - beta1 (Sept 18, 2019)
 - Added SDK version v2.0.0-beta1
 - Added Message Receipts Info for Messages

@@ -48,7 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initialization(){
         
-        let appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region: "eu").build()
+        let appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region: AuthenticationDict?["REGION"] as! String).build()
+        
+        print("REGION IS: \(AuthenticationDict?["REGION"] as! String)")
         CometChat.init(appId: AuthenticationDict?["APP_ID"] as! String, appSettings: appSettings, onSuccess: { (Success) in
             CometChatLog.print(items: "initialization Success: \(Success)")
 

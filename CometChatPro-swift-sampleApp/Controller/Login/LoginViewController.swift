@@ -125,7 +125,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     @objc func LoginWithSuperHero1(tapGestureRecognizer: UITapGestureRecognizer)
     {
         if(API_KEY.contains(NSLocalizedString("Enter", comment: "")) || API_KEY.contains(NSLocalizedString("ENTER", comment: "")) || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
-            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in CometChat-info.plist file.", comment: ""))
+            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID, API-KEY and REGION in CometChat-info.plist file.", comment: ""))
         }else{
             self.loginButton.setTitle("\(NSLocalizedString("Processing...", comment: ""))", for: .normal)
             userName.text = "superhero1"
@@ -136,7 +136,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     @objc func LoginWithSuperHero2(tapGestureRecognizer: UITapGestureRecognizer)
     {
         if(API_KEY.contains(NSLocalizedString("Enter", comment: "")) || API_KEY.contains(NSLocalizedString("ENTER", comment: "")) || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
-            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in CometChat-info.plist file.", comment: ""))
+            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID, API-KEY and REGION in CometChat-info.plist file.", comment: ""))
         }else{
             self.loginButton.setTitle("\(NSLocalizedString("Processing...", comment: ""))", for: .normal)
             userName.text = "superhero2"
@@ -147,7 +147,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     @objc func LoginWithSuperHero3(tapGestureRecognizer: UITapGestureRecognizer)
     {
         if(API_KEY.contains(NSLocalizedString("Enter", comment: "")) || API_KEY.contains(NSLocalizedString("ENTER", comment: "")) || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
-            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in CometChat-info.plist file.", comment: ""))
+            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID, API-KEY and REGION in CometChat-info.plist file.", comment: ""))
         }else{
             self.loginButton.setTitle("\(NSLocalizedString("Processing...", comment: ""))", for: .normal)
             userName.text = "superhero3"
@@ -159,7 +159,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate {
     @objc func LoginWithSuperHero4(tapGestureRecognizer: UITapGestureRecognizer)
     {
         if(API_KEY.contains(NSLocalizedString("Enter", comment: "")) || API_KEY.contains(NSLocalizedString("ENTER", comment: "")) || API_KEY.contains("NULL") || API_KEY.contains("null") || API_KEY.count == 0){
-            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in CometChat-info.plist file.", comment: ""))
+            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID, API-KEY and REGION in CometChat-info.plist file.", comment: ""))
         }else{
             self.loginButton.setTitle("\(NSLocalizedString("Processing...", comment: ""))", for: .normal)
             userName.text = "superhero4"
