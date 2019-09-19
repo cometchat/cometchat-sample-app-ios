@@ -84,7 +84,7 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
           
    - Go to CometChatPro-swift-sampleApp -->  **CometChat-info.plist**.
                   
-   - Under Authentication section, modify *APP_ID* and *API_KEY* with your own **API_KEY** and **APP_ID**.
+   - Under Authentication section, modify *APP_ID* and *API_KEY*  and *REGION* with your own **API_KEY**, **APP_ID** and **REGION**.
    
    - Enter the **UID** at the time of login once the app is launched. 
     
