@@ -2,7 +2,7 @@
 
 ###  v2.0.0-beta1.1 (Sept 19, 2019)
 
-- Added validation is the region code is empty.
+- Added validation if the region code is empty.
 - Added group description field while creating app.
 - Added 'No users found' for no search results in User List.
 - Added 'No groups found' for no search results in Group List.
