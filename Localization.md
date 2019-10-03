@@ -10,6 +10,7 @@ Localization is the process of making your app adapt to different languages, reg
 * When you create new XCode project, XCode will automatically generate resources and the file structure including them for the default language.
 
 <img align="left" src="https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/Screenshots/1.png">
+
 		
 
 ## Adding New Language

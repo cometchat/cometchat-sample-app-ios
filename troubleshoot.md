@@ -15,6 +15,7 @@
 6. pod install
 ```
 
+
 2. Unable to find a specification for `CometChatPro`
 
 - out-of-date source repos which you can update with `pod repo update` or with `pod install --repo-update`.

@@ -1,5 +1,11 @@
 # Change Log
 
+###  v2.0.0-beta2 (Oct 3, 2019)
+
+- Added support for Xcode 11
+- Minor performance improvements
+
+
 ###  v2.0.0-beta1.1 (Sept 19, 2019)
 
 - Added validation if the region code is empty.
