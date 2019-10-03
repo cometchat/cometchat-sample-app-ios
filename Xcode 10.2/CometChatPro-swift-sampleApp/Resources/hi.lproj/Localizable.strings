@@ -1,0 +1,156 @@
+/* 
+  Localizable.strings
+  CometChatPro-swift-sampleApp
+
+  Created by Pushpsen Airekar on 09/04/19.
+  Copyright © 2019 Pushpsen Airekar. All rights reserved.
+*/
+// ------- Permissions PopUp localization start -------//
+"CometChat Pro Sample App requires above permissions to perform the necessary actions." = "CometChat Pro नमूना ऐप को आवश्यक कार्रवाई करने के लिए उपरोक्त अनुमति की आवश्यकता होती है।";
+"Permission denied" ="अनुमति नहीं मिली";
+"Please, go to Settings and allow permissions" = "कृपया, सेटिंग में जाएं और अनुमति दें";
+"Cancel" ="रद्द करना";
+"Settings" ="सेटिंग्स";
+"Allow" ="अनुमति दें";
+"Allowed" ="अनुमति दी";
+"Permissions Request" = "अनुमतियाँ अनुरोध";
+"Camera" = "कैमरा";
+"Photo Library" = "फोटो लाइब्रेरी";
+"Notification" ="अधिसूचना";
+"Microphone" = "माइक्रोफ़ोन";
+"Calendar" = "कैलेंडर";
+"Contacts" ="संपर्क";
+"Reminders" ="अनुस्मारक";
+"Speech" = "भाषण";
+"Location" = "स्थान";
+"Motion" = "प्रस्ताव";
+"Media Library" = "मीडिया पुस्तकालय";
+"Allow app for use camera" = "कैमरा का उपयोग करने के लिए एप्लिकेशन की अनुमति दें";
+"Access for save photos in your gallery" = "अपनी गैलरी में फ़ोटो सहेजने के लिए पहुंच";
+"Allow record voice from app" = "एप्लिकेशन से रिकॉर्ड आवाज की अनुमति दें";
+"Access for your contacts and phones" = "अपने संपर्कों और फोन के लिए प्रवेश";
+"Get important information without opening app." = "बिना ऐप खोले महत्वपूर्ण जानकारी प्राप्त करें।";
+"Application can create new task" ="एप्लिकेशन नया कार्य बना सकते हैं";
+"Allow check you voice" = "आपको आवाज़ की जाँच करने की अनुमति दें";
+"App will can check your location" = "ऐप आपकी लोकेशन चेक कर सकता है";
+"Allow reports motion and environment-related data" = "रिपोर्ट गति और पर्यावरण-संबंधी डेटा की अनुमति दें";
+"Allow check your media" = "अपने मीडिया की जांच की अनुमति दें";
+// ------- Permissions PopUp localization end -------//
+
+// ------- LoginPage localization start -------//
+"Warning!" =  "चेतावनी!";
+"UID cannot be Empty" = "UID खाली नहीं हो सकता";
+"Please fill the APP-ID and API-KEY in CometChat-info.plist file." = "कृपया CometChat-info.plist फ़ाइल में APP-ID और API-KEY भरें।";
+"Login Sucessful" = "सफलतापूर्ण प्रवेश";
+"Login Failure" = "लॉगिन विफलता";
+"Login with" =  "लोगिन करें";
+// ------- LoginPage localization end -------//
+
+// ------- Tabbar localization start-------//
+"Chats" = "चैट";
+"Contacts" = "संपर्क";
+"Groups" = "समूह";
+// ------- Tabbar localization End-------//
+
+// ------- GroupList localization start-------//
+"Search Name" =  "खोज नाम";
+"Enter Password" = "पास वर्ड दर्ज करें";
+"Kindly, Enter the password to proceed." = "कृपया, आगे बढ़ने के लिए पासवर्ड डालें।";
+"Join" = "शामिल हों";
+"Group Joined Sucessfully." = "समूह में शामिल हो गए।";
+"Failed to join group" =  "समूह में शामिल होने में विफल";
+"Joined Groups" = "शामिल समूह";
+"Other Groups" = "अन्य समूह";
+"Calling ..." = "कॉल कर रहा है ...";
+"More" = "अधिक";
+"Cancel" = "रद्द करना";
+"Create Group" = "समूह बनाएँ";
+"Public Group" =  "सार्वजनिक समूह";
+"Password - Protected" = "पासवर्ड से सुरक्षित";
+"Private Group" = "निजी समूह";
+"Group created successfully." = "समूह सफलतापूर्वक बनाया गया।";
+"Fail to create Group." = "समूह बनाने में विफल।";
+// ------- GroupList localization End-------//
+
+// ------- UserList localization End-------//
+"Online" = "ऑनलाइन";
+"Offline" = "ऑफलाइन";
+// ------- UserList localization End-------//
+
+// ------- ChatList localization start-------//
+"Type a message..." = "एक संदेश लिखें...";
+"Send AudioFile" = "AudioFile भेजें";
+"Are you sure want to send this Audio note." = "क्या आप वाकई यह ऑडियो नोट भेजना चाहते हैं";
+"Send" = "भेजना";
+"Recording..." = "रिकॉर्डिंग...";
+"View Profile" = "प्रोफाइल देखिये";
+"Call Initiated" = "कॉल शुरू ";
+"Call Unanswered" = "अनुत्तरित कॉल करें";
+"Call Rejected" = "कॉल अस्वीकार कर दिया";
+"Call Busy" = "कॉल व्यस्त";
+"Call Cancelled" = "कॉल रद्द किया गया";
+"Call Ended" = "कॉल समाप्त";
+"Camera" = "कैमरा";
+"Next" = "आगामी";
+"Video" = "वीडियो";
+"Albums" = "एल्बम";
+"Library" = "पुस्तकालय";
+"Cover" = "आवरण";
+"Ok" = "ठीक";
+"Done" = "किया";
+"Save" = "बचाना";
+"Processing" = "प्रसंस्करण";
+"Trim" = "ट्रिम";
+"Filter" = "फ़िल्टर";
+"Crop" = "फ़सल";
+"Limit Reached" = "सीमित पहुंच";
+"Gallery" = "गेलरी";
+"Photo & Video Library" = "फोटो और वीडियो लाइब्रेरी";
+"Document" = "दस्तावेज़";
+"Typing..." = "टाइपिंग...";
+// ------- ChatList localization end-------//
+
+// ------- More Profile localization start-------//
+"View Profile" =  "प्रोफाइल देखिये";
+"Bots" = "बॉट";
+"Chat Settings" = "चैट सेटिंग्स";
+"Notification" = "अधिसूचना";
+"Blocked User" = "अवरुद्ध उपयोगकर्ता";
+"Change Language" = "भाषा बदलो";
+"Games" = "खेल";
+"Logout" = "लोग आउट";
+"This feature has not been added yet" = "यह सुविधा अभी तक नहीं जोड़ी गई है";
+"Are you sure you want to Logout?" = "क्या आप लॉग आउट करना चाहते हैं?";
+"Fail to logout at this moment." = "इस समय लॉगआउट करने में विफल।";
+// ------- More Profile localization end-------//
+
+// ------- View Member localization start-------//
+"View Member" = "सदस्य देखें";
+"Admin" = "व्यवस्थापक";
+"Moderator" ="मध्यस्थ";
+"Participant" = "भाग लेने वाला";
+"You" = "आप";
+"Ban User" = "प्रतिबंध उपयोगकर्ता";
+"Kick User" = "उपयोगकर्ता को लात मारें";
+"Update Scope" = "अद्यतन करें";
+"Cannot kick or ban Modarator" = "मॉडरेट को किक या प्रतिबंधित नहीं कर सकता";
+"Cannot perform action on Yourself." = "खुद पर कार्रवाई नहीं कर सकते।";
+// ------- View Member localization end-------//
+
+// ------- User Profile localization start-------//
+"Audio Call" =  "ऑडियो कॉल";
+"Video Call" = "वीडियो कॉल";
+"Status Message" = "स्थिति संदेश";
+"Set Status" = "स्थिति सेट करें";
+"View Member" = "सदस्य देखें";
+"Add Member" = "सदस्य जोड़ें";
+"Unban Member" = "अनबन सदस्य";
+"Leave Group" = "समूह छोड़ दें";
+"Delete Group" = "समूह हटाएँ";
+"This feature has not been added yet." = "यह सुविधा अभी तक नहीं जोड़ी गई है।";
+"Group left Sucessfully." = "समूह ने सफलता पूर्वक छोड़ दिया।";
+"Fail to leave Group." = "समूह छोड़ने में विफल।";
+"Group deleted Sucessfully." = "समूह को सफलतापूर्वक हटा दिया गया।";
+"Fail to delete Group." = "समूह को हटाने में विफल।";
+"Unban Members" = "अनबन सदस्य";
+// ------- User Profile localization end-------//
