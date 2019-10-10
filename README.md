@@ -1,3 +1,5 @@
+
+
 <div style="width:100%">
 	<div style="width:50%; display:inline-block">
 		<p align="center">
@@ -5,6 +7,7 @@
 		</p>	
 	</div>	
 </div>
+
 </br>
 </br>
 </div>
@@ -14,6 +17,7 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
 
 [![Platform](https://img.shields.io/badge/Platform-iOS-orange.svg)](https://cocoapods.org/pods/CometChatPro)
 [![Languages](https://img.shields.io/badge/Language-Swift-orange.svg)](https://github.com/cometchat-pro/ios-swift-chat-app)
+[![Platform](https://img.shields.io/badge/Warning-This%20project%20contains%20large%20files.%20Kindly%2C%20clone%20the%20project%20instead%20of%20downloading%20the%20.zip%20file.%20-red)](#)
 
 
 ## Table of Contents
