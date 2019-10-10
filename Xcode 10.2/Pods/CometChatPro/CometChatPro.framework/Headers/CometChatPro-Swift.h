@@ -369,20 +369,43 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) BOOL isInitialised;)
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, groupType, closed) {
-  groupTypePublic = 0,
-  groupTypePrivate = 1,
-  groupTypePassword = 2,
+typedef SWIFT_ENUM(NSInteger, MessageCategory, closed) {
+  MessageCategoryMessage = 0,
+  MessageCategoryAction = 1,
+  MessageCategoryCall = 2,
+  MessageCategoryCustom = 3,
 };
 
 
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, Blocked, closed) {
-  BlockedByMe = 0,
-  BlockedMe = 1,
-  BlockedBoth = 2,
+typedef SWIFT_ENUM(NSInteger, SubscriptionType, closed) {
+  SubscriptionTypeAllUsers = 0,
+  SubscriptionTypeOnlyFriends = 1,
+  SubscriptionTypeRole = 2,
+  SubscriptionTypeNone = 3,
+};
+
+
+
+
+@interface CometChat (SWIFT_EXTENSION(CometChatPro))
+@end
+
+typedef SWIFT_ENUM(NSInteger, GroupMemberScopeType, closed) {
+  GroupMemberScopeTypeAdmin = 0,
+  GroupMemberScopeTypeModerator = 1,
+  GroupMemberScopeTypeParticipant = 2,
+};
+
+
+@interface CometChat (SWIFT_EXTENSION(CometChatPro))
+@end
+
+typedef SWIFT_ENUM(NSInteger, CallType, closed) {
+  CallTypeAudio = 0,
+  CallTypeVideo = 1,
 };
 
 
@@ -408,21 +431,30 @@ typedef SWIFT_ENUM(NSInteger, MessageType, closed) {
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, MessageCategory, closed) {
-  MessageCategoryMessage = 0,
-  MessageCategoryAction = 1,
-  MessageCategoryCall = 2,
-  MessageCategoryCustom = 3,
+typedef SWIFT_ENUM(NSInteger, MemberScope, closed) {
+  MemberScopeAdmin = 0,
+  MemberScopeModerator = 1,
+  MemberScopeParticipant = 2,
 };
 
 
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, GroupMemberScopeType, closed) {
-  GroupMemberScopeTypeAdmin = 0,
-  GroupMemberScopeTypeModerator = 1,
-  GroupMemberScopeTypeParticipant = 2,
+typedef SWIFT_ENUM(NSInteger, Blocked, closed) {
+  BlockedByMe = 0,
+  BlockedMe = 1,
+  BlockedBoth = 2,
+};
+
+
+@interface CometChat (SWIFT_EXTENSION(CometChatPro))
+@end
+
+typedef SWIFT_ENUM(NSInteger, groupType, closed) {
+  groupTypePublic = 0,
+  groupTypePrivate = 1,
+  groupTypePassword = 2,
 };
 
 
@@ -438,25 +470,6 @@ typedef SWIFT_ENUM(NSInteger, UserStatus, closed) {
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, CallType, closed) {
-  CallTypeAudio = 0,
-  CallTypeVideo = 1,
-};
-
-
-@interface CometChat (SWIFT_EXTENSION(CometChatPro))
-@end
-
-typedef SWIFT_ENUM(NSInteger, MemberScope, closed) {
-  MemberScopeAdmin = 0,
-  MemberScopeModerator = 1,
-  MemberScopeParticipant = 2,
-};
-
-
-@interface CometChat (SWIFT_EXTENSION(CometChatPro))
-@end
-
 typedef SWIFT_ENUM(NSInteger, callStatus, closed) {
   callStatusInitiated = 0,
   callStatusOngoing = 1,
@@ -465,19 +478,6 @@ typedef SWIFT_ENUM(NSInteger, callStatus, closed) {
   callStatusBusy = 4,
   callStatusCancelled = 5,
   callStatusEnded = 6,
-};
-
-
-
-
-@interface CometChat (SWIFT_EXTENSION(CometChatPro))
-@end
-
-typedef SWIFT_ENUM(NSInteger, SubscriptionType, closed) {
-  SubscriptionTypeAllUsers = 0,
-  SubscriptionTypeOnlyFriends = 1,
-  SubscriptionTypeRole = 2,
-  SubscriptionTypeNone = 3,
 };
 
 
@@ -722,6 +722,12 @@ SWIFT_PROTOCOL("_TtP12CometChatPro22CometChatGroupDelegate_")
 - (void)onGroupMemberScopeChangedWithAction:(ActionMessage * _Nonnull)action scopeChangeduser:(User * _Nonnull)scopeChangeduser scopeChangedBy:(User * _Nonnull)scopeChangedBy scopeChangedTo:(NSString * _Nonnull)scopeChangedTo scopeChangedFrom:(NSString * _Nonnull)scopeChangedFrom group:(Group * _Nonnull)group;
 - (void)onAddedToGroupWithAction:(ActionMessage * _Nonnull)action addedBy:(User * _Nonnull)addedBy addedTo:(Group * _Nonnull)addedTo SWIFT_AVAILABILITY(ios,unavailable,message="This delegate method is unavailable now. Please use the delegate function `onMemberAddedToGroup(action: ActionMessage, addedBy : User, addedUser:User ,addedTo:Group)`");
 - (void)onMemberAddedToGroupWithAction:(ActionMessage * _Nonnull)action addedBy:(User * _Nonnull)addedBy addedUser:(User * _Nonnull)addedUser addedTo:(Group * _Nonnull)addedTo;
+@end
+
+
+SWIFT_CLASS("_TtC12CometChatPro15CometChatHelper")
+@interface CometChatHelper : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -1357,20 +1363,43 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) BOOL isInitialised;)
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, groupType, closed) {
-  groupTypePublic = 0,
-  groupTypePrivate = 1,
-  groupTypePassword = 2,
+typedef SWIFT_ENUM(NSInteger, MessageCategory, closed) {
+  MessageCategoryMessage = 0,
+  MessageCategoryAction = 1,
+  MessageCategoryCall = 2,
+  MessageCategoryCustom = 3,
 };
 
 
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, Blocked, closed) {
-  BlockedByMe = 0,
-  BlockedMe = 1,
-  BlockedBoth = 2,
+typedef SWIFT_ENUM(NSInteger, SubscriptionType, closed) {
+  SubscriptionTypeAllUsers = 0,
+  SubscriptionTypeOnlyFriends = 1,
+  SubscriptionTypeRole = 2,
+  SubscriptionTypeNone = 3,
+};
+
+
+
+
+@interface CometChat (SWIFT_EXTENSION(CometChatPro))
+@end
+
+typedef SWIFT_ENUM(NSInteger, GroupMemberScopeType, closed) {
+  GroupMemberScopeTypeAdmin = 0,
+  GroupMemberScopeTypeModerator = 1,
+  GroupMemberScopeTypeParticipant = 2,
+};
+
+
+@interface CometChat (SWIFT_EXTENSION(CometChatPro))
+@end
+
+typedef SWIFT_ENUM(NSInteger, CallType, closed) {
+  CallTypeAudio = 0,
+  CallTypeVideo = 1,
 };
 
 
@@ -1396,21 +1425,30 @@ typedef SWIFT_ENUM(NSInteger, MessageType, closed) {
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, MessageCategory, closed) {
-  MessageCategoryMessage = 0,
-  MessageCategoryAction = 1,
-  MessageCategoryCall = 2,
-  MessageCategoryCustom = 3,
+typedef SWIFT_ENUM(NSInteger, MemberScope, closed) {
+  MemberScopeAdmin = 0,
+  MemberScopeModerator = 1,
+  MemberScopeParticipant = 2,
 };
 
 
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, GroupMemberScopeType, closed) {
-  GroupMemberScopeTypeAdmin = 0,
-  GroupMemberScopeTypeModerator = 1,
-  GroupMemberScopeTypeParticipant = 2,
+typedef SWIFT_ENUM(NSInteger, Blocked, closed) {
+  BlockedByMe = 0,
+  BlockedMe = 1,
+  BlockedBoth = 2,
+};
+
+
+@interface CometChat (SWIFT_EXTENSION(CometChatPro))
+@end
+
+typedef SWIFT_ENUM(NSInteger, groupType, closed) {
+  groupTypePublic = 0,
+  groupTypePrivate = 1,
+  groupTypePassword = 2,
 };
 
 
@@ -1426,25 +1464,6 @@ typedef SWIFT_ENUM(NSInteger, UserStatus, closed) {
 @interface CometChat (SWIFT_EXTENSION(CometChatPro))
 @end
 
-typedef SWIFT_ENUM(NSInteger, CallType, closed) {
-  CallTypeAudio = 0,
-  CallTypeVideo = 1,
-};
-
-
-@interface CometChat (SWIFT_EXTENSION(CometChatPro))
-@end
-
-typedef SWIFT_ENUM(NSInteger, MemberScope, closed) {
-  MemberScopeAdmin = 0,
-  MemberScopeModerator = 1,
-  MemberScopeParticipant = 2,
-};
-
-
-@interface CometChat (SWIFT_EXTENSION(CometChatPro))
-@end
-
 typedef SWIFT_ENUM(NSInteger, callStatus, closed) {
   callStatusInitiated = 0,
   callStatusOngoing = 1,
@@ -1453,19 +1472,6 @@ typedef SWIFT_ENUM(NSInteger, callStatus, closed) {
   callStatusBusy = 4,
   callStatusCancelled = 5,
   callStatusEnded = 6,
-};
-
-
-
-
-@interface CometChat (SWIFT_EXTENSION(CometChatPro))
-@end
-
-typedef SWIFT_ENUM(NSInteger, SubscriptionType, closed) {
-  SubscriptionTypeAllUsers = 0,
-  SubscriptionTypeOnlyFriends = 1,
-  SubscriptionTypeRole = 2,
-  SubscriptionTypeNone = 3,
 };
 
 
@@ -1710,6 +1716,12 @@ SWIFT_PROTOCOL("_TtP12CometChatPro22CometChatGroupDelegate_")
 - (void)onGroupMemberScopeChangedWithAction:(ActionMessage * _Nonnull)action scopeChangeduser:(User * _Nonnull)scopeChangeduser scopeChangedBy:(User * _Nonnull)scopeChangedBy scopeChangedTo:(NSString * _Nonnull)scopeChangedTo scopeChangedFrom:(NSString * _Nonnull)scopeChangedFrom group:(Group * _Nonnull)group;
 - (void)onAddedToGroupWithAction:(ActionMessage * _Nonnull)action addedBy:(User * _Nonnull)addedBy addedTo:(Group * _Nonnull)addedTo SWIFT_AVAILABILITY(ios,unavailable,message="This delegate method is unavailable now. Please use the delegate function `onMemberAddedToGroup(action: ActionMessage, addedBy : User, addedUser:User ,addedTo:Group)`");
 - (void)onMemberAddedToGroupWithAction:(ActionMessage * _Nonnull)action addedBy:(User * _Nonnull)addedBy addedUser:(User * _Nonnull)addedUser addedTo:(Group * _Nonnull)addedTo;
+@end
+
+
+SWIFT_CLASS("_TtC12CometChatPro15CometChatHelper")
+@interface CometChatHelper : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 

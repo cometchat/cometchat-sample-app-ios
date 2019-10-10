@@ -10,7 +10,7 @@ import UIKit
 import CometChatPro
 
 class ChatMediaMessageCell: UITableViewCell {
-
+    
     let fileNameLabel = UILabel()
     let fileTypeLabel = UILabel()
     let userNameLabel = UILabel()
@@ -31,8 +31,8 @@ class ChatMediaMessageCell: UITableViewCell {
     var chatMessage : MediaMessage! {
         didSet{
             
-            let fileName:String = chatMessage.attachment?.fileName ?? "NONE"
-            let fileType:String = chatMessage.attachment?.fileExtension ?? "NONE"
+            let fileName:String = chatMessage.attachment?.fileName ?? "Processing"
+            let fileType:String = chatMessage.attachment?.fileExtension ?? "- - -"
             fileNameLabel.text = "            " + fileName
             fileTypeLabel.font = fileTypeLabel.font.withSize(12)
             fileTypeLabel.text = fileType.uppercased()
@@ -44,8 +44,12 @@ class ChatMediaMessageCell: UITableViewCell {
             dateFormatter1.dateFormat = "HH:mm:a"
             dateFormatter1.timeZone = NSTimeZone.local
             let dateString : String = dateFormatter1.string(from: date)
-            messageTimeLabel.text =  dateString
-            readRecipts.image = #imageLiteral(resourceName: "sent")
+            if chatMessage.sentAt == 0 {
+                messageTimeLabel.text =  "Sending..."
+            }else{
+                messageTimeLabel.text =  dateString
+            }
+            readRecipts.image = #imageLiteral(resourceName: "wait")
             
             DispatchQueue.main.async {  [weak self] in
                 guard let strongSelf = self
@@ -54,7 +58,9 @@ class ChatMediaMessageCell: UITableViewCell {
                     return
                 }
                 
-                if strongSelf.chatMessage.readAt > 0.0 {
+                if self!.chatMessage.sentAt == 0{
+                     self!.readRecipts.image = #imageLiteral(resourceName: "wait")
+                }else if strongSelf.chatMessage.readAt > 0.0 {
                     strongSelf.readRecipts.image = #imageLiteral(resourceName: "seen")
                 }
                 else if strongSelf.chatMessage.deliveredAt > 0.0 {
@@ -70,6 +76,7 @@ class ChatMediaMessageCell: UITableViewCell {
             }else{
                 userAvatarImageView.image = UIImage(named: "default_user")
             }
+            
             let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
             if(chatMessage.senderUid == myUID){
                 messageLabelLeadingConstraint.isActive = false
@@ -84,6 +91,7 @@ class ChatMediaMessageCell: UITableViewCell {
                 }else{
                     readRecipts.isHidden = true
                 }
+                
                 switch AppAppearance{
                     
                 case .AzureRadiance:
@@ -109,7 +117,6 @@ class ChatMediaMessageCell: UITableViewCell {
                     fileNameLabel.textColor = UIColor.white
                     fileTypeLabel.textColor = UIColor.white
                 }
-                
             }else {
                 readRecipts.isHidden = true
                 messageLabelLeadingConstraint.isActive = true
@@ -192,7 +199,7 @@ class ChatMediaMessageCell: UITableViewCell {
         userNameLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 15).isActive = true
         userNameLabel.bottomAnchor.constraint(equalTo: fileNameLabel.topAnchor, constant: -15).isActive = true
         userNameLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
-
+        
         messageBackgroundView.topAnchor.constraint(equalTo: fileNameLabel.topAnchor, constant: -12).isActive = true
         messageBackgroundView.leadingAnchor.constraint(equalTo: fileNameLabel.leadingAnchor, constant: -12).isActive = true
         messageBackgroundView.bottomAnchor.constraint(equalTo: fileTypeLabel.bottomAnchor, constant:12).isActive = true
@@ -236,7 +243,7 @@ class ChatMediaMessageCell: UITableViewCell {
         userAvatarImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 25).isActive = true
         userAvatarImageView.clipsToBounds = true
         userAvatarImageView.layer.cornerRadius = 12.5
-
+        
     }
     
     

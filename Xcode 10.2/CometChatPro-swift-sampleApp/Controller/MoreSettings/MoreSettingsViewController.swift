@@ -259,6 +259,7 @@ class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableVi
                     UserDefaults.standard.removeObject(forKey: "LoggedInUserUID")
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let CCtabBar = storyBoard.instantiateViewController(withIdentifier: "CCtabBar") as! CCTabbar
+                    CCtabBar.modalPresentationStyle = .fullScreen
                     self.present(CCtabBar, animated:true, completion:nil)
                 }, onError: { (error) in
                      DispatchQueue.main.async(execute: { self.view.makeToast(NSLocalizedString("Fail to logout at this moment.", comment: ""))})

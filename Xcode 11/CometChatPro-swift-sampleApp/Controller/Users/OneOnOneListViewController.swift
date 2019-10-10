@@ -38,6 +38,7 @@ class OneOnOneListViewController: UIViewController {
         super.viewDidLoad()
         
         //Function Calling
+        self.handleContactListVCAppearance()
         self.fetchUsersList()
         oneOneOneTableView.reloadData()
         
@@ -114,8 +115,10 @@ class OneOnOneListViewController: UIViewController {
     
     //This method handles the UI customization for ContactListVC
     func  handleContactListVCAppearance(){
-        // ViewController Appearance
+        
+        // ViewController Appearance:
         view.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
+    
         oneOneOneTableView.backgroundColor = UIColor.white
         //TableView Appearance
         self.oneOneOneTableView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
@@ -132,32 +135,22 @@ class OneOnOneListViewController: UIViewController {
         // NavigationBar Appearance
         navigationItem.title = NSLocalizedString("Contacts", comment: "")
         if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),.font: UIFont(name: SystemFont.bold.value, size: 40)!]
-            appearance.titleTextAttributes = [.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),.font: UIFont(name: SystemFont.regular.value, size: 21)!]
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white,.font: UIFont(name: SystemFont.regular.value, size: 21)!]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont(name: SystemFont.bold.value, size: 40)!]
+            navBarAppearance.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
+            navigationController?.navigationBar.standardAppearance = navBarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        }
 
-            UINavigationBar.appearance().tintColor = .white
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().compactAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        } else {
-            UINavigationBar.appearance().tintColor = .white
-            UINavigationBar.appearance().barTintColor = .purple
-            UINavigationBar.appearance().isTranslucent = false
-        }
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
-            
-        
         // NavigationBar Buttons Appearance
         createButton.setImage(UIImage(named: "new.png"), for: .normal)
         createButton.isHidden = true
         moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
         createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        moreButton.imageView?.contentMode = .scaleAspectFill
  
         // SearchBar Apperance
         searchController.searchResultsUpdater = self

@@ -68,7 +68,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             }
             
             url = NSURL(string: user.avatar ?? "")
-            userProfileAvtar.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_user"))
+            ImageLoader.sharedLoader.imageForUrl(urlString:user.avatar ?? "") { (image: UIImage?, url: String) in
+                self.userProfileAvtar.image = image
+            }
         }
         
         // Assigning Delegates

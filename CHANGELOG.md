@@ -1,5 +1,16 @@
 # Change Log
 
+###  v2.0.0-beta2.1 (Oct 10, 2019)
+
+- Added compatibility for Xcode 11 Simulators
+- Added FaceID, TouchID and passcode integration while launching app
+- Fixed navigation bar white color issue with Xcode 11
+- Fixed issue with delay while message sending on UI for all message types
+- Fixed issue with  gap between chatView and keyboard sometimes
+- Fixed issue with  blank profile picture avtar sometimes
+- Minor performance improvements
+
+
 ###  v2.0.0-beta2 (Oct 3, 2019)
 
 - Added support for Xcode 11

@@ -89,7 +89,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         super.viewDidDisappear(true)
     }
     
-     @objc func refresh(_ sender: Any) {
+    @objc func refresh(_ sender: Any) {
         refreshGroupList()
         refreshControl.endRefreshing()
     }
@@ -280,7 +280,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         if isFiltering(){
             return 1
         }else{
-             return 2
+            return 2
         }
     }
     
@@ -301,7 +301,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 }
                 return filteredGroupList.count
             }else{
-                 self.groupTableView.restore()
+                self.groupTableView.restore()
             }
             
             if (section == 0) {
@@ -339,7 +339,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         if !joinedChatRoomList.isEmpty  || !othersChatRoomList.isEmpty {
             
             var group:Group!
-           
+            
             if isFiltering() {
                 group = self.filteredGroupList[indexPath.row]
             } else {
@@ -418,9 +418,9 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                 let saveAction = UIAlertAction(title: NSLocalizedString("Join", comment: ""), style: UIAlertAction.Style.default, handler: { alert -> Void in
                     let passwordTextfield = alertController.textFields![0] as UITextField
                     CometChat.joinGroup(GUID: selectedCell.UID, groupType: .password, password: passwordTextfield.text, onSuccess: { (success) in
-
+                        
                         DispatchQueue.main.async{
-
+                            
                             self.view.makeToast(NSLocalizedString("Group Joined Sucessfully.", comment: ""))
                             self.navigationController?.pushViewController(chatViewController, animated: true)
                             self.othersChatRoomList.remove(at: indexPath.row)
@@ -447,7 +447,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             }else{
                 
                 CometChat.joinGroup(GUID: selectedCell.UID, groupType: .public, password: nil, onSuccess: { (success) in
-
+                    
                     DispatchQueue.main.async{
                         self.view.makeToast(NSLocalizedString("Group Joined Sucessfully.", comment: ""))
                         self.navigationController?.pushViewController(chatViewController, animated: true)
@@ -463,7 +463,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
                         self.view.makeToast(NSLocalizedString("Failed to join group", comment: ""))
                     }
                 }
-           }
+            }
         }else{
             self.navigationController?.pushViewController(chatViewController, animated: true)
         }
@@ -693,14 +693,14 @@ extension UIViewController {
 extension GroupListViewController : UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-      
+        
         groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 20).set(searchKeyword: searchController.searchBar.text!).build()
         
         groupRequest.fetchNext(onSuccess: { (groupList) in
-
+            
             self.filteredGroupList = groupList
-                DispatchQueue.main.async(execute: { self.groupTableView.reloadData()
-                })
+            DispatchQueue.main.async(execute: { self.groupTableView.reloadData()
+            })
         }) { (exception) in
             DispatchQueue.main.async(execute: {
                 self.view.makeToast("\(String(describing: exception!.errorDescription))")
@@ -718,10 +718,10 @@ extension GroupListViewController : CometChatGroupDelegate {
             DispatchQueue.main.async {
                 let cell = self.groupTableView.cellForRow(at: indexPath) as! GroupTableViewCell
                 if let actionMessageText:String = action.message {
-                   cell.groupParticipants.text = actionMessageText
-                   cell.groupParticipants.font = UIFont.italicSystemFont(ofSize: 12.0)
-                   cell.groupParticipants.textColor = UIColor.init(hexFromString: "434343")
-                   cell.reloadInputViews()
+                    cell.groupParticipants.text = actionMessageText
+                    cell.groupParticipants.font = UIFont.italicSystemFont(ofSize: 12.0)
+                    cell.groupParticipants.textColor = UIColor.init(hexFromString: "434343")
+                    cell.reloadInputViews()
                 }
             }
         }
@@ -801,7 +801,7 @@ extension GroupListViewController : CometChatGroupDelegate {
             }
         }
     }
-
+    
     
     func onMemberAddedToGroup(action: ActionMessage, addedBy: User, addedUser: User, addedTo: Group) {
         if let row = self.joinedChatRoomList.firstIndex(where: {$0.guid == action.receiverUid}) {
@@ -819,7 +819,7 @@ extension GroupListViewController : CometChatGroupDelegate {
             self.refreshGroupList()
         }
     }
-
+    
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -868,7 +868,7 @@ extension GroupListViewController : CometChatMessageDelegate {
                     cell.unreadCountLabel.text = "\(count + 1)"
                     if cell.unreadCountBadge.isHidden {
                         cell.unreadCountBadge.isHidden = false
-                    }  
+                    }
                     cell.reloadInputViews()
                 }
             }

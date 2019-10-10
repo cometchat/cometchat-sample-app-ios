@@ -1,0 +1,6 @@
+module Pods_CometChatPro_swift_sampleAppTests {
+  umbrella header "Pods-CometChatPro-swift-sampleAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

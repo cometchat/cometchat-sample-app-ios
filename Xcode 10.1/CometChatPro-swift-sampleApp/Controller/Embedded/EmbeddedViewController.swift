@@ -60,7 +60,7 @@ class EmbeddedViewController: UIViewController, CometChatCallDelegate {
                         }
                         CallingViewController.avtarURLString = callInitiator.avatar
                     }
-                    
+                    CallingViewController.modalPresentationStyle = .fullScreen
                     self.present(CallingViewController, animated: true, completion: { () in
                         
                     })
@@ -86,6 +86,7 @@ class EmbeddedViewController: UIViewController, CometChatCallDelegate {
                         }
                         CallingViewController.avtarURLString = callReceiver.icon
                     }
+                    CallingViewController.modalPresentationStyle = .fullScreen
                     self.present(CallingViewController, animated: true, completion: { () in
                         
                     })
@@ -104,10 +105,10 @@ class EmbeddedViewController: UIViewController, CometChatCallDelegate {
         guard let sessionID = acceptedCall?.sessionID else {
             return;
         }
-        
-        self.dismiss(animated: true, completion: nil)
-        
-        CometChat.startCall(sessionID: sessionID, inView:self.view, userJoined: { (someone_joined) in
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+            
+         CometChat.startCall(sessionID: sessionID, inView:self.view, userJoined: { (someone_joined) in
             
             CometChatLog.print(items:someone_joined as Any)
             
@@ -126,6 +127,7 @@ class EmbeddedViewController: UIViewController, CometChatCallDelegate {
                 
             }
         }
+        }
     }
     
     func onOutgoingCallRejected(rejectedCall: Call?, error: CometChatException?) {
@@ -141,8 +143,9 @@ class EmbeddedViewController: UIViewController, CometChatCallDelegate {
     
     func onIncomingCallCancelled(canceledCall: Call?, error: CometChatException?) {
         
-        let presentedViewController: CallingViewController! = self.presentedViewController as? CallingViewController
+       
         DispatchQueue.main.async {
+             let presentedViewController: CallingViewController! = self.presentedViewController as? CallingViewController
             presentedViewController?.dismiss(animated: false, completion: nil)
         }
         CometChatLog.print(items: canceledCall?.stringValue() as Any)

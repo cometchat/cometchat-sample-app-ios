@@ -7,6 +7,7 @@
 
 import UIKit
 import CometChatPro
+import LocalAuthentication
 
 
 @UIApplicationMain
@@ -14,27 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
+    var context = LAContext()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         self.initialization()
-       
-        
-        
-        if UserDefaults.standard.object(forKey: "getLanguage") != nil{
-             AnyLanguageBundle.setLanguage(UserDefaults.standard.object(forKey: "getLanguage") as! String)
-        }
-        if((UserDefaults.standard.object(forKey: "LoggedInUserUID")) != nil){
-            
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            
-            let viewController = storyBoard.instantiateViewController(withIdentifier: "embeddedViewContrroller") as! EmbeddedViewController
-            self.window?.rootViewController = viewController
-            self.window?.makeKeyAndVisible()
-        }
-        
-        UIFont.overrideInitialize()
+        self.authentication()
+        context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
         switch AppAppearance{
         case .AzureRadiance:break
         case .MountainMeadow:break
@@ -43,45 +30,81 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationBar.appearance().isTranslucent = false
             UINavigationBar.appearance().backgroundColor = .clear
         case .Custom:break }
+        
         return true
     }
     
     func initialization(){
-        
         let appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region: AuthenticationDict?["REGION"] as! String).build()
-        
         print("REGION IS: \(AuthenticationDict?["REGION"] as! String)")
         CometChat.init(appId: AuthenticationDict?["APP_ID"] as! String, appSettings: appSettings, onSuccess: { (Success) in
             CometChatLog.print(items: "initialization Success: \(Success)")
-
         }) { (error) in
             CometChatLog.print(items: "Initialization Error \(error.errorDescription)")
         }
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        
         self.initialization()
-        
     }
     
     
-    func applicationWillResignActive(_ application: UIApplication) {
-        
-    }
+    func applicationWillResignActive(_ application: UIApplication) {}
     
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        
-    }
+    func applicationDidEnterBackground(_ application: UIApplication) {}
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        
-         self.initialization()
+        self.initialization()
     }
     
     
-    func applicationWillTerminate(_ application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {}
+    
+    internal func authentication(){
         
+        context = LAContext()
+        
+        context.localizedCancelTitle = "Cancel"
+        
+        // First check if we have the needed hardware support.
+        var error: NSError?
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            
+            let reason = "Log in to your account"
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
+                
+                if success {
+                    
+                    DispatchQueue.main.async {
+                        if UserDefaults.standard.object(forKey: "getLanguage") != nil{
+                            AnyLanguageBundle.setLanguage(UserDefaults.standard.object(forKey: "getLanguage") as! String)
+                        }
+                        if((UserDefaults.standard.object(forKey: "LoggedInUserUID")) != nil){
+                            self.window = UIWindow(frame: UIScreen.main.bounds)
+                            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                            let viewController = storyBoard.instantiateViewController(withIdentifier: "embeddedViewContrroller") as! EmbeddedViewController
+                            self.window?.rootViewController = viewController
+                            self.window?.makeKeyAndVisible()
+                            UIFont.overrideInitialize()
+                            
+                        }
+                    }
+                    
+                    // Move to the main thread because a state update triggers UI changes.
+                    
+                } else {
+                    print(error?.localizedDescription ?? "Failed to authenticate")
+                    
+                    // Fall back to a asking for username and password.
+                    // ...
+                }
+            }
+        } else {
+            print(error?.localizedDescription ?? "Can't evaluate policy")
+            
+            // Fall back to a asking for username and password.
+            // ...
+        }
     }
     
 }

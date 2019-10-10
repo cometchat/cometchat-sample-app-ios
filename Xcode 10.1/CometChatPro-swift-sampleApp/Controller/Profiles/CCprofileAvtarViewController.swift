@@ -34,9 +34,6 @@ class CCprofileAvtarViewController: UIViewController {
         self.hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes  = [NSAttributedString.Key.foregroundColor: UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)]
-        guard (UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView) != nil else {
-            return
-        }
         
         
         if #available(iOS 11.0, *) {

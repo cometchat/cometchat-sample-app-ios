@@ -17,7 +17,7 @@ class BlockedUsersVC: UITableViewController {
     var selectedUsers:[String] = []
     var selectedUsersToAdd:[GroupMember] = []
     var selectedUsersToUnban:[GroupMember] = []
-    let blockedUserRequest = BlockedUserRequest.BlockedUserRequestBuilder(limit: 20).build()
+    let blockedUserRequest = BlockedUserRequest.BlockedUserRequestBuilder(limit: 100).build()
     var userRequest = UsersRequest.UsersRequestBuilder(limit: 100).build()
     var doneBTN =  UIBarButtonItem()
     var groupMember:GroupMember?

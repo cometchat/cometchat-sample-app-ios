@@ -43,10 +43,37 @@ class ChatImageMessageCell: UITableViewCell {
             dateFormatter1.dateFormat = "HH:mm:a"
             dateFormatter1.timeZone = NSTimeZone.local
             let dateString : String = dateFormatter1.string(from: date)
-            messageTimeLabel.text =  dateString
+            let url = NSURL(string: (chatMessage as? MediaMessage)!.url!)
+            if chatMessage.sentAt == 0 {
+                           messageTimeLabel.text =  "Sending..."
+                           chatImage.image = #imageLiteral(resourceName: "default_Pending")
+                       }else{
+                           messageTimeLabel.text =  dateString
+                           chatImage.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_image"))
+                       }
             chatImage.contentMode = .scaleAspectFill
             let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
             bubbleBackgroundView.backgroundColor = chatMessage.senderUid == myUID ? .white : UIColor(white: 0.80, alpha: 1)
+            readRecipts.image = #imageLiteral(resourceName: "wait")
+                   
+                   DispatchQueue.main.async {  [weak self] in
+                       guard let strongSelf = self
+                           else
+                       {
+                           return
+                       }
+                       
+                       if self!.chatMessage.sentAt == 0{
+                            self!.readRecipts.image = #imageLiteral(resourceName: "wait")
+                       }else if strongSelf.chatMessage.readAt > 0.0 {
+                           strongSelf.readRecipts.image = #imageLiteral(resourceName: "seen")
+                       }
+                       else if strongSelf.chatMessage.deliveredAt > 0.0 {
+                           strongSelf.readRecipts.image = #imageLiteral(resourceName: "delivered")
+                       }else{
+                           strongSelf.readRecipts.image = #imageLiteral(resourceName: "sent")
+                       }
+                   }
             
             if chatMessage.senderUid == myUID {
                 aleadingConstraint.isActive = false
@@ -137,24 +164,7 @@ class ChatImageMessageCell: UITableViewCell {
         readRecipts.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -3).isActive = true
         readRecipts.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -13).isActive = true
         readRecipts.clipsToBounds = true
-        readRecipts.image = #imageLiteral(resourceName: "sent")
-        
-        DispatchQueue.main.async {  [weak self] in
-            guard let strongSelf = self
-                else
-            {
-                return
-            }
-            
-            if strongSelf.chatMessage.readAt > 0.0 {
-                strongSelf.readRecipts.image = #imageLiteral(resourceName: "seen")
-            }
-            else if strongSelf.chatMessage.deliveredAt > 0.0 {
-                strongSelf.readRecipts.image = #imageLiteral(resourceName: "delivered")
-            }else{
-                strongSelf.readRecipts.image = #imageLiteral(resourceName: "sent")
-            }
-        }
+       
         
         userAvatarImageView.translatesAutoresizingMaskIntoConstraints = false
         userAvatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 13).isActive = true
@@ -175,7 +185,7 @@ class ChatImageMessageCell: UITableViewCell {
         messageTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12).isActive = true
         messageTimeLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50).isActive = true
         messageTimeLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 12).isActive = true
-        messageTimeLabel.font = messageTimeLabel.font.withSize(12)
+        messageTimeLabel.font = messageTimeLabel.font.withSize(10)
         // messageTimeLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
         // time label constrains //
     }

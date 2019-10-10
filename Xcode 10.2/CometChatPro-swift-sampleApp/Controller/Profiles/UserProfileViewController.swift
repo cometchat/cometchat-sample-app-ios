@@ -115,10 +115,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         self.hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes  = [NSAttributedString.Key.foregroundColor: UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)]
-        guard (UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView) != nil else {
-            return
-        }
-        
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = false
@@ -127,7 +123,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         } else {
             
         }
-        
+       
         // NavigationBar Buttons Appearance
         
         let backButtonImage = UIImageView(image: UIImage(named: "back_arrow"))
@@ -363,6 +359,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         CallingViewController.callingString = NSLocalizedString("Calling ...", comment: "")
         CallingViewController.callerUID = guid
         CallingViewController.isGroupCall = false
+        CallingViewController.modalPresentationStyle = .fullScreen
         self.present(CallingViewController, animated: true, completion: nil)
         
     }
@@ -378,6 +375,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         CallingViewController.callingString = NSLocalizedString("Calling ...", comment: "")
         CallingViewController.callerUID = guid
         CallingViewController.isGroupCall = false
+        CallingViewController.modalPresentationStyle = .fullScreen
+        CallingViewController.modalPresentationStyle = .fullScreen
         self.present(CallingViewController, animated: true, completion: nil)
     }
     

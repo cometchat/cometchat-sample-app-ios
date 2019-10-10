@@ -38,6 +38,9 @@ class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextField
     }
     
     func handleStartUpVCApperance() {
+        if((UserDefaults.standard.object(forKey: "LoggedInUserUID")) == nil){
+            bottomView.isHidden = false
+        }
         self.view.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
         self.cometChatLogo.tintColor = UIColor.red
         cometChatLogo.image = cometChatLogo.image!.withRenderingMode(.alwaysTemplate)

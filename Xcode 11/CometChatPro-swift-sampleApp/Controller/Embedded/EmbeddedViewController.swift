@@ -105,10 +105,10 @@ class EmbeddedViewController: UIViewController, CometChatCallDelegate {
         guard let sessionID = acceptedCall?.sessionID else {
             return;
         }
-        
-        self.dismiss(animated: true, completion: nil)
-        
-        CometChat.startCall(sessionID: sessionID, inView:self.view, userJoined: { (someone_joined) in
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+            
+         CometChat.startCall(sessionID: sessionID, inView:self.view, userJoined: { (someone_joined) in
             
             CometChatLog.print(items:someone_joined as Any)
             
@@ -122,10 +122,12 @@ class EmbeddedViewController: UIViewController, CometChatCallDelegate {
             
         }) { (ended_call) in
             
+             DispatchQueue.main.async {
             if((self.presentingViewController) != nil){
-                self.dismiss(animated: false, completion: nil)
-                
+                self.dismiss(animated: false, completion: nil)  
             }
+            }
+        }
         }
     }
     

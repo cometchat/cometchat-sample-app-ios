@@ -29,12 +29,12 @@ class ChatDeletedMessageCell: UITableViewCell {
     
     var chatMessage : MediaMessage! {
         didSet{
-            
             let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
             messageLabel.font = UIFont.myItalicSystemFont(ofSize: 15)
             userNameLabel.text = (chatMessage.sender?.name ?? " ") + " :"
             userNameLabel.font = userNameLabel.font.withSize(12)
             
+            let user = chatMessage.sender?.name
             switch  chatMessage.messageType {
            
             case .text: break
@@ -42,21 +42,21 @@ class ChatDeletedMessageCell: UITableViewCell {
             case .image where chatMessage.sender?.uid == myUID:
             messageLabel.text = "⚠️ You deleted this image."
             case .image:
-                 messageLabel.text = "⚠️ This image was deleted."
+                   messageLabel.text = "⚠️ \(user!) deleted this image."
             case .video where chatMessage.sender?.uid == myUID:
                 messageLabel.text = "⚠️ You deleted this video."
             case .video:
-                 messageLabel.text = "⚠️  This video was deleted."
+                  messageLabel.text = "⚠️ \(user!) deleted this video."
             case .audio where chatMessage.sender?.uid == myUID:
                 messageLabel.text = "⚠️ You deleted this audio."
             case .audio:
-                 messageLabel.text = "⚠️  This audio was deleted."
+                  messageLabel.text = "⚠️ \(user!) deleted this audio."
             case .file where chatMessage.sender?.uid == myUID:
                 messageLabel.text = "⚠️ You deleted this file."
             case .file:
-                 messageLabel.text = "⚠️  This file was deleted."
+                  messageLabel.text = "⚠️ \(user!) deleted this file."
             case .custom: break
-                
+            case .groupMember: break
             @unknown default: break
                 
             }

@@ -48,7 +48,6 @@ class messageInfoView: UITableViewController {
         }) { (error) in
             print("getMessageReceipts \(String(describing: error))")
         }
-
     }
     
     

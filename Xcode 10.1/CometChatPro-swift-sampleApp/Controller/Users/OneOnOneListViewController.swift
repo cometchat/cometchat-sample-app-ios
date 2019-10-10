@@ -12,7 +12,7 @@ import CometChatPro
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 class OneOnOneListViewController: UIViewController {
-   
+    
     //Outlets Declarations
     @IBOutlet weak var oneOneOneTableView: UITableView!
     @IBOutlet weak var notifyButton: UIButton!
@@ -20,7 +20,7 @@ class OneOnOneListViewController: UIViewController {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var leftPadding: NSLayoutConstraint!
     @IBOutlet weak var rightPadding: NSLayoutConstraint!
-
+    
     //Variable Declarations
     private var _blurView: UIVisualEffectView?
     var usersArray = [User]()
@@ -89,10 +89,10 @@ class OneOnOneListViewController: UIViewController {
         userRequest = UsersRequest.UsersRequestBuilder(limit: 20).build()
         userRequest.fetchNext(onSuccess: { (userList) in
             if !userList.isEmpty {
-            self.usersArray.append(contentsOf: userList)
-            DispatchQueue.main.async(execute: {
-                self.oneOneOneTableView.reloadData()
-            })
+                self.usersArray.append(contentsOf: userList)
+                DispatchQueue.main.async(execute: {
+                    self.oneOneOneTableView.reloadData()
+                })
             }
         }) { (exception) in
             DispatchQueue.main.async(execute: {
@@ -100,7 +100,7 @@ class OneOnOneListViewController: UIViewController {
             })
             CometChatLog.print(items:exception?.errorDescription as Any)
         }
-   }
+    }
     
     func setTabbarCount(){
         if let tabItems = tabBarController?.tabBar.items {
@@ -151,14 +151,14 @@ class OneOnOneListViewController: UIViewController {
         moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
         createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
- 
+        
         // SearchBar Apperance
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
         searchController.searchBar.delegate = self
         searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
-
+        
         if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
             UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search User", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
         }else{
@@ -166,17 +166,17 @@ class OneOnOneListViewController: UIViewController {
         }
         
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-
+        
         let SearchImageView = UIImageView.init()
         let SearchImage = UIImage(named: "icons8-search-30")!.withRenderingMode(.alwaysTemplate)
         SearchImageView.image = SearchImage
         SearchImageView.tintColor = UIColor.init(white: 1, alpha: 0.5)
-
+        
         searchController.searchBar.setImage(SearchImageView.image, for: UISearchBar.Icon.search, state: .normal)
         if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
             textfield.textColor = UIColor.white
             if let backgroundview = textfield.subviews.first{
-
+                
                 // Background color
                 backgroundview.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
                 // Rounded corner
@@ -202,7 +202,7 @@ class OneOnOneListViewController: UIViewController {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
+        
         let height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
@@ -210,7 +210,7 @@ class OneOnOneListViewController: UIViewController {
             self.fetchUsersList()
         }
     }
-
+    
     //announcement button Pressed
     @IBAction func announcementPressed(_ sender: Any) {}
     
@@ -240,10 +240,10 @@ class OneOnOneListViewController: UIViewController {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
- //TableView Methods
+//TableView Methods
 extension OneOnOneListViewController : UITableViewDelegate, UITableViewDataSource {
     
-   //numberOfRowsInSection:
+    //numberOfRowsInSection:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if usersArray.isEmpty{
             DispatchQueue.main.async(execute: {
@@ -270,7 +270,7 @@ extension OneOnOneListViewController : UITableViewDelegate, UITableViewDataSourc
     
     //cellForRowAt indexPath :
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = oneOneOneTableView.dequeueReusableCell(withIdentifier: "oneOnOneTableViewCell") as! OneOnOneTableViewCell
+        let cell = oneOneOneTableView.dequeueReusableCell(withIdentifier: "oneOnOneTableViewCell") as! OneOnOneTableViewCell
         if !usersArray.isEmpty {
             
             if isFiltering() {
@@ -362,7 +362,7 @@ extension OneOnOneListViewController : UITableViewDelegate, UITableViewDataSourc
             
             var blockUsers = [String]()
             let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
-
+            
             if selectedCell.blockedLabel.isHidden == true{
                 blockUsers.append(selectedCell.UID)
                 CometChat.blockUsers(blockUsers, onSuccess: { (User) in
@@ -375,7 +375,7 @@ extension OneOnOneListViewController : UITableViewDelegate, UITableViewDataSourc
                     DispatchQueue.main.async { self.view.makeToast("Unable to block user") }
                 })
             }else{
-                 self.view.makeToast("This user is blocked already.")
+                self.view.makeToast("This user is blocked already.")
             }
             completionHandler(true)
         })
@@ -447,7 +447,7 @@ extension OneOnOneListViewController : UISearchBarDelegate, UISearchResultsUpdat
         userRequest.fetchNext(onSuccess: { (userList) in
             
             self.filteredUsersArray = userList
-
+            
             DispatchQueue.main.async(execute: {
                 self.oneOneOneTableView.reloadData()
             })
@@ -500,13 +500,13 @@ extension OneOnOneListViewController : CometChatMessageDelegate {
                     cell.unreadCountLabel.text = "\(count + 1)"
                     if cell.unreadCountBadge.isHidden {
                         cell.unreadCountBadge.isHidden = false
-                    }                    
+                    }
                     cell.reloadInputViews()
                 }
             }
         }
     }
-   
+    
     func onMediaMessageReceived(mediaMessage: MediaMessage) {
         if let row = self.usersArray.firstIndex(where: {$0.uid == mediaMessage.senderUid}) {
             let indexPath = IndexPath(row: row, section: 0)
@@ -532,7 +532,7 @@ extension OneOnOneListViewController : CometChatMessageDelegate {
                     cell.unreadCountLabel.text = "\(count + 1)"
                     if cell.unreadCountBadge.isHidden {
                         cell.unreadCountBadge.isHidden = false
-                    }  
+                    }
                     cell.reloadInputViews()
                 }
             }
@@ -556,7 +556,7 @@ extension OneOnOneListViewController : CometChatMessageDelegate {
         
         if let row = self.usersArray.firstIndex(where: {$0.uid == typingDetails.sender?.uid}) {
             let indexPath = IndexPath(row: row, section: 0)
-           DispatchQueue.main.async {
+            DispatchQueue.main.async {
                 let cell = self.oneOneOneTableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
                 cell.buddyStatus.text = "Online"
                 cell.buddyStatus.textColor = UIColor.init(hexFromString: "434343")

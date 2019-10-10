@@ -86,7 +86,6 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Function Calling
         self.handleOneOnOneChatVCApperance()
         self.hideKeyboardWhenTappedOnTableView()
@@ -121,7 +120,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             guard  let sendMessage = message else{
                 return
             }
-           var messages = [BaseMessage]()
+            var messages = [BaseMessage]()
             for msg in sendMessage{
                 
                 if (((msg as? ActionMessage) != nil) && ((msg as? ActionMessage)?.message == "Message is edited.") ||  ((msg as? ActionMessage)?.message == "Message is deleted.")){
@@ -132,7 +131,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                     print("messages are \(String(describing: (msg as? TextMessage)?.stringValue()))")
                 }
             }
-
+            
             self.chatMessage = messages
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
@@ -227,15 +226,17 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             guard  let sendMessage =  message else{
                 return
             }
-            self.chatMessage.append(sendMessage)
-            DispatchQueue.main.async {
-                self.chatTableview.beginUpdates()
-                self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
-                
-                self.chatTableview.endUpdates()
-                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-                self.chatInputView.text = ""
+            if let row = self.chatMessage.firstIndex(where: {$0.muid == sendMessage.muid}) {
+                self.chatMessage[row] = sendMessage
             }
+            
+            DispatchQueue.main.async{
+                self.chatInputView.text = ""
+                self.chatTableview.reloadData()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+                
+            }
+            
         })
     }
     
@@ -281,8 +282,8 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             guard let lastMessage = messages.last else {
                 return
             }
-        
-        if lastMessage.readAt == 0  && lastMessage.senderUid != self.myUID {
+            
+            if lastMessage.readAt == 0  && lastMessage.senderUid != self.myUID {
                 if(self.isGroup == "1"){
                     CometChat.markAsRead(messageId: lastMessage.id, receiverId: self.buddyUID, receiverType: .group)
                 }else{
@@ -306,6 +307,18 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             textMessage = TextMessage(receiverUid: toUserUID, text: message,  receiverType: .group)
         }else {
             textMessage = TextMessage(receiverUid: toUserUID, text: message, receiverType: .user)
+        }
+        textMessage.muid = "\(Int(Date().timeIntervalSince1970 * 1000))"
+        textMessage.sender?.uid = myUID
+        textMessage.senderUid = myUID!
+        self.chatMessage.append(textMessage)
+        DispatchQueue.main.async {
+            self.chatTableview.beginUpdates()
+            self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .right)
+            
+            self.chatTableview.endUpdates()
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.bottom, animated: true)
+            self.chatInputView.text = ""
         }
         CometChat.sendTextMessage(message: textMessage, onSuccess: { (message) in
             completionHandler(message,nil)
@@ -342,6 +355,17 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             mediaMessage = MediaMessage(receiverUid: toUserUID, fileurl: mediaURL, messageType: messageType, receiverType: .group)
         }else {
             mediaMessage = MediaMessage(receiverUid: toUserUID, fileurl: mediaURL, messageType: messageType, receiverType: .user)
+        }
+        mediaMessage.muid = "\(Int(Date().timeIntervalSince1970 * 1000))"
+        mediaMessage.sender?.uid = myUID
+        mediaMessage.senderUid = myUID!
+        mediaMessage.sentAt = 0
+        self.chatMessage.append(mediaMessage)
+        DispatchQueue.main.async{
+            self.chatInputView.text = ""
+            self.chatTableview.reloadData()
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.bottom, animated: true)
+            
         }
         CometChat.sendMediaMessage(message: mediaMessage, onSuccess: { (message) in
             CometChatLog.print(items:"sendMediaMessage onSuccess: \(String(describing: (message as? MediaMessage)?.url))")
@@ -393,9 +417,6 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         // ViewController Appearance
         self.hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.isTranslucent = false
-        guard (UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView) != nil else {
-            return
-        }
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = false
@@ -587,14 +608,14 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                         guard  let sendMessage =  message else{
                             return
                         }
-                        self.chatMessage.append(sendMessage)
-                        DispatchQueue.main.async {
-                            self.chatTableview.beginUpdates()
-                            self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
-                            
-                            self.chatTableview.endUpdates()
-                            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+                        if let row = self.chatMessage.firstIndex(where: {$0.muid == sendMessage.muid}) {
+                            self.chatMessage[row] = sendMessage
+                        }
+                        
+                        DispatchQueue.main.async{
                             self.chatInputView.text = ""
+                            self.chatTableview.reloadData()
+                            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
                         }
                     })
             })
@@ -653,15 +674,15 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         
         if let userinfo = notification.userInfo
         {
-            let keyboardFrame = (userinfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+            let keyboardHeight = (userinfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue?.size.height
             
-            if (modelName == "iPhone X" || modelName == "iPhone XS" || modelName == "iPhone XR"){
-                ChatViewBottomconstraint.constant = (keyboardFrame?.height)! + 20
+            if (modelName == "iPhone X" || modelName == "iPhone XS" || modelName == "iPhone XR" || modelName == "iPhone12,1"){
+                ChatViewBottomconstraint.constant = (keyboardHeight)! - 30
                 UIView.animate(withDuration: 0.5) {
                     self.view.layoutIfNeeded()
                 }
             }else{
-                ChatViewBottomconstraint.constant = (keyboardFrame?.height)!
+                ChatViewBottomconstraint.constant = (keyboardHeight)!
                 UIView.animate(withDuration: 0.5) {
                     self.view.layoutIfNeeded()
                 }
@@ -674,7 +695,8 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
     // This function called when keyboard is dismissed.
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
-            ChatViewBottomconstraint.constant = 0
+            self.view.frame.origin.y = 0
+            
             UIView.animate(withDuration: 0.25
             ) {
                 self.view.layoutIfNeeded()
@@ -766,8 +788,6 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                 var imageMessageCell = ChatImageMessageCell()
                 imageMessageCell = tableView.dequeueReusableCell(withIdentifier: imageCellID , for: indexPath) as! ChatImageMessageCell
                 imageMessageCell.chatMessage = (messageData as? MediaMessage)!
-                let url = NSURL(string: (messageData as? MediaMessage)!.url!)
-                imageMessageCell.chatImage.sd_setImage(with: url as URL?, placeholderImage: #imageLiteral(resourceName: "default_Pending"))
                 imageMessageCell.selectionStyle = .none
                 return imageMessageCell
                 
@@ -875,7 +895,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             actionCell.selectionStyle = .none
             actionCell.isUserInteractionEnabled = false
             return actionCell
-         
+            
         case .custom:break
         }
         return cell
@@ -890,7 +910,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         let mediaMessage =  messageData as? MediaMessage
         self.tableIndexPath = indexPath
         
-/////////////////////////////////// Setting up action sheet //////////////////////////////////
+        /////////////////////////////////// Setting up action sheet //////////////////////////////////
         
         let actionController = SkypeActionController()
         actionController.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
@@ -914,7 +934,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         
         // Show Image Message Action
         let showImageAction = Action("Show Image", style: .default, handler: { action in
-          let imageCell:ChatImageMessageCell = tableView.cellForRow(at: indexPath) as! ChatImageMessageCell
+            let imageCell:ChatImageMessageCell = tableView.cellForRow(at: indexPath) as! ChatImageMessageCell
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let profileAvtarViewController = storyboard.instantiateViewController(withIdentifier: "ccprofileAvtarViewController") as! CCprofileAvtarViewController
             self.navigationController?.pushViewController(profileAvtarViewController, animated: true)
@@ -996,7 +1016,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         //////////////////////////////////////////////////////////////////////////////////////////
         
         switch messageData.messageType {
-        
+            
         case .text  where messageData.deletedAt > 0.0: break
         case .image where messageData.deletedAt > 0.0: break
         case .video where messageData.deletedAt > 0.0: break
@@ -1010,7 +1030,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             actionController.addAction(deleteTextMessageAction)
             actionController.addAction(Action("Cancel", style: .cancel, handler: nil))
             present(actionController, animated: true, completion: nil)
-        
+            
         case .text: break
             
         case .image where messageData.sender?.uid == myUID:
@@ -1019,7 +1039,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             actionController.addAction(deleteMediaMessageAction)
             actionController.addAction(Action("Cancel", style: .cancel, handler: nil))
             present(actionController, animated: true, completion: nil)
-        
+            
         case .image:
             // Persent DetailView when tap on imageMessage
             let imageCell:ChatImageMessageCell = tableView.cellForRow(at: indexPath) as! ChatImageMessageCell
@@ -1036,7 +1056,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             actionController.addAction(deleteMediaMessageAction)
             actionController.addAction(Action("Cancel", style: .cancel, handler: nil))
             present(actionController, animated: true, completion: nil)
-
+            
         case .video:
             
             // Persent AVPlayer when tap on videoMessage
@@ -1060,7 +1080,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             actionController.addAction(Action("Cancel", style: .cancel, handler: nil))
             present(actionController, animated: true, completion: nil)
             
-         case .audio:
+        case .audio:
             
             // Persent QuickLook when tap on audioMessage
             let audioMessage = (messageData as? MediaMessage)
@@ -1165,7 +1185,11 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                     return
                 }
                 CometChat.endTyping(indicator: self.typingIndicator)
-                self.chatMessage.append(sendMessage)
+                print("message is: \(message?.muid)")
+                if let row = self.chatMessage.firstIndex(where: {$0.muid == sendMessage.muid}) {
+                    self.chatMessage[row] = sendMessage
+                }
+                
                 DispatchQueue.main.async{
                     self.chatInputView.text = ""
                     self.chatTableview.reloadData()
@@ -1247,17 +1271,17 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                             guard  let sendMessage =  message else{
                                 return
                             }
-                            
-                            self.chatMessage.append(sendMessage)
-                            
-                            DispatchQueue.main.async {
-                                self.chatTableview.beginUpdates()
-                                self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
-                                
-                                self.chatTableview.endUpdates()
-                                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-                                self.chatInputView.text = ""
+                            if let row = self.chatMessage.firstIndex(where: {$0.muid == sendMessage.muid}) {
+                                self.chatMessage[row] = sendMessage
                             }
+                            
+                            DispatchQueue.main.async{
+                                self.chatInputView.text = ""
+                                self.chatTableview.reloadData()
+                                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+                                
+                            }
+                            
                         })
                         
                     case .video(let video):
@@ -1273,15 +1297,17 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                                 guard  let sendMessage =  message else{
                                     return
                                 }
-                                self!.chatMessage.append(sendMessage)
-                                DispatchQueue.main.async {
-                                    self!.chatTableview.beginUpdates()
-                                    self!.chatTableview.insertRows(at: [IndexPath.init(row: self!.chatMessage.count-1, section: 0)], with: .automatic)
-                                    
-                                    self!.chatTableview.endUpdates()
-                                    self!.chatTableview.scrollToRow(at: IndexPath.init(row: self!.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-                                    self!.chatInputView.text = ""
+                                if let row = self!.chatMessage.firstIndex(where: {$0.muid == sendMessage.muid}) {
+                                    self!.chatMessage[row] = sendMessage
                                 }
+                                
+                                DispatchQueue.main.async{
+                                    self!.chatInputView.text = ""
+                                    self!.chatTableview.reloadData()
+                                    self!.chatTableview.scrollToRow(at: IndexPath.init(row: self!.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+                                    
+                                }
+                                
                             })
                         })
                     }
@@ -1354,15 +1380,17 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                             guard  let sendMessage =  message else{
                                 return
                             }
-                            self.chatMessage.append(sendMessage)
-                            DispatchQueue.main.async {
-                                self.chatTableview.beginUpdates()
-                                self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
-                                
-                                self.chatTableview.endUpdates()
-                                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-                                self.chatInputView.text = ""
+                            if let row = self.chatMessage.firstIndex(where: {$0.muid == sendMessage.muid}) {
+                                self.chatMessage[row] = sendMessage
                             }
+                            
+                            DispatchQueue.main.async{
+                                self.chatInputView.text = ""
+                                self.chatTableview.reloadData()
+                                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+                                
+                            }
+                            
                         })
                         
                     case .video(let video):
@@ -1377,15 +1405,17 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
                                 guard  let sendMessage =  message else{
                                     return
                                 }
-                                self!.chatMessage.append(sendMessage)
-                                DispatchQueue.main.async {
-                                    self!.chatTableview.beginUpdates()
-                                    self!.chatTableview.insertRows(at: [IndexPath.init(row: self!.chatMessage.count-1, section: 0)], with: .automatic)
-                                    
-                                    self!.chatTableview.endUpdates()
-                                    self!.chatTableview.scrollToRow(at: IndexPath.init(row: self!.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-                                    self!.chatInputView.text = ""
+                                if let row = self!.chatMessage.firstIndex(where: {$0.muid == sendMessage.muid}) {
+                                    self!.chatMessage[row] = sendMessage
                                 }
+                                
+                                DispatchQueue.main.async{
+                                    self!.chatInputView.text = ""
+                                    self!.chatTableview.reloadData()
+                                    self!.chatTableview.scrollToRow(at: IndexPath.init(row: self!.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+                                    
+                                }
+                                
                             })
                         })
                         
@@ -1473,10 +1503,10 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             
             if #available(iOS 11.0, *) {
                 self.navigationItem.searchController = self.searchController
-            } else {
-                
-            }
+                self.navigationController?.navigationBar.isTranslucent = true
+            } else {}
         }
+        
         let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { action -> Void in
             
         }
@@ -1510,6 +1540,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         }else{
             CallingViewController.isGroupCall = false
         }
+        CallingViewController.modalPresentationStyle = .fullScreen
         self.present(CallingViewController, animated: true, completion: nil)
     }
     
@@ -1542,31 +1573,30 @@ extension ChatViewController : CometChatMessageDelegate {
     // This event triggers when new text Message receives.
     func onTextMessageReceived(textMessage: TextMessage) {
         
-       if  textMessage.receiverType.rawValue == Int(isGroup){
-        
-        CometChat.markAsRead(messageId: textMessage.id, receiverId: textMessage.senderUid, receiverType: .user)
+        if  textMessage.receiverType.rawValue == Int(isGroup){
+            
+            CometChat.markAsRead(messageId: textMessage.id, receiverId: textMessage.senderUid, receiverType: .user)
             self.chatMessage.append(textMessage)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
-                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-           }
-        
-       }else if textMessage.receiverType.rawValue == Int(isGroup){
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.bottom, animated: true)
+            }
+        }else if textMessage.receiverType.rawValue == Int(isGroup){
             CometChat.markAsRead(messageId: textMessage.id, receiverId: textMessage.receiverUid, receiverType: .group)
             self.chatMessage.append(textMessage)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
-                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.bottom, animated: true)
             }
-       }
+        }
     }
     
     func onMessageEdited(message: BaseMessage) {
-         print("onMessageEdited --> \(message)")
+        print("onMessageEdited --> \(message)")
         if let row = self.chatMessage.firstIndex(where: {$0.id == message.id}) {
             chatMessage[row] = message
             let indexPath = IndexPath(row: row, section: 0)
-             DispatchQueue.main.async{
+            DispatchQueue.main.async{
                 self.chatTableview.reloadRows(at: [indexPath], with: .automatic)
             }
         }
@@ -1577,7 +1607,7 @@ extension ChatViewController : CometChatMessageDelegate {
         if let row = self.chatMessage.firstIndex(where: {$0.id == message.id}) {
             chatMessage[row] = message
             let indexPath = IndexPath(row: row, section: 0)
-             DispatchQueue.main.async{
+            DispatchQueue.main.async{
                 self.chatTableview.reloadRows(at: [indexPath], with: .automatic)
             }
         }
@@ -1586,19 +1616,20 @@ extension ChatViewController : CometChatMessageDelegate {
     
     // This event triggers when new Media Message receives.
     func onMediaMessageReceived(mediaMessage: MediaMessage){
-        if mediaMessage.sender?.uid == buddyUID && mediaMessage.receiverType.rawValue == Int(isGroup){
-           // CometChat.markMessageAsRead(message: mediaMessage)
+        if  mediaMessage.receiverType.rawValue == Int(isGroup){
+            
+            CometChat.markAsRead(messageId: mediaMessage.id, receiverId: mediaMessage.senderUid, receiverType: .user)
             self.chatMessage.append(mediaMessage)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
-                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.bottom, animated: true)
             }
-        }else if mediaMessage.receiverUid == buddyUID && mediaMessage.receiverType.rawValue == Int(isGroup){
-           // CometChat.markMessageAsRead(message: mediaMessage)
+        }else if mediaMessage.receiverType.rawValue == Int(isGroup){
+            CometChat.markAsRead(messageId: mediaMessage.id, receiverId: mediaMessage.receiverUid, receiverType: .group)
             self.chatMessage.append(mediaMessage)
             DispatchQueue.main.async{
                 self.chatTableview.reloadData()
-                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.bottom, animated: true)
             }
         }
     }
@@ -1606,26 +1637,26 @@ extension ChatViewController : CometChatMessageDelegate {
     
     // This event triggers when user is started Typing.
     func onTypingStarted(_ typingDetails : TypingIndicator) {
-         DispatchQueue.main.async{
+        DispatchQueue.main.async{
             if typingDetails.sender?.uid == self.buddyUID && typingDetails.receiverType == .user{
                 self.buddyStatus.text = NSLocalizedString("Typing...", comment: "")
             }else if typingDetails.receiverType == .group  && self.isGroup == "1"{
-            let user = typingDetails.sender?.name
+                let user = typingDetails.sender?.name
                 self.buddyStatus.text = NSLocalizedString("\(user!) is Typing...", comment: "")
-        }
+            }
         }
     }
     
     // This event triggers when user is ended Typing.
     func onTypingEnded(_ typingDetails : TypingIndicator) {
         // received typing indicator:
-         DispatchQueue.main.async{
+        DispatchQueue.main.async{
             if typingDetails.sender?.uid == self.buddyUID && typingDetails.receiverType == .user{
                 self.buddyStatus.text = NSLocalizedString("Online", comment: "")
             } else if typingDetails.receiverType == .group  && self.isGroup == "1"{
                 self.buddyStatus.text = NSLocalizedString("", comment: "")
-          }
-       }
+            }
+        }
     }
     
     
@@ -1640,21 +1671,7 @@ extension ChatViewController : CometChatMessageDelegate {
         for msg in chatMessage where msg.readAt == 0   {
             print("msg.sender?.uid \(msg.sender?.uid)")
             print("myUID \(myUID)")
-             msg.readAt = Double(receipt.timeStamp)
-        }
-    
-        DispatchQueue.main.async {
-            self.chatTableview.reloadData()
-        }
-     }
-    
-    func onMessagesDelivered(receipt: MessageReceipt) {
-        guard receipt != nil else {
-            return
-        }
-//         && msg.sender?.uid != myUID
-        for msg in chatMessage where msg.deliveredAt == 0 {
-             msg.deliveredAt = Double(receipt.timeStamp)
+            msg.readAt = Double(receipt.timeStamp)
         }
         
         DispatchQueue.main.async {
@@ -1662,65 +1679,32 @@ extension ChatViewController : CometChatMessageDelegate {
         }
     }
     
-    
-    
-//    // This event triggers when message is delivered to the user.
-//    func onMessageDelivered(receipt : MessageReceipt) {
-//        let receipts:MessageReceipt?
-//        receipts = receipt
-//        guard let deliveredReceipt = receipts else{
-//            return
-//        }
-//        if let row = self.chatMessage.firstIndex(where: {$0.id == Int(deliveredReceipt.messageId)}) {
-//            if deliveredReceipt.receiptType == .delivered {
-//                chatMessage[row].deliveredToMeAt = Double(deliveredReceipt.timeStamp)
-//            }
-//            
-//            if deliveredReceipt.receiverType == .user{
-//            let indexPath = IndexPath(row: row, section: 0)
-//            DispatchQueue.main.async {
-//                self.chatTableview.reloadRows(at: [indexPath], with: .none)
-//                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: false)
-//            }
-//            }
-//        }
-//     }
-    
-//    // This event triggers when user reads the message.
-//    func onMessageRead(receipt : MessageReceipt) {
-//        let receipts:MessageReceipt?
-//        receipts = receipt
-//        guard let readReceipt = receipts else{
-//            return
-//        }
-//        if let row = self.chatMessage.firstIndex(where: {$0.id == Int(readReceipt.messageId)}) {
-//            if readReceipt.receiptType == .read {
-//                chatMessage[row].readByMeAt = Double(readReceipt.timeStamp)
-//            }
-//            if readReceipt.receiverType == .user{
-//                let indexPath = IndexPath(row: row, section: 0)
-//                DispatchQueue.main.async {
-//                    self.chatTableview.reloadRows(at: [indexPath], with: .none)
-//                    self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: false)
-//                }
-//            }
-//        }
-//    }
-//
+    func onMessagesDelivered(receipt: MessageReceipt) {
+        guard receipt != nil else {
+            return
+        }
+        for msg in chatMessage where msg.deliveredAt == 0 {
+            msg.deliveredAt = Double(receipt.timeStamp)
+        }
+        
+        DispatchQueue.main.async {
+            self.chatTableview.reloadData()
+        }
+    }
 }
 
 
 extension ChatViewController : CometChatGroupDelegate {
-  
+    
     // This event triggers when scope of the user chaged to other scope in group.
     func onGroupMemberScopeChanged(action: ActionMessage, scopeChangeduser: User, scopeChangedBy: User, scopeChangedTo: String, scopeChangedFrom: String, group: Group) {
         if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
-                    self.chatMessage.append(action)
-                    DispatchQueue.main.async{
-                        self.chatTableview.reloadData()
-                        self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-                    }
-                }
+            self.chatMessage.append(action)
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+            }
+        }
     }
     
     
@@ -1728,11 +1712,11 @@ extension ChatViewController : CometChatGroupDelegate {
     func onMemberAddedToGroup(action: ActionMessage, addedBy: User, addedUser: User, addedTo: Group) {
         
         if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
-        self.chatMessage.append(action)
-        DispatchQueue.main.async{
-            self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-        }
+            self.chatMessage.append(action)
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+            }
         }
     }
     
@@ -1741,11 +1725,11 @@ extension ChatViewController : CometChatGroupDelegate {
     func onGroupMemberJoined(action: ActionMessage, joinedUser: User, joinedGroup: Group) {
         
         if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
-        self.chatMessage.append(action)
-        DispatchQueue.main.async{
-            self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-        }
+            self.chatMessage.append(action)
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+            }
         }
     }
     
@@ -1753,11 +1737,11 @@ extension ChatViewController : CometChatGroupDelegate {
     func onGroupMemberLeft(action: ActionMessage, leftUser: User, leftGroup: Group) {
         
         if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
-        self.chatMessage.append(action)
-        DispatchQueue.main.async{
-            self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-        }
+            self.chatMessage.append(action)
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+            }
         }
     }
     
@@ -1765,12 +1749,12 @@ extension ChatViewController : CometChatGroupDelegate {
     func onGroupMemberKicked(action: ActionMessage, kickedUser: User, kickedBy: User, kickedFrom: Group) {
         
         if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
-        self.chatMessage.append(action)
-        
-        DispatchQueue.main.async{
-            self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-        }
+            self.chatMessage.append(action)
+            
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+            }
         }
         
     }
@@ -1779,12 +1763,12 @@ extension ChatViewController : CometChatGroupDelegate {
     func onGroupMemberBanned(action: ActionMessage, bannedUser: User, bannedBy: User, bannedFrom: Group) {
         
         if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
-        self.chatMessage.append(action)
-        
-        DispatchQueue.main.async{
-            self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-        }
+            self.chatMessage.append(action)
+            
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+            }
         }
     }
     
@@ -1792,12 +1776,12 @@ extension ChatViewController : CometChatGroupDelegate {
     func onGroupMemberUnbanned(action: ActionMessage, unbannedUser: User, unbannedBy: User, unbannedFrom: Group) {
         
         if action.receiverUid == buddyUID && action.receiverType.rawValue == Int(isGroup){
-        self.chatMessage.append(action)
-        
-        DispatchQueue.main.async{
-            self.chatTableview.reloadData()
-            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
-        }
+            self.chatMessage.append(action)
+            
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableView.ScrollPosition.none, animated: true)
+            }
         }
     }
     
@@ -1822,7 +1806,7 @@ extension ChatViewController : CometChatUserDelegate {
     func onUserOffline(user: User) {
         if user.uid == buddyUID{
             if user.status == .offline {
-                 DispatchQueue.main.async {
+                DispatchQueue.main.async {
                     self.buddyStatus.text = NSLocalizedString("Offline", comment: "")
                 }
             }
@@ -1847,7 +1831,7 @@ extension String {
 extension ChatViewController : UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-       
+        
         if(isGroup == "1"){
             messageRequest = MessagesRequest.MessageRequestBuilder().set(guid: buddyUID).set(limit: 20).set(searchKeyword: searchController.searchBar.text!).build()
         }else{

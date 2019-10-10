@@ -31,10 +31,11 @@ class ChatTextMessageCell: UITableViewCell {
         didSet{
             let myUID = UserDefaults.standard.string(forKey: "LoggedInUserUID")
             if chatMessage.deletedAt > 0.0 {
-                if chatMessage.sender?.uid == myUID{
+                if chatMessage.sender?.uid == myUID {
                     messageLabel.text = "⚠️ You deleted this message."
                 }else{
-                    messageLabel.text = "⚠️ This message was deleted."
+                    let user = chatMessage.sender?.name
+                    messageLabel.text = "⚠️ \(user!) deleted this message."
                 }
                 messageLabel.font = UIFont.myItalicSystemFont(ofSize: 15)
             }else{
@@ -49,7 +50,12 @@ class ChatTextMessageCell: UITableViewCell {
             dateFormatter1.dateFormat = "HH:mm:a"
             dateFormatter1.timeZone = NSTimeZone.local
             let dateString : String = dateFormatter1.string(from: date)
-            messageTimeLabel.text =  dateString
+            
+            if chatMessage.sentAt == 0 {
+                messageTimeLabel.text =  "Sending..."
+            }else{
+                messageTimeLabel.text =  dateString
+            }
             
             DispatchQueue.main.async {  [weak self] in
                 guard let strongSelf = self
@@ -60,6 +66,8 @@ class ChatTextMessageCell: UITableViewCell {
                 
                 if self!.chatMessage.deletedAt >  0.0{
                     self!.readRecipts.image = #imageLiteral(resourceName: "blank")
+                }else if self!.chatMessage.sentAt == 0{
+                     self!.readRecipts.image = #imageLiteral(resourceName: "wait")
                 }else{
                     self!.readRecipts.image = #imageLiteral(resourceName: "sent")
                     if strongSelf.chatMessage.readAt > 0.0 {

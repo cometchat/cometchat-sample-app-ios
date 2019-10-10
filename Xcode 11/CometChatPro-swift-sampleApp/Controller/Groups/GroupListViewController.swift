@@ -196,23 +196,13 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         // NavigationBar Appearance
         navigationItem.title = NSLocalizedString("Groups", comment: "")
         if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),.font: UIFont(name: SystemFont.bold.value, size: 40)!]
-            appearance.titleTextAttributes = [.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),.font: UIFont(name: SystemFont.regular.value, size: 21)!]
-
-            UINavigationBar.appearance().tintColor = .white
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().compactAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        } else {
-            UINavigationBar.appearance().tintColor = .white
-            UINavigationBar.appearance().barTintColor = .purple
-            UINavigationBar.appearance().isTranslucent = false
-        }
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
+                   let navBarAppearance = UINavigationBarAppearance()
+                   navBarAppearance.configureWithOpaqueBackground()
+                   navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white,.font: UIFont(name: SystemFont.regular.value, size: 21)!]
+                   navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont(name: SystemFont.bold.value, size: 40)!]
+                   navBarAppearance.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
+                   navigationController?.navigationBar.standardAppearance = navBarAppearance
+                   navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         }
         
         //Refresh Control
@@ -224,11 +214,14 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             groupTableView.addSubview(refreshControl)
         }
         
+        
+        
         // NavigationBar Buttons Appearance
         
         // notifyButton.setImage(UIImage(named: "bell.png"), for: .normal)
         createButton.setImage(UIImage(named: "new.png"), for: .normal)
         moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
+        moreButton.imageView?.contentMode = .scaleAspectFill
         
         //notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)

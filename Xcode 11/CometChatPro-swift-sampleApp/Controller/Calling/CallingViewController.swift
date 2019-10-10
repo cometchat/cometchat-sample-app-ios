@@ -214,11 +214,10 @@ class CallingViewController: UIViewController {
     @IBAction func acceptPressed(_ sender: Any) {
         
         if let sessionId = receivedCall?.sessionID {
-            
             CometChat.acceptCall(sessionID: sessionId, onSuccess: { [weak self](call) in
-                
                 if let _ = call {
-                                              
+                    DispatchQueue.main.async {
+  
                     CometChat.startCall(sessionID: sessionId, inView: self!.view, userJoined: { (user_joined) in
                         
                         CometChatLog.print(items: "user joined : \(String(describing: user_joined))")
@@ -228,25 +227,18 @@ class CallingViewController: UIViewController {
                         CometChatLog.print(items: "user left \(String(describing: user_left))")
                         
                     }, onError: { (exception) in
-                        
                         self?.dismiss(animated: true, completion: nil)
-                        
                     }, callEnded: { [weak self](call_ended) in
-                        
                         guard self != nil
                             else
                         {
                             return
                         }
-                        
                         DispatchQueue.main.async {
-                            
                             self?.dismiss(animated: true, completion: nil)
-                            
                         }
-                        
                         CometChatLog.print(items: "call ended : \(String(describing: call_ended))")
-                    })
+                    })}
                 }
                 
                 }, onError: { (error) in
