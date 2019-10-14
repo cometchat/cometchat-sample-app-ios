@@ -21,9 +21,7 @@
 - out-of-date source repos which you can update with `pod repo update` or with `pod install --repo-update`.
 
 
-# Swift Versions
+3. could not find module for architecture 'x86_64'; found: arm64
 
-## Not able to find correct version for your Xcode? Using below links you can navigate to sample apps: 
 
-1. [Swift 5.0](https://github.com/cometchat-pro-samples/ios-swift-chat-app) 
-2. [Swift 4.2](https://github.com/cometchat-pro-samples/ios-swift-chat-app-swift-4.2)
+- Kindly, run the project in physical device instead of simulator.  

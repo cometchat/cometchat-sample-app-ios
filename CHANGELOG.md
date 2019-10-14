@@ -1,5 +1,13 @@
 # Change Log
 
+###  v2.0.0-beta4 (Oct 14, 2019)
+
+- Fixed crash with user list after login.
+- Fixed crash with group list after login.
+- Removed Xcode 10.1 support.
+- Minor performance improvements.
+
+
 ###  v2.0.0-beta2.1 (Oct 10, 2019)
 
 - Added compatibility for Xcode 11 Simulators

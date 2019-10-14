@@ -29,13 +29,15 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
 
 3. [Running the sample app](#Running-the-sample-app)
 
-4. [Customizing the UI](#Customizing-the-UI)
+4. [Add CometChatPro SDK in project](#Add-CometChatPro-SDK-in-project)
 
-5. [Integrating this sample into your own app](#Integrating-this-sample-into-your-own-app)
+5. [Customizing the UI](#Customizing-the-UI)
 
-6. [Troubleshoot](#Troubleshoot)
+6. [Integrating this sample into your own app](#Integrating-this-sample-into-your-own-app)
 
-7. [Contributing](#Contributing)
+7. [Troubleshoot](#Troubleshoot)
+
+8. [Contributing](#Contributing)
 
 
 # Screenshots
@@ -47,44 +49,46 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
 
 # Installation
       
-   Simply clone the project from iOS-swift-chat-app repository. After cloning the repository navigate to project's folder and use below command to install the require pods.
+   Simply clone the project from iOS-swift-chat-app repository. After cloning the repository:
+   
+## v2 Apps
+
+To run our open source app with CometChat Pro v2, follow these steps:
+
+1. Navigate to v2.0 folder. 
+
+2. Select the appropriate version as per your Xcode version. 
+
+3. Navigate to project's folder and use below command to install the require pods.
    
    ```
    $ pod install
    ```
-   Build and run the Sample App.
-  
-   
-   ### Add CometChatPro SDK in project
-   
-   ### CocoaPods:
-   
-   We recommend using CocoaPods, as they are the most advanced way of managing iOS project dependencies. Open a terminal   window, move to your project directory, and then update the SDK  by running the following command.
+
+4. Build and run the Sample App.
+
+## v1 Apps
+
+To run our open source app with CometChat Pro v1, follow these steps:
+
+1. Navigate to v1.8 folder. 
+
+2. Select the appropriate version as per your Xcode version. 
+
+3. Navigate to project's folder and use below command to install the require pods.
    
    ```
    $ pod install
    ```
-   
-   If the pod installation fails due to Cocoapods dependancy issue then use the below command to install the framework through cocoapods.
-  
-  ```
-   pod install --repo-update
-   ```
-   
-   ### Manually:
-   
-   You can download the CometChatPro SDK from link below and manually add it in the project.
-   
-   Download CometChatPro SDK from [ios-chat-sdk](https://github.com/cometchat-pro/ios-chat-sdk)
-   
- <br></br>  
+
+4. Build and run the Sample App.
 
 
 # Running the sample app
 
-   To Run to sample App you have to do the following changes by Adding **APP_ID** and **API_KEY**.
+   To Run to sample App you have to do the following changes by Adding **APP_ID**, **API_KEY** and  **REGION_CODE**
    
-   You can obtain your  *APP_ID* and *API_KEY* from [CometChat-Pro Dashboard](https://app.cometchat.com/)
+   You can obtain your  *APP_ID*, *API_KEY* and *REGION_CODE* from [CometChat-Pro Dashboard](https://app.cometchat.io/)
           
    - Open the project in Xcode. 
           
@@ -96,6 +100,43 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
     
  ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/Auth.png)    
      
+   
+   ### Add CometChatPro SDK in project
+   
+   ### CocoaPods:
+   
+   We recommend using CocoaPods, as they are the most advanced way of managing iOS project dependencies.
+
+   - Add the CometChatPro dependancy in your podfile. 
+   
+   ```
+    pod 'CometChatPro'
+
+   ```
+
+   - If you're using the beta versions of 'Xcode' then specify the version numbers as given below:
+
+   ```
+    pod 'CometChatPro','2.0.X-betaX'
+
+   ```
+    If the pod installation fails due to Cocoapods dependancy issue then use the below command to install the framework through cocoapods.
+  
+  ```
+   pod install --repo-update
+
+   ```
+   
+   ### Manually:
+   
+   You can download the CometChatPro SDK from link below and manually add it in the project.
+   
+   Download CometChatPro SDK from [ios-chat-sdk](https://github.com/cometchat-pro/ios-chat-sdk)
+   
+ <br></br>  
+
+
+
   
     
     
@@ -157,7 +198,11 @@ Want to add localization in your app. [Click here](https://github.com/cometchat-
 
 # Integrating this sample into your own app       
 
-- Copy the  **CometChatPro-swift-sampleApp** folder in your app.
+- We provide sample apps to elaborate the functionality of our SDK. You can refer the code and add the functionality as per your requirement. 
+
+- All folder related to CometChatPro related functionality are added under 'Controllers' folder as shown below: 
+
+![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/FolderStructure.png)
 
 - **Initialize** and **login** the CometChat when app launches.
 
