@@ -120,7 +120,8 @@ To run our open source app with CometChat Pro v1, follow these steps:
     pod 'CometChatPro','2.0.X-betaX'
 
    ```
-    If the pod installation fails due to Cocoapods dependancy issue then use the below command to install the framework through cocoapods.
+   
+  - If the pod installation fails due to Cocoapods dependancy issue then use the below command to install the framework through cocoapods.
   
   ```
    pod install --repo-update
@@ -204,11 +205,6 @@ Want to add localization in your app. [Click here](https://github.com/cometchat-
 
 ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/FolderStructure.png)
 
-- **Initialize** and **login** the CometChat when app launches.
-
-- Call the **EmbeddedViewController.swift** on the view controller where you want display the Tabbar.
-
-- Also, you can refer the sample app and intergate the functionality as required in your iOS app.
 
 # Troubleshoot  
 
