@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CometChatLog</key>
+	<string>1111</string>
+	<key>Authentication</key>
+	<dict>
+		<key>API_KEY</key>
+		<string>b7df6f21999560723572eb3fe1e6244e7258d386</string>
+		<key>APP_ID</key>
+		<string>9126534d6ccf5e</string>
+		<key>REGION</key>
+		<string>eu</string>
+	</dict>
+	<key>UIApperance</key>
+	<string>PersianBlue</string>
+	<key>New item</key>
+	<string></string>
+	<key>UIAppearanceFont</key>
+	<dict>
+		<key>regular</key>
+		<string>Futura-Medium</string>
+		<key>bold</key>
+		<string>Futura-Bold</string>
+		<key>italic</key>
+		<string>Futura-MediumItalic</string>
+	</dict>
+	<key>UIAppearanceSize</key>
+	<dict>
+		<key>CORNER_RADIUS</key>
+		<integer>5</integer>
+		<key>Padding</key>
+		<integer>0</integer>
+	</dict>
+	<key>UIAppearanceColor</key>
+	<dict>
+		<key>NAVIGATION_BAR_COLOR</key>
+		<string>660000</string>
+		<key>NAVIGATION_BAR_TITLE_COLOR</key>
+		<string>FFFFFF</string>
+		<key>NAVIGATION_BAR_BUTTON_TINT_COLOR</key>
+		<string>FFFFFF</string>
+		<key>BACKGROUND_COLOR</key>
+		<string>660000</string>
+		<key>LOGIN_BUTTON_TINT_COLOR</key>
+		<string>660000</string>
+		<key>LOGO_TINT_COLOR</key>
+		<string>FFFFFF</string>
+		<key>RIGHT_BUBBLE_BACKGROUND_COLOR</key>
+		<string>660000</string>
+		<key>SEARCH_BAR_STYLE_LIGHT_CONTENT</key>
+		<true/>
+	</dict>
+</dict>
+</plist>
