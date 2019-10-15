@@ -117,7 +117,7 @@ To run our open source app with CometChat Pro v1, follow these steps:
    - If you're using the beta versions of 'Xcode' then specify the version numbers as given below:
 
    ```
-    pod 'CometChatPro','2.0.X-betaX'
+    pod 'CometChatPro','2.0.0-beta4'
 
    ```
    
