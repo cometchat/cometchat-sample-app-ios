@@ -13,7 +13,7 @@
 </div>
 
 
-CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional messaging app capable of **one-on-one** (private) and **group** messaging. The app enables users to send **text** and **multimedia messages like audio, video, images, documents.**
+CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional messaging app capable of **one-on-one** (private) and **group** messaging along with recent conversations. The app enables users to send **text** and **multimedia messages like audio, video, images, documents.**
 
 [![Platform](https://img.shields.io/badge/Platform-iOS-orange.svg)](https://cocoapods.org/pods/CometChatPro)
 [![Languages](https://img.shields.io/badge/Language-Swift-orange.svg)](https://github.com/cometchat-pro/ios-swift-chat-app)
@@ -40,7 +40,7 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
 
 # Screenshots
 
-<img align="left" src="https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/Screenshots/Screenshots.png">
+<img align="left" src="https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v1/Screenshots/Screenshots.png">
    
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 
@@ -120,12 +120,12 @@ To use our sample with v2 Apps, you can checkout to branch v2 and follow  instru
    
    
    
- ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/Theme.png)
+ ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/v1/Screenshots/Theme.png)
  
  - Run the App. The App will look like below:
  
  <p align="center">
- <img align="center" width="708.5" height="680" src="https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/Themes.gif">
+ <img align="center" width="708.5" height="680" src="https://github.com/cometchat-pro/ios-swift-chat-app/blob/v1/Screenshots/Themes.gif">
 </p>
  
 To customize the appearance of the App.
@@ -164,7 +164,7 @@ To customize the appearance of the App.
 
 ## Localization 
 
-Want to add localization in your app. [Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/Localization.md)
+Want to add localization in your app. [Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v1/Localization.md)
 
 # Integrating this sample into your own app       
 
@@ -172,12 +172,12 @@ Want to add localization in your app. [Click here](https://github.com/cometchat-
 
 - All folder related to CometChatPro related functionality are added under 'Controllers' folder as shown below: 
 
-![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/FolderStructure.png)
+![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/v1/Screenshots/FolderStructure.png)
 
 
 # Troubleshoot  
 
-Facing any issues while running or installing the app. [Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/troubleshoot.md)
+Facing any issues while running or installing the app. [Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v1/troubleshoot.md)
 
 # Contribute 
    
