@@ -91,7 +91,7 @@ To use our sample with v2 Apps, you can checkout to branch v2 and follow  instru
    
    - Enter the **UID** at the time of login once the app is launched. 
     
- ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/Auth.png)    
+ ![Studio Guide](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v1/Screenshots/Auth.png)    
      
    
    ### Add CometChatPro SDK in project
@@ -100,7 +100,7 @@ To use our sample with v2 Apps, you can checkout to branch v2 and follow  instru
    
    We recommend using CocoaPods, as they are the most advanced way of managing iOS project dependencies.
 
-  To install the SDK  you can refer the instuctions from [here](https://github.com/cometchat-pro/ios-chat-sdk)
+  To install the SDK inside your app, you can refer the instuctions from [here](https://github.com/cometchat-pro/ios-chat-sdk)
    
 
  <br></br>  
