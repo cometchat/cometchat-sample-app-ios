@@ -1,0 +1,11 @@
+framework module XLActionController {
+  umbrella header "XLActionController.h"
+
+  export *
+  module * { export * }
+}
+
+module XLActionController.Swift {
+    header "XLActionController-Swift.h"
+    requires objc
+}

@@ -53,48 +53,43 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
    
 ## v2 Apps
 
-To run our open source app with CometChat Pro v2, follow these steps:
-
-1. Navigate to v2.0 folder. 
-
-2. Select the appropriate version as per your Xcode version. 
-
-3. Navigate to project's folder and use below command to install the require pods.
-   
-   ```
-   $ pod install
-   ```
-
-4. Build and run the Sample App.
+To use our sample with v2 Apps, you can checkout to branch v2 and follow  instructions specified in readme.md.
 
 ## v1 Apps
 
-To run our open source app with CometChat Pro v1, follow these steps:
+To run our open source app with CometChat Pro v2, follow these steps:
 
-1. Navigate to v1.8 folder. 
+1. Select the appropriate version as per your Xcode version. 
 
-2. Select the appropriate version as per your Xcode version. 
-
-3. Navigate to project's folder and use below command to install the require pods.
+2. Navigate to project's folder and use below command to install the require pods.
    
    ```
    $ pod install
    ```
 
 4. Build and run the Sample App.
+
+
 
 
 # Running the sample app
 
-   To Run to sample App you have to do the following changes by Adding **APP_ID**, **API_KEY** and  **REGION_CODE**
+## v2 Apps
+
+To use our sample with v2 Apps, you can checkout to branch v2 and follow  instructions specified in readme.md.
+
+
+ ## v1 Apps
+ 
+ To Run to sample App you have to do the following changes by Adding **APP_ID**, **API_KEY**.
    
-   You can obtain your  *APP_ID*, *API_KEY* and *REGION_CODE* from [CometChat-Pro Dashboard](https://app.cometchat.io/)
+   You can obtain your  *APP_ID*, *API_KEY* from [CometChat-Pro Dashboard](https://app.cometchat.io/)
           
    - Open the project in Xcode. 
           
    - Go to CometChatPro-swift-sampleApp -->  **CometChat-info.plist**.
                   
-   - Under Authentication section, modify *APP_ID* and *API_KEY*  and *REGION* with your own **API_KEY**, **APP_ID** and **REGION**.
+   - Under Authentication section, modify *APP_ID* and *API_KEY* with your own **API_KEY**, **APP_ID** .
    
    - Enter the **UID** at the time of login once the app is launched. 
     
@@ -107,33 +102,9 @@ To run our open source app with CometChat Pro v1, follow these steps:
    
    We recommend using CocoaPods, as they are the most advanced way of managing iOS project dependencies.
 
-   - Add the CometChatPro dependancy in your podfile. 
+  To install the SDK  you can refer the instuctions from [here](https://github.com/cometchat-pro/ios-chat-sdk)
    
-   ```
-    pod 'CometChatPro'
 
-   ```
-
-   - If you're using the beta versions of 'Xcode' then specify the version numbers as given below:
-
-   ```
-    pod 'CometChatPro','2.0.0-beta4'
-
-   ```
-   
-  - If the pod installation fails due to Cocoapods dependancy issue then use the below command to install the framework through cocoapods.
-  
-  ```
-   pod install --repo-update
-
-   ```
-   
-   ### Manually:
-   
-   You can download the CometChatPro SDK from link below and manually add it in the project.
-   
-   Download CometChatPro SDK from [ios-chat-sdk](https://github.com/cometchat-pro/ios-chat-sdk)
-   
  <br></br>  
 
 
