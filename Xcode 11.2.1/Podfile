@@ -1,0 +1,13 @@
+
+
+target 'CometChatPro-swift-sampleApp' do
+ 
+    pod 'CometChatPro', '2.0.1'
+    pod 'SDWebImage', '~> 4.0'
+end
+
+target 'CometChatPro-swift-sampleAppTests' do
+  
+   pod 'CometChatPro', '2.0.1'
+   pod 'SDWebImage', '~> 4.0'
+end
