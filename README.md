@@ -15,8 +15,6 @@
 
 CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional messaging app capable of **one-on-one** (private) and **group** messaging. The app enables users to send **text** and **multimedia messages like audio, video, images, documents.**
 
-[![Platform](https://img.shields.io/badge/Warning-This%20project%20contains%20large%20files.%20Kindly%2C%20clone%20the%20project%20instead%20of%20downloading%20the%20.zip%20file.%20-red)](#)
-
 [![Platform](https://img.shields.io/badge/Platform-iOS-orange.svg)](https://cocoapods.org/pods/CometChatPro)
 [![Languages](https://img.shields.io/badge/Language-Swift-orange.svg)](https://github.com/cometchat-pro/ios-swift-chat-app)
 
