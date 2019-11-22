@@ -3,7 +3,7 @@
 <div style="width:100%">
     <div style="width:50%; display:inline-block">
         <p align="center">
-        <img align="center" width="180" height="180" alt="" src="https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/CometChat%20Logo.png">    
+        <img align="center" width="180" height="180" alt="" src="https://github.com/cometchat-pro/ios-swift-chat-app/blob//v2/Screenshots/CometChat%20Logo.png">    
         </p>    
     </div>    
 </div>
@@ -41,7 +41,7 @@ CometChat iOS Demo app (built using **CometChat Pro**) is a fully functional mes
 
 # Screenshots
 
-<img align="left" src="https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/Screenshots/Screenshots.png">
+<img align="left" src="https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v2/Screenshots/Screenshots.png">
    
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 
@@ -85,7 +85,7 @@ To use our sample with v1 Apps, you can checkout to branch v1 and follow  instru
    
    - Enter the **UID** at the time of login once the app is launched. 
     
- ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/Auth.png)    
+ ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/v2/Screenshots/Auth.png)    
  
  
  ## v1 Apps
@@ -119,12 +119,12 @@ To use our sample with v1 Apps, you can checkout to branch v1 and follow  instru
    
    
    
- ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/Theme.png)
+ ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/v2/Screenshots/Theme.png)
  
  - Run the App. The App will look like below:
  
  <p align="center">
- <img align="center" width="708.5" height="680" src="https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/Themes.gif">
+ <img align="center" width="758.36" height="680" src="https://github.com/cometchat-pro/ios-swift-chat-app/blob/v2/Screenshots/Themes.gif">
 </p>
  
 To customize the appearance of the App.
@@ -137,7 +137,7 @@ To customize the appearance of the App.
    
    - You can build **1000+** combinations of themes as per requirement of the appearance of your iOS App.
    
-   ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/CustomTheme.png)    
+   ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/v2/Screenshots/CustomTheme.png)    
    
    <br></br>
    
@@ -163,7 +163,7 @@ To customize the appearance of the App.
 
 ## Localization 
 
-Want to add localization in your app. [Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/Localization.md)
+Want to add localization in your app. [Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v2/Localization.md)
 
 # Integrating this sample into your own app       
 
@@ -171,12 +171,12 @@ Want to add localization in your app. [Click here](https://github.com/cometchat-
 
 - All folder related to CometChatPro related functionality are added under 'Controllers' folder as shown below: 
 
-![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/FolderStructure.png)
+![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/v2/Screenshots/FolderStructure.png)
 
 
 # Troubleshoot  
 
-Facing any issues while running or installing the app. [Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/troubleshoot.md)
+Facing any issues while running or installing the app. [Click here](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v2/troubleshoot.md)
 
 # Contribute 
    
