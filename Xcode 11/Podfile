@@ -2,12 +2,12 @@
 
 target 'CometChatPro-swift-sampleApp' do
  
-    pod 'CometChatPro', '2.0.1-Xcode11'
+    pod 'CometChatPro', '2.0.4-Xcode11'
     pod 'SDWebImage', '~> 4.0'
 end
 
 target 'CometChatPro-swift-sampleAppTests' do
   
-   pod 'CometChatPro', '2.0.1-Xcode11'
+   pod 'CometChatPro', '2.0.4-Xcode11'
    pod 'SDWebImage', '~> 4.0'
 end
