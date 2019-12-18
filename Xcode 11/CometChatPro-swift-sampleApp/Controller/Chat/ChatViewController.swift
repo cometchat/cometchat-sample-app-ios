@@ -89,9 +89,8 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         self.hideKeyboardWhenTappedOnTableView()
         
         // Assigining CometChatPro Delegates
-        CometChat.messagedelegate = self
-        CometChat.userdelegate = self
-        CometChat.groupdelegate = self
+        addDelegate()
+        
         
         //registering Cells
         chatTableview.register(ChatTextMessageCell.self, forCellReuseIdentifier: textCellID)
@@ -143,6 +142,17 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         }catch{ CometChatLog.print(items:"\(error)") }
     }
     
+    func addDelegate(){
+        CometChat.messagedelegate = self
+        CometChat.userdelegate = self
+        CometChat.groupdelegate = self
+    }
+    
+    @objc func willEnterForeground() {
+        //self.viewDidLoad()
+       addDel()
+    }
+    
     // Fetching Old/Previous messages
     @objc func refresh(_ sender: Any) {
         fetchPreviousMessages(messageReq: messageRequest) { (message, error) in
@@ -171,6 +181,9 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
+    
+    //View will Appera method
+    
     
     // This function setup the Audio Recorder for recording audio for type of Audio Message
     func setupRecorder() {
@@ -383,6 +396,8 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     // Function called when viewWillDisappear
@@ -390,6 +405,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
         
     }
     
@@ -1234,7 +1250,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
             
            CameraHandler.shared.presentPhotoLibrary(for: self)
                   CameraHandler.shared.imagePickedBlock = { (photoURL) in
-                    self.sendMediaMessage(toUserUID: self.buddyUID, mediaURL: photoURL, isGroup: self.isGroup, messageType: .video, completionHandler: { (message, error) in
+                    self.sendMediaMessage(toUserUID: self.buddyUID, mediaURL: photoURL, isGroup: self.isGroup, messageType: .image, completionHandler: { (message, error) in
                             
                             guard  let sendMessage =  message else{
                                 return

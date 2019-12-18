@@ -19,7 +19,7 @@ class ConversationsListViewController: UIViewController ,UISearchControllerDeleg
     @IBOutlet weak var rightPadding: NSLayoutConstraint!
     
     var conversations: [Conversation] = [Conversation]()
-    var conversationRequest : ConversationRequest = ConversationRequest.ConversationRequestBuilder(limit: 100).setConversationType(conversationType: .none).build()
+    var conversationRequest : ConversationRequest = ConversationRequest.ConversationRequestBuilder(limit: 50).setConversationType(conversationType: .none).build()
     
     var newConversationRequest : ConversationRequest?
     
@@ -65,7 +65,7 @@ class ConversationsListViewController: UIViewController ,UISearchControllerDeleg
     
     func refreshConversationList(){
         self.conversations.removeAll()
-        conversationRequest  = ConversationRequest.ConversationRequestBuilder(limit: 100).setConversationType(conversationType: .none).build()
+        conversationRequest  = ConversationRequest.ConversationRequestBuilder(limit: 50).setConversationType(conversationType: .none).build()
         conversationRequest.fetchNext(onSuccess: { (fetchedConversations) in
             print("fetchedConversations 11: \(fetchedConversations)")
             for convo in fetchedConversations {

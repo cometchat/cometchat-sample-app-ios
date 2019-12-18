@@ -7,11 +7,11 @@
 	<key>Authentication</key>
 	<dict>
 		<key>API_KEY</key>
-		<string>ENTER API KEY</string>
+		<string>5c4572fb15dd6cc37147ec220dee097308e847b0</string>
 		<key>APP_ID</key>
-		<string>ENTER APP ID</string>
+		<string>114512be56a32e1</string>
 		<key>REGION</key>
-		<string>ENTER REGION CODE</string>
+		<string>eu</string>
 	</dict>
 	<key>UIApperance</key>
 	<string>PersianBlue</string>
