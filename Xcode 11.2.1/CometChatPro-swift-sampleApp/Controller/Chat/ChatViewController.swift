@@ -150,7 +150,7 @@ class ChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegat
     
     @objc func willEnterForeground() {
         //self.viewDidLoad()
-       addDel()
+
     }
     
     // Fetching Old/Previous messages
