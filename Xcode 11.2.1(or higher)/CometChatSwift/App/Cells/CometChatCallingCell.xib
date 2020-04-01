@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="cometChatCallingCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="cometChatCallingCell" rowHeight="1065" id="KGk-i7-Jjw" customClass="CometChatCallingCell" customModule="ios_chat_uikit_app" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="441" height="866"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="441" height="866"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFf-Ye-Myx">
+                        <rect key="frame" x="20" y="20" width="401" height="1361"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="aTl-0k-BrD">
+                                <rect key="frame" x="20" y="10" width="361" height="1279"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facetime" translatesAutoresizingMaskIntoConstraints="NO" id="hmX-gS-2Tc">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="1024"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="jSn-j7-7sM"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgZ-Oh-YQZ">
+                                        <rect key="frame" x="88.5" y="1036" width="184" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="tDJ-28-EvC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMp-pp-vjp">
+                                        <rect key="frame" x="1" y="1083" width="359.5" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="aO1-zx-EKU"/>
+                                        </constraints>
+                                        <string key="text">CometChatCallManager manages incoming and outgoing call activities in UI Kit.  User has to call `registerForCalls()` method in AppDelegate to receive call events. </string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jne-Kf-n3i">
+                                        <rect key="frame" x="0.0" y="1165" width="361" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Tui-RX-o4s"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Iron Man"/>
+                                            <segment title="Captain America"/>
+                                            <segment title="Spider Man"/>
+                                            <segment title="Wolvorine"/>
+                                            <segment title="Cyclops"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WXm-E4-7Ve">
+                                        <rect key="frame" x="123" y="1207" width="115" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="wfp-Ua-Rvu"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="User"/>
+                                            <segment title="Group"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="didSelectedTypePressed:" destination="KGk-i7-Jjw" eventType="valueChanged" id="x1C-9p-LAU"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c9G-RC-SEC">
+                                        <rect key="frame" x="99" y="1249" width="163" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="HBJ-L1-h1F"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Audio Call"/>
+                                            <segment title="Video Call"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KrN-X4-9FH">
+                                <rect key="frame" x="0.0" y="1309" width="401" height="2"/>
+                                <color key="backgroundColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="sOv-Dj-BmQ"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXC-vU-ZXO">
+                                <rect key="frame" x="0.0" y="1311" width="401" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="FPK-YP-jIA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="19"/>
+                                <state key="normal" title="Make Call">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="makeCallPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NNe-5k-Obm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KrN-X4-9FH" firstAttribute="leading" secondItem="UFf-Ye-Myx" secondAttribute="leading" id="9GM-R6-lTE"/>
+                            <constraint firstAttribute="bottom" secondItem="qXC-vU-ZXO" secondAttribute="bottom" id="Df2-Ga-2hM"/>
+                            <constraint firstItem="KrN-X4-9FH" firstAttribute="top" secondItem="aTl-0k-BrD" secondAttribute="bottom" constant="20" id="FCD-OS-TOK"/>
+                            <constraint firstAttribute="trailing" secondItem="aTl-0k-BrD" secondAttribute="trailing" constant="20" id="JU8-a0-bVE"/>
+                            <constraint firstItem="aTl-0k-BrD" firstAttribute="top" secondItem="UFf-Ye-Myx" secondAttribute="top" constant="10" id="NzF-zP-cb7"/>
+                            <constraint firstAttribute="trailing" secondItem="KrN-X4-9FH" secondAttribute="trailing" id="Z62-tk-831"/>
+                            <constraint firstAttribute="trailing" secondItem="qXC-vU-ZXO" secondAttribute="trailing" id="osv-3w-fet"/>
+                            <constraint firstItem="qXC-vU-ZXO" firstAttribute="leading" secondItem="UFf-Ye-Myx" secondAttribute="leading" id="pPe-Dd-FhY"/>
+                            <constraint firstItem="aTl-0k-BrD" firstAttribute="leading" secondItem="UFf-Ye-Myx" secondAttribute="leading" constant="20" id="wg7-Mk-QHA"/>
+                            <constraint firstItem="qXC-vU-ZXO" firstAttribute="top" secondItem="KrN-X4-9FH" secondAttribute="bottom" id="xEu-hM-rKI"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="UFf-Ye-Myx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="9gJ-aC-XYu"/>
+                    <constraint firstAttribute="trailing" secondItem="UFf-Ye-Myx" secondAttribute="trailing" constant="20" id="MgR-EU-TZb"/>
+                    <constraint firstAttribute="bottom" secondItem="UFf-Ye-Myx" secondAttribute="bottom" constant="20" id="OzS-S6-XNv"/>
+                    <constraint firstItem="UFf-Ye-Myx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="mXk-E1-VIG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <inset key="separatorInset" minX="70" minY="0.0" maxX="18" maxY="0.0"/>
+            <connections>
+                <outlet property="callType" destination="c9G-RC-SEC" id="b46-gB-Vfk"/>
+                <outlet property="cardView" destination="UFf-Ye-Myx" id="DFn-wn-WBB"/>
+                <outlet property="typeSegment" destination="WXm-E4-7Ve" id="xLd-9i-BoP"/>
+                <outlet property="userSegment" destination="jne-Kf-n3i" id="Th3-tH-fBz"/>
+            </connections>
+            <point key="canvasLocation" x="216.66666666666669" y="398.4375"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="facetime" width="512" height="512"/>
+    </resources>
+</document>
