@@ -45,7 +45,7 @@ To Run to sample app you have to do the following changes by Adding **APP_ID**, 
 
    -  Select demo users or enter the **UID** at the time of login once the app is launched. 
 
-![Studio Guide](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/master/Screenshots/Auth.png)    
+![Studio Guide](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v2/Screenshots/Auth.png)    
 
 # Add UIKit Library to your App
 
