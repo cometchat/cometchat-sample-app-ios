@@ -2,6 +2,6 @@
 
 target 'CometChatSwift' do
   
-pod 'CometChatPro','2.0.7'
+pod 'CometChatPro','2.0.8'
 
 end
