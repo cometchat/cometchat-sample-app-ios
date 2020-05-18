@@ -25,10 +25,23 @@
 		DBFBC47323A7B9230027938E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFBC47123A7B9230027938E /* Main.storyboard */; };
 		DBFBC47523A7B9240027938E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBFBC47423A7B9240027938E /* Assets.xcassets */; };
 		DBFBC47823A7B9240027938E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFBC47623A7B9240027938E /* LaunchScreen.storyboard */; };
+		FB13ACED2463146E0031100D /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13ACDD2463146E0031100D /* AudioPlayerManager.swift */; };
+		FB13ACEE2463146E0031100D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13ACDE2463146E0031100D /* ViewModel.swift */; };
+		FB13ACEF2463146E0031100D /* AudioRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13ACDF2463146E0031100D /* AudioRecorderManager.swift */; };
+		FB13ACF02463146E0031100D /* AVAudioFileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13ACE22463146E0031100D /* AVAudioFileExtensions.swift */; };
+		FB13ACF12463146E0031100D /* Chronometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13ACE32463146E0031100D /* Chronometer.swift */; };
+		FB13ACF32463146E0031100D /* AudioVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13ACE52463146E0031100D /* AudioVisualizationView.swift */; };
+		FB13ACF42463146E0031100D /* AudioContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13ACE62463146E0031100D /* AudioContext.swift */; };
+		FB13ACF52463146E0031100D /* BaseNibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13ACE72463146E0031100D /* BaseNibView.swift */; };
+		FB13ACF62463146E0031100D /* AudioVisualizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB13ACE82463146E0031100D /* AudioVisualizationView.xib */; };
 		FB15AF72242E1AAA005C070B /* CometChatCallingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB15AF70242E1AA9005C070B /* CometChatCallingCell.swift */; };
 		FB15AF73242E1AAA005C070B /* CometChatCallingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB15AF71242E1AAA005C070B /* CometChatCallingCell.xib */; };
 		FBA293102434D9A7006DCCA1 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA2930E2434D9A7006DCCA1 /* AppConstants.swift */; };
 		FBA293112434D9A7006DCCA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA2930F2434D9A7006DCCA1 /* AppDelegate.swift */; };
+		FBAC40BA2463DECB00FE9F0F /* RightAudioMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAC40B52463DECB00FE9F0F /* RightAudioMessageBubble.xib */; };
+		FBAC40BB2463DECB00FE9F0F /* RightAudioMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC40B62463DECB00FE9F0F /* RightAudioMessageBubble.swift */; };
+		FBAC40BC2463DECB00FE9F0F /* LeftAudioMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAC40B82463DECB00FE9F0F /* LeftAudioMessageBubble.xib */; };
+		FBAC40BD2463DECB00FE9F0F /* LeftAudioMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC40B92463DECB00FE9F0F /* LeftAudioMessageBubble.swift */; };
 		FBFF7E432430BD74006159DF /* CometChatUnified.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFF7CC42430BD74006159DF /* CometChatUnified.swift */; };
 		FBFF7E442430BD74006159DF /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFF7CC72430BD74006159DF /* FontManager.swift */; };
 		FBFF7E452430BD74006159DF /* CometchatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFF7CC82430BD74006159DF /* CometchatExtensions.swift */; };
@@ -342,10 +355,23 @@
 		DBFBC47423A7B9240027938E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBFBC47723A7B9240027938E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBFBC47923A7B9240027938E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB13ACDD2463146E0031100D /* AudioPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
+		FB13ACDE2463146E0031100D /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		FB13ACDF2463146E0031100D /* AudioRecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderManager.swift; sourceTree = "<group>"; };
+		FB13ACE22463146E0031100D /* AVAudioFileExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVAudioFileExtensions.swift; sourceTree = "<group>"; };
+		FB13ACE32463146E0031100D /* Chronometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chronometer.swift; sourceTree = "<group>"; };
+		FB13ACE52463146E0031100D /* AudioVisualizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioVisualizationView.swift; sourceTree = "<group>"; };
+		FB13ACE62463146E0031100D /* AudioContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioContext.swift; sourceTree = "<group>"; };
+		FB13ACE72463146E0031100D /* BaseNibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNibView.swift; sourceTree = "<group>"; };
+		FB13ACE82463146E0031100D /* AudioVisualizationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioVisualizationView.xib; sourceTree = "<group>"; };
 		FB15AF70242E1AA9005C070B /* CometChatCallingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatCallingCell.swift; sourceTree = "<group>"; };
 		FB15AF71242E1AAA005C070B /* CometChatCallingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CometChatCallingCell.xib; sourceTree = "<group>"; };
 		FBA2930E2434D9A7006DCCA1 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConstants.swift; path = CometChatSwift/AppConstants.swift; sourceTree = SOURCE_ROOT; };
 		FBA2930F2434D9A7006DCCA1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CometChatSwift/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		FBAC40B52463DECB00FE9F0F /* RightAudioMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightAudioMessageBubble.xib; sourceTree = "<group>"; };
+		FBAC40B62463DECB00FE9F0F /* RightAudioMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightAudioMessageBubble.swift; sourceTree = "<group>"; };
+		FBAC40B82463DECB00FE9F0F /* LeftAudioMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftAudioMessageBubble.xib; sourceTree = "<group>"; };
+		FBAC40B92463DECB00FE9F0F /* LeftAudioMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftAudioMessageBubble.swift; sourceTree = "<group>"; };
 		FBFF7CC42430BD74006159DF /* CometChatUnified.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUnified.swift; sourceTree = "<group>"; };
 		FBFF7CC72430BD74006159DF /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		FBFF7CC82430BD74006159DF /* CometchatExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometchatExtensions.swift; sourceTree = "<group>"; };
@@ -729,6 +755,57 @@
 			path = CometChatSwift;
 			sourceTree = "<group>";
 		};
+		FB13ACDA2463146E0031100D /* AudioWaveForm */ = {
+			isa = PBXGroup;
+			children = (
+				FB13ACE12463146E0031100D /* Classes */,
+				FB13ACDD2463146E0031100D /* AudioPlayerManager.swift */,
+				FB13ACDE2463146E0031100D /* ViewModel.swift */,
+				FB13ACDF2463146E0031100D /* AudioRecorderManager.swift */,
+			);
+			path = AudioWaveForm;
+			sourceTree = "<group>";
+		};
+		FB13ACE12463146E0031100D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FB13ACE22463146E0031100D /* AVAudioFileExtensions.swift */,
+				FB13ACE32463146E0031100D /* Chronometer.swift */,
+				FB13ACE52463146E0031100D /* AudioVisualizationView.swift */,
+				FB13ACE62463146E0031100D /* AudioContext.swift */,
+				FB13ACE72463146E0031100D /* BaseNibView.swift */,
+				FB13ACE82463146E0031100D /* AudioVisualizationView.xib */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		FBAC40B32463DECB00FE9F0F /* AudioMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				FBAC40B42463DECB00FE9F0F /* RightAudioMessageBubble */,
+				FBAC40B72463DECB00FE9F0F /* LeftAudioMessageBubble */,
+			);
+			path = AudioMessageBubble;
+			sourceTree = "<group>";
+		};
+		FBAC40B42463DECB00FE9F0F /* RightAudioMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				FBAC40B52463DECB00FE9F0F /* RightAudioMessageBubble.xib */,
+				FBAC40B62463DECB00FE9F0F /* RightAudioMessageBubble.swift */,
+			);
+			path = RightAudioMessageBubble;
+			sourceTree = "<group>";
+		};
+		FBAC40B72463DECB00FE9F0F /* LeftAudioMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				FBAC40B82463DECB00FE9F0F /* LeftAudioMessageBubble.xib */,
+				FBAC40B92463DECB00FE9F0F /* LeftAudioMessageBubble.swift */,
+			);
+			path = LeftAudioMessageBubble;
+			sourceTree = "<group>";
+		};
 		FBFF7CC22430BD74006159DF /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -763,6 +840,7 @@
 		FBFF7CC62430BD74006159DF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FB13ACDA2463146E0031100D /* AudioWaveForm */,
 				FBFF7CC72430BD74006159DF /* FontManager.swift */,
 				FBFF7CC82430BD74006159DF /* CometchatExtensions.swift */,
 				FBFF7CC92430BD74006159DF /* CameraHandler.swift */,
@@ -1292,6 +1370,7 @@
 		FBFF7DCC2430BD74006159DF /* MessageView */ = {
 			isa = PBXGroup;
 			children = (
+				FBAC40B32463DECB00FE9F0F /* AudioMessageBubble */,
 				FBFF7DCD2430BD74006159DF /* FileMessageBubble */,
 				FBFF7DD42430BD74006159DF /* TextMessageBubble */,
 				FBFF7DDB2430BD74006159DF /* VideoMessageBubble */,
@@ -1934,6 +2013,7 @@
 				FBFF7E9D2430BD74006159DF /* defaultImage.png in Resources */,
 				FBFF7EE82430BD74006159DF /* 􀇿.png in Resources */,
 				FBFF7F192430BD75006159DF /* CometChatGroupView.xib in Resources */,
+				FB13ACF62463146E0031100D /* AudioVisualizationView.xib in Resources */,
 				FBFF7E8F2430BD74006159DF /* stickerDark.png in Resources */,
 				FBFF7ED12430BD74006159DF /* incomingAudio@2x.png in Resources */,
 				FBFF7EE92430BD74006159DF /* 􀁝.png in Resources */,
@@ -1960,6 +2040,7 @@
 				FBFF7E852430BD74006159DF /* send@2x.png in Resources */,
 				FBFF7EB42430BD74006159DF /* calls@2x.png in Resources */,
 				FBFF7E902430BD74006159DF /* sticker@3x.png in Resources */,
+				FBAC40BC2463DECB00FE9F0F /* LeftAudioMessageBubble.xib in Resources */,
 				FBFF7EA42430BD74006159DF /* sent.png in Resources */,
 				FBFF7E862430BD74006159DF /* send@3x.png in Resources */,
 				FBFF7F0A2430BD75006159DF /* SF-Pro-Display-BlackItalic.otf in Resources */,
@@ -1969,6 +2050,7 @@
 				FBFF7EF82430BD75006159DF /* createGroup@3x.png in Resources */,
 				FBFF7ED22430BD74006159DF /* outgoingVideo@3x.png in Resources */,
 				FBFF7ED52430BD74006159DF /* incomingVideo.png in Resources */,
+				FBAC40BA2463DECB00FE9F0F /* RightAudioMessageBubble.xib in Resources */,
 				FBFF7EDA2430BD74006159DF /* end@3x.png in Resources */,
 				FBFF7F482430BD75006159DF /* CometChatCallDetailLogView.xib in Resources */,
 				FBFF7E992430BD74006159DF /* play@2x.png in Resources */,
@@ -2042,6 +2124,7 @@
 				FBFF7F4D2430BD75006159DF /* CometChatSoundManager.swift in Sources */,
 				FBFF7F142430BD75006159DF /* AddMemberView.swift in Sources */,
 				FBFF7F2A2430BD75006159DF /* RightTextMessageBubble.swift in Sources */,
+				FB13ACF52463146E0031100D /* BaseNibView.swift in Sources */,
 				FBFF7E4A2430BD74006159DF /* UIViewController+LargeTitle.swift in Sources */,
 				FBFF7F492430BD75006159DF /* CometChatCallDetailLogView.swift in Sources */,
 				FBFF7F202430BD75006159DF /* CometChatSettingsView.swift in Sources */,
@@ -2049,6 +2132,7 @@
 				FBFF7F3F2430BD75006159DF /* Avatar.swift in Sources */,
 				FBA293112434D9A7006DCCA1 /* AppDelegate.swift in Sources */,
 				DBED2A4323AA67C50058D5BF /* ComponentModificationsController.swift in Sources */,
+				FB13ACF32463146E0031100D /* AudioVisualizationView.swift in Sources */,
 				FBFF7E752430BD74006159DF /* Delegate.swift in Sources */,
 				FBFF7F302430BD75006159DF /* LeftLinkPreviewBubble.swift in Sources */,
 				FBFF7F102430BD75006159DF /* CometChatConversationView.swift in Sources */,
@@ -2082,6 +2166,7 @@
 				FBFF7E5B2430BD74006159DF /* RequestModifier.swift in Sources */,
 				FBFF7E682430BD74006159DF /* ImageTransition.swift in Sources */,
 				FBFF7E482430BD74006159DF /* CometChatSnackBar.swift in Sources */,
+				FB13ACF02463146E0031100D /* AVAudioFileExtensions.swift in Sources */,
 				FBFF7F352430BD75006159DF /* LeftImageMessageBubble.swift in Sources */,
 				FBFF7E762430BD74006159DF /* ExtensionHelpers.swift in Sources */,
 				FBFF7F2B2430BD75006159DF /* RightVideoMessageBubble.swift in Sources */,
@@ -2103,8 +2188,10 @@
 				FBFF7F412430BD75006159DF /* SharedMediaView.swift in Sources */,
 				DB4D6ABF23ACB2A00002BCED /* LoginWithDemoUsers.swift in Sources */,
 				FBFF7E572430BD74006159DF /* Deprecated.swift in Sources */,
+				FB13ACF12463146E0031100D /* Chronometer.swift in Sources */,
 				FBFF7F502430BD75006159DF /* CometChatOutgoingCall.swift in Sources */,
 				FBFF7E652430BD74006159DF /* Image.swift in Sources */,
+				FB13ACF42463146E0031100D /* AudioContext.swift in Sources */,
 				FBFF7E4E2430BD74006159DF /* MemoryStorage.swift in Sources */,
 				FBFF7F4E2430BD75006159DF /* CometChatCallDetail.swift in Sources */,
 				FBFF7E692430BD74006159DF /* ImageProcessor.swift in Sources */,
@@ -2120,6 +2207,7 @@
 				FBFF7F5F2430BD75006159DF /* CometChatGroupList.swift in Sources */,
 				FBFF7F262430BD75006159DF /* RightFileMessageBubble.swift in Sources */,
 				FBFF7E562430BD74006159DF /* CometfisherOptionsInfo.swift in Sources */,
+				FBAC40BD2463DECB00FE9F0F /* LeftAudioMessageBubble.swift in Sources */,
 				FBFF7F182430BD75006159DF /* CometChatGroupView.swift in Sources */,
 				FBFF7E442430BD74006159DF /* FontManager.swift in Sources */,
 				FBFF7E512430BD74006159DF /* FormatIndicatedCacheSerializer.swift in Sources */,
@@ -2130,6 +2218,7 @@
 				FBFF7F4B2430BD75006159DF /* CometChatCallsView.swift in Sources */,
 				FBFF7E642430BD74006159DF /* ImageProgressive.swift in Sources */,
 				FBFF7E702430BD74006159DF /* NSButton+Cometfisher.swift in Sources */,
+				FB13ACEF2463146E0031100D /* AudioRecorderManager.swift in Sources */,
 				DBED2A3E23AA50750058D5BF /* UIComponentsCell.swift in Sources */,
 				FBFF7F392430BD75006159DF /* MessageDateHeader.swift in Sources */,
 				FBFF7E4D2430BD74006159DF /* ImageCache.swift in Sources */,
@@ -2139,17 +2228,20 @@
 				FBFF7E462430BD74006159DF /* CameraHandler.swift in Sources */,
 				FBFF7F612430BD75006159DF /* CometChatUserList.swift in Sources */,
 				FBA293102434D9A7006DCCA1 /* AppConstants.swift in Sources */,
+				FB13ACED2463146E0031100D /* AudioPlayerManager.swift in Sources */,
 				FBFF7F452430BD75006159DF /* CometChatUserView.swift in Sources */,
 				FBFF7F4C2430BD75006159DF /* CometChatCallManager.swift in Sources */,
 				FBFF7E5E2430BD74006159DF /* RedirectHandler.swift in Sources */,
 				FBFF7E742430BD74006159DF /* CallbackQueue.swift in Sources */,
 				FBFF7F372430BD75006159DF /* ActionMessageBubble.swift in Sources */,
+				FBAC40BB2463DECB00FE9F0F /* RightAudioMessageBubble.swift in Sources */,
 				FBFF7F3A2430BD75006159DF /* ChatView.swift in Sources */,
 				FBFF7F532430BD75006159DF /* CometChatIncomingCall.swift in Sources */,
 				FBFF7E6D2430BD74006159DF /* WKInterfaceImage+Cometfisher.swift in Sources */,
 				FBFF7F2D2430BD75006159DF /* LeftVideoMessageBubble.swift in Sources */,
 				FBFF7F632430BD75006159DF /* CometChatConversationList.swift in Sources */,
 				FBFF7F172430BD75006159DF /* MembersView.swift in Sources */,
+				FB13ACEE2463146E0031100D /* ViewModel.swift in Sources */,
 				DB2E60AF23A8D8C100986E12 /* CometChatUnifiedCell.swift in Sources */,
 				DBED2A3923AA4C640058D5BF /* UIComponentController.swift in Sources */,
 				FBFF7E632430BD74006159DF /* ImagePrefetcher.swift in Sources */,
