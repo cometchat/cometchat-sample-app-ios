@@ -19,7 +19,7 @@ class CometChatUIScreenCell: UITableViewCell {
     @IBOutlet weak var screenSegment: UISegmentedControl!
     @IBOutlet weak var styleSegment: UISegmentedControl!
     
-     weak var delegate: CometChatUIScreenCellDelegate?
+    weak var delegate: CometChatUIScreenCellDelegate?
    
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HAb-Nk-DtE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HAb-Nk-DtE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,13 +22,13 @@
         <!--Login With Demo Users-->
         <scene sceneID="DMW-TI-xey">
             <objects>
-                <viewController storyboardIdentifier="loginWithDemoUsers" id="HAb-Nk-DtE" customClass="LoginWithDemoUsers" customModule="ios_chat_uikit_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginWithDemoUsers" id="HAb-Nk-DtE" customClass="LoginWithDemoUsers" customModule="CometChat_KitchenSink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n2c-GR-JMi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CKB-4O-hSe">
-                                <rect key="frame" x="20" y="385.5" width="374" height="157.5"/>
+                                <rect key="frame" x="20" y="349.5" width="374" height="157.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="CometChat  " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ls-yp-nYk">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
@@ -54,7 +54,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Fkv-3T-yre">
-                                <rect key="frame" x="20" y="753" width="374" height="89"/>
+                                <rect key="frame" x="20" y="717" width="374" height="125"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dd7-ol-C4X">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="55"/>
@@ -75,8 +75,21 @@
                                             <segue destination="vwf-14-xy0" kind="show" id="zN1-ch-c1Z"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7v-ns-oTf">
+                                        <rect key="frame" x="59" y="71" width="256" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="FOb-r5-sOZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Don't have an Account? Sign Up">
+                                            <color key="titleColor" red="0.20000000000000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="0Ml-mr-B8a" kind="show" id="OlJ-8A-AiP"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" ©  2020 CometChat Inc." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gag-xl-6WS">
-                                        <rect key="frame" x="108" y="71" width="158.5" height="18"/>
+                                        <rect key="frame" x="108" y="107" width="158.5" height="18"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -88,7 +101,7 @@
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cometchat_white" translatesAutoresizingMaskIntoConstraints="NO" id="LRS-k4-WkM">
-                                <rect key="frame" x="20" y="241.5" width="124" height="124"/>
+                                <rect key="frame" x="20" y="205.5" width="124" height="124"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="124" id="Lhr-mg-dml"/>
@@ -101,7 +114,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-PG-o8b">
-                                <rect key="frame" x="20" y="563" width="374" height="130"/>
+                                <rect key="frame" x="20" y="527" width="374" height="130"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aB3-bt-dLU">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="130"/>
@@ -393,13 +406,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or else  continue with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4M5-Us-5gI">
-                                <rect key="frame" x="20" y="713" width="231" height="30"/>
+                                <rect key="frame" x="20" y="677" width="231" height="30"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="25"/>
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fTp-4o-LRV">
-                                <rect key="frame" x="347" y="285" width="37" height="37"/>
+                                <rect key="frame" x="347" y="249" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -435,10 +448,137 @@
             </objects>
             <point key="canvasLocation" x="-1371.0144927536232" y="-170.08928571428569"/>
         </scene>
+        <!--Sign Up-->
+        <scene sceneID="T1y-rl-avI">
+            <objects>
+                <viewController id="5C7-h5-RY2" customClass="CreateUser" customModule="CometChat_KitchenSink" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VF2-sS-THq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19p-4w-5hx">
+                                <rect key="frame" x="20" y="718" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ABA-tP-V9o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="18"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="5C7-h5-RY2" eventType="touchUpInside" id="lVc-hz-1Y1"/>
+                                </connections>
+                            </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Dv-FK-u3A">
+                                <rect key="frame" x="20" y="257.5" width="374" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iEq-jm-D8a">
+                                        <rect key="frame" x="15" y="0.0" width="354" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="3I3-0M-K4k"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="iEq-jm-D8a" firstAttribute="top" secondItem="5Dv-FK-u3A" secondAttribute="top" id="624-mV-Xa0"/>
+                                    <constraint firstAttribute="bottom" secondItem="iEq-jm-D8a" secondAttribute="bottom" id="8yy-zP-ojA"/>
+                                    <constraint firstAttribute="trailing" secondItem="iEq-jm-D8a" secondAttribute="trailing" constant="5" id="fMi-Sv-4Wf"/>
+                                    <constraint firstItem="iEq-jm-D8a" firstAttribute="leading" secondItem="5Dv-FK-u3A" secondAttribute="leading" constant="15" id="yQb-lA-R5U"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dg8-Rl-eqT">
+                                <rect key="frame" x="20" y="168" width="374" height="69.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kindly,  enter name to create user." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-h8-4Z3">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="69.5"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="29"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ynt-Yk-od7">
+                                <rect key="frame" x="0.0" y="108" width="414" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creating an user.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NY-HW-JTd">
+                                        <rect key="frame" x="20" y="9.5" width="135.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="RZN-b2-78b">
+                                        <rect key="frame" x="374" y="10" width="20" height="20"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8NY-HW-JTd" firstAttribute="leading" secondItem="Ynt-Yk-od7" secondAttribute="leading" constant="20" id="0bB-oI-haD"/>
+                                    <constraint firstItem="RZN-b2-78b" firstAttribute="centerY" secondItem="Ynt-Yk-od7" secondAttribute="centerY" id="Dc0-XS-9Ix"/>
+                                    <constraint firstAttribute="trailing" secondItem="RZN-b2-78b" secondAttribute="trailing" constant="20" id="IYJ-kq-DLF"/>
+                                    <constraint firstItem="8NY-HW-JTd" firstAttribute="centerY" secondItem="Ynt-Yk-od7" secondAttribute="centerY" id="MsS-zA-Kmv"/>
+                                    <constraint firstAttribute="height" constant="40" id="ex4-8Q-W4m"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="4jh-Zw-jJq" firstAttribute="bottom" secondItem="19p-4w-5hx" secondAttribute="bottom" constant="40" id="0tp-fJ-NJa"/>
+                            <constraint firstItem="dg8-Rl-eqT" firstAttribute="leading" secondItem="4jh-Zw-jJq" secondAttribute="leading" constant="20" id="1dJ-en-20R"/>
+                            <constraint firstItem="Ynt-Yk-od7" firstAttribute="trailing" secondItem="4jh-Zw-jJq" secondAttribute="trailing" id="Ftg-aa-1Mr"/>
+                            <constraint firstItem="4jh-Zw-jJq" firstAttribute="trailing" secondItem="dg8-Rl-eqT" secondAttribute="trailing" constant="20" id="MmT-jg-8pn"/>
+                            <constraint firstItem="4jh-Zw-jJq" firstAttribute="trailing" secondItem="19p-4w-5hx" secondAttribute="trailing" constant="20" id="OBw-3z-lJs"/>
+                            <constraint firstItem="5Dv-FK-u3A" firstAttribute="leading" secondItem="4jh-Zw-jJq" secondAttribute="leading" constant="20" id="PcH-1P-fX3"/>
+                            <constraint firstItem="5Dv-FK-u3A" firstAttribute="top" secondItem="dg8-Rl-eqT" secondAttribute="bottom" constant="20" id="aYV-jk-NPk"/>
+                            <constraint firstItem="Ynt-Yk-od7" firstAttribute="leading" secondItem="4jh-Zw-jJq" secondAttribute="leading" id="bdB-9u-Qd7"/>
+                            <constraint firstItem="4jh-Zw-jJq" firstAttribute="trailing" secondItem="5Dv-FK-u3A" secondAttribute="trailing" constant="20" id="jhL-JI-Mrz"/>
+                            <constraint firstItem="19p-4w-5hx" firstAttribute="leading" secondItem="4jh-Zw-jJq" secondAttribute="leading" constant="20" id="juF-Hs-WdQ"/>
+                            <constraint firstItem="dg8-Rl-eqT" firstAttribute="top" secondItem="Ynt-Yk-od7" secondAttribute="bottom" constant="20" id="vEf-wz-E1c"/>
+                            <constraint firstItem="Ynt-Yk-od7" firstAttribute="top" secondItem="4jh-Zw-jJq" secondAttribute="top" id="wvV-az-2AY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4jh-Zw-jJq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sign Up" largeTitleDisplayMode="always" id="Ncc-wb-EHu">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Gzn-6w-a4m">
+                            <connections>
+                                <action selector="didCancelButtonPressed:" destination="5C7-h5-RY2" id="c4D-SJ-hAx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="RZN-b2-78b" id="vSe-Zv-hdR"/>
+                        <outlet property="backgroundView" destination="VF2-sS-THq" id="6ez-he-rYE"/>
+                        <outlet property="loadingView" destination="Ynt-Yk-od7" id="o0P-Pb-Zcc"/>
+                        <outlet property="loadingViewHeightConstriant" destination="ex4-8Q-W4m" id="YLW-kz-kd7"/>
+                        <outlet property="lodingViewTitle" destination="8NY-HW-JTd" id="Ofh-rQ-eod"/>
+                        <outlet property="signInButtonConstraint" destination="0tp-fJ-NJa" id="7ur-NM-AmU"/>
+                        <outlet property="submit" destination="19p-4w-5hx" id="sYJ-kN-UJN"/>
+                        <outlet property="textField" destination="iEq-jm-D8a" id="lYA-gu-08D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o0b-S1-5BP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="169.56521739130437" y="493.52678571428567"/>
+        </scene>
         <!--Sign In-->
         <scene sceneID="Yjn-kR-hh9">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Sgt-dn-b1E" customClass="LoginWithUID" customModule="ios_chat_uikit_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Sgt-dn-b1E" customClass="LoginWithUID" customModule="CometChat_KitchenSink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2b4-rG-M2A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -463,7 +603,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tnT-MA-aoz">
-                                <rect key="frame" x="20" y="109" width="374" height="129.5"/>
+                                <rect key="frame" x="20" y="108" width="374" height="129.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGR-gH-JhR">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
@@ -480,7 +620,7 @@
                                 </subviews>
                             </stackView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEr-ei-zc7">
-                                <rect key="frame" x="20" y="246.5" width="374" height="50"/>
+                                <rect key="frame" x="20" y="245.5" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter UID here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ipi-eY-rh4">
                                         <rect key="frame" x="15" y="0.0" width="354" height="50"/>
@@ -506,7 +646,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="KZQ-qV-sbC">
-                                <rect key="frame" x="337" y="120.5" width="37" height="37"/>
+                                <rect key="frame" x="337" y="119.5" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -547,7 +687,7 @@
         <!--CometChat Kitchen Sink-->
         <scene sceneID="FZx-XG-5C9">
             <objects>
-                <viewController storyboardIdentifier="mainViewController" wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="3bl-Be-AP0" customClass="MainViewController" customModule="ios_chat_uikit_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainViewController" wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="3bl-Be-AP0" customClass="MainViewController" customModule="CometChat_KitchenSink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6JT-2d-wkT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -588,7 +728,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="7mK-kr-U7y"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="K3y-3Q-2xR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="109"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <textAttributes key="largeTitleTextAttributes">
@@ -608,7 +748,7 @@
         <!--UI Components-->
         <scene sceneID="d0n-KK-OGS">
             <objects>
-                <viewController storyboardIdentifier="uiComponentController" id="OaY-Pk-Rki" customClass="UIComponentController" customModule="ios_chat_uikit_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="uiComponentController" id="OaY-Pk-Rki" customClass="UIComponentController" customModule="CometChat_KitchenSink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hai-1Q-m1q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -646,7 +786,7 @@
         <!--Component Modifications Controller-->
         <scene sceneID="tz7-r4-FCy">
             <objects>
-                <viewController storyboardIdentifier="componentModificationsController" id="Qyc-Ah-2xO" customClass="ComponentModificationsController" customModule="ios_chat_uikit_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="componentModificationsController" id="Qyc-Ah-2xO" customClass="ComponentModificationsController" customModule="CometChat_KitchenSink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zkE-p3-d56">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -654,7 +794,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYO-Ak-Ae8">
                                 <rect key="frame" x="20" y="64" width="374" height="586"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="XJq-VC-6uk" customClass="Avatar" customModule="ios_chat_uikit_app" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="XJq-VC-6uk" customClass="Avatar" customModule="CometChat_KitchenSink" customModuleProvider="target">
                                         <rect key="frame" x="112" y="60" width="150" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="8lz-5y-NBM"/>
@@ -786,7 +926,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QAz-WQ-BzO">
                                 <rect key="frame" x="20" y="64" width="374" height="586"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lcr-nK-0sQ" customClass="StatusIndicator" customModule="ios_chat_uikit_app" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lcr-nK-0sQ" customClass="StatusIndicator" customModule="CometChat_KitchenSink" customModuleProvider="target">
                                         <rect key="frame" x="137" y="100" width="100" height="100"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -924,7 +1064,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6P-W3-29Q">
                                 <rect key="frame" x="20" y="64" width="374" height="470"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hjo-ia-gUo" customClass="BadgeCount" customModule="ios_chat_uikit_app" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hjo-ia-gUo" customClass="BadgeCount" customModule="CometChat_KitchenSink" customModuleProvider="target">
                                         <rect key="frame" x="159.5" y="100" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="15x-1D-O3l"/>
@@ -1089,6 +1229,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10m-s7-CQl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="908.69565217391312" y="-167.41071428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vf2-7d-MXs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Ml-mr-B8a" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="isr-rX-vX5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Zvm-c9-BxJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5C7-h5-RY2" kind="relationship" relationship="rootViewController" id="GSP-e4-Bke"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EUk-6F-qNN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-739.13043478260875" y="493.52678571428567"/>
         </scene>
     </scenes>
     <resources>
