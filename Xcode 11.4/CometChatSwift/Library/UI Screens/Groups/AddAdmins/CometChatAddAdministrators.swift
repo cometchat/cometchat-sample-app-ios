@@ -237,7 +237,7 @@ public class CometChatAddAdministrators: UIViewController {
         memberRequest = GroupMembersRequest.GroupMembersRequestBuilder(guid: currentGroup?.guid ?? "").set(limit: 100).build()
         memberRequest?.fetchNext(onSuccess: { (groupMembers) in
             
-            self.groupMembers = groupMembers.filter {$0.scope == .participant}
+            self.groupMembers = groupMembers.filter {$0.scope == .participant || $0.scope == .moderator}
             self.administrators = groupMembers.filter {$0.scope == .admin}
             DispatchQueue.main.async {
                 self.activityIndicator?.stopAnimating()
@@ -379,8 +379,13 @@ extension CometChatAddAdministrators: UITableViewDelegate , UITableViewDataSourc
                                 }) { (error) in
                                     DispatchQueue.main.async {
                                         if let errorMessage = error?.errorDescription {
-                                             let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: errorMessage, duration: .short)
-                                             snackbar.show()
+                                            if error?.errorCode == "ERR_GROUP_NO_SCOPE_CLEARANCE" {
+                                                let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: "You don't have privilege to make \(member.name!) as participant.", duration: .short)
+                                                snackbar.show()
+                                            }else{
+                                                let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: errorMessage, duration: .short)
+                                                snackbar.show()
+                                            }
                                         }
                                     }
                                     print("updateGroupMemberScope error: \(String(describing: error?.errorDescription))")
@@ -418,11 +423,16 @@ extension CometChatAddAdministrators: UITableViewDelegate , UITableViewDataSourc
                                 }
                             }) { (error) in
                                DispatchQueue.main.async {
-                                    if let errorMessage = error?.errorDescription {
-                                         let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: errorMessage, duration: .short)
-                                         snackbar.show()
-                                    }
-                                }
+                                   if let errorMessage = error?.errorDescription {
+                                       if error?.errorCode == "ERR_GROUP_NO_SCOPE_CLEARANCE" {
+                                           let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: "You don't have privilege to make \(member.name!) as admin.", duration: .short)
+                                           snackbar.show()
+                                       }else{
+                                           let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: errorMessage, duration: .short)
+                                           snackbar.show()
+                                       }
+                                   }
+                               }
                                 print("updateGroupMemberScope error: \(String(describing: error?.errorDescription))")
                             }
                         }
@@ -474,8 +484,13 @@ extension CometChatAddAdministrators: UITableViewDelegate , UITableViewDataSourc
                              }) { (error) in
                                 DispatchQueue.main.async {
                                     if let errorMessage = error?.errorDescription {
-                                        let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: errorMessage, duration: .short)
-                                        snackbar.show()
+                                        if error?.errorCode == "ERR_GROUP_NO_SCOPE_CLEARANCE" {
+                                            let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: "You don't have privilege to make \(member.name!) as participant.", duration: .short)
+                                            snackbar.show()
+                                        }else{
+                                            let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: errorMessage, duration: .short)
+                                            snackbar.show()
+                                        }
                                     }
                                 }
                                 print("updateGroupMemberScope error: \(String(describing: error?.errorDescription))")
@@ -512,8 +527,13 @@ extension CometChatAddAdministrators: UITableViewDelegate , UITableViewDataSourc
                             }) { (error) in
                                 DispatchQueue.main.async {
                                     if let errorMessage = error?.errorDescription {
-                                        let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: errorMessage, duration: .short)
-                                        snackbar.show()
+                                        if error?.errorCode == "ERR_GROUP_NO_SCOPE_CLEARANCE" {
+                                            let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: "You don't have privilege to make \(member.name!) as admin.", duration: .short)
+                                            snackbar.show()
+                                        }else{
+                                            let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: errorMessage, duration: .short)
+                                            snackbar.show()
+                                        }
                                     }
                                 }
                                 print("updateGroupMemberScope error: \(String(describing: error?.errorDescription))")

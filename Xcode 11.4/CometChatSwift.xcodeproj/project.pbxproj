@@ -46,6 +46,8 @@
 		FBAC40BC2463DECB00FE9F0F /* LeftAudioMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAC40B82463DECB00FE9F0F /* LeftAudioMessageBubble.xib */; };
 		FBAC40BD2463DECB00FE9F0F /* LeftAudioMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC40B92463DECB00FE9F0F /* LeftAudioMessageBubble.swift */; };
 		FBB95631248545E100EFF653 /* CreateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB95630248545E100EFF653 /* CreateUser.swift */; };
+		FBEECE262493098200C44B94 /* CometChatAddModerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEECE252493098200C44B94 /* CometChatAddModerators.swift */; };
+		FBEECE2924931C1500C44B94 /* CometChatBannedMembers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEECE2824931C1500C44B94 /* CometChatBannedMembers.swift */; };
 		FBFF7E432430BD74006159DF /* CometChatUnified.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFF7CC42430BD74006159DF /* CometChatUnified.swift */; };
 		FBFF7E442430BD74006159DF /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFF7CC72430BD74006159DF /* FontManager.swift */; };
 		FBFF7E452430BD74006159DF /* CometchatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFF7CC82430BD74006159DF /* CometchatExtensions.swift */; };
@@ -380,6 +382,9 @@
 		FBAC40B82463DECB00FE9F0F /* LeftAudioMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftAudioMessageBubble.xib; sourceTree = "<group>"; };
 		FBAC40B92463DECB00FE9F0F /* LeftAudioMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftAudioMessageBubble.swift; sourceTree = "<group>"; };
 		FBB95630248545E100EFF653 /* CreateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUser.swift; sourceTree = "<group>"; };
+		FBEECE232493050700C44B94 /* CometChat KitchenSink.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CometChat KitchenSink.entitlements"; sourceTree = "<group>"; };
+		FBEECE252493098200C44B94 /* CometChatAddModerators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatAddModerators.swift; sourceTree = "<group>"; };
+		FBEECE2824931C1500C44B94 /* CometChatBannedMembers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatBannedMembers.swift; sourceTree = "<group>"; };
 		FBFF7CC42430BD74006159DF /* CometChatUnified.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUnified.swift; sourceTree = "<group>"; };
 		FBFF7CC72430BD74006159DF /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		FBFF7CC82430BD74006159DF /* CometchatExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometchatExtensions.swift; sourceTree = "<group>"; };
@@ -754,6 +759,7 @@
 		DBFBC46C23A7B9230027938E /* CometChatSwift */ = {
 			isa = PBXGroup;
 			children = (
+				FBEECE232493050700C44B94 /* CometChat KitchenSink.entitlements */,
 				FBFF7CC22430BD74006159DF /* Library */,
 				DB4D6AC023ACE0CC0002BCED /* App */,
 				DBFBC47123A7B9230027938E /* Main.storyboard */,
@@ -813,6 +819,22 @@
 				FBAC40B92463DECB00FE9F0F /* LeftAudioMessageBubble.swift */,
 			);
 			path = LeftAudioMessageBubble;
+			sourceTree = "<group>";
+		};
+		FBEECE242493098200C44B94 /* AddModerators */ = {
+			isa = PBXGroup;
+			children = (
+				FBEECE252493098200C44B94 /* CometChatAddModerators.swift */,
+			);
+			path = AddModerators;
+			sourceTree = "<group>";
+		};
+		FBEECE2724931C1500C44B94 /* BannedMembers */ = {
+			isa = PBXGroup;
+			children = (
+				FBEECE2824931C1500C44B94 /* CometChatBannedMembers.swift */,
+			);
+			path = BannedMembers;
 			sourceTree = "<group>";
 		};
 		FBFF7CC22430BD74006159DF /* Library */ = {
@@ -1769,6 +1791,8 @@
 		FBFF7E2D2430BD74006159DF /* Groups */ = {
 			isa = PBXGroup;
 			children = (
+				FBEECE2724931C1500C44B94 /* BannedMembers */,
+				FBEECE242493098200C44B94 /* AddModerators */,
 				FBFF7E2E2430BD74006159DF /* CreateGroup */,
 				FBFF7E312430BD74006159DF /* AddAdmins */,
 				FBFF7E332430BD74006159DF /* AddMembers */,
@@ -2176,6 +2200,7 @@
 				FBFF7F1E2430BD75006159DF /* NotificationsView.swift in Sources */,
 				FBFF7F132430BD75006159DF /* AdministratorView.swift in Sources */,
 				FBFF7E492430BD74006159DF /* DPImageView+Letters.swift in Sources */,
+				FBEECE2924931C1500C44B94 /* CometChatBannedMembers.swift in Sources */,
 				FBFF7E7A2430BD74006159DF /* String+MD5.swift in Sources */,
 				FBFF7E672430BD74006159DF /* ImageDrawing.swift in Sources */,
 				FBFF7E5B2430BD74006159DF /* RequestModifier.swift in Sources */,
@@ -2186,6 +2211,7 @@
 				FBFF7F352430BD75006159DF /* LeftImageMessageBubble.swift in Sources */,
 				FBFF7E762430BD74006159DF /* ExtensionHelpers.swift in Sources */,
 				FBFF7F2B2430BD75006159DF /* RightVideoMessageBubble.swift in Sources */,
+				FBEECE262493098200C44B94 /* CometChatAddModerators.swift in Sources */,
 				FB15AF72242E1AAA005C070B /* CometChatCallingCell.swift in Sources */,
 				FBFF7F272430BD75006159DF /* LeftTextMessageBubble.swift in Sources */,
 				FBFF7E432430BD74006159DF /* CometChatUnified.swift in Sources */,
@@ -2410,6 +2436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CometChatSwift/CometChat KitchenSink.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K456T8RD7Z;
 				ENABLE_BITCODE = NO;
@@ -2434,6 +2461,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CometChatSwift/CometChat KitchenSink.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K456T8RD7Z;
 				ENABLE_BITCODE = NO;
