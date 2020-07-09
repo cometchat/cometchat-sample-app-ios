@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <Group
-      location = "group:../CometChatSwift/Library"
+      location = "group:/Users/pushpsenairekar/Documents/UIKit Private Repo/ClonedRepo - MemoryOpt/cometchat-pro-ios-ui-kit/ios-swift-chat-app/Xcode 11.3/CometChatSwift/Library"
       name = "Library">
       <Group
          location = "group:UI Unified"
@@ -19,6 +19,9 @@
             name = "Extensions">
             <FileRef
                location = "group:FontManager.swift">
+            </FileRef>
+            <FileRef
+               location = "group:LiveReaction.swift">
             </FileRef>
             <FileRef
                location = "group:CometchatExtensions.swift">
@@ -365,6 +368,9 @@
                   location = "group:play@2x.png">
                </FileRef>
                <FileRef
+                  location = "group:thumbsup.png">
+               </FileRef>
+               <FileRef
                   location = "group:sent@3x.png">
                </FileRef>
                <FileRef
@@ -383,7 +389,19 @@
                   location = "group:sent@2x.png">
                </FileRef>
                <FileRef
+                  location = "group:unsafeContent@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:heart.png">
+               </FileRef>
+               <FileRef
+                  location = "group:unsafeContent.png">
+               </FileRef>
+               <FileRef
                   location = "group:wait@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:heart@2x.png">
                </FileRef>
                <FileRef
                   location = "group:delivered.png">
@@ -392,7 +410,13 @@
                   location = "group:read.png">
                </FileRef>
                <FileRef
+                  location = "group:heart@3x.png">
+               </FileRef>
+               <FileRef
                   location = "group:wait@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:unsafeContent@2x.png">
                </FileRef>
                <FileRef
                   location = "group:sent.png">
@@ -402,6 +426,12 @@
                </FileRef>
                <FileRef
                   location = "group:read@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:thumbsup@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:thumbsup@3x.png">
                </FileRef>
                <FileRef
                   location = "group:read@2x.png">
@@ -600,10 +630,19 @@
                   location = "group:Blue Ticks@3x.png">
                </FileRef>
                <FileRef
+                  location = "group:editIcon.png">
+               </FileRef>
+               <FileRef
                   location = "group:downArrow@3x.png">
                </FileRef>
                <FileRef
+                  location = "group:editIcon@3x.png">
+               </FileRef>
+               <FileRef
                   location = "group:Blue Ticks.png">
+               </FileRef>
+               <FileRef
+                  location = "group:editIcon@2x.png">
                </FileRef>
                <FileRef
                   location = "group:defaultAvatar.jpg">
@@ -1047,6 +1086,30 @@
                      location = "group:ActionMessageBubble.xib">
                   </FileRef>
                </Group>
+               <Group
+                  location = "group:ReplyMessageBubble"
+                  name = "ReplyMessageBubble">
+                  <Group
+                     location = "group:LeftReplyMessageBubble"
+                     name = "LeftReplyMessageBubble">
+                     <FileRef
+                        location = "group:LeftReplyMessageBubble.xib">
+                     </FileRef>
+                     <FileRef
+                        location = "group:LeftReplyMessageBubble.swift">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:RightReplyMessageBubble"
+                     name = "RightReplyMessageBubble">
+                     <FileRef
+                        location = "group:RightReplyMessageBubble.swift">
+                     </FileRef>
+                     <FileRef
+                        location = "group:RightReplyMessageBubble.xib">
+                     </FileRef>
+                  </Group>
+               </Group>
                <FileRef
                   location = "group:MessageDateHeader.swift">
                </FileRef>
@@ -1255,6 +1318,20 @@
                name = "AddMembers">
                <FileRef
                   location = "group:CometChatAddMembers.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:BannedMembers"
+               name = "BannedMembers">
+               <FileRef
+                  location = "group:CometChatBannedMembers.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:AddModerators"
+               name = "AddModerators">
+               <FileRef
+                  location = "group:CometChatAddModerators.swift">
                </FileRef>
             </Group>
             <Group

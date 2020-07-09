@@ -321,6 +321,13 @@
 		582A54EC24AB930A0087369A /* CometChatUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582A53AF24AB93090087369A /* CometChatUserList.swift */; };
 		582A54ED24AB930A0087369A /* CometChatUserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582A53B124AB93090087369A /* CometChatUserDetail.swift */; };
 		582A54EE24AB930A0087369A /* CometChatConversationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582A53B424AB93090087369A /* CometChatConversationList.swift */; };
+		58835FA424AF7C9100A2BC14 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 58835FA124AF7C9000A2BC14 /* heart.png */; };
+		58835FA524AF7C9100A2BC14 /* heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58835FA224AF7C9100A2BC14 /* heart@2x.png */; };
+		58835FA624AF7C9100A2BC14 /* heart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58835FA324AF7C9100A2BC14 /* heart@3x.png */; };
+		58FAD28C24ADE7EE00E5603A /* LiveReaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FAD28B24ADE7EE00E5603A /* LiveReaction.swift */; };
+		58FAD29024ADF2B600E5603A /* thumbsup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FAD28D24ADF2B500E5603A /* thumbsup@2x.png */; };
+		58FAD29124ADF2B600E5603A /* thumbsup.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FAD28E24ADF2B500E5603A /* thumbsup.png */; };
+		58FAD29224ADF2B600E5603A /* thumbsup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FAD28F24ADF2B600E5603A /* thumbsup@3x.png */; };
 		DB2E60AD23A8C38B00986E12 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E60AC23A8C38B00986E12 /* MainViewController.swift */; };
 		DB2E60AF23A8D8C100986E12 /* CometChatUnifiedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E60AE23A8D8C100986E12 /* CometChatUnifiedCell.swift */; };
 		DB2E60B323A8DA8500986E12 /* CometChatUIScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E60B123A8DA8500986E12 /* CometChatUIScreenCell.swift */; };
@@ -662,6 +669,13 @@
 		582A53AF24AB93090087369A /* CometChatUserList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUserList.swift; sourceTree = "<group>"; };
 		582A53B124AB93090087369A /* CometChatUserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUserDetail.swift; sourceTree = "<group>"; };
 		582A53B424AB93090087369A /* CometChatConversationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatConversationList.swift; sourceTree = "<group>"; };
+		58835FA124AF7C9000A2BC14 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		58835FA224AF7C9100A2BC14 /* heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@2x.png"; sourceTree = "<group>"; };
+		58835FA324AF7C9100A2BC14 /* heart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@3x.png"; sourceTree = "<group>"; };
+		58FAD28B24ADE7EE00E5603A /* LiveReaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveReaction.swift; sourceTree = "<group>"; };
+		58FAD28D24ADF2B500E5603A /* thumbsup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbsup@2x.png"; sourceTree = "<group>"; };
+		58FAD28E24ADF2B500E5603A /* thumbsup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsup.png; sourceTree = "<group>"; };
+		58FAD28F24ADF2B600E5603A /* thumbsup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbsup@3x.png"; sourceTree = "<group>"; };
 		DB2E60AC23A8C38B00986E12 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
 		DB2E60AE23A8D8C100986E12 /* CometChatUnifiedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CometChatUnifiedCell.swift; sourceTree = "<group>"; };
 		DB2E60B123A8DA8500986E12 /* CometChatUIScreenCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUIScreenCell.swift; sourceTree = "<group>"; };
@@ -751,6 +765,7 @@
 		582A521524AB93090087369A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				58FAD28B24ADE7EE00E5603A /* LiveReaction.swift */,
 				582A521624AB93090087369A /* FontManager.swift */,
 				582A521724AB93090087369A /* CometchatExtensions.swift */,
 				582A521824AB93090087369A /* CameraHandler.swift */,
@@ -967,6 +982,12 @@
 		582A528024AB93090087369A /* MessageList */ = {
 			isa = PBXGroup;
 			children = (
+				58FAD28E24ADF2B500E5603A /* thumbsup.png */,
+				58FAD28D24ADF2B500E5603A /* thumbsup@2x.png */,
+				58FAD28F24ADF2B600E5603A /* thumbsup@3x.png */,
+				58835FA124AF7C9000A2BC14 /* heart.png */,
+				58835FA224AF7C9100A2BC14 /* heart@2x.png */,
+				58835FA324AF7C9100A2BC14 /* heart@3x.png */,
 				582A528124AB93090087369A /* play@3x.png */,
 				582A528224AB93090087369A /* back@2x.png */,
 				582A528324AB93090087369A /* back@3x.png */,
@@ -1996,6 +2017,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58835FA624AF7C9100A2BC14 /* heart@3x.png in Resources */,
 				582A546D24AB930A0087369A /* 􀌧.png in Resources */,
 				582A54CD24AB930A0087369A /* SharedMediaView.xib in Resources */,
 				582A545124AB930A0087369A /* outgoingAudio.png in Resources */,
@@ -2092,6 +2114,7 @@
 				582A545C24AB930A0087369A /* newCall@3x.png in Resources */,
 				582A54DD24AB930A0087369A /* CometChatIncomingCall.xib in Resources */,
 				582A54BD24AB930A0087369A /* LeftImageMessageBubble.xib in Resources */,
+				58FAD29124ADF2B600E5603A /* thumbsup.png in Resources */,
 				582A544E24AB930A0087369A /* calling@2x.png in Resources */,
 				582A53FB24AB93090087369A /* OutgoingMessege.wav in Resources */,
 				582A54C724AB930A0087369A /* SmartReplyCell.xib in Resources */,
@@ -2151,6 +2174,7 @@
 				582A542424AB930A0087369A /* read@3x.png in Resources */,
 				582A54D524AB930A0087369A /* CometChatCallsView.xib in Resources */,
 				582A542F24AB930A0087369A /* chats.png in Resources */,
+				58FAD29224ADF2B600E5603A /* thumbsup@3x.png in Resources */,
 				582A543524AB930A0087369A /* contacts@3x.png in Resources */,
 				582A541024AB930A0087369A /* close.png in Resources */,
 				582A540624AB930A0087369A /* forward@2x.png in Resources */,
@@ -2165,11 +2189,13 @@
 				582A545624AB930A0087369A /* audioCall.png in Resources */,
 				582A544424AB930A0087369A /* outgoingAudio@3x.png in Resources */,
 				582A545024AB930A0087369A /* outgoingVideo@3x.png in Resources */,
+				58FAD29024ADF2B600E5603A /* thumbsup@2x.png in Resources */,
 				582A53F824AB93090087369A /* IncomingMessage.wav in Resources */,
 				582A544924AB930A0087369A /* outgoingAudio@2x.png in Resources */,
 				582A546424AB930A0087369A /* Blue Ticks.png in Resources */,
 				582A54C624AB930A0087369A /* ChatView.xib in Resources */,
 				582A545E24AB930A0087369A /* downArrow@2x.png in Resources */,
+				58835FA524AF7C9100A2BC14 /* heart@2x.png in Resources */,
 				582A53FF24AB93090087369A /* add@2x.png in Resources */,
 				582A546224AB930A0087369A /* downArrow@3x.png in Resources */,
 				582A54A524AB930A0087369A /* SupportView.xib in Resources */,
@@ -2177,6 +2203,7 @@
 				582A53F624AB93090087369A /* IncomingCall.wav in Resources */,
 				582A54B624AB930A0087369A /* LeftLinkPreviewBubble.xib in Resources */,
 				582A540E24AB930A0087369A /* send.png in Resources */,
+				58835FA424AF7C9100A2BC14 /* heart.png in Resources */,
 				582A541E24AB930A0087369A /* delivered.png in Resources */,
 				DBED2A3723AA49170058D5BF /* CometChatUIComponentsCell.xib in Resources */,
 				582A544624AB930A0087369A /* videoCall@3x.png in Resources */,
@@ -2248,6 +2275,7 @@
 				FBA293112434D9A7006DCCA1 /* AppDelegate.swift in Sources */,
 				582A53DC24AB93090087369A /* ImageModifier.swift in Sources */,
 				582A54DA24AB930A0087369A /* CometChatCallsList.swift in Sources */,
+				58FAD28C24ADE7EE00E5603A /* LiveReaction.swift in Sources */,
 				582A54E924AB930A0087369A /* CometChatGroupDetail.swift in Sources */,
 				582A54CC24AB930A0087369A /* SharedMediaView.swift in Sources */,
 				582A54E224AB930A0087369A /* CometChatUserInfo.swift in Sources */,
