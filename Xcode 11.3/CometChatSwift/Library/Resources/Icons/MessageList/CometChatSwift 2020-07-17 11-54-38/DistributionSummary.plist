@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CometChat KitchenSink.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>7F6B0F3762D833F5E9036B53D5AFB356CEE5F3CB</string>
+				<key>dateExpires</key>
+				<string>29/06/21</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>7F6B0F3762D833F5E9036B53D5AFB356CEE5F3CB</string>
+						<key>dateExpires</key>
+						<string>29/06/21</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>CometChatPro.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>K456T8RD7Z</string>
+						<key>name</key>
+						<string>INSCRIPTS (I) PRIVATE LIMITED</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>7F6B0F3762D833F5E9036B53D5AFB356CEE5F3CB</string>
+						<key>dateExpires</key>
+						<string>29/06/21</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>JitsiMeet.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>K456T8RD7Z</string>
+						<key>name</key>
+						<string>INSCRIPTS (I) PRIVATE LIMITED</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>7F6B0F3762D833F5E9036B53D5AFB356CEE5F3CB</string>
+						<key>dateExpires</key>
+						<string>29/06/21</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>WebRTC.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>K456T8RD7Z</string>
+						<key>name</key>
+						<string>INSCRIPTS (I) PRIVATE LIMITED</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>K456T8RD7Z.com.demo.kitchensink.swift</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>K456T8RD7Z</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>K456T8RD7Z.com.demo.kitchensink.swift</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>CometChat KitchenSink.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>8e661a49-7b6f-4baf-bbb8-b3afb4870862</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>K456T8RD7Z</string>
+				<key>name</key>
+				<string>INSCRIPTS (I) PRIVATE LIMITED</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

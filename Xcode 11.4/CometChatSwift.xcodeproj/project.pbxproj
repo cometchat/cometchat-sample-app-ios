@@ -321,13 +321,55 @@
 		582A54EC24AB930A0087369A /* CometChatUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582A53AF24AB93090087369A /* CometChatUserList.swift */; };
 		582A54ED24AB930A0087369A /* CometChatUserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582A53B124AB93090087369A /* CometChatUserDetail.swift */; };
 		582A54EE24AB930A0087369A /* CometChatConversationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582A53B424AB93090087369A /* CometChatConversationList.swift */; };
+		584CC94A24C1633600B6C75E /* more_vertical.png in Resources */ = {isa = PBXBuildFile; fileRef = 584CC94724C1633500B6C75E /* more_vertical.png */; };
+		584CC94B24C1633600B6C75E /* more_vertical@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 584CC94824C1633500B6C75E /* more_vertical@2x.png */; };
+		584CC94C24C1633600B6C75E /* more_vertical@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 584CC94924C1633600B6C75E /* more_vertical@3x.png */; };
+		584DB31224C1553700E14C30 /* forward1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 584DB30F24C1553700E14C30 /* forward1@3x.png */; };
+		584DB31324C1553700E14C30 /* forward1.png in Resources */ = {isa = PBXBuildFile; fileRef = 584DB31024C1553700E14C30 /* forward1.png */; };
+		584DB31424C1553700E14C30 /* forward1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 584DB31124C1553700E14C30 /* forward1@2x.png */; };
+		584DB31624C155C900E14C30 /* MessageActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584DB31524C155C900E14C30 /* MessageActions.swift */; };
+		5880F10F24C142F700C8616F /* PanModalPresentable+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F0F124C142F700C8616F /* PanModalPresentable+Defaults.swift */; };
+		5880F11024C142F700C8616F /* PanModalPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F0F224C142F700C8616F /* PanModalPresentable.swift */; };
+		5880F11124C142F700C8616F /* PanModalPresentable+LayoutHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F0F324C142F700C8616F /* PanModalPresentable+LayoutHelpers.swift */; };
+		5880F11224C142F700C8616F /* PanModalHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F0F424C142F700C8616F /* PanModalHeight.swift */; };
+		5880F11324C142F700C8616F /* PanModalPresentable+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F0F524C142F700C8616F /* PanModalPresentable+UIViewController.swift */; };
+		5880F11424C142F700C8616F /* UIViewController+PanModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F0F824C142F700C8616F /* UIViewController+PanModalPresenter.swift */; };
+		5880F11524C142F700C8616F /* PanModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F0F924C142F700C8616F /* PanModalPresenter.swift */; };
+		5880F11624C142F700C8616F /* PanModalPresentationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F0FB24C142F700C8616F /* PanModalPresentationDelegate.swift */; };
+		5880F11724C142F700C8616F /* PanModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F0FD24C142F700C8616F /* PanModalAnimator.swift */; };
+		5880F11824C142F700C8616F /* PanModalPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F0FE24C142F700C8616F /* PanModalPresentationAnimator.swift */; };
+		5880F11924C142F700C8616F /* PanModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F10024C142F700C8616F /* PanModalPresentationController.swift */; };
+		5880F11A24C142F700C8616F /* PanContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F10224C142F700C8616F /* PanContainerView.swift */; };
+		5880F11B24C142F700C8616F /* DimmedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F10324C142F700C8616F /* DimmedView.swift */; };
+		5880F11D24C142F700C8616F /* UserGroupMemberPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F10624C142F700C8616F /* UserGroupMemberPresentable.swift */; };
+		5880F11E24C142F700C8616F /* UserGroupHeaderPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F10724C142F700C8616F /* UserGroupHeaderPresentable.swift */; };
+		5880F11F24C142F700C8616F /* UserGroupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F10924C142F700C8616F /* UserGroupHeaderView.swift */; };
+		5880F12024C142F700C8616F /* ActionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880F10B24C142F700C8616F /* ActionsCell.swift */; };
+		5880F12124C142F700C8616F /* ActionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5880F10C24C142F700C8616F /* ActionsCell.xib */; };
 		58835FA424AF7C9100A2BC14 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 58835FA124AF7C9000A2BC14 /* heart.png */; };
 		58835FA524AF7C9100A2BC14 /* heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58835FA224AF7C9100A2BC14 /* heart@2x.png */; };
 		58835FA624AF7C9100A2BC14 /* heart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58835FA324AF7C9100A2BC14 /* heart@3x.png */; };
+		58E8DCDE24BC6D6300DC19E1 /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCCF24BC6D6200DC19E1 /* reply.png */; };
+		58E8DCDF24BC6D6300DC19E1 /* reply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCD024BC6D6200DC19E1 /* reply@2x.png */; };
+		58E8DCE024BC6D6300DC19E1 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCD124BC6D6200DC19E1 /* share@2x.png */; };
+		58E8DCE124BC6D6300DC19E1 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCD224BC6D6200DC19E1 /* share.png */; };
+		58E8DCE224BC6D6300DC19E1 /* thread.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCD324BC6D6200DC19E1 /* thread.png */; };
+		58E8DCE324BC6D6300DC19E1 /* thread@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCD424BC6D6200DC19E1 /* thread@2x.png */; };
+		58E8DCE424BC6D6300DC19E1 /* share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCD524BC6D6200DC19E1 /* share@3x.png */; };
+		58E8DCE624BC6D6300DC19E1 /* reply@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCD724BC6D6200DC19E1 /* reply@3x.png */; };
+		58E8DCE724BC6D6300DC19E1 /* edit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCD824BC6D6200DC19E1 /* edit@3x.png */; };
+		58E8DCEA24BC6D6300DC19E1 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCDB24BC6D6300DC19E1 /* edit.png */; };
+		58E8DCEB24BC6D6300DC19E1 /* thread@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCDC24BC6D6300DC19E1 /* thread@3x.png */; };
+		58E8DCEC24BC6D6300DC19E1 /* edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCDD24BC6D6300DC19E1 /* edit@2x.png */; };
+		58E8DCF024BC6D7C00DC19E1 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCED24BC6D7C00DC19E1 /* delete.png */; };
+		58E8DCF124BC6D7C00DC19E1 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCEE24BC6D7C00DC19E1 /* delete@2x.png */; };
+		58E8DCF224BC6D7C00DC19E1 /* delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E8DCEF24BC6D7C00DC19E1 /* delete@3x.png */; };
 		58FAD28C24ADE7EE00E5603A /* LiveReaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FAD28B24ADE7EE00E5603A /* LiveReaction.swift */; };
 		58FAD29024ADF2B600E5603A /* thumbsup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FAD28D24ADF2B500E5603A /* thumbsup@2x.png */; };
 		58FAD29124ADF2B600E5603A /* thumbsup.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FAD28E24ADF2B500E5603A /* thumbsup.png */; };
 		58FAD29224ADF2B600E5603A /* thumbsup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FAD28F24ADF2B600E5603A /* thumbsup@3x.png */; };
+		58FB7B5224BC9ABF00669139 /* CometChatThreadedMessageList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58FB7B5024BC9ABF00669139 /* CometChatThreadedMessageList.xib */; };
+		58FB7B5324BC9ABF00669139 /* CometChatThreadedMessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FB7B5124BC9ABF00669139 /* CometChatThreadedMessageList.swift */; };
 		DB2E60AD23A8C38B00986E12 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E60AC23A8C38B00986E12 /* MainViewController.swift */; };
 		DB2E60AF23A8D8C100986E12 /* CometChatUnifiedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E60AE23A8D8C100986E12 /* CometChatUnifiedCell.swift */; };
 		DB2E60B323A8DA8500986E12 /* CometChatUIScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E60B123A8DA8500986E12 /* CometChatUIScreenCell.swift */; };
@@ -669,13 +711,56 @@
 		582A53AF24AB93090087369A /* CometChatUserList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUserList.swift; sourceTree = "<group>"; };
 		582A53B124AB93090087369A /* CometChatUserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUserDetail.swift; sourceTree = "<group>"; };
 		582A53B424AB93090087369A /* CometChatConversationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatConversationList.swift; sourceTree = "<group>"; };
+		584CC94724C1633500B6C75E /* more_vertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_vertical.png; sourceTree = "<group>"; };
+		584CC94824C1633500B6C75E /* more_vertical@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_vertical@2x.png"; sourceTree = "<group>"; };
+		584CC94924C1633600B6C75E /* more_vertical@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_vertical@3x.png"; sourceTree = "<group>"; };
+		584DB30F24C1553700E14C30 /* forward1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward1@3x.png"; sourceTree = "<group>"; };
+		584DB31024C1553700E14C30 /* forward1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward1.png; sourceTree = "<group>"; };
+		584DB31124C1553700E14C30 /* forward1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward1@2x.png"; sourceTree = "<group>"; };
+		584DB31524C155C900E14C30 /* MessageActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageActions.swift; sourceTree = "<group>"; };
+		5880F0F124C142F700C8616F /* PanModalPresentable+Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PanModalPresentable+Defaults.swift"; sourceTree = "<group>"; };
+		5880F0F224C142F700C8616F /* PanModalPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanModalPresentable.swift; sourceTree = "<group>"; };
+		5880F0F324C142F700C8616F /* PanModalPresentable+LayoutHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PanModalPresentable+LayoutHelpers.swift"; sourceTree = "<group>"; };
+		5880F0F424C142F700C8616F /* PanModalHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanModalHeight.swift; sourceTree = "<group>"; };
+		5880F0F524C142F700C8616F /* PanModalPresentable+UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PanModalPresentable+UIViewController.swift"; sourceTree = "<group>"; };
+		5880F0F624C142F700C8616F /* PanModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanModal.h; sourceTree = "<group>"; };
+		5880F0F824C142F700C8616F /* UIViewController+PanModalPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+PanModalPresenter.swift"; sourceTree = "<group>"; };
+		5880F0F924C142F700C8616F /* PanModalPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanModalPresenter.swift; sourceTree = "<group>"; };
+		5880F0FB24C142F700C8616F /* PanModalPresentationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanModalPresentationDelegate.swift; sourceTree = "<group>"; };
+		5880F0FD24C142F700C8616F /* PanModalAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanModalAnimator.swift; sourceTree = "<group>"; };
+		5880F0FE24C142F700C8616F /* PanModalPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanModalPresentationAnimator.swift; sourceTree = "<group>"; };
+		5880F10024C142F700C8616F /* PanModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanModalPresentationController.swift; sourceTree = "<group>"; };
+		5880F10224C142F700C8616F /* PanContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanContainerView.swift; sourceTree = "<group>"; };
+		5880F10324C142F700C8616F /* DimmedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmedView.swift; sourceTree = "<group>"; };
+		5880F10624C142F700C8616F /* UserGroupMemberPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupMemberPresentable.swift; sourceTree = "<group>"; };
+		5880F10724C142F700C8616F /* UserGroupHeaderPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupHeaderPresentable.swift; sourceTree = "<group>"; };
+		5880F10924C142F700C8616F /* UserGroupHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupHeaderView.swift; sourceTree = "<group>"; };
+		5880F10B24C142F700C8616F /* ActionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsCell.swift; sourceTree = "<group>"; };
+		5880F10C24C142F700C8616F /* ActionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionsCell.xib; sourceTree = "<group>"; };
 		58835FA124AF7C9000A2BC14 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		58835FA224AF7C9100A2BC14 /* heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@2x.png"; sourceTree = "<group>"; };
 		58835FA324AF7C9100A2BC14 /* heart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@3x.png"; sourceTree = "<group>"; };
+		58E8DCCF24BC6D6200DC19E1 /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
+		58E8DCD024BC6D6200DC19E1 /* reply@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply@2x.png"; sourceTree = "<group>"; };
+		58E8DCD124BC6D6200DC19E1 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
+		58E8DCD224BC6D6200DC19E1 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		58E8DCD324BC6D6200DC19E1 /* thread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thread.png; sourceTree = "<group>"; };
+		58E8DCD424BC6D6200DC19E1 /* thread@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thread@2x.png"; sourceTree = "<group>"; };
+		58E8DCD524BC6D6200DC19E1 /* share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@3x.png"; sourceTree = "<group>"; };
+		58E8DCD724BC6D6200DC19E1 /* reply@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply@3x.png"; sourceTree = "<group>"; };
+		58E8DCD824BC6D6200DC19E1 /* edit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit@3x.png"; sourceTree = "<group>"; };
+		58E8DCDB24BC6D6300DC19E1 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
+		58E8DCDC24BC6D6300DC19E1 /* thread@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thread@3x.png"; sourceTree = "<group>"; };
+		58E8DCDD24BC6D6300DC19E1 /* edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit@2x.png"; sourceTree = "<group>"; };
+		58E8DCED24BC6D7C00DC19E1 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		58E8DCEE24BC6D7C00DC19E1 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
+		58E8DCEF24BC6D7C00DC19E1 /* delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@3x.png"; sourceTree = "<group>"; };
 		58FAD28B24ADE7EE00E5603A /* LiveReaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveReaction.swift; sourceTree = "<group>"; };
 		58FAD28D24ADF2B500E5603A /* thumbsup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbsup@2x.png"; sourceTree = "<group>"; };
 		58FAD28E24ADF2B500E5603A /* thumbsup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsup.png; sourceTree = "<group>"; };
 		58FAD28F24ADF2B600E5603A /* thumbsup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbsup@3x.png"; sourceTree = "<group>"; };
+		58FB7B5024BC9ABF00669139 /* CometChatThreadedMessageList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CometChatThreadedMessageList.xib; sourceTree = "<group>"; };
+		58FB7B5124BC9ABF00669139 /* CometChatThreadedMessageList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatThreadedMessageList.swift; sourceTree = "<group>"; };
 		DB2E60AC23A8C38B00986E12 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
 		DB2E60AE23A8D8C100986E12 /* CometChatUnifiedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CometChatUnifiedCell.swift; sourceTree = "<group>"; };
 		DB2E60B123A8DA8500986E12 /* CometChatUIScreenCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUIScreenCell.swift; sourceTree = "<group>"; };
@@ -765,6 +850,7 @@
 		582A521524AB93090087369A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5880F0EE24C142F700C8616F /* PanModal */,
 				58FAD28B24ADE7EE00E5603A /* LiveReaction.swift */,
 				582A521624AB93090087369A /* FontManager.swift */,
 				582A521724AB93090087369A /* CometchatExtensions.swift */,
@@ -982,6 +1068,27 @@
 		582A528024AB93090087369A /* MessageList */ = {
 			isa = PBXGroup;
 			children = (
+				584CC94724C1633500B6C75E /* more_vertical.png */,
+				584CC94824C1633500B6C75E /* more_vertical@2x.png */,
+				584CC94924C1633600B6C75E /* more_vertical@3x.png */,
+				584DB31024C1553700E14C30 /* forward1.png */,
+				584DB31124C1553700E14C30 /* forward1@2x.png */,
+				584DB30F24C1553700E14C30 /* forward1@3x.png */,
+				58E8DCED24BC6D7C00DC19E1 /* delete.png */,
+				58E8DCEE24BC6D7C00DC19E1 /* delete@2x.png */,
+				58E8DCEF24BC6D7C00DC19E1 /* delete@3x.png */,
+				58E8DCDB24BC6D6300DC19E1 /* edit.png */,
+				58E8DCDD24BC6D6300DC19E1 /* edit@2x.png */,
+				58E8DCD824BC6D6200DC19E1 /* edit@3x.png */,
+				58E8DCCF24BC6D6200DC19E1 /* reply.png */,
+				58E8DCD024BC6D6200DC19E1 /* reply@2x.png */,
+				58E8DCD724BC6D6200DC19E1 /* reply@3x.png */,
+				58E8DCD224BC6D6200DC19E1 /* share.png */,
+				58E8DCD124BC6D6200DC19E1 /* share@2x.png */,
+				58E8DCD524BC6D6200DC19E1 /* share@3x.png */,
+				58E8DCD324BC6D6200DC19E1 /* thread.png */,
+				58E8DCD424BC6D6200DC19E1 /* thread@2x.png */,
+				58E8DCDC24BC6D6300DC19E1 /* thread@3x.png */,
 				58FAD28E24ADF2B500E5603A /* thumbsup.png */,
 				58FAD28D24ADF2B500E5603A /* thumbsup@2x.png */,
 				58FAD28F24ADF2B600E5603A /* thumbsup@3x.png */,
@@ -1731,6 +1838,7 @@
 		582A539124AB93090087369A /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				58FB7B4F24BC9ABF00669139 /* ThreadedMessageList */,
 				582A539224AB93090087369A /* MessageList */,
 				582A539524AB93090087369A /* ForwardMessageList */,
 			);
@@ -1892,6 +2000,122 @@
 			path = ConversationList;
 			sourceTree = "<group>";
 		};
+		5880F0EE24C142F700C8616F /* PanModal */ = {
+			isa = PBXGroup;
+			children = (
+				5880F0EF24C142F700C8616F /* PanModal */,
+				5880F10524C142F700C8616F /* Presentables */,
+				5880F10824C142F700C8616F /* Views */,
+				584DB31524C155C900E14C30 /* MessageActions.swift */,
+			);
+			path = PanModal;
+			sourceTree = "<group>";
+		};
+		5880F0EF24C142F700C8616F /* PanModal */ = {
+			isa = PBXGroup;
+			children = (
+				5880F0F024C142F700C8616F /* Presentable */,
+				5880F0F624C142F700C8616F /* PanModal.h */,
+				5880F0F724C142F700C8616F /* Presenter */,
+				5880F0FA24C142F700C8616F /* Delegate */,
+				5880F0FC24C142F700C8616F /* Animator */,
+				5880F0FF24C142F700C8616F /* Controller */,
+				5880F10124C142F700C8616F /* View */,
+			);
+			path = PanModal;
+			sourceTree = "<group>";
+		};
+		5880F0F024C142F700C8616F /* Presentable */ = {
+			isa = PBXGroup;
+			children = (
+				5880F0F124C142F700C8616F /* PanModalPresentable+Defaults.swift */,
+				5880F0F224C142F700C8616F /* PanModalPresentable.swift */,
+				5880F0F324C142F700C8616F /* PanModalPresentable+LayoutHelpers.swift */,
+				5880F0F424C142F700C8616F /* PanModalHeight.swift */,
+				5880F0F524C142F700C8616F /* PanModalPresentable+UIViewController.swift */,
+			);
+			path = Presentable;
+			sourceTree = "<group>";
+		};
+		5880F0F724C142F700C8616F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5880F0F824C142F700C8616F /* UIViewController+PanModalPresenter.swift */,
+				5880F0F924C142F700C8616F /* PanModalPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		5880F0FA24C142F700C8616F /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				5880F0FB24C142F700C8616F /* PanModalPresentationDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		5880F0FC24C142F700C8616F /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				5880F0FD24C142F700C8616F /* PanModalAnimator.swift */,
+				5880F0FE24C142F700C8616F /* PanModalPresentationAnimator.swift */,
+			);
+			path = Animator;
+			sourceTree = "<group>";
+		};
+		5880F0FF24C142F700C8616F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5880F10024C142F700C8616F /* PanModalPresentationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5880F10124C142F700C8616F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5880F10224C142F700C8616F /* PanContainerView.swift */,
+				5880F10324C142F700C8616F /* DimmedView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5880F10524C142F700C8616F /* Presentables */ = {
+			isa = PBXGroup;
+			children = (
+				5880F10624C142F700C8616F /* UserGroupMemberPresentable.swift */,
+				5880F10724C142F700C8616F /* UserGroupHeaderPresentable.swift */,
+			);
+			path = Presentables;
+			sourceTree = "<group>";
+		};
+		5880F10824C142F700C8616F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5880F10924C142F700C8616F /* UserGroupHeaderView.swift */,
+				5880F10A24C142F700C8616F /* ActionsCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5880F10A24C142F700C8616F /* ActionsCell */ = {
+			isa = PBXGroup;
+			children = (
+				5880F10B24C142F700C8616F /* ActionsCell.swift */,
+				5880F10C24C142F700C8616F /* ActionsCell.xib */,
+			);
+			path = ActionsCell;
+			sourceTree = "<group>";
+		};
+		58FB7B4F24BC9ABF00669139 /* ThreadedMessageList */ = {
+			isa = PBXGroup;
+			children = (
+				58FB7B5024BC9ABF00669139 /* CometChatThreadedMessageList.xib */,
+				58FB7B5124BC9ABF00669139 /* CometChatThreadedMessageList.swift */,
+			);
+			path = ThreadedMessageList;
+			sourceTree = "<group>";
+		};
 		DB4D6AC023ACE0CC0002BCED /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -2018,6 +2242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58835FA624AF7C9100A2BC14 /* heart@3x.png in Resources */,
+				5880F12124C142F700C8616F /* ActionsCell.xib in Resources */,
 				582A546D24AB930A0087369A /* 􀌧.png in Resources */,
 				582A54CD24AB930A0087369A /* SharedMediaView.xib in Resources */,
 				582A545124AB930A0087369A /* outgoingAudio.png in Resources */,
@@ -2033,6 +2258,7 @@
 				582A548624AB930A0087369A /* SF-Pro-Display-MediumItalic.otf in Resources */,
 				582A547124AB930A0087369A /* 􀇿@3x.png in Resources */,
 				582A53FA24AB93090087369A /* IncomingMessageOther.wav in Resources */,
+				584CC94C24C1633600B6C75E /* more_vertical@3x.png in Resources */,
 				582A544724AB930A0087369A /* videoCall@2x.png in Resources */,
 				582A548B24AB930A0087369A /* SF-Pro-Display-BlackItalic.otf in Resources */,
 				582A547E24AB930A0087369A /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
@@ -2040,6 +2266,7 @@
 				582A53F924AB93090087369A /* NewAnnouncement.wav in Resources */,
 				582A540224AB930A0087369A /* add@3x.png in Resources */,
 				582A53FD24AB93090087369A /* microphone@2x.png in Resources */,
+				584DB31324C1553700E14C30 /* forward1.png in Resources */,
 				582A546524AB930A0087369A /* editIcon@2x.png in Resources */,
 				582A547F24AB930A0087369A /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				582A546F24AB930A0087369A /* 􀋚@3x.png in Resources */,
@@ -2047,13 +2274,16 @@
 				582A541724AB930A0087369A /* copy@3x.png in Resources */,
 				582A543924AB930A0087369A /* contacts.png in Resources */,
 				582A547624AB930A0087369A /* 􀋚.png in Resources */,
+				58E8DCF224BC6D7C00DC19E1 /* delete@3x.png in Resources */,
 				582A54DE24AB930A0087369A /* CometChatMessageList.xib in Resources */,
 				582A545524AB930A0087369A /* calling@3x.png in Resources */,
 				582A54AF24AB930A0087369A /* LeftTextMessageBubble.xib in Resources */,
 				582A541224AB930A0087369A /* back@2x.png in Resources */,
 				582A54A224AB930A0087369A /* CometChatSettingsView.xib in Resources */,
+				58E8DCEA24BC6D6300DC19E1 /* edit.png in Resources */,
 				FB15AF73242E1AAA005C070B /* CometChatCallingCell.xib in Resources */,
 				582A541324AB930A0087369A /* back@3x.png in Resources */,
+				584CC94B24C1633600B6C75E /* more_vertical@2x.png in Resources */,
 				582A54CF24AB930A0087369A /* CometChatUserView.xib in Resources */,
 				DBFBC47823A7B9240027938E /* LaunchScreen.storyboard in Resources */,
 				582A542024AB930A0087369A /* wait@3x.png in Resources */,
@@ -2090,12 +2320,14 @@
 				582A542E24AB930A0087369A /* calls@3x.png in Resources */,
 				582A541924AB930A0087369A /* copy@2x.png in Resources */,
 				582A540C24AB930A0087369A /* close@3x.png in Resources */,
+				58E8DCEB24BC6D6300DC19E1 /* thread@3x.png in Resources */,
 				582A546E24AB930A0087369A /* 􀇿@2x.png in Resources */,
 				582A546324AB930A0087369A /* editIcon@3x.png in Resources */,
 				582A549F24AB930A0087369A /* CometChatDetailView.xib in Resources */,
 				582A54D124AB930A0087369A /* ProgressIndicatorView.xib in Resources */,
 				582A548124AB930A0087369A /* SF-Pro-Display-Regular.otf in Resources */,
 				582A543B24AB930A0087369A /* groups.png in Resources */,
+				58E8DCE224BC6D6300DC19E1 /* thread.png in Resources */,
 				582A54BB24AB930A0087369A /* RightImageMessageBubble.xib in Resources */,
 				582A544A24AB930A0087369A /* end.png in Resources */,
 				582A546124AB930A0087369A /* editIcon.png in Resources */,
@@ -2109,10 +2341,12 @@
 				582A546C24AB930A0087369A /* 􀁝@3x.png in Resources */,
 				582A548F24AB930A0087369A /* Localizable.strings in Resources */,
 				582A54E424AB930A0087369A /* CometChatCreateGroup.xib in Resources */,
+				584DB31224C1553700E14C30 /* forward1@3x.png in Resources */,
 				582A543324AB930A0087369A /* contacts@2x.png in Resources */,
 				582A544824AB930A0087369A /* incomingVideo@3x.png in Resources */,
 				582A545C24AB930A0087369A /* newCall@3x.png in Resources */,
 				582A54DD24AB930A0087369A /* CometChatIncomingCall.xib in Resources */,
+				58E8DCEC24BC6D6300DC19E1 /* edit@2x.png in Resources */,
 				582A54BD24AB930A0087369A /* LeftImageMessageBubble.xib in Resources */,
 				58FAD29124ADF2B600E5603A /* thumbsup.png in Resources */,
 				582A544E24AB930A0087369A /* calling@2x.png in Resources */,
@@ -2132,11 +2366,13 @@
 				582A548824AB930A0087369A /* SF-Pro-Display-Ultralight.otf in Resources */,
 				582A54A024AB930A0087369A /* NotificationsView.xib in Resources */,
 				582A54C024AB930A0087369A /* LeftReplyMessageBubble.xib in Resources */,
+				58E8DCE424BC6D6300DC19E1 /* share@3x.png in Resources */,
 				582A54B824AB930A0087369A /* RightLinkPreviewBubble.xib in Resources */,
 				582A54B324AB930A0087369A /* RightVideoMessageBubble.xib in Resources */,
 				582A541F24AB930A0087369A /* read.png in Resources */,
 				582A547B24AB930A0087369A /* addIcon@3x.png in Resources */,
 				DBB75F8E23D70DD700C424FF /* LogoutCell.xib in Resources */,
+				58E8DCE024BC6D6300DC19E1 /* share@2x.png in Resources */,
 				582A542A24AB930A0087369A /* copy.png in Resources */,
 				582A53FC24AB93090087369A /* add.png in Resources */,
 				582A542B24AB930A0087369A /* blueTick@2x.png in Resources */,
@@ -2156,6 +2392,7 @@
 				582A54AC24AB930A0087369A /* RightFileMessageBubble.xib in Resources */,
 				582A544F24AB930A0087369A /* incomingAudio@2x.png in Resources */,
 				582A541A24AB930A0087369A /* sent@2x.png in Resources */,
+				58E8DCF124BC6D7C00DC19E1 /* delete@2x.png in Resources */,
 				582A549624AB930A0087369A /* AddMemberView.xib in Resources */,
 				582A542624AB930A0087369A /* play.png in Resources */,
 				582A545424AB930A0087369A /* incomingAudio@3x.png in Resources */,
@@ -2164,15 +2401,19 @@
 				582A544C24AB930A0087369A /* end@2x.png in Resources */,
 				582A543124AB930A0087369A /* chats@2x.png in Resources */,
 				582A540A24AB930A0087369A /* stickerDark.png in Resources */,
+				584DB31424C1553700E14C30 /* forward1@2x.png in Resources */,
 				582A548C24AB930A0087369A /* SF-Pro-Display-Black.otf in Resources */,
 				582A541124AB930A0087369A /* play@3x.png in Resources */,
 				582A542924AB930A0087369A /* wait.png in Resources */,
 				582A548524AB930A0087369A /* SF-Pro-Display-Semibold.otf in Resources */,
 				582A542524AB930A0087369A /* read@2x.png in Resources */,
+				58FB7B5224BC9ABF00669139 /* CometChatThreadedMessageList.xib in Resources */,
 				582A54D324AB930A0087369A /* CometChatCallDetailLogView.xib in Resources */,
 				582A548224AB930A0087369A /* SF-Pro-Display-Bold.otf in Resources */,
 				582A542424AB930A0087369A /* read@3x.png in Resources */,
+				58E8DCE724BC6D6300DC19E1 /* edit@3x.png in Resources */,
 				582A54D524AB930A0087369A /* CometChatCallsView.xib in Resources */,
+				58E8DCE124BC6D6300DC19E1 /* share.png in Resources */,
 				582A542F24AB930A0087369A /* chats.png in Resources */,
 				58FAD29224ADF2B600E5603A /* thumbsup@3x.png in Resources */,
 				582A543524AB930A0087369A /* contacts@3x.png in Resources */,
@@ -2180,6 +2421,7 @@
 				582A540624AB930A0087369A /* forward@2x.png in Resources */,
 				582A541524AB930A0087369A /* sent@3x.png in Resources */,
 				DBFBC47523A7B9240027938E /* Assets.xcassets in Resources */,
+				58E8DCF024BC6D7C00DC19E1 /* delete.png in Resources */,
 				DBFBC47323A7B9230027938E /* Main.storyboard in Resources */,
 				582A546724AB930A0087369A /* downArrow.png in Resources */,
 				582A548024AB930A0087369A /* SF-Pro-Display-Light.otf in Resources */,
@@ -2188,6 +2430,7 @@
 				582A543024AB930A0087369A /* chats@3x.png in Resources */,
 				582A545624AB930A0087369A /* audioCall.png in Resources */,
 				582A544424AB930A0087369A /* outgoingAudio@3x.png in Resources */,
+				58E8DCE324BC6D6300DC19E1 /* thread@2x.png in Resources */,
 				582A545024AB930A0087369A /* outgoingVideo@3x.png in Resources */,
 				58FAD29024ADF2B600E5603A /* thumbsup@2x.png in Resources */,
 				582A53F824AB93090087369A /* IncomingMessage.wav in Resources */,
@@ -2198,9 +2441,11 @@
 				58835FA524AF7C9100A2BC14 /* heart@2x.png in Resources */,
 				582A53FF24AB93090087369A /* add@2x.png in Resources */,
 				582A546224AB930A0087369A /* downArrow@3x.png in Resources */,
+				58E8DCE624BC6D6300DC19E1 /* reply@3x.png in Resources */,
 				582A54A524AB930A0087369A /* SupportView.xib in Resources */,
 				582A547A24AB930A0087369A /* addIcon@2x.png in Resources */,
 				582A53F624AB93090087369A /* IncomingCall.wav in Resources */,
+				584CC94A24C1633600B6C75E /* more_vertical.png in Resources */,
 				582A54B624AB930A0087369A /* LeftLinkPreviewBubble.xib in Resources */,
 				582A540E24AB930A0087369A /* send.png in Resources */,
 				58835FA424AF7C9100A2BC14 /* heart.png in Resources */,
@@ -2214,8 +2459,10 @@
 				582A542724AB930A0087369A /* delivered@3x.png in Resources */,
 				582A546A24AB930A0087369A /* 􀁝.png in Resources */,
 				582A541824AB930A0087369A /* defaultImage.png in Resources */,
+				58E8DCDF24BC6D6300DC19E1 /* reply@2x.png in Resources */,
 				582A543224AB930A0087369A /* calls@2x.png in Resources */,
 				582A542124AB930A0087369A /* unsafeContent@2x.png in Resources */,
+				58E8DCDE24BC6D6300DC19E1 /* reply.png in Resources */,
 				582A547D24AB930A0087369A /* SF-Pro-Display-Thin.otf in Resources */,
 				582A541D24AB930A0087369A /* wait@2x.png in Resources */,
 				582A540424AB930A0087369A /* microphone@3x.png in Resources */,
@@ -2241,11 +2488,13 @@
 				582A54C124AB930A0087369A /* LeftReplyMessageBubble.swift in Sources */,
 				582A53D324AB93090087369A /* Cometfisher.swift in Sources */,
 				582A549424AB930A0087369A /* AdministratorView.swift in Sources */,
+				5880F11724C142F700C8616F /* PanModalAnimator.swift in Sources */,
 				582A54A424AB930A0087369A /* SupportView.swift in Sources */,
 				582A549024AB930A0087369A /* BadgeCount.swift in Sources */,
 				582A54EB24AB930A0087369A /* CometChatBlockedUsers.swift in Sources */,
 				582A549824AB930A0087369A /* MembersView.swift in Sources */,
 				582A53DD24AB93090087369A /* SessionDelegate.swift in Sources */,
+				5880F11D24C142F700C8616F /* UserGroupMemberPresentable.swift in Sources */,
 				582A54C224AB930A0087369A /* RightReplyMessageBubble.swift in Sources */,
 				582A54A724AB930A0087369A /* RightAudioMessageBubble.swift in Sources */,
 				582A53D924AB93090087369A /* RedirectHandler.swift in Sources */,
@@ -2257,14 +2506,18 @@
 				582A53CF24AB93090087369A /* ImageDataProvider.swift in Sources */,
 				582A54D024AB930A0087369A /* CometChatUserView.swift in Sources */,
 				582A54A924AB930A0087369A /* LeftAudioMessageBubble.swift in Sources */,
+				58FB7B5324BC9ABF00669139 /* CometChatThreadedMessageList.swift in Sources */,
+				5880F11624C142F700C8616F /* PanModalPresentationDelegate.swift in Sources */,
 				582A53C924AB93090087369A /* MemoryStorage.swift in Sources */,
 				582A53DE24AB93090087369A /* ImagePrefetcher.swift in Sources */,
 				582A53EE24AB93090087369A /* Runtime.swift in Sources */,
 				582A53D024AB93090087369A /* CometfisherError.swift in Sources */,
 				582A53C824AB93090087369A /* ImageCache.swift in Sources */,
+				5880F11A24C142F700C8616F /* PanContainerView.swift in Sources */,
 				582A54B124AB930A0087369A /* RightTextMessageBubble.swift in Sources */,
 				582A53F024AB93090087369A /* Delegate.swift in Sources */,
 				582A53D824AB93090087369A /* SessionDataTask.swift in Sources */,
+				584DB31624C155C900E14C30 /* MessageActions.swift in Sources */,
 				582A53E724AB93090087369A /* GIFAnimatedImage.swift in Sources */,
 				582A54E524AB930A0087369A /* CometChatAddAdministrators.swift in Sources */,
 				582A53D424AB93090087369A /* CometfisherManager.swift in Sources */,
@@ -2273,13 +2526,16 @@
 				DB2E60AD23A8C38B00986E12 /* MainViewController.swift in Sources */,
 				582A549B24AB930A0087369A /* CometChatCallManager.swift in Sources */,
 				FBA293112434D9A7006DCCA1 /* AppDelegate.swift in Sources */,
+				5880F11924C142F700C8616F /* PanModalPresentationController.swift in Sources */,
 				582A53DC24AB93090087369A /* ImageModifier.swift in Sources */,
 				582A54DA24AB930A0087369A /* CometChatCallsList.swift in Sources */,
 				58FAD28C24ADE7EE00E5603A /* LiveReaction.swift in Sources */,
 				582A54E924AB930A0087369A /* CometChatGroupDetail.swift in Sources */,
+				5880F11824C142F700C8616F /* PanModalPresentationAnimator.swift in Sources */,
 				582A54CC24AB930A0087369A /* SharedMediaView.swift in Sources */,
 				582A54E224AB930A0087369A /* CometChatUserInfo.swift in Sources */,
 				582A53BB24AB93090087369A /* DPImageView+Letters.swift in Sources */,
+				5880F11224C142F700C8616F /* PanModalHeight.swift in Sources */,
 				582A54E724AB930A0087369A /* CometChatBannedMembers.swift in Sources */,
 				582A54C924AB930A0087369A /* SmartReplyCell.swift in Sources */,
 				582A54E024AB930A0087369A /* CometChatForwardMessageList.swift in Sources */,
@@ -2293,6 +2549,7 @@
 				582A53C324AB93090087369A /* AudioPlayerManager.swift in Sources */,
 				582A53CA24AB93090087369A /* DiskStorage.swift in Sources */,
 				582A53ED24AB93090087369A /* AnimatedImageView.swift in Sources */,
+				5880F11324C142F700C8616F /* PanModalPresentable+UIViewController.swift in Sources */,
 				582A53D524AB93090087369A /* ImageDownloaderDelegate.swift in Sources */,
 				582A53D724AB93090087369A /* ImageDataProcessor.swift in Sources */,
 				582A53C424AB93090087369A /* ViewModel.swift in Sources */,
@@ -2308,6 +2565,8 @@
 				582A54B924AB930A0087369A /* RightLinkPreviewBubble.swift in Sources */,
 				582A53C124AB93090087369A /* BaseNibView.swift in Sources */,
 				582A54E624AB930A0087369A /* CometChatAddMembers.swift in Sources */,
+				5880F11024C142F700C8616F /* PanModalPresentable.swift in Sources */,
+				5880F11E24C142F700C8616F /* UserGroupHeaderPresentable.swift in Sources */,
 				582A53C524AB93090087369A /* AudioRecorderManager.swift in Sources */,
 				582A53EC24AB93090087369A /* Indicator.swift in Sources */,
 				FBB95631248545E100EFF653 /* CreateUser.swift in Sources */,
@@ -2328,6 +2587,7 @@
 				582A53BD24AB93090087369A /* AVAudioFileExtensions.swift in Sources */,
 				582A53CB24AB93090087369A /* CacheSerializer.swift in Sources */,
 				582A549524AB930A0087369A /* AddMemberView.swift in Sources */,
+				5880F12024C142F700C8616F /* ActionsCell.swift in Sources */,
 				582A549D24AB930A0087369A /* StatusIndicator.swift in Sources */,
 				582A54AD24AB930A0087369A /* RightFileMessageBubble.swift in Sources */,
 				582A53D124AB93090087369A /* CometfisherOptionsInfo.swift in Sources */,
@@ -2353,14 +2613,20 @@
 				FBA293102434D9A7006DCCA1 /* AppConstants.swift in Sources */,
 				582A53BA24AB93090087369A /* CometChatSnackBar.swift in Sources */,
 				DB2E60AF23A8D8C100986E12 /* CometChatUnifiedCell.swift in Sources */,
+				5880F11F24C142F700C8616F /* UserGroupHeaderView.swift in Sources */,
 				582A53D624AB93090087369A /* RequestModifier.swift in Sources */,
 				582A54DC24AB930A0087369A /* CometChatIncomingCall.swift in Sources */,
 				582A53B824AB93090087369A /* CameraHandler.swift in Sources */,
+				5880F11124C142F700C8616F /* PanModalPresentable+LayoutHelpers.swift in Sources */,
+				5880F11424C142F700C8616F /* UIViewController+PanModalPresenter.swift in Sources */,
+				5880F11B24C142F700C8616F /* DimmedView.swift in Sources */,
 				582A549C24AB930A0087369A /* CometChatSoundManager.swift in Sources */,
 				582A53EF24AB93090087369A /* CallbackQueue.swift in Sources */,
 				582A53C724AB93090087369A /* Storage.swift in Sources */,
 				582A54CB24AB930A0087369A /* SharedMediaCell.swift in Sources */,
 				582A54C424AB930A0087369A /* MessageDateHeader.swift in Sources */,
+				5880F11524C142F700C8616F /* PanModalPresenter.swift in Sources */,
+				5880F10F24C142F700C8616F /* PanModalPresentable+Defaults.swift in Sources */,
 				582A53D224AB93090087369A /* Deprecated.swift in Sources */,
 				582A53F424AB93090087369A /* Box.swift in Sources */,
 				582A53DF24AB93090087369A /* ImageProgressive.swift in Sources */,

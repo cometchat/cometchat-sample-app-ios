@@ -16,15 +16,10 @@ CometChat Kitchen Sink Sample App (built using **CometChat UIKit**) is a fully f
 4. [Troubleshooting](#Troubleshooting)
 
 
+
 # Installation
       
-1. Simply clone the project from [ios-swift-chat-app](https://github.com/cometchat-pro-samples/ios-swift-chat-app.git) repository using the following command.
-
-   ```
-   $ git clone https://github.com/cometchat-pro-samples/ios-swift-chat-app.git
-   ```
-   
-   After cloning the repository:
+1. Simply clone the project from [ios-swift-chat-app](https://github.com/cometchat-pro-samples/ios-chat-ui-kit-app/archive/master.zip) repository. After cloning the repository:
 
 2. Select the appropriate version as per your Xcode version.
 
