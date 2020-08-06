@@ -1,0 +1,1316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:../CometChatSwift/Library"
+      name = "Library">
+      <Group
+         location = "group:UI Unified"
+         name = "UI Unified">
+         <FileRef
+            location = "group:CometChatUnified.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Resources"
+         name = "Resources">
+         <Group
+            location = "group:Extensions"
+            name = "Extensions">
+            <FileRef
+               location = "group:FontManager.swift">
+            </FileRef>
+            <FileRef
+               location = "group:CometchatExtensions.swift">
+            </FileRef>
+            <FileRef
+               location = "group:CameraHandler.swift">
+            </FileRef>
+            <FileRef
+               location = "group:CCActivityIndicator.swift">
+            </FileRef>
+            <FileRef
+               location = "group:CometChatSnackBar.swift">
+            </FileRef>
+            <FileRef
+               location = "group:DPImageView+Letters.swift">
+            </FileRef>
+            <FileRef
+               location = "group:UIViewController+LargeTitle.swift">
+            </FileRef>
+            <Group
+               location = "group:AudioWaveForm"
+               name = "AudioWaveForm">
+               <Group
+                  location = "group:Classes"
+                  name = "Classes">
+                  <FileRef
+                     location = "group:AVAudioFileExtensions.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Chronometer.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:AudioVisualizationView.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:AudioContext.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:BaseNibView.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:AudioVisualizationView.xib">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:AudioPlayerManager.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:ViewModel.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:AudioRecorderManager.swift">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:LargeTitleDisplayMode+String.swift">
+            </FileRef>
+            <Group
+               location = "group:CometChatKingfisher"
+               name = "CometChatKingfisher">
+               <Group
+                  location = "group:Cache"
+                  name = "Cache">
+                  <FileRef
+                     location = "group:Storage.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ImageCache.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:MemoryStorage.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:DiskStorage.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:CacheSerializer.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:FormatIndicatedCacheSerializer.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:General"
+                  name = "General">
+                  <Group
+                     location = "group:ImageSource"
+                     name = "ImageSource">
+                     <FileRef
+                        location = "group:Source.swift">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Resource.swift">
+                     </FileRef>
+                     <FileRef
+                        location = "group:ImageDataProvider.swift">
+                     </FileRef>
+                  </Group>
+                  <FileRef
+                     location = "group:CometfisherError.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:CometfisherOptionsInfo.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Deprecated.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Cometfisher.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:CometfisherManager.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Networking"
+                  name = "Networking">
+                  <FileRef
+                     location = "group:ImageDownloaderDelegate.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:RequestModifier.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ImageDataProcessor.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:SessionDataTask.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:RedirectHandler.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ImageDownloader.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:AuthenticationChallengeResponsable.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ImageModifier.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:SessionDelegate.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ImagePrefetcher.swift">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:Cometfisher.h">
+               </FileRef>
+               <Group
+                  location = "group:Image"
+                  name = "Image">
+                  <FileRef
+                     location = "group:ImageProgressive.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Image.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ImageFormat.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ImageDrawing.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ImageTransition.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ImageProcessor.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Filter.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Placeholder.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:GIFAnimatedImage.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Extensions"
+                  name = "Extensions">
+                  <FileRef
+                     location = "group:WKInterfaceImage+Cometfisher.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:UIButton+Cometfisher.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ImageView+Cometfisher.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSButton+Cometfisher.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Views"
+                  name = "Views">
+                  <FileRef
+                     location = "group:Indicator.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:AnimatedImageView.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Utility"
+                  name = "Utility">
+                  <FileRef
+                     location = "group:Runtime.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:CallbackQueue.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Delegate.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ExtensionHelpers.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Result.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:SizeExtensions.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Box.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:String+MD5.swift">
+                  </FileRef>
+               </Group>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Ringtones"
+            name = "Ringtones">
+            <FileRef
+               location = "group:IncomingCall.wav">
+            </FileRef>
+            <FileRef
+               location = "group:OutgoingCall.wav">
+            </FileRef>
+            <FileRef
+               location = "group:IncomingMessage.wav">
+            </FileRef>
+            <FileRef
+               location = "group:NewAnnouncement.wav">
+            </FileRef>
+            <FileRef
+               location = "group:IncomingMessageOther.wav">
+            </FileRef>
+            <FileRef
+               location = "group:OutgoingMessege.wav">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Icons"
+            name = "Icons">
+            <Group
+               location = "group:ChatView"
+               name = "ChatView">
+               <FileRef
+                  location = "group:add.png">
+               </FileRef>
+               <FileRef
+                  location = "group:microphone@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:stickerDark@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:add@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:send@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:send@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:add@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:stickerDark@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:microphone@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:microphone.png">
+               </FileRef>
+               <FileRef
+                  location = "group:forward@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:forward@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:sticker@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:forward.png">
+               </FileRef>
+               <FileRef
+                  location = "group:stickerDark.png">
+               </FileRef>
+               <FileRef
+                  location = "group:sticker@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:close@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:close@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:send.png">
+               </FileRef>
+               <FileRef
+                  location = "group:sticker.png">
+               </FileRef>
+               <FileRef
+                  location = "group:close.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:MessageList"
+               name = "MessageList">
+               <FileRef
+                  location = "group:play@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:back@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:back@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:play@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:sent@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:default-image.png">
+               </FileRef>
+               <FileRef
+                  location = "group:copy@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:defaultImage.png">
+               </FileRef>
+               <FileRef
+                  location = "group:copy@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:sent@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:wait@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:delivered.png">
+               </FileRef>
+               <FileRef
+                  location = "group:read.png">
+               </FileRef>
+               <FileRef
+                  location = "group:wait@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:sent.png">
+               </FileRef>
+               <FileRef
+                  location = "group:delivered@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:read@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:read@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:play.png">
+               </FileRef>
+               <FileRef
+                  location = "group:delivered@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:back.png">
+               </FileRef>
+               <FileRef
+                  location = "group:wait.png">
+               </FileRef>
+               <FileRef
+                  location = "group:copy.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:ConversationList"
+               name = "ConversationList">
+               <FileRef
+                  location = "group:blueTick@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:blueTick.png">
+               </FileRef>
+               <FileRef
+                  location = "group:blueTick@3x.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Tabbar"
+               name = "Tabbar">
+               <FileRef
+                  location = "group:calls@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:chats.png">
+               </FileRef>
+               <FileRef
+                  location = "group:chats@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:chats@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:calls@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:contacts@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:calls.png">
+               </FileRef>
+               <FileRef
+                  location = "group:contacts@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:more@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:more@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:groups@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:contacts.png">
+               </FileRef>
+               <FileRef
+                  location = "group:more.png">
+               </FileRef>
+               <FileRef
+                  location = "group:groups.png">
+               </FileRef>
+               <FileRef
+                  location = "group:groups@2x.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:CallsView"
+               name = "CallsView">
+               <FileRef
+                  location = "group:missedVideo.png">
+               </FileRef>
+               <FileRef
+                  location = "group:calling.png">
+               </FileRef>
+               <FileRef
+                  location = "group:missedAudio.png">
+               </FileRef>
+               <FileRef
+                  location = "group:missedVideo@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:missedVideo@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:newCall.png">
+               </FileRef>
+               <FileRef
+                  location = "group:videoCall.png">
+               </FileRef>
+               <FileRef
+                  location = "group:outgoingAudio@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:incomingVideo@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:videoCall@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:videoCall@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:incomingVideo@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:outgoingAudio@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:end.png">
+               </FileRef>
+               <FileRef
+                  location = "group:audioCall@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:end@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:outgoingVideo.png">
+               </FileRef>
+               <FileRef
+                  location = "group:calling@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:incomingAudio@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:outgoingVideo@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:outgoingAudio.png">
+               </FileRef>
+               <FileRef
+                  location = "group:outgoingVideo@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:incomingVideo.png">
+               </FileRef>
+               <FileRef
+                  location = "group:incomingAudio@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:calling@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:audioCall.png">
+               </FileRef>
+               <FileRef
+                  location = "group:incomingAudio.png">
+               </FileRef>
+               <FileRef
+                  location = "group:end@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:audioCall@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:missedAudio@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:newCall@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:newCall@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:missedAudio@3x.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:UserView"
+               name = "UserView">
+               <FileRef
+                  location = "group:downArrow@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Blue Ticks@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Blue Ticks@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:downArrow@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Blue Ticks.png">
+               </FileRef>
+               <FileRef
+                  location = "group:defaultAvatar.jpg">
+               </FileRef>
+               <FileRef
+                  location = "group:downArrow.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:SettingsView"
+               name = "SettingsView">
+               <FileRef
+                  location = "group:&#x10005d;@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x1001ff;.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x10005d;.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x10027c;.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x10005d;@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x100327;.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x1001ff;@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x1002da;@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x1002da;@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x1001ff;@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x100327;@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x100327;@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x10027c;@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x10027c;@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:&#x1002da;.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:GroupList"
+               name = "GroupList">
+               <FileRef
+                  location = "group:createGroup@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:createGroup.png">
+               </FileRef>
+               <FileRef
+                  location = "group:createGroup@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:addIcon@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:addIcon@3x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:addIcon.png">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Fonts"
+            name = "Fonts">
+            <FileRef
+               location = "group:SF-Pro-Display-Thin.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-SemiboldItalic.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-RegularItalic.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-Light.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-Regular.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-Bold.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-Medium.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-Heavy.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-Semibold.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-MediumItalic.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-HeavyItalic.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-Ultralight.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-UltralightItalic.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-LightItalic.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-BlackItalic.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-Black.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-ThinItalic.otf">
+            </FileRef>
+            <FileRef
+               location = "group:SF-Pro-Display-BoldItalic.otf">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Localization"
+            name = "Localization">
+            <FileRef
+               location = "group:Localizable.strings">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:UI Components"
+         name = "UI Components">
+         <Group
+            location = "group:Chat"
+            name = "Chat">
+            <Group
+               location = "group:BadgeCount"
+               name = "BadgeCount">
+               <FileRef
+                  location = "group:BadgeCount.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:ConversationView"
+               name = "ConversationView">
+               <FileRef
+                  location = "group:CometChatConversationView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatConversationView.xib">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Group"
+            name = "Group">
+            <Group
+               location = "group:AdministratorView"
+               name = "AdministratorView">
+               <FileRef
+                  location = "group:AdministratorView.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:AdministratorView.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:AddMemberView"
+               name = "AddMemberView">
+               <FileRef
+                  location = "group:AddMemberView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:AddMemberView.xib">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:MembersView"
+               name = "MembersView">
+               <FileRef
+                  location = "group:MembersView.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:MembersView.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:GroupView"
+               name = "GroupView">
+               <FileRef
+                  location = "group:CometChatGroupView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatGroupView.xib">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Managers"
+            name = "Managers">
+            <Group
+               location = "group:CallManager"
+               name = "CallManager">
+               <FileRef
+                  location = "group:CometChatCallManager.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:SoundManager"
+               name = "SoundManager">
+               <FileRef
+                  location = "group:CometChatSoundManager.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Other"
+            name = "Other">
+            <Group
+               location = "group:Status Indicator"
+               name = "Status Indicator">
+               <FileRef
+                  location = "group:StatusIndicator.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:DetailView"
+               name = "DetailView">
+               <FileRef
+                  location = "group:CometChatDetailView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatDetailView.xib">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:NotificationsView"
+               name = "NotificationsView">
+               <FileRef
+                  location = "group:NotificationsView.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:NotificationsView.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:SettingsView"
+               name = "SettingsView">
+               <FileRef
+                  location = "group:CometChatSettingsView.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatSettingsView.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Privacy&amp;SupportView"
+               name = "Privacy&amp;SupportView">
+               <FileRef
+                  location = "group:SupportView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:SupportView.xib">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Message"
+            name = "Message">
+            <Group
+               location = "group:MessageView"
+               name = "MessageView">
+               <Group
+                  location = "group:AudioMessageBubble"
+                  name = "AudioMessageBubble">
+                  <Group
+                     location = "group:RightAudioMessageBubble"
+                     name = "RightAudioMessageBubble">
+                     <FileRef
+                        location = "group:RightAudioMessageBubble.xib">
+                     </FileRef>
+                     <FileRef
+                        location = "group:RightAudioMessageBubble.swift">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:LeftAudioMessageBubble"
+                     name = "LeftAudioMessageBubble">
+                     <FileRef
+                        location = "group:LeftAudioMessageBubble.xib">
+                     </FileRef>
+                     <FileRef
+                        location = "group:LeftAudioMessageBubble.swift">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <Group
+                  location = "group:FileMessageBubble"
+                  name = "FileMessageBubble">
+                  <Group
+                     location = "group:LeftFileMessageBubble"
+                     name = "LeftFileMessageBubble">
+                     <FileRef
+                        location = "group:LeftFileMessageBubble.swift">
+                     </FileRef>
+                     <FileRef
+                        location = "group:LeftFileMessageBubble.xib">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:RightFileMessageBubble"
+                     name = "RightFileMessageBubble">
+                     <FileRef
+                        location = "group:RightFileMessageBubble.xib">
+                     </FileRef>
+                     <FileRef
+                        location = "group:RightFileMessageBubble.swift">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <Group
+                  location = "group:TextMessageBubble"
+                  name = "TextMessageBubble">
+                  <Group
+                     location = "group:LeftTextMessageBubble"
+                     name = "LeftTextMessageBubble">
+                     <FileRef
+                        location = "group:LeftTextMessageBubble.swift">
+                     </FileRef>
+                     <FileRef
+                        location = "group:LeftTextMessageBubble.xib">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:RightTextMessageBubble"
+                     name = "RightTextMessageBubble">
+                     <FileRef
+                        location = "group:RightTextMessageBubble.xib">
+                     </FileRef>
+                     <FileRef
+                        location = "group:RightTextMessageBubble.swift">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <Group
+                  location = "group:VideoMessageBubble"
+                  name = "VideoMessageBubble">
+                  <Group
+                     location = "group:RightVideoMessageBubble"
+                     name = "RightVideoMessageBubble">
+                     <FileRef
+                        location = "group:RightVideoMessageBubble.swift">
+                     </FileRef>
+                     <FileRef
+                        location = "group:RightVideoMessageBubble.xib">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:LeftVideoMessageBubble"
+                     name = "LeftVideoMessageBubble">
+                     <FileRef
+                        location = "group:LeftVideoMessageBubble.swift">
+                     </FileRef>
+                     <FileRef
+                        location = "group:LeftVideoMessageBubble.xib">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <Group
+                  location = "group:LinkPreviewBubble"
+                  name = "LinkPreviewBubble">
+                  <Group
+                     location = "group:LeftLinkPreviewBubble"
+                     name = "LeftLinkPreviewBubble">
+                     <FileRef
+                        location = "group:LeftLinkPreviewBubble.xib">
+                     </FileRef>
+                     <FileRef
+                        location = "group:LeftLinkPreviewBubble.swift">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:RightLinkPreviewBubble"
+                     name = "RightLinkPreviewBubble">
+                     <FileRef
+                        location = "group:RightLinkPreviewBubble.xib">
+                     </FileRef>
+                     <FileRef
+                        location = "group:RightLinkPreviewBubble.swift">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <Group
+                  location = "group:ImageMessageBubble"
+                  name = "ImageMessageBubble">
+                  <Group
+                     location = "group:RightImageMessageBubble"
+                     name = "RightImageMessageBubble">
+                     <FileRef
+                        location = "group:RightImageMessageBubble.swift">
+                     </FileRef>
+                     <FileRef
+                        location = "group:RightImageMessageBubble.xib">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:LeftImageMessageBubble"
+                     name = "LeftImageMessageBubble">
+                     <FileRef
+                        location = "group:LeftImageMessageBubble.swift">
+                     </FileRef>
+                     <FileRef
+                        location = "group:LeftImageMessageBubble.xib">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <Group
+                  location = "group:ActionMessageBubble"
+                  name = "ActionMessageBubble">
+                  <FileRef
+                     location = "group:ActionMessageBubble.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:ActionMessageBubble.xib">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:MessageDateHeader.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:ChatView"
+               name = "ChatView">
+               <FileRef
+                  location = "group:ChatView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:ChatView.xib">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:SmartReplyView"
+               name = "SmartReplyView">
+               <FileRef
+                  location = "group:SmartReplyCell.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:SmartRepliesView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:SmartReplyCell.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Avatar"
+               name = "Avatar">
+               <FileRef
+                  location = "group:Avatar.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:User"
+            name = "User">
+            <Group
+               location = "group:SharedMediaView"
+               name = "SharedMediaView">
+               <FileRef
+                  location = "group:SharedMediaCell.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:SharedMediaView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:SharedMediaView.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:SharedMediaCell.xib">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:UserView"
+               name = "UserView">
+               <FileRef
+                  location = "group:CometChatUserView.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatUserView.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Call"
+            name = "Call">
+            <Group
+               location = "group:ProgressIndicatorView"
+               name = "ProgressIndicatorView">
+               <FileRef
+                  location = "group:ProgressIndicatorView.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:ProgressIndicatorView.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:CallDetailLogView"
+               name = "CallDetailLogView">
+               <FileRef
+                  location = "group:CometChatCallDetailLogView.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatCallDetailLogView.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:CallsView"
+               name = "CallsView">
+               <FileRef
+                  location = "group:CometChatCallsView.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatCallsView.swift">
+               </FileRef>
+            </Group>
+         </Group>
+      </Group>
+      <Group
+         location = "group:UI Screens"
+         name = "UI Screens">
+         <Group
+            location = "group:Calls"
+            name = "Calls">
+            <Group
+               location = "group:CallDetail"
+               name = "CallDetail">
+               <FileRef
+                  location = "group:CometChatCallDetail.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:OutgoingCall"
+               name = "OutgoingCall">
+               <FileRef
+                  location = "group:CometChatOutgoingCall.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatOutgoingCall.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:CallsList"
+               name = "CallsList">
+               <FileRef
+                  location = "group:CometChatCallsList.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:NewCallList"
+               name = "NewCallList">
+               <FileRef
+                  location = "group:CometChatNewCallList.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:IncomingCall"
+               name = "IncomingCall">
+               <FileRef
+                  location = "group:CometChatIncomingCall.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatIncomingCall.xib">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Messages"
+            name = "Messages">
+            <Group
+               location = "group:MessageList"
+               name = "MessageList">
+               <FileRef
+                  location = "group:CometChatMessageList.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatMessageList.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:ForwardMessageList"
+               name = "ForwardMessageList">
+               <FileRef
+                  location = "group:CometChatForwardMessageList.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Others"
+            name = "Others">
+            <Group
+               location = "group:MoreInfo"
+               name = "MoreInfo">
+               <FileRef
+                  location = "group:CometChatPrivacyAndSecurity.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatUserInfo.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Groups"
+            name = "Groups">
+            <Group
+               location = "group:CreateGroup"
+               name = "CreateGroup">
+               <FileRef
+                  location = "group:CometChatCreateGroup.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:CometChatCreateGroup.xib">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:AddAdmins"
+               name = "AddAdmins">
+               <FileRef
+                  location = "group:CometChatAddAdministrators.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:AddMembers"
+               name = "AddMembers">
+               <FileRef
+                  location = "group:CometChatAddMembers.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:GroupList"
+               name = "GroupList">
+               <Group
+                  location = "group:GroupDetail"
+                  name = "GroupDetail">
+                  <FileRef
+                     location = "group:CometChatGroupDetail.swift">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:CometChatGroupList.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Users"
+            name = "Users">
+            <Group
+               location = "group:BlockedUsers"
+               name = "BlockedUsers">
+               <FileRef
+                  location = "group:CometChatBlockedUsers.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:UserList"
+               name = "UserList">
+               <FileRef
+                  location = "group:CometChatUserList.swift">
+               </FileRef>
+               <Group
+                  location = "group:UserDetail"
+                  name = "UserDetail">
+                  <FileRef
+                     location = "group:CometChatUserDetail.swift">
+                  </FileRef>
+               </Group>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Chats"
+            name = "Chats">
+            <Group
+               location = "group:ConversationList"
+               name = "ConversationList">
+               <FileRef
+                  location = "group:CometChatConversationList.swift">
+               </FileRef>
+            </Group>
+         </Group>
+      </Group>
+   </Group>
+   <FileRef
+      location = "self:">
+   </FileRef>
+</Workspace>
