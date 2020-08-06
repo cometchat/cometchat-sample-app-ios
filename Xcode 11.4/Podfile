@@ -1,7 +1,0 @@
-
-
-target 'CometChatSwift' do
-  
-pod 'CometChatPro','2.0.12-Xcode11.4'
-
-end
