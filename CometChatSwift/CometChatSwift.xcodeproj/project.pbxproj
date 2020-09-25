@@ -7,6 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		585980D8251CC4350086F0F9 /* 􀈑@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980B4251CC41B0086F0F9 /* 􀈑@2x.png */; };
+		585980D9251CC4350086F0F9 /* 􀈕@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980B5251CC41C0086F0F9 /* 􀈕@2x.png */; };
+		585980DA251CC4350086F0F9 /* 􀌶@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980B6251CC41D0086F0F9 /* 􀌶@3x.png */; };
+		585980DB251CC4350086F0F9 /* 􀈕.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980B7251CC41D0086F0F9 /* 􀈕.png */; };
+		585980DC251CC4350086F0F9 /* 􀈕@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980B8251CC41E0086F0F9 /* 􀈕@3x.png */; };
+		585980DD251CC4350086F0F9 /* 􀌞@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980B9251CC41F0086F0F9 /* 􀌞@3x.png */; };
+		585980DE251CC4350086F0F9 /* 􀈑.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980BA251CC4200086F0F9 /* 􀈑.png */; };
+		585980DF251CC4350086F0F9 /* 􀋑@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980BB251CC4200086F0F9 /* 􀋑@2x.png */; };
+		585980E0251CC4350086F0F9 /* 􀈎@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980BC251CC4210086F0F9 /* 􀈎@3x.png */; };
+		585980E1251CC4350086F0F9 /* 􀈑@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980BD251CC4220086F0F9 /* 􀈑@3x.png */; };
+		585980E2251CC4350086F0F9 /* 􀌤@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980BE251CC4230086F0F9 /* 􀌤@2x.png */; };
+		585980E3251CC4350086F0F9 /* 􀈂@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980BF251CC4230086F0F9 /* 􀈂@2x.png */; };
+		585980E4251CC4350086F0F9 /* 􀉌.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980C0251CC4240086F0F9 /* 􀉌.png */; };
+		585980E5251CC4350086F0F9 /* 􀌞.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980C1251CC4240086F0F9 /* 􀌞.png */; };
+		585980E6251CC4350086F0F9 /* 􀉐.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980C2251CC4250086F0F9 /* 􀉐.png */; };
+		585980E7251CC4350086F0F9 /* 􀌞@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980C3251CC4260086F0F9 /* 􀌞@2x.png */; };
+		585980E8251CC4350086F0F9 /* 􀅴.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980C4251CC4260086F0F9 /* 􀅴.png */; };
+		585980E9251CC4350086F0F9 /* 􀈂@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980C5251CC4270086F0F9 /* 􀈂@3x.png */; };
+		585980EA251CC4350086F0F9 /* 􀈎@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980C6251CC4280086F0F9 /* 􀈎@2x.png */; };
+		585980EB251CC4350086F0F9 /* 􀈂.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980C7251CC4290086F0F9 /* 􀈂.png */; };
+		585980EC251CC4350086F0F9 /* 􀅴@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980C8251CC4290086F0F9 /* 􀅴@3x.png */; };
+		585980ED251CC4350086F0F9 /* 􀉐@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980C9251CC42A0086F0F9 /* 􀉐@3x.png */; };
+		585980EE251CC4350086F0F9 /* 􀉁@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980CA251CC42B0086F0F9 /* 􀉁@2x.png */; };
+		585980EF251CC4350086F0F9 /* 􀌶.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980CB251CC42B0086F0F9 /* 􀌶.png */; };
+		585980F0251CC4350086F0F9 /* 􀈎.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980CC251CC42C0086F0F9 /* 􀈎.png */; };
+		585980F1251CC4350086F0F9 /* 􀌶@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980CD251CC42D0086F0F9 /* 􀌶@2x.png */; };
+		585980F2251CC4350086F0F9 /* 􀉌@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980CE251CC42E0086F0F9 /* 􀉌@3x.png */; };
+		585980F3251CC4350086F0F9 /* 􀉁.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980CF251CC42F0086F0F9 /* 􀉁.png */; };
+		585980F4251CC4350086F0F9 /* 􀉁@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980D0251CC42F0086F0F9 /* 􀉁@3x.png */; };
+		585980F5251CC4350086F0F9 /* 􀉌@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980D1251CC4300086F0F9 /* 􀉌@2x.png */; };
+		585980F6251CC4350086F0F9 /* 􀋑.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980D2251CC4310086F0F9 /* 􀋑.png */; };
+		585980F7251CC4350086F0F9 /* 􀋑@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980D3251CC4320086F0F9 /* 􀋑@3x.png */; };
+		585980F8251CC4350086F0F9 /* 􀌤.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980D4251CC4320086F0F9 /* 􀌤.png */; };
+		585980F9251CC4350086F0F9 /* 􀌤@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980D5251CC4330086F0F9 /* 􀌤@3x.png */; };
+		585980FA251CC4350086F0F9 /* 􀉐@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980D6251CC4340086F0F9 /* 􀉐@2x.png */; };
+		585980FB251CC4350086F0F9 /* 􀅴@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980D7251CC4350086F0F9 /* 􀅴@2x.png */; };
+		585980FF251CC43C0086F0F9 /* 􀣵.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980FC251CC43A0086F0F9 /* 􀣵.png */; };
+		58598100251CC43C0086F0F9 /* 􀣵@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980FD251CC43B0086F0F9 /* 􀣵@2x.png */; };
+		58598101251CC43C0086F0F9 /* 􀣵@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 585980FE251CC43C0086F0F9 /* 􀣵@3x.png */; };
 		5861D9D824FF89970071F74C /* CometChatUnified.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861D7EA24FF89960071F74C /* CometChatUnified.swift */; };
 		5861D9D924FF89970071F74C /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861D7ED24FF89960071F74C /* FontManager.swift */; };
 		5861D9DA24FF89970071F74C /* LiveReaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861D7EE24FF89960071F74C /* LiveReaction.swift */; };
@@ -379,6 +418,18 @@
 		5861DB4924FF89980071F74C /* CometChatUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861D9D224FF89970071F74C /* CometChatUserList.swift */; };
 		5861DB4A24FF89980071F74C /* CometChatUserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861D9D424FF89970071F74C /* CometChatUserDetail.swift */; };
 		5861DB4B24FF89980071F74C /* CometChatConversationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861D9D724FF89970071F74C /* CometChatConversationList.swift */; };
+		5891A57325125E5B00DFCD45 /* LeftPollMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891A57125125E5B00DFCD45 /* LeftPollMessageBubble.swift */; };
+		5891A57425125E5B00DFCD45 /* LeftPollMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5891A57225125E5B00DFCD45 /* LeftPollMessageBubble.xib */; };
+		5891A57725125E6E00DFCD45 /* RightPollMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891A57525125E6E00DFCD45 /* RightPollMessageBubble.swift */; };
+		5891A57825125E6E00DFCD45 /* RightPollMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5891A57625125E6E00DFCD45 /* RightPollMessageBubble.xib */; };
+		589EE7AA25120AE6000DECDF /* CometChatCreatePoll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589EE7A825120AE6000DECDF /* CometChatCreatePoll.swift */; };
+		589EE7AB25120AE6000DECDF /* CometChatCreatePoll.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589EE7A925120AE6000DECDF /* CometChatCreatePoll.xib */; };
+		589EE7AE251211C3000DECDF /* CreatePollQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589EE7AC251211C3000DECDF /* CreatePollQuestionView.swift */; };
+		589EE7AF251211C3000DECDF /* CreatePollQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589EE7AD251211C3000DECDF /* CreatePollQuestionView.xib */; };
+		589EE7B525121208000DECDF /* CreatePollOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589EE7B325121208000DECDF /* CreatePollOptionView.swift */; };
+		589EE7B625121208000DECDF /* CreatePollOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589EE7B425121208000DECDF /* CreatePollOptionView.xib */; };
+		589EE7BA25121246000DECDF /* AddNewOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589EE7B825121246000DECDF /* AddNewOptionView.swift */; };
+		589EE7BB25121246000DECDF /* AddNewOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589EE7B925121246000DECDF /* AddNewOptionView.xib */; };
 		58FEC73024ED47D90004CC9B /* ComponentModificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEC72B24ED47D80004CC9B /* ComponentModificationsController.swift */; };
 		58FEC73124ED47D90004CC9B /* LoginWithUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEC72C24ED47D80004CC9B /* LoginWithUID.swift */; };
 		58FEC73224ED47D90004CC9B /* LoginWithDemoUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEC72D24ED47D90004CC9B /* LoginWithDemoUsers.swift */; };
@@ -418,6 +469,45 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		585980B4251CC41B0086F0F9 /* 􀈑@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈑@2x.png"; sourceTree = "<group>"; };
+		585980B5251CC41C0086F0F9 /* 􀈕@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈕@2x.png"; sourceTree = "<group>"; };
+		585980B6251CC41D0086F0F9 /* 􀌶@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌶@3x.png"; sourceTree = "<group>"; };
+		585980B7251CC41D0086F0F9 /* 􀈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈕.png"; sourceTree = "<group>"; };
+		585980B8251CC41E0086F0F9 /* 􀈕@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈕@3x.png"; sourceTree = "<group>"; };
+		585980B9251CC41F0086F0F9 /* 􀌞@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌞@3x.png"; sourceTree = "<group>"; };
+		585980BA251CC4200086F0F9 /* 􀈑.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈑.png"; sourceTree = "<group>"; };
+		585980BB251CC4200086F0F9 /* 􀋑@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀋑@2x.png"; sourceTree = "<group>"; };
+		585980BC251CC4210086F0F9 /* 􀈎@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈎@3x.png"; sourceTree = "<group>"; };
+		585980BD251CC4220086F0F9 /* 􀈑@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈑@3x.png"; sourceTree = "<group>"; };
+		585980BE251CC4230086F0F9 /* 􀌤@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌤@2x.png"; sourceTree = "<group>"; };
+		585980BF251CC4230086F0F9 /* 􀈂@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈂@2x.png"; sourceTree = "<group>"; };
+		585980C0251CC4240086F0F9 /* 􀉌.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉌.png"; sourceTree = "<group>"; };
+		585980C1251CC4240086F0F9 /* 􀌞.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌞.png"; sourceTree = "<group>"; };
+		585980C2251CC4250086F0F9 /* 􀉐.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉐.png"; sourceTree = "<group>"; };
+		585980C3251CC4260086F0F9 /* 􀌞@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌞@2x.png"; sourceTree = "<group>"; };
+		585980C4251CC4260086F0F9 /* 􀅴.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀅴.png"; sourceTree = "<group>"; };
+		585980C5251CC4270086F0F9 /* 􀈂@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈂@3x.png"; sourceTree = "<group>"; };
+		585980C6251CC4280086F0F9 /* 􀈎@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈎@2x.png"; sourceTree = "<group>"; };
+		585980C7251CC4290086F0F9 /* 􀈂.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈂.png"; sourceTree = "<group>"; };
+		585980C8251CC4290086F0F9 /* 􀅴@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀅴@3x.png"; sourceTree = "<group>"; };
+		585980C9251CC42A0086F0F9 /* 􀉐@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉐@3x.png"; sourceTree = "<group>"; };
+		585980CA251CC42B0086F0F9 /* 􀉁@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉁@2x.png"; sourceTree = "<group>"; };
+		585980CB251CC42B0086F0F9 /* 􀌶.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌶.png"; sourceTree = "<group>"; };
+		585980CC251CC42C0086F0F9 /* 􀈎.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀈎.png"; sourceTree = "<group>"; };
+		585980CD251CC42D0086F0F9 /* 􀌶@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌶@2x.png"; sourceTree = "<group>"; };
+		585980CE251CC42E0086F0F9 /* 􀉌@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉌@3x.png"; sourceTree = "<group>"; };
+		585980CF251CC42F0086F0F9 /* 􀉁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉁.png"; sourceTree = "<group>"; };
+		585980D0251CC42F0086F0F9 /* 􀉁@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉁@3x.png"; sourceTree = "<group>"; };
+		585980D1251CC4300086F0F9 /* 􀉌@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉌@2x.png"; sourceTree = "<group>"; };
+		585980D2251CC4310086F0F9 /* 􀋑.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀋑.png"; sourceTree = "<group>"; };
+		585980D3251CC4320086F0F9 /* 􀋑@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀋑@3x.png"; sourceTree = "<group>"; };
+		585980D4251CC4320086F0F9 /* 􀌤.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌤.png"; sourceTree = "<group>"; };
+		585980D5251CC4330086F0F9 /* 􀌤@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌤@3x.png"; sourceTree = "<group>"; };
+		585980D6251CC4340086F0F9 /* 􀉐@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉐@2x.png"; sourceTree = "<group>"; };
+		585980D7251CC4350086F0F9 /* 􀅴@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀅴@2x.png"; sourceTree = "<group>"; };
+		585980FC251CC43A0086F0F9 /* 􀣵.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀣵.png"; sourceTree = "<group>"; };
+		585980FD251CC43B0086F0F9 /* 􀣵@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀣵@2x.png"; sourceTree = "<group>"; };
+		585980FE251CC43C0086F0F9 /* 􀣵@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀣵@3x.png"; sourceTree = "<group>"; };
 		5861D7EA24FF89960071F74C /* CometChatUnified.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUnified.swift; sourceTree = "<group>"; };
 		5861D7ED24FF89960071F74C /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		5861D7EE24FF89960071F74C /* LiveReaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveReaction.swift; sourceTree = "<group>"; };
@@ -792,6 +882,18 @@
 		5861D9D224FF89970071F74C /* CometChatUserList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUserList.swift; sourceTree = "<group>"; };
 		5861D9D424FF89970071F74C /* CometChatUserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUserDetail.swift; sourceTree = "<group>"; };
 		5861D9D724FF89970071F74C /* CometChatConversationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatConversationList.swift; sourceTree = "<group>"; };
+		5891A57125125E5B00DFCD45 /* LeftPollMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPollMessageBubble.swift; sourceTree = "<group>"; };
+		5891A57225125E5B00DFCD45 /* LeftPollMessageBubble.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftPollMessageBubble.xib; sourceTree = "<group>"; };
+		5891A57525125E6E00DFCD45 /* RightPollMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightPollMessageBubble.swift; sourceTree = "<group>"; };
+		5891A57625125E6E00DFCD45 /* RightPollMessageBubble.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightPollMessageBubble.xib; sourceTree = "<group>"; };
+		589EE7A825120AE6000DECDF /* CometChatCreatePoll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CometChatCreatePoll.swift; sourceTree = "<group>"; };
+		589EE7A925120AE6000DECDF /* CometChatCreatePoll.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CometChatCreatePoll.xib; sourceTree = "<group>"; };
+		589EE7AC251211C3000DECDF /* CreatePollQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePollQuestionView.swift; sourceTree = "<group>"; };
+		589EE7AD251211C3000DECDF /* CreatePollQuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePollQuestionView.xib; sourceTree = "<group>"; };
+		589EE7B325121208000DECDF /* CreatePollOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePollOptionView.swift; sourceTree = "<group>"; };
+		589EE7B425121208000DECDF /* CreatePollOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePollOptionView.xib; sourceTree = "<group>"; };
+		589EE7B825121246000DECDF /* AddNewOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOptionView.swift; sourceTree = "<group>"; };
+		589EE7B925121246000DECDF /* AddNewOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewOptionView.xib; sourceTree = "<group>"; };
 		58FEC72B24ED47D80004CC9B /* ComponentModificationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentModificationsController.swift; sourceTree = "<group>"; };
 		58FEC72C24ED47D80004CC9B /* LoginWithUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWithUID.swift; sourceTree = "<group>"; };
 		58FEC72D24ED47D90004CC9B /* LoginWithDemoUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWithDemoUsers.swift; sourceTree = "<group>"; };
@@ -1199,6 +1301,45 @@
 		5861D87724FF89960071F74C /* MessageList */ = {
 			isa = PBXGroup;
 			children = (
+				585980FC251CC43A0086F0F9 /* 􀣵.png */,
+				585980FD251CC43B0086F0F9 /* 􀣵@2x.png */,
+				585980FE251CC43C0086F0F9 /* 􀣵@3x.png */,
+				585980C4251CC4260086F0F9 /* 􀅴.png */,
+				585980D7251CC4350086F0F9 /* 􀅴@2x.png */,
+				585980C8251CC4290086F0F9 /* 􀅴@3x.png */,
+				585980C7251CC4290086F0F9 /* 􀈂.png */,
+				585980BF251CC4230086F0F9 /* 􀈂@2x.png */,
+				585980C5251CC4270086F0F9 /* 􀈂@3x.png */,
+				585980CC251CC42C0086F0F9 /* 􀈎.png */,
+				585980C6251CC4280086F0F9 /* 􀈎@2x.png */,
+				585980BC251CC4210086F0F9 /* 􀈎@3x.png */,
+				585980BA251CC4200086F0F9 /* 􀈑.png */,
+				585980B4251CC41B0086F0F9 /* 􀈑@2x.png */,
+				585980BD251CC4220086F0F9 /* 􀈑@3x.png */,
+				585980B7251CC41D0086F0F9 /* 􀈕.png */,
+				585980B5251CC41C0086F0F9 /* 􀈕@2x.png */,
+				585980B8251CC41E0086F0F9 /* 􀈕@3x.png */,
+				585980CF251CC42F0086F0F9 /* 􀉁.png */,
+				585980CA251CC42B0086F0F9 /* 􀉁@2x.png */,
+				585980D0251CC42F0086F0F9 /* 􀉁@3x.png */,
+				585980C0251CC4240086F0F9 /* 􀉌.png */,
+				585980D1251CC4300086F0F9 /* 􀉌@2x.png */,
+				585980CE251CC42E0086F0F9 /* 􀉌@3x.png */,
+				585980C2251CC4250086F0F9 /* 􀉐.png */,
+				585980D6251CC4340086F0F9 /* 􀉐@2x.png */,
+				585980C9251CC42A0086F0F9 /* 􀉐@3x.png */,
+				585980D2251CC4310086F0F9 /* 􀋑.png */,
+				585980BB251CC4200086F0F9 /* 􀋑@2x.png */,
+				585980D3251CC4320086F0F9 /* 􀋑@3x.png */,
+				585980C1251CC4240086F0F9 /* 􀌞.png */,
+				585980C3251CC4260086F0F9 /* 􀌞@2x.png */,
+				585980B9251CC41F0086F0F9 /* 􀌞@3x.png */,
+				585980D4251CC4320086F0F9 /* 􀌤.png */,
+				585980BE251CC4230086F0F9 /* 􀌤@2x.png */,
+				585980D5251CC4330086F0F9 /* 􀌤@3x.png */,
+				585980CB251CC42B0086F0F9 /* 􀌶.png */,
+				585980CD251CC42D0086F0F9 /* 􀌶@2x.png */,
+				585980B6251CC41D0086F0F9 /* 􀌶@3x.png */,
 				5861D87824FF89960071F74C /* play@3x.png */,
 				5861D87924FF89960071F74C /* back@2x.png */,
 				5861D87A24FF89960071F74C /* thread@3x.png */,
@@ -1529,6 +1670,7 @@
 		5861D93424FF89970071F74C /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				589EE7B0251211C8000DECDF /* CreatePoll */,
 				5861D93524FF89970071F74C /* Status Indicator */,
 				5861D93724FF89970071F74C /* DetailView */,
 				5861D93A24FF89970071F74C /* NotificationsView */,
@@ -1596,6 +1738,7 @@
 		5861D94424FF89970071F74C /* MessageView */ = {
 			isa = PBXGroup;
 			children = (
+				5891A56E25125DF900DFCD45 /* PollsMessageBubble */,
 				5861D94524FF89970071F74C /* AudioMessageBubble */,
 				5861D94C24FF89970071F74C /* FileMessageBubble */,
 				5861D95324FF89970071F74C /* TextMessageBubble */,
@@ -2054,6 +2197,7 @@
 		5861D9BA24FF89970071F74C /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				589EE7A725120AB2000DECDF /* CreateAPoll */,
 				5861D9BB24FF89970071F74C /* MoreInfo */,
 			);
 			path = Others;
@@ -2189,6 +2333,86 @@
 			path = ConversationList;
 			sourceTree = "<group>";
 		};
+		5891A56E25125DF900DFCD45 /* PollsMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				5891A56F25125E1100DFCD45 /* LeftPollMessageBubble */,
+				5891A57025125E2300DFCD45 /* RightPollMessageBubble */,
+			);
+			path = PollsMessageBubble;
+			sourceTree = "<group>";
+		};
+		5891A56F25125E1100DFCD45 /* LeftPollMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				5891A57125125E5B00DFCD45 /* LeftPollMessageBubble.swift */,
+				5891A57225125E5B00DFCD45 /* LeftPollMessageBubble.xib */,
+			);
+			path = LeftPollMessageBubble;
+			sourceTree = "<group>";
+		};
+		5891A57025125E2300DFCD45 /* RightPollMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				5891A57525125E6E00DFCD45 /* RightPollMessageBubble.swift */,
+				5891A57625125E6E00DFCD45 /* RightPollMessageBubble.xib */,
+			);
+			path = RightPollMessageBubble;
+			sourceTree = "<group>";
+		};
+		589EE7A725120AB2000DECDF /* CreateAPoll */ = {
+			isa = PBXGroup;
+			children = (
+				589EE7A825120AE6000DECDF /* CometChatCreatePoll.swift */,
+				589EE7A925120AE6000DECDF /* CometChatCreatePoll.xib */,
+			);
+			path = CreateAPoll;
+			sourceTree = "<group>";
+		};
+		589EE7B0251211C8000DECDF /* CreatePoll */ = {
+			isa = PBXGroup;
+			children = (
+				589EE7B725121222000DECDF /* AddNewOption */,
+				589EE7B2251211E9000DECDF /* OptionsView */,
+				589EE7B1251211D9000DECDF /* QuestionView */,
+			);
+			path = CreatePoll;
+			sourceTree = "<group>";
+		};
+		589EE7B1251211D9000DECDF /* QuestionView */ = {
+			isa = PBXGroup;
+			children = (
+				589EE7AC251211C3000DECDF /* CreatePollQuestionView.swift */,
+				589EE7AD251211C3000DECDF /* CreatePollQuestionView.xib */,
+			);
+			path = QuestionView;
+			sourceTree = "<group>";
+		};
+		589EE7B2251211E9000DECDF /* OptionsView */ = {
+			isa = PBXGroup;
+			children = (
+				589EE7B325121208000DECDF /* CreatePollOptionView.swift */,
+				589EE7B425121208000DECDF /* CreatePollOptionView.xib */,
+			);
+			path = OptionsView;
+			sourceTree = "<group>";
+		};
+		589EE7B725121222000DECDF /* AddNewOption */ = {
+			isa = PBXGroup;
+			children = (
+				589EE7B825121246000DECDF /* AddNewOptionView.swift */,
+				589EE7B925121246000DECDF /* AddNewOptionView.xib */,
+			);
+			path = AddNewOption;
+			sourceTree = "<group>";
+		};
+		706A568218734D1C8B2D7E7F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DB4D6AC023ACE0CC0002BCED /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -2230,6 +2454,7 @@
 				DBFBC46C23A7B9230027938E /* CometChatSwift */,
 				DBFBC46B23A7B9230027938E /* Products */,
 				5168343937F38FE4267D76B2 /* Frameworks */,
+				706A568218734D1C8B2D7E7F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2319,15 +2544,21 @@
 				5861DAE224FF89970071F74C /* Localizable.strings in Resources */,
 				5861DB0924FF89970071F74C /* LeftLinkPreviewBubble.xib in Resources */,
 				5861DB3A24FF89980071F74C /* MessageInformation.xib in Resources */,
+				585980DD251CC4350086F0F9 /* 􀌞@3x.png in Resources */,
 				5861DA6824FF89970071F74C /* heart@3x.png in Resources */,
 				5861DAC424FF89970071F74C /* 􀇿@3x.png in Resources */,
 				5861DB2C24FF89980071F74C /* CometChatCallDetailLogView.xib in Resources */,
+				589EE7AB25120AE6000DECDF /* CometChatCreatePoll.xib in Resources */,
 				5861DA4324FF89970071F74C /* close@3x.png in Resources */,
 				5861DA8D24FF89970071F74C /* more.png in Resources */,
+				585980E1251CC4350086F0F9 /* 􀈑@3x.png in Resources */,
 				5861DA4A24FF89970071F74C /* thread@3x.png in Resources */,
 				5861DA5424FF89970071F74C /* forward1@2x.png in Resources */,
+				585980E8251CC4350086F0F9 /* 􀅴.png in Resources */,
 				5861DB2024FF89980071F74C /* SmartReplyCell.xib in Resources */,
 				5861DAD824FF89970071F74C /* SF-Pro-Display-Semibold.otf in Resources */,
+				585980D8251CC4350086F0F9 /* 􀈑@2x.png in Resources */,
+				585980DA251CC4350086F0F9 /* 􀌶@3x.png in Resources */,
 				5861DA3F24FF89970071F74C /* sticker@2x.png in Resources */,
 				5861DA4E24FF89970071F74C /* edit@2x.png in Resources */,
 				5861DA7424FF89970071F74C /* thumbsup@2x.png in Resources */,
@@ -2335,8 +2566,11 @@
 				5861DAC824FF89970071F74C /* 􀉼@3x.png in Resources */,
 				5861DA8024FF89970071F74C /* blueTick@3x.png in Resources */,
 				5861DA7624FF89970071F74C /* read@2x.png in Resources */,
+				585980DF251CC4350086F0F9 /* 􀋑@2x.png in Resources */,
 				5861DB2624FF89980071F74C /* SharedMediaView.xib in Resources */,
 				5861DB3724FF89980071F74C /* CometChatMessageList.xib in Resources */,
+				58598101251CC43C0086F0F9 /* 􀣵@3x.png in Resources */,
+				585980D9251CC4350086F0F9 /* 􀈕@2x.png in Resources */,
 				5861DA6624FF89970071F74C /* delivered.png in Resources */,
 				5861DA6524FF89970071F74C /* heart@2x.png in Resources */,
 				5861DA9A24FF89970071F74C /* videoCall@2x.png in Resources */,
@@ -2347,9 +2581,11 @@
 				5861DAFE24FF89970071F74C /* LeftFileMessageBubble.xib in Resources */,
 				5861DAE624FF89970071F74C /* AdministratorView.xib in Resources */,
 				5861DB3124FF89980071F74C /* CometChatOutgoingCall.xib in Resources */,
+				585980F9251CC4350086F0F9 /* 􀌤@3x.png in Resources */,
 				5861DAAF24FF89970071F74C /* newCall@3x.png in Resources */,
 				5861DA3B24FF89970071F74C /* microphone@3x.png in Resources */,
 				5861DB1424FF89970071F74C /* LeftLocationMessageBubble.xib in Resources */,
+				585980F3251CC4350086F0F9 /* 􀉁.png in Resources */,
 				5861DA6224FF89970071F74C /* heart.png in Resources */,
 				5861DA2E24FF89970071F74C /* OutgoingCall.wav in Resources */,
 				5861DA8C24FF89970071F74C /* contacts.png in Resources */,
@@ -2357,15 +2593,19 @@
 				5861DADD24FF89970071F74C /* SF-Pro-Display-LightItalic.otf in Resources */,
 				5861DA8F24FF89970071F74C /* groups@2x.png in Resources */,
 				5861DA5F24FF89970071F74C /* forward1@3x.png in Resources */,
+				585980EC251CC4350086F0F9 /* 􀅴@3x.png in Resources */,
 				5861DA4C24FF89970071F74C /* reply@2x.png in Resources */,
 				5861DA5C24FF89970071F74C /* copy@2x.png in Resources */,
 				DBFBC47823A7B9240027938E /* LaunchScreen.storyboard in Resources */,
+				585980FF251CC43C0086F0F9 /* 􀣵.png in Resources */,
 				5861DB0824FF89970071F74C /* LeftVideoMessageBubble.xib in Resources */,
 				5861DA9824FF89970071F74C /* incomingVideo@2x.png in Resources */,
 				5861DA4F24FF89970071F74C /* thread@2x.png in Resources */,
+				585980FA251CC4350086F0F9 /* 􀉐@2x.png in Resources */,
 				5861DA4624FF89970071F74C /* sticker.png in Resources */,
 				5861DB0B24FF89970071F74C /* RightLinkPreviewBubble.xib in Resources */,
 				5861DA6124FF89970071F74C /* unsafeContent@3x.png in Resources */,
+				585980F4251CC4350086F0F9 /* 􀉁@3x.png in Resources */,
 				5861DAEA24FF89970071F74C /* MembersView.xib in Resources */,
 				5861DACE24FF89970071F74C /* addIcon@3x.png in Resources */,
 				5861DAD024FF89970071F74C /* SF-Pro-Display-Thin.otf in Resources */,
@@ -2377,6 +2617,9 @@
 				5861DA4824FF89970071F74C /* play@3x.png in Resources */,
 				5861DA6024FF89970071F74C /* sent@2x.png in Resources */,
 				5861DAED24FF89970071F74C /* CometChatGroupView.xib in Resources */,
+				585980E7251CC4350086F0F9 /* 􀌞@2x.png in Resources */,
+				585980EA251CC4350086F0F9 /* 􀈎@2x.png in Resources */,
+				585980F6251CC4350086F0F9 /* 􀋑.png in Resources */,
 				5861DAC024FF89970071F74C /* 􀌧.png in Resources */,
 				5861DA6924FF89970071F74C /* wait@3x.png in Resources */,
 				5861DAC624FF89970071F74C /* 􀌧@2x.png in Resources */,
@@ -2384,6 +2627,7 @@
 				5861DA2F24FF89970071F74C /* IncomingMessage.wav in Resources */,
 				5861DAA324FF89970071F74C /* outgoingVideo@3x.png in Resources */,
 				5861DA5124FF89970071F74C /* play@2x.png in Resources */,
+				58598100251CC43C0086F0F9 /* 􀣵@2x.png in Resources */,
 				5861DB1C24FF89980071F74C /* MessageReceiptBubble.xib in Resources */,
 				5861DA4224FF89970071F74C /* sticker@3x.png in Resources */,
 				5861DA6B24FF89970071F74C /* delete.png in Resources */,
@@ -2392,6 +2636,8 @@
 				5861DABF24FF89970071F74C /* 􀁝@3x.png in Resources */,
 				5861DA3E24FF89970071F74C /* forward@3x.png in Resources */,
 				5861DADE24FF89970071F74C /* SF-Pro-Display-BlackItalic.otf in Resources */,
+				585980EE251CC4350086F0F9 /* 􀉁@2x.png in Resources */,
+				585980F8251CC4350086F0F9 /* 􀌤.png in Resources */,
 				5861DA7E24FF89970071F74C /* blueTick@2x.png in Resources */,
 				5861DA9124FF89970071F74C /* calling.png in Resources */,
 				DBB75F8E23D70DD700C424FF /* LogoutCell.xib in Resources */,
@@ -2410,6 +2656,7 @@
 				5861DA3A24FF89970071F74C /* stickerDark@3x.png in Resources */,
 				5861DAFB24FF89970071F74C /* LeftAudioMessageBubble.xib in Resources */,
 				5861DA8924FF89970071F74C /* more@3x.png in Resources */,
+				585980F5251CC4350086F0F9 /* 􀉌@2x.png in Resources */,
 				5861DB1724FF89980071F74C /* LeftReplyMessageBubble.xib in Resources */,
 				5861DA9D24FF89970071F74C /* end.png in Resources */,
 				5861DACB24FF89970071F74C /* createGroup.png in Resources */,
@@ -2424,10 +2671,13 @@
 				5861DAF224FF89970071F74C /* CometChatDetailView.xib in Resources */,
 				5861DAA824FF89970071F74C /* calling@3x.png in Resources */,
 				5861DACD24FF89970071F74C /* addIcon@2x.png in Resources */,
+				585980E5251CC4350086F0F9 /* 􀌞.png in Resources */,
 				5861DAC924FF89970071F74C /* 􀋚.png in Resources */,
 				5861DA5B24FF89970071F74C /* reply.png in Resources */,
+				585980FB251CC4350086F0F9 /* 􀅴@2x.png in Resources */,
 				5861DA6424FF89970071F74C /* wait@2x.png in Resources */,
 				5861DADF24FF89970071F74C /* SF-Pro-Display-Black.otf in Resources */,
+				585980F0251CC4350086F0F9 /* 􀈎.png in Resources */,
 				5861DA7124FF89970071F74C /* more_vertical@2x.png in Resources */,
 				5861DA5A24FF89970071F74C /* defaultImage.png in Resources */,
 				5861DA3C24FF89970071F74C /* microphone.png in Resources */,
@@ -2446,6 +2696,9 @@
 				5861DA5824FF89970071F74C /* copy@3x.png in Resources */,
 				5861DAA724FF89970071F74C /* incomingAudio@3x.png in Resources */,
 				5861DAA924FF89970071F74C /* audioCall.png in Resources */,
+				585980F2251CC4350086F0F9 /* 􀉌@3x.png in Resources */,
+				585980DB251CC4350086F0F9 /* 􀈕.png in Resources */,
+				585980ED251CC4350086F0F9 /* 􀉐@3x.png in Resources */,
 				5861DB2724FF89980071F74C /* SharedMediaCell.xib in Resources */,
 				5861DA3724FF89970071F74C /* send@2x.png in Resources */,
 				5861DA7B24FF89970071F74C /* wait.png in Resources */,
@@ -2460,18 +2713,23 @@
 				5861DB1A24FF89980071F74C /* RightReplyMessageBubble.xib in Resources */,
 				5861DA8A24FF89970071F74C /* more@2x.png in Resources */,
 				5861DAB724FF89970071F74C /* Blue Ticks.png in Resources */,
+				5891A57825125E6E00DFCD45 /* RightPollMessageBubble.xib in Resources */,
+				585980E2251CC4350086F0F9 /* 􀌤@2x.png in Resources */,
 				DB2E60B823A8E23C00986E12 /* CometChatUIScreenCell.xib in Resources */,
 				5861DA7524FF89970071F74C /* thumbsup@3x.png in Resources */,
 				5861DA7C24FF89970071F74C /* copy.png in Resources */,
 				5861DAC724FF89970071F74C /* 􀉼@2x.png in Resources */,
 				5861DAC124FF89970071F74C /* 􀇿@2x.png in Resources */,
+				585980DC251CC4350086F0F9 /* 􀈕@3x.png in Resources */,
 				5861DA9024FF89970071F74C /* missedVideo.png in Resources */,
 				DBFBC47523A7B9240027938E /* Assets.xcassets in Resources */,
 				5861DAAD24FF89970071F74C /* missedAudio@2x.png in Resources */,
 				5861DA9B24FF89970071F74C /* incomingVideo@3x.png in Resources */,
+				589EE7B625121208000DECDF /* CreatePollOptionView.xib in Resources */,
 				5861DA5624FF89970071F74C /* share@2x.png in Resources */,
 				5861DB1124FF89970071F74C /* RightLocationMessageBubble.xib in Resources */,
 				5861DAF324FF89970071F74C /* NotificationsView.xib in Resources */,
+				585980EF251CC4350086F0F9 /* 􀌶.png in Resources */,
 				5861DAAA24FF89970071F74C /* incomingAudio.png in Resources */,
 				5861DAD324FF89970071F74C /* SF-Pro-Display-Light.otf in Resources */,
 				5861DA8B24FF89970071F74C /* groups@3x.png in Resources */,
@@ -2488,14 +2746,19 @@
 				5861DAAB24FF89970071F74C /* end@3x.png in Resources */,
 				DBFBC47323A7B9230027938E /* Main.storyboard in Resources */,
 				5861DA5524FF89970071F74C /* sent@3x.png in Resources */,
+				585980E0251CC4350086F0F9 /* 􀈎@3x.png in Resources */,
 				5861DAFF24FF89970071F74C /* RightFileMessageBubble.xib in Resources */,
 				5861DA7824FF89970071F74C /* delivered@3x.png in Resources */,
 				5861DB3624FF89980071F74C /* CometChatIncomingCall.xib in Resources */,
 				5861DAE524FF89970071F74C /* CometChatConversationView.xib in Resources */,
 				5861DA9324FF89970071F74C /* missedVideo@2x.png in Resources */,
 				5861DAF824FF89970071F74C /* SupportView.xib in Resources */,
+				585980EB251CC4350086F0F9 /* 􀈂.png in Resources */,
 				5861DAA424FF89970071F74C /* outgoingAudio.png in Resources */,
+				585980E3251CC4350086F0F9 /* 􀈂@2x.png in Resources */,
 				5861DAE924FF89970071F74C /* AddMemberView.xib in Resources */,
+				589EE7AF251211C3000DECDF /* CreatePollQuestionView.xib in Resources */,
+				585980E4251CC4350086F0F9 /* 􀉌.png in Resources */,
 				5861DA3524FF89970071F74C /* stickerDark@2x.png in Resources */,
 				5861DA4D24FF89970071F74C /* reply@3x.png in Resources */,
 				5861DB0324FF89970071F74C /* RightTextMessageBubble.xib in Resources */,
@@ -2513,6 +2776,7 @@
 				5861DADC24FF89970071F74C /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				5861DA9624FF89970071F74C /* videoCall.png in Resources */,
 				5861DA4524FF89970071F74C /* send.png in Resources */,
+				5891A57425125E5B00DFCD45 /* LeftPollMessageBubble.xib in Resources */,
 				DBED2A3723AA49170058D5BF /* CometChatUIComponentsCell.xib in Resources */,
 				5861DABE24FF89970071F74C /* 􀉼.png in Resources */,
 				5861DABD24FF89970071F74C /* 􀁝.png in Resources */,
@@ -2521,14 +2785,18 @@
 				5861DAA024FF89970071F74C /* outgoingVideo.png in Resources */,
 				5861DAB424FF89970071F74C /* editIcon.png in Resources */,
 				5861DADB24FF89970071F74C /* SF-Pro-Display-Ultralight.otf in Resources */,
+				585980E9251CC4350086F0F9 /* 􀈂@3x.png in Resources */,
 				5861DA5724FF89970071F74C /* default-image.png in Resources */,
 				5861DA3824FF89970071F74C /* send@3x.png in Resources */,
+				585980E6251CC4350086F0F9 /* 􀉐.png in Resources */,
 				5861DACA24FF89970071F74C /* createGroup@2x.png in Resources */,
 				5861DA8324FF89970071F74C /* chats@3x.png in Resources */,
 				DB2E60B723A8E23C00986E12 /* CometChatUnifiedCell.xib in Resources */,
+				585980DE251CC4350086F0F9 /* 􀈑.png in Resources */,
 				5861DB0224FF89970071F74C /* LeftTextMessageBubble.xib in Resources */,
 				5861DAB124FF89970071F74C /* downArrow@2x.png in Resources */,
 				5861DAE024FF89970071F74C /* SF-Pro-Display-ThinItalic.otf in Resources */,
+				585980F7251CC4350086F0F9 /* 􀋑@3x.png in Resources */,
 				5861DAD724FF89970071F74C /* SF-Pro-Display-Heavy.otf in Resources */,
 				5861DABB24FF89970071F74C /* 􀁝@2x.png in Resources */,
 				5861DB2E24FF89980071F74C /* CometChatCallsView.xib in Resources */,
@@ -2541,6 +2809,8 @@
 				5861DA7D24FF89970071F74C /* delete@3x.png in Resources */,
 				5861DA3624FF89970071F74C /* add@2x.png in Resources */,
 				5861DA9C24FF89970071F74C /* outgoingAudio@2x.png in Resources */,
+				589EE7BB25121246000DECDF /* AddNewOptionView.xib in Resources */,
+				585980F1251CC4350086F0F9 /* 􀌶@2x.png in Resources */,
 				5861DAA624FF89970071F74C /* incomingVideo.png in Resources */,
 				5861DA8724FF89970071F74C /* calls.png in Resources */,
 				5861DAA224FF89970071F74C /* incomingAudio@2x.png in Resources */,
@@ -2598,6 +2868,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5861DB4224FF89980071F74C /* CometChatAddAdministrators.swift in Sources */,
+				589EE7AA25120AE6000DECDF /* CometChatCreatePoll.swift in Sources */,
 				5861DA0A24FF89970071F74C /* Cometfisher.swift in Sources */,
 				5861D9DA24FF89970071F74C /* LiveReaction.swift in Sources */,
 				5861DA1B24FF89970071F74C /* ImageProcessor.swift in Sources */,
@@ -2620,6 +2891,7 @@
 				5861DB1D24FF89980071F74C /* MessageDateHeader.swift in Sources */,
 				FBA293112434D9A7006DCCA1 /* AppDelegate.swift in Sources */,
 				5861DAE724FF89970071F74C /* AdministratorView.swift in Sources */,
+				589EE7AE251211C3000DECDF /* CreatePollQuestionView.swift in Sources */,
 				5861DB2324FF89980071F74C /* Avatar.swift in Sources */,
 				5861DB4024FF89980071F74C /* CometChatCreateGroup.swift in Sources */,
 				5861DA1724FF89970071F74C /* Image.swift in Sources */,
@@ -2673,7 +2945,9 @@
 				DBED2A3623AA49170058D5BF /* CometChatUIComponentsCell.swift in Sources */,
 				5861D9FA24FF89970071F74C /* AudioPlayerManager.swift in Sources */,
 				5861DB4824FF89980071F74C /* CometChatBlockedUsers.swift in Sources */,
+				589EE7BA25121246000DECDF /* AddNewOptionView.swift in Sources */,
 				5861DB3824FF89980071F74C /* CometChatMessageList.swift in Sources */,
+				5891A57725125E6E00DFCD45 /* RightPollMessageBubble.swift in Sources */,
 				5861DA2B24FF89970071F74C /* Box.swift in Sources */,
 				5861D9F624FF89970071F74C /* AudioVisualizationView.swift in Sources */,
 				5861DB4B24FF89980071F74C /* CometChatConversationList.swift in Sources */,
@@ -2697,6 +2971,7 @@
 				5861DA1924FF89970071F74C /* ImageDrawing.swift in Sources */,
 				5861DA0B24FF89970071F74C /* CometfisherManager.swift in Sources */,
 				5861DAE324FF89970071F74C /* BadgeCount.swift in Sources */,
+				5891A57325125E5B00DFCD45 /* LeftPollMessageBubble.swift in Sources */,
 				5861DB4524FF89980071F74C /* CometChatAddModerators.swift in Sources */,
 				5861DAE824FF89970071F74C /* AddMemberView.swift in Sources */,
 				5861DA1C24FF89970071F74C /* Filter.swift in Sources */,
@@ -2723,6 +2998,7 @@
 				5861D9FC24FF89970071F74C /* AudioRecorderManager.swift in Sources */,
 				5861DAFC24FF89970071F74C /* LeftAudioMessageBubble.swift in Sources */,
 				DBED2A3E23AA50750058D5BF /* UIComponentsCell.swift in Sources */,
+				589EE7B525121208000DECDF /* CreatePollOptionView.swift in Sources */,
 				5861DA0824FF89970071F74C /* CometfisherOptionsInfo.swift in Sources */,
 				5861DA0724FF89970071F74C /* CometfisherError.swift in Sources */,
 				5861DA0924FF89970071F74C /* Deprecated.swift in Sources */,

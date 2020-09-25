@@ -19,7 +19,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CometChatPro</key>
-	<string>1111</string>
+	<string></string>
 	<key>CometChatProDevelopment</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
