@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region: Constants.region).build()
             CometChat.init(appId:Constants.appId, appSettings: appSettings, onSuccess: { (Success) in
                 print( "Initialization onSuccess \(Success)")
+                CometChat.setSource(resource: "ui-kit", platform: "ios", language: "swift")
             }) { (error) in
                 print( "Initialization Error \(error.errorDescription)")
             }
