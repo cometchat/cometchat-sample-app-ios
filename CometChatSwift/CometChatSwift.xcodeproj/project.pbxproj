@@ -418,6 +418,9 @@
 		5861DB4924FF89980071F74C /* CometChatUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861D9D224FF89970071F74C /* CometChatUserList.swift */; };
 		5861DB4A24FF89980071F74C /* CometChatUserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861D9D424FF89970071F74C /* CometChatUserDetail.swift */; };
 		5861DB4B24FF89980071F74C /* CometChatConversationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861D9D724FF89970071F74C /* CometChatConversationList.swift */; };
+		58701AD12524D6A8005EBBBE /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58701ACE2524D6A8005EBBBE /* Protocol.swift */; };
+		58701AD22524D6A8005EBBBE /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58701ACF2524D6A8005EBBBE /* GrowingTextView.swift */; };
+		58701AD32524D6A8005EBBBE /* GrowingInternalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58701AD02524D6A8005EBBBE /* GrowingInternalTextView.swift */; };
 		5891A57325125E5B00DFCD45 /* LeftPollMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891A57125125E5B00DFCD45 /* LeftPollMessageBubble.swift */; };
 		5891A57425125E5B00DFCD45 /* LeftPollMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5891A57225125E5B00DFCD45 /* LeftPollMessageBubble.xib */; };
 		5891A57725125E6E00DFCD45 /* RightPollMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891A57525125E6E00DFCD45 /* RightPollMessageBubble.swift */; };
@@ -430,6 +433,7 @@
 		589EE7B625121208000DECDF /* CreatePollOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589EE7B425121208000DECDF /* CreatePollOptionView.xib */; };
 		589EE7BA25121246000DECDF /* AddNewOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589EE7B825121246000DECDF /* AddNewOptionView.swift */; };
 		589EE7BB25121246000DECDF /* AddNewOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589EE7B925121246000DECDF /* AddNewOptionView.xib */; };
+		58AD9C572530544300D97657 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AD9C562530544300D97657 /* Settings.swift */; };
 		58FEC73024ED47D90004CC9B /* ComponentModificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEC72B24ED47D80004CC9B /* ComponentModificationsController.swift */; };
 		58FEC73124ED47D90004CC9B /* LoginWithUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEC72C24ED47D80004CC9B /* LoginWithUID.swift */; };
 		58FEC73224ED47D90004CC9B /* LoginWithDemoUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEC72D24ED47D90004CC9B /* LoginWithDemoUsers.swift */; };
@@ -882,6 +886,9 @@
 		5861D9D224FF89970071F74C /* CometChatUserList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUserList.swift; sourceTree = "<group>"; };
 		5861D9D424FF89970071F74C /* CometChatUserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUserDetail.swift; sourceTree = "<group>"; };
 		5861D9D724FF89970071F74C /* CometChatConversationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatConversationList.swift; sourceTree = "<group>"; };
+		58701ACE2524D6A8005EBBBE /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		58701ACF2524D6A8005EBBBE /* GrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
+		58701AD02524D6A8005EBBBE /* GrowingInternalTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingInternalTextView.swift; sourceTree = "<group>"; };
 		5891A57125125E5B00DFCD45 /* LeftPollMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPollMessageBubble.swift; sourceTree = "<group>"; };
 		5891A57225125E5B00DFCD45 /* LeftPollMessageBubble.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftPollMessageBubble.xib; sourceTree = "<group>"; };
 		5891A57525125E6E00DFCD45 /* RightPollMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightPollMessageBubble.swift; sourceTree = "<group>"; };
@@ -894,6 +901,7 @@
 		589EE7B425121208000DECDF /* CreatePollOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePollOptionView.xib; sourceTree = "<group>"; };
 		589EE7B825121246000DECDF /* AddNewOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOptionView.swift; sourceTree = "<group>"; };
 		589EE7B925121246000DECDF /* AddNewOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewOptionView.xib; sourceTree = "<group>"; };
+		58AD9C562530544300D97657 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		58FEC72B24ED47D80004CC9B /* ComponentModificationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentModificationsController.swift; sourceTree = "<group>"; };
 		58FEC72C24ED47D80004CC9B /* LoginWithUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWithUID.swift; sourceTree = "<group>"; };
 		58FEC72D24ED47D90004CC9B /* LoginWithDemoUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWithDemoUsers.swift; sourceTree = "<group>"; };
@@ -945,6 +953,7 @@
 		5861D7E824FF89960071F74C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				58AD9C552530544300D97657 /* Settings */,
 				5861D7E924FF89960071F74C /* UI Unified */,
 				5861D7EB24FF89960071F74C /* Resources */,
 				5861D91B24FF89970071F74C /* UI Components */,
@@ -976,6 +985,7 @@
 		5861D7EC24FF89960071F74C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				58701ACD2524D6A8005EBBBE /* GrowingTextView */,
 				5861D7ED24FF89960071F74C /* FontManager.swift */,
 				5861D7EE24FF89960071F74C /* LiveReaction.swift */,
 				5861D7EF24FF89960071F74C /* CometchatExtensions.swift */,
@@ -2333,6 +2343,16 @@
 			path = ConversationList;
 			sourceTree = "<group>";
 		};
+		58701ACD2524D6A8005EBBBE /* GrowingTextView */ = {
+			isa = PBXGroup;
+			children = (
+				58701ACE2524D6A8005EBBBE /* Protocol.swift */,
+				58701ACF2524D6A8005EBBBE /* GrowingTextView.swift */,
+				58701AD02524D6A8005EBBBE /* GrowingInternalTextView.swift */,
+			);
+			path = GrowingTextView;
+			sourceTree = "<group>";
+		};
 		5891A56E25125DF900DFCD45 /* PollsMessageBubble */ = {
 			isa = PBXGroup;
 			children = (
@@ -2404,6 +2424,14 @@
 				589EE7B925121246000DECDF /* AddNewOptionView.xib */,
 			);
 			path = AddNewOption;
+			sourceTree = "<group>";
+		};
+		58AD9C552530544300D97657 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				58AD9C562530544300D97657 /* Settings.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		706A568218734D1C8B2D7E7F /* Pods */ = {
@@ -2926,6 +2954,7 @@
 				5861D9FD24FF89970071F74C /* LargeTitleDisplayMode+String.swift in Sources */,
 				5861D9F324FF89970071F74C /* UIViewController+LargeTitle.swift in Sources */,
 				5861DA2124FF89970071F74C /* ImageView+Cometfisher.swift in Sources */,
+				58701AD12524D6A8005EBBBE /* Protocol.swift in Sources */,
 				5861DA2524FF89970071F74C /* Runtime.swift in Sources */,
 				5861DA1424FF89970071F74C /* SessionDelegate.swift in Sources */,
 				5861DAF724FF89970071F74C /* SupportView.swift in Sources */,
@@ -2968,6 +2997,7 @@
 				5861DB0D24FF89970071F74C /* RightImageMessageBubble.swift in Sources */,
 				5861DAEF24FF89970071F74C /* CometChatSoundManager.swift in Sources */,
 				5861D9F524FF89970071F74C /* Chronometer.swift in Sources */,
+				58701AD32524D6A8005EBBBE /* GrowingInternalTextView.swift in Sources */,
 				5861DA1924FF89970071F74C /* ImageDrawing.swift in Sources */,
 				5861DA0B24FF89970071F74C /* CometfisherManager.swift in Sources */,
 				5861DAE324FF89970071F74C /* BadgeCount.swift in Sources */,
@@ -2987,6 +3017,7 @@
 				5861DA0024FF89970071F74C /* MemoryStorage.swift in Sources */,
 				5861DAFA24FF89970071F74C /* RightAudioMessageBubble.swift in Sources */,
 				5861DAFD24FF89970071F74C /* LeftFileMessageBubble.swift in Sources */,
+				58701AD22524D6A8005EBBBE /* GrowingTextView.swift in Sources */,
 				5861DA1824FF89970071F74C /* ImageFormat.swift in Sources */,
 				5861DA0524FF89970071F74C /* Resource.swift in Sources */,
 				5861DB3D24FF89980071F74C /* CometChatThreadedMessageList.swift in Sources */,
@@ -2996,6 +3027,7 @@
 				5861DAF624FF89970071F74C /* CometChatSettingsView.swift in Sources */,
 				58FEC73024ED47D90004CC9B /* ComponentModificationsController.swift in Sources */,
 				5861D9FC24FF89970071F74C /* AudioRecorderManager.swift in Sources */,
+				58AD9C572530544300D97657 /* Settings.swift in Sources */,
 				5861DAFC24FF89970071F74C /* LeftAudioMessageBubble.swift in Sources */,
 				DBED2A3E23AA50750058D5BF /* UIComponentsCell.swift in Sources */,
 				589EE7B525121208000DECDF /* CreatePollOptionView.swift in Sources */,
@@ -3198,7 +3230,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.kitchensink.swift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev2;
 				PRODUCT_NAME = "CometChat KitchenSink";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3226,7 +3258,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.kitchensink.swift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev2;
 				PRODUCT_NAME = "CometChat KitchenSink";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
