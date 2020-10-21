@@ -99,8 +99,8 @@ class LoginWithDemoUsers: UIViewController {
                     if #available(iOS 13.0, *) {
                         let navBarAppearance = UINavigationBarAppearance()
                         navBarAppearance.configureWithOpaqueBackground()
-                        navBarAppearance.titleTextAttributes = [ .foregroundColor:  UIColor.label,.font: UIFont (name: "SFProDisplay-Bold", size: 20) as Any]
-                        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label, .font: UIFont(name: "SFProDisplay-Bold", size: 30) as Any]
+                        navBarAppearance.titleTextAttributes = [ .foregroundColor:  UIColor.label,.font: UIFont.boldSystemFont(ofSize: 20) as Any]
+                        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label, .font: UIFont.boldSystemFont(ofSize: 30) as Any]
                         navBarAppearance.shadowColor = .clear
                         navBarAppearance.backgroundColor = .systemBackground
                         navigationController.navigationBar.standardAppearance = navBarAppearance
