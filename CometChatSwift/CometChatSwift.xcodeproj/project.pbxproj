@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		585E3FD2255970FD0048DC52 /* LeftStickerMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585E3FCD255970FD0048DC52 /* LeftStickerMessageBubble.xib */; };
+		585E3FD3255970FD0048DC52 /* LeftStickerMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585E3FCE255970FD0048DC52 /* LeftStickerMessageBubble.swift */; };
+		585E3FD4255970FD0048DC52 /* RightStickerMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585E3FD0255970FD0048DC52 /* RightStickerMessageBubble.xib */; };
+		585E3FD5255970FD0048DC52 /* RightStickerMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585E3FD1255970FD0048DC52 /* RightStickerMessageBubble.swift */; };
+		585E3FE1255999480048DC52 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585E3FDF255999470048DC52 /* StickerCell.swift */; };
+		585E3FE2255999480048DC52 /* StickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585E3FE0255999480048DC52 /* StickerCell.xib */; };
+		58793FDA2553D2E800EC4827 /* sticker1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FD72553D2E700EC4827 /* sticker1@3x.png */; };
+		58793FDB2553D2E800EC4827 /* sticker1.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FD82553D2E800EC4827 /* sticker1.png */; };
+		58793FDC2553D2E800EC4827 /* sticker1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FD92553D2E800EC4827 /* sticker1@2x.png */; };
+		58793FE42553E03F00EC4827 /* CometChatStickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58793FE22553E03F00EC4827 /* CometChatStickerView.swift */; };
+		58793FE52553E03F00EC4827 /* CometChatStickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58793FE32553E03F00EC4827 /* CometChatStickerView.xib */; };
+		58793FED25541E2D00EC4827 /* close1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FEA25541E2D00EC4827 /* close1@2x.png */; };
+		58793FEE25541E2D00EC4827 /* close1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FEB25541E2D00EC4827 /* close1@3x.png */; };
+		58793FEF25541E2D00EC4827 /* close1.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FEC25541E2D00EC4827 /* close1.png */; };
+		58CD42942555376100888C55 /* StickerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CD42932555376100888C55 /* StickerSet.swift */; };
+		58CD42BB2555389E00888C55 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CD42BA2555389E00888C55 /* Sticker.swift */; };
 		58F6D9F8253F06D500CCAE8C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F6D7E0253F06D400CCAE8C /* Settings.swift */; };
 		58F6D9F9253F06D500CCAE8C /* MessageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F6D7E1253F06D400CCAE8C /* MessageFilter.swift */; };
 		58F6D9FA253F06D500CCAE8C /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F6D7E4253F06D400CCAE8C /* FontManager.swift */; };
@@ -134,9 +150,7 @@
 		58F6DA74253F06D500CCAE8C /* thread@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D871253F06D400CCAE8C /* thread@3x.png */; };
 		58F6DA75253F06D500CCAE8C /* 􀅴@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D872253F06D400CCAE8C /* 􀅴@2x.png */; };
 		58F6DA76253F06D500CCAE8C /* edit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D873253F06D400CCAE8C /* edit@3x.png */; };
-		58F6DA77253F06D500CCAE8C /* reply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D874253F06D400CCAE8C /* reply@2x.png */; };
 		58F6DA78253F06D500CCAE8C /* 􀌶.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D875253F06D400CCAE8C /* 􀌶.png */; };
-		58F6DA79253F06D500CCAE8C /* reply@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D876253F06D400CCAE8C /* reply@3x.png */; };
 		58F6DA7A253F06D500CCAE8C /* 􀋑.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D877253F06D400CCAE8C /* 􀋑.png */; };
 		58F6DA7B253F06D500CCAE8C /* edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D878253F06D400CCAE8C /* edit@2x.png */; };
 		58F6DA7C253F06D500CCAE8C /* 􀅴@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D879253F06D400CCAE8C /* 􀅴@3x.png */; };
@@ -158,13 +172,12 @@
 		58F6DA8C253F06D500CCAE8C /* default-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D889253F06D400CCAE8C /* default-image.png */; };
 		58F6DA8D253F06D500CCAE8C /* copy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D88A253F06D400CCAE8C /* copy@3x.png */; };
 		58F6DA8E253F06D500CCAE8C /* 􀉁@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D88B253F06D400CCAE8C /* 􀉁@2x.png */; };
-		58F6DA8F253F06D500CCAE8C /* 􀉌.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D88C253F06D400CCAE8C /* 􀉌.png */; };
+		58F6DA8F253F06D500CCAE8C /* reply1.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D88C253F06D400CCAE8C /* reply1.png */; };
 		58F6DA90253F06D500CCAE8C /* 􀌶@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D88D253F06D400CCAE8C /* 􀌶@2x.png */; };
 		58F6DA91253F06D500CCAE8C /* forward1.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D88E253F06D400CCAE8C /* forward1.png */; };
 		58F6DA92253F06D500CCAE8C /* 􀌶@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D88F253F06D400CCAE8C /* 􀌶@3x.png */; };
 		58F6DA93253F06D500CCAE8C /* 􀅴.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D890253F06D400CCAE8C /* 􀅴.png */; };
 		58F6DA94253F06D500CCAE8C /* defaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D891253F06D400CCAE8C /* defaultImage.png */; };
-		58F6DA95253F06D500CCAE8C /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D892253F06D400CCAE8C /* reply.png */; };
 		58F6DA96253F06D500CCAE8C /* 􀉁@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D893253F06D400CCAE8C /* 􀉁@3x.png */; };
 		58F6DA97253F06D500CCAE8C /* copy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D894253F06D400CCAE8C /* copy@2x.png */; };
 		58F6DA98253F06D500CCAE8C /* more_vertical.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D895253F06D400CCAE8C /* more_vertical.png */; };
@@ -205,7 +218,7 @@
 		58F6DABB253F06D500CCAE8C /* sent.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8B8253F06D500CCAE8C /* sent.png */; };
 		58F6DABC253F06D500CCAE8C /* thread.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8B9253F06D500CCAE8C /* thread.png */; };
 		58F6DABD253F06D500CCAE8C /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8BA253F06D500CCAE8C /* edit.png */; };
-		58F6DABE253F06D500CCAE8C /* 􀉌@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8BB253F06D500CCAE8C /* 􀉌@2x.png */; };
+		58F6DABE253F06D500CCAE8C /* reply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8BB253F06D500CCAE8C /* reply@2x.png */; };
 		58F6DABF253F06D500CCAE8C /* more_vertical@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8BC253F06D500CCAE8C /* more_vertical@2x.png */; };
 		58F6DAC0253F06D500CCAE8C /* delivered@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8BD253F06D500CCAE8C /* delivered@2x.png */; };
 		58F6DAC1253F06D500CCAE8C /* read@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8BE253F06D500CCAE8C /* read@3x.png */; };
@@ -217,7 +230,7 @@
 		58F6DAC7253F06D500CCAE8C /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8C4253F06D500CCAE8C /* back.png */; };
 		58F6DAC8253F06D500CCAE8C /* more_vertical@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8C5253F06D500CCAE8C /* more_vertical@3x.png */; };
 		58F6DAC9253F06D500CCAE8C /* wait.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8C6253F06D500CCAE8C /* wait.png */; };
-		58F6DACA253F06D500CCAE8C /* 􀉌@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8C7253F06D500CCAE8C /* 􀉌@3x.png */; };
+		58F6DACA253F06D500CCAE8C /* reply@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8C7253F06D500CCAE8C /* reply@3x.png */; };
 		58F6DACB253F06D500CCAE8C /* copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8C8253F06D500CCAE8C /* copy.png */; };
 		58F6DACC253F06D500CCAE8C /* delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8C9253F06D500CCAE8C /* delete@3x.png */; };
 		58F6DACD253F06D500CCAE8C /* blueTick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D8CB253F06D500CCAE8C /* blueTick@2x.png */; };
@@ -460,6 +473,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		585E3FCD255970FD0048DC52 /* LeftStickerMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftStickerMessageBubble.xib; sourceTree = "<group>"; };
+		585E3FCE255970FD0048DC52 /* LeftStickerMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftStickerMessageBubble.swift; sourceTree = "<group>"; };
+		585E3FD0255970FD0048DC52 /* RightStickerMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightStickerMessageBubble.xib; sourceTree = "<group>"; };
+		585E3FD1255970FD0048DC52 /* RightStickerMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightStickerMessageBubble.swift; sourceTree = "<group>"; };
+		585E3FDF255999470048DC52 /* StickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
+		585E3FE0255999480048DC52 /* StickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StickerCell.xib; sourceTree = "<group>"; };
+		58793FD72553D2E700EC4827 /* sticker1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticker1@3x.png"; sourceTree = "<group>"; };
+		58793FD82553D2E800EC4827 /* sticker1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sticker1.png; sourceTree = "<group>"; };
+		58793FD92553D2E800EC4827 /* sticker1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticker1@2x.png"; sourceTree = "<group>"; };
+		58793FE22553E03F00EC4827 /* CometChatStickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CometChatStickerView.swift; sourceTree = "<group>"; };
+		58793FE32553E03F00EC4827 /* CometChatStickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CometChatStickerView.xib; sourceTree = "<group>"; };
+		58793FEA25541E2D00EC4827 /* close1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close1@2x.png"; sourceTree = "<group>"; };
+		58793FEB25541E2D00EC4827 /* close1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close1@3x.png"; sourceTree = "<group>"; };
+		58793FEC25541E2D00EC4827 /* close1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close1.png; sourceTree = "<group>"; };
+		58CD42932555376100888C55 /* StickerSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSet.swift; sourceTree = "<group>"; };
+		58CD42BA2555389E00888C55 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
 		58F6D7E0253F06D400CCAE8C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		58F6D7E1253F06D400CCAE8C /* MessageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFilter.swift; sourceTree = "<group>"; };
 		58F6D7E4253F06D400CCAE8C /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
@@ -589,9 +618,7 @@
 		58F6D871253F06D400CCAE8C /* thread@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thread@3x.png"; sourceTree = "<group>"; };
 		58F6D872253F06D400CCAE8C /* 􀅴@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀅴@2x.png"; sourceTree = "<group>"; };
 		58F6D873253F06D400CCAE8C /* edit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit@3x.png"; sourceTree = "<group>"; };
-		58F6D874253F06D400CCAE8C /* reply@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply@2x.png"; sourceTree = "<group>"; };
 		58F6D875253F06D400CCAE8C /* 􀌶.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌶.png"; sourceTree = "<group>"; };
-		58F6D876253F06D400CCAE8C /* reply@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply@3x.png"; sourceTree = "<group>"; };
 		58F6D877253F06D400CCAE8C /* 􀋑.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀋑.png"; sourceTree = "<group>"; };
 		58F6D878253F06D400CCAE8C /* edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit@2x.png"; sourceTree = "<group>"; };
 		58F6D879253F06D400CCAE8C /* 􀅴@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀅴@3x.png"; sourceTree = "<group>"; };
@@ -613,13 +640,12 @@
 		58F6D889253F06D400CCAE8C /* default-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-image.png"; sourceTree = "<group>"; };
 		58F6D88A253F06D400CCAE8C /* copy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copy@3x.png"; sourceTree = "<group>"; };
 		58F6D88B253F06D400CCAE8C /* 􀉁@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉁@2x.png"; sourceTree = "<group>"; };
-		58F6D88C253F06D400CCAE8C /* 􀉌.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉌.png"; sourceTree = "<group>"; };
+		58F6D88C253F06D400CCAE8C /* reply1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply1.png; sourceTree = "<group>"; };
 		58F6D88D253F06D400CCAE8C /* 􀌶@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌶@2x.png"; sourceTree = "<group>"; };
 		58F6D88E253F06D400CCAE8C /* forward1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward1.png; sourceTree = "<group>"; };
 		58F6D88F253F06D400CCAE8C /* 􀌶@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀌶@3x.png"; sourceTree = "<group>"; };
 		58F6D890253F06D400CCAE8C /* 􀅴.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀅴.png"; sourceTree = "<group>"; };
 		58F6D891253F06D400CCAE8C /* defaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultImage.png; sourceTree = "<group>"; };
-		58F6D892253F06D400CCAE8C /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
 		58F6D893253F06D400CCAE8C /* 􀉁@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉁@3x.png"; sourceTree = "<group>"; };
 		58F6D894253F06D400CCAE8C /* copy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copy@2x.png"; sourceTree = "<group>"; };
 		58F6D895253F06D400CCAE8C /* more_vertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_vertical.png; sourceTree = "<group>"; };
@@ -660,7 +686,7 @@
 		58F6D8B8253F06D500CCAE8C /* sent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sent.png; sourceTree = "<group>"; };
 		58F6D8B9253F06D500CCAE8C /* thread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thread.png; sourceTree = "<group>"; };
 		58F6D8BA253F06D500CCAE8C /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
-		58F6D8BB253F06D500CCAE8C /* 􀉌@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉌@2x.png"; sourceTree = "<group>"; };
+		58F6D8BB253F06D500CCAE8C /* reply@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply@2x.png"; sourceTree = "<group>"; };
 		58F6D8BC253F06D500CCAE8C /* more_vertical@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_vertical@2x.png"; sourceTree = "<group>"; };
 		58F6D8BD253F06D500CCAE8C /* delivered@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delivered@2x.png"; sourceTree = "<group>"; };
 		58F6D8BE253F06D500CCAE8C /* read@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "read@3x.png"; sourceTree = "<group>"; };
@@ -672,7 +698,7 @@
 		58F6D8C4253F06D500CCAE8C /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		58F6D8C5253F06D500CCAE8C /* more_vertical@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_vertical@3x.png"; sourceTree = "<group>"; };
 		58F6D8C6253F06D500CCAE8C /* wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait.png; sourceTree = "<group>"; };
-		58F6D8C7253F06D500CCAE8C /* 􀉌@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "􀉌@3x.png"; sourceTree = "<group>"; };
+		58F6D8C7253F06D500CCAE8C /* reply@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply@3x.png"; sourceTree = "<group>"; };
 		58F6D8C8253F06D500CCAE8C /* copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = copy.png; sourceTree = "<group>"; };
 		58F6D8C9253F06D500CCAE8C /* delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@3x.png"; sourceTree = "<group>"; };
 		58F6D8CB253F06D500CCAE8C /* blueTick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueTick@2x.png"; sourceTree = "<group>"; };
@@ -922,6 +948,46 @@
 				DB544EBC23F3C53E0099A153 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		585E3FCB255970FD0048DC52 /* StickerMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				585E3FCC255970FD0048DC52 /* LeftStickerMessageBubble */,
+				585E3FCF255970FD0048DC52 /* RightStickerMessageBubble */,
+			);
+			path = StickerMessageBubble;
+			sourceTree = "<group>";
+		};
+		585E3FCC255970FD0048DC52 /* LeftStickerMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				585E3FCD255970FD0048DC52 /* LeftStickerMessageBubble.xib */,
+				585E3FCE255970FD0048DC52 /* LeftStickerMessageBubble.swift */,
+			);
+			path = LeftStickerMessageBubble;
+			sourceTree = "<group>";
+		};
+		585E3FCF255970FD0048DC52 /* RightStickerMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				585E3FD0255970FD0048DC52 /* RightStickerMessageBubble.xib */,
+				585E3FD1255970FD0048DC52 /* RightStickerMessageBubble.swift */,
+			);
+			path = RightStickerMessageBubble;
+			sourceTree = "<group>";
+		};
+		58793FE12553E01A00EC4827 /* StickerView */ = {
+			isa = PBXGroup;
+			children = (
+				585E3FDF255999470048DC52 /* StickerCell.swift */,
+				585E3FE0255999480048DC52 /* StickerCell.xib */,
+				58793FE22553E03F00EC4827 /* CometChatStickerView.swift */,
+				58793FE32553E03F00EC4827 /* CometChatStickerView.xib */,
+				58CD42932555376100888C55 /* StickerSet.swift */,
+				58CD42BA2555389E00888C55 /* Sticker.swift */,
+			);
+			path = StickerView;
 			sourceTree = "<group>";
 		};
 		58F6D7DD253F06D400CCAE8C /* Library */ = {
@@ -1221,14 +1287,18 @@
 			children = (
 				58F6D86D253F06D400CCAE8C /* 􀌤@2x.png */,
 				58F6D86E253F06D400CCAE8C /* play@3x.png */,
+				58793FD82553D2E800EC4827 /* sticker1.png */,
+				58793FEC25541E2D00EC4827 /* close1.png */,
+				58793FEA25541E2D00EC4827 /* close1@2x.png */,
+				58793FEB25541E2D00EC4827 /* close1@3x.png */,
+				58793FD92553D2E800EC4827 /* sticker1@2x.png */,
+				58793FD72553D2E700EC4827 /* sticker1@3x.png */,
 				58F6D86F253F06D400CCAE8C /* 􀈕@2x.png */,
 				58F6D870253F06D400CCAE8C /* back@2x.png */,
 				58F6D871253F06D400CCAE8C /* thread@3x.png */,
 				58F6D872253F06D400CCAE8C /* 􀅴@2x.png */,
 				58F6D873253F06D400CCAE8C /* edit@3x.png */,
-				58F6D874253F06D400CCAE8C /* reply@2x.png */,
 				58F6D875253F06D400CCAE8C /* 􀌶.png */,
-				58F6D876253F06D400CCAE8C /* reply@3x.png */,
 				58F6D877253F06D400CCAE8C /* 􀋑.png */,
 				58F6D878253F06D400CCAE8C /* edit@2x.png */,
 				58F6D879253F06D400CCAE8C /* 􀅴@3x.png */,
@@ -1250,13 +1320,12 @@
 				58F6D889253F06D400CCAE8C /* default-image.png */,
 				58F6D88A253F06D400CCAE8C /* copy@3x.png */,
 				58F6D88B253F06D400CCAE8C /* 􀉁@2x.png */,
-				58F6D88C253F06D400CCAE8C /* 􀉌.png */,
+				58F6D88C253F06D400CCAE8C /* reply1.png */,
 				58F6D88D253F06D400CCAE8C /* 􀌶@2x.png */,
 				58F6D88E253F06D400CCAE8C /* forward1.png */,
 				58F6D88F253F06D400CCAE8C /* 􀌶@3x.png */,
 				58F6D890253F06D400CCAE8C /* 􀅴.png */,
 				58F6D891253F06D400CCAE8C /* defaultImage.png */,
-				58F6D892253F06D400CCAE8C /* reply.png */,
 				58F6D893253F06D400CCAE8C /* 􀉁@3x.png */,
 				58F6D894253F06D400CCAE8C /* copy@2x.png */,
 				58F6D895253F06D400CCAE8C /* more_vertical.png */,
@@ -1297,7 +1366,7 @@
 				58F6D8B8253F06D500CCAE8C /* sent.png */,
 				58F6D8B9253F06D500CCAE8C /* thread.png */,
 				58F6D8BA253F06D500CCAE8C /* edit.png */,
-				58F6D8BB253F06D500CCAE8C /* 􀉌@2x.png */,
+				58F6D8BB253F06D500CCAE8C /* reply@2x.png */,
 				58F6D8BC253F06D500CCAE8C /* more_vertical@2x.png */,
 				58F6D8BD253F06D500CCAE8C /* delivered@2x.png */,
 				58F6D8BE253F06D500CCAE8C /* read@3x.png */,
@@ -1309,7 +1378,7 @@
 				58F6D8C4253F06D500CCAE8C /* back.png */,
 				58F6D8C5253F06D500CCAE8C /* more_vertical@3x.png */,
 				58F6D8C6253F06D500CCAE8C /* wait.png */,
-				58F6D8C7253F06D500CCAE8C /* 􀉌@3x.png */,
+				58F6D8C7253F06D500CCAE8C /* reply@3x.png */,
 				58F6D8C8253F06D500CCAE8C /* copy.png */,
 				58F6D8C9253F06D500CCAE8C /* delete@3x.png */,
 			);
@@ -1665,6 +1734,7 @@
 		58F6D958253F06D500CCAE8C /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				58793FE12553E01A00EC4827 /* StickerView */,
 				58F6D959253F06D500CCAE8C /* MessageView */,
 				58F6D9A0253F06D500CCAE8C /* ChatView */,
 				58F6D9A3253F06D500CCAE8C /* SmartReplyView */,
@@ -1676,6 +1746,7 @@
 		58F6D959253F06D500CCAE8C /* MessageView */ = {
 			isa = PBXGroup;
 			children = (
+				585E3FCB255970FD0048DC52 /* StickerMessageBubble */,
 				58F6D95A253F06D500CCAE8C /* AudioMessageBubble */,
 				58F6D961253F06D500CCAE8C /* FileMessageBubble */,
 				58F6D968253F06D500CCAE8C /* TextMessageBubble */,
@@ -2453,8 +2524,8 @@
 				58F6DA70253F06D500CCAE8C /* 􀌤@2x.png in Resources */,
 				58F6DAEB253F06D500CCAE8C /* outgoingAudio@2x.png in Resources */,
 				58F6DA54253F06D500CCAE8C /* IncomingCall.wav in Resources */,
+				58793FED25541E2D00EC4827 /* close1@2x.png in Resources */,
 				58F6DAE5253F06D500CCAE8C /* videoCall.png in Resources */,
-				58F6DA79253F06D500CCAE8C /* reply@3x.png in Resources */,
 				58F6DAA5253F06D500CCAE8C /* 􀈂@3x.png in Resources */,
 				58F6DB62253F06D500CCAE8C /* RightReplyMessageBubble.xib in Resources */,
 				58F6DA63253F06D500CCAE8C /* microphone@3x.png in Resources */,
@@ -2479,6 +2550,7 @@
 				58F6DB06253F06D500CCAE8C /* Blue Ticks.png in Resources */,
 				58F6DA6E253F06D500CCAE8C /* sticker.png in Resources */,
 				58F6DADE253F06D500CCAE8C /* groups@2x.png in Resources */,
+				58793FDA2553D2E800EC4827 /* sticker1@3x.png in Resources */,
 				58F6DB17253F06D500CCAE8C /* 􀉼@3x.png in Resources */,
 				58F6DB28253F06D500CCAE8C /* MembersView.xib in Resources */,
 				58F6DA9B253F06D500CCAE8C /* forward1@3x.png in Resources */,
@@ -2489,9 +2561,11 @@
 				58F6DB58253F06D500CCAE8C /* LeftImageMessageBubble.xib in Resources */,
 				FB15AF73242E1AAA005C070B /* CometChatCallingCell.xib in Resources */,
 				58F6DB4D253F06D500CCAE8C /* LeftLinkPreviewBubble.xib in Resources */,
+				58793FEF25541E2D00EC4827 /* close1.png in Resources */,
 				58F6DA92253F06D500CCAE8C /* 􀌶@3x.png in Resources */,
 				58F6DB33253F06D500CCAE8C /* CometChatSettingsView.xib in Resources */,
 				58F6DB46253F06D500CCAE8C /* LeftTextMessageBubble.xib in Resources */,
+				585E3FE2255999480048DC52 /* StickerCell.xib in Resources */,
 				58F6DB68253F06D500CCAE8C /* SmartReplyCell.xib in Resources */,
 				58F6DA96253F06D500CCAE8C /* 􀉁@3x.png in Resources */,
 				58F6DB53253F06D500CCAE8C /* RightPollMessageBubble.xib in Resources */,
@@ -2551,12 +2625,14 @@
 				58F6DA98253F06D500CCAE8C /* more_vertical.png in Resources */,
 				58F6DA5E253F06D500CCAE8C /* add@2x.png in Resources */,
 				58F6DB64253F06D500CCAE8C /* MessageReceiptBubble.xib in Resources */,
+				58793FDC2553D2E800EC4827 /* sticker1@2x.png in Resources */,
 				58F6DB03253F06D500CCAE8C /* editIcon.png in Resources */,
 				58F6DADA253F06D500CCAE8C /* groups@3x.png in Resources */,
 				DB2E60B823A8E23C00986E12 /* CometChatUIScreenCell.xib in Resources */,
 				58F6DADB253F06D500CCAE8C /* contacts.png in Resources */,
 				58F6DAB4253F06D500CCAE8C /* 􀈂@2x.png in Resources */,
 				58F6DA68253F06D500CCAE8C /* forward.png in Resources */,
+				585E3FD4255970FD0048DC52 /* RightStickerMessageBubble.xib in Resources */,
 				58F6DB5F253F06D500CCAE8C /* LeftReplyMessageBubble.xib in Resources */,
 				58F6DB70253F06D500CCAE8C /* CometChatUserView.xib in Resources */,
 				58F6DA5B253F06D500CCAE8C /* add.png in Resources */,
@@ -2585,10 +2661,9 @@
 				58F6DA80253F06D500CCAE8C /* 􀈕@3x.png in Resources */,
 				58F6DA78253F06D500CCAE8C /* 􀌶.png in Resources */,
 				58F6DAB6253F06D500CCAE8C /* 􀈂.png in Resources */,
-				58F6DA95253F06D500CCAE8C /* reply.png in Resources */,
 				58F6DB47253F06D500CCAE8C /* RightTextMessageBubble.xib in Resources */,
 				58F6DA94253F06D500CCAE8C /* defaultImage.png in Resources */,
-				58F6DABE253F06D500CCAE8C /* 􀉌@2x.png in Resources */,
+				58F6DABE253F06D500CCAE8C /* reply@2x.png in Resources */,
 				58F6DAE0253F06D500CCAE8C /* calling.png in Resources */,
 				58F6DB0C253F06D500CCAE8C /* 􀁝.png in Resources */,
 				58F6DADC253F06D500CCAE8C /* more.png in Resources */,
@@ -2612,6 +2687,8 @@
 				58F6DB0A253F06D500CCAE8C /* 􀁝@2x.png in Resources */,
 				58F6DB00253F06D500CCAE8C /* downArrow@2x.png in Resources */,
 				58F6DA9C253F06D500CCAE8C /* sent@2x.png in Resources */,
+				58793FDB2553D2E800EC4827 /* sticker1.png in Resources */,
+				58793FEE25541E2D00EC4827 /* close1@3x.png in Resources */,
 				58F6DABF253F06D500CCAE8C /* more_vertical@2x.png in Resources */,
 				58F6DB1A253F06D500CCAE8C /* createGroup.png in Resources */,
 				58F6DA9A253F06D500CCAE8C /* share@3x.png in Resources */,
@@ -2640,6 +2717,7 @@
 				58F6DB43253F06D500CCAE8C /* RightFileMessageBubble.xib in Resources */,
 				58F6DB5E253F06D500CCAE8C /* ActionMessageBubble.xib in Resources */,
 				58F6DB4F253F06D500CCAE8C /* RightLinkPreviewBubble.xib in Resources */,
+				58793FE52553E03F00EC4827 /* CometChatStickerView.xib in Resources */,
 				58F6DAAE253F06D500CCAE8C /* 􀉁.png in Resources */,
 				58F6DB01253F06D500CCAE8C /* Blue Ticks@2x.png in Resources */,
 				58F6DAA1253F06D500CCAE8C /* 􀉐.png in Resources */,
@@ -2647,7 +2725,6 @@
 				58F6DA7E253F06D500CCAE8C /* back@3x.png in Resources */,
 				58F6DA6F253F06D500CCAE8C /* close.png in Resources */,
 				58F6DA6B253F06D500CCAE8C /* close@3x.png in Resources */,
-				58F6DA77253F06D500CCAE8C /* reply@2x.png in Resources */,
 				58F6DB79253F06D500CCAE8C /* CometChatOutgoingCall.xib in Resources */,
 				58F6DA99253F06D500CCAE8C /* 􀌞@3x.png in Resources */,
 				58F6DB1B253F06D500CCAE8C /* createGroup@3x.png in Resources */,
@@ -2658,7 +2735,7 @@
 				58F6DAE8253F06D500CCAE8C /* videoCall@3x.png in Resources */,
 				58F6DB16253F06D500CCAE8C /* 􀉼@2x.png in Resources */,
 				58F6DAAD253F06D500CCAE8C /* 􀋑@2x.png in Resources */,
-				58F6DA8F253F06D500CCAE8C /* 􀉌.png in Resources */,
+				58F6DA8F253F06D500CCAE8C /* reply1.png in Resources */,
 				58F6DADF253F06D500CCAE8C /* missedVideo.png in Resources */,
 				58F6DA91253F06D500CCAE8C /* forward1.png in Resources */,
 				58F6DB1F253F06D500CCAE8C /* Localizable.strings in Resources */,
@@ -2675,6 +2752,7 @@
 				58F6DAD1253F06D500CCAE8C /* chats.png in Resources */,
 				58F6DB4A253F06D500CCAE8C /* RightVideoMessageBubble.xib in Resources */,
 				58F6DAD4253F06D500CCAE8C /* calls@2x.png in Resources */,
+				585E3FD2255970FD0048DC52 /* LeftStickerMessageBubble.xib in Resources */,
 				58F6DAAC253F06D500CCAE8C /* read.png in Resources */,
 				58F6DA8D253F06D500CCAE8C /* copy@3x.png in Resources */,
 				58F6DACD253F06D500CCAE8C /* blueTick@2x.png in Resources */,
@@ -2689,7 +2767,7 @@
 				58F6DA59253F06D500CCAE8C /* IncomingMessageOther.wav in Resources */,
 				58F6DA90253F06D500CCAE8C /* 􀌶@2x.png in Resources */,
 				58F6DB18253F06D500CCAE8C /* 􀋚.png in Resources */,
-				58F6DACA253F06D500CCAE8C /* 􀉌@3x.png in Resources */,
+				58F6DACA253F06D500CCAE8C /* reply@3x.png in Resources */,
 				58F6DB6F253F06D500CCAE8C /* SharedMediaCell.xib in Resources */,
 				58F6DA97253F06D500CCAE8C /* copy@2x.png in Resources */,
 				58F6DAD5253F06D500CCAE8C /* contacts@2x.png in Resources */,
@@ -2812,6 +2890,8 @@
 				58F6DB6D253F06D500CCAE8C /* SharedMediaView.swift in Sources */,
 				58F6DA39253F06D500CCAE8C /* ImageFormat.swift in Sources */,
 				58F6D9FA253F06D500CCAE8C /* FontManager.swift in Sources */,
+				58793FE42553E03F00EC4827 /* CometChatStickerView.swift in Sources */,
+				585E3FE1255999480048DC52 /* StickerCell.swift in Sources */,
 				58F6DB78253F06D500CCAE8C /* CometChatCallDetail.swift in Sources */,
 				58F6DB49253F06D500CCAE8C /* RightVideoMessageBubble.swift in Sources */,
 				58F6DA31253F06D500CCAE8C /* RedirectHandler.swift in Sources */,
@@ -2825,6 +2905,7 @@
 				58F6DB8F253F06D500CCAE8C /* CometChatAddModerators.swift in Sources */,
 				58F6DB52253F06D500CCAE8C /* LeftPollMessageBubble.swift in Sources */,
 				58F6DA0B253F06D500CCAE8C /* DPImageView+Letters.swift in Sources */,
+				58CD42BB2555389E00888C55 /* Sticker.swift in Sources */,
 				58F6DA4F253F06D500CCAE8C /* PanModalHeight.swift in Sources */,
 				58F6DB71253F06D500CCAE8C /* CometChatUserView.swift in Sources */,
 				58F6DB37253F06D500CCAE8C /* AddNewOptionView.swift in Sources */,
@@ -2895,6 +2976,7 @@
 				58F6DA10253F06D500CCAE8C /* PanContainerView.swift in Sources */,
 				58F6DA40253F06D500CCAE8C /* WKInterfaceImage+Cometfisher.swift in Sources */,
 				58F6DB91253F06D500CCAE8C /* CometChatGroupList.swift in Sources */,
+				585E3FD5255970FD0048DC52 /* RightStickerMessageBubble.swift in Sources */,
 				58F6DA2C253F06D500CCAE8C /* CometfisherManager.swift in Sources */,
 				58F6DA0A253F06D500CCAE8C /* CometChatSnackBar.swift in Sources */,
 				58F6DA0F253F06D500CCAE8C /* PanModalAnimator.swift in Sources */,
@@ -2903,6 +2985,7 @@
 				58F6DA44253F06D500CCAE8C /* Indicator.swift in Sources */,
 				58F6DB73253F06D500CCAE8C /* ProgressIndicatorView.swift in Sources */,
 				58F6DA16253F06D500CCAE8C /* AudioContext.swift in Sources */,
+				585E3FD3255970FD0048DC52 /* LeftStickerMessageBubble.swift in Sources */,
 				58FEC73024ED47D90004CC9B /* ComponentModificationsController.swift in Sources */,
 				58F6DB92253F06D500CCAE8C /* CometChatBlockedUsers.swift in Sources */,
 				58F6DB6A253F06D500CCAE8C /* SmartReplyCell.swift in Sources */,
@@ -2918,6 +3001,7 @@
 				58F6DA30253F06D500CCAE8C /* SessionDataTask.swift in Sources */,
 				58F6DB5A253F06D500CCAE8C /* RightLocationMessageBubble.swift in Sources */,
 				58F6DB90253F06D500CCAE8C /* CometChatGroupDetail.swift in Sources */,
+				58CD42942555376100888C55 /* StickerSet.swift in Sources */,
 				58F6DA0E253F06D500CCAE8C /* PanModalPresentationController.swift in Sources */,
 				58F6DA3F253F06D500CCAE8C /* GIFAnimatedImage.swift in Sources */,
 				58F6DB3E253F06D500CCAE8C /* RightAudioMessageBubble.swift in Sources */,

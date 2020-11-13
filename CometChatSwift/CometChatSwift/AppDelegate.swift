@@ -46,8 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initialization(){
         if(Constants.appId.contains(NSLocalizedString("Enter", comment: "")) || Constants.appId.contains(NSLocalizedString("ENTER", comment: "")) || Constants.appId.contains("NULL") || Constants.appId.contains("null") || Constants.appId.count == 0){
 
+          
         }else{
             let appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region: Constants.region).build()
+            
          let _ =  CometChat.init(appId:Constants.appId, appSettings: appSettings, onSuccess: { (Success) in
                 print( "Initialization onSuccess \(Success)")
                 CometChat.setSource(resource: "ui-kit", platform: "ios", language: "swift")
