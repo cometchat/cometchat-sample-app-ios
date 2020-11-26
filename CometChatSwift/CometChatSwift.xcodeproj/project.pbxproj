@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58119946256D309300F2ABC8 /* ReactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58119945256D309300F2ABC8 /* ReactionView.swift */; };
 		585E3FD2255970FD0048DC52 /* LeftStickerMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585E3FCD255970FD0048DC52 /* LeftStickerMessageBubble.xib */; };
 		585E3FD3255970FD0048DC52 /* LeftStickerMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585E3FCE255970FD0048DC52 /* LeftStickerMessageBubble.swift */; };
 		585E3FD4255970FD0048DC52 /* RightStickerMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585E3FD0255970FD0048DC52 /* RightStickerMessageBubble.xib */; };
 		585E3FD5255970FD0048DC52 /* RightStickerMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585E3FD1255970FD0048DC52 /* RightStickerMessageBubble.swift */; };
 		585E3FE1255999480048DC52 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585E3FDF255999470048DC52 /* StickerCell.swift */; };
 		585E3FE2255999480048DC52 /* StickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585E3FE0255999480048DC52 /* StickerCell.xib */; };
+		586300EF256D0758009368FE /* ReactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586300ED256D0757009368FE /* ReactionCell.xib */; };
+		586300F0256D0758009368FE /* ReactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586300EE256D0757009368FE /* ReactionCell.swift */; };
 		58793FDA2553D2E800EC4827 /* sticker1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FD72553D2E700EC4827 /* sticker1@3x.png */; };
 		58793FDB2553D2E800EC4827 /* sticker1.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FD82553D2E800EC4827 /* sticker1.png */; };
 		58793FDC2553D2E800EC4827 /* sticker1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FD92553D2E800EC4827 /* sticker1@2x.png */; };
@@ -21,8 +24,16 @@
 		58793FED25541E2D00EC4827 /* close1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FEA25541E2D00EC4827 /* close1@2x.png */; };
 		58793FEE25541E2D00EC4827 /* close1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FEB25541E2D00EC4827 /* close1@3x.png */; };
 		58793FEF25541E2D00EC4827 /* close1.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FEC25541E2D00EC4827 /* close1.png */; };
+		587B02D0256E19FE00125270 /* ReactorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587B02CE256E19FE00125270 /* ReactorsView.swift */; };
+		587B02D1256E19FE00125270 /* ReactorsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 587B02CF256E19FE00125270 /* ReactorsView.xib */; };
 		58CD42942555376100888C55 /* StickerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CD42932555376100888C55 /* StickerSet.swift */; };
 		58CD42BB2555389E00888C55 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CD42BA2555389E00888C55 /* Sticker.swift */; };
+		58E55601256D43CC008A0CD3 /* ReactionCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E555FF256D43CC008A0CD3 /* ReactionCountCell.swift */; };
+		58E55602256D43CC008A0CD3 /* ReactionCountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E55600256D43CC008A0CD3 /* ReactionCountCell.xib */; };
+		58EEA5E1256CD25A0073E6C5 /* MessageReaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEA5E0256CD25A0073E6C5 /* MessageReaction.swift */; };
+		58EEA5E3256CD26D0073E6C5 /* MessageReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEA5E2256CD26D0073E6C5 /* MessageReactor.swift */; };
+		58EEA5E6256CD3DD0073E6C5 /* AddReactionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEA5E4256CD3DD0073E6C5 /* AddReactionsCell.swift */; };
+		58EEA5E7256CD3DD0073E6C5 /* AddReactionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58EEA5E5256CD3DD0073E6C5 /* AddReactionsCell.xib */; };
 		58F6D9F8253F06D500CCAE8C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F6D7E0253F06D400CCAE8C /* Settings.swift */; };
 		58F6D9F9253F06D500CCAE8C /* MessageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F6D7E1253F06D400CCAE8C /* MessageFilter.swift */; };
 		58F6D9FA253F06D500CCAE8C /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F6D7E4253F06D400CCAE8C /* FontManager.swift */; };
@@ -473,12 +484,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		58119945256D309300F2ABC8 /* ReactionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionView.swift; sourceTree = "<group>"; };
 		585E3FCD255970FD0048DC52 /* LeftStickerMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftStickerMessageBubble.xib; sourceTree = "<group>"; };
 		585E3FCE255970FD0048DC52 /* LeftStickerMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftStickerMessageBubble.swift; sourceTree = "<group>"; };
 		585E3FD0255970FD0048DC52 /* RightStickerMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightStickerMessageBubble.xib; sourceTree = "<group>"; };
 		585E3FD1255970FD0048DC52 /* RightStickerMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightStickerMessageBubble.swift; sourceTree = "<group>"; };
 		585E3FDF255999470048DC52 /* StickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
 		585E3FE0255999480048DC52 /* StickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StickerCell.xib; sourceTree = "<group>"; };
+		586300ED256D0757009368FE /* ReactionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReactionCell.xib; sourceTree = "<group>"; };
+		586300EE256D0757009368FE /* ReactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionCell.swift; sourceTree = "<group>"; };
 		58793FD72553D2E700EC4827 /* sticker1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticker1@3x.png"; sourceTree = "<group>"; };
 		58793FD82553D2E800EC4827 /* sticker1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sticker1.png; sourceTree = "<group>"; };
 		58793FD92553D2E800EC4827 /* sticker1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticker1@2x.png"; sourceTree = "<group>"; };
@@ -487,8 +501,16 @@
 		58793FEA25541E2D00EC4827 /* close1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close1@2x.png"; sourceTree = "<group>"; };
 		58793FEB25541E2D00EC4827 /* close1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close1@3x.png"; sourceTree = "<group>"; };
 		58793FEC25541E2D00EC4827 /* close1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close1.png; sourceTree = "<group>"; };
+		587B02CE256E19FE00125270 /* ReactorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactorsView.swift; sourceTree = "<group>"; };
+		587B02CF256E19FE00125270 /* ReactorsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReactorsView.xib; sourceTree = "<group>"; };
 		58CD42932555376100888C55 /* StickerSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSet.swift; sourceTree = "<group>"; };
 		58CD42BA2555389E00888C55 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
+		58E555FF256D43CC008A0CD3 /* ReactionCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionCountCell.swift; sourceTree = "<group>"; };
+		58E55600256D43CC008A0CD3 /* ReactionCountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReactionCountCell.xib; sourceTree = "<group>"; };
+		58EEA5E0256CD25A0073E6C5 /* MessageReaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReaction.swift; sourceTree = "<group>"; };
+		58EEA5E2256CD26D0073E6C5 /* MessageReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReactor.swift; sourceTree = "<group>"; };
+		58EEA5E4256CD3DD0073E6C5 /* AddReactionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReactionsCell.swift; sourceTree = "<group>"; };
+		58EEA5E5256CD3DD0073E6C5 /* AddReactionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddReactionsCell.xib; sourceTree = "<group>"; };
 		58F6D7E0253F06D400CCAE8C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		58F6D7E1253F06D400CCAE8C /* MessageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFilter.swift; sourceTree = "<group>"; };
 		58F6D7E4253F06D400CCAE8C /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
@@ -988,6 +1010,24 @@
 				58CD42BA2555389E00888C55 /* Sticker.swift */,
 			);
 			path = StickerView;
+			sourceTree = "<group>";
+		};
+		58EEA5DF256CD2470073E6C5 /* ReactionView */ = {
+			isa = PBXGroup;
+			children = (
+				58119945256D309300F2ABC8 /* ReactionView.swift */,
+				58EEA5E4256CD3DD0073E6C5 /* AddReactionsCell.swift */,
+				58EEA5E5256CD3DD0073E6C5 /* AddReactionsCell.xib */,
+				58EEA5E0256CD25A0073E6C5 /* MessageReaction.swift */,
+				58EEA5E2256CD26D0073E6C5 /* MessageReactor.swift */,
+				586300EE256D0757009368FE /* ReactionCell.swift */,
+				586300ED256D0757009368FE /* ReactionCell.xib */,
+				58E555FF256D43CC008A0CD3 /* ReactionCountCell.swift */,
+				58E55600256D43CC008A0CD3 /* ReactionCountCell.xib */,
+				587B02CE256E19FE00125270 /* ReactorsView.swift */,
+				587B02CF256E19FE00125270 /* ReactorsView.xib */,
+			);
+			path = ReactionView;
 			sourceTree = "<group>";
 		};
 		58F6D7DD253F06D400CCAE8C /* Library */ = {
@@ -1734,6 +1774,7 @@
 		58F6D958253F06D500CCAE8C /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				58EEA5DF256CD2470073E6C5 /* ReactionView */,
 				58793FE12553E01A00EC4827 /* StickerView */,
 				58F6D959253F06D500CCAE8C /* MessageView */,
 				58F6D9A0253F06D500CCAE8C /* ChatView */,
@@ -2613,6 +2654,7 @@
 				58F6DB08253F06D500CCAE8C /* defaultAvatar.jpg in Resources */,
 				58F6DAD9253F06D500CCAE8C /* more@2x.png in Resources */,
 				58F6DA5D253F06D500CCAE8C /* stickerDark@2x.png in Resources */,
+				58E55602256D43CC008A0CD3 /* ReactionCountCell.xib in Resources */,
 				58F6DB04253F06D500CCAE8C /* downArrow@3x.png in Resources */,
 				58F6DB1C253F06D500CCAE8C /* addIcon@2x.png in Resources */,
 				58F6DB1E253F06D500CCAE8C /* addIcon.png in Resources */,
@@ -2691,8 +2733,10 @@
 				58793FEE25541E2D00EC4827 /* close1@3x.png in Resources */,
 				58F6DABF253F06D500CCAE8C /* more_vertical@2x.png in Resources */,
 				58F6DB1A253F06D500CCAE8C /* createGroup.png in Resources */,
+				586300EF256D0758009368FE /* ReactionCell.xib in Resources */,
 				58F6DA9A253F06D500CCAE8C /* share@3x.png in Resources */,
 				58F6DAB7253F06D500CCAE8C /* 􀈕.png in Resources */,
+				58EEA5E7256CD3DD0073E6C5 /* AddReactionsCell.xib in Resources */,
 				58F6DB8B253F06D500CCAE8C /* CometChatCreateGroup.xib in Resources */,
 				58F6DB7F253F06D500CCAE8C /* CometChatMessageList.xib in Resources */,
 				58F6DA6A253F06D500CCAE8C /* sticker@3x.png in Resources */,
@@ -2713,6 +2757,7 @@
 				58F6DABA253F06D500CCAE8C /* delete@2x.png in Resources */,
 				58F6DAC1253F06D500CCAE8C /* read@3x.png in Resources */,
 				58F6DAFA253F06D500CCAE8C /* end@3x.png in Resources */,
+				587B02D1256E19FE00125270 /* ReactorsView.xib in Resources */,
 				58F6DAF2253F06D500CCAE8C /* outgoingVideo@3x.png in Resources */,
 				58F6DB43253F06D500CCAE8C /* RightFileMessageBubble.xib in Resources */,
 				58F6DB5E253F06D500CCAE8C /* ActionMessageBubble.xib in Resources */,
@@ -2878,6 +2923,8 @@
 				58F6DB6B253F06D500CCAE8C /* Avatar.swift in Sources */,
 				58F6DB93253F06D500CCAE8C /* CometChatUserList.swift in Sources */,
 				58F6DA19253F06D500CCAE8C /* AudioPlayerManager.swift in Sources */,
+				58119946256D309300F2ABC8 /* ReactionView.swift in Sources */,
+				58EEA5E3256CD26D0073E6C5 /* MessageReactor.swift in Sources */,
 				58F6DA1D253F06D500CCAE8C /* LargeTitleDisplayMode+String.swift in Sources */,
 				58F6DB44253F06D500CCAE8C /* RightFileMessageBubble.swift in Sources */,
 				58F6DB7A253F06D500CCAE8C /* CometChatOutgoingCall.swift in Sources */,
@@ -2929,11 +2976,14 @@
 				58F6DA26253F06D500CCAE8C /* Resource.swift in Sources */,
 				58F6DB32253F06D500CCAE8C /* NotificationsView.swift in Sources */,
 				58F6DA07253F06D500CCAE8C /* PanModalPresentationDelegate.swift in Sources */,
+				58E55601256D43CC008A0CD3 /* ReactionCountCell.swift in Sources */,
 				58F6DB3B253F06D500CCAE8C /* SupportView.swift in Sources */,
 				58F6DA23253F06D500CCAE8C /* CacheSerializer.swift in Sources */,
+				586300F0256D0758009368FE /* ReactionCell.swift in Sources */,
 				58F6DA09253F06D500CCAE8C /* MessageActions.swift in Sources */,
 				58F6D9FC253F06D500CCAE8C /* UserGroupHeaderView.swift in Sources */,
 				58F6DA29253F06D500CCAE8C /* CometfisherOptionsInfo.swift in Sources */,
+				58EEA5E6256CD3DD0073E6C5 /* AddReactionsCell.swift in Sources */,
 				58F6DA3D253F06D500CCAE8C /* Filter.swift in Sources */,
 				58F6DB8A253F06D500CCAE8C /* CometChatCreateGroup.swift in Sources */,
 				DBED2A3623AA49170058D5BF /* CometChatUIComponentsCell.swift in Sources */,
@@ -2987,6 +3037,8 @@
 				58F6DA16253F06D500CCAE8C /* AudioContext.swift in Sources */,
 				585E3FD3255970FD0048DC52 /* LeftStickerMessageBubble.swift in Sources */,
 				58FEC73024ED47D90004CC9B /* ComponentModificationsController.swift in Sources */,
+				587B02D0256E19FE00125270 /* ReactorsView.swift in Sources */,
+				58EEA5E1256CD25A0073E6C5 /* MessageReaction.swift in Sources */,
 				58F6DB92253F06D500CCAE8C /* CometChatBlockedUsers.swift in Sources */,
 				58F6DB6A253F06D500CCAE8C /* SmartReplyCell.swift in Sources */,
 				58F6DB2A253F06D500CCAE8C /* CometChatGroupView.swift in Sources */,
