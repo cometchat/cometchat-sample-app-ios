@@ -2906,13 +2906,6 @@ extension CometChatThreadedMessageList : ChatViewInternalDelegate {
             actions.append(.createAPoll)
         }
         
-        if UIKitSettings.collaborativeWhiteboard == .enabled {
-            actions.append(.whiteboard)
-        }
-        
-        if UIKitSettings.collaborativeWhiteboard == .enabled {
-            actions.append(.writeboard)
-        }
         
         (group.rowVC as? MessageActions)?.set(actions: actions)
         presentPanModal(group.rowVC)
@@ -3935,55 +3928,11 @@ extension CometChatThreadedMessageList : MessageActionsDelegate {
     
     func didCollaborativeWriteboardPressed() {
         
-        if let uid = currentUser?.uid {
-            CometChat.callExtension(slug: "document", type: .post, endPoint: "v1/create", body: ["receiver":uid,"receiverType":"user"]) { (response) in
-                print("writeboard response: \(String(describing: response))")
-            } onError: { (error) in
-                if let error = error?.errorDescription {
-                    let snackbar = CometChatSnackbar(message: error, duration: .short)
-                    snackbar.show()
-                }
-            }
-
-        }
-        
-        if let guid = currentGroup?.guid {
-            CometChat.callExtension(slug: "document", type: .post, endPoint: "v1/create", body: ["receiver":guid,"receiverType":"group"]) { (response) in
-                print("writeboard response: \(String(describing: response))")
-            } onError: { (error) in
-                if let error = error?.errorDescription {
-                    let snackbar = CometChatSnackbar(message: error, duration: .short)
-                    snackbar.show()
-                }
-            }
-        }
+       
     }
     
     func didCollaborativeWhiteboardPressed() {
-        if let uid = currentUser?.uid {
-            CometChat.callExtension(slug: "whiteboard", type: .post, endPoint: "v1/create", body: ["receiver":uid,"receiverType":"user"]) { (response) in
-                print("whiteboard response: \(String(describing: response))")
-            } onError: { (error) in
-                if let error = error?.errorDescription {
-                    let snackbar = CometChatSnackbar(message: error, duration: .short)
-                    snackbar.show()
-                }
-            }
-
-        }
-        
-        
-        
-        if let guid = currentGroup?.guid {
-            CometChat.callExtension(slug: "whiteboard", type: .post, endPoint: "v1/create", body: ["receiver":guid,"receiverType":"group"]) { (response) in
-                print("whiteboard response: \(String(describing: response))")
-            } onError: { (error) in
-                if let error = error?.errorDescription {
-                    let snackbar = CometChatSnackbar(message: error, duration: .short)
-                    snackbar.show()
-                }
-            }
-        }
+       
     }
     
     
@@ -4625,22 +4574,6 @@ extension CometChatThreadedMessageList: CollaborativeDelegate {
     
     func didJoinPressed(forMessage: CustomMessage) {
         
-        print("Message is: \(forMessage.stringValue())")
-
-        if let metaData = forMessage.metaData , let injected = metaData["@injected"] as? [String : Any], let cometChatExtension =  injected["extensions"] as? [String : Any], let collaborativeDictionary = cometChatExtension["whiteboard"] as? [String : Any], let collaborativeURL =  collaborativeDictionary["board_url"] as? String {
-            
-            let collaborativeView = CollaborativeView()
-            collaborativeView.collaborativeType = .whiteboard
-            collaborativeView.collaborativeURL = collaborativeURL
-            self.navigationController?.pushViewController(collaborativeView, animated: true)
-            
-        }else if let metaData = forMessage.metaData , let injected = metaData["@injected"] as? [String : Any], let cometChatExtension =  injected["extensions"] as? [String : Any], let collaborativeDictionary = cometChatExtension["document"] as? [String : Any], let collaborativeURL =  collaborativeDictionary["document_url"] as? String {
-            
-            let collaborativeView = CollaborativeView()
-            collaborativeView.collaborativeType = .writeboard
-            collaborativeView.collaborativeURL = collaborativeURL
-            self.navigationController?.pushViewController(collaborativeView, animated: true)
-        
-        }
+    
     }
 }
