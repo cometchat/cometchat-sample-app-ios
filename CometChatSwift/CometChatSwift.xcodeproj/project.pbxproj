@@ -16,6 +16,8 @@
 		585E3FE2255999480048DC52 /* StickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585E3FE0255999480048DC52 /* StickerCell.xib */; };
 		586300EF256D0758009368FE /* ReactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586300ED256D0757009368FE /* ReactionCell.xib */; };
 		586300F0256D0758009368FE /* ReactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586300EE256D0757009368FE /* ReactionCell.swift */; };
+		586EC0AF2570C87B009A08EE /* CollaborativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586EC0AD2570C87B009A08EE /* CollaborativeView.swift */; };
+		586EC0B02570C87B009A08EE /* CollaborativeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586EC0AE2570C87B009A08EE /* CollaborativeView.xib */; };
 		58793FDA2553D2E800EC4827 /* sticker1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FD72553D2E700EC4827 /* sticker1@3x.png */; };
 		58793FDB2553D2E800EC4827 /* sticker1.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FD82553D2E800EC4827 /* sticker1.png */; };
 		58793FDC2553D2E800EC4827 /* sticker1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FD92553D2E800EC4827 /* sticker1@2x.png */; };
@@ -26,6 +28,16 @@
 		58793FEF25541E2D00EC4827 /* close1.png in Resources */ = {isa = PBXBuildFile; fileRef = 58793FEC25541E2D00EC4827 /* close1.png */; };
 		587B02D0256E19FE00125270 /* ReactorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587B02CE256E19FE00125270 /* ReactorsView.swift */; };
 		587B02D1256E19FE00125270 /* ReactorsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 587B02CF256E19FE00125270 /* ReactorsView.xib */; };
+		58A993CD257019B400CC31E2 /* writeboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A993C7257019B300CC31E2 /* writeboard.png */; };
+		58A993CE257019B400CC31E2 /* whiteboard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A993C8257019B300CC31E2 /* whiteboard@3x.png */; };
+		58A993CF257019B400CC31E2 /* whiteboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A993C9257019B400CC31E2 /* whiteboard@2x.png */; };
+		58A993D0257019B400CC31E2 /* writeboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A993CA257019B400CC31E2 /* writeboard@2x.png */; };
+		58A993D1257019B400CC31E2 /* whiteboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A993CB257019B400CC31E2 /* whiteboard.png */; };
+		58A993D2257019B400CC31E2 /* writeboard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A993CC257019B400CC31E2 /* writeboard@3x.png */; };
+		58A994012570340E00CC31E2 /* LeftCollaborativeMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A993FC2570340E00CC31E2 /* LeftCollaborativeMessageBubble.swift */; };
+		58A994022570340E00CC31E2 /* LeftCollaborativeMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A993FD2570340E00CC31E2 /* LeftCollaborativeMessageBubble.xib */; };
+		58A994032570340E00CC31E2 /* RightCollaborativeMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A993FF2570340E00CC31E2 /* RightCollaborativeMessageBubble.swift */; };
+		58A994042570340E00CC31E2 /* RightCollaborativeMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A994002570340E00CC31E2 /* RightCollaborativeMessageBubble.xib */; };
 		58CD42942555376100888C55 /* StickerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CD42932555376100888C55 /* StickerSet.swift */; };
 		58CD42BB2555389E00888C55 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CD42BA2555389E00888C55 /* Sticker.swift */; };
 		58E55601256D43CC008A0CD3 /* ReactionCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E555FF256D43CC008A0CD3 /* ReactionCountCell.swift */; };
@@ -493,6 +505,8 @@
 		585E3FE0255999480048DC52 /* StickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StickerCell.xib; sourceTree = "<group>"; };
 		586300ED256D0757009368FE /* ReactionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReactionCell.xib; sourceTree = "<group>"; };
 		586300EE256D0757009368FE /* ReactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionCell.swift; sourceTree = "<group>"; };
+		586EC0AD2570C87B009A08EE /* CollaborativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaborativeView.swift; sourceTree = "<group>"; };
+		586EC0AE2570C87B009A08EE /* CollaborativeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaborativeView.xib; sourceTree = "<group>"; };
 		58793FD72553D2E700EC4827 /* sticker1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticker1@3x.png"; sourceTree = "<group>"; };
 		58793FD82553D2E800EC4827 /* sticker1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sticker1.png; sourceTree = "<group>"; };
 		58793FD92553D2E800EC4827 /* sticker1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticker1@2x.png"; sourceTree = "<group>"; };
@@ -503,6 +517,16 @@
 		58793FEC25541E2D00EC4827 /* close1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close1.png; sourceTree = "<group>"; };
 		587B02CE256E19FE00125270 /* ReactorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactorsView.swift; sourceTree = "<group>"; };
 		587B02CF256E19FE00125270 /* ReactorsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReactorsView.xib; sourceTree = "<group>"; };
+		58A993C7257019B300CC31E2 /* writeboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = writeboard.png; sourceTree = "<group>"; };
+		58A993C8257019B300CC31E2 /* whiteboard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteboard@3x.png"; sourceTree = "<group>"; };
+		58A993C9257019B400CC31E2 /* whiteboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteboard@2x.png"; sourceTree = "<group>"; };
+		58A993CA257019B400CC31E2 /* writeboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "writeboard@2x.png"; sourceTree = "<group>"; };
+		58A993CB257019B400CC31E2 /* whiteboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteboard.png; sourceTree = "<group>"; };
+		58A993CC257019B400CC31E2 /* writeboard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "writeboard@3x.png"; sourceTree = "<group>"; };
+		58A993FC2570340E00CC31E2 /* LeftCollaborativeMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftCollaborativeMessageBubble.swift; sourceTree = "<group>"; };
+		58A993FD2570340E00CC31E2 /* LeftCollaborativeMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftCollaborativeMessageBubble.xib; sourceTree = "<group>"; };
+		58A993FF2570340E00CC31E2 /* RightCollaborativeMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightCollaborativeMessageBubble.swift; sourceTree = "<group>"; };
+		58A994002570340E00CC31E2 /* RightCollaborativeMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightCollaborativeMessageBubble.xib; sourceTree = "<group>"; };
 		58CD42932555376100888C55 /* StickerSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSet.swift; sourceTree = "<group>"; };
 		58CD42BA2555389E00888C55 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
 		58E555FF256D43CC008A0CD3 /* ReactionCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionCountCell.swift; sourceTree = "<group>"; };
@@ -999,6 +1023,15 @@
 			path = RightStickerMessageBubble;
 			sourceTree = "<group>";
 		};
+		586EC0AC2570C854009A08EE /* CollaborativeView */ = {
+			isa = PBXGroup;
+			children = (
+				586EC0AD2570C87B009A08EE /* CollaborativeView.swift */,
+				586EC0AE2570C87B009A08EE /* CollaborativeView.xib */,
+			);
+			path = CollaborativeView;
+			sourceTree = "<group>";
+		};
 		58793FE12553E01A00EC4827 /* StickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1010,6 +1043,33 @@
 				58CD42BA2555389E00888C55 /* Sticker.swift */,
 			);
 			path = StickerView;
+			sourceTree = "<group>";
+		};
+		58A993FA2570340E00CC31E2 /* CollaborativeMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				58A993FB2570340E00CC31E2 /* LeftCollaborativeMessageBubble */,
+				58A993FE2570340E00CC31E2 /* RightCollaborativeMessageBubble */,
+			);
+			path = CollaborativeMessageBubble;
+			sourceTree = "<group>";
+		};
+		58A993FB2570340E00CC31E2 /* LeftCollaborativeMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				58A993FC2570340E00CC31E2 /* LeftCollaborativeMessageBubble.swift */,
+				58A993FD2570340E00CC31E2 /* LeftCollaborativeMessageBubble.xib */,
+			);
+			path = LeftCollaborativeMessageBubble;
+			sourceTree = "<group>";
+		};
+		58A993FE2570340E00CC31E2 /* RightCollaborativeMessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				58A993FF2570340E00CC31E2 /* RightCollaborativeMessageBubble.swift */,
+				58A994002570340E00CC31E2 /* RightCollaborativeMessageBubble.xib */,
+			);
+			path = RightCollaborativeMessageBubble;
 			sourceTree = "<group>";
 		};
 		58EEA5DF256CD2470073E6C5 /* ReactionView */ = {
@@ -1325,6 +1385,12 @@
 		58F6D86C253F06D400CCAE8C /* MessageList */ = {
 			isa = PBXGroup;
 			children = (
+				58A993CB257019B400CC31E2 /* whiteboard.png */,
+				58A993C9257019B400CC31E2 /* whiteboard@2x.png */,
+				58A993C8257019B300CC31E2 /* whiteboard@3x.png */,
+				58A993C7257019B300CC31E2 /* writeboard.png */,
+				58A993CA257019B400CC31E2 /* writeboard@2x.png */,
+				58A993CC257019B400CC31E2 /* writeboard@3x.png */,
 				58F6D86D253F06D400CCAE8C /* 􀌤@2x.png */,
 				58F6D86E253F06D400CCAE8C /* play@3x.png */,
 				58793FD82553D2E800EC4827 /* sticker1.png */,
@@ -1774,6 +1840,7 @@
 		58F6D958253F06D500CCAE8C /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				586EC0AC2570C854009A08EE /* CollaborativeView */,
 				58EEA5DF256CD2470073E6C5 /* ReactionView */,
 				58793FE12553E01A00EC4827 /* StickerView */,
 				58F6D959253F06D500CCAE8C /* MessageView */,
@@ -1787,6 +1854,7 @@
 		58F6D959253F06D500CCAE8C /* MessageView */ = {
 			isa = PBXGroup;
 			children = (
+				58A993FA2570340E00CC31E2 /* CollaborativeMessageBubble */,
 				585E3FCB255970FD0048DC52 /* StickerMessageBubble */,
 				58F6D95A253F06D500CCAE8C /* AudioMessageBubble */,
 				58F6D961253F06D500CCAE8C /* FileMessageBubble */,
@@ -2590,6 +2658,7 @@
 				58F6DAEF253F06D500CCAE8C /* outgoingVideo.png in Resources */,
 				58F6DB06253F06D500CCAE8C /* Blue Ticks.png in Resources */,
 				58F6DA6E253F06D500CCAE8C /* sticker.png in Resources */,
+				58A993CD257019B400CC31E2 /* writeboard.png in Resources */,
 				58F6DADE253F06D500CCAE8C /* groups@2x.png in Resources */,
 				58793FDA2553D2E800EC4827 /* sticker1@3x.png in Resources */,
 				58F6DB17253F06D500CCAE8C /* 􀉼@3x.png in Resources */,
@@ -2607,6 +2676,7 @@
 				58F6DB33253F06D500CCAE8C /* CometChatSettingsView.xib in Resources */,
 				58F6DB46253F06D500CCAE8C /* LeftTextMessageBubble.xib in Resources */,
 				585E3FE2255999480048DC52 /* StickerCell.xib in Resources */,
+				58A993D0257019B400CC31E2 /* writeboard@2x.png in Resources */,
 				58F6DB68253F06D500CCAE8C /* SmartReplyCell.xib in Resources */,
 				58F6DA96253F06D500CCAE8C /* 􀉁@3x.png in Resources */,
 				58F6DB53253F06D500CCAE8C /* RightPollMessageBubble.xib in Resources */,
@@ -2622,6 +2692,7 @@
 				58F6DB42253F06D500CCAE8C /* LeftFileMessageBubble.xib in Resources */,
 				58F6DABD253F06D500CCAE8C /* edit.png in Resources */,
 				58F6DA71253F06D500CCAE8C /* play@3x.png in Resources */,
+				58A993CE257019B400CC31E2 /* whiteboard@3x.png in Resources */,
 				58F6DAFE253F06D500CCAE8C /* newCall@3x.png in Resources */,
 				58F6DA8C253F06D500CCAE8C /* default-image.png in Resources */,
 				58F6DAC7253F06D500CCAE8C /* back.png in Resources */,
@@ -2635,6 +2706,7 @@
 				58F6DB89253F06D500CCAE8C /* CometChatCreatePoll.xib in Resources */,
 				58F6DAA7253F06D500CCAE8C /* 􀉐@3x.png in Resources */,
 				58F6DAFB253F06D500CCAE8C /* audioCall@2x.png in Resources */,
+				58A993D2257019B400CC31E2 /* writeboard@3x.png in Resources */,
 				58F6DAB2253F06D500CCAE8C /* share.png in Resources */,
 				58F6DA18253F06D500CCAE8C /* AudioVisualizationView.xib in Resources */,
 				58F6DB10253F06D500CCAE8C /* 􀇿@2x.png in Resources */,
@@ -2699,6 +2771,8 @@
 				58F6DA5C253F06D500CCAE8C /* microphone@2x.png in Resources */,
 				58F6DA5F253F06D500CCAE8C /* send@2x.png in Resources */,
 				58F6DA7B253F06D500CCAE8C /* edit@2x.png in Resources */,
+				58A993CF257019B400CC31E2 /* whiteboard@2x.png in Resources */,
+				58A994022570340E00CC31E2 /* LeftCollaborativeMessageBubble.xib in Resources */,
 				58F6DB59253F06D500CCAE8C /* RightLocationMessageBubble.xib in Resources */,
 				58F6DA80253F06D500CCAE8C /* 􀈕@3x.png in Resources */,
 				58F6DA78253F06D500CCAE8C /* 􀌶.png in Resources */,
@@ -2729,6 +2803,7 @@
 				58F6DB0A253F06D500CCAE8C /* 􀁝@2x.png in Resources */,
 				58F6DB00253F06D500CCAE8C /* downArrow@2x.png in Resources */,
 				58F6DA9C253F06D500CCAE8C /* sent@2x.png in Resources */,
+				58A994042570340E00CC31E2 /* RightCollaborativeMessageBubble.xib in Resources */,
 				58793FDB2553D2E800EC4827 /* sticker1.png in Resources */,
 				58793FEE25541E2D00EC4827 /* close1@3x.png in Resources */,
 				58F6DABF253F06D500CCAE8C /* more_vertical@2x.png in Resources */,
@@ -2742,6 +2817,7 @@
 				58F6DA6A253F06D500CCAE8C /* sticker@3x.png in Resources */,
 				58F6DAA4253F06D500CCAE8C /* 􀌞.png in Resources */,
 				58F6DAF5253F06D500CCAE8C /* incomingVideo.png in Resources */,
+				58A993D1257019B400CC31E2 /* whiteboard.png in Resources */,
 				58F6DAE3253F06D500CCAE8C /* missedVideo@3x.png in Resources */,
 				58F6DA8A253F06D500CCAE8C /* 􀈎.png in Resources */,
 				DBED2A3F23AA50750058D5BF /* UIComponentsCell.xib in Resources */,
@@ -2813,6 +2889,7 @@
 				58F6DA90253F06D500CCAE8C /* 􀌶@2x.png in Resources */,
 				58F6DB18253F06D500CCAE8C /* 􀋚.png in Resources */,
 				58F6DACA253F06D500CCAE8C /* reply@3x.png in Resources */,
+				586EC0B02570C87B009A08EE /* CollaborativeView.xib in Resources */,
 				58F6DB6F253F06D500CCAE8C /* SharedMediaCell.xib in Resources */,
 				58F6DA97253F06D500CCAE8C /* copy@2x.png in Resources */,
 				58F6DAD5253F06D500CCAE8C /* contacts@2x.png in Resources */,
@@ -2916,6 +2993,7 @@
 				58F6DA45253F06D500CCAE8C /* AnimatedImageView.swift in Sources */,
 				58F6DB63253F06D500CCAE8C /* MessageReceiptBubble.swift in Sources */,
 				58F6DA2A253F06D500CCAE8C /* Deprecated.swift in Sources */,
+				58A994032570340E00CC31E2 /* RightCollaborativeMessageBubble.swift in Sources */,
 				58F6DA36253F06D500CCAE8C /* ImagePrefetcher.swift in Sources */,
 				58F6DB55253F06D500CCAE8C /* RightImageMessageBubble.swift in Sources */,
 				58F6DB75253F06D500CCAE8C /* CometChatCallDetailLogView.swift in Sources */,
@@ -3033,6 +3111,7 @@
 				58F6DA2E253F06D500CCAE8C /* RequestModifier.swift in Sources */,
 				58F6DB5B253F06D500CCAE8C /* LeftLocationMessageBubble.swift in Sources */,
 				58F6DA44253F06D500CCAE8C /* Indicator.swift in Sources */,
+				586EC0AF2570C87B009A08EE /* CollaborativeView.swift in Sources */,
 				58F6DB73253F06D500CCAE8C /* ProgressIndicatorView.swift in Sources */,
 				58F6DA16253F06D500CCAE8C /* AudioContext.swift in Sources */,
 				585E3FD3255970FD0048DC52 /* LeftStickerMessageBubble.swift in Sources */,
@@ -3057,6 +3136,7 @@
 				58F6DA0E253F06D500CCAE8C /* PanModalPresentationController.swift in Sources */,
 				58F6DA3F253F06D500CCAE8C /* GIFAnimatedImage.swift in Sources */,
 				58F6DB3E253F06D500CCAE8C /* RightAudioMessageBubble.swift in Sources */,
+				58A994012570340E00CC31E2 /* LeftCollaborativeMessageBubble.swift in Sources */,
 				58F6DB2D253F06D500CCAE8C /* CometChatSoundManager.swift in Sources */,
 				FBA293102434D9A7006DCCA1 /* AppConstants.swift in Sources */,
 				DB2E60AF23A8D8C100986E12 /* CometChatUnifiedCell.swift in Sources */,
