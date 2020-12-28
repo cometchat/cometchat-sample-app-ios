@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initialization(){
-        if(Constants.appId.contains(NSLocalizedString("Enter", comment: "")) || Constants.appId.contains(NSLocalizedString("ENTER", comment: "")) || Constants.appId.contains("NULL") || Constants.appId.contains("null") || Constants.appId.count == 0){
+        if(Constants.appId.contains("Enter") || Constants.appId.contains("ENTER") || Constants.appId.contains("NULL") || Constants.appId.contains("null") || Constants.appId.count == 0){
 
           
         }else{
@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        self.initialization()
+
         
     }
     
@@ -69,13 +69,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        self.initialization()
+
+       
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        self.initialization()
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
     }
+    
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

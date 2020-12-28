@@ -7,9 +7,9 @@ import Foundation
 import UIKit
 
 class Constants {
-    
+  
 static var appId = "ENTER APP ID"
-static var apiKey = "ENTER API KEY"
+static var authKey = "ENTER AUTH KEY"
 static var region = "ENTER REGION CODE"
     
 }

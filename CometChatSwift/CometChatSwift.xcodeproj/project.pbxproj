@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580231B72580F1BD0039A374 /* translate.png in Resources */ = {isa = PBXBuildFile; fileRef = 580231B42580F1BC0039A374 /* translate.png */; };
+		580231B82580F1BD0039A374 /* translate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 580231B52580F1BD0039A374 /* translate@2x.png */; };
+		580231B92580F1BD0039A374 /* translate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 580231B62580F1BD0039A374 /* translate@3x.png */; };
+		580231BB2580F66B0039A374 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580231BA2580F66B0039A374 /* LanguageSelectionView.swift */; };
+		580231BF258100690039A374 /* LanguageBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580231BE258100690039A374 /* LanguageBundle.swift */; };
+		580231D1258103EF0039A374 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 580231CF258103EF0039A374 /* Localizable.strings */; };
 		58119946256D309300F2ABC8 /* ReactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58119945256D309300F2ABC8 /* ReactionView.swift */; };
 		585E3FD2255970FD0048DC52 /* LeftStickerMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585E3FCD255970FD0048DC52 /* LeftStickerMessageBubble.xib */; };
 		585E3FD3255970FD0048DC52 /* LeftStickerMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585E3FCE255970FD0048DC52 /* LeftStickerMessageBubble.swift */; };
@@ -338,7 +344,6 @@
 		58F6DB1C253F06D500CCAE8C /* addIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D91F253F06D500CCAE8C /* addIcon@2x.png */; };
 		58F6DB1D253F06D500CCAE8C /* addIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D920253F06D500CCAE8C /* addIcon@3x.png */; };
 		58F6DB1E253F06D500CCAE8C /* addIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D921253F06D500CCAE8C /* addIcon.png */; };
-		58F6DB1F253F06D500CCAE8C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F6D923253F06D500CCAE8C /* Localizable.strings */; };
 		58F6DB20253F06D500CCAE8C /* CometChatUnified.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F6D925253F06D500CCAE8C /* CometChatUnified.swift */; };
 		58F6DB21253F06D500CCAE8C /* BadgeCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F6D929253F06D500CCAE8C /* BadgeCount.swift */; };
 		58F6DB22253F06D500CCAE8C /* CometChatConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F6D92B253F06D500CCAE8C /* CometChatConversationView.swift */; };
@@ -496,6 +501,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		580231B42580F1BC0039A374 /* translate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = translate.png; sourceTree = "<group>"; };
+		580231B52580F1BD0039A374 /* translate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "translate@2x.png"; sourceTree = "<group>"; };
+		580231B62580F1BD0039A374 /* translate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "translate@3x.png"; sourceTree = "<group>"; };
+		580231BA2580F66B0039A374 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
+		580231BE258100690039A374 /* LanguageBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBundle.swift; sourceTree = "<group>"; };
+		580231D0258103EF0039A374 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		580231D4258108730039A374 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		580231D5258108740039A374 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		58119945256D309300F2ABC8 /* ReactionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionView.swift; sourceTree = "<group>"; };
 		585E3FCD255970FD0048DC52 /* LeftStickerMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftStickerMessageBubble.xib; sourceTree = "<group>"; };
 		585E3FCE255970FD0048DC52 /* LeftStickerMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftStickerMessageBubble.swift; sourceTree = "<group>"; };
@@ -527,6 +540,14 @@
 		58A993FD2570340E00CC31E2 /* LeftCollaborativeMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftCollaborativeMessageBubble.xib; sourceTree = "<group>"; };
 		58A993FF2570340E00CC31E2 /* RightCollaborativeMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightCollaborativeMessageBubble.swift; sourceTree = "<group>"; };
 		58A994002570340E00CC31E2 /* RightCollaborativeMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightCollaborativeMessageBubble.xib; sourceTree = "<group>"; };
+		58BA02442591D6590013638C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58BA02452591D6660013638C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58BA02462591D6700013638C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58BA02472591D67F0013638C /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58BA02482591D68D0013638C /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58BA02492591D6960013638C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58BA024A2591D6A20013638C /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		58BA024B2591D6AD0013638C /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
 		58CD42932555376100888C55 /* StickerSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSet.swift; sourceTree = "<group>"; };
 		58CD42BA2555389E00888C55 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
 		58E555FF256D43CC008A0CD3 /* ReactionCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionCountCell.swift; sourceTree = "<group>"; };
@@ -829,7 +850,6 @@
 		58F6D91F253F06D500CCAE8C /* addIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addIcon@2x.png"; sourceTree = "<group>"; };
 		58F6D920253F06D500CCAE8C /* addIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addIcon@3x.png"; sourceTree = "<group>"; };
 		58F6D921253F06D500CCAE8C /* addIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addIcon.png; sourceTree = "<group>"; };
-		58F6D923253F06D500CCAE8C /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		58F6D925253F06D500CCAE8C /* CometChatUnified.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUnified.swift; sourceTree = "<group>"; };
 		58F6D929253F06D500CCAE8C /* BadgeCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeCount.swift; sourceTree = "<group>"; };
 		58F6D92B253F06D500CCAE8C /* CometChatConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatConversationView.swift; sourceTree = "<group>"; };
@@ -994,6 +1014,14 @@
 				DB544EBC23F3C53E0099A153 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		580231BD258100550039A374 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				580231BE258100690039A374 /* LanguageBundle.swift */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		585E3FCB255970FD0048DC52 /* StickerMessageBubble */ = {
@@ -1386,6 +1414,9 @@
 			isa = PBXGroup;
 			children = (
 				58A993CB257019B400CC31E2 /* whiteboard.png */,
+				580231B42580F1BC0039A374 /* translate.png */,
+				580231B52580F1BD0039A374 /* translate@2x.png */,
+				580231B62580F1BD0039A374 /* translate@3x.png */,
 				58A993C9257019B400CC31E2 /* whiteboard@2x.png */,
 				58A993C8257019B300CC31E2 /* whiteboard@3x.png */,
 				58A993C7257019B300CC31E2 /* writeboard.png */,
@@ -1618,7 +1649,7 @@
 		58F6D922253F06D500CCAE8C /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				58F6D923253F06D500CCAE8C /* Localizable.strings */,
+				580231CF258103EF0039A374 /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -1746,6 +1777,7 @@
 		58F6D93F253F06D500CCAE8C /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				580231BD258100550039A374 /* Localization */,
 				58F6D940253F06D500CCAE8C /* Status Indicator */,
 				58F6D942253F06D500CCAE8C /* DetailView */,
 				58F6D945253F06D500CCAE8C /* NotificationsView */,
@@ -2353,6 +2385,7 @@
 			children = (
 				58F6D9D8253F06D500CCAE8C /* CometChatPrivacyAndSecurity.swift */,
 				58F6D9D9253F06D500CCAE8C /* CometChatUserInfo.swift */,
+				580231BA2580F66B0039A374 /* LanguageSelectionView.swift */,
 			);
 			path = MoreInfo;
 			sourceTree = "<group>";
@@ -2606,6 +2639,16 @@
 			knownRegions = (
 				en,
 				Base,
+				hi,
+				fr,
+				ar,
+				de,
+				es,
+				ms,
+				pt,
+				ru,
+				"zh-TW",
+				zh,
 			);
 			mainGroup = DBFBC46123A7B9230027938E;
 			productRefGroup = DBFBC46B23A7B9230027938E /* Products */;
@@ -2653,6 +2696,7 @@
 				58F6DA89253F06D500CCAE8C /* share@2x.png in Resources */,
 				58F6DB72253F06D500CCAE8C /* ProgressIndicatorView.xib in Resources */,
 				58F6DA60253F06D500CCAE8C /* send@3x.png in Resources */,
+				580231B82580F1BD0039A374 /* translate@2x.png in Resources */,
 				58F6DAF3253F06D500CCAE8C /* outgoingAudio.png in Resources */,
 				58F6DA87253F06D500CCAE8C /* forward1@2x.png in Resources */,
 				58F6DAEF253F06D500CCAE8C /* outgoingVideo.png in Resources */,
@@ -2744,12 +2788,14 @@
 				58F6DADA253F06D500CCAE8C /* groups@3x.png in Resources */,
 				DB2E60B823A8E23C00986E12 /* CometChatUIScreenCell.xib in Resources */,
 				58F6DADB253F06D500CCAE8C /* contacts.png in Resources */,
+				580231B92580F1BD0039A374 /* translate@3x.png in Resources */,
 				58F6DAB4253F06D500CCAE8C /* 􀈂@2x.png in Resources */,
 				58F6DA68253F06D500CCAE8C /* forward.png in Resources */,
 				585E3FD4255970FD0048DC52 /* RightStickerMessageBubble.xib in Resources */,
 				58F6DB5F253F06D500CCAE8C /* LeftReplyMessageBubble.xib in Resources */,
 				58F6DB70253F06D500CCAE8C /* CometChatUserView.xib in Resources */,
 				58F6DA5B253F06D500CCAE8C /* add.png in Resources */,
+				580231D1258103EF0039A374 /* Localizable.strings in Resources */,
 				58F6DAF4253F06D500CCAE8C /* outgoingVideo@2x.png in Resources */,
 				58F6DB67253F06D500CCAE8C /* ChatView.xib in Resources */,
 				58F6DAE7253F06D500CCAE8C /* incomingVideo@2x.png in Resources */,
@@ -2859,7 +2905,6 @@
 				58F6DA8F253F06D500CCAE8C /* reply1.png in Resources */,
 				58F6DADF253F06D500CCAE8C /* missedVideo.png in Resources */,
 				58F6DA91253F06D500CCAE8C /* forward1.png in Resources */,
-				58F6DB1F253F06D500CCAE8C /* Localizable.strings in Resources */,
 				58F6DB84253F06D500CCAE8C /* CometChatThreadedMessageList.xib in Resources */,
 				58F6DA5A253F06D500CCAE8C /* OutgoingMessege.wav in Resources */,
 				58F6DAF9253F06D500CCAE8C /* incomingAudio.png in Resources */,
@@ -2894,6 +2939,7 @@
 				58F6DA97253F06D500CCAE8C /* copy@2x.png in Resources */,
 				58F6DAD5253F06D500CCAE8C /* contacts@2x.png in Resources */,
 				58F6DAB9253F06D500CCAE8C /* unsafeContent@2x.png in Resources */,
+				580231B72580F1BD0039A374 /* translate.png in Resources */,
 				58F6DB07253F06D500CCAE8C /* editIcon@2x.png in Resources */,
 				58F6DB27253F06D500CCAE8C /* AddMemberView.xib in Resources */,
 				58F6DAFC253F06D500CCAE8C /* missedAudio@2x.png in Resources */,
@@ -2978,6 +3024,7 @@
 				FBA293112434D9A7006DCCA1 /* AppDelegate.swift in Sources */,
 				58F6DB85253F06D500CCAE8C /* CometChatThreadedMessageList.swift in Sources */,
 				58F6DA08253F06D500CCAE8C /* CCActivityIndicator.swift in Sources */,
+				580231BB2580F66B0039A374 /* LanguageSelectionView.swift in Sources */,
 				58F6DB65253F06D500CCAE8C /* MessageDateHeader.swift in Sources */,
 				58F6DB50253F06D500CCAE8C /* RightLinkPreviewBubble.swift in Sources */,
 				58F6DB2E253F06D500CCAE8C /* StatusIndicator.swift in Sources */,
@@ -3089,6 +3136,7 @@
 				58F6DA3A253F06D500CCAE8C /* ImageDrawing.swift in Sources */,
 				58F6DA02253F06D500CCAE8C /* ActionsCell.swift in Sources */,
 				58F6DA06253F06D500CCAE8C /* CameraHandler.swift in Sources */,
+				580231BF258100690039A374 /* LanguageBundle.swift in Sources */,
 				58F6DB83253F06D500CCAE8C /* CometChatForwardMessageList.swift in Sources */,
 				58F6DB2C253F06D500CCAE8C /* CometChatCallManager.swift in Sources */,
 				DB2E60B323A8DA8500986E12 /* CometChatUIScreenCell.swift in Sources */,
@@ -3148,6 +3196,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		580231CF258103EF0039A374 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				580231D0258103EF0039A374 /* en */,
+				580231D4258108730039A374 /* fr */,
+				580231D5258108740039A374 /* hi */,
+				58BA02442591D6590013638C /* ar */,
+				58BA02452591D6660013638C /* de */,
+				58BA02462591D6700013638C /* es */,
+				58BA02472591D67F0013638C /* ms */,
+				58BA02482591D68D0013638C /* pt */,
+				58BA02492591D6960013638C /* ru */,
+				58BA024A2591D6A20013638C /* zh-TW */,
+				58BA024B2591D6AD0013638C /* zh */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		DBFBC47123A7B9230027938E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3305,7 +3371,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.1.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev2;
 				PRODUCT_NAME = "CometChat KitchenSink";
 				SWIFT_VERSION = 5.0;
@@ -3333,7 +3399,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.1.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev2;
 				PRODUCT_NAME = "CometChat KitchenSink";
 				SWIFT_VERSION = 5.0;

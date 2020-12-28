@@ -87,8 +87,8 @@ class CreateUser: UIViewController, UITextFieldDelegate {
     
     private func createUser() {
         guard let name = textField.text else { return }
-        if(Constants.apiKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.apiKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.apiKey.contains("NULL") || Constants.apiKey.contains("null") || Constants.apiKey.count == 0){
-            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in Constants.swift file.", comment: ""))
+        if(Constants.authKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.authKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.authKey.contains("NULL") || Constants.authKey.contains("null") || Constants.authKey.count == 0){
+            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and AUTH-KEY in Constants.swift file.", comment: ""))
         }else{
             loadingView.isHidden = false
             loadingViewHeightConstriant.constant = 40
@@ -103,7 +103,7 @@ class CreateUser: UIViewController, UITextFieldDelegate {
             }else {
                 
                 let user = User(uid: "user\(Int(Date().timeIntervalSince1970 * 100))", name: name)
-                CometChat.createUser(user: user, apiKey: Constants.apiKey, onSuccess: { (user) in
+                CometChat.createUser(user: user, apiKey: Constants.authKey, onSuccess: { (user) in
                     
                     if let uid = user.uid {
                           self.loginWithUID(UID: uid)
@@ -142,10 +142,10 @@ class CreateUser: UIViewController, UITextFieldDelegate {
                 self.view.layoutIfNeeded()
             }
         }
-        if(Constants.apiKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.apiKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.apiKey.contains("NULL") || Constants.apiKey.contains("null") || Constants.apiKey.count == 0){
-            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in Constants.swift file.", comment: ""))
+        if(Constants.authKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.authKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.authKey.contains("NULL") || Constants.authKey.contains("null") || Constants.authKey.count == 0){
+            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and AUTH-KEY in Constants.swift file.", comment: ""))
         }else{
-            CometChat.login(UID: UID, apiKey: Constants.apiKey, onSuccess: { (current_user) in
+            CometChat.login(UID: UID, apiKey: Constants.authKey, onSuccess: { (current_user) in
                 
                 let userID:String = current_user.uid!
                 UserDefaults.standard.set(userID, forKey: "LoggedInUserUID")

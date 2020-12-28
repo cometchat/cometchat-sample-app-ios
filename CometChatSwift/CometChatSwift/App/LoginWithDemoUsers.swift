@@ -24,7 +24,7 @@ class LoginWithDemoUsers: UIViewController {
     }
     
     func loginUser(with id: Int) {
-        let apiKey = Constants.apiKey
+      let apiKey = Constants.authKey
       if CometChat.getLoggedInUser() == nil {
          CometChat.login(UID: "\(id)", apiKey: apiKey, onSuccess: { (user) in
         #if DEBUG
@@ -82,11 +82,11 @@ class LoginWithDemoUsers: UIViewController {
     private func loginWithUID(UID:String){
         
         activityIndicator.startAnimating()
-        if(Constants.apiKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.apiKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.apiKey.contains("NULL") || Constants.apiKey.contains("null") || Constants.apiKey.count == 0){
-            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and API-KEY in Constants.swift file.", comment: ""))
+        if(Constants.authKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.authKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.authKey.contains("NULL") || Constants.authKey.contains("null") || Constants.authKey.count == 0){
+            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and AUTH-KEY in Constants.swift file.", comment: ""))
         }else{
             
-            CometChat.login(UID: UID, apiKey: Constants.apiKey, onSuccess: { (current_user) in
+            CometChat.login(UID: UID, apiKey: Constants.authKey, onSuccess: { (current_user) in
                 let userID:String = current_user.uid!
                 UserDefaults.standard.set(userID, forKey: "LoggedInUserUID")
                 DispatchQueue.main.async {
