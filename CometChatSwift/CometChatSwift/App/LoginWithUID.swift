@@ -118,7 +118,7 @@ class LoginWithUID: UIViewController, UITextFieldDelegate {
                          snackbar.show()
                     }
                 }
-                print("login failure \(error.errorDescription)")
+             
                 
             }
         }

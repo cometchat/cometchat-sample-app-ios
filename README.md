@@ -16,8 +16,9 @@
 
 <a href=""><img src="https://img.shields.io/badge/Repo%20Size-15.6%20MB-brightgreen" /></a>
 <a href=""> <img src="https://img.shields.io/badge/Contributors-5-yellowgreen" /></a>
-<a href=" "> <img src="https://img.shields.io/badge/Version-2.1.10-red" /></a>
+<a href=" "> <img src="https://img.shields.io/badge/Version-2.1.9-red" /></a>
 <a href=""> <img src="https://img.shields.io/github/stars/cometchat-pro/ios-swift-chat-app?style=social" /></a>
+<a href=""> <img src="https://img.shields.io/twitter/follow/cometchat?style=social" /></a>
 
 </p>
 </br></br>
@@ -74,7 +75,7 @@ To Run to sample app you have to do the following changes by Adding **AppID**, *
 
    -  Select demo users or enter the **UID** at the time of login once the app is launched. 
 
-![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/Auth.png)    
+![Studio Guide](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v2/Screenshots/Auth.png)    
 
 ---
 
