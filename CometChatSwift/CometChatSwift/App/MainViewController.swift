@@ -27,8 +27,8 @@ class MainViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     internal func setupTableView(){
         mainTableView.separatorColor = .clear
-        let UnifiedCell  = UINib.init(nibName: "CometChatUnifiedCell", bundle: nil)
-        self.mainTableView.register(UnifiedCell, forCellReuseIdentifier: "cometChatUnifiedCell")
+        let UnifiedCell  = UINib.init(nibName: "CometChatUICell", bundle: nil)
+        self.mainTableView.register(UnifiedCell, forCellReuseIdentifier: "CometChatUICell")
         
         let UIComponentCell  = UINib.init(nibName: "CometChatUIComponentsCell", bundle: nil)
         self.mainTableView.register(UIComponentCell, forCellReuseIdentifier: "cometChatUIComponentsCell")
@@ -55,7 +55,7 @@ class MainViewController: UIViewController , UITableViewDelegate, UITableViewDat
         
         let cell = UITableViewCell()
         if indexPath.row == 0 {
-            let launcherCell = tableView.dequeueReusableCell(withIdentifier: "cometChatUnifiedCell") as! CometChatUnifiedCell
+            let launcherCell = tableView.dequeueReusableCell(withIdentifier: "CometChatUICell") as! CometChatUICell
             launcherCell.delegate = self
             return launcherCell
         }else if indexPath.row == 1 {
@@ -93,17 +93,17 @@ class MainViewController: UIViewController , UITableViewDelegate, UITableViewDat
     }
 }
 
-extension MainViewController: CometChatUnifiedCellDelegate {
+extension MainViewController: CometChatUICellDelegate {
     
     
     func didlaunchButtonPressed(_ sender: UIButton, segmentControl: UISegmentedControl) {
-        let unfiedUI = CometChatUnified()
+        let cometChatUI = CometChatUI()
         if segmentControl.selectedSegmentIndex == 0 {
-            unfiedUI.setup(withStyle: .fullScreen)
+            cometChatUI.setup(withStyle: .fullScreen)
         }else{
-            unfiedUI.setup(withStyle: .popover)
+            cometChatUI.setup(withStyle: .popover)
         }
-        self.present(unfiedUI, animated: true, completion: nil)
+        self.present(cometChatUI, animated: true, completion: nil)
     }
     
 }
@@ -128,7 +128,7 @@ extension MainViewController: CometChatUIScreenCellDelegate {
         let userList = CometChatUserList()
         let groupList = CometChatGroupList()
         let messageList = CometChatMessageList()
-        let userInfo = CometChatUserInfo()
+        let userInfo = CometChatUserProfile()
         
         switch selectedStyle{
         case 0 where selectedScreen == 0:
@@ -208,7 +208,7 @@ extension MainViewController: CometChatUIScreenCellDelegate {
             }
         }
         
-        if let info = list as? CometChatUserInfo {
+        if let info = list as? CometChatUserProfile {
             info.set(title: title, mode: .automatic)
             self.present(navigationController, animated: true, completion: nil)
         }

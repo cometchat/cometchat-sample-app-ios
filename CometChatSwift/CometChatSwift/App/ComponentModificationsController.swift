@@ -12,7 +12,7 @@ class ComponentModificationsController: UIViewController {
     
     // Avatar
     @IBOutlet weak var avatarView: UIView!
-    @IBOutlet weak var avatar: Avatar!
+    @IBOutlet weak var avatar: CometChatAvatar!
     @IBOutlet weak var avatarCornerRadius: UITextField!
     @IBOutlet weak var avatarBorderWidth: UITextField!
     @IBOutlet weak var borderColor: UISegmentedControl!
@@ -22,7 +22,7 @@ class ComponentModificationsController: UIViewController {
     // Status Indicator
     
     @IBOutlet weak var statusIndicatorView: UIView!
-    @IBOutlet weak var statusIndicator: StatusIndicator!
+    @IBOutlet weak var statusIndicator: CometChatStatusIndicator!
     @IBOutlet weak var statusBorderColor: UISegmentedControl!
     @IBOutlet weak var statusBackgroundColor: UISegmentedControl!
     @IBOutlet weak var status: UISegmentedControl!
@@ -30,7 +30,7 @@ class ComponentModificationsController: UIViewController {
     
     // Badge Count
     
-    @IBOutlet weak var badgeCount: BadgeCount!
+    @IBOutlet weak var badgeCount: CometChatBadgeCount!
     @IBOutlet weak var badgeCountView: UIView!
     @IBOutlet weak var count: UITextField!
     @IBOutlet weak var badgeCountBackgroundColor: UISegmentedControl!
