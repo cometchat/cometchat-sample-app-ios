@@ -18,7 +18,7 @@ import CometChatPro
 
 /*  ----------------------------------------------------------------------------------------- */
 
-enum Controller : String {
+public enum Controller : String {
     case chats = "chats"
     case calls = "calls"
     case users = "users"
@@ -92,6 +92,10 @@ enum Controller : String {
         
         let color = UIKitSettings.primaryColor
         self.tabBar.tintColor = color
+        
+        
+        //Assigning Calling Delegate
+        CometChat.calldelegate = self
         
         // Adding view controllers in Tabbar
         self.viewControllers = controllers
