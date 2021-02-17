@@ -45,29 +45,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initialization(){
-//        if(Constants.appId.contains("Enter") || Constants.appId.contains("ENTER") || Constants.appId.contains("NULL") || Constants.appId.contains("null") || Constants.appId.count == 0){
-//
-//
-//        }else{
+       if(Constants.appId.contains("Enter") || Constants.appId.contains("ENTER") || Constants.appId.contains("NULL") || Constants.appId.contains("null") || Constants.appId.count == 0){
+
+
+       }else{
             let appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region: Constants.region).build()
             
             let _ =  CometChat.init(appId:Constants.appId, appSettings: appSettings, onSuccess: { (Success) in
                 print( "Initialization onSuccess \(Success)")
                 CometChat.setSource(resource: "ui-kit", platform: "ios", language: "swift")
-
-                CometChat.login(UID: "superhero1", apiKey: Constants.authKey) { (user) in
-                   
-
-                } onError: { (error) in
-                    
-                }
-                
                 
             }) { (error) in
                 print( "Initialization Error Code:  \(error.errorCode)")
                 print( "Initialization Error Description:  \(error.errorDescription)")
             }
-//        }
+       }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
