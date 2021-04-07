@@ -23,22 +23,7 @@ class LoginWithDemoUsers: UIViewController {
         //loginUser(with: 848)
     }
     
-    func loginUser(with id: Int) {
-      let apiKey = Constants.authKey
-      if CometChat.getLoggedInUser() == nil {
-         CometChat.login(UID: "\(id)", apiKey: apiKey, onSuccess: { (user) in
-        #if DEBUG
-            print("Login successful: " + user.stringValue())
-        #endif
-         }) { (error) in
-            #if DEBUG
-            print("Login failed with error: " + error.errorDescription)
-            #endif
-        }
-    }
-}
-    
-    
+
     
     fileprivate func addObservers(){
         let tapOnSuperHero1 = UITapGestureRecognizer(target: self, action: #selector(LoginWithSuperHero1(tapGestureRecognizer:)))
@@ -113,11 +98,15 @@ class LoginWithDemoUsers: UIViewController {
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     DispatchQueue.main.async {
-                                let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: error.errorDescription, duration: .short)
-                                snackbar.show()
+                        if error.errorCode.isLocalized {
+                            CometChatSnackBoard.display(message:  error.errorCode.localized() , mode: .error, duration: .short)
+                        }else{
+                            CometChatSnackBoard.display(message:  error.errorDescription , mode: .error, duration: .short)
+                        }
                     }
                 }
-                print("login failure \(error.errorDescription)")
+                print("login errorDescription \(error.errorDescription)")
+                print("login errorCode \(error.errorCode)")
             }
         }
     }

@@ -114,8 +114,7 @@ class LoginWithUID: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     DispatchQueue.main.async {
-                      let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: error.errorDescription, duration: .short)
-                         snackbar.show()
+                        CometChatSnackBoard.display(message:  error.errorCode.localized(), mode: .error, duration: .short)
                     }
                 }
              
