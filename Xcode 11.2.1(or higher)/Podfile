@@ -1,7 +1,0 @@
-
-
-target 'CometChatSwift' do
-  
-pod 'CometChatPro','2.0.7'
-
-end

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="CometChatUICell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CometChatUICell" rowHeight="992" id="KGk-i7-Jjw" customClass="CometChatUICell" customModule="CometChat_KitchenSink" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="507" height="903"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="507" height="903"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kO5-07-AbE">
+                        <rect key="frame" x="20" y="20" width="467" height="763"/>
+                        <subviews>
+                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="G6U-Jd-LYd">
+                                <rect key="frame" x="20" y="10" width="427" height="683"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rocket" translatesAutoresizingMaskIntoConstraints="NO" id="9GM-bY-eYB">
+                                        <rect key="frame" x="0.0" y="0.0" width="427" height="512"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="zXu-52-6ij"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CometChat UI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzd-qi-GHb">
+                                        <rect key="frame" x="114.5" y="524" width="198" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="2yD-fK-ctm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edp-K9-t4N">
+                                        <rect key="frame" x="7.5" y="571" width="412.5" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="ePy-zk-Fbv"/>
+                                        </constraints>
+                                        <string key="text">It open's Activity directly from UI Library. It is pre-defined UI helpful for user to build chat system by integrating it within minutes.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fy3-ac-DP6">
+                                        <rect key="frame" x="131" y="653" width="165" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ClB-bD-SHD"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Fullscreen"/>
+                                            <segment title="Popover"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckS-jK-qJk">
+                                <rect key="frame" x="0.0" y="711" width="467" height="2"/>
+                                <color key="backgroundColor" red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="eM1-ZI-HTe"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za2-f1-rm6">
+                                <rect key="frame" x="0.0" y="713" width="467" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="pMC-7M-pgF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <state key="normal" title="Launch">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="launchPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="z4N-Lh-2xP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Za2-f1-rm6" firstAttribute="top" secondItem="G6U-Jd-LYd" secondAttribute="bottom" constant="20" id="2Os-sZ-dfH"/>
+                            <constraint firstAttribute="trailing" secondItem="ckS-jK-qJk" secondAttribute="trailing" id="8tl-Au-tjW"/>
+                            <constraint firstItem="G6U-Jd-LYd" firstAttribute="top" secondItem="kO5-07-AbE" secondAttribute="top" constant="10" id="D3b-Zr-oSW"/>
+                            <constraint firstAttribute="bottom" secondItem="Za2-f1-rm6" secondAttribute="bottom" id="TGc-xC-MGV"/>
+                            <constraint firstItem="G6U-Jd-LYd" firstAttribute="leading" secondItem="kO5-07-AbE" secondAttribute="leading" constant="20" id="Txr-cK-cMA"/>
+                            <constraint firstAttribute="trailing" secondItem="Za2-f1-rm6" secondAttribute="trailing" id="ZDF-kp-Wh4"/>
+                            <constraint firstItem="ckS-jK-qJk" firstAttribute="leading" secondItem="kO5-07-AbE" secondAttribute="leading" id="eos-Hc-wdb"/>
+                            <constraint firstItem="Za2-f1-rm6" firstAttribute="top" secondItem="ckS-jK-qJk" secondAttribute="bottom" id="fbx-Yb-PUO"/>
+                            <constraint firstItem="Za2-f1-rm6" firstAttribute="leading" secondItem="kO5-07-AbE" secondAttribute="leading" id="iOc-gc-HV0"/>
+                            <constraint firstAttribute="trailing" secondItem="G6U-Jd-LYd" secondAttribute="trailing" constant="20" id="yMr-ud-F2D"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="kO5-07-AbE" secondAttribute="trailing" constant="20" id="34A-0n-EUY"/>
+                    <constraint firstAttribute="bottom" secondItem="kO5-07-AbE" secondAttribute="bottom" constant="20" id="IdY-Oh-AOT"/>
+                    <constraint firstItem="kO5-07-AbE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="Iru-2w-Ft8"/>
+                    <constraint firstItem="kO5-07-AbE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="PcF-ek-g9x"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <inset key="separatorInset" minX="70" minY="0.0" maxX="18" maxY="0.0"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <integer key="value" value="0"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="cardView" destination="kO5-07-AbE" id="3K1-TD-L44"/>
+                <outlet property="segmentControl" destination="Fy3-ac-DP6" id="R32-uL-og4"/>
+            </connections>
+            <point key="canvasLocation" x="270.28985507246381" y="386.04910714285711"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="rocket" width="512" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
