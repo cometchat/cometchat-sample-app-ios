@@ -1,6 +1,17 @@
-platform :ios, '11.0'
-use_frameworks!
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '11.0'
 
 target 'CometChatSwift' do
-  pod 'CometChatPro', '2.2.1'
-end 
+   pod 'CometChatPro', '3.0.0-beta1'
+
+end
+
+# target 'CometChat KitchenSinkTests' do
+#   pod 'CometChatPro', '3.0.0-beta1'
+
+# end
+
+# target 'CometChat KitchenSink UITests' do
+#   pod 'CometChatPro', '3.0.0-beta1'
+
+# end

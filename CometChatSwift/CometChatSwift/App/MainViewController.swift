@@ -15,6 +15,8 @@ class MainViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         setupTableView()
         if #available(iOS 13.0, *) {
             view.backgroundColor = UIColor.systemBackground
@@ -198,8 +200,7 @@ extension MainViewController: CometChatUIScreenCellDelegate {
                         }) { (error) in
                             DispatchQueue.main.async {
                                 if let errorMessage = error?.errorDescription {
-                                    let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: errorMessage, duration: .short)
-                                    snackbar.show()
+                                    CometChatSnackBoard.display(message:  errorMessage, mode: .error, duration: .short)
                                 }
                             }
                         }
@@ -265,8 +266,7 @@ extension MainViewController: CometChatCallingCellDelegate {
             }) { (error) in
                 DispatchQueue.main.async {
                     if let errorMessage = error?.errorDescription {
-                        let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: errorMessage, duration: .short)
-                        snackbar.show()
+                        CometChatSnackBoard.display(message:  errorMessage, mode: .error, duration: .short)
                     }
                 }
             }
@@ -278,8 +278,7 @@ extension MainViewController: CometChatCallingCellDelegate {
             }) { (error) in
                 DispatchQueue.main.async {
                     if let errorMessage = error?.errorDescription {
-                        let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: errorMessage, duration: .short)
-                        snackbar.show()
+                        CometChatSnackBoard.display(message:  errorMessage, mode: .error, duration: .short)
                     }
                 }
             }
@@ -302,13 +301,11 @@ extension MainViewController: LogoutCellDelegate {
                          let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                          let viewController = mainStoryboard.instantiateViewController(withIdentifier: "loginWithDemoUsers") as! LoginWithDemoUsers
                          UIApplication.shared.keyWindow?.rootViewController = viewController
-                         let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: "Logged out successfully.", duration: .short)
-                        snackbar.show()
+                        CometChatSnackBoard.display(message:  "Logged out successfully.", mode: .error, duration: .short)
                          }
                  }) { (error) in
                      DispatchQueue.main.async {
-                       let snackbar: CometChatSnackbar = CometChatSnackbar.init(message: error.errorDescription, duration: .short)
-                        snackbar.show()
+                        CometChatSnackBoard.display(message:  error.errorDescription, mode: .error, duration: .short)
                      }
                  }
         })

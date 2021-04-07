@@ -38,6 +38,16 @@
                ReferencedContainer = "container:CometChatSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "587038D426049BFA00B03467"
+               BuildableName = "CometChat KitchenSinkTests.xctest"
+               BlueprintName = "CometChat KitchenSinkTests"
+               ReferencedContainer = "container:CometChatSwift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
