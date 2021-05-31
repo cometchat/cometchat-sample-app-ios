@@ -113,8 +113,8 @@ class LoginWithUID: UIViewController, UITextFieldDelegate {
             }) { (error) in
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
-                    DispatchQueue.main.async {
-                        CometChatSnackBoard.display(message:  error.errorCode.localized(), mode: .error, duration: .short)
+                    if let error = error as? CometChatException{
+                        CometChatSnackBoard.showErrorMessage(for: error)
                     }
                 }
              
