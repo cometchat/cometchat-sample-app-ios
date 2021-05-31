@@ -62,5 +62,10 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSExtensionActivationRule</key>
+	<dict>
+		<key>NSExtensionActivationSupportsImageWithMaxCount</key>
+		<string>1</string>
+	</dict>
 </dict>
 </plist>

@@ -98,10 +98,8 @@ class LoginWithDemoUsers: UIViewController {
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     DispatchQueue.main.async {
-                        if error.errorCode.isLocalized {
-                            CometChatSnackBoard.display(message:  error.errorCode.localized() , mode: .error, duration: .short)
-                        }else{
-                            CometChatSnackBoard.display(message:  error.errorDescription , mode: .error, duration: .short)
+                        if let error = error as? CometChatException{
+                            CometChatSnackBoard.showErrorMessage(for: error)
                         }
                     }
                 }
