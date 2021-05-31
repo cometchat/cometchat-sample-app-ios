@@ -2,16 +2,16 @@
  platform :ios, '11.0'
 
 target 'CometChatSwift' do
-   pod 'CometChatPro', '3.0.0-beta1'
+   pod 'CometChatPro', '3.0.0-beta4'
 
 end
 
-# target 'CometChat KitchenSinkTests' do
-#   pod 'CometChatPro', '3.0.0-beta1'
+target 'CometChat KitchenSinkTests' do
+   pod 'CometChatPro', '3.0.0-beta4'
 
-# end
+end
 
-# target 'CometChat KitchenSink UITests' do
-#   pod 'CometChatPro', '3.0.0-beta1'
+target 'CometChat KitchenSink UITests' do
+   pod 'CometChatPro', '3.0.0-beta4'
 
-# end
+end
