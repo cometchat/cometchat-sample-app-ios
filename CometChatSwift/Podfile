@@ -3,18 +3,18 @@
 
 target 'CometChatSwift' do
 
-   pod 'CometChatPro', '2.3.5'
+   pod 'CometChatPro', '2.3.7'
 
 end
 
 target 'CometChat KitchenSinkTests' do
 
-   pod 'CometChatPro', '2.3.5'
+   pod 'CometChatPro', '2.3.7'
 
 end
 
 target 'CometChat KitchenSink UITests' do
 
-   pod 'CometChatPro', '2.3.5'
+   pod 'CometChatPro', '2.3.7'
 
 end
