@@ -73,6 +73,7 @@ class LoginWithDemoUsers: UIViewController {
             
             CometChat.login(UID: UID, apiKey: Constants.authKey, onSuccess: { (current_user) in
                 let userID:String = current_user.uid!
+                print("current_user: \(current_user.stringValue())")
                 UserDefaults.standard.set(userID, forKey: "LoggedInUserUID")
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()

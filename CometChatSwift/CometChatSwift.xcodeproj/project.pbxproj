@@ -584,6 +584,7 @@
 		58163FAA25CC320800475B5C /* CreateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FA825CC320700475B5C /* CreateUserTests.swift */; };
 		58163FAB25CC320800475B5C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FA925CC320800475B5C /* LoginTests.swift */; };
 		58163FAF25CC35BC00475B5C /* CometChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FAE25CC35BC00475B5C /* CometChatUITests.swift */; };
+		5825BFC326788D17000C60AA /* location-map.png in Resources */ = {isa = PBXBuildFile; fileRef = 5825BFC226788D17000C60AA /* location-map.png */; };
 		587038ED26049C2700B03467 /* 07CreateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E426049C2600B03467 /* 07CreateUserTests.swift */; };
 		587038EE26049C2700B03467 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E526049C2600B03467 /* Constants.swift */; };
 		587038EF26049C2700B03467 /* 1InitializeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E626049C2600B03467 /* 1InitializeTests.swift */; };
@@ -1244,6 +1245,7 @@
 		58163FA825CC320700475B5C /* CreateUserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserTests.swift; sourceTree = "<group>"; };
 		58163FA925CC320800475B5C /* LoginTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		58163FAE25CC35BC00475B5C /* CometChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CometChatUITests.swift; sourceTree = "<group>"; };
+		5825BFC226788D17000C60AA /* location-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-map.png"; sourceTree = "<group>"; };
 		587038D526049BFA00B03467 /* CometChat KitchenSinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CometChat KitchenSinkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		587038D926049BFA00B03467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		587038E126049C2600B03467 /* CometChat KitchenSinkTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CometChat KitchenSinkTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -2739,6 +2741,7 @@
 				580B40392660090800C98182 /* sticker1@3x.png */,
 				580B403A2660090800C98182 /* delivered@3x.png */,
 				580B403B2660090800C98182 /* back.png */,
+				5825BFC226788D17000C60AA /* location-map.png */,
 				580B403C2660090800C98182 /* more_vertical@3x.png */,
 				580B403D2660090800C98182 /* wait.png */,
 				580B403E2660090800C98182 /* createMeeting@2x.png */,
@@ -3178,6 +3181,7 @@
 				580B40BD2660090800C98182 /* CometChatIncomingCall.xib in Resources */,
 				580B42502660090900C98182 /* 􀈑@2x.png in Resources */,
 				DBFBC47823A7B9240027938E /* LaunchScreen.storyboard in Resources */,
+				5825BFC326788D17000C60AA /* location-map.png in Resources */,
 				580B42BA2660090900C98182 /* calling@2x.png in Resources */,
 				580B41052660090800C98182 /* CometChatCreatePollAddNewOption.xib in Resources */,
 				580B424F2660090900C98182 /* sent@2x.png in Resources */,
