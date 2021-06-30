@@ -79,16 +79,16 @@ class CometChatSenderLocationMessageBubble: UITableViewCell {
                 messageView.clipsToBounds = true
                 
                 if locationMessage.readAt > 0 {
-                    receipt.image = UIImage(named: "read", in: UIKitSettings.bundle, compatibleWith: nil)
+                    receipt.image = UIImage(named: "message-read", in: UIKitSettings.bundle, compatibleWith: nil)
                     timeStamp.text = String().setMessageTime(time: Int(locationMessage?.readAt ?? 0))
                 }else if locationMessage.deliveredAt > 0 {
-                    receipt.image = UIImage(named: "delivered", in: UIKitSettings.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+                    receipt.image = UIImage(named: "message-delivered", in: UIKitSettings.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
                     timeStamp.text = String().setMessageTime(time: Int(locationMessage?.deliveredAt ?? 0))
                 }else if locationMessage.sentAt > 0 {
-                    receipt.image = UIImage(named: "sent", in: UIKitSettings.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+                    receipt.image = UIImage(named: "message-sent", in: UIKitSettings.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
                     timeStamp.text = String().setMessageTime(time: Int(locationMessage?.sentAt ?? 0))
                 }else if locationMessage.sentAt == 0 {
-                    receipt.image = UIImage(named: "wait", in: UIKitSettings.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+                    receipt.image = UIImage(named: "messages-wait", in: UIKitSettings.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
                     timeStamp.text = "SENDING".localized()
                 }
                 receipt.contentMode = .scaleAspectFit

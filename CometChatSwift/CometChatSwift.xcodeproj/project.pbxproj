@@ -10,6 +10,243 @@
 		58163FAA25CC320800475B5C /* CreateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FA825CC320700475B5C /* CreateUserTests.swift */; };
 		58163FAB25CC320800475B5C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FA925CC320800475B5C /* LoginTests.swift */; };
 		58163FAF25CC35BC00475B5C /* CometChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FAE25CC35BC00475B5C /* CometChatUITests.swift */; };
+		5837D0D1268C6FD800518A89 /* CometChatStartConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5837D0D0268C6FD800518A89 /* CometChatStartConversation.swift */; };
+		5837D0ED268C831000518A89 /* cometchatui-chats.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0D5268C830F00518A89 /* cometchatui-chats.png */; };
+		5837D0EE268C831000518A89 /* cometchatui-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0D6268C830F00518A89 /* cometchatui-back.png */; };
+		5837D0EF268C831000518A89 /* cometchatui-more.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0D7268C830F00518A89 /* cometchatui-more.png */; };
+		5837D0F0268C831000518A89 /* cometchatui-back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0D8268C830F00518A89 /* cometchatui-back@3x.png */; };
+		5837D0F1268C831000518A89 /* cometchatui-users@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0D9268C831000518A89 /* cometchatui-users@2x.png */; };
+		5837D0F2268C831000518A89 /* cometchatui-users@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0DA268C831000518A89 /* cometchatui-users@3x.png */; };
+		5837D0F4268C831000518A89 /* cometchatui-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0DC268C831000518A89 /* cometchatui-back@2x.png */; };
+		5837D0F5268C831000518A89 /* cometchatui-calls.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0DD268C831000518A89 /* cometchatui-calls.png */; };
+		5837D0F8268C831000518A89 /* cometchatui-groups@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0E0268C831000518A89 /* cometchatui-groups@3x.png */; };
+		5837D0F9268C831000518A89 /* cometchatui-users.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0E1268C831000518A89 /* cometchatui-users.png */; };
+		5837D0FB268C831000518A89 /* cometchatui-groups@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0E3268C831000518A89 /* cometchatui-groups@2x.png */; };
+		5837D0FE268C831000518A89 /* cometchatui-groups.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0E6268C831000518A89 /* cometchatui-groups.png */; };
+		5837D0FF268C831000518A89 /* cometchatui-calls@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0E7268C831000518A89 /* cometchatui-calls@2x.png */; };
+		5837D100268C831000518A89 /* cometchatui-more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0E8268C831000518A89 /* cometchatui-more@2x.png */; };
+		5837D101268C831000518A89 /* cometchatui-chats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0E9268C831000518A89 /* cometchatui-chats@2x.png */; };
+		5837D102268C831000518A89 /* cometchatui-chats@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0EA268C831000518A89 /* cometchatui-chats@3x.png */; };
+		5837D103268C831000518A89 /* cometchatui-more@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0EB268C831000518A89 /* cometchatui-more@3x.png */; };
+		5837D104268C831000518A89 /* cometchatui-calls@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D0EC268C831000518A89 /* cometchatui-calls@3x.png */; };
+		5837D11A268C844000518A89 /* chats-back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D105268C843F00518A89 /* chats-back@3x.png */; };
+		5837D11B268C844000518A89 /* chats-message-delivered.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D106268C843F00518A89 /* chats-message-delivered.png */; };
+		5837D11C268C844000518A89 /* chats-message-delivered@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D107268C843F00518A89 /* chats-message-delivered@3x.png */; };
+		5837D11D268C844000518A89 /* chats-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D108268C843F00518A89 /* chats-back@2x.png */; };
+		5837D11E268C844000518A89 /* chats-message-read@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D109268C843F00518A89 /* chats-message-read@3x.png */; };
+		5837D11F268C844000518A89 /* chats-delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D10A268C843F00518A89 /* chats-delete@2x.png */; };
+		5837D120268C844000518A89 /* chats-delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D10B268C843F00518A89 /* chats-delete@3x.png */; };
+		5837D121268C844000518A89 /* chats-create@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D10C268C843F00518A89 /* chats-create@3x.png */; };
+		5837D122268C844000518A89 /* chats-delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D10D268C843F00518A89 /* chats-delete.png */; };
+		5837D123268C844000518A89 /* chats-message-read.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D10E268C843F00518A89 /* chats-message-read.png */; };
+		5837D124268C844000518A89 /* chats-message-sent@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D10F268C844000518A89 /* chats-message-sent@3x.png */; };
+		5837D125268C844000518A89 /* chats-message-read@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D110268C844000518A89 /* chats-message-read@4x.png */; };
+		5837D126268C844000518A89 /* chats-create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D111268C844000518A89 /* chats-create@2x.png */; };
+		5837D127268C844000518A89 /* chats-message-delivered@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D112268C844000518A89 /* chats-message-delivered@2x.png */; };
+		5837D128268C844000518A89 /* chats-message-sent.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D113268C844000518A89 /* chats-message-sent.png */; };
+		5837D129268C844000518A89 /* chats-message-read@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D114268C844000518A89 /* chats-message-read@2x.png */; };
+		5837D12A268C844000518A89 /* chats-message-sent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D115268C844000518A89 /* chats-message-sent@2x.png */; };
+		5837D12B268C844000518A89 /* chats-message-sent@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D116268C844000518A89 /* chats-message-sent@4x.png */; };
+		5837D12C268C844000518A89 /* chats-create.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D117268C844000518A89 /* chats-create.png */; };
+		5837D12D268C844000518A89 /* chats-message-delivered@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D118268C844000518A89 /* chats-message-delivered@4x.png */; };
+		5837D12E268C844000518A89 /* chats-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D119268C844000518A89 /* chats-back.png */; };
+		5837D156268C88A600518A89 /* incoming-audio-call@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D131268C88A600518A89 /* incoming-audio-call@4x.png */; };
+		5837D157268C88A600518A89 /* outgoing-audio-call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D132268C88A600518A89 /* outgoing-audio-call@3x.png */; };
+		5837D158268C88A600518A89 /* calls-delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D133268C88A600518A89 /* calls-delete@2x.png */; };
+		5837D159268C88A600518A89 /* incoming-video-call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D134268C88A600518A89 /* incoming-video-call@3x.png */; };
+		5837D15A268C88A600518A89 /* outgoing-video-call@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D135268C88A600518A89 /* outgoing-video-call@4x.png */; };
+		5837D15B268C88A600518A89 /* outgoing-video-call.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D136268C88A600518A89 /* outgoing-video-call.png */; };
+		5837D15C268C88A600518A89 /* video-call@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D137268C88A600518A89 /* video-call@4x.png */; };
+		5837D15D268C88A600518A89 /* calls-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D138268C88A600518A89 /* calls-back.png */; };
+		5837D15E268C88A600518A89 /* calls-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D139268C88A600518A89 /* calls-back@2x.png */; };
+		5837D15F268C88A600518A89 /* calls-back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D13A268C88A600518A89 /* calls-back@3x.png */; };
+		5837D160268C88A600518A89 /* incoming-video-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D13B268C88A600518A89 /* incoming-video-call@2x.png */; };
+		5837D161268C88A600518A89 /* calls-delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D13C268C88A600518A89 /* calls-delete@3x.png */; };
+		5837D162268C88A600518A89 /* outgoing-audio-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D13D268C88A600518A89 /* outgoing-audio-call@2x.png */; };
+		5837D163268C88A600518A89 /* new-call@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D13E268C88A600518A89 /* new-call@4x.png */; };
+		5837D164268C88A600518A89 /* new-call.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D13F268C88A600518A89 /* new-call.png */; };
+		5837D165268C88A600518A89 /* video-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D140268C88A600518A89 /* video-call@2x.png */; };
+		5837D166268C88A600518A89 /* new-call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D141268C88A600518A89 /* new-call@3x.png */; };
+		5837D167268C88A600518A89 /* incoming-audio-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D142268C88A600518A89 /* incoming-audio-call@2x.png */; };
+		5837D168268C88A600518A89 /* calls-delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D143268C88A600518A89 /* calls-delete.png */; };
+		5837D169268C88A600518A89 /* outgoing-video-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D144268C88A600518A89 /* outgoing-video-call@2x.png */; };
+		5837D16A268C88A600518A89 /* outgoing-video-call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D145268C88A600518A89 /* outgoing-video-call@3x.png */; };
+		5837D16B268C88A600518A89 /* incoming-video-call@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D146268C88A600518A89 /* incoming-video-call@4x.png */; };
+		5837D16C268C88A600518A89 /* outgoing-audio-call@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D147268C88A600518A89 /* outgoing-audio-call@4x.png */; };
+		5837D16D268C88A600518A89 /* incoming-video-call.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D148268C88A600518A89 /* incoming-video-call.png */; };
+		5837D16E268C88A600518A89 /* incoming-audio-call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D149268C88A600518A89 /* incoming-audio-call@3x.png */; };
+		5837D16F268C88A600518A89 /* new-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D14A268C88A600518A89 /* new-call@2x.png */; };
+		5837D170268C88A600518A89 /* video-call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D14B268C88A600518A89 /* video-call@3x.png */; };
+		5837D171268C88A600518A89 /* end-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D14C268C88A600518A89 /* end-call@2x.png */; };
+		5837D172268C88A600518A89 /* end-call.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D14D268C88A600518A89 /* end-call.png */; };
+		5837D173268C88A600518A89 /* calls-audio-call@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D14E268C88A600518A89 /* calls-audio-call@4x.png */; };
+		5837D174268C88A600518A89 /* video-call.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D14F268C88A600518A89 /* video-call.png */; };
+		5837D175268C88A600518A89 /* end-call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D150268C88A600518A89 /* end-call@3x.png */; };
+		5837D176268C88A600518A89 /* outgoing-audio-call.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D151268C88A600518A89 /* outgoing-audio-call.png */; };
+		5837D177268C88A600518A89 /* incoming-audio-call.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D152268C88A600518A89 /* incoming-audio-call.png */; };
+		5837D178268C88A600518A89 /* end-call@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D153268C88A600518A89 /* end-call@4x.png */; };
+		5837D179268C88A600518A89 /* calls-audio-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D154268C88A600518A89 /* calls-audio-call@2x.png */; };
+		5837D17A268C88A600518A89 /* calls-audio-call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D155268C88A600518A89 /* calls-audio-call@3x.png */; };
+		5837D185268C8EB700518A89 /* userprofile-privacy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D17C268C8EB700518A89 /* userprofile-privacy.png */; };
+		5837D186268C8EB700518A89 /* userprofile-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D17D268C8EB700518A89 /* userprofile-back@2x.png */; };
+		5837D187268C8EB700518A89 /* userprofile-edit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D17E268C8EB700518A89 /* userprofile-edit@3x.png */; };
+		5837D188268C8EB700518A89 /* userprofile-edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D17F268C8EB700518A89 /* userprofile-edit@2x.png */; };
+		5837D189268C8EB700518A89 /* userprofile-back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D180268C8EB700518A89 /* userprofile-back@3x.png */; };
+		5837D18A268C8EB700518A89 /* userprofile-privacy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D181268C8EB700518A89 /* userprofile-privacy@3x.png */; };
+		5837D18B268C8EB700518A89 /* userprofile-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D182268C8EB700518A89 /* userprofile-back.png */; };
+		5837D18C268C8EB700518A89 /* userprofile-edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D183268C8EB700518A89 /* userprofile-edit.png */; };
+		5837D18D268C8EB700518A89 /* userprofile-privacy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D184268C8EB700518A89 /* userprofile-privacy@2x.png */; };
+		5837D192268C910200518A89 /* users-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D18F268C910200518A89 /* users-back@2x.png */; };
+		5837D193268C910200518A89 /* users-back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D190268C910200518A89 /* users-back@3x.png */; };
+		5837D194268C910200518A89 /* users-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D191268C910200518A89 /* users-back.png */; };
+		5837D1A9268C923300518A89 /* private-group@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D196268C923300518A89 /* private-group@4x.png */; };
+		5837D1AA268C923300518A89 /* password-protected-group@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D197268C923300518A89 /* password-protected-group@4x.png */; };
+		5837D1AB268C923300518A89 /* ban-member.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D198268C923300518A89 /* ban-member.png */; };
+		5837D1AC268C923300518A89 /* password-protected-group@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D199268C923300518A89 /* password-protected-group@2x.png */; };
+		5837D1AD268C923300518A89 /* private-group@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D19A268C923300518A89 /* private-group@2x.png */; };
+		5837D1AE268C923300518A89 /* groups-create.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D19B268C923300518A89 /* groups-create.png */; };
+		5837D1AF268C923300518A89 /* private-group@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D19C268C923300518A89 /* private-group@3x.png */; };
+		5837D1B0268C923300518A89 /* password-protected-group.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D19D268C923300518A89 /* password-protected-group.png */; };
+		5837D1B1268C923300518A89 /* password-protected-group@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D19E268C923300518A89 /* password-protected-group@3x.png */; };
+		5837D1B2268C923300518A89 /* groups-delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D19F268C923300518A89 /* groups-delete.png */; };
+		5837D1B3268C923300518A89 /* groups-create@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1A0268C923300518A89 /* groups-create@3x.png */; };
+		5837D1B4268C923300518A89 /* groups-create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1A1268C923300518A89 /* groups-create@2x.png */; };
+		5837D1B5268C923300518A89 /* ban-member@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1A2268C923300518A89 /* ban-member@4x.png */; };
+		5837D1B6268C923300518A89 /* ban-member@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1A3268C923300518A89 /* ban-member@3x.png */; };
+		5837D1B7268C923300518A89 /* groups-delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1A4268C923300518A89 /* groups-delete@3x.png */; };
+		5837D1B8268C923300518A89 /* private-group@1.5x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1A5268C923300518A89 /* private-group@1.5x.png */; };
+		5837D1B9268C923300518A89 /* private-group.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1A6268C923300518A89 /* private-group.png */; };
+		5837D1BA268C923300518A89 /* ban-member@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1A7268C923300518A89 /* ban-member@2x.png */; };
+		5837D1BB268C923300518A89 /* groups-delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1A8268C923300518A89 /* groups-delete@2x.png */; };
+		5837D267268C992200518A89 /* messages-image@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1EE268C992100518A89 /* messages-image@4x.png */; };
+		5837D268268C992200518A89 /* messages-edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1EF268C992100518A89 /* messages-edit.png */; };
+		5837D269268C992200518A89 /* messages-close-circle@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1F0268C992100518A89 /* messages-close-circle@4x.png */; };
+		5837D26A268C992200518A89 /* messages-attach.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1F1268C992100518A89 /* messages-attach.png */; };
+		5837D26B268C992200518A89 /* message-read@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1F2268C992100518A89 /* message-read@4x.png */; };
+		5837D26C268C992200518A89 /* microphone-circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1F3268C992100518A89 /* microphone-circle@2x.png */; };
+		5837D26D268C992200518A89 /* messages-video-call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1F4268C992100518A89 /* messages-video-call@3x.png */; };
+		5837D26E268C992200518A89 /* message-translate@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1F5268C992100518A89 /* message-translate@4x.png */; };
+		5837D26F268C992200518A89 /* messages-delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1F6268C992100518A89 /* messages-delete@3x.png */; };
+		5837D270268C992200518A89 /* messages-delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1F7268C992100518A89 /* messages-delete.png */; };
+		5837D271268C992200518A89 /* send-message-filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1F8268C992100518A89 /* send-message-filled.png */; };
+		5837D272268C992200518A89 /* messages-share@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1F9268C992100518A89 /* messages-share@4x.png */; };
+		5837D273268C992200518A89 /* message-delivered@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1FA268C992100518A89 /* message-delivered@3x.png */; };
+		5837D274268C992200518A89 /* reply-message.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1FB268C992100518A89 /* reply-message.png */; };
+		5837D275268C992200518A89 /* messages-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1FC268C992100518A89 /* messages-back.png */; };
+		5837D276268C992200518A89 /* reply-message-in-private@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1FD268C992100518A89 /* reply-message-in-private@4x.png */; };
+		5837D277268C992200518A89 /* message-delivered@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1FE268C992100518A89 /* message-delivered@2x.png */; };
+		5837D278268C992200518A89 /* add-circle-filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D1FF268C992100518A89 /* add-circle-filled.png */; };
+		5837D279268C992200518A89 /* messages-forward-message@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D200268C992100518A89 /* messages-forward-message@4x.png */; };
+		5837D27A268C992200518A89 /* messages-attach@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D201268C992100518A89 /* messages-attach@4x.png */; };
+		5837D27B268C992200518A89 /* messages-delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D202268C992100518A89 /* messages-delete@2x.png */; };
+		5837D27C268C992200518A89 /* messages-video-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D203268C992100518A89 /* messages-video-call@2x.png */; };
+		5837D27D268C992200518A89 /* microphone-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D204268C992100518A89 /* microphone-circle.png */; };
+		5837D27E268C992200518A89 /* microphone-circle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D205268C992100518A89 /* microphone-circle@3x.png */; };
+		5837D27F268C992200518A89 /* send-message-filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D206268C992100518A89 /* send-message-filled@2x.png */; };
+		5837D280268C992200518A89 /* messages-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D207268C992100518A89 /* messages-share@2x.png */; };
+		5837D281268C992200518A89 /* reply-message-in-private.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D208268C992100518A89 /* reply-message-in-private.png */; };
+		5837D282268C992200518A89 /* reply-message-in-private@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D209268C992100518A89 /* reply-message-in-private@3x.png */; };
+		5837D283268C992200518A89 /* messages-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D20A268C992100518A89 /* messages-camera.png */; };
+		5837D284268C992200518A89 /* messages-forward-message.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D20B268C992100518A89 /* messages-forward-message.png */; };
+		5837D285268C992200518A89 /* messages-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D20C268C992100518A89 /* messages-image@2x.png */; };
+		5837D286268C992200518A89 /* messages-close-circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D20D268C992100518A89 /* messages-close-circle@2x.png */; };
+		5837D287268C992200518A89 /* message-read@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D20E268C992100518A89 /* message-read@2x.png */; };
+		5837D288268C992200518A89 /* messages-audio-call.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D20F268C992100518A89 /* messages-audio-call.png */; };
+		5837D289268C992200518A89 /* message-translate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D210268C992100518A89 /* message-translate.png */; };
+		5837D28A268C992200518A89 /* message-translate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D211268C992100518A89 /* message-translate@2x.png */; };
+		5837D28B268C992200518A89 /* messages-emoji.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D212268C992100518A89 /* messages-emoji.png */; };
+		5837D28C268C992200518A89 /* messages-attach@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D213268C992100518A89 /* messages-attach@3x.png */; };
+		5837D28D268C992200518A89 /* messages-audio-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D214268C992100518A89 /* messages-audio-call@2x.png */; };
+		5837D28E268C992200518A89 /* messages-forward-message@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D215268C992100518A89 /* messages-forward-message@3x.png */; };
+		5837D28F268C992200518A89 /* messages-forward-message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D216268C992100518A89 /* messages-forward-message@2x.png */; };
+		5837D290268C992200518A89 /* messages-audio-call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D217268C992100518A89 /* messages-audio-call@3x.png */; };
+		5837D291268C992200518A89 /* messages-delete@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D218268C992100518A89 /* messages-delete@4x.png */; };
+		5837D292268C992200518A89 /* messages-attach@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D219268C992200518A89 /* messages-attach@2x.png */; };
+		5837D293268C992200518A89 /* message-translate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D21A268C992200518A89 /* message-translate@3x.png */; };
+		5837D294268C992200518A89 /* photo-library.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D21B268C992200518A89 /* photo-library.png */; };
+		5837D295268C992200518A89 /* message-read@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D21C268C992200518A89 /* message-read@3x.png */; };
+		5837D296268C992200518A89 /* messages-close-circle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D21D268C992200518A89 /* messages-close-circle@3x.png */; };
+		5837D297268C992200518A89 /* messages-image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D21E268C992200518A89 /* messages-image@3x.png */; };
+		5837D298268C992200518A89 /* reply-message-in-private@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D21F268C992200518A89 /* reply-message-in-private@2x.png */; };
+		5837D299268C992200518A89 /* message-delivered@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D220268C992200518A89 /* message-delivered@4x.png */; };
+		5837D29A268C992200518A89 /* messages-share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D221268C992200518A89 /* messages-share@3x.png */; };
+		5837D29B268C992200518A89 /* send-message-filled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D222268C992200518A89 /* send-message-filled@3x.png */; };
+		5837D29C268C992200518A89 /* threaded-message@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D223268C992200518A89 /* threaded-message@3x.png */; };
+		5837D29D268C992200518A89 /* messages-camera@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D224268C992200518A89 /* messages-camera@4x.png */; };
+		5837D29E268C992200518A89 /* photo-library@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D225268C992200518A89 /* photo-library@2x.png */; };
+		5837D29F268C992200518A89 /* messages-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D226268C992200518A89 /* messages-image.png */; };
+		5837D2A0268C992200518A89 /* messages-stickers@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D227268C992200518A89 /* messages-stickers@3x.png */; };
+		5837D2A1268C992200518A89 /* messages-edit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D228268C992200518A89 /* messages-edit@3x.png */; };
+		5837D2A2268C992200518A89 /* messages-wait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D229268C992200518A89 /* messages-wait@2x.png */; };
+		5837D2A3268C992200518A89 /* messages-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D22A268C992200518A89 /* messages-location@2x.png */; };
+		5837D2A4268C992200518A89 /* messages-file-upload@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D22B268C992200518A89 /* messages-file-upload@3x.png */; };
+		5837D2A5268C992200518A89 /* reply-message@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D22C268C992200518A89 /* reply-message@3x.png */; };
+		5837D2A6268C992200518A89 /* message-read.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D22D268C992200518A89 /* message-read.png */; };
+		5837D2A7268C992200518A89 /* messages-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D22E268C992200518A89 /* messages-back@2x.png */; };
+		5837D2A8268C992200518A89 /* message-sent@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D22F268C992200518A89 /* message-sent@4x.png */; };
+		5837D2A9268C992200518A89 /* messages-collaborative-document@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D230268C992200518A89 /* messages-collaborative-document@2x.png */; };
+		5837D2AA268C992200518A89 /* message-delivered.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D231268C992200518A89 /* message-delivered.png */; };
+		5837D2AB268C992200518A89 /* messages-collaborative-document@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D232268C992200518A89 /* messages-collaborative-document@3x.png */; };
+		5837D2AC268C992200518A89 /* messages-back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D233268C992200518A89 /* messages-back@3x.png */; };
+		5837D2AD268C992200518A89 /* messages-collaborative-whiteboard@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D234268C992200518A89 /* messages-collaborative-whiteboard@4x.png */; };
+		5837D2AE268C992200518A89 /* messages-audio-file.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D235268C992200518A89 /* messages-audio-file.png */; };
+		5837D2AF268C992200518A89 /* messages-polls@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D236268C992200518A89 /* messages-polls@4x.png */; };
+		5837D2B0268C992200518A89 /* reply-message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D237268C992200518A89 /* reply-message@2x.png */; };
+		5837D2B1268C992200518A89 /* messages-location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D238268C992200518A89 /* messages-location@3x.png */; };
+		5837D2B2268C992200518A89 /* messages-file-upload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D239268C992200518A89 /* messages-file-upload@2x.png */; };
+		5837D2B3268C992200518A89 /* messages-stickers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D23A268C992200518A89 /* messages-stickers@2x.png */; };
+		5837D2B4268C992200518A89 /* messages-emoji@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D23B268C992200518A89 /* messages-emoji@4x.png */; };
+		5837D2B5268C992200518A89 /* messages-edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D23C268C992200518A89 /* messages-edit@2x.png */; };
+		5837D2B6268C992200518A89 /* messages-wait@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D23D268C992200518A89 /* messages-wait@3x.png */; };
+		5837D2B7268C992200518A89 /* photo-library@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D23E268C992200518A89 /* photo-library@3x.png */; };
+		5837D2B8268C992200518A89 /* messages-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D23F268C992200518A89 /* messages-share.png */; };
+		5837D2B9268C992200518A89 /* threaded-message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D240268C992200518A89 /* threaded-message@2x.png */; };
+		5837D2BA268C992200518A89 /* messages-audio-file@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D241268C992200518A89 /* messages-audio-file@4x.png */; };
+		5837D2BB268C992200518A89 /* messages-emoji@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D242268C992200518A89 /* messages-emoji@3x.png */; };
+		5837D2BC268C992200518A89 /* messages-wait@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D243268C992200518A89 /* messages-wait@4x.png */; };
+		5837D2BD268C992200518A89 /* messages-location@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D244268C992200518A89 /* messages-location@4x.png */; };
+		5837D2BE268C992200518A89 /* messages-collaborative-document.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D245268C992200518A89 /* messages-collaborative-document.png */; };
+		5837D2BF268C992200518A89 /* messages-polls@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D246268C992200518A89 /* messages-polls@3x.png */; };
+		5837D2C0268C992200518A89 /* messages-info@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D247268C992200518A89 /* messages-info@3x.png */; };
+		5837D2C1268C992200518A89 /* messages-collaborative-whiteboard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D248268C992200518A89 /* messages-collaborative-whiteboard@3x.png */; };
+		5837D2C2268C992200518A89 /* message-sent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D249268C992200518A89 /* message-sent@2x.png */; };
+		5837D2C3268C992200518A89 /* messages-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D24A268C992200518A89 /* messages-info.png */; };
+		5837D2C4268C992200518A89 /* messages-collaborative-document@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D24B268C992200518A89 /* messages-collaborative-document@4x.png */; };
+		5837D2C5268C992200518A89 /* message-sent.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D24C268C992200518A89 /* message-sent.png */; };
+		5837D2C6268C992200518A89 /* messages-audio-file@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D24D268C992200518A89 /* messages-audio-file@3x.png */; };
+		5837D2C7268C992200518A89 /* messages-collaborative-whiteboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D24E268C992200518A89 /* messages-collaborative-whiteboard.png */; };
+		5837D2C8268C992200518A89 /* messages-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D24F268C992200518A89 /* messages-camera@2x.png */; };
+		5837D2C9268C992200518A89 /* messages-stickers.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D250268C992200518A89 /* messages-stickers.png */; };
+		5837D2CA268C992200518A89 /* add-circle-filled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D251268C992200518A89 /* add-circle-filled@3x.png */; };
+		5837D2CB268C992200518A89 /* messages-close-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D252268C992200518A89 /* messages-close-circle.png */; };
+		5837D2CC268C992200518A89 /* photo-library@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D253268C992200518A89 /* photo-library@4x.png */; };
+		5837D2CD268C992200518A89 /* messages-location.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D254268C992200518A89 /* messages-location.png */; };
+		5837D2CE268C992200518A89 /* messages-file-upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D255268C992200518A89 /* messages-file-upload.png */; };
+		5837D2CF268C992200518A89 /* threaded-message.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D256268C992200518A89 /* threaded-message.png */; };
+		5837D2D0268C992200518A89 /* add-circle-filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D257268C992200518A89 /* add-circle-filled@2x.png */; };
+		5837D2D1268C992200518A89 /* messages-camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D258268C992200518A89 /* messages-camera@3x.png */; };
+		5837D2D2268C992200518A89 /* messages-audio-file@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D259268C992200518A89 /* messages-audio-file@2x.png */; };
+		5837D2D3268C992200518A89 /* threaded-message@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D25A268C992200518A89 /* threaded-message@4x.png */; };
+		5837D2D4268C992200518A89 /* message-sent@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D25B268C992200518A89 /* message-sent@3x.png */; };
+		5837D2D5268C992200518A89 /* messages-wait.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D25C268C992200518A89 /* messages-wait.png */; };
+		5837D2D6268C992200518A89 /* messages-polls.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D25D268C992200518A89 /* messages-polls.png */; };
+		5837D2D7268C992200518A89 /* messages-collaborative-whiteboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D25E268C992200518A89 /* messages-collaborative-whiteboard@2x.png */; };
+		5837D2D8268C992200518A89 /* messages-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D25F268C992200518A89 /* messages-info@2x.png */; };
+		5837D2D9268C992200518A89 /* messages-polls@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D260268C992200518A89 /* messages-polls@2x.png */; };
+		5837D2DA268C992200518A89 /* reply-message@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D261268C992200518A89 /* reply-message@4x.png */; };
+		5837D2DB268C992200518A89 /* messages-video-call.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D262268C992200518A89 /* messages-video-call.png */; };
+		5837D2DC268C992200518A89 /* messages-file-upload@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D263268C992200518A89 /* messages-file-upload@4x.png */; };
+		5837D2DD268C992200518A89 /* messages-stickers@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D264268C992200518A89 /* messages-stickers@4x.png */; };
+		5837D2DE268C992200518A89 /* messages-emoji@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D265268C992200518A89 /* messages-emoji@2x.png */; };
+		5837D2DF268C992200518A89 /* messages-edit@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D266268C992200518A89 /* messages-edit@4x.png */; };
+		5837D2E4268C9D5100518A89 /* copy-paste.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D2E0268C9D4F00518A89 /* copy-paste.png */; };
+		5837D2E5268C9D5100518A89 /* copy-paste@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D2E1268C9D4F00518A89 /* copy-paste@4x.png */; };
+		5837D2E6268C9D5100518A89 /* copy-paste@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D2E2268C9D5000518A89 /* copy-paste@2x.png */; };
+		5837D2E7268C9D5100518A89 /* copy-paste@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D2E3268C9D5100518A89 /* copy-paste@3x.png */; };
+		5837D2EC268C9DD700518A89 /* send-message-in-private.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D2E8268C9DD500518A89 /* send-message-in-private.png */; };
+		5837D2ED268C9DD700518A89 /* send-message-in-private@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D2E9268C9DD600518A89 /* send-message-in-private@4x.png */; };
+		5837D2EE268C9DD700518A89 /* send-message-in-private@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D2EA268C9DD700518A89 /* send-message-in-private@3x.png */; };
+		5837D2EF268C9DD700518A89 /* send-message-in-private@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5837D2EB268C9DD700518A89 /* send-message-in-private@2x.png */; };
 		587038ED26049C2700B03467 /* 07CreateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E426049C2600B03467 /* 07CreateUserTests.swift */; };
 		587038EE26049C2700B03467 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E526049C2600B03467 /* Constants.swift */; };
 		587038EF26049C2700B03467 /* 1InitializeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E626049C2600B03467 /* 1InitializeTests.swift */; };
@@ -672,6 +909,243 @@
 		58163FA825CC320700475B5C /* CreateUserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserTests.swift; sourceTree = "<group>"; };
 		58163FA925CC320800475B5C /* LoginTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		58163FAE25CC35BC00475B5C /* CometChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CometChatUITests.swift; sourceTree = "<group>"; };
+		5837D0D0268C6FD800518A89 /* CometChatStartConversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatStartConversation.swift; sourceTree = "<group>"; };
+		5837D0D5268C830F00518A89 /* cometchatui-chats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-chats.png"; sourceTree = "<group>"; };
+		5837D0D6268C830F00518A89 /* cometchatui-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-back.png"; sourceTree = "<group>"; };
+		5837D0D7268C830F00518A89 /* cometchatui-more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-more.png"; sourceTree = "<group>"; };
+		5837D0D8268C830F00518A89 /* cometchatui-back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-back@3x.png"; sourceTree = "<group>"; };
+		5837D0D9268C831000518A89 /* cometchatui-users@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-users@2x.png"; sourceTree = "<group>"; };
+		5837D0DA268C831000518A89 /* cometchatui-users@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-users@3x.png"; sourceTree = "<group>"; };
+		5837D0DC268C831000518A89 /* cometchatui-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-back@2x.png"; sourceTree = "<group>"; };
+		5837D0DD268C831000518A89 /* cometchatui-calls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-calls.png"; sourceTree = "<group>"; };
+		5837D0E0268C831000518A89 /* cometchatui-groups@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-groups@3x.png"; sourceTree = "<group>"; };
+		5837D0E1268C831000518A89 /* cometchatui-users.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-users.png"; sourceTree = "<group>"; };
+		5837D0E3268C831000518A89 /* cometchatui-groups@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-groups@2x.png"; sourceTree = "<group>"; };
+		5837D0E6268C831000518A89 /* cometchatui-groups.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-groups.png"; sourceTree = "<group>"; };
+		5837D0E7268C831000518A89 /* cometchatui-calls@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-calls@2x.png"; sourceTree = "<group>"; };
+		5837D0E8268C831000518A89 /* cometchatui-more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-more@2x.png"; sourceTree = "<group>"; };
+		5837D0E9268C831000518A89 /* cometchatui-chats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-chats@2x.png"; sourceTree = "<group>"; };
+		5837D0EA268C831000518A89 /* cometchatui-chats@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-chats@3x.png"; sourceTree = "<group>"; };
+		5837D0EB268C831000518A89 /* cometchatui-more@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-more@3x.png"; sourceTree = "<group>"; };
+		5837D0EC268C831000518A89 /* cometchatui-calls@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cometchatui-calls@3x.png"; sourceTree = "<group>"; };
+		5837D105268C843F00518A89 /* chats-back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-back@3x.png"; sourceTree = "<group>"; };
+		5837D106268C843F00518A89 /* chats-message-delivered.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-delivered.png"; sourceTree = "<group>"; };
+		5837D107268C843F00518A89 /* chats-message-delivered@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-delivered@3x.png"; sourceTree = "<group>"; };
+		5837D108268C843F00518A89 /* chats-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-back@2x.png"; sourceTree = "<group>"; };
+		5837D109268C843F00518A89 /* chats-message-read@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-read@3x.png"; sourceTree = "<group>"; };
+		5837D10A268C843F00518A89 /* chats-delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-delete@2x.png"; sourceTree = "<group>"; };
+		5837D10B268C843F00518A89 /* chats-delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-delete@3x.png"; sourceTree = "<group>"; };
+		5837D10C268C843F00518A89 /* chats-create@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-create@3x.png"; sourceTree = "<group>"; };
+		5837D10D268C843F00518A89 /* chats-delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-delete.png"; sourceTree = "<group>"; };
+		5837D10E268C843F00518A89 /* chats-message-read.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-read.png"; sourceTree = "<group>"; };
+		5837D10F268C844000518A89 /* chats-message-sent@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-sent@3x.png"; sourceTree = "<group>"; };
+		5837D110268C844000518A89 /* chats-message-read@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-read@4x.png"; sourceTree = "<group>"; };
+		5837D111268C844000518A89 /* chats-create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-create@2x.png"; sourceTree = "<group>"; };
+		5837D112268C844000518A89 /* chats-message-delivered@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-delivered@2x.png"; sourceTree = "<group>"; };
+		5837D113268C844000518A89 /* chats-message-sent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-sent.png"; sourceTree = "<group>"; };
+		5837D114268C844000518A89 /* chats-message-read@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-read@2x.png"; sourceTree = "<group>"; };
+		5837D115268C844000518A89 /* chats-message-sent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-sent@2x.png"; sourceTree = "<group>"; };
+		5837D116268C844000518A89 /* chats-message-sent@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-sent@4x.png"; sourceTree = "<group>"; };
+		5837D117268C844000518A89 /* chats-create.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-create.png"; sourceTree = "<group>"; };
+		5837D118268C844000518A89 /* chats-message-delivered@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-message-delivered@4x.png"; sourceTree = "<group>"; };
+		5837D119268C844000518A89 /* chats-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chats-back.png"; sourceTree = "<group>"; };
+		5837D131268C88A600518A89 /* incoming-audio-call@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "incoming-audio-call@4x.png"; sourceTree = "<group>"; };
+		5837D132268C88A600518A89 /* outgoing-audio-call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outgoing-audio-call@3x.png"; sourceTree = "<group>"; };
+		5837D133268C88A600518A89 /* calls-delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calls-delete@2x.png"; sourceTree = "<group>"; };
+		5837D134268C88A600518A89 /* incoming-video-call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "incoming-video-call@3x.png"; sourceTree = "<group>"; };
+		5837D135268C88A600518A89 /* outgoing-video-call@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outgoing-video-call@4x.png"; sourceTree = "<group>"; };
+		5837D136268C88A600518A89 /* outgoing-video-call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outgoing-video-call.png"; sourceTree = "<group>"; };
+		5837D137268C88A600518A89 /* video-call@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-call@4x.png"; sourceTree = "<group>"; };
+		5837D138268C88A600518A89 /* calls-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calls-back.png"; sourceTree = "<group>"; };
+		5837D139268C88A600518A89 /* calls-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calls-back@2x.png"; sourceTree = "<group>"; };
+		5837D13A268C88A600518A89 /* calls-back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calls-back@3x.png"; sourceTree = "<group>"; };
+		5837D13B268C88A600518A89 /* incoming-video-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "incoming-video-call@2x.png"; sourceTree = "<group>"; };
+		5837D13C268C88A600518A89 /* calls-delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calls-delete@3x.png"; sourceTree = "<group>"; };
+		5837D13D268C88A600518A89 /* outgoing-audio-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outgoing-audio-call@2x.png"; sourceTree = "<group>"; };
+		5837D13E268C88A600518A89 /* new-call@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-call@4x.png"; sourceTree = "<group>"; };
+		5837D13F268C88A600518A89 /* new-call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-call.png"; sourceTree = "<group>"; };
+		5837D140268C88A600518A89 /* video-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-call@2x.png"; sourceTree = "<group>"; };
+		5837D141268C88A600518A89 /* new-call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-call@3x.png"; sourceTree = "<group>"; };
+		5837D142268C88A600518A89 /* incoming-audio-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "incoming-audio-call@2x.png"; sourceTree = "<group>"; };
+		5837D143268C88A600518A89 /* calls-delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calls-delete.png"; sourceTree = "<group>"; };
+		5837D144268C88A600518A89 /* outgoing-video-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outgoing-video-call@2x.png"; sourceTree = "<group>"; };
+		5837D145268C88A600518A89 /* outgoing-video-call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outgoing-video-call@3x.png"; sourceTree = "<group>"; };
+		5837D146268C88A600518A89 /* incoming-video-call@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "incoming-video-call@4x.png"; sourceTree = "<group>"; };
+		5837D147268C88A600518A89 /* outgoing-audio-call@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outgoing-audio-call@4x.png"; sourceTree = "<group>"; };
+		5837D148268C88A600518A89 /* incoming-video-call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "incoming-video-call.png"; sourceTree = "<group>"; };
+		5837D149268C88A600518A89 /* incoming-audio-call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "incoming-audio-call@3x.png"; sourceTree = "<group>"; };
+		5837D14A268C88A600518A89 /* new-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-call@2x.png"; sourceTree = "<group>"; };
+		5837D14B268C88A600518A89 /* video-call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-call@3x.png"; sourceTree = "<group>"; };
+		5837D14C268C88A600518A89 /* end-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "end-call@2x.png"; sourceTree = "<group>"; };
+		5837D14D268C88A600518A89 /* end-call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "end-call.png"; sourceTree = "<group>"; };
+		5837D14E268C88A600518A89 /* calls-audio-call@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calls-audio-call@4x.png"; sourceTree = "<group>"; };
+		5837D14F268C88A600518A89 /* video-call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-call.png"; sourceTree = "<group>"; };
+		5837D150268C88A600518A89 /* end-call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "end-call@3x.png"; sourceTree = "<group>"; };
+		5837D151268C88A600518A89 /* outgoing-audio-call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outgoing-audio-call.png"; sourceTree = "<group>"; };
+		5837D152268C88A600518A89 /* incoming-audio-call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "incoming-audio-call.png"; sourceTree = "<group>"; };
+		5837D153268C88A600518A89 /* end-call@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "end-call@4x.png"; sourceTree = "<group>"; };
+		5837D154268C88A600518A89 /* calls-audio-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calls-audio-call@2x.png"; sourceTree = "<group>"; };
+		5837D155268C88A600518A89 /* calls-audio-call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calls-audio-call@3x.png"; sourceTree = "<group>"; };
+		5837D17C268C8EB700518A89 /* userprofile-privacy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userprofile-privacy.png"; sourceTree = "<group>"; };
+		5837D17D268C8EB700518A89 /* userprofile-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userprofile-back@2x.png"; sourceTree = "<group>"; };
+		5837D17E268C8EB700518A89 /* userprofile-edit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userprofile-edit@3x.png"; sourceTree = "<group>"; };
+		5837D17F268C8EB700518A89 /* userprofile-edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userprofile-edit@2x.png"; sourceTree = "<group>"; };
+		5837D180268C8EB700518A89 /* userprofile-back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userprofile-back@3x.png"; sourceTree = "<group>"; };
+		5837D181268C8EB700518A89 /* userprofile-privacy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userprofile-privacy@3x.png"; sourceTree = "<group>"; };
+		5837D182268C8EB700518A89 /* userprofile-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userprofile-back.png"; sourceTree = "<group>"; };
+		5837D183268C8EB700518A89 /* userprofile-edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userprofile-edit.png"; sourceTree = "<group>"; };
+		5837D184268C8EB700518A89 /* userprofile-privacy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userprofile-privacy@2x.png"; sourceTree = "<group>"; };
+		5837D18F268C910200518A89 /* users-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "users-back@2x.png"; sourceTree = "<group>"; };
+		5837D190268C910200518A89 /* users-back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "users-back@3x.png"; sourceTree = "<group>"; };
+		5837D191268C910200518A89 /* users-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "users-back.png"; sourceTree = "<group>"; };
+		5837D196268C923300518A89 /* private-group@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "private-group@4x.png"; sourceTree = "<group>"; };
+		5837D197268C923300518A89 /* password-protected-group@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password-protected-group@4x.png"; sourceTree = "<group>"; };
+		5837D198268C923300518A89 /* ban-member.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ban-member.png"; sourceTree = "<group>"; };
+		5837D199268C923300518A89 /* password-protected-group@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password-protected-group@2x.png"; sourceTree = "<group>"; };
+		5837D19A268C923300518A89 /* private-group@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "private-group@2x.png"; sourceTree = "<group>"; };
+		5837D19B268C923300518A89 /* groups-create.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groups-create.png"; sourceTree = "<group>"; };
+		5837D19C268C923300518A89 /* private-group@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "private-group@3x.png"; sourceTree = "<group>"; };
+		5837D19D268C923300518A89 /* password-protected-group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password-protected-group.png"; sourceTree = "<group>"; };
+		5837D19E268C923300518A89 /* password-protected-group@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password-protected-group@3x.png"; sourceTree = "<group>"; };
+		5837D19F268C923300518A89 /* groups-delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groups-delete.png"; sourceTree = "<group>"; };
+		5837D1A0268C923300518A89 /* groups-create@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groups-create@3x.png"; sourceTree = "<group>"; };
+		5837D1A1268C923300518A89 /* groups-create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groups-create@2x.png"; sourceTree = "<group>"; };
+		5837D1A2268C923300518A89 /* ban-member@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ban-member@4x.png"; sourceTree = "<group>"; };
+		5837D1A3268C923300518A89 /* ban-member@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ban-member@3x.png"; sourceTree = "<group>"; };
+		5837D1A4268C923300518A89 /* groups-delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groups-delete@3x.png"; sourceTree = "<group>"; };
+		5837D1A5268C923300518A89 /* private-group@1.5x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "private-group@1.5x.png"; sourceTree = "<group>"; };
+		5837D1A6268C923300518A89 /* private-group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "private-group.png"; sourceTree = "<group>"; };
+		5837D1A7268C923300518A89 /* ban-member@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ban-member@2x.png"; sourceTree = "<group>"; };
+		5837D1A8268C923300518A89 /* groups-delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groups-delete@2x.png"; sourceTree = "<group>"; };
+		5837D1EE268C992100518A89 /* messages-image@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-image@4x.png"; sourceTree = "<group>"; };
+		5837D1EF268C992100518A89 /* messages-edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-edit.png"; sourceTree = "<group>"; };
+		5837D1F0268C992100518A89 /* messages-close-circle@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-close-circle@4x.png"; sourceTree = "<group>"; };
+		5837D1F1268C992100518A89 /* messages-attach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-attach.png"; sourceTree = "<group>"; };
+		5837D1F2268C992100518A89 /* message-read@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-read@4x.png"; sourceTree = "<group>"; };
+		5837D1F3268C992100518A89 /* microphone-circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone-circle@2x.png"; sourceTree = "<group>"; };
+		5837D1F4268C992100518A89 /* messages-video-call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-video-call@3x.png"; sourceTree = "<group>"; };
+		5837D1F5268C992100518A89 /* message-translate@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-translate@4x.png"; sourceTree = "<group>"; };
+		5837D1F6268C992100518A89 /* messages-delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-delete@3x.png"; sourceTree = "<group>"; };
+		5837D1F7268C992100518A89 /* messages-delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-delete.png"; sourceTree = "<group>"; };
+		5837D1F8268C992100518A89 /* send-message-filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-message-filled.png"; sourceTree = "<group>"; };
+		5837D1F9268C992100518A89 /* messages-share@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-share@4x.png"; sourceTree = "<group>"; };
+		5837D1FA268C992100518A89 /* message-delivered@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-delivered@3x.png"; sourceTree = "<group>"; };
+		5837D1FB268C992100518A89 /* reply-message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-message.png"; sourceTree = "<group>"; };
+		5837D1FC268C992100518A89 /* messages-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-back.png"; sourceTree = "<group>"; };
+		5837D1FD268C992100518A89 /* reply-message-in-private@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-message-in-private@4x.png"; sourceTree = "<group>"; };
+		5837D1FE268C992100518A89 /* message-delivered@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-delivered@2x.png"; sourceTree = "<group>"; };
+		5837D1FF268C992100518A89 /* add-circle-filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-circle-filled.png"; sourceTree = "<group>"; };
+		5837D200268C992100518A89 /* messages-forward-message@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-forward-message@4x.png"; sourceTree = "<group>"; };
+		5837D201268C992100518A89 /* messages-attach@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-attach@4x.png"; sourceTree = "<group>"; };
+		5837D202268C992100518A89 /* messages-delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-delete@2x.png"; sourceTree = "<group>"; };
+		5837D203268C992100518A89 /* messages-video-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-video-call@2x.png"; sourceTree = "<group>"; };
+		5837D204268C992100518A89 /* microphone-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone-circle.png"; sourceTree = "<group>"; };
+		5837D205268C992100518A89 /* microphone-circle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone-circle@3x.png"; sourceTree = "<group>"; };
+		5837D206268C992100518A89 /* send-message-filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-message-filled@2x.png"; sourceTree = "<group>"; };
+		5837D207268C992100518A89 /* messages-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-share@2x.png"; sourceTree = "<group>"; };
+		5837D208268C992100518A89 /* reply-message-in-private.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-message-in-private.png"; sourceTree = "<group>"; };
+		5837D209268C992100518A89 /* reply-message-in-private@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-message-in-private@3x.png"; sourceTree = "<group>"; };
+		5837D20A268C992100518A89 /* messages-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-camera.png"; sourceTree = "<group>"; };
+		5837D20B268C992100518A89 /* messages-forward-message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-forward-message.png"; sourceTree = "<group>"; };
+		5837D20C268C992100518A89 /* messages-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-image@2x.png"; sourceTree = "<group>"; };
+		5837D20D268C992100518A89 /* messages-close-circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-close-circle@2x.png"; sourceTree = "<group>"; };
+		5837D20E268C992100518A89 /* message-read@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-read@2x.png"; sourceTree = "<group>"; };
+		5837D20F268C992100518A89 /* messages-audio-call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-audio-call.png"; sourceTree = "<group>"; };
+		5837D210268C992100518A89 /* message-translate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-translate.png"; sourceTree = "<group>"; };
+		5837D211268C992100518A89 /* message-translate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-translate@2x.png"; sourceTree = "<group>"; };
+		5837D212268C992100518A89 /* messages-emoji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-emoji.png"; sourceTree = "<group>"; };
+		5837D213268C992100518A89 /* messages-attach@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-attach@3x.png"; sourceTree = "<group>"; };
+		5837D214268C992100518A89 /* messages-audio-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-audio-call@2x.png"; sourceTree = "<group>"; };
+		5837D215268C992100518A89 /* messages-forward-message@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-forward-message@3x.png"; sourceTree = "<group>"; };
+		5837D216268C992100518A89 /* messages-forward-message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-forward-message@2x.png"; sourceTree = "<group>"; };
+		5837D217268C992100518A89 /* messages-audio-call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-audio-call@3x.png"; sourceTree = "<group>"; };
+		5837D218268C992100518A89 /* messages-delete@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-delete@4x.png"; sourceTree = "<group>"; };
+		5837D219268C992200518A89 /* messages-attach@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-attach@2x.png"; sourceTree = "<group>"; };
+		5837D21A268C992200518A89 /* message-translate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-translate@3x.png"; sourceTree = "<group>"; };
+		5837D21B268C992200518A89 /* photo-library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-library.png"; sourceTree = "<group>"; };
+		5837D21C268C992200518A89 /* message-read@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-read@3x.png"; sourceTree = "<group>"; };
+		5837D21D268C992200518A89 /* messages-close-circle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-close-circle@3x.png"; sourceTree = "<group>"; };
+		5837D21E268C992200518A89 /* messages-image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-image@3x.png"; sourceTree = "<group>"; };
+		5837D21F268C992200518A89 /* reply-message-in-private@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-message-in-private@2x.png"; sourceTree = "<group>"; };
+		5837D220268C992200518A89 /* message-delivered@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-delivered@4x.png"; sourceTree = "<group>"; };
+		5837D221268C992200518A89 /* messages-share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-share@3x.png"; sourceTree = "<group>"; };
+		5837D222268C992200518A89 /* send-message-filled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-message-filled@3x.png"; sourceTree = "<group>"; };
+		5837D223268C992200518A89 /* threaded-message@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "threaded-message@3x.png"; sourceTree = "<group>"; };
+		5837D224268C992200518A89 /* messages-camera@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-camera@4x.png"; sourceTree = "<group>"; };
+		5837D225268C992200518A89 /* photo-library@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-library@2x.png"; sourceTree = "<group>"; };
+		5837D226268C992200518A89 /* messages-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-image.png"; sourceTree = "<group>"; };
+		5837D227268C992200518A89 /* messages-stickers@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-stickers@3x.png"; sourceTree = "<group>"; };
+		5837D228268C992200518A89 /* messages-edit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-edit@3x.png"; sourceTree = "<group>"; };
+		5837D229268C992200518A89 /* messages-wait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-wait@2x.png"; sourceTree = "<group>"; };
+		5837D22A268C992200518A89 /* messages-location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-location@2x.png"; sourceTree = "<group>"; };
+		5837D22B268C992200518A89 /* messages-file-upload@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-file-upload@3x.png"; sourceTree = "<group>"; };
+		5837D22C268C992200518A89 /* reply-message@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-message@3x.png"; sourceTree = "<group>"; };
+		5837D22D268C992200518A89 /* message-read.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-read.png"; sourceTree = "<group>"; };
+		5837D22E268C992200518A89 /* messages-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-back@2x.png"; sourceTree = "<group>"; };
+		5837D22F268C992200518A89 /* message-sent@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-sent@4x.png"; sourceTree = "<group>"; };
+		5837D230268C992200518A89 /* messages-collaborative-document@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-collaborative-document@2x.png"; sourceTree = "<group>"; };
+		5837D231268C992200518A89 /* message-delivered.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-delivered.png"; sourceTree = "<group>"; };
+		5837D232268C992200518A89 /* messages-collaborative-document@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-collaborative-document@3x.png"; sourceTree = "<group>"; };
+		5837D233268C992200518A89 /* messages-back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-back@3x.png"; sourceTree = "<group>"; };
+		5837D234268C992200518A89 /* messages-collaborative-whiteboard@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-collaborative-whiteboard@4x.png"; sourceTree = "<group>"; };
+		5837D235268C992200518A89 /* messages-audio-file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-audio-file.png"; sourceTree = "<group>"; };
+		5837D236268C992200518A89 /* messages-polls@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-polls@4x.png"; sourceTree = "<group>"; };
+		5837D237268C992200518A89 /* reply-message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-message@2x.png"; sourceTree = "<group>"; };
+		5837D238268C992200518A89 /* messages-location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-location@3x.png"; sourceTree = "<group>"; };
+		5837D239268C992200518A89 /* messages-file-upload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-file-upload@2x.png"; sourceTree = "<group>"; };
+		5837D23A268C992200518A89 /* messages-stickers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-stickers@2x.png"; sourceTree = "<group>"; };
+		5837D23B268C992200518A89 /* messages-emoji@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-emoji@4x.png"; sourceTree = "<group>"; };
+		5837D23C268C992200518A89 /* messages-edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-edit@2x.png"; sourceTree = "<group>"; };
+		5837D23D268C992200518A89 /* messages-wait@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-wait@3x.png"; sourceTree = "<group>"; };
+		5837D23E268C992200518A89 /* photo-library@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-library@3x.png"; sourceTree = "<group>"; };
+		5837D23F268C992200518A89 /* messages-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-share.png"; sourceTree = "<group>"; };
+		5837D240268C992200518A89 /* threaded-message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "threaded-message@2x.png"; sourceTree = "<group>"; };
+		5837D241268C992200518A89 /* messages-audio-file@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-audio-file@4x.png"; sourceTree = "<group>"; };
+		5837D242268C992200518A89 /* messages-emoji@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-emoji@3x.png"; sourceTree = "<group>"; };
+		5837D243268C992200518A89 /* messages-wait@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-wait@4x.png"; sourceTree = "<group>"; };
+		5837D244268C992200518A89 /* messages-location@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-location@4x.png"; sourceTree = "<group>"; };
+		5837D245268C992200518A89 /* messages-collaborative-document.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-collaborative-document.png"; sourceTree = "<group>"; };
+		5837D246268C992200518A89 /* messages-polls@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-polls@3x.png"; sourceTree = "<group>"; };
+		5837D247268C992200518A89 /* messages-info@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-info@3x.png"; sourceTree = "<group>"; };
+		5837D248268C992200518A89 /* messages-collaborative-whiteboard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-collaborative-whiteboard@3x.png"; sourceTree = "<group>"; };
+		5837D249268C992200518A89 /* message-sent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-sent@2x.png"; sourceTree = "<group>"; };
+		5837D24A268C992200518A89 /* messages-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-info.png"; sourceTree = "<group>"; };
+		5837D24B268C992200518A89 /* messages-collaborative-document@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-collaborative-document@4x.png"; sourceTree = "<group>"; };
+		5837D24C268C992200518A89 /* message-sent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-sent.png"; sourceTree = "<group>"; };
+		5837D24D268C992200518A89 /* messages-audio-file@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-audio-file@3x.png"; sourceTree = "<group>"; };
+		5837D24E268C992200518A89 /* messages-collaborative-whiteboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-collaborative-whiteboard.png"; sourceTree = "<group>"; };
+		5837D24F268C992200518A89 /* messages-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-camera@2x.png"; sourceTree = "<group>"; };
+		5837D250268C992200518A89 /* messages-stickers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-stickers.png"; sourceTree = "<group>"; };
+		5837D251268C992200518A89 /* add-circle-filled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-circle-filled@3x.png"; sourceTree = "<group>"; };
+		5837D252268C992200518A89 /* messages-close-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-close-circle.png"; sourceTree = "<group>"; };
+		5837D253268C992200518A89 /* photo-library@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-library@4x.png"; sourceTree = "<group>"; };
+		5837D254268C992200518A89 /* messages-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-location.png"; sourceTree = "<group>"; };
+		5837D255268C992200518A89 /* messages-file-upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-file-upload.png"; sourceTree = "<group>"; };
+		5837D256268C992200518A89 /* threaded-message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "threaded-message.png"; sourceTree = "<group>"; };
+		5837D257268C992200518A89 /* add-circle-filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-circle-filled@2x.png"; sourceTree = "<group>"; };
+		5837D258268C992200518A89 /* messages-camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-camera@3x.png"; sourceTree = "<group>"; };
+		5837D259268C992200518A89 /* messages-audio-file@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-audio-file@2x.png"; sourceTree = "<group>"; };
+		5837D25A268C992200518A89 /* threaded-message@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "threaded-message@4x.png"; sourceTree = "<group>"; };
+		5837D25B268C992200518A89 /* message-sent@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-sent@3x.png"; sourceTree = "<group>"; };
+		5837D25C268C992200518A89 /* messages-wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-wait.png"; sourceTree = "<group>"; };
+		5837D25D268C992200518A89 /* messages-polls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-polls.png"; sourceTree = "<group>"; };
+		5837D25E268C992200518A89 /* messages-collaborative-whiteboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-collaborative-whiteboard@2x.png"; sourceTree = "<group>"; };
+		5837D25F268C992200518A89 /* messages-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-info@2x.png"; sourceTree = "<group>"; };
+		5837D260268C992200518A89 /* messages-polls@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-polls@2x.png"; sourceTree = "<group>"; };
+		5837D261268C992200518A89 /* reply-message@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-message@4x.png"; sourceTree = "<group>"; };
+		5837D262268C992200518A89 /* messages-video-call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-video-call.png"; sourceTree = "<group>"; };
+		5837D263268C992200518A89 /* messages-file-upload@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-file-upload@4x.png"; sourceTree = "<group>"; };
+		5837D264268C992200518A89 /* messages-stickers@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-stickers@4x.png"; sourceTree = "<group>"; };
+		5837D265268C992200518A89 /* messages-emoji@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-emoji@2x.png"; sourceTree = "<group>"; };
+		5837D266268C992200518A89 /* messages-edit@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-edit@4x.png"; sourceTree = "<group>"; };
+		5837D2E0268C9D4F00518A89 /* copy-paste.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copy-paste.png"; sourceTree = "<group>"; };
+		5837D2E1268C9D4F00518A89 /* copy-paste@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copy-paste@4x.png"; sourceTree = "<group>"; };
+		5837D2E2268C9D5000518A89 /* copy-paste@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copy-paste@2x.png"; sourceTree = "<group>"; };
+		5837D2E3268C9D5100518A89 /* copy-paste@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copy-paste@3x.png"; sourceTree = "<group>"; };
+		5837D2E8268C9DD500518A89 /* send-message-in-private.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-message-in-private.png"; sourceTree = "<group>"; };
+		5837D2E9268C9DD600518A89 /* send-message-in-private@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-message-in-private@4x.png"; sourceTree = "<group>"; };
+		5837D2EA268C9DD700518A89 /* send-message-in-private@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-message-in-private@3x.png"; sourceTree = "<group>"; };
+		5837D2EB268C9DD700518A89 /* send-message-in-private@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-message-in-private@2x.png"; sourceTree = "<group>"; };
 		587038D526049BFA00B03467 /* CometChat KitchenSinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CometChat KitchenSinkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		587038D926049BFA00B03467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		587038E126049C2600B03467 /* CometChat KitchenSinkTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CometChat KitchenSinkTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -1356,6 +1830,299 @@
 			path = "CometChat KitchenSink UITests";
 			sourceTree = "<group>";
 		};
+		5837D0CF268C6FD800518A89 /* Start Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				5837D0D0268C6FD800518A89 /* CometChatStartConversation.swift */,
+			);
+			path = "Start Conversation";
+			sourceTree = "<group>";
+		};
+		5837D0D3268C82EE00518A89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5837D119268C844000518A89 /* chats-back.png */,
+				5837D108268C843F00518A89 /* chats-back@2x.png */,
+				5837D105268C843F00518A89 /* chats-back@3x.png */,
+				5837D117268C844000518A89 /* chats-create.png */,
+				5837D111268C844000518A89 /* chats-create@2x.png */,
+				5837D10C268C843F00518A89 /* chats-create@3x.png */,
+				5837D10D268C843F00518A89 /* chats-delete.png */,
+				5837D10A268C843F00518A89 /* chats-delete@2x.png */,
+				5837D10B268C843F00518A89 /* chats-delete@3x.png */,
+				5837D106268C843F00518A89 /* chats-message-delivered.png */,
+				5837D112268C844000518A89 /* chats-message-delivered@2x.png */,
+				5837D107268C843F00518A89 /* chats-message-delivered@3x.png */,
+				5837D118268C844000518A89 /* chats-message-delivered@4x.png */,
+				5837D10E268C843F00518A89 /* chats-message-read.png */,
+				5837D114268C844000518A89 /* chats-message-read@2x.png */,
+				5837D109268C843F00518A89 /* chats-message-read@3x.png */,
+				5837D110268C844000518A89 /* chats-message-read@4x.png */,
+				5837D113268C844000518A89 /* chats-message-sent.png */,
+				5837D115268C844000518A89 /* chats-message-sent@2x.png */,
+				5837D10F268C844000518A89 /* chats-message-sent@3x.png */,
+				5837D116268C844000518A89 /* chats-message-sent@4x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5837D0D4268C830F00518A89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5837D0D5268C830F00518A89 /* cometchatui-chats.png */,
+				5837D0D6268C830F00518A89 /* cometchatui-back.png */,
+				5837D0D7268C830F00518A89 /* cometchatui-more.png */,
+				5837D0D8268C830F00518A89 /* cometchatui-back@3x.png */,
+				5837D0D9268C831000518A89 /* cometchatui-users@2x.png */,
+				5837D0DA268C831000518A89 /* cometchatui-users@3x.png */,
+				5837D0DC268C831000518A89 /* cometchatui-back@2x.png */,
+				5837D0DD268C831000518A89 /* cometchatui-calls.png */,
+				5837D0E0268C831000518A89 /* cometchatui-groups@3x.png */,
+				5837D0E1268C831000518A89 /* cometchatui-users.png */,
+				5837D0E3268C831000518A89 /* cometchatui-groups@2x.png */,
+				5837D0E6268C831000518A89 /* cometchatui-groups.png */,
+				5837D0E7268C831000518A89 /* cometchatui-calls@2x.png */,
+				5837D0E8268C831000518A89 /* cometchatui-more@2x.png */,
+				5837D0E9268C831000518A89 /* cometchatui-chats@2x.png */,
+				5837D0EA268C831000518A89 /* cometchatui-chats@3x.png */,
+				5837D0EB268C831000518A89 /* cometchatui-more@3x.png */,
+				5837D0EC268C831000518A89 /* cometchatui-calls@3x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5837D130268C88A600518A89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5837D131268C88A600518A89 /* incoming-audio-call@4x.png */,
+				5837D132268C88A600518A89 /* outgoing-audio-call@3x.png */,
+				5837D133268C88A600518A89 /* calls-delete@2x.png */,
+				5837D134268C88A600518A89 /* incoming-video-call@3x.png */,
+				5837D135268C88A600518A89 /* outgoing-video-call@4x.png */,
+				5837D136268C88A600518A89 /* outgoing-video-call.png */,
+				5837D137268C88A600518A89 /* video-call@4x.png */,
+				5837D138268C88A600518A89 /* calls-back.png */,
+				5837D139268C88A600518A89 /* calls-back@2x.png */,
+				5837D13A268C88A600518A89 /* calls-back@3x.png */,
+				5837D13B268C88A600518A89 /* incoming-video-call@2x.png */,
+				5837D13C268C88A600518A89 /* calls-delete@3x.png */,
+				5837D13D268C88A600518A89 /* outgoing-audio-call@2x.png */,
+				5837D13E268C88A600518A89 /* new-call@4x.png */,
+				5837D13F268C88A600518A89 /* new-call.png */,
+				5837D140268C88A600518A89 /* video-call@2x.png */,
+				5837D141268C88A600518A89 /* new-call@3x.png */,
+				5837D142268C88A600518A89 /* incoming-audio-call@2x.png */,
+				5837D143268C88A600518A89 /* calls-delete.png */,
+				5837D144268C88A600518A89 /* outgoing-video-call@2x.png */,
+				5837D145268C88A600518A89 /* outgoing-video-call@3x.png */,
+				5837D146268C88A600518A89 /* incoming-video-call@4x.png */,
+				5837D147268C88A600518A89 /* outgoing-audio-call@4x.png */,
+				5837D148268C88A600518A89 /* incoming-video-call.png */,
+				5837D149268C88A600518A89 /* incoming-audio-call@3x.png */,
+				5837D14A268C88A600518A89 /* new-call@2x.png */,
+				5837D14B268C88A600518A89 /* video-call@3x.png */,
+				5837D14C268C88A600518A89 /* end-call@2x.png */,
+				5837D14D268C88A600518A89 /* end-call.png */,
+				5837D14E268C88A600518A89 /* calls-audio-call@4x.png */,
+				5837D14F268C88A600518A89 /* video-call.png */,
+				5837D150268C88A600518A89 /* end-call@3x.png */,
+				5837D151268C88A600518A89 /* outgoing-audio-call.png */,
+				5837D152268C88A600518A89 /* incoming-audio-call.png */,
+				5837D153268C88A600518A89 /* end-call@4x.png */,
+				5837D154268C88A600518A89 /* calls-audio-call@2x.png */,
+				5837D155268C88A600518A89 /* calls-audio-call@3x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5837D17B268C8EB700518A89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5837D17C268C8EB700518A89 /* userprofile-privacy.png */,
+				5837D17D268C8EB700518A89 /* userprofile-back@2x.png */,
+				5837D17E268C8EB700518A89 /* userprofile-edit@3x.png */,
+				5837D17F268C8EB700518A89 /* userprofile-edit@2x.png */,
+				5837D180268C8EB700518A89 /* userprofile-back@3x.png */,
+				5837D181268C8EB700518A89 /* userprofile-privacy@3x.png */,
+				5837D182268C8EB700518A89 /* userprofile-back.png */,
+				5837D183268C8EB700518A89 /* userprofile-edit.png */,
+				5837D184268C8EB700518A89 /* userprofile-privacy@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5837D18E268C910200518A89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5837D18F268C910200518A89 /* users-back@2x.png */,
+				5837D190268C910200518A89 /* users-back@3x.png */,
+				5837D191268C910200518A89 /* users-back.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5837D195268C923300518A89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5837D196268C923300518A89 /* private-group@4x.png */,
+				5837D197268C923300518A89 /* password-protected-group@4x.png */,
+				5837D198268C923300518A89 /* ban-member.png */,
+				5837D199268C923300518A89 /* password-protected-group@2x.png */,
+				5837D19A268C923300518A89 /* private-group@2x.png */,
+				5837D19B268C923300518A89 /* groups-create.png */,
+				5837D19C268C923300518A89 /* private-group@3x.png */,
+				5837D19D268C923300518A89 /* password-protected-group.png */,
+				5837D19E268C923300518A89 /* password-protected-group@3x.png */,
+				5837D19F268C923300518A89 /* groups-delete.png */,
+				5837D1A0268C923300518A89 /* groups-create@3x.png */,
+				5837D1A1268C923300518A89 /* groups-create@2x.png */,
+				5837D1A2268C923300518A89 /* ban-member@4x.png */,
+				5837D1A3268C923300518A89 /* ban-member@3x.png */,
+				5837D1A4268C923300518A89 /* groups-delete@3x.png */,
+				5837D1A5268C923300518A89 /* private-group@1.5x.png */,
+				5837D1A6268C923300518A89 /* private-group.png */,
+				5837D1A7268C923300518A89 /* ban-member@2x.png */,
+				5837D1A8268C923300518A89 /* groups-delete@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5837D1ED268C992100518A89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5837D2E8268C9DD500518A89 /* send-message-in-private.png */,
+				5837D2EB268C9DD700518A89 /* send-message-in-private@2x.png */,
+				5837D2EA268C9DD700518A89 /* send-message-in-private@3x.png */,
+				5837D2E9268C9DD600518A89 /* send-message-in-private@4x.png */,
+				5837D2E0268C9D4F00518A89 /* copy-paste.png */,
+				5837D2E2268C9D5000518A89 /* copy-paste@2x.png */,
+				5837D2E3268C9D5100518A89 /* copy-paste@3x.png */,
+				5837D2E1268C9D4F00518A89 /* copy-paste@4x.png */,
+				5837D1EE268C992100518A89 /* messages-image@4x.png */,
+				5837D1EF268C992100518A89 /* messages-edit.png */,
+				5837D1F0268C992100518A89 /* messages-close-circle@4x.png */,
+				5837D1F1268C992100518A89 /* messages-attach.png */,
+				5837D1F2268C992100518A89 /* message-read@4x.png */,
+				5837D1F3268C992100518A89 /* microphone-circle@2x.png */,
+				5837D1F4268C992100518A89 /* messages-video-call@3x.png */,
+				5837D1F5268C992100518A89 /* message-translate@4x.png */,
+				5837D1F6268C992100518A89 /* messages-delete@3x.png */,
+				5837D1F7268C992100518A89 /* messages-delete.png */,
+				5837D1F8268C992100518A89 /* send-message-filled.png */,
+				5837D1F9268C992100518A89 /* messages-share@4x.png */,
+				5837D1FA268C992100518A89 /* message-delivered@3x.png */,
+				5837D1FB268C992100518A89 /* reply-message.png */,
+				5837D1FC268C992100518A89 /* messages-back.png */,
+				5837D1FD268C992100518A89 /* reply-message-in-private@4x.png */,
+				5837D1FE268C992100518A89 /* message-delivered@2x.png */,
+				5837D1FF268C992100518A89 /* add-circle-filled.png */,
+				5837D200268C992100518A89 /* messages-forward-message@4x.png */,
+				5837D201268C992100518A89 /* messages-attach@4x.png */,
+				5837D202268C992100518A89 /* messages-delete@2x.png */,
+				5837D203268C992100518A89 /* messages-video-call@2x.png */,
+				5837D204268C992100518A89 /* microphone-circle.png */,
+				5837D205268C992100518A89 /* microphone-circle@3x.png */,
+				5837D206268C992100518A89 /* send-message-filled@2x.png */,
+				5837D207268C992100518A89 /* messages-share@2x.png */,
+				5837D208268C992100518A89 /* reply-message-in-private.png */,
+				5837D209268C992100518A89 /* reply-message-in-private@3x.png */,
+				5837D20A268C992100518A89 /* messages-camera.png */,
+				5837D20B268C992100518A89 /* messages-forward-message.png */,
+				5837D20C268C992100518A89 /* messages-image@2x.png */,
+				5837D20D268C992100518A89 /* messages-close-circle@2x.png */,
+				5837D20E268C992100518A89 /* message-read@2x.png */,
+				5837D20F268C992100518A89 /* messages-audio-call.png */,
+				5837D210268C992100518A89 /* message-translate.png */,
+				5837D211268C992100518A89 /* message-translate@2x.png */,
+				5837D212268C992100518A89 /* messages-emoji.png */,
+				5837D213268C992100518A89 /* messages-attach@3x.png */,
+				5837D214268C992100518A89 /* messages-audio-call@2x.png */,
+				5837D215268C992100518A89 /* messages-forward-message@3x.png */,
+				5837D216268C992100518A89 /* messages-forward-message@2x.png */,
+				5837D217268C992100518A89 /* messages-audio-call@3x.png */,
+				5837D218268C992100518A89 /* messages-delete@4x.png */,
+				5837D219268C992200518A89 /* messages-attach@2x.png */,
+				5837D21A268C992200518A89 /* message-translate@3x.png */,
+				5837D21B268C992200518A89 /* photo-library.png */,
+				5837D21C268C992200518A89 /* message-read@3x.png */,
+				5837D21D268C992200518A89 /* messages-close-circle@3x.png */,
+				5837D21E268C992200518A89 /* messages-image@3x.png */,
+				5837D21F268C992200518A89 /* reply-message-in-private@2x.png */,
+				5837D220268C992200518A89 /* message-delivered@4x.png */,
+				5837D221268C992200518A89 /* messages-share@3x.png */,
+				5837D222268C992200518A89 /* send-message-filled@3x.png */,
+				5837D223268C992200518A89 /* threaded-message@3x.png */,
+				5837D224268C992200518A89 /* messages-camera@4x.png */,
+				5837D225268C992200518A89 /* photo-library@2x.png */,
+				5837D226268C992200518A89 /* messages-image.png */,
+				5837D227268C992200518A89 /* messages-stickers@3x.png */,
+				5837D228268C992200518A89 /* messages-edit@3x.png */,
+				5837D229268C992200518A89 /* messages-wait@2x.png */,
+				5837D22A268C992200518A89 /* messages-location@2x.png */,
+				5837D22B268C992200518A89 /* messages-file-upload@3x.png */,
+				5837D22C268C992200518A89 /* reply-message@3x.png */,
+				5837D22D268C992200518A89 /* message-read.png */,
+				5837D22E268C992200518A89 /* messages-back@2x.png */,
+				5837D22F268C992200518A89 /* message-sent@4x.png */,
+				5837D230268C992200518A89 /* messages-collaborative-document@2x.png */,
+				5837D231268C992200518A89 /* message-delivered.png */,
+				5837D232268C992200518A89 /* messages-collaborative-document@3x.png */,
+				5837D233268C992200518A89 /* messages-back@3x.png */,
+				5837D234268C992200518A89 /* messages-collaborative-whiteboard@4x.png */,
+				5837D235268C992200518A89 /* messages-audio-file.png */,
+				5837D236268C992200518A89 /* messages-polls@4x.png */,
+				5837D237268C992200518A89 /* reply-message@2x.png */,
+				5837D238268C992200518A89 /* messages-location@3x.png */,
+				5837D239268C992200518A89 /* messages-file-upload@2x.png */,
+				5837D23A268C992200518A89 /* messages-stickers@2x.png */,
+				5837D23B268C992200518A89 /* messages-emoji@4x.png */,
+				5837D23C268C992200518A89 /* messages-edit@2x.png */,
+				5837D23D268C992200518A89 /* messages-wait@3x.png */,
+				5837D23E268C992200518A89 /* photo-library@3x.png */,
+				5837D23F268C992200518A89 /* messages-share.png */,
+				5837D240268C992200518A89 /* threaded-message@2x.png */,
+				5837D241268C992200518A89 /* messages-audio-file@4x.png */,
+				5837D242268C992200518A89 /* messages-emoji@3x.png */,
+				5837D243268C992200518A89 /* messages-wait@4x.png */,
+				5837D244268C992200518A89 /* messages-location@4x.png */,
+				5837D245268C992200518A89 /* messages-collaborative-document.png */,
+				5837D246268C992200518A89 /* messages-polls@3x.png */,
+				5837D247268C992200518A89 /* messages-info@3x.png */,
+				5837D248268C992200518A89 /* messages-collaborative-whiteboard@3x.png */,
+				5837D249268C992200518A89 /* message-sent@2x.png */,
+				5837D24A268C992200518A89 /* messages-info.png */,
+				5837D24B268C992200518A89 /* messages-collaborative-document@4x.png */,
+				5837D24C268C992200518A89 /* message-sent.png */,
+				5837D24D268C992200518A89 /* messages-audio-file@3x.png */,
+				5837D24E268C992200518A89 /* messages-collaborative-whiteboard.png */,
+				5837D24F268C992200518A89 /* messages-camera@2x.png */,
+				5837D250268C992200518A89 /* messages-stickers.png */,
+				5837D251268C992200518A89 /* add-circle-filled@3x.png */,
+				5837D252268C992200518A89 /* messages-close-circle.png */,
+				5837D253268C992200518A89 /* photo-library@4x.png */,
+				5837D254268C992200518A89 /* messages-location.png */,
+				5837D255268C992200518A89 /* messages-file-upload.png */,
+				5837D256268C992200518A89 /* threaded-message.png */,
+				5837D257268C992200518A89 /* add-circle-filled@2x.png */,
+				5837D258268C992200518A89 /* messages-camera@3x.png */,
+				5837D259268C992200518A89 /* messages-audio-file@2x.png */,
+				5837D25A268C992200518A89 /* threaded-message@4x.png */,
+				5837D25B268C992200518A89 /* message-sent@3x.png */,
+				5837D25C268C992200518A89 /* messages-wait.png */,
+				5837D25D268C992200518A89 /* messages-polls.png */,
+				5837D25E268C992200518A89 /* messages-collaborative-whiteboard@2x.png */,
+				5837D25F268C992200518A89 /* messages-info@2x.png */,
+				5837D260268C992200518A89 /* messages-polls@2x.png */,
+				5837D261268C992200518A89 /* reply-message@4x.png */,
+				5837D262268C992200518A89 /* messages-video-call.png */,
+				5837D263268C992200518A89 /* messages-file-upload@4x.png */,
+				5837D264268C992200518A89 /* messages-stickers@4x.png */,
+				5837D265268C992200518A89 /* messages-emoji@2x.png */,
+				5837D266268C992200518A89 /* messages-edit@4x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		587038D626049BFA00B03467 /* CometChat KitchenSinkTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1387,13 +2154,13 @@
 		58CD20432677B5FE00C5B022 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				58CD21302677B5FE00C5B022 /* Chats */,
 				58CD20442677B5FE00C5B022 /* Calls */,
 				58CD205F2677B5FE00C5B022 /* CometChat UI */,
 				58CD20612677B5FE00C5B022 /* Messages */,
 				58CD20DD2677B5FE00C5B022 /* Shared */,
 				58CD21082677B5FE00C5B022 /* Groups */,
 				58CD21262677B5FE00C5B022 /* Users */,
-				58CD21302677B5FE00C5B022 /* Chats */,
 				58CD21362677B5FE00C5B022 /* UserProfile */,
 			);
 			path = "UI Components";
@@ -1402,6 +2169,7 @@
 		58CD20442677B5FE00C5B022 /* Calls */ = {
 			isa = PBXGroup;
 			children = (
+				5837D130268C88A600518A89 /* Resources */,
 				58CD20452677B5FE00C5B022 /* CometChatCallDetailsLogItem */,
 				58CD20482677B5FE00C5B022 /* CometChatCallListItem */,
 				58CD204B2677B5FE00C5B022 /* CometChatProgressIndicatorItem */,
@@ -1491,6 +2259,7 @@
 		58CD205F2677B5FE00C5B022 /* CometChat UI */ = {
 			isa = PBXGroup;
 			children = (
+				5837D0D4268C830F00518A89 /* Resources */,
 				58CD20602677B5FE00C5B022 /* CometChatUI.swift */,
 			);
 			path = "CometChat UI";
@@ -1499,6 +2268,8 @@
 		58CD20612677B5FE00C5B022 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				58CD21AC2677B5FF00C5B022 /* Message Action Sheet */,
+				5837D1ED268C992100518A89 /* Resources */,
 				58CD20622677B5FE00C5B022 /* Message Bubbles */,
 				58CD20A62677B5FE00C5B022 /* Message List */,
 				58CD20A92677B5FE00C5B022 /* Extensions */,
@@ -1951,6 +2722,7 @@
 		58CD21082677B5FE00C5B022 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
+				5837D195268C923300518A89 /* Resources */,
 				58CD21092677B5FE00C5B022 /* Transfer Ownership */,
 				58CD210B2677B5FE00C5B022 /* Add Moderators */,
 				58CD210D2677B5FE00C5B022 /* Group List */,
@@ -2071,6 +2843,7 @@
 		58CD21262677B5FE00C5B022 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				5837D18E268C910200518A89 /* Resources */,
 				58CD21272677B5FE00C5B022 /* User Detail */,
 				58CD21292677B5FE00C5B022 /* Blocked Users */,
 				58CD212B2677B5FE00C5B022 /* User List */,
@@ -2115,6 +2888,8 @@
 		58CD21302677B5FE00C5B022 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				5837D0D3268C82EE00518A89 /* Resources */,
+				5837D0CF268C6FD800518A89 /* Start Conversation */,
 				58CD21312677B5FE00C5B022 /* Conversation List */,
 				58CD21332677B5FE00C5B022 /* Conversation List Item */,
 			);
@@ -2141,6 +2916,7 @@
 		58CD21362677B5FE00C5B022 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				5837D17B268C8EB700518A89 /* Resources */,
 				58CD21372677B5FE00C5B022 /* User Profile */,
 				58CD21392677B5FE00C5B022 /* Notifications Item */,
 				58CD213C2677B5FE00C5B022 /* Privacy And Support Item */,
@@ -2218,7 +2994,6 @@
 				58CD21A62677B5FF00C5B022 /* View Transformation */,
 				58CD21A82677B5FF00C5B022 /* Large Emojis */,
 				58CD21AA2677B5FF00C5B022 /* Avatar with Letters */,
-				58CD21AC2677B5FF00C5B022 /* Message Action Sheet */,
 				58CD21C12677B5FF00C5B022 /* AudioWaveForm */,
 				58CD21CC2677B5FF00C5B022 /* DeviceDetection */,
 				58CD21CE2677B5FF00C5B022 /* Camera Handler */,
@@ -3172,40 +3947,64 @@
 			files = (
 				58CD24FB2677B60000C5B022 /* chats.png in Resources */,
 				58CD24762677B60000C5B022 /* sticker@2x.png in Resources */,
+				5837D1B4268C923300518A89 /* groups-create@2x.png in Resources */,
 				58CD25062677B60000C5B022 /* more.png in Resources */,
 				58CD24922677B60000C5B022 /* 􀌤.png in Resources */,
 				58CD24DB2677B60000C5B022 /* whiteboard@3x.png in Resources */,
 				58CD24A82677B60000C5B022 /* whiteboard.png in Resources */,
+				5837D2BD268C992200518A89 /* messages-location@4x.png in Resources */,
 				58CD24EC2677B60000C5B022 /* read@2x.png in Resources */,
+				5837D2DC268C992200518A89 /* messages-file-upload@4x.png in Resources */,
+				5837D28F268C992200518A89 /* messages-forward-message@2x.png in Resources */,
 				58CD25052677B60000C5B022 /* contacts.png in Resources */,
 				58CD24D42677B60000C5B022 /* translate@2x.png in Resources */,
+				5837D15F268C88A600518A89 /* calls-back@3x.png in Resources */,
 				58CD233A2677B5FF00C5B022 /* CometChatReceiverPollMessageBubble.xib in Resources */,
 				58CD24902677B60000C5B022 /* thread@2x.png in Resources */,
 				58CD25442677B60000C5B022 /* 􀁝@2x.png in Resources */,
+				5837D272268C992200518A89 /* messages-share@4x.png in Resources */,
 				58CD251E2677B60000C5B022 /* videoCall@3x.png in Resources */,
+				5837D167268C88A600518A89 /* incoming-audio-call@2x.png in Resources */,
 				58CD25532677B60000C5B022 /* createGroup@2x.png in Resources */,
+				5837D0EF268C831000518A89 /* cometchatui-more.png in Resources */,
 				58CD23A22677B5FF00C5B022 /* CometChatMembersItem.xib in Resources */,
+				5837D2E5268C9D5100518A89 /* copy-paste@4x.png in Resources */,
+				5837D2C0268C992200518A89 /* messages-info@3x.png in Resources */,
+				5837D2D7268C992200518A89 /* messages-collaborative-whiteboard@2x.png in Resources */,
+				5837D0FE268C831000518A89 /* cometchatui-groups.png in Resources */,
 				58CD24882677B60000C5B022 /* edit@3x.png in Resources */,
+				5837D2A7268C992200518A89 /* messages-back@2x.png in Resources */,
+				5837D2BC268C992200518A89 /* messages-wait@4x.png in Resources */,
+				5837D2D8268C992200518A89 /* messages-info@2x.png in Resources */,
 				58CD25452677B60000C5B022 /* 􀇿.png in Resources */,
 				FB15AF73242E1AAA005C070B /* CometChatCallingCell.xib in Resources */,
 				58CD23512677B5FF00C5B022 /* CometChatSenderCollaborativeMessageBubble.xib in Resources */,
 				58CD25432677B60000C5B022 /* downArrow.png in Resources */,
+				5837D15B268C88A600518A89 /* outgoing-video-call.png in Resources */,
 				58CD251A2677B60000C5B022 /* videoCalling@2x.png in Resources */,
 				58CD24642677B60000C5B022 /* OutgoingCall.wav in Resources */,
 				58CD24932677B60000C5B022 /* 􀈕@3x.png in Resources */,
+				5837D2DA268C992200518A89 /* reply-message@4x.png in Resources */,
+				5837D185268C8EB700518A89 /* userprofile-privacy.png in Resources */,
 				58CD24B62677B60000C5B022 /* close1@2x.png in Resources */,
 				58CD24802677B60000C5B022 /* 􀌤@2x.png in Resources */,
+				5837D2D5268C992200518A89 /* messages-wait.png in Resources */,
 				58CD24E62677B60000C5B022 /* more_vertical@2x.png in Resources */,
+				5837D2CA268C992200518A89 /* add-circle-filled@3x.png in Resources */,
+				5837D2AE268C992200518A89 /* messages-audio-file.png in Resources */,
 				58CD249D2677B60000C5B022 /* 􀈑@3x.png in Resources */,
 				58CD248B2677B60000C5B022 /* reply@3x.png in Resources */,
+				5837D2C7268C992200518A89 /* messages-collaborative-whiteboard.png in Resources */,
 				58CD24282677B60000C5B022 /* AudioVisualizationView.xib in Resources */,
 				58CD24662677B60000C5B022 /* NewAnnouncement.wav in Resources */,
 				58CD23EC2677B5FF00C5B022 /* warningIconSubtle.png in Resources */,
 				58CD24B52677B60000C5B022 /* translate.png in Resources */,
 				58CD24FE2677B60000C5B022 /* calls@2x.png in Resources */,
 				58CD24A12677B60000C5B022 /* 􀈎.png in Resources */,
+				5837D296268C992200518A89 /* messages-close-circle@3x.png in Resources */,
 				58CD252D2677B60000C5B022 /* outgoingAudio.png in Resources */,
 				58CD24872677B60000C5B022 /* 􀅴@2x.png in Resources */,
+				5837D174268C88A600518A89 /* video-call.png in Resources */,
 				58CD253A2677B60000C5B022 /* downArrow@2x.png in Resources */,
 				58CD24F52677B60000C5B022 /* 􀌮.png in Resources */,
 				58CD23232677B5FF00C5B022 /* CometChatOutgoingCall.xib in Resources */,
@@ -3213,150 +4012,246 @@
 				58CD25372677B60000C5B022 /* newCall@2x.png in Resources */,
 				58CD23312677B5FF00C5B022 /* CometChatSenderAudioMessageBubble.xib in Resources */,
 				58CD24A02677B60000C5B022 /* share@2x.png in Resources */,
+				5837D11E268C844000518A89 /* chats-message-read@3x.png in Resources */,
 				58CD24822677B60000C5B022 /* createMeeting.png in Resources */,
 				58CD23B22677B5FF00C5B022 /* CometChatPrivacyAndSupportItem.xib in Resources */,
 				58CD25022677B60000C5B022 /* more@3x.png in Resources */,
 				58CD251F2677B60000C5B022 /* audioCalling@2x.png in Resources */,
 				58CD24B92677B60000C5B022 /* copy@2x.png in Resources */,
+				5837D168268C88A600518A89 /* calls-delete.png in Resources */,
 				58CD25032677B60000C5B022 /* more@2x.png in Resources */,
 				58CD23262677B5FF00C5B022 /* CometChatIncomingCall.xib in Resources */,
 				58CD24B32677B60000C5B022 /* reply-private.png in Resources */,
+				5837D291268C992200518A89 /* messages-delete@4x.png in Resources */,
 				58CD24AD2677B60000C5B022 /* 􀌶@3x.png in Resources */,
+				5837D1AB268C923300518A89 /* ban-member.png in Resources */,
 				58CD24F92677B60000C5B022 /* blueTick@3x.png in Resources */,
 				58CD25232677B60000C5B022 /* incomingVideo@3x.png in Resources */,
+				5837D1B9268C923300518A89 /* private-group.png in Resources */,
 				58CD25492677B60000C5B022 /* 􀌧.png in Resources */,
 				DBFBC47823A7B9240027938E /* LaunchScreen.storyboard in Resources */,
+				5837D170268C88A600518A89 /* video-call@3x.png in Resources */,
 				58CD24E12677B60000C5B022 /* sticker1.png in Resources */,
+				5837D27D268C992200518A89 /* microphone-circle.png in Resources */,
 				58CD24D92677B60000C5B022 /* 􀈂@2x.png in Resources */,
+				5837D1AF268C923300518A89 /* private-group@3x.png in Resources */,
 				58CD253C2677B60000C5B022 /* Blue Ticks@3x.png in Resources */,
+				5837D2EF268C9DD700518A89 /* send-message-in-private@2x.png in Resources */,
+				5837D0ED268C831000518A89 /* cometchatui-chats.png in Resources */,
 				58CD24CB2677B60000C5B022 /* wait@2x.png in Resources */,
 				58CD236E2677B5FF00C5B022 /* CometChatCreatePollAddNewOption.xib in Resources */,
 				58CD23DE2677B5FF00C5B022 /* successIconSubtle@3x.png in Resources */,
 				58CD254A2677B60000C5B022 /* 􀇿@2x.png in Resources */,
 				58CD254B2677B60000C5B022 /* 􀋚@3x.png in Resources */,
+				5837D12B268C844000518A89 /* chats-message-sent@4x.png in Resources */,
 				58CD249E2677B60000C5B022 /* forward1@2x.png in Resources */,
 				58CD24F72677B60000C5B022 /* blueTick@2x.png in Resources */,
 				58CD24C02677B60000C5B022 /* unsafeContent@3x.png in Resources */,
 				58CD24A52677B60000C5B022 /* 􀉁@2x.png in Resources */,
 				58CD247F2677B60000C5B022 /* 􀌲@3x.png in Resources */,
 				58CD24742677B60000C5B022 /* forward@2x.png in Resources */,
+				5837D16C268C88A600518A89 /* outgoing-audio-call@4x.png in Resources */,
 				58CD24AC2677B60000C5B022 /* writeboard@2x.png in Resources */,
 				58CD25142677B60000C5B022 /* calling.png in Resources */,
 				58CD23772677B5FF00C5B022 /* CometChatSmartRepliesPreviewItem.xib in Resources */,
+				5837D27B268C992200518A89 /* messages-delete@2x.png in Resources */,
 				58CD24CD2677B60000C5B022 /* heart@2x.png in Resources */,
 				58CD248D2677B60000C5B022 /* 􀋑.png in Resources */,
+				5837D0FF268C831000518A89 /* cometchatui-calls@2x.png in Resources */,
 				58CD25472677B60000C5B022 /* 􀉼.png in Resources */,
 				58CD23432677B5FF00C5B022 /* CometChatReceiverLocationMessageBubble.xib in Resources */,
 				58CD23E52677B5FF00C5B022 /* errorIconLight@2x.png in Resources */,
 				58CD25552677B60000C5B022 /* createGroup@3x.png in Resources */,
 				58CD236A2677B5FF00C5B022 /* CometChatCreatePollQuestions.xib in Resources */,
 				58CD250E2677B60000C5B022 /* info@2x.png in Resources */,
+				5837D276268C992200518A89 /* reply-message-in-private@4x.png in Resources */,
+				5837D2BB268C992200518A89 /* messages-emoji@3x.png in Resources */,
+				5837D125268C844000518A89 /* chats-message-read@4x.png in Resources */,
 				58CD251B2677B60000C5B022 /* videoCall.png in Resources */,
+				5837D12E268C844000518A89 /* chats-back.png in Resources */,
+				5837D2A2268C992200518A89 /* messages-wait@2x.png in Resources */,
+				5837D1BB268C923300518A89 /* groups-delete@2x.png in Resources */,
 				58CD233C2677B5FF00C5B022 /* CometChatReceiverImageMessageBubble.xib in Resources */,
 				58CD24C72677B60000C5B022 /* 􀌞.png in Resources */,
+				5837D270268C992200518A89 /* messages-delete.png in Resources */,
 				58CD249B2677B60000C5B022 /* thumbsup.png in Resources */,
 				58CD24EB2677B60000C5B022 /* thumbsup@3x.png in Resources */,
+				5837D159268C88A600518A89 /* incoming-video-call@3x.png in Resources */,
 				58CD24722677B60000C5B022 /* microphone@3x.png in Resources */,
 				58CD23E12677B5FF00C5B022 /* warningIconSubtle@3x.png in Resources */,
+				5837D12D268C844000518A89 /* chats-message-delivered@4x.png in Resources */,
+				5837D2CC268C992200518A89 /* photo-library@4x.png in Resources */,
 				58CD25302677B60000C5B022 /* incomingAudio@3x.png in Resources */,
+				5837D176268C88A600518A89 /* outgoing-audio-call.png in Resources */,
 				58CD23DF2677B5FF00C5B022 /* warningIconLight@3x.png in Resources */,
 				58CD247E2677B60000C5B022 /* close.png in Resources */,
 				58CD253B2677B60000C5B022 /* Blue Ticks@2x.png in Resources */,
 				58CD24EE2677B60000C5B022 /* sticker1@3x.png in Resources */,
 				58CD23D92677B5FF00C5B022 /* errorIcon.png in Resources */,
+				5837D2A3268C992200518A89 /* messages-location@2x.png in Resources */,
 				58CD23EE2677B5FF00C5B022 /* warningIcon.png in Resources */,
 				58CD24A92677B60000C5B022 /* reply-private1@2x.png in Resources */,
+				5837D15E268C88A600518A89 /* calls-back@2x.png in Resources */,
+				5837D2E6268C9D5100518A89 /* copy-paste@2x.png in Resources */,
+				5837D287268C992200518A89 /* message-read@2x.png in Resources */,
 				58CD24E42677B60000C5B022 /* thread.png in Resources */,
 				58CD25262677B60000C5B022 /* audioCall@3x.png in Resources */,
+				5837D123268C844000518A89 /* chats-message-read.png in Resources */,
 				58CD23702677B5FF00C5B022 /* CometChatCreatePoll.xib in Resources */,
 				58CD24C32677B60000C5B022 /* 􀉐.png in Resources */,
+				5837D294268C992200518A89 /* photo-library.png in Resources */,
+				5837D171268C88A600518A89 /* end-call@2x.png in Resources */,
+				5837D100268C831000518A89 /* cometchatui-more@2x.png in Resources */,
+				5837D2EE268C9DD700518A89 /* send-message-in-private@3x.png in Resources */,
+				5837D275268C992200518A89 /* messages-back.png in Resources */,
 				58CD23302677B5FF00C5B022 /* CometChatReceiverAudioMessageBubble.xib in Resources */,
 				DBB75F8E23D70DD700C424FF /* LogoutCell.xib in Resources */,
 				58CD238B2677B5FF00C5B022 /* CometChatDetailItem.xib in Resources */,
 				58CD24C62677B60000C5B022 /* unsafeContent.png in Resources */,
 				58CD23DC2677B5FF00C5B022 /* CenteredView.xib in Resources */,
+				5837D1AE268C923300518A89 /* groups-create.png in Resources */,
+				5837D299268C992200518A89 /* message-delivered@4x.png in Resources */,
+				5837D16B268C88A600518A89 /* incoming-video-call@4x.png in Resources */,
 				58CD25202677B60000C5B022 /* videoCalling.png in Resources */,
+				5837D192268C910200518A89 /* users-back@2x.png in Resources */,
+				5837D2AC268C992200518A89 /* messages-back@3x.png in Resources */,
 				58CD24E82677B60000C5B022 /* sticker1@2x.png in Resources */,
 				58CD23E32677B5FF00C5B022 /* successIcon.png in Resources */,
 				58CD24B42677B60000C5B022 /* reply.png in Resources */,
+				5837D26F268C992200518A89 /* messages-delete@3x.png in Resources */,
 				58CD25132677B60000C5B022 /* missedVideo.png in Resources */,
+				5837D177268C88A600518A89 /* incoming-audio-call.png in Resources */,
 				58CD23CF2677B5FF00C5B022 /* infoIconLight@3x.png in Resources */,
 				58CD25522677B60000C5B022 /* 􀋚.png in Resources */,
 				58CD24692677B60000C5B022 /* OutgoingMessege.wav in Resources */,
 				58CD24652677B60000C5B022 /* IncomingMessage.wav in Resources */,
 				58CD247D2677B60000C5B022 /* sticker.png in Resources */,
+				5837D26D268C992200518A89 /* messages-video-call@3x.png in Resources */,
 				58CD23612677B5FF00C5B022 /* ReactorsView.xib in Resources */,
+				5837D2AA268C992200518A89 /* message-delivered.png in Resources */,
 				58CD23922677B5FF00C5B022 /* CometChatSharedMedia.xib in Resources */,
 				58CD24DC2677B60000C5B022 /* 􀈂.png in Resources */,
 				58CD24B82677B60000C5B022 /* 􀌮@3x.png in Resources */,
 				58CD23E22677B5FF00C5B022 /* warningIconLight@2x.png in Resources */,
+				5837D12C268C844000518A89 /* chats-create.png in Resources */,
+				5837D2C8268C992200518A89 /* messages-camera@2x.png in Resources */,
 				58CD24E52677B60000C5B022 /* edit.png in Resources */,
 				58CD23A62677B5FF00C5B022 /* CometChatCreateGroup.xib in Resources */,
 				58CD24CF2677B60000C5B022 /* 􀋑@3x.png in Resources */,
+				5837D27A268C992200518A89 /* messages-attach@4x.png in Resources */,
+				5837D2DE268C992200518A89 /* messages-emoji@2x.png in Resources */,
+				5837D2BF268C992200518A89 /* messages-polls@3x.png in Resources */,
+				5837D173268C88A600518A89 /* calls-audio-call@4x.png in Resources */,
 				58CD24F22677B60000C5B022 /* wait.png in Resources */,
+				5837D129268C844000518A89 /* chats-message-read@2x.png in Resources */,
+				5837D194268C910200518A89 /* users-back.png in Resources */,
 				58CD24832677B60000C5B022 /* reply-private@3x.png in Resources */,
+				5837D28D268C992200518A89 /* messages-audio-call@2x.png in Resources */,
 				58CD24732677B60000C5B022 /* microphone.png in Resources */,
 				58CD24772677B60000C5B022 /* forward.png in Resources */,
+				5837D161268C88A600518A89 /* calls-delete@3x.png in Resources */,
+				5837D271268C992200518A89 /* send-message-filled.png in Resources */,
 				58CD23E42677B5FF00C5B022 /* successIconSubtle@2x.png in Resources */,
 				58CD231B2677B5FF00C5B022 /* CometChatCreateMeetingView.xib in Resources */,
+				5837D27F268C992200518A89 /* send-message-filled@2x.png in Resources */,
 				58CD24AA2677B60000C5B022 /* 􀌶@2x.png in Resources */,
 				58CD24752677B60000C5B022 /* forward@3x.png in Resources */,
 				58CD23452677B5FF00C5B022 /* CometChatSenderTextMessageBubble.xib in Resources */,
 				58CD24862677B60000C5B022 /* thread@3x.png in Resources */,
 				58CD251C2677B60000C5B022 /* outgoingAudio@3x.png in Resources */,
 				58CD23E02677B5FF00C5B022 /* warningIconSubtle@2x.png in Resources */,
+				5837D103268C831000518A89 /* cometchatui-more@3x.png in Resources */,
 				58CD24D12677B60000C5B022 /* 􀋑@2x.png in Resources */,
 				58CD24A62677B60000C5B022 /* 􀌮@2x.png in Resources */,
+				5837D2B8268C992200518A89 /* messages-share.png in Resources */,
 				DB2E60B823A8E23C00986E12 /* CometChatUIScreenCell.xib in Resources */,
 				58CD231E2677B5FF00C5B022 /* CometChatMeetingView.xib in Resources */,
 				58CD24A72677B60000C5B022 /* close1@3x.png in Resources */,
+				5837D1B0268C923300518A89 /* password-protected-group.png in Resources */,
 				58CD24AE2677B60000C5B022 /* 􀅴.png in Resources */,
 				58CD24BB2677B60000C5B022 /* 􀌞@3x.png in Resources */,
+				5837D11B268C844000518A89 /* chats-message-delivered.png in Resources */,
+				5837D124268C844000518A89 /* chats-message-sent@3x.png in Resources */,
 				58CD232D2677B5FF00C5B022 /* CometChatReceiverMeetingMessageBubble.xib in Resources */,
+				5837D2C1268C992200518A89 /* messages-collaborative-whiteboard@3x.png in Resources */,
 				58CD253E2677B60000C5B022 /* downArrow@3x.png in Resources */,
 				58CD24702677B60000C5B022 /* add@3x.png in Resources */,
+				5837D2C5268C992200518A89 /* message-sent.png in Resources */,
+				5837D169268C88A600518A89 /* outgoing-video-call@2x.png in Resources */,
+				5837D1A9268C923300518A89 /* private-group@4x.png in Resources */,
 				58CD25042677B60000C5B022 /* groups@3x.png in Resources */,
+				5837D2ED268C9DD700518A89 /* send-message-in-private@4x.png in Resources */,
 				58CD24FD2677B60000C5B022 /* chats@2x.png in Resources */,
 				58CD24F12677B60000C5B022 /* more_vertical@3x.png in Resources */,
+				5837D12A268C844000518A89 /* chats-message-sent@2x.png in Resources */,
+				5837D28E268C992200518A89 /* messages-forward-message@3x.png in Resources */,
 				58CD250B2677B60000C5B022 /* 􀌾@2x.png in Resources */,
+				5837D18A268C8EB700518A89 /* userprofile-privacy@3x.png in Resources */,
 				DBFBC47523A7B9240027938E /* Assets.xcassets in Resources */,
 				58CD249C2677B60000C5B022 /* close1.png in Resources */,
 				58CD23CC2677B5FF00C5B022 /* infoIconSubtle@2x.png in Resources */,
 				58CD24C92677B60000C5B022 /* 􀈎@3x.png in Resources */,
+				5837D178268C88A600518A89 /* end-call@4x.png in Resources */,
+				5837D273268C992200518A89 /* message-delivered@3x.png in Resources */,
 				58CD24A32677B60000C5B022 /* default-image.png in Resources */,
+				5837D2B1268C992200518A89 /* messages-location@3x.png in Resources */,
 				58CD25252677B60000C5B022 /* end.png in Resources */,
+				5837D2A8268C992200518A89 /* message-sent@4x.png in Resources */,
 				58CD23662677B5FF00C5B022 /* AddReactionsCell.xib in Resources */,
 				58CD25582677B60000C5B022 /* addIcon.png in Resources */,
+				5837D26E268C992200518A89 /* message-translate@4x.png in Resources */,
 				58CD24712677B60000C5B022 /* stickerDark@3x.png in Resources */,
+				5837D26A268C992200518A89 /* messages-attach.png in Resources */,
 				58CD238F2677B5FF00C5B022 /* Localizable.strings in Resources */,
+				5837D104268C831000518A89 /* cometchatui-calls@3x.png in Resources */,
+				5837D1AC268C923300518A89 /* password-protected-group@2x.png in Resources */,
 				58CD24E32677B60000C5B022 /* createMeeting@3x.png in Resources */,
+				5837D122268C844000518A89 /* chats-delete.png in Resources */,
 				58CD25362677B60000C5B022 /* missedAudio@2x.png in Resources */,
+				5837D292268C992200518A89 /* messages-attach@2x.png in Resources */,
 				58CD23372677B5FF00C5B022 /* CometChatSenderReplyMessageBubble.xib in Resources */,
 				58CD24632677B60000C5B022 /* IncomingCall.wav in Resources */,
 				58CD252F2677B60000C5B022 /* incomingVideo.png in Resources */,
+				5837D101268C831000518A89 /* cometchatui-chats@2x.png in Resources */,
 				58CD24E02677B60000C5B022 /* delete@2x.png in Resources */,
+				5837D15A268C88A600518A89 /* outgoing-video-call@4x.png in Resources */,
+				5837D16F268C88A600518A89 /* new-call@2x.png in Resources */,
+				5837D17A268C88A600518A89 /* calls-audio-call@3x.png in Resources */,
+				5837D2DD268C992200518A89 /* messages-stickers@4x.png in Resources */,
+				5837D1AA268C923300518A89 /* password-protected-group@4x.png in Resources */,
+				5837D281268C992200518A89 /* reply-message-in-private.png in Resources */,
 				58CD25172677B60000C5B022 /* missedVideo@2x.png in Resources */,
 				58CD234B2677B5FF00C5B022 /* CometChatSenderFileMessageBubble.xib in Resources */,
 				58CD23652677B5FF00C5B022 /* ReactionCell.xib in Resources */,
+				5837D29A268C992200518A89 /* messages-share@3x.png in Resources */,
 				58CD250C2677B60000C5B022 /* location-map.png in Resources */,
 				58CD24F32677B60000C5B022 /* createMeeting@2x.png in Resources */,
+				5837D157268C88A600518A89 /* outgoing-audio-call@3x.png in Resources */,
+				5837D2D2268C992200518A89 /* messages-audio-file@2x.png in Resources */,
 				58CD24842677B60000C5B022 /* 􀈕@2x.png in Resources */,
 				58CD24D02677B60000C5B022 /* read.png in Resources */,
 				58CD24AB2677B60000C5B022 /* forward1.png in Resources */,
+				5837D29B268C992200518A89 /* send-message-filled@3x.png in Resources */,
 				58CD24CA2677B60000C5B022 /* 􀉐@3x.png in Resources */,
 				DBFBC47323A7B9230027938E /* Main.storyboard in Resources */,
 				58CD25072677B60000C5B022 /* groups.png in Resources */,
 				58CD23952677B5FF00C5B022 /* CometChatSharedMediaItem.xib in Resources */,
 				58CD249A2677B60000C5B022 /* reply-private1.png in Resources */,
 				58CD23E72677B5FF00C5B022 /* errorIconLight.png in Resources */,
+				5837D1B5268C923300518A89 /* ban-member@4x.png in Resources */,
+				5837D165268C88A600518A89 /* video-call@2x.png in Resources */,
+				5837D2EC268C9DD700518A89 /* send-message-in-private.png in Resources */,
 				58CD248C2677B60000C5B022 /* 􀌲.png in Resources */,
 				58CD25002677B60000C5B022 /* calls.png in Resources */,
 				58CD24C12677B60000C5B022 /* heart.png in Resources */,
 				58CD24952677B60000C5B022 /* play@2x.png in Resources */,
 				58CD25282677B60000C5B022 /* outgoingVideo.png in Resources */,
+				5837D188268C8EB700518A89 /* userprofile-edit@2x.png in Resources */,
+				5837D2D6268C992200518A89 /* messages-polls.png in Resources */,
 				58CD25562677B60000C5B022 /* addIcon@2x.png in Resources */,
 				58CD246D2677B60000C5B022 /* add@2x.png in Resources */,
 				58CD23B02677B5FF00C5B022 /* CometChatNotificationsItem.xib in Resources */,
+				5837D2B2268C992200518A89 /* messages-file-upload@2x.png in Resources */,
 				58CD24D22677B60000C5B022 /* 􀉁.png in Resources */,
 				58CD24912677B60000C5B022 /* back@3x.png in Resources */,
 				58CD24F02677B60000C5B022 /* back.png in Resources */,
@@ -3365,36 +4260,56 @@
 				58CD24F62677B60000C5B022 /* delete@3x.png in Resources */,
 				58CD25342677B60000C5B022 /* end@3x.png in Resources */,
 				58CD25392677B60000C5B022 /* missedAudio@3x.png in Resources */,
+				5837D295268C992200518A89 /* message-read@3x.png in Resources */,
 				58CD25152677B60000C5B022 /* videoCalling@3x.png in Resources */,
+				5837D289268C992200518A89 /* message-translate.png in Resources */,
 				58CD24D52677B60000C5B022 /* 􀉐@2x.png in Resources */,
+				5837D26B268C992200518A89 /* message-read@4x.png in Resources */,
+				5837D2A0268C992200518A89 /* messages-stickers@3x.png in Resources */,
 				58CD23DB2677B5FF00C5B022 /* infoIconSubtle@3x.png in Resources */,
+				5837D126268C844000518A89 /* chats-create@2x.png in Resources */,
 				58CD24E72677B60000C5B022 /* delivered@2x.png in Resources */,
+				5837D2DB268C992200518A89 /* messages-video-call.png in Resources */,
+				5837D0F9268C831000518A89 /* cometchatui-users.png in Resources */,
 				58CD23C42677B5FF00C5B022 /* warningIcon@2x.png in Resources */,
+				5837D16A268C88A600518A89 /* outgoing-video-call@3x.png in Resources */,
 				58CD24962677B60000C5B022 /* 􀌤@3x.png in Resources */,
+				5837D127268C844000518A89 /* chats-message-delivered@2x.png in Resources */,
 				58CD232B2677B5FF00C5B022 /* CometChatSenderLinkPreviewBubble.xib in Resources */,
 				58CD235D2677B5FF00C5B022 /* ReactionCountCell.xib in Resources */,
 				58CD23732677B5FF00C5B022 /* CometChatStickerKeyboardItem.xib in Resources */,
 				58CD252A2677B60000C5B022 /* calling@2x.png in Resources */,
+				5837D2CD268C992200518A89 /* messages-location.png in Resources */,
 				58CD246E2677B60000C5B022 /* send@2x.png in Resources */,
 				58CD24DD2677B60000C5B022 /* 􀈕.png in Resources */,
+				5837D2B5268C992200518A89 /* messages-edit@2x.png in Resources */,
 				58CD25402677B60000C5B022 /* Blue Ticks.png in Resources */,
 				58CD246A2677B60000C5B022 /* add.png in Resources */,
 				58CD24C52677B60000C5B022 /* 􀣵@3x.png in Resources */,
+				5837D268268C992200518A89 /* messages-edit.png in Resources */,
+				5837D156268C88A600518A89 /* incoming-audio-call@4x.png in Resources */,
 				58CD254D2677B60000C5B022 /* 􀇿@3x.png in Resources */,
 				58CD254F2677B60000C5B022 /* 􀌧@2x.png in Resources */,
 				58CD23292677B5FF00C5B022 /* CometChatReceiverLinkPreviewBubble.xib in Resources */,
+				5837D274268C992200518A89 /* reply-message.png in Resources */,
 				58CD23E82677B5FF00C5B022 /* closeIcon@2x.png in Resources */,
 				58CD25272677B60000C5B022 /* end@2x.png in Resources */,
+				5837D277268C992200518A89 /* message-delivered@2x.png in Resources */,
 				58CD239A2677B5FF00C5B022 /* CometChatGroupListItem.xib in Resources */,
 				58CD24E22677B60000C5B022 /* sent.png in Resources */,
 				58CD24BD2677B60000C5B022 /* forward1@3x.png in Resources */,
 				58CD234E2677B5FF00C5B022 /* CometChatReceiverCollaborativeMessageBubble.xib in Resources */,
+				5837D1B2268C923300518A89 /* groups-delete.png in Resources */,
 				58CD23CD2677B5FF00C5B022 /* errorIcon@3x.png in Resources */,
 				58CD23DD2677B5FF00C5B022 /* errorIconLight@3x.png in Resources */,
 				58CD23C92677B5FF00C5B022 /* errorIconSubtle.png in Resources */,
+				5837D2AD268C992200518A89 /* messages-collaborative-whiteboard@4x.png in Resources */,
 				58CD23EA2677B5FF00C5B022 /* successIconLight@2x.png in Resources */,
+				5837D28A268C992200518A89 /* message-translate@2x.png in Resources */,
+				5837D1AD268C923300518A89 /* private-group@2x.png in Resources */,
 				58CD23AE2677B5FF00C5B022 /* CometChatConversationListItem.xib in Resources */,
 				58CD24202677B5FF00C5B022 /* ActionsCell.xib in Resources */,
+				5837D279268C992200518A89 /* messages-forward-message@4x.png in Resources */,
 				58CD23D02677B5FF00C5B022 /* successIcon@3x.png in Resources */,
 				58CD23C52677B5FF00C5B022 /* TabView.xib in Resources */,
 				58CD253F2677B60000C5B022 /* editIcon@3x.png in Resources */,
@@ -3402,69 +4317,118 @@
 				58CD24AF2677B60000C5B022 /* writeboard@3x.png in Resources */,
 				58CD25542677B60000C5B022 /* createGroup.png in Resources */,
 				58CD24812677B60000C5B022 /* play@3x.png in Resources */,
+				5837D11F268C844000518A89 /* chats-delete@2x.png in Resources */,
+				5837D2AF268C992200518A89 /* messages-polls@4x.png in Resources */,
 				58CD25312677B60000C5B022 /* calling@3x.png in Resources */,
+				5837D28B268C992200518A89 /* messages-emoji.png in Resources */,
+				5837D158268C88A600518A89 /* calls-delete@2x.png in Resources */,
+				5837D0F4268C831000518A89 /* cometchatui-back@2x.png in Resources */,
 				58CD23582677B5FF00C5B022 /* CometChatSenderStickerMessageBubble.xib in Resources */,
 				58CD247B2677B60000C5B022 /* close@2x.png in Resources */,
 				58CD24C82677B60000C5B022 /* 􀈂@3x.png in Resources */,
+				5837D2A4268C992200518A89 /* messages-file-upload@3x.png in Resources */,
 				58CD25502677B60000C5B022 /* 􀉼@2x.png in Resources */,
 				58CD23CA2677B5FF00C5B022 /* warningIcon@3x.png in Resources */,
 				58CD23C72677B5FF00C5B022 /* MessageView.xib in Resources */,
+				5837D297268C992200518A89 /* messages-image@3x.png in Resources */,
 				58CD23D62677B5FF00C5B022 /* successIconLight.png in Resources */,
 				58CD246B2677B60000C5B022 /* microphone@2x.png in Resources */,
 				58CD24982677B60000C5B022 /* 􀌲@2x.png in Resources */,
 				58CD23CB2677B5FF00C5B022 /* infoIcon@3x.png in Resources */,
+				5837D160268C88A600518A89 /* incoming-video-call@2x.png in Resources */,
 				58CD252E2677B60000C5B022 /* outgoingVideo@2x.png in Resources */,
 				58CD25482677B60000C5B022 /* 􀁝@3x.png in Resources */,
+				5837D1B3268C923300518A89 /* groups-create@3x.png in Resources */,
+				5837D1B7268C923300518A89 /* groups-delete@3x.png in Resources */,
 				58CD25322677B60000C5B022 /* audioCall.png in Resources */,
 				58CD24F82677B60000C5B022 /* blueTick.png in Resources */,
 				58CD25082677B60000C5B022 /* groups@2x.png in Resources */,
+				5837D0EE268C831000518A89 /* cometchatui-back.png in Resources */,
 				58CD24B22677B60000C5B022 /* defaultImage.png in Resources */,
 				58CD24BE2677B60000C5B022 /* sent@2x.png in Resources */,
+				5837D164268C88A600518A89 /* new-call.png in Resources */,
 				58CD254E2677B60000C5B022 /* 􀌧@3x.png in Resources */,
 				58CD237E2677B5FF00C5B022 /* CometChatMessageComposer.xib in Resources */,
+				5837D2CB268C992200518A89 /* messages-close-circle.png in Resources */,
 				58CD25292677B60000C5B022 /* audioCalling.png in Resources */,
+				5837D2A1268C992200518A89 /* messages-edit@3x.png in Resources */,
 				58CD25012677B60000C5B022 /* contacts@3x.png in Resources */,
+				5837D2E7268C9D5100518A89 /* copy-paste@3x.png in Resources */,
 				58CD25212677B60000C5B022 /* audioCalling@3x.png in Resources */,
 				58CD23D82677B5FF00C5B022 /* infoIconLight@2x.png in Resources */,
+				5837D286268C992200518A89 /* messages-close-circle@2x.png in Resources */,
 				58CD23392677B5FF00C5B022 /* CometChatSenderPollMessageBubble.xib in Resources */,
+				5837D282268C992200518A89 /* reply-message-in-private@3x.png in Resources */,
+				5837D0F1268C831000518A89 /* cometchatui-users@2x.png in Resources */,
 				58CD236D2677B5FF00C5B022 /* CometChatCreatePollOptions.xib in Resources */,
 				58CD251D2677B60000C5B022 /* incomingVideo@2x.png in Resources */,
 				58CD23D32677B5FF00C5B022 /* errorIconSubtle@3x.png in Resources */,
 				58CD24DE2677B60000C5B022 /* delete.png in Resources */,
+				5837D0F5268C831000518A89 /* cometchatui-calls.png in Resources */,
+				5837D2C9268C992200518A89 /* messages-stickers.png in Resources */,
+				5837D2D3268C992200518A89 /* threaded-message@4x.png in Resources */,
 				58CD23AA2677B5FF00C5B022 /* CometChatUserListItem.xib in Resources */,
 				58CD247A2677B60000C5B022 /* close@3x.png in Resources */,
 				58CD24DA2677B60000C5B022 /* 􀣵@2x.png in Resources */,
 				58CD24892677B60000C5B022 /* reply@2x.png in Resources */,
+				5837D2A9268C992200518A89 /* messages-collaborative-document@2x.png in Resources */,
 				58CD23D12677B5FF00C5B022 /* StatusLine.xib in Resources */,
+				5837D2CF268C992200518A89 /* threaded-message.png in Resources */,
+				5837D15D268C88A600518A89 /* calls-back.png in Resources */,
 				58CD247C2677B60000C5B022 /* send.png in Resources */,
 				58CD23562677B5FF00C5B022 /* CometChatSenderVideoMessageBubble.xib in Resources */,
+				5837D2B7268C992200518A89 /* photo-library@3x.png in Resources */,
 				58CD23DA2677B5FF00C5B022 /* errorIcon@2x.png in Resources */,
 				58CD25162677B60000C5B022 /* missedAudio.png in Resources */,
 				58CD235A2677B5FF00C5B022 /* CometChatReceiverStickerMessageBubble.xib in Resources */,
+				5837D11D268C844000518A89 /* chats-back@2x.png in Resources */,
+				5837D1B8268C923300518A89 /* private-group@1.5x.png in Resources */,
 				58CD24A22677B60000C5B022 /* 􀌞@2x.png in Resources */,
 				58CD248A2677B60000C5B022 /* 􀌶.png in Resources */,
 				58CD24972677B60000C5B022 /* 􀣵.png in Resources */,
+				5837D102268C831000518A89 /* cometchatui-chats@3x.png in Resources */,
 				58CD25352677B60000C5B022 /* audioCall@2x.png in Resources */,
 				58CD23B62677B5FF00C5B022 /* CometChatSettingsItem.xib in Resources */,
 				58CD253D2677B60000C5B022 /* editIcon.png in Resources */,
+				5837D179268C88A600518A89 /* calls-audio-call@2x.png in Resources */,
+				5837D298268C992200518A89 /* reply-message-in-private@2x.png in Resources */,
+				5837D29E268C992200518A89 /* photo-library@2x.png in Resources */,
 				58CD23D22677B5FF00C5B022 /* warningIconLight.png in Resources */,
 				58CD24EF2677B60000C5B022 /* delivered@3x.png in Resources */,
+				5837D1B6268C923300518A89 /* ban-member@3x.png in Resources */,
 				58CD233F2677B5FF00C5B022 /* CometChatSenderImageMessageBubble.xib in Resources */,
+				5837D120268C844000518A89 /* chats-delete@3x.png in Resources */,
+				5837D27E268C992200518A89 /* microphone-circle@3x.png in Resources */,
+				5837D2CE268C992200518A89 /* messages-file-upload.png in Resources */,
+				5837D2B9268C992200518A89 /* threaded-message@2x.png in Resources */,
 				58CD24B02677B60000C5B022 /* reply-private1@3x.png in Resources */,
+				5837D16D268C88A600518A89 /* incoming-video-call.png in Resources */,
+				5837D2B3268C992200518A89 /* messages-stickers@2x.png in Resources */,
+				5837D2C2268C992200518A89 /* message-sent@2x.png in Resources */,
+				5837D288268C992200518A89 /* messages-audio-call.png in Resources */,
 				58CD25092677B60000C5B022 /* info.png in Resources */,
 				58CD24FA2677B60000C5B022 /* calls@3x.png in Resources */,
+				5837D283268C992200518A89 /* messages-camera.png in Resources */,
 				58CD250D2677B60000C5B022 /* info@3x.png in Resources */,
 				58CD25382677B60000C5B022 /* newCall@3x.png in Resources */,
+				5837D2A5268C992200518A89 /* reply-message@3x.png in Resources */,
 				DBED2A3F23AA50750058D5BF /* UIComponentsCell.xib in Resources */,
+				5837D186268C8EB700518A89 /* userprofile-back@2x.png in Resources */,
 				58CD23C32677B5FF00C5B022 /* infoIcon@2x.png in Resources */,
 				58CD252B2677B60000C5B022 /* incomingAudio@2x.png in Resources */,
 				58CD24D32677B60000C5B022 /* heart@3x.png in Resources */,
+				5837D28C268C992200518A89 /* messages-attach@3x.png in Resources */,
+				5837D175268C88A600518A89 /* end-call@3x.png in Resources */,
+				5837D29D268C992200518A89 /* messages-camera@4x.png in Resources */,
+				5837D162268C88A600518A89 /* outgoing-audio-call@2x.png in Resources */,
 				58CD25222677B60000C5B022 /* videoCall@2x.png in Resources */,
 				58CD23422677B5FF00C5B022 /* CometChatSenderLocationMessageBubble.xib in Resources */,
+				5837D280268C992200518A89 /* messages-share@2x.png in Resources */,
 				58CD25102677B60000C5B022 /* 􀍉@3x.png in Resources */,
 				58CD23C62677B5FF00C5B022 /* infoIconSubtle.png in Resources */,
 				58CD23D72677B5FF00C5B022 /* successIcon@2x.png in Resources */,
 				58CD23532677B5FF00C5B022 /* CometChatReceiverVideoMessageBubble.xib in Resources */,
+				5837D166268C88A600518A89 /* new-call@3x.png in Resources */,
 				58CD24852677B60000C5B022 /* back@2x.png in Resources */,
 				58CD23182677B5FF00C5B022 /* CometChatCallListItem.xib in Resources */,
 				58CD25192677B60000C5B022 /* newCall.png in Resources */,
@@ -3474,48 +4438,88 @@
 				58CD232F2677B5FF00C5B022 /* CometChatSenderMeetingMessageBubble.xib in Resources */,
 				58CD24CE2677B60000C5B022 /* delivered.png in Resources */,
 				58CD237B2677B5FF00C5B022 /* CometChatMessageInformation.xib in Resources */,
+				5837D2BA268C992200518A89 /* messages-audio-file@4x.png in Resources */,
 				58CD24E92677B60000C5B022 /* read@3x.png in Resources */,
 				58CD239B2677B5FF00C5B022 /* CometChatAddMemberItem.xib in Resources */,
+				5837D128268C844000518A89 /* chats-message-sent.png in Resources */,
 				58CD25112677B60000C5B022 /* 􀍉@2x.png in Resources */,
 				58CD24942677B60000C5B022 /* reply-private@2x.png in Resources */,
 				58CD25512677B60000C5B022 /* 􀉼@3x.png in Resources */,
+				5837D0F2268C831000518A89 /* cometchatui-users@3x.png in Resources */,
+				5837D2E4268C9D5100518A89 /* copy-paste.png in Resources */,
+				5837D172268C88A600518A89 /* end-call.png in Resources */,
+				5837D15C268C88A600518A89 /* video-call@4x.png in Resources */,
+				5837D285268C992200518A89 /* messages-image@2x.png in Resources */,
 				58CD24A42677B60000C5B022 /* copy@3x.png in Resources */,
+				5837D0F0268C831000518A89 /* cometchatui-back@3x.png in Resources */,
 				58CD25462677B60000C5B022 /* 􀁝.png in Resources */,
+				5837D1BA268C923300518A89 /* ban-member@2x.png in Resources */,
+				5837D189268C8EB700518A89 /* userprofile-back@3x.png in Resources */,
 				58CD23A02677B5FF00C5B022 /* CometChatAdministratorsItem.xib in Resources */,
+				5837D0F8268C831000518A89 /* cometchatui-groups@3x.png in Resources */,
 				58CD24C22677B60000C5B022 /* 􀈑.png in Resources */,
+				5837D121268C844000518A89 /* chats-create@3x.png in Resources */,
+				5837D2D9268C992200518A89 /* messages-polls@2x.png in Resources */,
 				58CD25122677B60000C5B022 /* 􀌾.png in Resources */,
 				58CD248E2677B60000C5B022 /* edit@2x.png in Resources */,
+				5837D2AB268C992200518A89 /* messages-collaborative-document@3x.png in Resources */,
 				58CD24782677B60000C5B022 /* stickerDark.png in Resources */,
+				5837D2BE268C992200518A89 /* messages-collaborative-document.png in Resources */,
+				5837D290268C992200518A89 /* messages-audio-call@3x.png in Resources */,
+				5837D2B4268C992200518A89 /* messages-emoji@4x.png in Resources */,
 				58CD252C2677B60000C5B022 /* outgoingVideo@3x.png in Resources */,
+				5837D26C268C992200518A89 /* microphone-circle@2x.png in Resources */,
 				58CD24D62677B60000C5B022 /* wait@3x.png in Resources */,
+				5837D18D268C8EB700518A89 /* userprofile-privacy@2x.png in Resources */,
+				5837D18C268C8EB700518A89 /* userprofile-edit.png in Resources */,
 				58CD250A2677B60000C5B022 /* 􀌾@3x.png in Resources */,
 				58CD24FF2677B60000C5B022 /* contacts@2x.png in Resources */,
 				58CD24EA2677B60000C5B022 /* thumbsup@2x.png in Resources */,
+				5837D293268C992200518A89 /* message-translate@3x.png in Resources */,
+				5837D2A6268C992200518A89 /* message-read.png in Resources */,
 				58CD24672677B60000C5B022 /* OutgoingMessage.wav in Resources */,
+				5837D11A268C844000518A89 /* chats-back@3x.png in Resources */,
 				58CD25332677B60000C5B022 /* incomingAudio.png in Resources */,
+				5837D18B268C8EB700518A89 /* userprofile-back.png in Resources */,
 				58CD24F42677B60000C5B022 /* copy.png in Resources */,
+				5837D193268C910200518A89 /* users-back@3x.png in Resources */,
 				58CD23822677B5FF00C5B022 /* CometChatThreadedMessageList.xib in Resources */,
 				58CD23492677B5FF00C5B022 /* CometChatActionMessageBubble.xib in Resources */,
+				5837D29F268C992200518A89 /* messages-image.png in Resources */,
+				5837D163268C88A600518A89 /* new-call@4x.png in Resources */,
+				5837D2D1268C992200518A89 /* messages-camera@3x.png in Resources */,
 				58CD24B12677B60000C5B022 /* writeboard.png in Resources */,
+				5837D2C3268C992200518A89 /* messages-info.png in Resources */,
 				58CD25242677B60000C5B022 /* outgoingAudio@2x.png in Resources */,
 				58CD23462677B5FF00C5B022 /* CometChatReceiverTextMessageBubble.xib in Resources */,
+				5837D187268C8EB700518A89 /* userprofile-edit@3x.png in Resources */,
 				58CD231A2677B5FF00C5B022 /* CometChatProgressIndicatorItem.xib in Resources */,
+				5837D2C4268C992200518A89 /* messages-collaborative-document@4x.png in Resources */,
 				58CD23352677B5FF00C5B022 /* CometChatReceiverReplyMessageBubble.xib in Resources */,
+				5837D2D4268C992200518A89 /* message-sent@3x.png in Resources */,
+				5837D284268C992200518A89 /* messages-forward-message.png in Resources */,
 				58CD254C2677B60000C5B022 /* 􀋚@2x.png in Resources */,
 				58CD24BA2677B60000C5B022 /* more_vertical.png in Resources */,
 				58CD24D82677B60000C5B022 /* 􀈎@2x.png in Resources */,
 				58CD24992677B60000C5B022 /* slackModal.png in Resources */,
 				58CD25422677B60000C5B022 /* defaultAvatar.jpg in Resources */,
 				58CD24BC2677B60000C5B022 /* share@3x.png in Resources */,
+				5837D269268C992200518A89 /* messages-close-circle@4x.png in Resources */,
 				58CD23ED2677B5FF00C5B022 /* closeIcon@3x.png in Resources */,
+				5837D278268C992200518A89 /* add-circle-filled.png in Resources */,
 				58CD25412677B60000C5B022 /* editIcon@2x.png in Resources */,
 				58CD23152677B5FF00C5B022 /* CometChatCallDetailsLogItem.xib in Resources */,
+				5837D0FB268C831000518A89 /* cometchatui-groups@2x.png in Resources */,
 				58CD23C82677B5FF00C5B022 /* closeIcon.png in Resources */,
+				5837D2DF268C992200518A89 /* messages-edit@4x.png in Resources */,
 				58CD23E92677B5FF00C5B022 /* CardView.xib in Resources */,
+				5837D2B0268C992200518A89 /* reply-message@2x.png in Resources */,
+				5837D2D0268C992200518A89 /* add-circle-filled@2x.png in Resources */,
 				58CD24B72677B60000C5B022 /* 􀉁@3x.png in Resources */,
 				58CD24FC2677B60000C5B022 /* chats@3x.png in Resources */,
 				58CD23CE2677B5FF00C5B022 /* successIconSubtle.png in Resources */,
 				58CD23762677B5FF00C5B022 /* CometChatStickerKeyboard.xib in Resources */,
+				5837D16E268C88A600518A89 /* incoming-audio-call@3x.png in Resources */,
 				DBED2A3723AA49170058D5BF /* CometChatUIComponentsCell.xib in Resources */,
 				58CD234C2677B5FF00C5B022 /* CometChatReceiverFileMessageBubble.xib in Resources */,
 				58CD24BF2677B60000C5B022 /* 􀈑@2x.png in Resources */,
@@ -3526,13 +4530,20 @@
 				58CD246F2677B60000C5B022 /* send@3x.png in Resources */,
 				58CD248F2677B60000C5B022 /* 􀅴@3x.png in Resources */,
 				58CD24682677B60000C5B022 /* IncomingMessageOther.wav in Resources */,
+				5837D27C268C992200518A89 /* messages-video-call@2x.png in Resources */,
 				58CD23892677B5FF00C5B022 /* CometChatWebView.xib in Resources */,
 				58CD24CC2677B60000C5B022 /* translate@3x.png in Resources */,
+				5837D2B6268C992200518A89 /* messages-wait@3x.png in Resources */,
+				5837D11C268C844000518A89 /* chats-message-delivered@3x.png in Resources */,
 				58CD24DF2677B60000C5B022 /* unsafeContent@2x.png in Resources */,
+				5837D2C6268C992200518A89 /* messages-audio-file@3x.png in Resources */,
 				58CD23EB2677B5FF00C5B022 /* successIconLight@3x.png in Resources */,
 				DB2E60B723A8E23C00986E12 /* CometChatUICell.xib in Resources */,
 				58CD25572677B60000C5B022 /* addIcon@3x.png in Resources */,
+				5837D267268C992200518A89 /* messages-image@4x.png in Resources */,
+				5837D1B1268C923300518A89 /* password-protected-group@3x.png in Resources */,
 				58CD24ED2677B60000C5B022 /* play.png in Resources */,
+				5837D29C268C992200518A89 /* threaded-message@3x.png in Resources */,
 				58CD23D42677B5FF00C5B022 /* errorIconSubtle@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3639,6 +4650,7 @@
 				58CD24142677B5FF00C5B022 /* UserGroupMemberPresentable.swift in Sources */,
 				58CD242D2677B60000C5B022 /* CameraHandler.swift in Sources */,
 				58CD24102677B5FF00C5B022 /* UserGroupHeaderView.swift in Sources */,
+				5837D0D1268C6FD800518A89 /* CometChatStartConversation.swift in Sources */,
 				58CD23832677B5FF00C5B022 /* CometChatThreadedMessageList.swift in Sources */,
 				58CD23322677B5FF00C5B022 /* CometChatSenderAudioMessageBubble.swift in Sources */,
 				58CD238C2677B5FF00C5B022 /* CometChatLiveReaction.swift in Sources */,
