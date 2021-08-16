@@ -161,6 +161,7 @@ public class CometChatThreadedMessageList: UIViewController, AVAudioRecorderDele
     var indexPath: IndexPath?
     private var chronometer: Chronometer?
     var curentLocation: CLLocation?
+    var isAnimating: Bool = true
     let locationManager = CLLocationManager()
     
     private var currentState: AudioRecodingState = .ready {
@@ -518,9 +519,9 @@ public class CometChatThreadedMessageList: UIViewController, AVAudioRecorderDele
             }
             guard let lastMessage = messages.last else { return }
             if strongSelf.isGroupIs == true {
-                CometChat.markAsRead(messageId: lastMessage.id, receiverId: strongSelf.currentGroup?.guid ?? "", receiverType: .group)
+                CometChat.markAsRead(baseMessage: lastMessage)
             }else{
-                CometChat.markAsRead(messageId: lastMessage.id, receiverId: strongSelf.currentUser?.uid ?? "", receiverType: .user)
+                CometChat.markAsRead(baseMessage: lastMessage)
             }
             var oldMessages = [BaseMessage]()
             for msg in messages{ oldMessages.append(msg) }
@@ -578,7 +579,7 @@ public class CometChatThreadedMessageList: UIViewController, AVAudioRecorderDele
                 guard let lastMessage = messages.last else {
                     return
                 }
-                CometChat.markAsRead(messageId: lastMessage.id, receiverId: forID, receiverType: .user)
+                CometChat.markAsRead(baseMessage: lastMessage)
                 strongSelf.filteredMessages = messages.filter {$0.sender?.uid == LoggedInUser.uid}
                 DispatchQueue.main.async {
                     if lastMessage.sender?.uid != LoggedInUser.uid {
@@ -625,7 +626,7 @@ public class CometChatThreadedMessageList: UIViewController, AVAudioRecorderDele
                 guard let lastMessage = messages.last else {
                     return
                 }
-                CometChat.markAsRead(messageId: lastMessage.id, receiverId: forID, receiverType: .group)
+                CometChat.markAsRead(baseMessage: lastMessage)
                 strongSelf.filteredMessages = messages.filter {$0.sender?.uid == LoggedInUser.uid }
                 DispatchQueue.main.async {
                     if lastMessage.sender?.uid != LoggedInUser.uid {
@@ -2874,35 +2875,7 @@ extension CometChatThreadedMessageList:QLPreviewControllerDataSource, QLPreviewC
 extension CometChatThreadedMessageList : CometChatMessageComposerInternalDelegate {
     
     
-    public func didReactionButtonPressed() {
-        if let user = currentUser {
-            let reactionIndicator = TypingIndicator(receiverID: user.uid ?? "", receiverType: .user)
-            if currentReaction == .heart {
-                reactionIndicator.metadata = ["type":"live_reaction", "reaction": "heart"]
-            }else{
-                reactionIndicator.metadata = ["type":"live_reaction", "reaction": "thumbsup"]
-            }
-            CometChat.startTyping(indicator: reactionIndicator)
-            reactionView.startAnimation()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                CometChat.endTyping(indicator: reactionIndicator)
-                self.reactionView.stopAnimation()
-            })
-        }else if let group = currentGroup {
-            let reactionIndicator = TypingIndicator(receiverID: group.guid , receiverType: .group)
-            if currentReaction == .heart {
-                reactionIndicator.metadata = ["type":"live_reaction", "reaction":"heart"]
-            }else{
-                reactionIndicator.metadata = ["type":"live_reaction", "reaction":"thumbsup"]
-            }
-            CometChat.startTyping(indicator: reactionIndicator)
-            reactionView.startAnimation()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                CometChat.endTyping(indicator: reactionIndicator)
-                self.reactionView.stopAnimation()
-            })
-        }
-    }
+    public func didReactionButtonPressed() {}
     
     public func didMicrophoneButtonPressed(with: UILongPressGestureRecognizer) {
         
@@ -3460,7 +3433,7 @@ extension CometChatThreadedMessageList : CometChatMessageDelegate {
         DispatchQueue.main.async{ CometChatSoundManager().play(sound: .incomingMessage, bool: true)}
         switch message.receiverType {
         case .user:
-            CometChat.markAsRead(messageId: message.id, receiverId: message.senderUid, receiverType: .user)
+            CometChat.markAsRead(baseMessage: message)
             if chatMessages.count == 0 {
                 self.addNewGroupedMessage(messages: [message])
                 self.incrementCount()
@@ -3476,7 +3449,7 @@ extension CometChatThreadedMessageList : CometChatMessageDelegate {
             }
             
         case .group:
-            CometChat.markAsRead(messageId: message.id, receiverId: message.receiverUid, receiverType: .user)
+            CometChat.markAsRead(baseMessage: message)
             if chatMessages.count == 0 {
                 self.addNewGroupedMessage(messages: [message])
                 self.incrementCount()

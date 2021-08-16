@@ -199,8 +199,8 @@ extension MainViewController: CometChatUIScreenCellDelegate {
                             }
                         }) { (error) in
                             DispatchQueue.main.async {
-                                if let error = error as? CometChatException{
-                                    CometChatSnackBoard.showErrorMessage(for: error)
+                                if let errorMessage = error?.errorDescription {
+                                    CometChatSnackBoard.display(message:  errorMessage, mode: .error, duration: .short)
                                 }
                             }
                         }
@@ -265,8 +265,8 @@ extension MainViewController: CometChatCallingCellDelegate {
                 }
             }) { (error) in
                 DispatchQueue.main.async {
-                    if let error = error as? CometChatException{
-                        CometChatSnackBoard.showErrorMessage(for: error)
+                    if let errorMessage = error?.errorDescription {
+                        CometChatSnackBoard.display(message:  errorMessage, mode: .error, duration: .short)
                     }
                 }
             }
@@ -277,8 +277,8 @@ extension MainViewController: CometChatCallingCellDelegate {
                 }
             }) { (error) in
                 DispatchQueue.main.async {
-                    if let error = error as? CometChatException{
-                        CometChatSnackBoard.showErrorMessage(for: error)
+                    if let errorMessage = error?.errorDescription {
+                        CometChatSnackBoard.display(message:  errorMessage, mode: .error, duration: .short)
                     }
                 }
             }
@@ -301,11 +301,12 @@ extension MainViewController: LogoutCellDelegate {
                          let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                          let viewController = mainStoryboard.instantiateViewController(withIdentifier: "loginWithDemoUsers") as! LoginWithDemoUsers
                          UIApplication.shared.keyWindow?.rootViewController = viewController
+                        CometChatSnackBoard.display(message:  "Logged out successfully.", mode: .error, duration: .short)
                          }
                  }) { (error) in
-                    if let error = error as? CometChatException{
-                        CometChatSnackBoard.showErrorMessage(for: error)
-                    }
+                     DispatchQueue.main.async {
+                        CometChatSnackBoard.display(message:  error.errorDescription, mode: .error, duration: .short)
+                     }
                  }
         })
         // Create Cancel button with action handlder
@@ -314,6 +315,7 @@ extension MainViewController: LogoutCellDelegate {
         //Add OK and Cancel button to dialog message
         dialogMessage.addAction(ok)
         dialogMessage.addAction(cancel)
+
         // Present dialog message to user
         self.present(dialogMessage, animated: true, completion: nil)
     }

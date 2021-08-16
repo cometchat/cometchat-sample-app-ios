@@ -120,9 +120,7 @@ class CreateUser: UIViewController, UITextFieldDelegate {
                             UIView.animate(withDuration: 0.25) {
                                 self?.view.layoutIfNeeded()
                             }
-                            if let error = error as? CometChatException{
-                                CometChatSnackBoard.showErrorMessage(for: error)
-                            }
+                            CometChatSnackBoard.display(message:  error, mode: .error, duration: .short)
                         }
                         print("Create User failure \(error)")
                     }
@@ -187,9 +185,7 @@ class CreateUser: UIViewController, UITextFieldDelegate {
                     UIView.animate(withDuration: 0.25) {
                         self?.view.layoutIfNeeded()
                     }
-                    if let error = error as? CometChatException{
-                        CometChatSnackBoard.showErrorMessage(for: error)
-                    }
+                    CometChatSnackBoard.display(message:  error.errorCode.localized(), mode: .error, duration: .short)
                 }
                 print("login failure \(error.errorDescription)")
                 
