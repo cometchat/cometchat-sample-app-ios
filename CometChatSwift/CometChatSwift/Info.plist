@@ -39,6 +39,12 @@
 	<string>Use Photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Access Photos</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>voip</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

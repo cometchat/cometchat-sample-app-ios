@@ -5140,7 +5140,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev2;
 				PRODUCT_NAME = "CometChat KitchenSink";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -5170,7 +5170,7 @@
 				);
 				MARKETING_VERSION = 2.1.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev2;
 				PRODUCT_NAME = "CometChat KitchenSink";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

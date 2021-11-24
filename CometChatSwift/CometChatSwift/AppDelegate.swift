@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initialization()
         
         CometChatCallManager().registerForCalls(application: self)
-
+        
         if CometChat.getLoggedInUser() != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainVC = storyboard.instantiateViewController(withIdentifier: "mainViewController") as! MainViewController
@@ -39,16 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
                 navigationController.navigationBar.isTranslucent = false
             }
-           self.window?.rootViewController = navigationController
-           self.window?.makeKeyAndVisible()
-        }        
+            self.window?.rootViewController = navigationController
+            self.window?.makeKeyAndVisible()
+        }
         return true
     }
     
     func initialization(){
         if(Constants.appId.contains("Enter") || Constants.appId.contains("ENTER") || Constants.appId.contains("NULL") || Constants.appId.contains("null") || Constants.appId.count == 0){
-
-
+            
+            
         }else{
             let appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region: Constants.region).build()
             
@@ -65,26 +65,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-
-        
+        CometChat.configureServices(.willResignActive)
     }
-    
+
     func applicationDidEnterBackground(_ application: UIApplication) {
-        
+        CometChat.configureServices(.didEnterBackground)
     }
     
-    func applicationWillEnterForeground(_ application: UIApplication) {
-
-       
-    }
     
-    func applicationDidBecomeActive(_ application: UIApplication) {
-
-    }
-    
-   
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+       
     }
 }
 
