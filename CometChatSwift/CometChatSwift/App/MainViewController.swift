@@ -55,7 +55,6 @@ class MainViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
         if indexPath.row == 0 {
             let launcherCell = tableView.dequeueReusableCell(withIdentifier: "CometChatUICell") as! CometChatUICell
             launcherCell.delegate = self
@@ -77,7 +76,7 @@ class MainViewController: UIViewController , UITableViewDelegate, UITableViewDat
             LogoutCell.delegate = self
             return LogoutCell
         }
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
