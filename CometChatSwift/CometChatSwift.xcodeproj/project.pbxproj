@@ -10,6 +10,8 @@
 		58163FAA25CC320800475B5C /* CreateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FA825CC320700475B5C /* CreateUserTests.swift */; };
 		58163FAB25CC320800475B5C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FA925CC320800475B5C /* LoginTests.swift */; };
 		58163FAF25CC35BC00475B5C /* CometChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FAE25CC35BC00475B5C /* CometChatUITests.swift */; };
+		58576401281C2A0F00158D2A /* URLSessionTask+Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585763FE281C2A0F00158D2A /* URLSessionTask+Cancellable.swift */; };
+		58576402281C2A0F00158D2A /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58576400281C2A0F00158D2A /* ImageService.swift */; };
 		587038ED26049C2700B03467 /* 07CreateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E426049C2600B03467 /* 07CreateUserTests.swift */; };
 		587038EE26049C2700B03467 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E526049C2600B03467 /* Constants.swift */; };
 		587038EF26049C2700B03467 /* 1InitializeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E626049C2600B03467 /* 1InitializeTests.swift */; };
@@ -441,7 +443,6 @@
 		58790E10268CBFC30075E214 /* CometChatPrivacyAndSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790AAD268CBFC20075E214 /* CometChatPrivacyAndSecurity.swift */; };
 		58790E11268CBFC30075E214 /* CometChatSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790AAF268CBFC20075E214 /* CometChatSettingsItem.swift */; };
 		58790E12268CBFC30075E214 /* CometChatSettingsItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58790AB0268CBFC20075E214 /* CometChatSettingsItem.xib */; };
-		58790E13268CBFC30075E214 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790AB3268CBFC20075E214 /* FontManager.swift */; };
 		58790E14268CBFC30075E214 /* KeyboardTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790AB5268CBFC20075E214 /* KeyboardTrackingView.swift */; };
 		58790E15268CBFC30075E214 /* MaskingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790AB6268CBFC20075E214 /* MaskingView.swift */; };
 		58790E16268CBFC30075E214 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790AB7268CBFC20075E214 /* UIViewController+Extensions.swift */; };
@@ -541,53 +542,6 @@
 		58790E74268CBFC30075E214 /* AudioRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B23268CBFC20075E214 /* AudioRecorderManager.swift */; };
 		58790E75268CBFC30075E214 /* DeviceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B25268CBFC20075E214 /* DeviceDetection.swift */; };
 		58790E76268CBFC30075E214 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B27268CBFC20075E214 /* CameraHandler.swift */; };
-		58790E77268CBFC30075E214 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B2A268CBFC20075E214 /* Storage.swift */; };
-		58790E78268CBFC30075E214 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B2B268CBFC20075E214 /* ImageCache.swift */; };
-		58790E79268CBFC30075E214 /* MemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B2C268CBFC20075E214 /* MemoryStorage.swift */; };
-		58790E7A268CBFC30075E214 /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B2D268CBFC20075E214 /* DiskStorage.swift */; };
-		58790E7B268CBFC30075E214 /* CacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B2E268CBFC20075E214 /* CacheSerializer.swift */; };
-		58790E7C268CBFC30075E214 /* FormatIndicatedCacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B2F268CBFC20075E214 /* FormatIndicatedCacheSerializer.swift */; };
-		58790E7D268CBFC30075E214 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B32268CBFC20075E214 /* Source.swift */; };
-		58790E7E268CBFC30075E214 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B33268CBFC20075E214 /* Resource.swift */; };
-		58790E7F268CBFC30075E214 /* ImageDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B34268CBFC20075E214 /* ImageDataProvider.swift */; };
-		58790E80268CBFC30075E214 /* CometfisherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B35268CBFC20075E214 /* CometfisherError.swift */; };
-		58790E81268CBFC30075E214 /* CometfisherOptionsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B36268CBFC20075E214 /* CometfisherOptionsInfo.swift */; };
-		58790E82268CBFC30075E214 /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B37268CBFC20075E214 /* Deprecated.swift */; };
-		58790E83268CBFC30075E214 /* Cometfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B38268CBFC20075E214 /* Cometfisher.swift */; };
-		58790E84268CBFC30075E214 /* CometfisherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B39268CBFC20075E214 /* CometfisherManager.swift */; };
-		58790E85268CBFC30075E214 /* ImageDownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B3B268CBFC20075E214 /* ImageDownloaderDelegate.swift */; };
-		58790E86268CBFC30075E214 /* RequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B3C268CBFC20075E214 /* RequestModifier.swift */; };
-		58790E87268CBFC30075E214 /* ImageDataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B3D268CBFC20075E214 /* ImageDataProcessor.swift */; };
-		58790E88268CBFC30075E214 /* SessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B3E268CBFC20075E214 /* SessionDataTask.swift */; };
-		58790E89268CBFC30075E214 /* RedirectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B3F268CBFC20075E214 /* RedirectHandler.swift */; };
-		58790E8A268CBFC30075E214 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B40268CBFC20075E214 /* ImageDownloader.swift */; };
-		58790E8B268CBFC30075E214 /* AuthenticationChallengeResponsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B41268CBFC20075E214 /* AuthenticationChallengeResponsable.swift */; };
-		58790E8C268CBFC30075E214 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B42268CBFC20075E214 /* ImageModifier.swift */; };
-		58790E8D268CBFC30075E214 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B43268CBFC20075E214 /* SessionDelegate.swift */; };
-		58790E8E268CBFC30075E214 /* ImagePrefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B44268CBFC20075E214 /* ImagePrefetcher.swift */; };
-		58790E8F268CBFC30075E214 /* ImageProgressive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B47268CBFC20075E214 /* ImageProgressive.swift */; };
-		58790E90268CBFC30075E214 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B48268CBFC20075E214 /* Image.swift */; };
-		58790E91268CBFC30075E214 /* ImageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B49268CBFC20075E214 /* ImageFormat.swift */; };
-		58790E92268CBFC30075E214 /* ImageDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B4A268CBFC20075E214 /* ImageDrawing.swift */; };
-		58790E93268CBFC30075E214 /* ImageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B4B268CBFC20075E214 /* ImageTransition.swift */; };
-		58790E94268CBFC30075E214 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B4C268CBFC20075E214 /* ImageProcessor.swift */; };
-		58790E95268CBFC30075E214 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B4D268CBFC20075E214 /* Filter.swift */; };
-		58790E96268CBFC30075E214 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B4E268CBFC20075E214 /* Placeholder.swift */; };
-		58790E97268CBFC30075E214 /* GIFAnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B4F268CBFC20075E214 /* GIFAnimatedImage.swift */; };
-		58790E98268CBFC30075E214 /* WKInterfaceImage+Cometfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B51268CBFC20075E214 /* WKInterfaceImage+Cometfisher.swift */; };
-		58790E99268CBFC30075E214 /* UIButton+Cometfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B52268CBFC20075E214 /* UIButton+Cometfisher.swift */; };
-		58790E9A268CBFC30075E214 /* ImageView+Cometfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B53268CBFC20075E214 /* ImageView+Cometfisher.swift */; };
-		58790E9B268CBFC30075E214 /* NSButton+Cometfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B54268CBFC20075E214 /* NSButton+Cometfisher.swift */; };
-		58790E9C268CBFC30075E214 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B56268CBFC20075E214 /* Indicator.swift */; };
-		58790E9D268CBFC30075E214 /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B57268CBFC20075E214 /* AnimatedImageView.swift */; };
-		58790E9E268CBFC30075E214 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B59268CBFC20075E214 /* Runtime.swift */; };
-		58790E9F268CBFC30075E214 /* CallbackQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B5A268CBFC20075E214 /* CallbackQueue.swift */; };
-		58790EA0268CBFC30075E214 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B5B268CBFC20075E214 /* Delegate.swift */; };
-		58790EA1268CBFC30075E214 /* ExtensionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B5C268CBFC20075E214 /* ExtensionHelpers.swift */; };
-		58790EA2268CBFC30075E214 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B5D268CBFC20075E214 /* Result.swift */; };
-		58790EA3268CBFC30075E214 /* SizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B5E268CBFC20075E214 /* SizeExtensions.swift */; };
-		58790EA4268CBFC30075E214 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B5F268CBFC20075E214 /* Box.swift */; };
-		58790EA5268CBFC30075E214 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B60268CBFC20075E214 /* String+MD5.swift */; };
 		58790EA6268CBFC30075E214 /* UIViewController+LargeTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B62268CBFC20075E214 /* UIViewController+LargeTitle.swift */; };
 		58790EA7268CBFC30075E214 /* LargeTitleDisplayMode+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B63268CBFC20075E214 /* LargeTitleDisplayMode+String.swift */; };
 		58790EA8268CBFC30075E214 /* EmptyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790B65268CBFC20075E214 /* EmptyMessage.swift */; };
@@ -903,6 +857,8 @@
 		58163FA825CC320700475B5C /* CreateUserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserTests.swift; sourceTree = "<group>"; };
 		58163FA925CC320800475B5C /* LoginTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		58163FAE25CC35BC00475B5C /* CometChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CometChatUITests.swift; sourceTree = "<group>"; };
+		585763FE281C2A0F00158D2A /* URLSessionTask+Cancellable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSessionTask+Cancellable.swift"; sourceTree = "<group>"; };
+		58576400281C2A0F00158D2A /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		587038D526049BFA00B03467 /* CometChat KitchenSinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CometChat KitchenSinkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		587038D926049BFA00B03467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		587038E126049C2600B03467 /* CometChat KitchenSinkTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CometChat KitchenSinkTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -1351,7 +1307,6 @@
 		58790AAD268CBFC20075E214 /* CometChatPrivacyAndSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatPrivacyAndSecurity.swift; sourceTree = "<group>"; };
 		58790AAF268CBFC20075E214 /* CometChatSettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatSettingsItem.swift; sourceTree = "<group>"; };
 		58790AB0268CBFC20075E214 /* CometChatSettingsItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CometChatSettingsItem.xib; sourceTree = "<group>"; };
-		58790AB3268CBFC20075E214 /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		58790AB5268CBFC20075E214 /* KeyboardTrackingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardTrackingView.swift; sourceTree = "<group>"; };
 		58790AB6268CBFC20075E214 /* MaskingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskingView.swift; sourceTree = "<group>"; };
 		58790AB7268CBFC20075E214 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -1452,54 +1407,6 @@
 		58790B23268CBFC20075E214 /* AudioRecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderManager.swift; sourceTree = "<group>"; };
 		58790B25268CBFC20075E214 /* DeviceDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceDetection.swift; sourceTree = "<group>"; };
 		58790B27268CBFC20075E214 /* CameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
-		58790B2A268CBFC20075E214 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		58790B2B268CBFC20075E214 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		58790B2C268CBFC20075E214 /* MemoryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryStorage.swift; sourceTree = "<group>"; };
-		58790B2D268CBFC20075E214 /* DiskStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
-		58790B2E268CBFC20075E214 /* CacheSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheSerializer.swift; sourceTree = "<group>"; };
-		58790B2F268CBFC20075E214 /* FormatIndicatedCacheSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatIndicatedCacheSerializer.swift; sourceTree = "<group>"; };
-		58790B32268CBFC20075E214 /* Source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
-		58790B33268CBFC20075E214 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		58790B34268CBFC20075E214 /* ImageDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataProvider.swift; sourceTree = "<group>"; };
-		58790B35268CBFC20075E214 /* CometfisherError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometfisherError.swift; sourceTree = "<group>"; };
-		58790B36268CBFC20075E214 /* CometfisherOptionsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometfisherOptionsInfo.swift; sourceTree = "<group>"; };
-		58790B37268CBFC20075E214 /* Deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated.swift; sourceTree = "<group>"; };
-		58790B38268CBFC20075E214 /* Cometfisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cometfisher.swift; sourceTree = "<group>"; };
-		58790B39268CBFC20075E214 /* CometfisherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometfisherManager.swift; sourceTree = "<group>"; };
-		58790B3B268CBFC20075E214 /* ImageDownloaderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloaderDelegate.swift; sourceTree = "<group>"; };
-		58790B3C268CBFC20075E214 /* RequestModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModifier.swift; sourceTree = "<group>"; };
-		58790B3D268CBFC20075E214 /* ImageDataProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataProcessor.swift; sourceTree = "<group>"; };
-		58790B3E268CBFC20075E214 /* SessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDataTask.swift; sourceTree = "<group>"; };
-		58790B3F268CBFC20075E214 /* RedirectHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedirectHandler.swift; sourceTree = "<group>"; };
-		58790B40268CBFC20075E214 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
-		58790B41268CBFC20075E214 /* AuthenticationChallengeResponsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationChallengeResponsable.swift; sourceTree = "<group>"; };
-		58790B42268CBFC20075E214 /* ImageModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
-		58790B43268CBFC20075E214 /* SessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
-		58790B44268CBFC20075E214 /* ImagePrefetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePrefetcher.swift; sourceTree = "<group>"; };
-		58790B45268CBFC20075E214 /* Cometfisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cometfisher.h; sourceTree = "<group>"; };
-		58790B47268CBFC20075E214 /* ImageProgressive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProgressive.swift; sourceTree = "<group>"; };
-		58790B48268CBFC20075E214 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		58790B49268CBFC20075E214 /* ImageFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFormat.swift; sourceTree = "<group>"; };
-		58790B4A268CBFC20075E214 /* ImageDrawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDrawing.swift; sourceTree = "<group>"; };
-		58790B4B268CBFC20075E214 /* ImageTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTransition.swift; sourceTree = "<group>"; };
-		58790B4C268CBFC20075E214 /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
-		58790B4D268CBFC20075E214 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
-		58790B4E268CBFC20075E214 /* Placeholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
-		58790B4F268CBFC20075E214 /* GIFAnimatedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFAnimatedImage.swift; sourceTree = "<group>"; };
-		58790B51268CBFC20075E214 /* WKInterfaceImage+Cometfisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WKInterfaceImage+Cometfisher.swift"; sourceTree = "<group>"; };
-		58790B52268CBFC20075E214 /* UIButton+Cometfisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Cometfisher.swift"; sourceTree = "<group>"; };
-		58790B53268CBFC20075E214 /* ImageView+Cometfisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageView+Cometfisher.swift"; sourceTree = "<group>"; };
-		58790B54268CBFC20075E214 /* NSButton+Cometfisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSButton+Cometfisher.swift"; sourceTree = "<group>"; };
-		58790B56268CBFC20075E214 /* Indicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
-		58790B57268CBFC20075E214 /* AnimatedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
-		58790B59268CBFC20075E214 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
-		58790B5A268CBFC20075E214 /* CallbackQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallbackQueue.swift; sourceTree = "<group>"; };
-		58790B5B268CBFC20075E214 /* Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
-		58790B5C268CBFC20075E214 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionHelpers.swift; sourceTree = "<group>"; };
-		58790B5D268CBFC20075E214 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		58790B5E268CBFC20075E214 /* SizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeExtensions.swift; sourceTree = "<group>"; };
-		58790B5F268CBFC20075E214 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
-		58790B60268CBFC20075E214 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		58790B62268CBFC20075E214 /* UIViewController+LargeTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+LargeTitle.swift"; sourceTree = "<group>"; };
 		58790B63268CBFC20075E214 /* LargeTitleDisplayMode+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LargeTitleDisplayMode+String.swift"; sourceTree = "<group>"; };
 		58790B65268CBFC20075E214 /* EmptyMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyMessage.swift; sourceTree = "<group>"; };
@@ -1826,6 +1733,31 @@
 				58163FA125CC31EF00475B5C /* Info.plist */,
 			);
 			path = "CometChat KitchenSink UITests";
+			sourceTree = "<group>";
+		};
+		585763FC281C27E100158D2A /* CometChatImageService */ = {
+			isa = PBXGroup;
+			children = (
+				585763FF281C2A0F00158D2A /* ImageServiceHelper */,
+				585763FD281C2A0F00158D2A /* URLSessionTaskHelper */,
+			);
+			path = CometChatImageService;
+			sourceTree = "<group>";
+		};
+		585763FD281C2A0F00158D2A /* URLSessionTaskHelper */ = {
+			isa = PBXGroup;
+			children = (
+				585763FE281C2A0F00158D2A /* URLSessionTask+Cancellable.swift */,
+			);
+			path = URLSessionTaskHelper;
+			sourceTree = "<group>";
+		};
+		585763FF281C2A0F00158D2A /* ImageServiceHelper */ = {
+			isa = PBXGroup;
+			children = (
+				58576400281C2A0F00158D2A /* ImageService.swift */,
+			);
+			path = ImageServiceHelper;
 			sourceTree = "<group>";
 		};
 		587038D626049BFA00B03467 /* CometChat KitchenSinkTests */ = {
@@ -2558,6 +2490,7 @@
 		58790A10268CBFC20075E214 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				585763FC281C27E100158D2A /* CometChatImageService */,
 				58790A11268CBFC20075E214 /* CometChatBadgeCount */,
 				58790A13268CBFC20075E214 /* Feature Restriction */,
 				58790A16268CBFC20075E214 /* CometChatAvatar */,
@@ -3011,7 +2944,6 @@
 		58790AB2268CBFC20075E214 /* Helper Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				58790AB3268CBFC20075E214 /* FontManager.swift */,
 				58790AB4268CBFC20075E214 /* CometChatSnackBoard */,
 				58790B03268CBFC20075E214 /* Message Hyperlink */,
 				58790B07268CBFC20075E214 /* Snackbar */,
@@ -3026,7 +2958,6 @@
 				58790B19268CBFC20075E214 /* AudioWaveForm */,
 				58790B24268CBFC20075E214 /* DeviceDetection */,
 				58790B26268CBFC20075E214 /* Camera Handler */,
-				58790B28268CBFC20075E214 /* CometChatKingfisher */,
 				58790B61268CBFC20075E214 /* Large Titles */,
 				58790B64268CBFC20075E214 /* Set Empty Message */,
 				58790B66268CBFC20075E214 /* GrowingTextView */,
@@ -3246,125 +3177,6 @@
 				58790B27268CBFC20075E214 /* CameraHandler.swift */,
 			);
 			path = "Camera Handler";
-			sourceTree = "<group>";
-		};
-		58790B28268CBFC20075E214 /* CometChatKingfisher */ = {
-			isa = PBXGroup;
-			children = (
-				58790B29268CBFC20075E214 /* Cache */,
-				58790B30268CBFC20075E214 /* General */,
-				58790B3A268CBFC20075E214 /* Networking */,
-				58790B45268CBFC20075E214 /* Cometfisher.h */,
-				58790B46268CBFC20075E214 /* Image */,
-				58790B50268CBFC20075E214 /* Extensions */,
-				58790B55268CBFC20075E214 /* Views */,
-				58790B58268CBFC20075E214 /* Utility */,
-			);
-			path = CometChatKingfisher;
-			sourceTree = "<group>";
-		};
-		58790B29268CBFC20075E214 /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-				58790B2A268CBFC20075E214 /* Storage.swift */,
-				58790B2B268CBFC20075E214 /* ImageCache.swift */,
-				58790B2C268CBFC20075E214 /* MemoryStorage.swift */,
-				58790B2D268CBFC20075E214 /* DiskStorage.swift */,
-				58790B2E268CBFC20075E214 /* CacheSerializer.swift */,
-				58790B2F268CBFC20075E214 /* FormatIndicatedCacheSerializer.swift */,
-			);
-			path = Cache;
-			sourceTree = "<group>";
-		};
-		58790B30268CBFC20075E214 /* General */ = {
-			isa = PBXGroup;
-			children = (
-				58790B31268CBFC20075E214 /* ImageSource */,
-				58790B35268CBFC20075E214 /* CometfisherError.swift */,
-				58790B36268CBFC20075E214 /* CometfisherOptionsInfo.swift */,
-				58790B37268CBFC20075E214 /* Deprecated.swift */,
-				58790B38268CBFC20075E214 /* Cometfisher.swift */,
-				58790B39268CBFC20075E214 /* CometfisherManager.swift */,
-			);
-			path = General;
-			sourceTree = "<group>";
-		};
-		58790B31268CBFC20075E214 /* ImageSource */ = {
-			isa = PBXGroup;
-			children = (
-				58790B32268CBFC20075E214 /* Source.swift */,
-				58790B33268CBFC20075E214 /* Resource.swift */,
-				58790B34268CBFC20075E214 /* ImageDataProvider.swift */,
-			);
-			path = ImageSource;
-			sourceTree = "<group>";
-		};
-		58790B3A268CBFC20075E214 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				58790B3B268CBFC20075E214 /* ImageDownloaderDelegate.swift */,
-				58790B3C268CBFC20075E214 /* RequestModifier.swift */,
-				58790B3D268CBFC20075E214 /* ImageDataProcessor.swift */,
-				58790B3E268CBFC20075E214 /* SessionDataTask.swift */,
-				58790B3F268CBFC20075E214 /* RedirectHandler.swift */,
-				58790B40268CBFC20075E214 /* ImageDownloader.swift */,
-				58790B41268CBFC20075E214 /* AuthenticationChallengeResponsable.swift */,
-				58790B42268CBFC20075E214 /* ImageModifier.swift */,
-				58790B43268CBFC20075E214 /* SessionDelegate.swift */,
-				58790B44268CBFC20075E214 /* ImagePrefetcher.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		58790B46268CBFC20075E214 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				58790B47268CBFC20075E214 /* ImageProgressive.swift */,
-				58790B48268CBFC20075E214 /* Image.swift */,
-				58790B49268CBFC20075E214 /* ImageFormat.swift */,
-				58790B4A268CBFC20075E214 /* ImageDrawing.swift */,
-				58790B4B268CBFC20075E214 /* ImageTransition.swift */,
-				58790B4C268CBFC20075E214 /* ImageProcessor.swift */,
-				58790B4D268CBFC20075E214 /* Filter.swift */,
-				58790B4E268CBFC20075E214 /* Placeholder.swift */,
-				58790B4F268CBFC20075E214 /* GIFAnimatedImage.swift */,
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
-		58790B50268CBFC20075E214 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				58790B51268CBFC20075E214 /* WKInterfaceImage+Cometfisher.swift */,
-				58790B52268CBFC20075E214 /* UIButton+Cometfisher.swift */,
-				58790B53268CBFC20075E214 /* ImageView+Cometfisher.swift */,
-				58790B54268CBFC20075E214 /* NSButton+Cometfisher.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		58790B55268CBFC20075E214 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				58790B56268CBFC20075E214 /* Indicator.swift */,
-				58790B57268CBFC20075E214 /* AnimatedImageView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		58790B58268CBFC20075E214 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				58790B59268CBFC20075E214 /* Runtime.swift */,
-				58790B5A268CBFC20075E214 /* CallbackQueue.swift */,
-				58790B5B268CBFC20075E214 /* Delegate.swift */,
-				58790B5C268CBFC20075E214 /* ExtensionHelpers.swift */,
-				58790B5D268CBFC20075E214 /* Result.swift */,
-				58790B5E268CBFC20075E214 /* SizeExtensions.swift */,
-				58790B5F268CBFC20075E214 /* Box.swift */,
-				58790B60268CBFC20075E214 /* String+MD5.swift */,
-			);
-			path = Utility;
 			sourceTree = "<group>";
 		};
 		58790B61268CBFC20075E214 /* Large Titles */ = {
@@ -4609,31 +4421,24 @@
 			files = (
 				58790E74268CBFC30075E214 /* AudioRecorderManager.swift in Sources */,
 				58790CD4268CBFC20075E214 /* CometChatSenderLocationMessageBubble.swift in Sources */,
-				58790EA3268CBFC30075E214 /* SizeExtensions.swift in Sources */,
 				58790CD7268CBFC20075E214 /* CometChatReceiverTextMessageBubble.swift in Sources */,
 				58790DD8268CBFC30075E214 /* CometChatAddAdministrators.swift in Sources */,
 				58FEC73324ED47D90004CC9B /* MainViewController.swift in Sources */,
 				58790D94268CBFC30075E214 /* UserGroupHeaderView.swift in Sources */,
 				58790E56268CBFC30075E214 /* Layout.swift in Sources */,
 				58790E60268CBFC30075E214 /* HyperlinkBuilder.swift in Sources */,
-				58790E96268CBFC30075E214 /* Placeholder.swift in Sources */,
 				58790E6C268CBFC30075E214 /* AVAudioFileExtensions.swift in Sources */,
 				58790D77268CBFC30075E214 /* CometChatMessageReactor.swift in Sources */,
 				58790CD0268CBFC20075E214 /* CometChatSenderImageMessageBubble.swift in Sources */,
 				58790D83268CBFC30075E214 /* CometChatCreatePollAddNewOption.swift in Sources */,
-				58790E78268CBFC30075E214 /* ImageCache.swift in Sources */,
 				58790D97268CBFC30075E214 /* UIViewController+PanModalPresenter.swift in Sources */,
 				58790DAB268CBFC30075E214 /* CometChatBadgeCount.swift in Sources */,
 				58790E68268CBFC30075E214 /* TableViewTransformation.swift in Sources */,
 				58790E6E268CBFC30075E214 /* AudioVisualizationView.swift in Sources */,
 				58790DFE268CBFC30075E214 /* CometChatConversationList.swift in Sources */,
 				58790E65268CBFC30075E214 /* ShowAlert.swift in Sources */,
-				58790E85268CBFC30075E214 /* ImageDownloaderDelegate.swift in Sources */,
-				58790EA4268CBFC30075E214 /* Box.swift in Sources */,
 				58790E59268CBFC30075E214 /* PhysicsPanHandler.swift in Sources */,
-				58790E9B268CBFC30075E214 /* NSButton+Cometfisher.swift in Sources */,
 				58790DA0268CBFC30075E214 /* PanContainerView.swift in Sources */,
-				58790E91268CBFC30075E214 /* ImageFormat.swift in Sources */,
 				58790D7D268CBFC30075E214 /* CometChatCreatePoll.swift in Sources */,
 				58FEC73424ED47D90004CC9B /* UIComponentController.swift in Sources */,
 				58790E50268CBFC30075E214 /* BackgroundViewable.swift in Sources */,
@@ -4647,21 +4452,15 @@
 				58790CEA268CBFC20075E214 /* CometChatSenderStickerMessageBubble.swift in Sources */,
 				58790DBF268CBFC30075E214 /* CometChatGroupList.swift in Sources */,
 				58790DAE268CBFC30075E214 /* CometChatAvatar.swift in Sources */,
-				58790EA5268CBFC30075E214 /* String+MD5.swift in Sources */,
 				58790DDD268CBFC30075E214 /* CometChatMembersItem.swift in Sources */,
-				58790E88268CBFC30075E214 /* SessionDataTask.swift in Sources */,
 				58790E6A268CBFC30075E214 /* LargeEmojis.swift in Sources */,
 				58790CBB268CBFC20075E214 /* CometChatSenderLinkPreviewBubble.swift in Sources */,
 				58790CBF268CBFC20075E214 /* CometChatReceiverMeetingMessageBubble.swift in Sources */,
 				58790E14268CBFC30075E214 /* KeyboardTrackingView.swift in Sources */,
-				58790E9C268CBFC30075E214 /* Indicator.swift in Sources */,
-				58790E7D268CBFC30075E214 /* Source.swift in Sources */,
 				58790E5E268CBFC30075E214 /* SwiftMessagesSegue.swift in Sources */,
 				58790DA2268CBFC30075E214 /* DimmedView.swift in Sources */,
 				58FEC73124ED47D90004CC9B /* LoginWithUID.swift in Sources */,
 				58790E1E268CBFC30075E214 /* MarginAdjustable+Extensions.swift in Sources */,
-				58790E93268CBFC30075E214 /* ImageTransition.swift in Sources */,
-				58790E7A268CBFC30075E214 /* DiskStorage.swift in Sources */,
 				58790DAA268CBFC30075E214 /* CometChatThreadedMessageList.swift in Sources */,
 				58790EA7268CBFC30075E214 /* LargeTitleDisplayMode+String.swift in Sources */,
 				58790E5C268CBFC30075E214 /* BaseView.swift in Sources */,
@@ -4669,29 +4468,23 @@
 				58790E18268CBFC30075E214 /* UIEdgeInsets+Extensions.swift in Sources */,
 				58790CA3268CBFC20075E214 /* CometChatCallDetail.swift in Sources */,
 				58790DFF268CBFC30075E214 /* CometChatStartConversation.swift in Sources */,
-				58790E8B268CBFC30075E214 /* AuthenticationChallengeResponsable.swift in Sources */,
 				58790E5F268CBFC30075E214 /* MessageView.swift in Sources */,
 				58790CC9268CBFC20075E214 /* CometChatSenderReplyMessageBubble.swift in Sources */,
-				58790E98268CBFC30075E214 /* WKInterfaceImage+Cometfisher.swift in Sources */,
-				58790E9D268CBFC30075E214 /* AnimatedImageView.swift in Sources */,
 				58790DB1268CBFC30075E214 /* CometChatDetailItem.swift in Sources */,
 				58790EA8268CBFC30075E214 /* EmptyMessage.swift in Sources */,
 				58790DA5268CBFC30075E214 /* PanModalHeight.swift in Sources */,
 				58790E6F268CBFC30075E214 /* AudioContext.swift in Sources */,
 				58790EAA268CBFC30075E214 /* GrowingTextView.swift in Sources */,
 				58790E55268CBFC30075E214 /* Identifiable.swift in Sources */,
-				58790E79268CBFC30075E214 /* MemoryStorage.swift in Sources */,
 				58790DBA268CBFC30075E214 /* CometChatSharedMediaItem.swift in Sources */,
 				58790DA3268CBFC30075E214 /* PanModalPresenter.swift in Sources */,
 				58790E1D268CBFC30075E214 /* WindowViewController.swift in Sources */,
-				58790EA0268CBFC30075E214 /* Delegate.swift in Sources */,
 				58790DA7268CBFC30075E214 /* CometChatMessageFilter.swift in Sources */,
 				58790C9A268CBFC20075E214 /* CometChatProgressIndicatorItem.swift in Sources */,
 				58790E51268CBFC30075E214 /* UIWindow+Extensions.swift in Sources */,
 				58790D99268CBFC30075E214 /* PanModalPresentable.swift in Sources */,
 				58790CE8268CBFC20075E214 /* CometChatReceiverVideoMessageBubble.swift in Sources */,
 				58790D93268CBFC30075E214 /* CometChatMessageComposer.swift in Sources */,
-				58790E9F268CBFC30075E214 /* CallbackQueue.swift in Sources */,
 				58790CA5268CBFC20075E214 /* CometChatOutgoingCall.swift in Sources */,
 				58790CE5268CBFC20075E214 /* CometChatMessageDateHeader.swift in Sources */,
 				58790D80268CBFC30075E214 /* CometChatCreatePollOptions.swift in Sources */,
@@ -4703,9 +4496,7 @@
 				58790D9E268CBFC30075E214 /* PanModalPresentationController.swift in Sources */,
 				58790E72268CBFC30075E214 /* AudioPlayerManager.swift in Sources */,
 				58FEC73224ED47D90004CC9B /* LoginWithDemoUsers.swift in Sources */,
-				58790E80268CBFC30075E214 /* CometfisherError.swift in Sources */,
 				58790E70268CBFC30075E214 /* BaseNibView.swift in Sources */,
-				58790E7E268CBFC30075E214 /* Resource.swift in Sources */,
 				58790CE2268CBFC20075E214 /* CometChatSenderCollaborativeMessageBubble.swift in Sources */,
 				58790DBD268CBFC30075E214 /* CometChatTransferOwnership.swift in Sources */,
 				58790E52268CBFC30075E214 /* Presenter.swift in Sources */,
@@ -4714,8 +4505,6 @@
 				58790C9D268CBFC20075E214 /* CometChatCreateMeetingView.swift in Sources */,
 				58790CDA268CBFC20075E214 /* CometChatSenderTextMessageBubble.swift in Sources */,
 				58790E76268CBFC30075E214 /* CameraHandler.swift in Sources */,
-				58790E90268CBFC30075E214 /* Image.swift in Sources */,
-				58790E81268CBFC30075E214 /* CometfisherOptionsInfo.swift in Sources */,
 				58790E64268CBFC30075E214 /* CCActivityIndicator.swift in Sources */,
 				58790D90268CBFC30075E214 /* CometChatMessageReceiptItem.swift in Sources */,
 				58790D9F268CBFC30075E214 /* PanModalAnimator.swift in Sources */,
@@ -4723,11 +4512,8 @@
 				58790E1C268CBFC30075E214 /* CometChatSnackBoard.swift in Sources */,
 				58790E0F268CBFC30075E214 /* CometChatPrivacyAndSupportItem.swift in Sources */,
 				58790DE1268CBFC30075E214 /* CometChatUserDetail.swift in Sources */,
-				58790E94268CBFC30075E214 /* ImageProcessor.swift in Sources */,
-				58790E89268CBFC30075E214 /* RedirectHandler.swift in Sources */,
 				58790CCB268CBFC20075E214 /* CometChatSenderPollMessageBubble.swift in Sources */,
 				58790DAC268CBFC30075E214 /* Feature + Extension 🔑.swift in Sources */,
-				58790E7B268CBFC30075E214 /* CacheSerializer.swift in Sources */,
 				58790DB7268CBFC30075E214 /* CometChatLanguageBundle.swift in Sources */,
 				58790D88268CBFC30075E214 /* CometChatSticker.swift in Sources */,
 				58790CE0268CBFC20075E214 /* CometChatSenderFileMessageBubble.swift in Sources */,
@@ -4736,19 +4522,15 @@
 				58790E1A268CBFC30075E214 /* Error.swift in Sources */,
 				58790E4B268CBFC30075E214 /* EdgeAnimation.swift in Sources */,
 				58790CEC268CBFC20075E214 /* CometChatReceiverStickerMessageBubble.swift in Sources */,
-				58790E8D268CBFC30075E214 /* SessionDelegate.swift in Sources */,
 				58790E4F268CBFC30075E214 /* Animator.swift in Sources */,
 				58790DE3268CBFC30075E214 /* CometChatUserList.swift in Sources */,
 				58790CBD268CBFC20075E214 /* CometChatReceiverLinkPreviewBubble.swift in Sources */,
-				58790E8C268CBFC30075E214 /* ImageModifier.swift in Sources */,
 				58790D78268CBFC30075E214 /* ReactionCell.swift in Sources */,
 				58790E53268CBFC30075E214 /* NSBundle+Extensions.swift in Sources */,
 				58790CDB268CBFC20075E214 /* CometChatActionMessageBubble.swift in Sources */,
 				58790DB8268CBFC30075E214 /* LanguageSelectionView.swift in Sources */,
 				58790E58268CBFC30075E214 /* PassthroughWindow.swift in Sources */,
-				58790E8F268CBFC30075E214 /* ImageProgressive.swift in Sources */,
 				58790D98268CBFC30075E214 /* UserGroupMemberPresentable.swift in Sources */,
-				58790E95268CBFC30075E214 /* Filter.swift in Sources */,
 				58790CD3268CBFC20075E214 /* CometChatReceiverLocationMessageBubble.swift in Sources */,
 				58790DE2268CBFC30075E214 /* CometChatBlockedUsers.swift in Sources */,
 				58790E15268CBFC30075E214 /* MaskingView.swift in Sources */,
@@ -4778,38 +4560,30 @@
 				58790CC6268CBFC20075E214 /* CometChatReceiverAudioMessageBubble.swift in Sources */,
 				DBB75F8D23D70DD700C424FF /* LogoutCell.swift in Sources */,
 				58790E10268CBFC30075E214 /* CometChatPrivacyAndSecurity.swift in Sources */,
-				58790E7F268CBFC30075E214 /* ImageDataProvider.swift in Sources */,
 				58790E4E268CBFC30075E214 /* CornerRoundingView.swift in Sources */,
-				58790E77268CBFC30075E214 /* Storage.swift in Sources */,
 				DB2E60B323A8DA8500986E12 /* CometChatUIScreenCell.swift in Sources */,
 				58790DA6268CBFC30075E214 /* PanModalPresentable+UIViewController.swift in Sources */,
 				58790DDB268CBFC30075E214 /* CometChatAdministratorsItem.swift in Sources */,
 				58790E02268CBFC30075E214 /* CometChatUserProfile.swift in Sources */,
 				58790DBE268CBFC30075E214 /* CometChatAddModerators.swift in Sources */,
 				58FEC73024ED47D90004CC9B /* ComponentModificationsController.swift in Sources */,
-				58790E99268CBFC30075E214 /* UIButton+Cometfisher.swift in Sources */,
 				58790D85268CBFC30075E214 /* CometChatStickerSet.swift in Sources */,
 				58790CE7268CBFC20075E214 /* CometChatSenderVideoMessageBubble.swift in Sources */,
 				58790CD1268CBFC20075E214 /* CometChatReceiverImageMessageBubble.swift in Sources */,
-				58790E82268CBFC30075E214 /* Deprecated.swift in Sources */,
-				58790E83268CBFC30075E214 /* Cometfisher.swift in Sources */,
 				58790E75268CBFC30075E214 /* DeviceDetection.swift in Sources */,
 				58790DE8268CBFC30075E214 /* CometChatUserListItem.swift in Sources */,
-				58790E97268CBFC30075E214 /* GIFAnimatedImage.swift in Sources */,
-				58790E8E268CBFC30075E214 /* ImagePrefetcher.swift in Sources */,
 				58790DAF268CBFC30075E214 /* CometChatWebView.swift in Sources */,
 				58790DB4268CBFC30075E214 /* CometChatSoundManager.swift in Sources */,
 				58790D72268CBFC30075E214 /* AddReactionsCell.swift in Sources */,
 				58790CC7268CBFC20075E214 /* CometChatReceiverReplyMessageBubble.swift in Sources */,
-				58790EA2268CBFC30075E214 /* Result.swift in Sources */,
-				58790E13268CBFC30075E214 /* FontManager.swift in Sources */,
 				58790E5A268CBFC30075E214 /* SwiftMessages.Config+Extensions.swift in Sources */,
 				58790E69268CBFC30075E214 /* ViewTransformation.swift in Sources */,
 				58790E19268CBFC30075E214 /* AccessibleMessage.swift in Sources */,
 				58790DD9268CBFC30075E214 /* CometChatGroupDetail.swift in Sources */,
 				58790CA6268CBFC20075E214 /* CometChatIncomingCall.swift in Sources */,
+				58576402281C2A0F00158D2A /* ImageService.swift in Sources */,
+				58576401281C2A0F00158D2A /* URLSessionTask+Cancellable.swift in Sources */,
 				58790CE3268CBFC20075E214 /* CometChatReceiverCollaborativeMessageBubble.swift in Sources */,
-				58790E87268CBFC30075E214 /* ImageDataProcessor.swift in Sources */,
 				58790D74268CBFC30075E214 /* CometChatMessageReactions.swift in Sources */,
 				58790D9A268CBFC30075E214 /* PanModalPresentationDelegate.swift in Sources */,
 				58790E00268CBFC30075E214 /* CometChatConversationListItem.swift in Sources */,
@@ -4820,29 +4594,21 @@
 				58790D9C268CBFC30075E214 /* UserGroupHeaderPresentable.swift in Sources */,
 				58790E66268CBFC30075E214 /* TextTransformation.swift in Sources */,
 				58790CCE268CBFC20075E214 /* CometChatReceiverPollMessageBubble.swift in Sources */,
-				58790E9E268CBFC30075E214 /* Runtime.swift in Sources */,
 				58790FA2268CBFC40075E214 /* UIKitSettings.swift in Sources */,
 				58790E73268CBFC30075E214 /* ViewModel.swift in Sources */,
 				58790CA1268CBFC20075E214 /* CometChatCallsList.swift in Sources */,
-				58790E8A268CBFC30075E214 /* ImageDownloader.swift in Sources */,
 				DBED2A3E23AA50750058D5BF /* UIComponentsCell.swift in Sources */,
 				58790E16268CBFC30075E214 /* UIViewController+Extensions.swift in Sources */,
 				58790D7C268CBFC30075E214 /* CometChatExtension.swift in Sources */,
 				58790DC0268CBFC30075E214 /* CometChatGroupListItem.swift in Sources */,
 				58790C9E268CBFC20075E214 /* CometChatMeetingView.swift in Sources */,
-				58790E7C268CBFC30075E214 /* FormatIndicatedCacheSerializer.swift in Sources */,
 				58790DB5268CBFC30075E214 /* CometChatStatusIndicator.swift in Sources */,
-				58790E84268CBFC30075E214 /* CometfisherManager.swift in Sources */,
 				58790E63268CBFC30075E214 /* CometChatSnackBar.swift in Sources */,
-				58790E92268CBFC30075E214 /* ImageDrawing.swift in Sources */,
 				58790CA0268CBFC20075E214 /* CometChatCallManager.swift in Sources */,
 				58790E11268CBFC30075E214 /* CometChatSettingsItem.swift in Sources */,
-				58790E9A268CBFC30075E214 /* ImageView+Cometfisher.swift in Sources */,
 				58790C6E268CBFC20075E214 /* CometChatCallDetailsLogItem.swift in Sources */,
 				58790DBB268CBFC30075E214 /* CometChatSharedMedia.swift in Sources */,
-				58790EA1268CBFC30075E214 /* ExtensionHelpers.swift in Sources */,
 				58790E67268CBFC30075E214 /* ImageTransformation.swift in Sources */,
-				58790E86268CBFC30075E214 /* RequestModifier.swift in Sources */,
 				58790D9B268CBFC30075E214 /* MessageActions.swift in Sources */,
 				FBA293102434D9A7006DCCA1 /* AppConstants.swift in Sources */,
 				DB2E60AF23A8D8C100986E12 /* CometChatUICell.swift in Sources */,

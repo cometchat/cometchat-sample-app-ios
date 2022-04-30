@@ -42,8 +42,6 @@ class UIComponentController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
-        
         switch indexPath.row {
         case 0:
             let componentCell = tableView.dequeueReusableCell(withIdentifier: "uiComponentsCell") as! UIComponentsCell
@@ -90,7 +88,7 @@ class UIComponentController: UIViewController, UITableViewDataSource, UITableVie
         default:
             break
         }
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

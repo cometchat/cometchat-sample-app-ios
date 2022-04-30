@@ -2,20 +2,20 @@
  platform :ios, '11.0'
 
 target 'CometChatSwift' do
-  pod 'CometChatPro', '3.0.8'
-  pod 'CometChatCalls', '2.1.1'
+  pod 'CometChatPro', '3.0.900'
+  pod 'CometChatCalls', '2.1.1-xc'
  
 
 end
 
 target 'CometChat KitchenSinkTests' do
-   pod 'CometChatPro', '3.0.8'
-   pod 'CometChatCalls', '2.1.1'
+   pod 'CometChatPro', '3.0.900'
+   pod 'CometChatCalls', '2.1.1-xc'
 
 end
 
 target 'CometChat KitchenSink UITests' do
-   pod 'CometChatPro', '3.0.8'
-   pod 'CometChatCalls', '2.1.1'
+   pod 'CometChatPro', '3.0.900'
+   pod 'CometChatCalls', '2.1.1-xc'
 
 end

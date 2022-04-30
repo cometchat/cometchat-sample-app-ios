@@ -20,7 +20,7 @@ class LoginWithDemoUsers: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addObservers()
-        //loginUser(with: 848)
+      
     }
     
 

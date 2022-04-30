@@ -11,7 +11,7 @@ class Constants {
 static var appId = "ENTER APP ID HERE"
 static var authKey = "ENTER AUTH KEY HERE"
 static var region = "ENTER REGION CODE HERE"
-    
+
 }
 
 
