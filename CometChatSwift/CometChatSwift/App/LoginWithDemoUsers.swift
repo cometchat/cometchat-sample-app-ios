@@ -4,7 +4,7 @@
 //
 //  Created by CometChat Inc. on 16/12/19.
 //  Copyright © 2020 CometChat Inc. All rights reserved.
-//
+
 
 import UIKit
 import CometChatPro
@@ -22,8 +22,6 @@ class LoginWithDemoUsers: UIViewController {
         addObservers()
       
     }
-    
-
     
     fileprivate func addObservers(){
         let tapOnSuperHero1 = UITapGestureRecognizer(target: self, action: #selector(LoginWithSuperHero1(tapGestureRecognizer:)))
@@ -64,11 +62,13 @@ class LoginWithDemoUsers: UIViewController {
     }
     
     
-    private func loginWithUID(UID:String){
+    private func loginWithUID(UID:String) {
         
         activityIndicator.startAnimating()
         if(Constants.authKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.authKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.authKey.contains("NULL") || Constants.authKey.contains("null") || Constants.authKey.count == 0){
+            
             showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and AUTH-KEY in Constants.swift file.", comment: ""))
+            
         }else{
             
             CometChat.login(UID: UID, apiKey: Constants.authKey, onSuccess: { (current_user) in
