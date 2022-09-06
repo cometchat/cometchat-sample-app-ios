@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CometChatConversationListItemComponent" customModule="CometChat_KitchenSink" customModuleProvider="target">
+            <connections>
+                <outlet property="listItemContainer" destination="HJX-Fb-WXo" id="eNN-ah-o0d"/>
+                <outlet property="table" destination="chp-fG-diw" id="nA4-I5-Vae"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJX-Fb-WXo">
+                    <rect key="frame" x="30" y="313.5" width="354" height="269"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conversation List Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uf6-CD-tUR">
+                            <rect key="frame" x="10" y="20" width="334" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ConversationListItem is a reusable component which is used to display conversation list item in the conversation list." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VS-Dl-7TJ">
+                            <rect key="frame" x="10" y="73" width="334" height="50.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="chp-fG-diw">
+                            <rect key="frame" x="10" y="133.5" width="334" height="125.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="TAv-G3-9EM"/>
+                                <outlet property="delegate" destination="-1" id="7St-9F-Vde"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="9VS-Dl-7TJ" firstAttribute="leading" secondItem="Uf6-CD-tUR" secondAttribute="leading" id="0gG-RJ-GgB"/>
+                        <constraint firstAttribute="trailing" secondItem="Uf6-CD-tUR" secondAttribute="trailing" constant="10" id="3rw-1g-0BA"/>
+                        <constraint firstItem="chp-fG-diw" firstAttribute="top" secondItem="9VS-Dl-7TJ" secondAttribute="bottom" constant="10" id="DgW-1W-9Au"/>
+                        <constraint firstAttribute="bottom" secondItem="chp-fG-diw" secondAttribute="bottom" constant="10" id="Emg-aQ-575"/>
+                        <constraint firstItem="chp-fG-diw" firstAttribute="leading" secondItem="HJX-Fb-WXo" secondAttribute="leading" constant="10" id="P75-l5-SYH"/>
+                        <constraint firstItem="Uf6-CD-tUR" firstAttribute="leading" secondItem="HJX-Fb-WXo" secondAttribute="leading" constant="10" id="cb6-yq-6K6"/>
+                        <constraint firstItem="9VS-Dl-7TJ" firstAttribute="top" secondItem="Uf6-CD-tUR" secondAttribute="bottom" constant="29" id="hFO-mR-THI"/>
+                        <constraint firstItem="9VS-Dl-7TJ" firstAttribute="trailing" secondItem="Uf6-CD-tUR" secondAttribute="trailing" id="iPS-2b-5Ap"/>
+                        <constraint firstAttribute="trailing" secondItem="chp-fG-diw" secondAttribute="trailing" constant="10" id="s6K-5I-yQb"/>
+                        <constraint firstItem="Uf6-CD-tUR" firstAttribute="top" secondItem="HJX-Fb-WXo" secondAttribute="top" constant="20" id="zny-od-ham"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemGray6Color"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HJX-Fb-WXo" secondAttribute="trailing" constant="30" id="HRG-wJ-v6y"/>
+                <constraint firstItem="HJX-Fb-WXo" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="p6h-Bj-G22"/>
+                <constraint firstItem="HJX-Fb-WXo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="pOR-Dp-lFe"/>
+                <constraint firstItem="HJX-Fb-WXo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="sJk-TF-Ars"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

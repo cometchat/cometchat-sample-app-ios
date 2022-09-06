@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "ios-chat-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cometchat-pro/ios-chat-sdk.git",
+      "state" : {
+        "revision" : "48293a2394e288d9b91a41c7dd4586bef23250ac",
+        "version" : "3.0.909"
+      }
+    },
+    {
+      "identity" : "ios-swift-chat-ui-kit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cometchat-pro/ios-swift-chat-ui-kit.git",
+      "state" : {
+        "revision" : "fd4b4fabd61e4dd38512d8f8f83c4cd2427d041d",
+        "version" : "3.0.909-pluto.beta.1.1"
+      }
+    }
+  ],
+  "version" : 2
+}

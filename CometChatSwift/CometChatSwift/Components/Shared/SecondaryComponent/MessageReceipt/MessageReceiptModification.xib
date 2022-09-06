@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageReceiptModification" customModule="CometChat_KitchenSink" customModuleProvider="target">
+            <connections>
+                <outlet property="messageReceipt" destination="S5g-bL-CJl" id="qhG-1E-VWc"/>
+                <outlet property="messageStatus" destination="X4K-1b-JdY" id="BWX-zQ-SxW"/>
+                <outlet property="receiptTableView" destination="vyD-wo-jic" id="OGg-sI-8Fs"/>
+                <outlet property="receiptView" destination="bba-4r-5gb" id="1mB-4v-JNW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEC-9e-g0J">
+                    <rect key="frame" x="20" y="305" width="374" height="286"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="vd5-3R-ljx">
+                            <rect key="frame" x="10" y="10" width="354" height="266"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bba-4r-5gb">
+                                    <rect key="frame" x="0.0" y="0.0" width="354" height="170"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="send" translatesAutoresizingMaskIntoConstraints="NO" id="S5g-bL-CJl" customClass="CometChatMessageReceipt" customModule="CometChatUIKit">
+                                            <rect key="frame" x="127" y="35" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="RdL-Me-T6c"/>
+                                                <constraint firstAttribute="width" constant="100" id="wvK-zl-dBz"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="S5g-bL-CJl" firstAttribute="centerX" secondItem="bba-4r-5gb" secondAttribute="centerX" id="DMz-9O-B0c"/>
+                                        <constraint firstAttribute="height" constant="170" id="kzL-5q-jSC"/>
+                                        <constraint firstItem="S5g-bL-CJl" firstAttribute="centerY" secondItem="bba-4r-5gb" secondAttribute="centerY" id="mNZ-d4-Rsu"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUU-ks-Csl">
+                                    <rect key="frame" x="0.0" y="176" width="354" height="90"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receipt :" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adO-t2-Fuy">
+                                            <rect key="frame" x="10" y="35.5" width="68" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="X4K-1b-JdY">
+                                            <rect key="frame" x="86" y="17.5" width="268" height="56"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="55" id="iNd-IZ-Aco"/>
+                                            </constraints>
+                                            <segments>
+                                                <segment title="InProgress"/>
+                                                <segment title="Sent"/>
+                                                <segment title="Delivered"/>
+                                                <segment title="Seen"/>
+                                                <segment title="Error"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="messageReceiptTypePressed:" destination="-1" eventType="valueChanged" id="BfE-gI-WHw"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="90" id="5bc-xr-EDv"/>
+                                        <constraint firstItem="adO-t2-Fuy" firstAttribute="centerY" secondItem="fUU-ks-Csl" secondAttribute="centerY" id="6Ve-0t-n8r"/>
+                                        <constraint firstAttribute="trailing" secondItem="X4K-1b-JdY" secondAttribute="trailing" id="GKA-rn-6NH"/>
+                                        <constraint firstItem="adO-t2-Fuy" firstAttribute="leading" secondItem="fUU-ks-Csl" secondAttribute="leading" constant="10" id="MzM-9s-hfl"/>
+                                        <constraint firstItem="X4K-1b-JdY" firstAttribute="width" secondItem="fUU-ks-Csl" secondAttribute="width" multiplier="0.757062" id="VAi-V9-1kv"/>
+                                        <constraint firstItem="X4K-1b-JdY" firstAttribute="centerY" secondItem="fUU-ks-Csl" secondAttribute="centerY" id="tsc-zF-mKv"/>
+                                        <constraint firstItem="X4K-1b-JdY" firstAttribute="leading" secondItem="adO-t2-Fuy" secondAttribute="trailing" constant="8" symbolic="YES" id="xfS-eF-sSt"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="vd5-3R-ljx" firstAttribute="top" secondItem="AEC-9e-g0J" secondAttribute="top" constant="10" id="Dez-7o-MYU"/>
+                        <constraint firstAttribute="trailing" secondItem="vd5-3R-ljx" secondAttribute="trailing" constant="10" id="cgI-94-sAj"/>
+                        <constraint firstItem="vd5-3R-ljx" firstAttribute="leading" secondItem="AEC-9e-g0J" secondAttribute="leading" constant="10" id="oxI-Bz-N4a"/>
+                        <constraint firstAttribute="bottom" secondItem="vd5-3R-ljx" secondAttribute="bottom" constant="10" id="qXi-N0-LeO"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vyD-wo-jic">
+                    <rect key="frame" x="0.0" y="195" width="414" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Receipt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esh-N7-uPZ">
+                    <rect key="frame" x="10" y="74" width="394" height="24"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gM-P9-sWY">
+                    <rect key="frame" x="10" y="118" width="394" height="47"/>
+                    <string key="text">The CometChatMessageReceipt component renders the receipts such as sending, sent, delivered, read and error state indicator of a message</string>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemGray6Color"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vyD-wo-jic" secondAttribute="bottom" id="136-09-p4n"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="esh-N7-uPZ" secondAttribute="trailing" constant="10" id="4hP-5V-7tj"/>
+                <constraint firstItem="esh-N7-uPZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9Yw-gb-fSK"/>
+                <constraint firstItem="esh-N7-uPZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="G3y-TZ-5AG"/>
+                <constraint firstItem="AEC-9e-g0J" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Iny-vB-tAC"/>
+                <constraint firstItem="0gM-P9-sWY" firstAttribute="top" secondItem="esh-N7-uPZ" secondAttribute="bottom" constant="20" id="JlG-Pf-Mfd"/>
+                <constraint firstItem="vyD-wo-jic" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="KHo-jU-E2U"/>
+                <constraint firstItem="0gM-P9-sWY" firstAttribute="leading" secondItem="esh-N7-uPZ" secondAttribute="leading" id="ZT9-So-Fee"/>
+                <constraint firstItem="AEC-9e-g0J" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="aJr-l1-g5w"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vyD-wo-jic" secondAttribute="trailing" id="csu-jt-9IX"/>
+                <constraint firstItem="0gM-P9-sWY" firstAttribute="trailing" secondItem="esh-N7-uPZ" secondAttribute="trailing" id="ez6-6p-mMg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AEC-9e-g0J" secondAttribute="trailing" constant="20" id="jVg-ri-M4x"/>
+                <constraint firstItem="AEC-9e-g0J" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="lFi-wM-8G7"/>
+                <constraint firstItem="esh-N7-uPZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="orr-RF-wNc"/>
+                <constraint firstItem="vyD-wo-jic" firstAttribute="top" secondItem="0gM-P9-sWY" secondAttribute="bottom" constant="30" id="zH7-Ov-G9a"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="AEC-9e-g0J"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="131.8840579710145" y="78.348214285714278"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="S5g-bL-CJl">
+            <size key="intrinsicContentSize" width="128" height="128"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="send" width="128" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

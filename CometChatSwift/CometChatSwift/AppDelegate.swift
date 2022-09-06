@@ -21,31 +21,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         self.initialization()
         
         
-    
-        
-        CometChatCallManager().registerForCalls(application: self)
-        
         if CometChat.getLoggedInUser() != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainVC = storyboard.instantiateViewController(withIdentifier: "mainViewController") as! MainViewController
+            let mainVC = storyboard.instantiateViewController(withIdentifier: "home") as! Home
             let navigationController: UINavigationController = UINavigationController(rootViewController: mainVC)
             navigationController.modalPresentationStyle = .fullScreen
-            navigationController.title = "CometChat KitchenSink"
             navigationController.navigationBar.prefersLargeTitles = true
+           
             if #available(iOS 13.0, *) {
                 let navBarAppearance = UINavigationBarAppearance()
                 navBarAppearance.configureWithOpaqueBackground()
                 navBarAppearance.titleTextAttributes = [ .foregroundColor:  UIColor.label,.font: UIFont.boldSystemFont(ofSize: 20) as Any]
-                navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label, .font: UIFont.boldSystemFont(ofSize: 30) as Any]
+//                navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label, .font: UIFont.boldSystemFont(ofSize: 30) as Any]
                 navBarAppearance.shadowColor = .clear
-                navBarAppearance.backgroundColor = .systemBackground
+                navBarAppearance.backgroundColor = .systemGray5
                 navigationController.navigationBar.standardAppearance = navBarAppearance
                 navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
-                navigationController.navigationBar.isTranslucent = false
+                navigationController.navigationBar.isTranslucent = true
             }
             self.window?.rootViewController = navigationController
             self.window?.makeKeyAndVisible()
