@@ -4,5 +4,7 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
+	<key>com.apple.developer.system-extension.install</key>
+	<false/>
 </dict>
 </plist>

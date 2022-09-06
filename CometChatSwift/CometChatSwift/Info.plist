@@ -19,13 +19,13 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CometChatPro</key>
-	<string></string>
+	<string>1</string>
 	<key>CometChatProDevelopment</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>googlechromes</string>
 		<string>comgooglemaps</string>
+		<string>comgooglemaps-x-callback</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -74,10 +74,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-    <key>LSApplicationQueriesSchemes</key>
-        <array>
-        <string>comgooglemaps</string>
-        <string>comgooglemaps-x-callback</string>
-        </array>
 </dict>
 </plist>
