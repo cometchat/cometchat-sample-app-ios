@@ -102,7 +102,7 @@ class CreateUser: UIViewController, UITextFieldDelegate {
                 showAlert(title: "Warning!", msg: "Name cannot be empty")
             }else {
                 
-                let user = User(uid: "user\(Int(Date().timeIntervalSince1970 * 100))", name: name)
+                let user = CometChatPro.User(uid: "user\(Int(Date().timeIntervalSince1970 * 100))", name: name)
                 CometChat.createUser(user: user, apiKey: Constants.authKey, onSuccess: { (user) in
                     
                     if let uid = user.uid {

@@ -16,7 +16,7 @@
 
 <a href=""><img src="https://img.shields.io/badge/Repo%20Size-15.6%20MB-brightgreen" /></a>
 <a href=""> <img src="https://img.shields.io/badge/Contributors-5-yellowgreen" /></a>
-<a href=" "> <img src="https://img.shields.io/badge/Version-3.0.9--1-red" /></a>
+<a href=" "> <img src="https://img.shields.io/badge/Version-3.0.910--1-red" /></a>
 <a href=""> <img src="https://img.shields.io/github/stars/cometchat-pro/ios-swift-chat-app?style=social" /></a>
 <a href=""> <img src="https://img.shields.io/twitter/follow/cometchat?style=social" /></a>
 
@@ -109,13 +109,11 @@ Learn more about how to integrate [UI Kit](https://github.com/cometchat-pro/ios-
 Thanks to the following people who have contributed to this project:
 
 [@pushpsenairekar2911 👨‍💻](https://github.com/pushpsenairekar2911) <br>
-[@ghanshyammansata 👨‍💻](https://github.com/ghanshyammansata)
-<br>
-[@jeetkapadia 👨‍💻](https://github.com/jeetkapadia)
-<br>
-[@NishantTiwarins 👨‍💻](https://github.com/NishantTiwarins)
-<br>
-[@darshanbhanushali 📝](https://github.com/darshanbhanushali)
+[@ghanshyammansata 👨‍💻](https://github.com/ghanshyammansata)<br>
+[@jeetkapadia 👨‍💻](https://github.com/jeetkapadia)<br>
+[@NishantTiwarins 👨‍💻](https://github.com/NishantTiwarins)<br>
+[@AbdullahAnsarri 👨‍💻](https://github.com/AbdullahAnsarri) <br>
+[@ajayv-cometchat 👨‍💻](https://github.com/ajayv-cometchat) 
 
 ---
 
