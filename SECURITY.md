@@ -4,6 +4,7 @@ This document outlines the Responsible Disclosure Program for CometChat Pro
 
 ## Responsible Disclosure Policy
 
+
 At CometChat we take security seriously and consider it a top priority. Since a
 public disclosure of a security vulnerability could put the entire
 community at risk, we require that potential vulnerabilities are kept
