@@ -801,6 +801,7 @@
 		58FEC73224ED47D90004CC9B /* LoginWithDemoUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEC72D24ED47D90004CC9B /* LoginWithDemoUsers.swift */; };
 		58FEC73324ED47D90004CC9B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEC72E24ED47D90004CC9B /* MainViewController.swift */; };
 		58FEC73424ED47D90004CC9B /* UIComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEC72F24ED47D90004CC9B /* UIComponentController.swift */; };
+		84BB331429421581001209FB /* VideoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB331329421581001209FB /* VideoThumbnail.swift */; };
 		DB2E60AF23A8D8C100986E12 /* CometChatUICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E60AE23A8D8C100986E12 /* CometChatUICell.swift */; };
 		DB2E60B323A8DA8500986E12 /* CometChatUIScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E60B123A8DA8500986E12 /* CometChatUIScreenCell.swift */; };
 		DB2E60B723A8E23C00986E12 /* CometChatUICell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2E60B423A8E23C00986E12 /* CometChatUICell.xib */; };
@@ -1666,6 +1667,7 @@
 		58FEC72D24ED47D90004CC9B /* LoginWithDemoUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWithDemoUsers.swift; sourceTree = "<group>"; };
 		58FEC72E24ED47D90004CC9B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		58FEC72F24ED47D90004CC9B /* UIComponentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIComponentController.swift; sourceTree = "<group>"; };
+		84BB331329421581001209FB /* VideoThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoThumbnail.swift; sourceTree = "<group>"; };
 		DB2E60AE23A8D8C100986E12 /* CometChatUICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CometChatUICell.swift; sourceTree = "<group>"; };
 		DB2E60B123A8DA8500986E12 /* CometChatUIScreenCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CometChatUIScreenCell.swift; sourceTree = "<group>"; };
 		DB2E60B423A8E23C00986E12 /* CometChatUICell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CometChatUICell.xib; sourceTree = "<group>"; };
@@ -2944,6 +2946,7 @@
 		58790AB2268CBFC20075E214 /* Helper Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				84BB331229421541001209FB /* Thumbnail Generation */,
 				58790AB4268CBFC20075E214 /* CometChatSnackBoard */,
 				58790B03268CBFC20075E214 /* Message Hyperlink */,
 				58790B07268CBFC20075E214 /* Snackbar */,
@@ -3551,6 +3554,14 @@
 			children = (
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		84BB331229421541001209FB /* Thumbnail Generation */ = {
+			isa = PBXGroup;
+			children = (
+				84BB331329421581001209FB /* VideoThumbnail.swift */,
+			);
+			path = "Thumbnail Generation";
 			sourceTree = "<group>";
 		};
 		DB4D6AC023ACE0CC0002BCED /* App */ = {
@@ -4605,6 +4616,7 @@
 				58790DB5268CBFC30075E214 /* CometChatStatusIndicator.swift in Sources */,
 				58790E63268CBFC30075E214 /* CometChatSnackBar.swift in Sources */,
 				58790CA0268CBFC20075E214 /* CometChatCallManager.swift in Sources */,
+				84BB331429421581001209FB /* VideoThumbnail.swift in Sources */,
 				58790E11268CBFC30075E214 /* CometChatSettingsItem.swift in Sources */,
 				58790C6E268CBFC20075E214 /* CometChatCallDetailsLogItem.swift in Sources */,
 				58790DBB268CBFC30075E214 /* CometChatSharedMedia.swift in Sources */,
