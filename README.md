@@ -10,20 +10,23 @@
 
 </br>
 
-
 # iOS Swift Chat App
 
 <p align="left">
 
 <a href=""><img src="https://img.shields.io/badge/Repo%20Size-13.6%20MB-brightgreen" /></a>
 <a href=""> <img src="https://img.shields.io/badge/Contributors-5-yellowgreen" /></a>
-<a href=" "> <img src="https://img.shields.io/badge/Version-3.0.909--pluto.beta.1.1-red" /></a>
+<a href=" "> <img src="https://img.shields.io/badge/Version-3.0.912--pluto.beta.2.0-red" /></a>
 <a href=""> <img src="https://img.shields.io/github/stars/cometchat-pro/ios-swift-chat-app?style=social" /></a>
 <a href=""> <img src="https://img.shields.io/twitter/follow/cometchat?style=social" /></a>
 
 </p>
 </br></br>
 
+<div>
+<img align="left" src="https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v2/Screenshots/appScreenshot.jpg">  </div>
+
+<br></br><br></br>
 
 CometChat Kitchen Sink Sample App (built using **CometChat UIKit**) is a fully functional messaging app capable of **one-on-one** (private) and **group** messaging as well as Calling. This sample app enables users to send **text** and **multimedia messages like  images, videos, documents**. Also, users can make  **Audio** and **Video** calls to other users or groups.
 
@@ -39,14 +42,32 @@ Before you begin, ensure you have met the following requirements:
 
 NOTE: Please install the latest pod version on your Mac to avoid integration issues
 
+```bash
+Please follow the below steps:
 
+sudo gem update cocoapods --pre
+pod update
+clean
+build
+
+```
 ___
 
 ## Installing iOS Swift Chat App
       
 1. Simply clone the project from [ios-swift-chat-app](https://github.com/cometchat-pro-samples/ios-chat-ui-kit-app/archive/master.zip) repository. After cloning the repository:
 
-2. Navigate to project's folder and update the packages.
+2. Navigate to project's folder and use below command to install the require dependancies.
+   
+   ```
+   $ pod install
+   ```
+
+3. If you're facing any issues while installing pods, then kindly use the below command to install dependancies.
+   
+    ```
+   pod install --repo-update
+   ```
 
 4. Build and run the Sample App.
 ___

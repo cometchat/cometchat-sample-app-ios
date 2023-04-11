@@ -10,37 +10,54 @@ import UIKit
 import CometChatUIKit
 
 class LocalisationComponent: UIViewController {
-
+    
+    //MARK: OUTLETS
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var setLanguage: UISegmentedControl!
     @IBOutlet weak var componentDescription: UILabel!
+    @IBOutlet weak var gradientBackground: GradientImageView!
     
+    func setupView() {
+        let blurredView = blurView(view: self.view)
+        view.addSubview(blurredView)
+        view.sendSubviewToBack(blurredView)
+    }
+    
+    //MARK: LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .systemFill
         containerView.dropShadow()
-
-        // Do any additional setup after loading the view.
+        setupView()
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        DispatchQueue.main.async {
+            let gradLayers = self.gradientBackground.layer.sublayers?.compactMap { $0 as? CAGradientLayer }
+            gradLayers?.first?.frame = self.gradientBackground.bounds
+        }
+    }
+    
+    //MARK: FUNCTIONS
+    @IBAction func onCloseClicked(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
     @IBAction func launchWithChangedLanguage(_ sender: UIButton) {
         switch setLanguage.selectedSegmentIndex {
         case 0:
             CometChatLocalize.set(locale: .english)
         case 1:
             CometChatLocalize.set(locale: .hindi)
-            
         default:
             break
         }
-        
         let cometchatDetail = CometChatConversationsWithMessages()
         let navigationController = UINavigationController(rootViewController: cometchatDetail)
         self.present(navigationController, animated: true)
-        
-    }
-    @IBAction func setLanguageSelected(_ sender: UISegmentedControl) {
-
     }
     
-
+    @IBAction func setLanguageSelected(_ sender: UISegmentedControl) {
+    }
 }

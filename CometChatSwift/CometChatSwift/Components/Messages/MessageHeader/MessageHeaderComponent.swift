@@ -9,29 +9,43 @@
 import UIKit
 import CometChatPro
 import CometChatUIKit
+
 class MessageHeaderComponent: UIViewController {
 
     @IBOutlet weak var messageHeader: CometChatMessageHeader!
-    var user  = User(uid: "superhero2", name: "Captain America")
+    @IBOutlet weak var headerContainer: UIView!
+    var user  = User(uid: "superHero2", name: "Captain America")
+    
+    func setupView() {
+        let blurredView = blurView(view: self.view)
+        view.addSubview(blurredView)
+        view.sendSubviewToBack(blurredView)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         setupUser()
+        setupView()
     }
     
-    func setupUser(){
+    func setupUser() {
         user.avatar = "https://data-us.cometchat.io/assets/images/avatars/captainamerica.png"
         user.status = .online
     }
 
-    func setUpUI(){
+    func setUpUI() {
         DispatchQueue.main.async {
+            self.view.backgroundColor = .systemFill
+            self.headerContainer.roundViewCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner], radius: 20)
+            self.headerContainer.dropShadow()
             self.messageHeader.hide(backButton: false)
-            self.messageHeader.set(backButtonIconTint: UIColor.black)
+            self.messageHeader.set(backIconTint: UIColor.black)
             self.messageHeader.set(user: self.user)
         }
-
     }
-
+    
+    @IBAction func onCloseClicked(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
 }

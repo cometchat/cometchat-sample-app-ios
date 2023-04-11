@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - CustomJSONModel
 struct CustomJSONModel: Codable {
-    let chat, message, users,groups,shared : [[ModuleComponentModel]]
+    let chat, calls, message, users,groups,shared : [[ModuleComponentModel]]
 }
 
 // MARK: - ModuleComponentModel

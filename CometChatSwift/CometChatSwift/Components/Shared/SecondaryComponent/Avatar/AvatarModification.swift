@@ -9,37 +9,47 @@
 import UIKit
 import CometChatUIKit
 import CometChatPro
+
 class AvatarModification: UIViewController {
     
-    // Avatar
+    // MARK: OUTLETS
     @IBOutlet weak var avatarView: UIView!
     @IBOutlet weak var avatar: CometChatAvatar!
     @IBOutlet weak var avatarCornerRadius: UITextField!
     @IBOutlet weak var imageSegment: UISegmentedControl!
 
+    func setupView() {
+        let blurredView = blurView(view: self.view)
+        view.addSubview(blurredView)
+        view.sendSubviewToBack(blurredView)
+    }
+    
+    //MARK: LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         avatarView.dropShadow()
         hideKeyboardWhenTappedArround()
         if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemGray6
+            view.backgroundColor = .systemFill
             avatar.setAvatar(avatarUrl: "https://data-us.cometchat.io/assets/images/avatars/captainamerica.png")
         } else {}
-
-       
+        setupView()
     }
     
+    //MARK: FUNCTIONS
     fileprivate func hideKeyboardWhenTappedArround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         avatarView.addGestureRecognizer(tap)
-        
     }
     
     @objc  func dismissKeyboard() {
         avatarCornerRadius.resignFirstResponder()
     }
     
+    @IBAction func onCloseClicked(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
     
     @IBAction func selectImageType(_ sender: UISegmentedControl) {
         switch imageSegment.selectedSegmentIndex {
@@ -54,12 +64,10 @@ class AvatarModification: UIViewController {
     
     @IBAction func textFieldValueChanged(_ sender: UITextField) {
 
-        let cornerRadius = CGFloat(truncating: NumberFormatter().number(from: avatarCornerRadius.text ?? "0") ?? 75)
-
+       // self.avatar.set(cornerRadius: CometChatCorner(cornerRadius: CGFloat(truncating: NumberFormatter().number(from: avatarCornerRadius.text ?? "0") ?? 75)))
         
-        self.avatar.set(cornerRadius: cornerRadius)
+        self.avatar.set(cornerRadius: CometChatCornerStyle(cornerRadius: CGFloat(truncating: NumberFormatter().number(from: avatarCornerRadius.text ?? "0") ?? 75)))
     }
-    
 }
 
 

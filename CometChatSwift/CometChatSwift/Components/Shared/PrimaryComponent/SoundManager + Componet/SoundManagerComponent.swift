@@ -9,24 +9,44 @@
 import UIKit
 import CometChatPro
 import CometChatUIKit
+
 class SoundManagerComponent: UIViewController {
     
+    //MARK: OUTLETS
+    @IBOutlet weak var incomingMessageBackground: GradientImageView!
+    @IBOutlet weak var outgoingMessageBackground: GradientImageView!
     @IBOutlet weak var containerView: UIView!
     
+    func setupView() {
+        let blurredView = blurView(view: self.view)
+        view.addSubview(blurredView)
+        view.sendSubviewToBack(blurredView)
+    }
+    
+    //MARK: LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        containerView.dropShadow()
-
+        setupUI()
+        self.setupView()
     }
+    
+   
+
+    
+    func setupUI() {
+        self.view.backgroundColor = .clear
+        containerView.dropShadow()
+    }
+    
+    @IBAction func onCloseCLicked(_ sender: UIButton) {
+        self.dismiss(animated: false)
+    }
+    
     @IBAction func playIncomingAudio(_ sender: UIButton) {
         CometChatSoundManager().play(sound: Sound.incomingMessage)
-       
     }
     
     @IBAction func playOutgoingAudio(_ sender: UIButton) {
         CometChatSoundManager().play(sound: Sound.outgoingMessage)
-        
     }
-    
-    
 }

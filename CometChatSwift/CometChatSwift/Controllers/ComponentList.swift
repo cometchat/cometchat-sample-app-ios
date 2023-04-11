@@ -1,35 +1,92 @@
-//
-//  UIComponentsController.swift
+//  ComponentList.swift
 //  ios-chat-uikit-app
-//
 //  Created by CometChat Inc. on 18/12/19.
 //  Copyright © 2020 CometChat Inc. All rights reserved.
-//
 
 import UIKit
 import CometChatUIKit
 import CometChatPro
 
+protocol LaunchDelegate {
 
-class ComponentList: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    ///Chats
+    func launchConversationsWithMessages()
+    func launchConversations()
+    func launchListItemForConversation()
     
+    /// Calls
+    func launchCallHistoryWithDetails()
+    func launchCallHistory()
+    func launchCallDetails()
+    func launchOutgoingCall()
+    func launchIncomingCall()
+    func launchOngoingCall()
+
+    
+    ///Users
+    func launchUsersWithMessages()
+    func launchUsers()
+    func launchListItemForUser()
+    
+    ///Groups
+    func launchGroupsWithMessages()
+    func launchGroups()
+    func launchListItemForGroup()
+    func launchCreateGroup()
+    func launchJoinPasswordProtectedGroup()
+    func launchViewMembers()
+    func launchAddMembers()
+    func launchBannedMembers()
+    func launchTransferOwnership()
+    
+    ///Messages
+    func launchMessages()
+    func launchMessageHeader()
+    func launchMessageList()
+    func launchMessageComposer()
+    
+    ///Shared
+    ///Primary Components
+    func launchSoundManagerComponent()
+    func launchThemeComponent()
+    func launchLocalizeComponent()
+    
+    ///SDK Derived Components
+    func launchListItem()
+    
+    ///Secondary Componensts
+    func launchAvatarComponent()
+    func launchBadgeCountComponent()
+    func launchStatusIndicatorComponent()
+    func launchMessageReceiptComponent()
+    
+    ///Detail
+    func launchDetailsForUser()
+    func launchDetailsForGroup()
+}
+
+class ComponentList: UIViewController {
+    
+    //MARK: OUTLETS
     @IBOutlet weak var componentsTable: UITableView!
     
+    //MARK: VARIABLES
     var moduleType : moduleType = .chats
     var customData : CustomJSONModel?
+    static var launchDelegate : LaunchDelegate?
     
+    //MARK: LIFE CYLCE
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         getCustomData()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setUpNavBar()
     }
     
-    func setupTableView(){
+    func setupTableView() {
         componentsTable.separatorStyle = .none
         componentsTable.delegate = self
         componentsTable.dataSource = self
@@ -37,16 +94,13 @@ class ComponentList: UIViewController, UITableViewDataSource, UITableViewDelegat
         componentsTable.register(UICompoenentCell, forCellReuseIdentifier: "uiComponentsCell")
     }
     
-    func getCustomData(){
+    func getCustomData() {
         customData =  JsonDecoding.decodeJsonIntoCodable(jsonString: ModulesJson.jsonString)
         componentsTable.reloadData()
     }
     
-    
-    func setUpNavBar(){
-        
+    func setUpNavBar() {
         self.navigationItem.title = ""
-
         let backButton = UIBarButtonItem()
         switch moduleType {
         case .chats:
@@ -59,15 +113,18 @@ class ComponentList: UIViewController, UITableViewDataSource, UITableViewDelegat
             backButton.title = "Groups"
         case .shared:
             backButton.title = "Shared"
+        case .calls:
+            backButton.title = "Calls"
         }
-
         backButton.setTitleTextAttributes([ NSAttributedString.Key.font:  UIFont.boldSystemFont(ofSize: 20)], for: .normal)
+        backButton.tintColor = UIColor(named: "label1")
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         self.navigationController?.view.tintColor = UIColor.black
         self.navigationController?.navigationBar.isTranslucent = true
     }
-    
-    
+}
+
+extension ComponentList: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         switch moduleType {
         case .chats :
@@ -80,6 +137,8 @@ class ComponentList: UIViewController, UITableViewDataSource, UITableViewDelegat
             return customData?.shared.count ?? 0
         case .users:
             return customData?.users.count ?? 0
+        case .calls:
+            return customData?.calls.count ?? 0
         }
     }
     
@@ -95,13 +154,13 @@ class ComponentList: UIViewController, UITableViewDataSource, UITableViewDelegat
             return customData?.shared[section].count ?? 0
         case .users:
             return customData?.users[section].count ?? 0
+        case .calls:
+            return customData?.calls[section].count ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let componentCell = tableView.dequeueReusableCell(withIdentifier: "uiComponentsCell") as! UIComponentsCell
-        
+        guard let componentCell = tableView.dequeueReusableCell(withIdentifier: "uiComponentsCell") as? UIComponentsCell else { fatalError() }
         switch moduleType {
         case .chats :
             componentCell.setUpCell(customData: customData?.chat[indexPath.section] ?? [], indexPath: indexPath)
@@ -113,6 +172,8 @@ class ComponentList: UIViewController, UITableViewDataSource, UITableViewDelegat
             componentCell.setUpCell(customData: customData?.shared[indexPath.section] ?? [], indexPath: indexPath)
         case .users:
             componentCell.setUpCell(customData: customData?.users[indexPath.section] ?? [], indexPath: indexPath)
+        case .calls:
+            componentCell.setUpCell(customData: customData?.calls[indexPath.section] ?? [], indexPath: indexPath)
         }
         return componentCell
     }
@@ -120,7 +181,6 @@ class ComponentList: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         launchComponent(section: indexPath.section, rowIndex: indexPath.row, moduleType: moduleType)
@@ -140,6 +200,8 @@ class ComponentList: UIViewController, UITableViewDataSource, UITableViewDelegat
                 lable.text = "SDK Derived"
             case 2:
                 lable.text = "Secondary"
+            case 3:
+                lable.text = "Details"
             default:
                 break
             }
@@ -150,136 +212,129 @@ class ComponentList: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if moduleType == .shared {
             return 30.0
-        }else {
-            return CGFloat.leastNonzeroMagnitude
-
-        }
-        
-    }
-}
-
-
-
-extension ComponentList {
-    
-    //this method is used to launch componenets of the following modules: -  Chats, Users, Messages, Groups, Shared
-    func launchComponent(section : Int , rowIndex: Int , moduleType: moduleType){
-        switch moduleType {
-        case .chats where section == 0 && rowIndex == 0 :
-            presentViewController(viewController: CometChatConversationsWithMessages(), isNavigationController: true)
-        case .chats where section == 0 && rowIndex == 1 :
-            presentViewController(viewController: CometChatConversations(), isNavigationController: true)
-        case .chats where section == 0 && rowIndex == 2 :
-            presentViewController(viewController: CometChatConversationListComponent(), isNavigationController: false)
-        case .chats where section == 0 && rowIndex == 3 :
-            presentViewController(viewController: CometChatConversationListItemComponent(), isNavigationController: false)
-            
-        case .messages where section == 0 && rowIndex == 0 :
-            CometChat.getGroup(GUID: "supergroup", onSuccess: { group in
-                DispatchQueue.main.async {
-                    let messages = CometChatMessages()
-                    messages.set(group: group)
-                    self.presentViewController(viewController: messages, isNavigationController: true)
-                }
-            }, onError: { error in
-                self.showAlert(title: "Error", msg: error?.errorDescription ?? "")
-            })
-            
-        case .messages where section == 0 && rowIndex == 1 :
-            let messageHeader = MessageHeaderComponent()
-            presentViewController(viewController: messageHeader, isNavigationController: false)
-        case .messages where section == 0 && rowIndex == 2 :
-            CometChat.getGroup(GUID: "supergroup", onSuccess: { group in
-                DispatchQueue.main.async {
-                    let messageList = MessageListComponent()
-                    messageList.group = group
-                    self.presentViewController(viewController: messageList, isNavigationController: false)
-                }
-            }, onError: { error in
-                self.showAlert(title: "Error", msg: error?.errorDescription ?? "")
-            })
-            
-        case .messages where section == 0 && rowIndex == 3 :
-            let messageComposer = MesaageComposerComponent()
-            presentViewController(viewController: messageComposer, isNavigationController: false)
-            
-            
-            
-        case .users where section == 0 && rowIndex == 0 :
-            presentViewController(viewController: CometChatUsersWithMessages(), isNavigationController: true)
-        case .users where section == 0 && rowIndex == 1 :
-            presentViewController(viewController: CometChatUsers(), isNavigationController: true)
-        case .users where section == 0 && rowIndex == 2 :
-            presentViewController(viewController: UsersListComponent(), isNavigationController: false)
-        case .users where section == 0 && rowIndex == 3 :
-            let userDataItem = UserDataItemComponent()
-           // userDataItem.isUser = true
-            presentViewController(viewController: userDataItem, isNavigationController: false)
-            
-            
-        case .groups where section == 0 && rowIndex == 0 :
-            presentViewController(viewController: CometChatGroupsWithMessages(), isNavigationController: true)
-        case .groups where section == 0 && rowIndex == 1:
-            presentViewController(viewController: CometChatGroups(), isNavigationController: true)
-        case .groups where section == 0 && rowIndex == 2:
-            presentViewController(viewController: GroupListComponent(), isNavigationController: false)
-        case .groups where section == 0 && rowIndex == 3:
-            let groupDataItem = GroupDataItem()
-            presentViewController(viewController: groupDataItem, isNavigationController: false)
-            
-        case .shared where section == 0 && rowIndex == 0:
-            self.presentViewController(viewController: SoundManagerComponent(), isNavigationController: false)
-        case .shared where section == 0 && rowIndex == 1:
-            let theme = ThemeComponent()
-            self.presentViewController(viewController: theme, isNavigationController: false)
-        case .shared where section == 0 && rowIndex == 2:
-            self.presentViewController(viewController: LocalisationComponent(), isNavigationController: false)
-            
-        case .shared where section == 1 && rowIndex == 0:
-            self.presentViewController(viewController: CometChatConversationListItemComponent(), isNavigationController: false)
-            
-        case .shared where section == 1 && rowIndex == 1:
-            let userDataItem = DataItem()
-            self.presentViewController(viewController: userDataItem, isNavigationController: false)
-            
-        case .shared where section == 2 && rowIndex == 0 :
-            let avatarModification = AvatarModification()
-            self.presentViewController(viewController: avatarModification, isNavigationController: false)
-            
-        case .shared where section == 2 && rowIndex == 1:
-            let badgeCountViewController = BadgeCountModification()
-            self.presentViewController(viewController: badgeCountViewController, isNavigationController: false)
-            
-        case .shared where section == 2 && rowIndex == 2:
-            let statusIndicatorModification = StatusIndicatorModification()
-            self.presentViewController(viewController: statusIndicatorModification, isNavigationController: false)
-        
-           
-        case .shared where section == 2 && rowIndex == 3:
-            let messageReceipt = MessageReceiptModification()
-            self.presentViewController(viewController: messageReceipt, isNavigationController: false)
-
-                        
-        case .groups: break
-        case .shared: break
-        case .chats:  break
-        case .messages: break
-        case .users: break
-        }
-    }
-    
-}
-
-extension ComponentList {
-    func presentViewController(viewController : UIViewController,isNavigationController: Bool){
-        if isNavigationController {
-            let navigationController = UINavigationController(rootViewController: viewController)
-            self.present(navigationController, animated: true)
         } else {
-            self.present(viewController, animated: true)
+            return CGFloat.leastNonzeroMagnitude
         }
     }
-    
 }
+
+///this method is used to launch componenets of the following modules: -
+///Chats, Users, Messages, Groups, Shared
+extension ComponentList {
+    func launchComponent(section : Int , rowIndex: Int , moduleType: moduleType) {
+        switch moduleType {
+        case .chats:
+            switch (section, rowIndex) {
+            case (0,0):
+                ComponentList.launchDelegate?.launchConversationsWithMessages()
+            case (0, 1):
+                ComponentList.launchDelegate?.launchConversations()
+            case (0,2):
+                ComponentList.launchDelegate?.launchListItemForConversation()
+            case (_, _):
+                break
+            }
+
+        case .messages:
+            switch (section, rowIndex) {
+            case (0,0):
+                ComponentList.launchDelegate?.launchMessages()
+            case (0, 1):
+                ComponentList.launchDelegate?.launchMessageHeader()
+            case (0,2):
+                ComponentList.launchDelegate?.launchMessageList()
+            case (0,3):
+                ComponentList.launchDelegate?.launchMessageComposer()
+            case (_, _):
+                break
+            }
+            
+        case .users:
+            switch (section, rowIndex) {
+            case (0,0):
+                ComponentList.launchDelegate?.launchUsersWithMessages()
+            case (0, 1):
+                ComponentList.launchDelegate?.launchUsers()
+            case (0,2):
+                ComponentList.launchDelegate?.launchListItemForUser()
+            case (_, _):
+                break
+            }
+
+        case .groups:
+            switch (section, rowIndex) {
+            case (0,0):
+                ComponentList.launchDelegate?.launchGroupsWithMessages()
+            case (0, 1):
+                ComponentList.launchDelegate?.launchGroups()
+            case (0,2):
+                ComponentList.launchDelegate?.launchListItemForGroup()
+            case (0,3):
+                ComponentList.launchDelegate?.launchCreateGroup()
+            case (0,4):
+                ComponentList.launchDelegate?.launchJoinPasswordProtectedGroup()
+            case (0, 5):
+                ComponentList.launchDelegate?.launchViewMembers()
+            case (0,6):
+                ComponentList.launchDelegate?.launchAddMembers()
+            case (0,7):
+                ComponentList.launchDelegate?.launchBannedMembers()
+            case (0,8):
+                ComponentList.launchDelegate?.launchTransferOwnership()
+            case (_, _):
+                break
+            }
+            
+        case .shared:
+            switch (section, rowIndex) {
+            case (0,0):
+                ComponentList.launchDelegate?.launchSoundManagerComponent()
+            case (0, 1):
+                ComponentList.launchDelegate?.launchThemeComponent()
+            case (0,2):
+                ComponentList.launchDelegate?.launchLocalizeComponent()
+                
+            case (1,0):
+                ComponentList.launchDelegate?.launchListItem()
+            case (2,0):
+                ComponentList.launchDelegate?.launchAvatarComponent()
+            case (2, 1):
+                ComponentList.launchDelegate?.launchBadgeCountComponent()
+            case (2,2):
+                ComponentList.launchDelegate?.launchStatusIndicatorComponent()
+            case (2,3):
+                ComponentList.launchDelegate?.launchMessageReceiptComponent()
+                
+            case (3,0):
+                ComponentList.launchDelegate?.launchDetailsForUser()
+            case (3,1):
+                ComponentList.launchDelegate?.launchDetailsForGroup()
+            
+            case (_, _):
+                break
+            }
+            
+        case .calls:
+            switch (section, rowIndex) {
+            case (0,0):
+                ComponentList.launchDelegate?.launchCallHistoryWithDetails()
+            case (0,1):
+                ComponentList.launchDelegate?.launchCallHistory()
+            case (0,2):
+                ComponentList.launchDelegate?.launchCallDetails()
+            case (0,3):
+                ComponentList.launchDelegate?.launchOutgoingCall()
+            case (0,4):
+                ComponentList.launchDelegate?.launchIncomingCall()
+            case (0,5):
+                ComponentList.launchDelegate?.launchOngoingCall()
+            case (_, _):
+                break
+            }
+        }
+    }
+}
+
+
 
 

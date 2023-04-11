@@ -36,7 +36,7 @@ class LoginTests : XCTestCase {
             self.waitForExpectations(timeout: 10, handler: nil)
             XCTAssertTrue(unifiedScreen.exists)
             
-        }else{
+         } else {
             app.staticTexts["superhero1"].tap()
             let unifiedScreen  = app.navigationBars["CometChat Kitchen Sink"]
             self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: unifiedScreen, handler: nil)
@@ -61,7 +61,7 @@ class LoginTests : XCTestCase {
             self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: unifiedScreen, handler: nil)
             self.waitForExpectations(timeout: 10, handler: nil)
             XCTAssertTrue(unifiedScreen.exists)
-        }else{
+         } else {
             app.staticTexts["superhero2"].tap()
             let unifiedScreen  = app.navigationBars["CometChat Kitchen Sink"]
             self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: unifiedScreen, handler: nil)
@@ -83,7 +83,7 @@ class LoginTests : XCTestCase {
             self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: unifiedScreen, handler: nil)
             self.waitForExpectations(timeout: 10, handler: nil)
             XCTAssertTrue(unifiedScreen.exists)
-        }else{
+         } else {
             app.staticTexts["superhero3"].tap()
             let unifiedScreen  = app.navigationBars["CometChat Kitchen Sink"]
             self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: unifiedScreen, handler: nil)
@@ -105,7 +105,7 @@ class LoginTests : XCTestCase {
             self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: unifiedScreen, handler: nil)
             self.waitForExpectations(timeout: 10, handler: nil)
             XCTAssertTrue(unifiedScreen.exists)
-        }else{
+         } else {
             app.staticTexts["superhero3"].tap()
             let unifiedScreen  = app.navigationBars["CometChat Kitchen Sink"]
             self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: unifiedScreen, handler: nil)
@@ -134,7 +134,7 @@ class LoginTests : XCTestCase {
             self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: loginWithUIDScreen, handler: nil)
             self.waitForExpectations(timeout: 10, handler: nil)
             XCTAssertTrue(loginWithUIDScreen.exists)
-        }else{
+         } else {
            
             let app = XCUIApplication()
             app/*@START_MENU_TOKEN@*/.staticTexts["Login using UID"]/*[[".buttons[\"Login using UID\"].staticTexts[\"Login using UID\"]",".staticTexts[\"Login using UID\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -170,7 +170,7 @@ class LoginTests : XCTestCase {
             self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: loginWithUIDScreen, handler: nil)
             self.waitForExpectations(timeout: 10, handler: nil)
             XCTAssertTrue(loginWithUIDScreen.exists)
-        }else{
+         } else {
            
             let app = XCUIApplication()
             app/*@START_MENU_TOKEN@*/.staticTexts["Login using UID"]/*[[".buttons[\"Login using UID\"].staticTexts[\"Login using UID\"]",".staticTexts[\"Login using UID\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -205,7 +205,7 @@ class LoginTests : XCTestCase {
             self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: unifiedScreen, handler: nil)
             self.waitForExpectations(timeout: 10, handler: nil)
             XCTAssertTrue(unifiedScreen.exists)
-        }else{
+         } else {
            
             let app = XCUIApplication()
             app/*@START_MENU_TOKEN@*/.staticTexts["Login using UID"]/*[[".buttons[\"Login using UID\"].staticTexts[\"Login using UID\"]",".staticTexts[\"Login using UID\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()

@@ -1,196 +1,171 @@
-//
-//  ViewController.swift
-//  Demo
-//
-//  Created by CometChat Inc. on 16/12/19.
-//  Copyright © 2020 CometChat Inc. All rights reserved.
+
+//  CreateUser.swift
+//  CometChatSwift
+//  Created by admin on 28/09/22.
+//  Copyright © 2022 MacMini-03. All rights reserved.
 //
 
 import UIKit
 import CometChatPro
+import CometChatUIKit
 
-class CreateUser: UIViewController, UITextFieldDelegate {
+class CreateUser: UIViewController {
     
-    @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var lodingViewTitle: UILabel!
-    @IBOutlet weak var loadingViewHeightConstriant: NSLayoutConstraint!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var backgroundView: UIView!
-    @IBOutlet weak var submit: UIButton!
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var signInButtonConstraint: NSLayoutConstraint!
-    let modelName = UIDevice.modelName
+    //MARK: OUTLETS
+    @IBOutlet weak var signUpTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var signUpBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var uidView: UIView!
+    @IBOutlet weak var uid: UITextField!
+    @IBOutlet weak var nameView: UIView!
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var checkBox: UIButton!
+    @IBOutlet weak var uidStackView: UIStackView!
+    @IBOutlet weak var submitBackground: GradientImageView!
+    @IBOutlet weak var backButton: UIButton!
     
+    //MARK: VARIABLES
+    var isCheckbox = false
+    
+    //MARK: LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingView.isHidden = true
-        loadingViewHeightConstriant.constant = 0
-        self.registerObservers()
-        self.navigationController?.title = "Sign Up"
-        
+        setupUI()
+        registerObservers()
     }
     
-    fileprivate func registerObservers(){
-        //Register Notifications
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(dismissKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        DispatchQueue.main.async {
+            let gradLayers = self.submitBackground.layer.sublayers?.compactMap { $0 as? CAGradientLayer }
+            gradLayers?.first?.frame = self.submitBackground.bounds
+        }
+    }
+    
+    //MARK: FUNCTIONS
+    func setupUI() {
+        containerView.dropShadow()
+        containerView.layer.borderColor = UIColor.systemGray5.cgColor
+        containerView.layer.borderWidth = 1.0
+        containerView.roundViewCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 15)
+        checkBox.roundViewCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 6)
+        uidView.roundViewCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 10)
+        uidView.layer.borderColor = UIColor.systemGray4.cgColor
+        nameView.roundViewCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 10)
+        nameView.layer.borderColor = UIColor.systemGray4.cgColor
+        checkBox.setImage(UIImage(named: ""), for: .normal)
+        uid.leftPadding()
+        name.leftPadding()
+        let gradientView = GradientImageView(frame: self.view.bounds)
+        self.view.insertSubview(gradientView, at: 0)
+    }
+    
+    @IBAction func submit_Pressed(_ sender: UIButton) {
+        createUser()
+    }
+    
+    @IBAction func checkBox_Pressed(_ sender: UIButton) {
+        checkBox.setImage(UIImage(named: isCheckbox ? "" : "checkmark"), for: .normal)
+        UIView.transition(with: uidStackView, duration: 0.4,
+                          options: .transitionCrossDissolve,
+                          animations: {
+            self.uidStackView.isHidden = !self.isCheckbox
+        })
+        isCheckbox = !isCheckbox
+    }
+    
+    @IBAction func backButtonClicked(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func createUser() {
+        guard let name = name.text else { return }
+        if(Constants.authKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.authKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.authKey.contains("NULL") || Constants.authKey.contains("null") || Constants.authKey.count == 0) {
+            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and AUTH-KEY in Constants.swift file.", comment: ""))
+        } else {
+            if (name.count == 0 ) {
+                showAlert(title: "Warning!", msg: "Name cannot be empty")
+            } else {
+                var user : User?
+                if isCheckbox {
+                    user = User(uid: "user\(Int(Date().timeIntervalSince1970 * 100))", name: name)
+                } else {
+                    user = User(uid: self.uid.text?.trimmingCharacters(in: .whitespaces) ?? "", name: self.name.text?.trimmingCharacters(in: .whitespaces) ?? "")
+                }
+                if let user = user {
+                    CometChatUIKit.create(user: user, result: { result in
+                        switch result {
+                        case .success(let user):
+                            if let uid = user.uid {
+                                self.loginWithUID(UID: uid)
+                            }
+                            
+                        case .failure(let error):
+                            DispatchQueue.main.async {
+                                self.showAlert(title: "Error", msg: error.errorDescription)
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    private func loginWithUID(UID:String) {
+        DispatchQueue.main.async {
+            CustomLoader.instance.showLoaderView()
+        }
+        CometChatUIKit.login(uid: UID, result: { (result) in
+            switch result {
+            case .success(let user):
+                DispatchQueue.main.async {
+                    let userID = user.uid
+                    UserDefaults.standard.set(userID, forKey: "LoggedInUserUID")
+                    CustomLoader.instance.hideLoaderView()
+                    if let mainVC = self.storyboard?.instantiateViewController(withIdentifier: "home") as? Home {
+                        self.navigationController?.pushViewController(mainVC, animated: true)
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    CustomLoader.instance.hideLoaderView()
+                    self.showAlert(title: "Error", msg: error.errorDescription)
+                }
+            }
+        })
+    }
+    
+    fileprivate func registerObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         self.hideKeyboardWhenTappedArround()
     }
     
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let userinfo = notification.userInfo
-        {
-            let keyboardHeight = (userinfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue?.size.height
-            if (modelName == "iPhone X" || modelName == "iPhone XS" || modelName == "iPhone XR" || modelName == "iPhone12,1"){
-                signInButtonConstraint.constant = (keyboardHeight)! - 10
-                UIView.animate(withDuration: 0.5) {
-                    self.view.layoutIfNeeded()
-                }
-            }else{
-                signInButtonConstraint.constant = (keyboardHeight)! + 20
-                UIView.animate(withDuration: 0.5) {
-                    self.view.layoutIfNeeded()
-                }
+    @objc private func keyboardWillChangeFrame(notification: NSNotification) {
+        if let endFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            var keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
+            if keyboardHeight > 0 {
+                keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom
+                signUpTopConstraint.constant = 0
+                signUpBottomConstraint.constant = 4
+            } else {
+                signUpTopConstraint.constant = 30
+                signUpBottomConstraint.constant = 20
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
             }
         }
     }
     
     fileprivate func hideKeyboardWhenTappedArround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        backgroundView.addGestureRecognizer(tap)
+        self.view.addGestureRecognizer(tap)
     }
     
-    
-    // This function dismiss the  keyboard
-    @objc  func dismissKeyboard() {
-        textField.resignFirstResponder()
-        if self.submit.frame.origin.y != 0 {
-            signInButtonConstraint.constant = 40
-            UIView.animate(withDuration: 0.25) {
-                self.view.layoutIfNeeded()
-            }
-        }
+    @objc func dismissKeyboard() {
+        uid.resignFirstResponder()
+        name.resignFirstResponder()
+        self.view.layoutIfNeeded()
     }
     
-    
-    @IBAction func submitButtonPressed(_ sender: Any) {
-        DispatchQueue.main.async {
-             self.createUser()
-        }
-    }
-    
-    @IBAction func didCancelButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    private func createUser() {
-        guard let name = textField.text else { return }
-        if(Constants.authKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.authKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.authKey.contains("NULL") || Constants.authKey.contains("null") || Constants.authKey.count == 0){
-            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and AUTH-KEY in Constants.swift file.", comment: ""))
-        }else{
-            loadingView.isHidden = false
-            loadingViewHeightConstriant.constant = 40
-            activityIndicator.startAnimating()
-            lodingViewTitle.text = "Creating an User..."
-            loadingView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-            UIView.animate(withDuration: 0.25) {
-                self.view.layoutIfNeeded()
-            }
-            if name.count == 0 {
-                showAlert(title: "Warning!", msg: "Name cannot be empty")
-            }else {
-                
-                let user = User(uid: "user\(Int(Date().timeIntervalSince1970 * 100))", name: name)
-                CometChat.createUser(user: user, apiKey: Constants.authKey, onSuccess: { (user) in
-                    
-                    if let uid = user.uid {
-                          self.loginWithUID(UID: uid)
-                    }
-
-                }) { (error) in
-                    if let error = error?.errorDescription {
-                        DispatchQueue.main.async { [weak self] in
-                            self?.loadingView.isHidden = false
-                            self?.loadingViewHeightConstriant.constant = 40
-                            self?.activityIndicator.startAnimating()
-                            self?.lodingViewTitle.text = "Failed to create user."
-                            self?.loadingView.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-                            UIView.animate(withDuration: 0.25) {
-                                self?.view.layoutIfNeeded()
-                            }
-                            CometChatSnackBoard.display(message:  error, mode: .error, duration: .short)
-                        }
-                        print("Create User failure \(error)")
-                    }
-                }
-                
-            }
-        }
-    }
-
-    private func loginWithUID(UID:String){
-        DispatchQueue.main.async {
-            self.loadingView.isHidden = false
-            self.loadingViewHeightConstriant.constant = 40
-            self.activityIndicator.startAnimating()
-            self.lodingViewTitle.text = "Logging in..."
-            self.loadingView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-            UIView.animate(withDuration: 0.25) {
-                self.view.layoutIfNeeded()
-            }
-        }
-        if(Constants.authKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.authKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.authKey.contains("NULL") || Constants.authKey.contains("null") || Constants.authKey.count == 0){
-            showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and AUTH-KEY in Constants.swift file.", comment: ""))
-        }else{
-            CometChat.login(UID: UID, apiKey: Constants.authKey, onSuccess: { (current_user) in
-                
-                let userID:String = current_user.uid!
-                UserDefaults.standard.set(userID, forKey: "LoggedInUserUID")
-                DispatchQueue.main.async {
-                    self.loadingView.isHidden = false
-                    self.loadingViewHeightConstriant.constant = 0
-                    self.activityIndicator.startAnimating()
-                    self.lodingViewTitle.text = ""
-                    UIView.animate(withDuration: 0.25) {
-                        self.view.layoutIfNeeded()
-                    }
-                    let mainVC = self.storyboard?.instantiateViewController(withIdentifier: "home") as! Home
-                    let navigationController: UINavigationController = UINavigationController(rootViewController: mainVC)
-                    navigationController.modalPresentationStyle = .fullScreen
-                    navigationController.title = "CometChat KitchenSink"
-                    navigationController.navigationBar.prefersLargeTitles = true
-                    if #available(iOS 13.0, *) {
-                        let navBarAppearance = UINavigationBarAppearance()
-                        navBarAppearance.configureWithOpaqueBackground()
-                        
-                        navBarAppearance.titleTextAttributes = [ .foregroundColor:  UIColor.label,.font: UIFont.boldSystemFont(ofSize: 20) as Any]
-                        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label, .font: UIFont.boldSystemFont(ofSize: 30) as Any]
-                        navBarAppearance.shadowColor = .clear
-                        navBarAppearance.backgroundColor = .systemBackground
-                        navigationController.navigationBar.standardAppearance = navBarAppearance
-                        navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
-                        self.navigationController?.navigationBar.isTranslucent = false
-                    }
-                    self.present(navigationController, animated: true, completion: nil)
-                }
-            }) { (error) in
-                DispatchQueue.main.async { [weak self] in
-                    self?.loadingView.isHidden = false
-                    self?.loadingViewHeightConstriant.constant = 40
-                    self?.activityIndicator.stopAnimating()
-                    self?.lodingViewTitle.text = "Failed to login the user."
-                    self?.loadingView.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-                    UIView.animate(withDuration: 0.25) {
-                        self?.view.layoutIfNeeded()
-                    }
-                    CometChatSnackBoard.display(message:  error.errorCode, mode: .error, duration: .short)
-                }
-                print("login failure \(error.errorDescription)")
-                
-            }
-        }
-    }
 }
-

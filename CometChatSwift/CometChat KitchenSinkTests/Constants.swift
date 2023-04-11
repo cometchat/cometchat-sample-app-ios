@@ -131,7 +131,7 @@ public func validateGroups(groups : [Group], hasJoinedOnlyGroups : Bool){
             XCTAssertNotNil(g.joinedAt)
             XCTAssertNotNil(g.scope)
             
-        }else {
+        } else {
             
             if g.hasJoined == true {
                 
@@ -192,7 +192,7 @@ public func validateConversations(conversation : [Conversation], validateType : 
         
         if (conv.conversationWith?.isKind(of: User.self))!{
             validateUserList(user: [(conv.conversationWith as? User)!], isRole: false )
-        }else {
+        } else {
             validateGroups(groups: [(conv.conversationWith as? Group)!], hasJoinedOnlyGroups: true )
         }
         

@@ -9,18 +9,21 @@
 import UIKit
 import CometChatPro
 import CometChatUIKit
+
 class MessageReceiptCell: UITableViewCell {
     
     @IBOutlet weak var messageReceipt : UILabel!
     @IBOutlet weak var messageReceiptContainer : UIView!
-    @IBOutlet weak var messageReceiptImage : CometChatMessageReceipt!
+    @IBOutlet weak var messageReceiptImage : CometChatReceipt!
     
     var textMessage =  TextMessage(receiverUid: "superhero", text: "Good Morning", receiverType: .user)
 
     override func awakeFromNib() {
         super.awakeFromNib()
         messageReceiptContainer.dropShadow()
-       
+        messageReceiptContainer.layer.borderWidth = 0.2
+        messageReceiptContainer.layer.borderColor = UIColor.lightGray.cgColor
+
     }
     
     var index : Int? {
@@ -63,9 +66,7 @@ class MessageReceiptCell: UITableViewCell {
             default:
                 break
             }
-            messageReceiptImage.set(receipt: textMessage)
+            messageReceiptImage.set(receipt: MessageReceiptUtils.get(receiptStatus: textMessage))
         }
     }
-
-    
 }

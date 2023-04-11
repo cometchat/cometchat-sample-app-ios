@@ -1,12 +1,21 @@
 {
   "pins" : [
     {
+      "identity" : "ios-calls-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cometchat-pro/ios-calls-sdk.git",
+      "state" : {
+        "revision" : "1cbece0fdf153e1a8fcbe9da4f405f9a0b9c0e42",
+        "version" : "3.0.0"
+      }
+    },
+    {
       "identity" : "ios-chat-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cometchat-pro/ios-chat-sdk.git",
       "state" : {
-        "revision" : "48293a2394e288d9b91a41c7dd4586bef23250ac",
-        "version" : "3.0.909"
+        "revision" : "5b71a274bfe10943a6542cb18eb2b46a593786fb",
+        "version" : "3.0.912"
       }
     },
     {
@@ -14,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cometchat-pro/ios-swift-chat-ui-kit.git",
       "state" : {
-        "revision" : "fd4b4fabd61e4dd38512d8f8f83c4cd2427d041d",
-        "version" : "3.0.909-pluto.beta.1.1"
+        "revision" : "72569b54d3b31eb5c4538d2de3dc1fca7c013612",
+        "version" : "3.0.912-pluto.beta.2.0"
       }
     }
   ],

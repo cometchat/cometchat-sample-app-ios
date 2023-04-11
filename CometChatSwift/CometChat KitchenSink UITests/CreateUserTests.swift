@@ -34,7 +34,7 @@ class CreateUserTests : XCTestCase {
             app.buttons["Submit"].tap()
             XCTAssertTrue(app.alerts["Warning!"].scrollViews.otherElements.staticTexts["Name cannot be empty"].exists)
             
-        }else{
+         } else {
             app/*@START_MENU_TOKEN@*/.staticTexts["Don't have an Account? Sign Up"]/*[[".buttons[\"Don't have an Account? Sign Up\"].staticTexts[\"Don't have an Account? Sign Up\"]",".staticTexts[\"Don't have an Account? Sign Up\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
             app.textFields["Enter your name here"].tap()
             app.buttons["Submit"].tap()
@@ -60,7 +60,7 @@ class CreateUserTests : XCTestCase {
             self.waitForExpectations(timeout: 10, handler: nil)
             XCTAssertTrue(unifiedScreen.exists)
             
-        }else{
+         } else {
             app/*@START_MENU_TOKEN@*/.staticTexts["Don't have an Account? Sign Up"]/*[[".buttons[\"Don't have an Account? Sign Up\"].staticTexts[\"Don't have an Account? Sign Up\"]",".staticTexts[\"Don't have an Account? Sign Up\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
             app.textFields["Enter your name here"].tap()
             app.textFields["Enter your name here"].typeText("TestUser")
@@ -89,7 +89,7 @@ class CreateUserTests : XCTestCase {
             self.waitForExpectations(timeout: 10, handler: nil)
             XCTAssertTrue(unifiedScreen.exists)
             
-        }else{
+         } else {
             app/*@START_MENU_TOKEN@*/.staticTexts["Don't have an Account? Sign Up"]/*[[".buttons[\"Don't have an Account? Sign Up\"].staticTexts[\"Don't have an Account? Sign Up\"]",".staticTexts[\"Don't have an Account? Sign Up\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
             app.textFields["Enter your name here"].tap()
             app.textFields["Enter your name here"].typeText("Test User")

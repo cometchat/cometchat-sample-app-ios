@@ -9,33 +9,46 @@
 import UIKit
 import CometChatPro
 import CometChatUIKit
+
 class ThemeComponent: UIViewController {
   
-    //MARK: Theme Outlets
-   
-    @IBOutlet weak var fontType: UILabel!
-    @IBOutlet weak var backgroundView: UIView!
+    //MARK: OUTLETS
+    @IBOutlet weak var gradientBackground: GradientImageView!
     @IBOutlet weak var themeSelectionSegment: UISegmentedControl!
-    @IBOutlet weak var colorTypeSegment: UISegmentedControl!
     @IBOutlet weak var themeViewContainer: UIView!
     
-    
+    //MARK: VARIABLES
     var font: UIFont?
     var fontColor: UIColor?
     var palette = Palette()
     var typography = Typography()
     
+    func setupView() {
+        let blurredView = blurView(view: self.view)
+        view.addSubview(blurredView)
+        view.sendSubviewToBack(blurredView)
+    }
+    
+    //MARK: LIFE CYLCE
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = .systemFill
         themeViewContainer.dropShadow()
+        setupView()
     }
     
-
-    @IBAction func colorTypeSegmentPressed(_ sender: UISegmentedControl) {
-
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        DispatchQueue.main.async {
+            let gradLayers = self.gradientBackground.layer.sublayers?.compactMap { $0 as? CAGradientLayer }
+            gradLayers?.first?.frame = self.gradientBackground.bounds
+        }
     }
     
+    //MARK: FUNCTIONS
+    @IBAction func onCloseClicked(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
     
     @IBAction func buttonModifyPressed(_ sender: UIButton) {
         switch themeSelectionSegment.selectedSegmentIndex {
