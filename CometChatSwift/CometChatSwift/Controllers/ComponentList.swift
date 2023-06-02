@@ -15,18 +15,13 @@ protocol LaunchDelegate {
     func launchListItemForConversation()
     
     /// Calls
-    func launchCallHistoryWithDetails()
-    func launchCallHistory()
-    func launchCallDetails()
-    func launchOutgoingCall()
-    func launchIncomingCall()
-    func launchOngoingCall()
+    func launchCallButtonComponent()
 
-    
     ///Users
     func launchUsersWithMessages()
     func launchUsers()
     func launchListItemForUser()
+    func launchDetailsForUser()
     
     ///Groups
     func launchGroupsWithMessages()
@@ -38,6 +33,7 @@ protocol LaunchDelegate {
     func launchAddMembers()
     func launchBannedMembers()
     func launchTransferOwnership()
+    func launchDetailsForGroup()
     
     ///Messages
     func launchMessages()
@@ -46,23 +42,24 @@ protocol LaunchDelegate {
     func launchMessageComposer()
     
     ///Shared
-    ///Primary Components
+    ///Resources
     func launchSoundManagerComponent()
     func launchThemeComponent()
     func launchLocalizeComponent()
     
-    ///SDK Derived Components
-    func launchListItem()
-    
-    ///Secondary Componensts
+
+    ///View Componensts
     func launchAvatarComponent()
     func launchBadgeCountComponent()
     func launchStatusIndicatorComponent()
     func launchMessageReceiptComponent()
+    func launchTextBubbleComponent()
+    func launchImageBubbleComponent()
+    func launchVideoBubbleComponent()
+    func launchAudioBubbleComponent()
+    func launchFileBubbleComponent()
+    func launchListItem()
     
-    ///Detail
-    func launchDetailsForUser()
-    func launchDetailsForGroup()
 }
 
 class ComponentList: UIViewController {
@@ -195,13 +192,9 @@ extension ComponentList: UITableViewDataSource, UITableViewDelegate {
         if moduleType == .shared {
             switch section {
             case 0:
-                lable.text = "Primary"
+                lable.text = "Resources"
             case 1:
-                lable.text = "SDK Derived"
-            case 2:
-                lable.text = "Secondary"
-            case 3:
-                lable.text = "Details"
+                lable.text = "Views"
             default:
                 break
             }
@@ -257,6 +250,8 @@ extension ComponentList {
                 ComponentList.launchDelegate?.launchUsers()
             case (0,2):
                 ComponentList.launchDelegate?.launchListItemForUser()
+            case (0,3):
+                ComponentList.launchDelegate?.launchDetailsForUser()
             case (_, _):
                 break
             }
@@ -281,6 +276,9 @@ extension ComponentList {
                 ComponentList.launchDelegate?.launchBannedMembers()
             case (0,8):
                 ComponentList.launchDelegate?.launchTransferOwnership()
+            case (0,9):
+                ComponentList.launchDelegate?.launchDetailsForGroup()
+                
             case (_, _):
                 break
             }
@@ -295,20 +293,27 @@ extension ComponentList {
                 ComponentList.launchDelegate?.launchLocalizeComponent()
                 
             case (1,0):
-                ComponentList.launchDelegate?.launchListItem()
-            case (2,0):
                 ComponentList.launchDelegate?.launchAvatarComponent()
-            case (2, 1):
+            case (1, 1):
                 ComponentList.launchDelegate?.launchBadgeCountComponent()
-            case (2,2):
+            case (1,2):
                 ComponentList.launchDelegate?.launchStatusIndicatorComponent()
-            case (2,3):
+            case (1,3):
                 ComponentList.launchDelegate?.launchMessageReceiptComponent()
+            case (1,4):
+                ComponentList.launchDelegate?.launchTextBubbleComponent()
+            case (1,5):
+                ComponentList.launchDelegate?.launchImageBubbleComponent()
+            case (1,6):
+                ComponentList.launchDelegate?.launchVideoBubbleComponent()
+            case (1,7):
+                ComponentList.launchDelegate?.launchAudioBubbleComponent()
+            case (1,8):
+                ComponentList.launchDelegate?.launchFileBubbleComponent()
                 
-            case (3,0):
-                ComponentList.launchDelegate?.launchDetailsForUser()
-            case (3,1):
-                ComponentList.launchDelegate?.launchDetailsForGroup()
+            case (1,9):
+                ComponentList.launchDelegate?.launchListItem()
+       
             
             case (_, _):
                 break
@@ -317,17 +322,7 @@ extension ComponentList {
         case .calls:
             switch (section, rowIndex) {
             case (0,0):
-                ComponentList.launchDelegate?.launchCallHistoryWithDetails()
-            case (0,1):
-                ComponentList.launchDelegate?.launchCallHistory()
-            case (0,2):
-                ComponentList.launchDelegate?.launchCallDetails()
-            case (0,3):
-                ComponentList.launchDelegate?.launchOutgoingCall()
-            case (0,4):
-                ComponentList.launchDelegate?.launchIncomingCall()
-            case (0,5):
-                ComponentList.launchDelegate?.launchOngoingCall()
+                ComponentList.launchDelegate?.launchCallButtonComponent()
             case (_, _):
                 break
             }

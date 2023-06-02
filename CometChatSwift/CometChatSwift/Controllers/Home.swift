@@ -160,7 +160,6 @@ extension Home {
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             if let currentUser = CometChat.getLoggedInUser() {
             CometChatUIKit.logout(user: currentUser, result: { (result) in
-                
                     switch result {
                     case .success(_):
                         DispatchQueue.main.async {

@@ -30,43 +30,28 @@ class MessageReceiptCell: UITableViewCell {
         didSet {
             switch index {
             case 0:
-                textMessage.sentAt = 0
-                textMessage.deliveredAt = 0.0
-                textMessage.readAt = 0.0
-                textMessage.metaData = ["error": false]
                 messageReceipt.text = "Progress State"
+                messageReceiptImage.set(receipt: .inProgress)
 
             case 1:
-                textMessage.sentAt = 1657543565
-                textMessage.deliveredAt = 0.0
-                textMessage.readAt = 0.0
-                textMessage.metaData = ["error": false]
                 messageReceipt.text = "Sent Receipt"
-
+                messageReceiptImage.set(receipt: .sent)
                 
             case 2:
-                textMessage.sentAt = 1657543565
-                textMessage.deliveredAt = 1657543577.0
-                textMessage.readAt = 0.0
-                textMessage.metaData = ["error": false]
                 messageReceipt.text = "Deliver Receipt"
-                
+                messageReceiptImage.set(receipt: .delivered)
             case 3:
-                textMessage.sentAt = 1657543565
-                textMessage.deliveredAt = 1657543577.0
-                textMessage.readAt = 1657543577.0
-                textMessage.metaData = ["error": false]
                 messageReceipt.text = "Read Receipt"
-               
+                messageReceiptImage.set(receipt: .read)
                     
             case 4:
-                textMessage.metaData = ["error": true]
                 messageReceipt.text = "Error State"
+                messageReceiptImage.set(receipt: .failed)
                 
             default:
                 break
             }
-            messageReceiptImage.set(receipt: MessageReceiptUtils.get(receiptStatus: textMessage))
+           
         }
     }
 }

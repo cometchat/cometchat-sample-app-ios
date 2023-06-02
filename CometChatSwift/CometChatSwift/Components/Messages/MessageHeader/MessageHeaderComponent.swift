@@ -17,9 +17,11 @@ class MessageHeaderComponent: UIViewController {
     var user  = User(uid: "superHero2", name: "Captain America")
     
     func setupView() {
-        let blurredView = blurView(view: self.view)
-        view.addSubview(blurredView)
-        view.sendSubviewToBack(blurredView)
+        DispatchQueue.main.async {
+            let blurredView = self.blurView(view: self.view)
+            self.view.addSubview(blurredView)
+            self.view.sendSubviewToBack(blurredView)
+        }
     }
     
     override func viewDidLoad() {

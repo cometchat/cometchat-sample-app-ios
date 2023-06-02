@@ -24,9 +24,11 @@ class ThemeComponent: UIViewController {
     var typography = Typography()
     
     func setupView() {
-        let blurredView = blurView(view: self.view)
-        view.addSubview(blurredView)
-        view.sendSubviewToBack(blurredView)
+        DispatchQueue.main.async {
+            let blurredView = self.blurView(view: self.view)
+            self.view.addSubview(blurredView)
+            self.view.sendSubviewToBack(blurredView)
+        }
     }
     
     //MARK: LIFE CYLCE

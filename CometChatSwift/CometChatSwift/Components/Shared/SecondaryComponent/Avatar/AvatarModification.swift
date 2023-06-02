@@ -19,9 +19,11 @@ class AvatarModification: UIViewController {
     @IBOutlet weak var imageSegment: UISegmentedControl!
 
     func setupView() {
-        let blurredView = blurView(view: self.view)
-        view.addSubview(blurredView)
-        view.sendSubviewToBack(blurredView)
+        DispatchQueue.main.async {
+            let blurredView = self.blurView(view: self.view)
+            self.view.addSubview(blurredView)
+            self.view.sendSubviewToBack(blurredView)
+        }
     }
     
     //MARK: LIFE CYCLE
@@ -66,7 +68,7 @@ class AvatarModification: UIViewController {
 
        // self.avatar.set(cornerRadius: CometChatCorner(cornerRadius: CGFloat(truncating: NumberFormatter().number(from: avatarCornerRadius.text ?? "0") ?? 75)))
         
-        self.avatar.set(cornerRadius: CometChatCornerStyle(cornerRadius: CGFloat(truncating: NumberFormatter().number(from: avatarCornerRadius.text ?? "0") ?? 75)))
+        self.avatar.set(cornerRadius: CometChatCornerStyle(cornerRadius: CGFloat(truncating: NumberFormatter().number(from: avatarCornerRadius.text ?? "0") ?? avatar.bounds.width / 2 as NSNumber)))
     }
 }
 

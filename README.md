@@ -16,7 +16,7 @@
 
 <a href=""><img src="https://img.shields.io/badge/Repo%20Size-13.6%20MB-brightgreen" /></a>
 <a href=""> <img src="https://img.shields.io/badge/Contributors-5-yellowgreen" /></a>
-<a href=" "> <img src="https://img.shields.io/badge/Version-3.0.912--pluto.beta.2.0-red" /></a>
+<a href=" "> <img src="https://img.shields.io/badge/Version-3.0.914--pluto.beta.2.1-red" /></a>
 <a href=""> <img src="https://img.shields.io/github/stars/cometchat-pro/ios-swift-chat-app?style=social" /></a>
 <a href=""> <img src="https://img.shields.io/twitter/follow/cometchat?style=social" /></a>
 
@@ -32,44 +32,23 @@ CometChat Kitchen Sink Sample App (built using **CometChat UIKit**) is a fully f
 
 ___
 
-## Prerequisites
+## Prerequisites :star:
 
 Before you begin, ensure you have met the following requirements:
 
-- You have installed the latest version of Xcode. (Above Xcode 12 Recommended)
+✅ &nbsp; macOS
 
-- iOS Swift Chat App works for the iOS devices from iOS 11 and above.
+✅ &nbsp; Xcode
 
-NOTE: Please install the latest pod version on your Mac to avoid integration issues
+✅ &nbsp; iOS 13.0 and later
 
-```bash
-Please follow the below steps:
+✅ &nbsp; Swift 4.0+
 
-sudo gem update cocoapods --pre
-pod update
-clean
-build
-
-```
 ___
 
 ## Installing iOS Swift Chat App
       
-1. Simply clone the project from [ios-swift-chat-app](https://github.com/cometchat-pro-samples/ios-chat-ui-kit-app/archive/master.zip) repository. After cloning the repository:
-
-2. Navigate to project's folder and use below command to install the require dependancies.
-   
-   ```
-   $ pod install
-   ```
-
-3. If you're facing any issues while installing pods, then kindly use the below command to install dependancies.
-   
-    ```
-   pod install --repo-update
-   ```
-
-4. Build and run the Sample App.
+1. Simply clone the project from [ios-swift-chat-app](https://github.com/cometchat-pro-samples/ios-chat-ui-kit-app/archive/master.zip) repository. 
 ___
 
 ## Running the sample app
@@ -92,9 +71,74 @@ To Run to sample app you have to do the following changes by Adding **AppID**, *
 
 ## Add UI Kit to your project
 
-Learn more about how to integrate [UI Kit](https://github.com/cometchat-pro/ios-chat-uikit) inside your app. 
+## 1. Setup  :wrench:
 
+To install iOS Chat UIKit, you  need to first register on CometChat Dashboard. [Click here to sign up](https://app.cometchat.com/login).
+
+### i. Get your Application Keys :key:
+
+* Create a new app
+* Head over to the Quick Start or API & Auth Keys section and note the `App ID`, `Auth Key`,  and  `Region`.
 ---
+
+### ii. You can install UIKit for iOS through Swift Package Manager.
+
+* Go to your Swift Package Manager's File tab and select Add Packages.
+
+* Add CometChatProUIKit into your Package Repository as below:
+  * https://github.com/cometchat-pro/ios-swift-chat-ui-kit.git
+  
+* To add the package, select Version Rules, enter Up to Exact Version, [3.0.914-pluto.beta.2.1](https://github.com/cometchat-pro/ios-swift-chat-ui-kit/tree/pluto), and click Next
+
+___
+
+## 2. Calling Functionality
+
+If you want calling functionality inside your application then you need to install calling SDK additionally inside your project. You can install CometChatProCalls Calling SDK for iOS through Swift Package Manager.
+
+* Go to your Swift Package Manager's File tab and select Add Packages
+
+* Add CometChatProCalls into your Package Repository as below:
+
+  * https://github.com/cometchat-pro/ios-calls-sdk.git
+
+* To add the package, select Version Rules, enter Up to Exact Version, 3.0.0, and click Next.
+
+___
+
+## 3. Configure CometChat inside your app
+
+### i. Initialize CometChat :star2:
+
+The `init()` method initializes the settings required for CometChat. We suggest calling the `init()` method on app startup, preferably in the `didFinishLaunchingWithOptions()` method of the Application class.
+
+```swift
+import CometChatPro
+
+class AppDelegate: UIResponder, UIApplicationDelegate{
+
+   var window: UIWindow?
+   let appId: String = "ENTER APP ID"
+   let region: String = "ENTER REGION CODE"
+    
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+  let mySettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region: region).build()
+  CometChat(appId: appId ,appSettings: mySettings,onSuccess: { (isSuccess) in
+  
+                print("CometChat Pro SDK intialise successfully.")
+
+        }) { (error) in
+            print("CometChat Pro SDK failed intialise with error: \(error.errorDescription)")
+        }
+        return true
+    }
+}
+```
+**Note :**
+Make sure you replace the APP_ID with your CometChat `appId` and `region` with your app region in the above code.
+
+___
 
 # Troubleshooting
 

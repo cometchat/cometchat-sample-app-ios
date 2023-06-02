@@ -16,10 +16,11 @@ class MessageListComponent: UIViewController {
     @IBOutlet weak var messageList: CometChatMessageList!
     
     func setupView() {
-        let blurredView = blurView(view: self.view)
-        blurredView.frame = view.bounds
-        view.addSubview(blurredView)
-        view.sendSubviewToBack(blurredView)
+        DispatchQueue.main.async {
+            let blurredView = self.blurView(view: self.view)
+            self.view.addSubview(blurredView)
+            self.view.sendSubviewToBack(blurredView)
+        }
     }
     
     override func viewDidLoad() {
@@ -49,7 +50,7 @@ class MessageListComponent: UIViewController {
         var types = [String]()
         var categories = [String]()
         var templates = [(type: String, template: CometChatMessageTemplate)]()
-        let messageTypes =  MessageUtils.getDefaultMessageTypes()
+        let messageTypes =  ChatConfigurator.getDataSource().getAllMessageTemplates()
         for template in messageTypes {
             if !(categories.contains(template.category)){
                 categories.append(template.category)

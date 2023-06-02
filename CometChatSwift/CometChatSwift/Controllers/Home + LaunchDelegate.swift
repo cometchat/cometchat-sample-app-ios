@@ -12,7 +12,6 @@ import CometChatUIKit
 import UIKit
 
 extension Home : LaunchDelegate {
-    
     ///Chats
     func launchConversationsWithMessages() {
         let conversationsWithMessages = CometChatConversationsWithMessages()
@@ -31,60 +30,9 @@ extension Home : LaunchDelegate {
     }
     
     ///Calls
-    
-    func launchCallHistoryWithDetails() {
-        let callHistoryWithDetails = CometChatCallHistoryWithDetails()
-        self.presentViewController(viewController: callHistoryWithDetails, isNavigationController: true)
-        
-    }
-    func launchCallHistory() {
-        let cometChatCallsHistory = CometChatCallsHistory()
-        presentViewController(viewController: cometChatCallsHistory, isNavigationController: true)
-    }
-    
-    func launchCallDetails() {
-        CometChat.getUser(UID: "superhero2", onSuccess: { user in
-            DispatchQueue.main.async {
-                let callDetails = CometChatCallDetails()
-                callDetails.set(user: user)
-                self.presentViewController(viewController: callDetails, isNavigationController: true)
-            }
-        }, onError: { error in
-            self.showAlert(title: "Error", msg: error?.errorDescription ?? "")
-        })
-    }
-        
-    func launchOutgoingCall() {
-        let outgoingCall = CometChatOutgoingCall()
-        let user = User(uid: "superhero4", name: "Wolverine")
-        user.avatar = "https://data-us.cometchat.io/assets/images/avatars/wolverine.png"
-        outgoingCall.set(user: user)
-        outgoingCall.setOnCancelClick { call, controller in
-            controller?.dismiss(animated: true)
-        }
-        presentViewController(viewController: outgoingCall, isNavigationController: false)
-    }
-    
-    func launchIncomingCall() {
-        let incomingCall = CometChatIncomingCall()
-        let user = User(uid: "superhero4", name: "Wolverine")
-        user.avatar = "https://data-us.cometchat.io/assets/images/avatars/wolverine.png"
-        incomingCall.set(user: user)
-        incomingCall.setOnCancelClick { call, controller in
-            controller?.dismiss(animated: true)
-            CometChatSoundManager().pause()
-        }
-        incomingCall.setOnAcceptClick { call, controller in
-            controller?.dismiss(animated: true)
-            CometChatSoundManager().pause()
-        }
-        presentViewController(viewController: incomingCall, isNavigationController: false)
-    }
-    
-    func launchOngoingCall() {
-        let ongoingCall = CometChatOngoingCall()
-        ongoingCall.set(sessionId: "abc")
-        presentViewController(viewController: ongoingCall, isNavigationController: false)
+    func launchCallButtonComponent() {
+        let callButtons = CallButtonsComponent()
+        presentViewController(viewController: callButtons, isNavigationController: false)
     }
     
     ///Users
@@ -102,6 +50,18 @@ extension Home : LaunchDelegate {
         let listItem = ListItem()
         listItem.listItemTypes = [.user]
         self.presentViewController(viewController: listItem, isNavigationController: false)
+    }
+    
+    func launchDetailsForUser() {
+        CometChat.getUser(UID: "superhero1", onSuccess: { user in
+            DispatchQueue.main.async {
+                let detailsForUser = CometChatDetails()
+                detailsForUser.set(user: user)
+                self.presentViewController(viewController: detailsForUser, isNavigationController: true)
+            }
+        }, onError: { error in
+            self.showAlert(title: "Error", msg: error?.errorDescription ?? "")
+        })
     }
     
     ///Groups
@@ -184,6 +144,18 @@ extension Home : LaunchDelegate {
         })
     }
     
+    func launchDetailsForGroup() {
+        CometChat.getGroup(GUID: "supergroup", onSuccess: { group in
+            DispatchQueue.main.async {
+                let detailsForGroup = CometChatDetails()
+                detailsForGroup.set(group: group)
+                self.presentViewController(viewController: detailsForGroup, isNavigationController: true)
+            }
+        }, onError: { error in
+            self.showAlert(title: "Error", msg: error?.errorDescription ?? "")
+        })
+    }
+    
     ///Messages
     func launchMessages() {
         CometChat.getGroup(GUID: "supergroup", onSuccess: { group in
@@ -254,28 +226,34 @@ extension Home : LaunchDelegate {
         let messageReceipt = MessageReceiptModification()
         self.presentViewController(viewController: messageReceipt, isNavigationController: false)
     }
-    
-    func launchDetailsForUser() {
-        CometChat.getUser(UID: "superhero1", onSuccess: { user in
-            DispatchQueue.main.async {
-                let detailsForUser = CometChatDetails()
-                detailsForUser.set(user: user)
-                self.presentViewController(viewController: detailsForUser, isNavigationController: true)
-            }
-        }, onError: { error in
-            self.showAlert(title: "Error", msg: error?.errorDescription ?? "")
-        })
-    }
         
-    func launchDetailsForGroup() {
-        CometChat.getGroup(GUID: "supergroup", onSuccess: { group in
-            DispatchQueue.main.async {
-                let detailsForGroup = CometChatDetails()
-                detailsForGroup.set(group: group)
-                self.presentViewController(viewController: detailsForGroup, isNavigationController: true)
-            }
-        }, onError: { error in
-            self.showAlert(title: "Error", msg: error?.errorDescription ?? "")
-        })
+    func launchTextBubbleComponent() {
+        let textBubble = BubblesComponent()
+        textBubble.bubbleType = .textBubble
+        presentViewController(viewController: textBubble, isNavigationController: false)
+    }
+    
+    func launchImageBubbleComponent() {
+        let imageBubble = BubblesComponent()
+        imageBubble.bubbleType = .imageBubble
+        presentViewController(viewController: imageBubble, isNavigationController: false)
+    }
+    
+    func launchVideoBubbleComponent() {
+        let videoBubble = BubblesComponent()
+        videoBubble.bubbleType = .videoBubble
+        presentViewController(viewController: videoBubble, isNavigationController: false)
+    }
+    
+    func launchAudioBubbleComponent() {
+        let audioBubble = BubblesComponent()
+        audioBubble.bubbleType = .audioBubble
+        presentViewController(viewController: audioBubble, isNavigationController: false)
+    }
+    
+    func launchFileBubbleComponent() {
+        let fileBubble = BubblesComponent()
+        fileBubble.bubbleType = .fileBubble
+        presentViewController(viewController: fileBubble, isNavigationController: false)
     }
 }

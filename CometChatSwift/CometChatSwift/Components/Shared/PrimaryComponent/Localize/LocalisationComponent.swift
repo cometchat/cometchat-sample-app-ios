@@ -18,9 +18,11 @@ class LocalisationComponent: UIViewController {
     @IBOutlet weak var gradientBackground: GradientImageView!
     
     func setupView() {
-        let blurredView = blurView(view: self.view)
-        view.addSubview(blurredView)
-        view.sendSubviewToBack(blurredView)
+        DispatchQueue.main.async {
+            let blurredView = self.blurView(view: self.view)
+            self.view.addSubview(blurredView)
+            self.view.sendSubviewToBack(blurredView)
+        }
     }
     
     //MARK: LIFE CYCLE

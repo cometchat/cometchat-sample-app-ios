@@ -24,9 +24,12 @@
 		58FEC73324ED47D90004CC9B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEC72E24ED47D90004CC9B /* Home.swift */; };
 		58FEC73424ED47D90004CC9B /* ComponentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEC72F24ED47D90004CC9B /* ComponentList.swift */; };
 		840464DF28E4C0DC00231142 /* CreateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840464DE28E4C0DC00231142 /* CreateUser.swift */; };
+		840D4C6D2A2516C900E579AE /* CallButtonsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D4C6B2A2516C900E579AE /* CallButtonsComponent.swift */; };
+		840D4C6E2A2516C900E579AE /* CallButtonsComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840D4C6C2A2516C900E579AE /* CallButtonsComponent.xib */; };
+		841351E22A2213A000BAE317 /* BubblesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841351E02A2213A000BAE317 /* BubblesComponent.swift */; };
+		841351E32A2213A000BAE317 /* BubblesComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841351E12A2213A000BAE317 /* BubblesComponent.xib */; };
 		8414716F28BEA001008C6361 /* MessageReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414716D28BEA001008C6361 /* MessageReceiptCell.swift */; };
 		8414717028BEA001008C6361 /* MessageReceiptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8414716E28BEA001008C6361 /* MessageReceiptCell.xib */; };
-		8422642129CAC85900EBA2F4 /* CometChatProCalls in Frameworks */ = {isa = PBXBuildFile; productRef = 8422642029CAC85900EBA2F4 /* CometChatProCalls */; };
 		8428692828A51EA80076EF58 /* ModulesJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428692728A51EA80076EF58 /* ModulesJson.swift */; };
 		8428692A28A521FA0076EF58 /* CustomJsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428692928A521FA0076EF58 /* CustomJsonModel.swift */; };
 		842B179B28EAF8DF00BE86F1 /* GradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B179A28EAF8DF00BE86F1 /* GradientImageView.swift */; };
@@ -36,7 +39,6 @@
 		843A561A28A8985D0023BCF2 /* ThemeComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843A561828A8985D0023BCF2 /* ThemeComponent.xib */; };
 		843DA76028ED5B610038A43C /* LoadingGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DA75F28ED5B610038A43C /* LoadingGif.swift */; };
 		843DA76428ED61770038A43C /* customLoading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 843DA76328ED61770038A43C /* customLoading.gif */; };
-		845B5BCB29E5DCDD0042537C /* CometChatUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 845B5BCA29E5DCDD0042537C /* CometChatUIKit */; };
 		8466966028ACC98C00163187 /* JsonDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466965F28ACC98C00163187 /* JsonDecoding.swift */; };
 		84B402BA28A6479700F6C5E3 /* ViewTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4014728A6479700F6C5E3 /* ViewTransformation.swift */; };
 		84B403CB28A64BD700F6C5E3 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B403C828A64BD700F6C5E3 /* ShowAlert.swift */; };
@@ -123,6 +125,10 @@
 		58FEC72E24ED47D90004CC9B /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		58FEC72F24ED47D90004CC9B /* ComponentList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentList.swift; sourceTree = "<group>"; };
 		840464DE28E4C0DC00231142 /* CreateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUser.swift; sourceTree = "<group>"; };
+		840D4C6B2A2516C900E579AE /* CallButtonsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallButtonsComponent.swift; sourceTree = "<group>"; };
+		840D4C6C2A2516C900E579AE /* CallButtonsComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallButtonsComponent.xib; sourceTree = "<group>"; };
+		841351E02A2213A000BAE317 /* BubblesComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesComponent.swift; sourceTree = "<group>"; };
+		841351E12A2213A000BAE317 /* BubblesComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BubblesComponent.xib; sourceTree = "<group>"; };
 		8414716D28BEA001008C6361 /* MessageReceiptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReceiptCell.swift; sourceTree = "<group>"; };
 		8414716E28BEA001008C6361 /* MessageReceiptCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageReceiptCell.xib; sourceTree = "<group>"; };
 		8428692728A51EA80076EF58 /* ModulesJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesJson.swift; sourceTree = "<group>"; };
@@ -192,8 +198,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				582C7DE5295C3EE80050CEDA /* CometChatUIKit in Frameworks */,
-				845B5BCB29E5DCDD0042537C /* CometChatUIKit in Frameworks */,
-				8422642129CAC85900EBA2F4 /* CometChatProCalls in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +248,24 @@
 				587038E126049C2600B03467 /* CometChat KitchenSinkTests-Bridging-Header.h */,
 			);
 			path = "CometChat KitchenSinkTests";
+			sourceTree = "<group>";
+		};
+		840D4C6A2A25169F00E579AE /* Calls */ = {
+			isa = PBXGroup;
+			children = (
+				840D4C6B2A2516C900E579AE /* CallButtonsComponent.swift */,
+				840D4C6C2A2516C900E579AE /* CallButtonsComponent.xib */,
+			);
+			path = Calls;
+			sourceTree = "<group>";
+		};
+		841351DF2A22106300BAE317 /* Bubbles */ = {
+			isa = PBXGroup;
+			children = (
+				841351E02A2213A000BAE317 /* BubblesComponent.swift */,
+				841351E12A2213A000BAE317 /* BubblesComponent.xib */,
+			);
+			path = Bubbles;
 			sourceTree = "<group>";
 		};
 		8428692628A51E4A0076EF58 /* CustomJson */ = {
@@ -333,6 +355,7 @@
 		84B4048F28A6776600F6C5E3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				840D4C6A2A25169F00E579AE /* Calls */,
 				84B4049028A6777B00F6C5E3 /* Messages */,
 				843A561528A897D00023BCF2 /* Shared */,
 			);
@@ -469,6 +492,7 @@
 				84EB324228B5E108005D7C20 /* BadgeCount */,
 				84EB324128B5E0F8005D7C20 /* StatusIndicator */,
 				84EB323F28B5DC00005D7C20 /* MessageReceipt */,
+				841351DF2A22106300BAE317 /* Bubbles */,
 			);
 			path = SecondaryComponent;
 			sourceTree = "<group>";
@@ -578,8 +602,6 @@
 			name = CometChatSwift;
 			packageProductDependencies = (
 				582C7DE4295C3EE80050CEDA /* CometChatUIKit */,
-				8422642029CAC85900EBA2F4 /* CometChatProCalls */,
-				845B5BCA29E5DCDD0042537C /* CometChatUIKit */,
 			);
 			productName = Demo;
 			productReference = DBFBC46A23A7B9230027938E /* CometChat KitchenSink.app */;
@@ -632,8 +654,6 @@
 			);
 			mainGroup = DBFBC46123A7B9230027938E;
 			packageReferences = (
-				8422641F29CAC85900EBA2F4 /* XCRemoteSwiftPackageReference "ios-calls-sdk" */,
-				845B5BC929E5DCDD0042537C /* XCRemoteSwiftPackageReference "ios-swift-chat-ui-kit" */,
 			);
 			productRefGroup = DBFBC46B23A7B9230027938E /* Products */;
 			projectDirPath = "";
@@ -666,6 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B4049528A677C000F6C5E3 /* MessageListComponent.xib in Resources */,
+				840D4C6E2A2516C900E579AE /* CallButtonsComponent.xib in Resources */,
 				84B5A7C828C0BB3900B621C7 /* SoundManagerComponent.xib in Resources */,
 				DBFBC47823A7B9240027938E /* LaunchScreen.storyboard in Resources */,
 				84B5A7CC28C0C23000B621C7 /* LocalisationComponent.xib in Resources */,
@@ -682,6 +703,7 @@
 				DBFBC47323A7B9230027938E /* Main.storyboard in Resources */,
 				DBED2A3F23AA50750058D5BF /* UIComponentsCell.xib in Resources */,
 				84EB325428B5E444005D7C20 /* MessageReceiptModification.xib in Resources */,
+				841351E32A2213A000BAE317 /* BubblesComponent.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +765,7 @@
 				58FEC73324ED47D90004CC9B /* Home.swift in Sources */,
 				84B4F42228E3261F0056DA9B /* Splash.swift in Sources */,
 				8414716F28BEA001008C6361 /* MessageReceiptCell.swift in Sources */,
+				841351E22A2213A000BAE317 /* BubblesComponent.swift in Sources */,
 				843DA76028ED5B610038A43C /* LoadingGif.swift in Sources */,
 				84B5A7CB28C0C23000B621C7 /* LocalisationComponent.swift in Sources */,
 				58FEC73424ED47D90004CC9B /* ComponentList.swift in Sources */,
@@ -759,6 +782,7 @@
 				8428692A28A521FA0076EF58 /* CustomJsonModel.swift in Sources */,
 				84B5A7CF28C0DADF00B621C7 /* DeviceDetection.swift in Sources */,
 				8439543428F6700A00E8F805 /* Home + LaunchDelegate.swift in Sources */,
+				840D4C6D2A2516C900E579AE /* CallButtonsComponent.swift in Sources */,
 				843A561928A8985D0023BCF2 /* ThemeComponent.swift in Sources */,
 				8466966028ACC98C00163187 /* JsonDecoding.swift in Sources */,
 				84EB325328B5E444005D7C20 /* MessageReceiptModification.swift in Sources */,
@@ -1126,38 +1150,9 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		8422641F29CAC85900EBA2F4 /* XCRemoteSwiftPackageReference "ios-calls-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cometchat-pro/ios-calls-sdk.git";
-			requirement = {
-				kind = exactVersion;
-				version = 3.0.0;
-			};
-		};
-		845B5BC929E5DCDD0042537C /* XCRemoteSwiftPackageReference "ios-swift-chat-ui-kit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cometchat-pro/ios-swift-chat-ui-kit.git";
-			requirement = {
-				kind = exactVersion;
-				version = "3.0.912-pluto.beta.2.0";
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		582C7DE4295C3EE80050CEDA /* CometChatUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = CometChatUIKit;
-		};
-		8422642029CAC85900EBA2F4 /* CometChatProCalls */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8422641F29CAC85900EBA2F4 /* XCRemoteSwiftPackageReference "ios-calls-sdk" */;
-			productName = CometChatProCalls;
-		};
-		845B5BCA29E5DCDD0042537C /* CometChatUIKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 845B5BC929E5DCDD0042537C /* XCRemoteSwiftPackageReference "ios-swift-chat-ui-kit" */;
 			productName = CometChatUIKit;
 		};
 /* End XCSwiftPackageProductDependency section */

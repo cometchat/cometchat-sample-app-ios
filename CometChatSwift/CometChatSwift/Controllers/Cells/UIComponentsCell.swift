@@ -36,13 +36,18 @@ class UIComponentsCell: UITableViewCell {
 
     }
 
-    func setUpCell(customData: [ModuleComponentModel], indexPath : IndexPath ){
+    func setUpCell(customData: [ModuleComponentModel], indexPath : IndexPath ) {
         setUpComponentsUI(isFirst: indexPath.row == 0, isLast: indexPath.row == (customData.count - 1))
-            self.componentName.text = customData[indexPath.row].heading
-            self.componentDescription.text = customData[indexPath.row].description
+        self.componentName.text = customData[indexPath.row].heading
+        self.componentDescription.text = customData[indexPath.row].description
+        if UIImage(systemName: customData[indexPath.row].avatar) == nil {
+            self.avatar.image = UIImage(named: customData[indexPath.row].avatar)
+        } else {
             self.avatar.image = UIImage(systemName: customData[indexPath.row].avatar)
-           
         }
+        
+        
+    }
 
     
     func setUpComponentsUI(isFirst: Bool, isLast: Bool){

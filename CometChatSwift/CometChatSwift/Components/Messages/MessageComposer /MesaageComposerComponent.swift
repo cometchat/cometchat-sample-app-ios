@@ -16,9 +16,12 @@ class MesaageComposerComponent: UIViewController {
     @IBOutlet weak var messageComposerContainer: UIView!
     
     func setupView() {
-        let blurredView = blurView(view: self.view)
-        view.addSubview(blurredView)
-        view.sendSubviewToBack(blurredView)
+        DispatchQueue.main.async {
+            self.messageCompser.set(controller: self)
+            let blurredView = self.blurView(view: self.view)
+            self.view.addSubview(blurredView)
+            self.view.sendSubviewToBack(blurredView)
+        }
     }
     
     override func viewDidLoad() {

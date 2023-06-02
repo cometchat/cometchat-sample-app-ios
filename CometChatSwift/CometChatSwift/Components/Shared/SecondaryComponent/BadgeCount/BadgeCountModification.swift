@@ -21,19 +21,21 @@ class BadgeCountModification: UIViewController {
     var countUnreadMessage : Int?
     
     func setupView() {
-        let blurredView = blurView(view: self.view)
-        view.addSubview(blurredView)
-        view.sendSubviewToBack(blurredView)
+        DispatchQueue.main.async {
+            let blurredView = self.blurView(view: self.view)
+            self.view.addSubview(blurredView)
+            self.view.sendSubviewToBack(blurredView)
+        }
     }
     
     //MARK: LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemFill
-            badgeCountView.dropShadow()
-            badgeCount.set(cornerRadius: 27)
-        } else {}
+        view.backgroundColor = .systemFill
+        badgeCount.set(count: 1)
+        badgeCountView.dropShadow()
+        badgeCount.set(cornerRadius: 27)
+        badgeCount.set(backgroundColor: .systemBlue)
         setupView()
     }
     
@@ -43,6 +45,21 @@ class BadgeCountModification: UIViewController {
     }
     
     @IBAction func badgeCountBackgroundPressed(_ sender: Any) {
+        setupBadgeCountBackground()
+    }
+        
+    @IBAction func badgeCountValueChanged(_ sender: UITextField) {
+        if count.text?.isEmpty == true {
+            badgeCount.set(count: 0)
+        } else {
+            countUnreadMessage  = Int(count.text ?? "0")
+            badgeCount.set(count: countUnreadMessage ?? 0)
+            setupBadgeCountBackground()
+        }
+       
+    }
+    
+    func setupBadgeCountBackground() {
         switch badgeCountBackgroundColor.selectedSegmentIndex {
         case 0: badgeCount.set(backgroundColor: .systemBlue)
                 badgeCountBackgroundColor.selectedSegmentTintColor = .systemBlue
@@ -54,15 +71,6 @@ class BadgeCountModification: UIViewController {
                 badgeCountBackgroundColor.selectedSegmentTintColor = .systemGray
             
         default: break
-        }
-    }
-        
-    @IBAction func badgeCountValueChanged(_ sender: UITextField) {
-        if count.text?.isEmpty == true {
-            badgeCount.text = "0"
-        } else {
-            countUnreadMessage  = Int(count.text ?? "1")
-            badgeCount.set(count: countUnreadMessage ?? 1)
         }
     }
 }
