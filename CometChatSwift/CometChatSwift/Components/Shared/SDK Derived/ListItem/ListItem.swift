@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatUIKit
+import CometChatUIKitSwift
 import CometChatPro
 
 enum  ListItemType {

@@ -8,7 +8,7 @@
 
 import Foundation
 import CometChatPro
-import CometChatUIKit
+import CometChatUIKitSwift
 import UIKit
 
 extension Home : LaunchDelegate {

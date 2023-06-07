@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		58163FAA25CC320800475B5C /* CreateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FA825CC320700475B5C /* CreateUserTests.swift */; };
 		58163FAB25CC320800475B5C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FA925CC320800475B5C /* LoginTests.swift */; };
 		58163FAF25CC35BC00475B5C /* CometChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FAE25CC35BC00475B5C /* CometChatUITests.swift */; };
-		582C7DE5295C3EE80050CEDA /* CometChatUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 582C7DE4295C3EE80050CEDA /* CometChatUIKit */; };
 		587038ED26049C2700B03467 /* 07CreateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E426049C2600B03467 /* 07CreateUserTests.swift */; };
 		587038EE26049C2700B03467 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E526049C2600B03467 /* Constants.swift */; };
 		587038EF26049C2700B03467 /* 1InitializeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587038E626049C2600B03467 /* 1InitializeTests.swift */; };
@@ -197,7 +196,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				582C7DE5295C3EE80050CEDA /* CometChatUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,7 +599,6 @@
 			);
 			name = CometChatSwift;
 			packageProductDependencies = (
-				582C7DE4295C3EE80050CEDA /* CometChatUIKit */,
 			);
 			productName = Demo;
 			productReference = DBFBC46A23A7B9230027938E /* CometChat KitchenSink.app */;
@@ -1066,6 +1063,7 @@
 					"$(PROJECT_DIR)/CometChatSwift/Library",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/CometChatSwift/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = CometChatSwift;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1095,6 +1093,7 @@
 					"$(PROJECT_DIR)/CometChatSwift/Library",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/CometChatSwift/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = CometChatSwift;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1149,13 +1148,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		582C7DE4295C3EE80050CEDA /* CometChatUIKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CometChatUIKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DBFBC46223A7B9230027938E /* Project object */;
 }

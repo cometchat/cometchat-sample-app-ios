@@ -4,7 +4,7 @@
 //  Copyright © 2020 CometChat Inc. All rights reserved.
 
 import UIKit
-import CometChatUIKit
+import CometChatUIKitSwift
 import CometChatPro
 
 protocol LaunchDelegate {

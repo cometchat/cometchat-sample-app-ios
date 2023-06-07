@@ -6,7 +6,7 @@
 //  Copyright © 2022 MacMini-03. All rights reserved.
 
 import UIKit
-import CometChatUIKit
+import CometChatUIKitSwift
 import CometChatPro
 
 class StatusIndicatorModification: UIViewController {

@@ -7,7 +7,7 @@
 
 import UIKit
 import CometChatPro
-import CometChatUIKit
+import CometChatUIKitSwift
 
 class CreateUser: UIViewController {
     

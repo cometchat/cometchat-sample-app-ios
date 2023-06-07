@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import CometChatUIKit
+import CometChatUIKitSwift
 
 @IBDesignable @objc public class GradientImageView: UIImageView {
     @IBInspectable var color: UIColor = CometChatTheme.palatte.primary

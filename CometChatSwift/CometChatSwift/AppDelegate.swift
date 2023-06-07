@@ -8,7 +8,7 @@
 
 import UIKit
 import CometChatPro
-import CometChatUIKit
+import CometChatUIKitSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
