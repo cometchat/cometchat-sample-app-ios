@@ -93,7 +93,7 @@ This app contains all features offered by CometChat through its UI Kit. [Read mo
 
 ### Run project locally
 
-- Open the project in Android Studio.
+- Open the project in Xcode.
 
    - Modify `APP_ID` and `AUTH_KEY` and `REGION` with your own .
    - Build and run the Sample App.
