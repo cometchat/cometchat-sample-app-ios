@@ -13,7 +13,7 @@
 
 Version 4 CometChat UI Kits 
 
-We’ve introduced a major update to CometChat UI kits. Version 4 features a modular architecture that give you enhanced flexibility to build and customize your web and mobile apps. Please switch to the branch [v4](https://github.com/cometchat-pro/cometchat-chat-sample-app-ios-swift/tree/v4) to check out the sample app based on this version. [Visit our documentation](https://www.cometchat.com/docs/ios-uikit-beta/overview) to read more about this.
+We’ve introduced a major update to CometChat UI kits. Version 4 features a modular architecture that gives you enhanced flexibility to build and customize your web and mobile apps. Please switch to the branch [v4](https://github.com/cometchat-pro/cometchat-chat-sample-app-ios-swift/tree/v4) to check out the sample app based on this version. [Visit our documentation](https://www.cometchat.com/docs/ios-uikit-beta/overview) to read more about this.
 <br/><br/>
 
 
