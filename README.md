@@ -89,7 +89,7 @@ Simply clone this repo and run it using the instructions below to see all featur
 
 ## Usage
 
-This app contains all features offered by CometChat through its UI Kit. [Read more about the Swift chat UI Kit here.](https://www.cometchat.com/docs/ios-v4-uikit/overview)
+This app contains all features offered by CometChat through its UI Kit. [Read more about the Swift chat UI Kit here.](https://www.cometchat.com/docs/v4/ios-uikit/overview)
 
 ### Run project locally
 
