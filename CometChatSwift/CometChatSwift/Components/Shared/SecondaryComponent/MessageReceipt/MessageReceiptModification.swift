@@ -8,7 +8,7 @@
 
 import UIKit
 import CometChatUIKitSwift
-import CometChatPro
+import CometChatSDK
 
 class MessageReceiptModification: UIViewController {
 

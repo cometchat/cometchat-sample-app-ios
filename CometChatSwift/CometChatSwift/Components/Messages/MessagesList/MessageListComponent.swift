@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 import CometChatUIKitSwift
 
 class MessageListComponent: UIViewController {
@@ -50,7 +50,7 @@ class MessageListComponent: UIViewController {
         var types = [String]()
         var categories = [String]()
         var templates = [(type: String, template: CometChatMessageTemplate)]()
-        let messageTypes =  ChatConfigurator.getDataSource().getAllMessageTemplates()
+        let messageTypes =  CometChatUIKit.getDataSource().getAllMessageTemplates()
         for template in messageTypes {
             if !(categories.contains(template.category)){
                 categories.append(template.category)

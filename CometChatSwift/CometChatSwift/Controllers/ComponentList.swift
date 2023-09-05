@@ -5,7 +5,7 @@
 
 import UIKit
 import CometChatUIKitSwift
-import CometChatPro
+import CometChatSDK
 
 protocol LaunchDelegate {
 
@@ -13,6 +13,7 @@ protocol LaunchDelegate {
     func launchConversationsWithMessages()
     func launchConversations()
     func launchListItemForConversation()
+    func launchContacts()
     
     /// Calls
     func launchCallButtonComponent()
@@ -40,6 +41,7 @@ protocol LaunchDelegate {
     func launchMessageHeader()
     func launchMessageList()
     func launchMessageComposer()
+    func launchMessageInformation()
     
     ///Shared
     ///Resources
@@ -58,6 +60,7 @@ protocol LaunchDelegate {
     func launchVideoBubbleComponent()
     func launchAudioBubbleComponent()
     func launchFileBubbleComponent()
+    func launchMediaRecorderComponent()
     func launchListItem()
     
 }
@@ -224,6 +227,8 @@ extension ComponentList {
                 ComponentList.launchDelegate?.launchConversations()
             case (0,2):
                 ComponentList.launchDelegate?.launchListItemForConversation()
+            case (0,3):
+                ComponentList.launchDelegate?.launchContacts()
             case (_, _):
                 break
             }
@@ -238,6 +243,8 @@ extension ComponentList {
                 ComponentList.launchDelegate?.launchMessageList()
             case (0,3):
                 ComponentList.launchDelegate?.launchMessageComposer()
+            case (0,4):
+                ComponentList.launchDelegate?.launchMessageInformation()
             case (_, _):
                 break
             }
@@ -310,8 +317,10 @@ extension ComponentList {
                 ComponentList.launchDelegate?.launchAudioBubbleComponent()
             case (1,8):
                 ComponentList.launchDelegate?.launchFileBubbleComponent()
-                
             case (1,9):
+                ComponentList.launchDelegate?.launchMediaRecorderComponent()
+                
+            case (1,10):
                 ComponentList.launchDelegate?.launchListItem()
        
             

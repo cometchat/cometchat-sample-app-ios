@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 import CometChatUIKitSwift
 
 class CreateUser: UIViewController {
@@ -99,11 +99,12 @@ class CreateUser: UIViewController {
                             if let uid = user.uid {
                                 self.loginWithUID(UID: uid)
                             }
-                            
-                        case .failure(let error):
+                            break
+                        case .onError(let error):
                             DispatchQueue.main.async {
                                 self.showAlert(title: "Error", msg: error.errorDescription)
                             }
+                            break
                         }
                     })
                 }
@@ -126,11 +127,13 @@ class CreateUser: UIViewController {
                         self.navigationController?.pushViewController(mainVC, animated: true)
                     }
                 }
-            case .failure(let error):
+                break
+            case .onError(let error):
                 DispatchQueue.main.async {
                     CustomLoader.instance.hideLoaderView()
                     self.showAlert(title: "Error", msg: error.errorDescription)
                 }
+                break
             }
         })
     }

@@ -27,6 +27,11 @@ public class ModulesJson {
             "heading": "List Item",
             "description": "CometListItem is a reusable component which is used to display the conversation list item in the conversation list.",
             "avatar": "menu"
+          },
+          {
+            "heading": "Contacts",
+            "description": "CometChatContacts is a versatile UI component specifically designed to streamlines the process of showcasing all app users and available chat groups in a user-friendly interface, making it easier for users to connect and communicate effectively.",
+            "avatar": "contacts"
           }
         ]
       ],
@@ -60,6 +65,11 @@ public class ModulesJson {
             "heading": "MessageComposer",
             "description": "CometChatComposer is an independent and a critical component that allows users to compose and send various types of messages such as text, image, video and custom messages.",
             "avatar": "compose"
+          },
+          {
+            "heading": "MessageInformation",
+            "description": "The CometChatMessageInformation component is custom UI view designed to dispaly message-related information, such as delivery and read receipts. It serves as an integral part of the CometChat UI UIkit",
+            "avatar": "messages-info"
           }
         ]
       ],
@@ -209,6 +219,12 @@ public class ModulesJson {
             "heading": "File Bubble",
             "description": "CometChatFileBubble displays a media message containing a file. To learn more about this component tap here.",
             "avatar": "folder-icon"
+          },
+    
+          {
+            "heading": "Medeia Recorder",
+            "description": "The CometChatMediRecorder is a custom iOS component that provides a user interface for recording audio and playing back the recorded audio. It is designed to be easily integrated into chat applications or other projects where audio messaging is required",
+            "avatar": "microphone"
           },
               {
                 "heading": "List Item",

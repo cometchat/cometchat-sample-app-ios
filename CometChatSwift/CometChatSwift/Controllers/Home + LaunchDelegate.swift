@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CometChatPro
+import CometChatSDK
 import CometChatUIKitSwift
 import UIKit
 
@@ -27,6 +27,16 @@ extension Home : LaunchDelegate {
         let listItem = ListItem()
         listItem.listItemTypes = [.conversation]
         self.presentViewController(viewController: listItem, isNavigationController: false)
+    }
+    
+    func launchContacts() {
+        let contact = CometChatContacts()
+
+        contact.setSelectionMode(selectionMode: .none)
+        
+        let naviVC = UINavigationController(rootViewController: contact)
+        
+        presentViewController(viewController: naviVC, isNavigationController: false)
     }
     
     ///Calls
@@ -184,6 +194,38 @@ extension Home : LaunchDelegate {
         presentViewController(viewController: messageComposer, isNavigationController: false)
     }
     
+    func launchMessageInformation() {
+        var types = [String]()
+        var categories = [String]()
+        var templates = [(type: String, template: CometChatMessageTemplate)]()
+        let messageTypes =  CometChatUIKit.getDataSource().getAllMessageTemplates()
+        for template in messageTypes {
+            if !(categories.contains(template.category)){
+                categories.append(template.category)
+            }
+            if !(types.contains(template.type)){
+                types.append(template.type)
+            }
+            templates.append((type: template.type, template: template))
+        }
+        
+        let messageInformationController = CometChatMessageInformation()
+        let navigationController = UINavigationController(rootViewController: messageInformationController)
+        
+        let message = TextMessage(receiverUid: CometChatUIKit.getLoggedInUser()?.uid ?? "", text: "Hi", receiverType: .user)
+        message.readAt = Date().timeIntervalSince1970
+        message.deliveredAt = Date().timeIntervalSince1970
+        message.sender = CometChatUIKit.getLoggedInUser()
+        message.receiver = CometChatUIKit.getLoggedInUser()
+        messageInformationController.set(message: message)
+        
+        if let template = templates.filter({$0.template.type == MessageUtils.getDefaultMessageTypes(message: message) && $0.template.category == MessageUtils.getDefaultMessageCategories(message: message) }).first?.template {
+            messageInformationController.set(template: template)
+        }
+        
+        presentViewController(viewController: navigationController, isNavigationController: false)
+    }
+    
     ///Shared
     func launchSoundManagerComponent() {
         
@@ -255,5 +297,17 @@ extension Home : LaunchDelegate {
         let fileBubble = BubblesComponent()
         fileBubble.bubbleType = .fileBubble
         presentViewController(viewController: fileBubble, isNavigationController: false)
+    }
+    
+    func launchMediaRecorderComponent() {
+        let cometChatMediaRecorder = UIStoryboard(name: "CometChatMediaRecorder", bundle: CometChatUIKit.bundle).instantiateViewController(identifier: "CometChatMediaRecorder") as? CometChatMediaRecorder
+        DispatchQueue.main.async {
+            let blurredView = cometChatMediaRecorder?.blurView(view: cometChatMediaRecorder?.view ?? UIView())
+            cometChatMediaRecorder?.view.addSubview(blurredView!)
+            cometChatMediaRecorder?.view.sendSubviewToBack(blurredView!)
+        }
+        if let cometChatMediaRecorder = cometChatMediaRecorder {
+            presentViewController(viewController: cometChatMediaRecorder, isNavigationController: false)
+        }
     }
 }
