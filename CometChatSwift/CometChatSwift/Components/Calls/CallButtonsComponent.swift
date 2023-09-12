@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 import CometChatUIKitSwift
 
 class CallButtonsComponent: UIViewController {
@@ -23,6 +23,7 @@ class CallButtonsComponent: UIViewController {
     }
     
     func setupCallButtons() {
+        #if canImport(CometChatCallsSDK)
         let callingButton = CometChatCallButtons(width: 70, height: 70)
         callingButton.set(controller: self)
         let view = UIStackView()
@@ -38,6 +39,7 @@ class CallButtonsComponent: UIViewController {
         containerView.addSubview(view)
         containerView.addConstraint(NSLayoutConstraint(item: callingButton, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: containerView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0))
         containerView.addConstraint(NSLayoutConstraint(item: callingButton, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: containerView, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0))
+        #endif
     }
     
     func setupView() {

@@ -3,7 +3,7 @@
 //  Copyright © 2020 CometChat Inc. All rights reserved.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 import CometChatUIKitSwift
 
 enum moduleType {
@@ -168,10 +168,12 @@ extension Home {
                             UIApplication.shared.keyWindow?.rootViewController = main
                             self.showAlert(title: "", msg: "Logged out Successfully")
                         }
-                    case .failure(let error):
+                        break
+                    case .onError(let error):
                         DispatchQueue.main.async {
                             self.showAlert(title: "Error", msg: error.errorDescription)
                         }
+                        break
                     }
                 })
             }

@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "ios-calls-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cometchat-pro/ios-calls-sdk.git",
+      "state" : {
+        "revision" : "d6159e22672f3cf90777d2d285c85485c5ff3e3b",
+        "version" : "4.0.0"
+      }
+    },
+    {
+      "identity" : "ios-chat-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cometchat-pro/ios-chat-sdk.git",
+      "state" : {
+        "revision" : "0fb28ce0a086af676188d3f9e495a58b0610eb25",
+        "version" : "4.0.1"
+      }
+    },
+    {
+      "identity" : "ios-swift-chat-ui-kit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cometchat-pro/ios-swift-chat-ui-kit.git",
+      "state" : {
+        "revision" : "3a04facf221ed4b50e996aa95fa2e60c80ac1320",
+        "version" : "4.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}

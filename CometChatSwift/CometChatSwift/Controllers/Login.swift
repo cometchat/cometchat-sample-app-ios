@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 import CometChatUIKitSwift
 
 class Login: UIViewController {
@@ -117,12 +117,14 @@ class Login: UIViewController {
                             self.navigationController?.pushViewController(mainVC, animated: true)
                         }
                     }
-                case .failure(let error):
+                    break
+                case .onError(let error):
                     DispatchQueue.main.async {
                         CustomLoader.instance.hideLoaderView()
                         self.showAlert(title: "Error", msg: error.errorDescription)
                         
                     }
+                    break
                 }
             })
         }

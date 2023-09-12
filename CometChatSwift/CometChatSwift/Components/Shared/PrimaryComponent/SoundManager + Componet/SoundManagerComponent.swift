@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 import CometChatUIKitSwift
 
 class SoundManagerComponent: UIViewController {

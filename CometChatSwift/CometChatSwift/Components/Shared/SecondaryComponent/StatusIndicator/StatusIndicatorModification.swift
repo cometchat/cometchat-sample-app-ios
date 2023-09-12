@@ -7,7 +7,7 @@
 
 import UIKit
 import CometChatUIKitSwift
-import CometChatPro
+import CometChatSDK
 
 class StatusIndicatorModification: UIViewController {
     

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 import CometChatUIKitSwift
 
 @UIApplicationMain
@@ -77,14 +77,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 .subscribePresenceForAllUsers()
                 .build()
             
-            CometChatUIKit.init(authSettings: uikitSettings, result: {
+            CometChatUIKit.init(uiKitSettings: uikitSettings, result: {
                 result in
                 switch result {
                 case .success(_):
-                    CometChat.setSource(resource: "ui-kit", platform: "ios", language: "swift")
+                    CometChat.setSource(resource: "uikit-v4", platform: "ios", language: "swift")
+                    break
                 case .failure(let error):
                     print( "Initialization Error:  \(error.localizedDescription)")
                     print( "Initialization Error Description:  \(error.localizedDescription)")
+                    break
                 }
             })
         }
