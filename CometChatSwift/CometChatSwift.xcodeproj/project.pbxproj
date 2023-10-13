@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1162,16 +1162,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cometchat-pro/ios-swift-chat-ui-kit.git";
 			requirement = {
-				kind = exactVersion;
-				version = 4.0.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
 			};
 		};
 		8466DBEF2AA7A80400093E91 /* XCRemoteSwiftPackageReference "ios-calls-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cometchat-pro/ios-calls-sdk.git";
 			requirement = {
-				kind = exactVersion;
-				version = 4.0.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
