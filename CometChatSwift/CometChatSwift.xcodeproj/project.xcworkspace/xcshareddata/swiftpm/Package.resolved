@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cometchat-pro/ios-chat-sdk.git",
       "state" : {
-        "revision" : "0fb28ce0a086af676188d3f9e495a58b0610eb25",
-        "version" : "4.0.1"
+        "revision" : "c118bf357dea574ee399808cc0d5526833f06fd8",
+        "version" : "4.0.2"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cometchat-pro/ios-swift-chat-ui-kit.git",
       "state" : {
-        "revision" : "3a04facf221ed4b50e996aa95fa2e60c80ac1320",
-        "version" : "4.0.0"
+        "revision" : "2d5b62539e2ff195e91cff32227bb8221f63160b",
+        "version" : "4.0.1"
       }
     }
   ],
