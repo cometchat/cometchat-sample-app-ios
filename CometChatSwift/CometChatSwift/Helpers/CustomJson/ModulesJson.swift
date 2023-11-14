@@ -222,16 +222,27 @@ public class ModulesJson {
           },
     
           {
-            "heading": "Medeia Recorder",
-            "description": "The CometChatMediRecorder is a custom iOS component that provides a user interface for recording audio and playing back the recorded audio. It is designed to be easily integrated into chat applications or other projects where audio messaging is required",
+            "heading": "Form Bubble",
+            "description": "CometChatFormBubble component is used to render a form within a chat bubble. To learn more about this component tap here.",
+            "avatar": "form"
+          },
+    
+          {
+            "heading": "Card Bubble",
+            "description": "The CometChatCardMessage component is used to create a card message within a chat bubble. To learn more about this component tap here.",
+            "avatar": "card"
+          },
+    
+          {
+            "heading": "Media Recorder",
+            "description": "The CometChatMediRecorder is a custom iOS component that provides a user interface for recording audio and playing back the recorded audio. It is designed to be easily integrated into chat applications or other projects where audio messaging is required. To learn more about this component tap here.",
             "avatar": "microphone"
           },
               {
                 "heading": "List Item",
-                "description": "CometChatListItem is a reusable component which is used across multiple components in different variations such as Users, Groups, Conversations and many more as a List Item.",
+                "description": "CometChatListItem is a reusable component which is used across multiple components in different variations such as Users, Groups, Conversations and many more as a List Item. To learn more about this component tap here.",
                 "avatar": "menu"
               }
-
         ]
       ]
     }

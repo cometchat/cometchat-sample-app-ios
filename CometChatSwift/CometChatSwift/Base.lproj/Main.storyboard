@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gMl-Qj-9xe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gMl-Qj-9xe">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,7 +20,7 @@
         <!--Home-->
         <scene sceneID="FZx-XG-5C9">
             <objects>
-                <viewController storyboardIdentifier="home" wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="fullScreen" id="3bl-Be-AP0" customClass="Home" customModule="CometChat_KitchenSink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="fullScreen" id="3bl-Be-AP0" customClass="Home" customModule="Smaple_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6JT-2d-wkT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,7 +78,7 @@
         <!--ComponentList-->
         <scene sceneID="d0n-KK-OGS">
             <objects>
-                <viewController storyboardIdentifier="ComponentList" title="ComponentList" id="OaY-Pk-Rki" customClass="ComponentList" customModule="CometChat_KitchenSink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ComponentList" title="ComponentList" id="OaY-Pk-Rki" customClass="ComponentList" customModule="Smaple_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hai-1Q-m1q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -207,7 +206,7 @@
         <!--Splash-->
         <scene sceneID="T3z-Ju-htt">
             <objects>
-                <viewController storyboardIdentifier="Splash" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="lZ9-PK-J3g" customClass="Splash" customModule="CometChat_KitchenSink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Splash" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="lZ9-PK-J3g" customClass="Splash" customModule="Smaple_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hf4-kV-hOk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,11 +231,11 @@
                                                         </constraints>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tVh-Mi-xb1">
-                                                        <rect key="frame" x="137.33333333333334" y="0.0" width="60" height="20"/>
+                                                        <rect key="frame" x="137.33333333333334" y="0.0" width="0.0" height="20"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v3.0.909-beta1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeI-v9-qKU">
-                                                        <rect key="frame" x="217.33333333333334" y="0.0" width="117.66666666666666" height="20"/>
+                                                        <rect key="frame" x="157.33333333333337" y="0.0" width="177.66666666666663" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                         <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -281,7 +280,7 @@
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ehb-hV-dE6">
                                                 <rect key="frame" x="0.0" y="127" width="335" height="50"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="DrB-R1-Zuf" customClass="GradientImageView" customModule="CometChat_KitchenSink">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="DrB-R1-Zuf" customClass="GradientImageView" customModule="Smaple_App">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
@@ -374,7 +373,7 @@
         <!--Login-->
         <scene sceneID="0q2-0c-fId">
             <objects>
-                <viewController storyboardIdentifier="Login" id="fSC-eM-iF4" customClass="Login" customModule="CometChat_KitchenSink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="fSC-eM-iF4" customClass="Login" customModule="Smaple_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5my-gG-NBb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -451,7 +450,7 @@
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UdR-Yq-jHc">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="152.66666666666666" height="50"/>
                                                                                         <subviews>
-                                                                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="vCS-Zi-ZVs" customClass="GradientImageView" customModule="CometChat_KitchenSink">
+                                                                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="vCS-Zi-ZVs" customClass="GradientImageView" customModule="Smaple_App">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="152.66666666666666" height="50"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <userDefinedRuntimeAttributes>
@@ -503,7 +502,7 @@
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCi-jo-BYx">
                                                                                         <rect key="frame" x="162.66666666666663" y="0.0" width="152.33333333333337" height="50"/>
                                                                                         <subviews>
-                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="kc0-QB-S38" customClass="GradientImageView" customModule="CometChat_KitchenSink">
+                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="kc0-QB-S38" customClass="GradientImageView" customModule="Smaple_App">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="152.33333333333334" height="50"/>
                                                                                                 <userDefinedRuntimeAttributes>
                                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
@@ -558,7 +557,7 @@
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSF-aM-6kg">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="152.66666666666666" height="50"/>
                                                                                         <subviews>
-                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="AT0-SV-pLH" customClass="GradientImageView" customModule="CometChat_KitchenSink">
+                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="AT0-SV-pLH" customClass="GradientImageView" customModule="Smaple_App">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="152.66666666666666" height="50"/>
                                                                                                 <userDefinedRuntimeAttributes>
                                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
@@ -607,7 +606,7 @@
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MjZ-X1-TF5">
                                                                                         <rect key="frame" x="162.66666666666663" y="0.0" width="152.33333333333337" height="50"/>
                                                                                         <subviews>
-                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Moz-Jd-nTm" customClass="GradientImageView" customModule="CometChat_KitchenSink">
+                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Moz-Jd-nTm" customClass="GradientImageView" customModule="Smaple_App">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="152.33333333333334" height="50"/>
                                                                                                 <userDefinedRuntimeAttributes>
                                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
@@ -703,7 +702,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1Q-jD-pLl">
                                                                         <rect key="frame" x="0.0" y="70" width="315" height="50"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="dXV-y5-PKI" customClass="GradientImageView" customModule="CometChat_KitchenSink">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="dXV-y5-PKI" customClass="GradientImageView" customModule="Smaple_App">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
                                                                             </imageView>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UrN-yD-BSc">
@@ -869,7 +868,7 @@
         <!--Create User-->
         <scene sceneID="MuQ-Oz-H82">
             <objects>
-                <viewController storyboardIdentifier="CreateUser" id="kZx-SE-2Cq" customClass="CreateUser" customModule="CometChat_KitchenSink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateUser" id="kZx-SE-2Cq" customClass="CreateUser" customModule="Smaple_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V7Y-2d-HK1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1035,7 +1034,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZS-TE-DVW">
                                                 <rect key="frame" x="0.0" y="225.33333333333331" width="305" height="50"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="SSZ-zs-ZDj" customClass="GradientImageView" customModule="CometChat_KitchenSink" customModuleProvider="target">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="SSZ-zs-ZDj" customClass="GradientImageView" customModule="Smaple_App">
                                                         <rect key="frame" x="0.0" y="0.0" width="305" height="50"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7Q-Bp-jCU">
@@ -1205,22 +1204,22 @@
             <color red="0.47600001096725464" green="0.47600001096725464" blue="0.47600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

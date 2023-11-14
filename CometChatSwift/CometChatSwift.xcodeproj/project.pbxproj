@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		446A959B6322321E2D77247A /* Pods_CometChatSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF93D7556C3C28E665EE0845 /* Pods_CometChatSwift.framework */; };
+		4BEF45D650F7EA632E755A6F /* Pods_CometChat_KitchenSink_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8D86E4568EDA8B575ECA93 /* Pods_CometChat_KitchenSink_UITests.framework */; };
 		58163FAA25CC320800475B5C /* CreateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FA825CC320700475B5C /* CreateUserTests.swift */; };
 		58163FAB25CC320800475B5C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FA925CC320800475B5C /* LoginTests.swift */; };
 		58163FAF25CC35BC00475B5C /* CometChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58163FAE25CC35BC00475B5C /* CometChatUITests.swift */; };
@@ -39,8 +41,6 @@
 		843DA76028ED5B610038A43C /* LoadingGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DA75F28ED5B610038A43C /* LoadingGif.swift */; };
 		843DA76428ED61770038A43C /* customLoading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 843DA76328ED61770038A43C /* customLoading.gif */; };
 		8466966028ACC98C00163187 /* JsonDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466965F28ACC98C00163187 /* JsonDecoding.swift */; };
-		8466DBEE2AA7A7D100093E91 /* CometChatUIKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8466DBED2AA7A7D100093E91 /* CometChatUIKitSwift */; };
-		8466DBF12AA7A80400093E91 /* CometChatCallsSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 8466DBF02AA7A80400093E91 /* CometChatCallsSDK */; };
 		84B402BA28A6479700F6C5E3 /* ViewTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4014728A6479700F6C5E3 /* ViewTransformation.swift */; };
 		84B403CB28A64BD700F6C5E3 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B403C828A64BD700F6C5E3 /* ShowAlert.swift */; };
 		84B4048D28A672FF00F6C5E3 /* MesaageComposerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4048B28A672FF00F6C5E3 /* MesaageComposerComponent.swift */; };
@@ -65,6 +65,7 @@
 		84EB325028B5E399005D7C20 /* StatusIndicatorModification.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EB324E28B5E399005D7C20 /* StatusIndicatorModification.xib */; };
 		84EB325328B5E444005D7C20 /* MessageReceiptModification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB325128B5E444005D7C20 /* MessageReceiptModification.swift */; };
 		84EB325428B5E444005D7C20 /* MessageReceiptModification.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EB325228B5E444005D7C20 /* MessageReceiptModification.xib */; };
+		CC8A5BF52D9778EFBD4EBA0C /* Pods_CometChat_KitchenSinkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E12AF4EA8EA3C7C27860C9 /* Pods_CometChat_KitchenSinkTests.framework */; };
 		DBED2A3E23AA50750058D5BF /* UIComponentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBED2A3C23AA50750058D5BF /* UIComponentsCell.swift */; };
 		DBED2A3F23AA50750058D5BF /* UIComponentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBED2A3D23AA50750058D5BF /* UIComponentsCell.xib */; };
 		DBFBC47323A7B9230027938E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFBC47123A7B9230027938E /* Main.storyboard */; };
@@ -105,6 +106,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F8D86E4568EDA8B575ECA93 /* Pods_CometChat_KitchenSink_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CometChat_KitchenSink_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B4C339FD6B5F83C31A48A8B /* Pods-CometChat KitchenSinkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChat KitchenSinkTests.release.xcconfig"; path = "Target Support Files/Pods-CometChat KitchenSinkTests/Pods-CometChat KitchenSinkTests.release.xcconfig"; sourceTree = "<group>"; };
 		58163F9D25CC31EF00475B5C /* CometChat KitchenSink UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CometChat KitchenSink UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58163FA125CC31EF00475B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58163FA825CC320700475B5C /* CreateUserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserTests.swift; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 		58DB387425D526550091A8EB /* ConversationListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListTests.swift; sourceTree = "<group>"; };
 		58FEC72E24ED47D90004CC9B /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		58FEC72F24ED47D90004CC9B /* ComponentList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentList.swift; sourceTree = "<group>"; };
+		7B87B7BBB8940B0C9C7AB8C3 /* Pods-CometChat KitchenSink UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChat KitchenSink UITests.release.xcconfig"; path = "Target Support Files/Pods-CometChat KitchenSink UITests/Pods-CometChat KitchenSink UITests.release.xcconfig"; sourceTree = "<group>"; };
 		840464DE28E4C0DC00231142 /* CreateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUser.swift; sourceTree = "<group>"; };
 		840D4C6B2A2516C900E579AE /* CallButtonsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallButtonsComponent.swift; sourceTree = "<group>"; };
 		840D4C6C2A2516C900E579AE /* CallButtonsComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallButtonsComponent.xib; sourceTree = "<group>"; };
@@ -166,6 +170,11 @@
 		84EB324E28B5E399005D7C20 /* StatusIndicatorModification.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusIndicatorModification.xib; sourceTree = "<group>"; };
 		84EB325128B5E444005D7C20 /* MessageReceiptModification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReceiptModification.swift; sourceTree = "<group>"; };
 		84EB325228B5E444005D7C20 /* MessageReceiptModification.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageReceiptModification.xib; sourceTree = "<group>"; };
+		8BA581BAC0B445C562E610B0 /* Pods-CometChatSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatSwift.debug.xcconfig"; path = "Target Support Files/Pods-CometChatSwift/Pods-CometChatSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		8C28E69AA1F40B3B4FA2B67B /* Pods-CometChat KitchenSinkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChat KitchenSinkTests.debug.xcconfig"; path = "Target Support Files/Pods-CometChat KitchenSinkTests/Pods-CometChat KitchenSinkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AF93D7556C3C28E665EE0845 /* Pods_CometChatSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CometChatSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4E12AF4EA8EA3C7C27860C9 /* Pods_CometChat_KitchenSinkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CometChat_KitchenSinkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D292C85ADBB081A8F1FAD73F /* Pods-CometChatSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChatSwift.release.xcconfig"; path = "Target Support Files/Pods-CometChatSwift/Pods-CometChatSwift.release.xcconfig"; sourceTree = "<group>"; };
 		DB544EBC23F3C53E0099A153 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		DBED2A3C23AA50750058D5BF /* UIComponentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentsCell.swift; sourceTree = "<group>"; };
 		DBED2A3D23AA50750058D5BF /* UIComponentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIComponentsCell.xib; sourceTree = "<group>"; };
@@ -174,6 +183,7 @@
 		DBFBC47423A7B9240027938E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBFBC47723A7B9240027938E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBFBC47923A7B9240027938E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F474320DC67EE462129C6652 /* Pods-CometChat KitchenSink UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CometChat KitchenSink UITests.debug.xcconfig"; path = "Target Support Files/Pods-CometChat KitchenSink UITests/Pods-CometChat KitchenSink UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FBA2930E2434D9A7006DCCA1 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConstants.swift; path = CometChatSwift/AppConstants.swift; sourceTree = SOURCE_ROOT; };
 		FBA2930F2434D9A7006DCCA1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CometChatSwift/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		FBEECE232493050700C44B94 /* CometChat KitchenSink.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CometChat KitchenSink.entitlements"; sourceTree = "<group>"; };
@@ -184,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BEF45D650F7EA632E755A6F /* Pods_CometChat_KitchenSink_UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC8A5BF52D9778EFBD4EBA0C /* Pods_CometChat_KitchenSinkTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,8 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8466DBF12AA7A80400093E91 /* CometChatCallsSDK in Frameworks */,
-				8466DBEE2AA7A7D100093E91 /* CometChatUIKitSwift in Frameworks */,
+				446A959B6322321E2D77247A /* Pods_CometChatSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +221,9 @@
 			isa = PBXGroup;
 			children = (
 				DB544EBC23F3C53E0099A153 /* WebKit.framework */,
+				1F8D86E4568EDA8B575ECA93 /* Pods_CometChat_KitchenSink_UITests.framework */,
+				C4E12AF4EA8EA3C7C27860C9 /* Pods_CometChat_KitchenSinkTests.framework */,
+				AF93D7556C3C28E665EE0845 /* Pods_CometChatSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -518,6 +532,7 @@
 				587038D626049BFA00B03467 /* CometChat KitchenSinkTests */,
 				DBFBC46B23A7B9230027938E /* Products */,
 				5168343937F38FE4267D76B2 /* Frameworks */,
+				E9910A7152B2ABD7A70CF448 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -548,6 +563,20 @@
 			path = CometChatSwift;
 			sourceTree = "<group>";
 		};
+		E9910A7152B2ABD7A70CF448 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F474320DC67EE462129C6652 /* Pods-CometChat KitchenSink UITests.debug.xcconfig */,
+				7B87B7BBB8940B0C9C7AB8C3 /* Pods-CometChat KitchenSink UITests.release.xcconfig */,
+				8C28E69AA1F40B3B4FA2B67B /* Pods-CometChat KitchenSinkTests.debug.xcconfig */,
+				2B4C339FD6B5F83C31A48A8B /* Pods-CometChat KitchenSinkTests.release.xcconfig */,
+				8BA581BAC0B445C562E610B0 /* Pods-CometChatSwift.debug.xcconfig */,
+				D292C85ADBB081A8F1FAD73F /* Pods-CometChatSwift.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -555,9 +584,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58163FA625CC31EF00475B5C /* Build configuration list for PBXNativeTarget "CometChat KitchenSink UITests" */;
 			buildPhases = (
+				CE9F3E8E943FBB0B3CBE10A0 /* [CP] Check Pods Manifest.lock */,
 				58163F9925CC31EF00475B5C /* Sources */,
 				58163F9A25CC31EF00475B5C /* Frameworks */,
 				58163F9B25CC31EF00475B5C /* Resources */,
+				C8F14CB235DC9446F33817E4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -573,9 +604,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 587038DE26049BFA00B03467 /* Build configuration list for PBXNativeTarget "CometChat KitchenSinkTests" */;
 			buildPhases = (
+				82DF78CD923D4680092D0DB2 /* [CP] Check Pods Manifest.lock */,
 				587038D126049BFA00B03467 /* Sources */,
 				587038D226049BFA00B03467 /* Frameworks */,
 				587038D326049BFA00B03467 /* Resources */,
+				8E0E5E3BBFC4DF50BD29A5D7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -591,21 +624,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBFBC47C23A7B9240027938E /* Build configuration list for PBXNativeTarget "CometChatSwift" */;
 			buildPhases = (
+				048BDDC2C22A7B4955AA1357 /* [CP] Check Pods Manifest.lock */,
 				DBFBC46623A7B9230027938E /* Sources */,
 				DBFBC46723A7B9230027938E /* Frameworks */,
 				DBFBC46823A7B9230027938E /* Resources */,
 				4335774724D9A4CF00E1D246 /* Embed Frameworks */,
 				43446B7224DC21560000481E /* ShellScript */,
+				217592830322C6DF71982AC7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = CometChatSwift;
-			packageProductDependencies = (
-				8466DBED2AA7A7D100093E91 /* CometChatUIKitSwift */,
-				8466DBF02AA7A80400093E91 /* CometChatCallsSDK */,
-			);
 			productName = Demo;
 			productReference = DBFBC46A23A7B9230027938E /* CometChat KitchenSink.app */;
 			productType = "com.apple.product-type.application";
@@ -656,10 +687,6 @@
 				hu,
 			);
 			mainGroup = DBFBC46123A7B9230027938E;
-			packageReferences = (
-				8466DBEC2AA7A7D100093E91 /* XCRemoteSwiftPackageReference "ios-swift-chat-ui-kit" */,
-				8466DBEF2AA7A80400093E91 /* XCRemoteSwiftPackageReference "ios-calls-sdk" */,
-			);
 			productRefGroup = DBFBC46B23A7B9230027938E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -715,6 +742,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		048BDDC2C22A7B4955AA1357 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CometChatSwift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		217592830322C6DF71982AC7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CometChatSwift/Pods-CometChatSwift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CometChatSwift/Pods-CometChatSwift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CometChatSwift/Pods-CometChatSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		43446B7224DC21560000481E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -730,8 +796,85 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
+		};
+		82DF78CD923D4680092D0DB2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CometChat KitchenSinkTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E0E5E3BBFC4DF50BD29A5D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CometChat KitchenSinkTests/Pods-CometChat KitchenSinkTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CometChat KitchenSinkTests/Pods-CometChat KitchenSinkTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CometChat KitchenSinkTests/Pods-CometChat KitchenSinkTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8F14CB235DC9446F33817E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CometChat KitchenSink UITests/Pods-CometChat KitchenSink UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CometChat KitchenSink UITests/Pods-CometChat KitchenSink UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CometChat KitchenSink UITests/Pods-CometChat KitchenSink UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE9F3E8E943FBB0B3CBE10A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CometChat KitchenSink UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -838,6 +981,7 @@
 /* Begin XCBuildConfiguration section */
 		58163FA425CC31EF00475B5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F474320DC67EE462129C6652 /* Pods-CometChat KitchenSink UITests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -860,6 +1004,7 @@
 		};
 		58163FA525CC31EF00475B5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B87B7BBB8940B0C9C7AB8C3 /* Pods-CometChat KitchenSink UITests.release.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -882,6 +1027,7 @@
 		};
 		587038DC26049BFA00B03467 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C28E69AA1F40B3B4FA2B67B /* Pods-CometChat KitchenSinkTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -907,6 +1053,7 @@
 		};
 		587038DD26049BFA00B03467 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B4C339FD6B5F83C31A48A8B /* Pods-CometChat KitchenSinkTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -1057,6 +1204,7 @@
 		};
 		DBFBC47D23A7B9240027938E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BA581BAC0B445C562E610B0 /* Pods-CometChatSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CometChatSwift/CometChat KitchenSink.entitlements";
@@ -1087,6 +1235,7 @@
 		};
 		DBFBC47E23A7B9240027938E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D292C85ADBB081A8F1FAD73F /* Pods-CometChatSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CometChatSwift/CometChat KitchenSink.entitlements";
@@ -1156,38 +1305,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		8466DBEC2AA7A7D100093E91 /* XCRemoteSwiftPackageReference "ios-swift-chat-ui-kit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cometchat-pro/ios-swift-chat-ui-kit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-		8466DBEF2AA7A80400093E91 /* XCRemoteSwiftPackageReference "ios-calls-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cometchat-pro/ios-calls-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8466DBED2AA7A7D100093E91 /* CometChatUIKitSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8466DBEC2AA7A7D100093E91 /* XCRemoteSwiftPackageReference "ios-swift-chat-ui-kit" */;
-			productName = CometChatUIKitSwift;
-		};
-		8466DBF02AA7A80400093E91 /* CometChatCallsSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8466DBEF2AA7A80400093E91 /* XCRemoteSwiftPackageReference "ios-calls-sdk" */;
-			productName = CometChatCallsSDK;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DBFBC46223A7B9230027938E /* Project object */;
 }

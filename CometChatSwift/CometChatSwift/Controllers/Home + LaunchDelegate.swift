@@ -299,6 +299,18 @@ extension Home : LaunchDelegate {
         presentViewController(viewController: fileBubble, isNavigationController: false)
     }
     
+    func launchFormBubbleComponent() {
+        let formBubble = BubblesComponent()
+        formBubble.bubbleType = .formBubble
+        presentViewController(viewController: formBubble, isNavigationController: false)
+    }
+    
+    func launchCardBubbleComponent() {
+        let cardBubble = BubblesComponent()
+        cardBubble.bubbleType = .cardBubble
+        presentViewController(viewController: cardBubble, isNavigationController: false)
+    }
+    
     func launchMediaRecorderComponent() {
         let cometChatMediaRecorder = UIStoryboard(name: "CometChatMediaRecorder", bundle: CometChatUIKit.bundle).instantiateViewController(identifier: "CometChatMediaRecorder") as? CometChatMediaRecorder
         DispatchQueue.main.async {
