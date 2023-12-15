@@ -41,6 +41,36 @@ public class ModulesJson {
                 "heading": "Call Button",
                 "description": "CometChatCallButton is an independent component that will allows you to make a call.",
                 "avatar": "person.text.rectangle"
+        },
+        {
+                "heading": "Call Logs",
+                "description": "CometChatCallLogs is an independent component shows all your recent call Logs.",
+                "avatar": "call"
+        },
+        {
+                "heading": "CallLogsWithDetails",
+                "description": "CallLogsWithDetails is an component that uses & CallLogsWithDetails to shows all your recent call Logs with its details.",
+                "avatar": "call-log"
+        },
+        {
+                "heading": "CallLogDetails",
+                "description": "CallLogDetails is an component that shows detailed information about a particular call. This uses CallLogHistory, CallLogRecording & CallLogParticipant as child component",
+                "avatar": "call-log"
+        },
+        {
+                "heading": "CallLogHistory",
+                "description": "CallLogHistory is an component shows Call History with some user or group. It will only show that call between the Logged In user and the chosen user.",
+                "avatar": "call-history"
+        },
+        {
+                "heading": "CallLogRecording",
+                "description": "CallLogRecording is an component that displays all the recordings from a particular call. This component also allows to directly download the recording into your phone",
+                "avatar": "call-recording"
+        },
+        {
+                "heading": "CallLogParticipant",
+                "description": "CallLogParticipant is an component that shows the list of participant in a particular call.",
+                "avatar": "call-participant"
         }
         ]
       ],

@@ -17,6 +17,12 @@ protocol LaunchDelegate {
     
     /// Calls
     func launchCallButtonComponent()
+    func launchCallLogsComponent()
+    func launchCallLogsWithDetailsComponent()
+    func launchCallLogDetailsComponent()
+    func launchCallLogParticipantComponent()
+    func launchCallLogRecordingComponent()
+    func launchCallLogHistoryComponent()
 
     ///Users
     func launchUsersWithMessages()
@@ -338,6 +344,18 @@ extension ComponentList {
             switch (section, rowIndex) {
             case (0,0):
                 ComponentList.launchDelegate?.launchCallButtonComponent()
+            case (0, 1):
+                ComponentList.launchDelegate?.launchCallLogsComponent()
+            case (0, 2):
+                ComponentList.launchDelegate?.launchCallLogsWithDetailsComponent()
+            case (0, 3):
+                ComponentList.launchDelegate?.launchCallLogDetailsComponent()
+            case (0, 4):
+                ComponentList.launchDelegate?.launchCallLogHistoryComponent()
+            case (0, 5):
+                ComponentList.launchDelegate?.launchCallLogRecordingComponent()
+            case (0, 6):
+                ComponentList.launchDelegate?.launchCallLogParticipantComponent()
             case (_, _):
                 break
             }

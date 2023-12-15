@@ -45,6 +45,65 @@ extension Home : LaunchDelegate {
         presentViewController(viewController: callButtons, isNavigationController: false)
     }
     
+    func launchCallLogsComponent() {
+        #if canImport(CometChatCallsSDK)
+        let callLogs = CometChatCallLogs()
+        presentViewController(viewController: callLogs, isNavigationController: true)
+        #else
+        self.showAlert(title: "Calls SDK is Installed", msg: "Calls SDK is required to access this class")
+        #endif
+    }
+    
+    func launchCallLogsWithDetailsComponent() {
+        #if canImport(CometChatCallsSDK)
+        let callLogsWithDetails = CometChatCallLogsWithDetails()
+        presentViewController(viewController: callLogsWithDetails, isNavigationController: true)
+        #else
+        self.showAlert(title: "Calls SDK is Installed", msg: "Calls SDK is required to access this class")
+        #endif
+    }
+    
+    func launchCallLogDetailsComponent() {
+        #if canImport(CometChatCallsSDK)
+        let callLog = DummyObject.callLog(user: CometChat.getLoggedInUser())
+        let callLogDetails = CometChatCallLogDetails()
+        callLogDetails.set(callLog: callLog)
+        presentViewController(viewController: callLogDetails, isNavigationController: true)
+        #else
+        self.showAlert(title: "Calls SDK is Installed", msg: "Calls SDK is required to access this class")
+        #endif
+    }
+    
+    func launchCallLogParticipantComponent() {
+        #if canImport(CometChatCallsSDK)
+        let callLogParticipant = CometChatCallLogParticipant()
+            .set(callLog: DummyObject.callLog(user: CometChat.getLoggedInUser()))
+        presentViewController(viewController: callLogParticipant, isNavigationController: true)
+        #else
+        self.showAlert(title: "Calls SDK is Installed", msg: "Calls SDK is required to access this class")
+        #endif
+    }
+    
+    func launchCallLogRecordingComponent() {
+        #if canImport(CometChatCallsSDK)
+        let callLogRecording = CometChatCallLogRecording()
+            .set(recordings: DummyObject.callLog(user: CometChat.getLoggedInUser()).recordings)
+        presentViewController(viewController: callLogRecording, isNavigationController: true)
+        #else
+        self.showAlert(title: "Calls SDK is Installed", msg: "Calls SDK is required to access this class")
+        #endif
+    }
+    
+    func launchCallLogHistoryComponent() {
+        #if canImport(CometChatCallsSDK)
+        let callLogHistory = CometChatCallLogHistory()
+            .set(uid: CometChat.getLoggedInUser()?.uid != "superhero1" ? "superhero1" : "superhero2")
+        presentViewController(viewController: callLogHistory, isNavigationController: true)
+        #else
+        self.showAlert(title: "Calls SDK is Installed", msg: "Calls SDK is required to access this class")
+        #endif
+    }
+    
     ///Users
     func launchUsersWithMessages() {
         let usersWithMessages = CometChatUsersWithMessages()
