@@ -41,9 +41,9 @@ class UIComponentsCell: UITableViewCell {
         self.componentName.text = customData[indexPath.row].heading
         self.componentDescription.text = customData[indexPath.row].description
         if UIImage(systemName: customData[indexPath.row].avatar) == nil {
-            self.avatar.image = UIImage(named: customData[indexPath.row].avatar)
+            self.avatar.image = UIImage(named: customData[indexPath.row].avatar)?.withRenderingMode(.alwaysTemplate)
         } else {
-            self.avatar.image = UIImage(systemName: customData[indexPath.row].avatar)
+            self.avatar.image = UIImage(systemName: customData[indexPath.row].avatar)?.withRenderingMode(.alwaysTemplate)
         }
         
         

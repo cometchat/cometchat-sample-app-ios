@@ -11,7 +11,7 @@ import CometChatSDK
 import CometChatUIKitSwift
 
 enum BubbleType {
-    case textBubble, imageBubble, videoBubble, audioBubble, fileBubble, formBubble, cardBubble
+    case textBubble, imageBubble, videoBubble, audioBubble, fileBubble, formBubble, cardBubble, schdulaBubble
 }
 
 class BubblesComponent: UIViewController {
@@ -72,6 +72,10 @@ class BubblesComponent: UIViewController {
             showCardBubble()
             break
             
+        case .schdulaBubble:
+            showSchdularBubble()
+            break
+            
         case .none:
             break
         }
@@ -126,7 +130,7 @@ class BubblesComponent: UIViewController {
         container.addConstraint(NSLayoutConstraint(item: audioBubble, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: container, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0))
  
     }
-    
+        
     func showFileBubble() {
         let fileBubble = CometChatFileBubble()
         fileBubble.set(controller: self)
@@ -161,6 +165,18 @@ class BubblesComponent: UIViewController {
                                      formBubble.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
                                      formBubble.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
                                      formBubble.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)])
+    }
+    
+    func showSchdularBubble() {
+        let schedulerBubble = CometChatSchedulerBubble()
+        schedulerBubble.set(controller: self)
+        schedulerBubble.set(message: schedulerMessageData())
+        schedulerBubble.translatesAutoresizingMaskIntoConstraints = false
+        schedulerBubble.layoutIfNeeded()
+        heightConstraint.constant = 250
+        container.addSubview(schedulerBubble)
+        container.addConstraint(NSLayoutConstraint(item: schedulerBubble, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: container, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0))
+        container.addConstraint(NSLayoutConstraint(item: schedulerBubble, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: container, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0))
     }
     
     func showCardBubble() {
@@ -377,7 +393,33 @@ class BubblesComponent: UIViewController {
         interactiveMessage.muid = "1697025959995609"
         interactiveMessage.senderUid = CometChat.getLoggedInUser()?.uid ?? ""
         interactiveMessage.sender = CometChat.getLoggedInUser()
-        return FormMessage.formInteractive(interactiveMessage)
+        return FormMessage.toFormMessage(interactiveMessage)
+    }
+    
+    func schedulerMessageData() -> SchedulerMessage {
+        let schedulerMessage = SchedulerMessage()
+        schedulerMessage.duration = 60
+        schedulerMessage.title = "Meet Dr. Jackob"
+        schedulerMessage.bufferTime = 15
+        schedulerMessage.avatarURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdRz0HEBl1wvncmX6rU8wFrRDxt2cvn2Dq9w&usqp=CAU"
+        schedulerMessage.goalCompletionText = "Meeting Scheduled Successfully!!"
+        schedulerMessage.timezoneCode = TimeZone.current.identifier
+        schedulerMessage.dateRangeStart = Int(Date().timeIntervalSince1970)
+        schedulerMessage.dateRangeEnd = Int(Date().addingTimeInterval(30 * 24 * 60 * 60).timeIntervalSince1970)
+        schedulerMessage.receiverUid = "superhero1"
+        schedulerMessage.receiverType = .user
+        schedulerMessage.availability = [
+            "monday": [TimeRange(startTime: "0000", endTime: "1359")],
+            "tuesday": [TimeRange(startTime: "0000", endTime: "1559")],
+            "wednesday ": [TimeRange(startTime: "0000", endTime: "0659")],
+            "thuesday": [TimeRange(startTime: "0000", endTime: "0959")],
+            "friday": [TimeRange(startTime: "0000", endTime: "1059")],
+        ]
+
+        let clickAction = APIAction()
+        let scheduleElement = ButtonElement(elementType: .button, elementID: "21", clickAction: clickAction, buttonText: "Submit")
+        schedulerMessage.scheduleElement = scheduleElement
+        return schedulerMessage
     }
     
     func cardMessageData() -> CardMessage {
@@ -465,7 +507,7 @@ class BubblesComponent: UIViewController {
         interactiveMessage.receiverType = .user
         interactiveMessage.receiverUid = "superhero2"
         interactiveMessage.muid = "1697025959995609"
-        return CardMessage.cardInteractive(interactiveMessage)
+        return CardMessage.toCardMessage(interactiveMessage)
     }
 }
 

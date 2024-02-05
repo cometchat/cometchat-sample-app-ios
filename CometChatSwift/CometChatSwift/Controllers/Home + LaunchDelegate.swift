@@ -370,6 +370,12 @@ extension Home : LaunchDelegate {
         presentViewController(viewController: cardBubble, isNavigationController: false)
     }
     
+    func launchSchedulerComponent() {
+        let schedulerBubble = BubblesComponent()
+        schedulerBubble.bubbleType = .schdulaBubble
+        presentViewController(viewController: schedulerBubble, isNavigationController: false)
+    }
+    
     func launchMediaRecorderComponent() {
         let cometChatMediaRecorder = UIStoryboard(name: "CometChatMediaRecorder", bundle: CometChatUIKit.bundle).instantiateViewController(identifier: "CometChatMediaRecorder") as? CometChatMediaRecorder
         DispatchQueue.main.async {

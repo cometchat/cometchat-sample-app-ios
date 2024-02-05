@@ -68,6 +68,7 @@ protocol LaunchDelegate {
     func launchFileBubbleComponent()
     func launchFormBubbleComponent()
     func launchCardBubbleComponent()
+    func launchSchedulerComponent()
     func launchMediaRecorderComponent()
     func launchListItem()
     
@@ -329,10 +330,11 @@ extension ComponentList {
                 ComponentList.launchDelegate?.launchFormBubbleComponent()
             case (1,10):
                 ComponentList.launchDelegate?.launchCardBubbleComponent()
-            case (1,11):
-                ComponentList.launchDelegate?.launchMediaRecorderComponent()
-                
+            case (1, 11):
+                ComponentList.launchDelegate?.launchSchedulerComponent()
             case (1,12):
+                ComponentList.launchDelegate?.launchMediaRecorderComponent()
+            case (1,13):
                 ComponentList.launchDelegate?.launchListItem()
        
             
