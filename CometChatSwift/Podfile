@@ -6,7 +6,7 @@ target 'CometChatSwift' do
   use_frameworks!
 
   # Pods for CometChatSwift
-  pod 'CometChatUIKitSwift', '4.2.0'
+  pod 'CometChatUIKitSwift', '4.2.1'
   pod 'CometChatCallsSDK', '4.0.2'
 
 end
@@ -16,7 +16,7 @@ target 'CometChat KitchenSink UITests' do
   use_frameworks!
 
   # Pods for CometChatSwift
-  pod 'CometChatUIKitSwift', '4.2.0'
+  pod 'CometChatUIKitSwift', '4.2.1'
   pod 'CometChatCallsSDK', '4.0.2'
 
 end
@@ -26,7 +26,7 @@ target 'CometChat KitchenSinkTests' do
   use_frameworks!
 
   # Pods for CometChatSwift
-   pod 'CometChatUIKitSwift', '4.2.0'
+   pod 'CometChatUIKitSwift', '4.2.1'
    pod 'CometChatCallsSDK', '4.0.2'
 
 end
