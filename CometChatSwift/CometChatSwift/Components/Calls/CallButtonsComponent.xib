@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CallButtonsComponent" customModule="CometChat_KitchenSink" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="ER4-fx-15e" id="ibM-bM-yYJ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ER4-fx-15e">
+                    <rect key="frame" x="118" y="374.66666666666669" width="157" height="127.66666666666669"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bq-xh-J2N">
+                            <rect key="frame" x="112" y="10" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="2nC-1x-GY4"/>
+                                <constraint firstAttribute="width" constant="35" id="gzW-PO-b2l"/>
+                            </constraints>
+                            <color key="tintColor" name="label1"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="close"/>
+                            <connections>
+                                <action selector="didCloseButtonPressed:" destination="-1" eventType="touchUpInside" id="DFh-V6-GqJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="5bq-xh-J2N" secondAttribute="trailing" constant="10" id="lAb-St-kfD"/>
+                        <constraint firstItem="5bq-xh-J2N" firstAttribute="top" secondItem="ER4-fx-15e" secondAttribute="top" constant="10" id="zc4-oe-gul"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ER4-fx-15e" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.4" id="7RH-Oq-Sxy"/>
+                <constraint firstItem="ER4-fx-15e" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="LEd-gp-pme"/>
+                <constraint firstItem="ER4-fx-15e" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="SuH-ak-abi"/>
+                <constraint firstItem="ER4-fx-15e" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.15" id="ulR-ys-phw"/>
+            </constraints>
+            <point key="canvasLocation" x="104.58015267175573" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close" width="15.5" height="15.5"/>
+        <namedColor name="label1">
+            <color red="0.15700000524520874" green="0.21199999749660492" blue="0.24300000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

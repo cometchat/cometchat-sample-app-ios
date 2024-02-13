@@ -20,7 +20,7 @@ class ConversationListTests : XCTestCase {
         app.launch()
         if app.navigationBars["CometChat Kitchen Sink"].exists {
         
-        }else{
+         } else {
             app.staticTexts["superhero1"].tap()
         }
        

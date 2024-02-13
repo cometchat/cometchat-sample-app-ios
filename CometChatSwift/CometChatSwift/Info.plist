@@ -18,14 +18,19 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>CometChatPro</key>
-	<string>1991</string>
-	<key>CometChatProDevelopment</key>
+	<key>CometChatSDKDevelopment</key>
 	<string></string>
+	<key>INIntentsSupported</key>
+	<array>
+		<string>Intent</string>
+	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>googlechromes</string>
 		<string>comgooglemaps</string>
+		<string>comgooglemaps-x-callback</string>
+		<string>googlegmail</string>
+		<string>ms-outlook</string>
+		<string>ymail</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -59,6 +64,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string></string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

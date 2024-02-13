@@ -4,7 +4,6 @@ This document outlines the Responsible Disclosure Program for CometChat Pro
 
 ## Responsible Disclosure Policy
 
-
 At CometChat we take security seriously and consider it a top priority. Since a
 public disclosure of a security vulnerability could put the entire
 community at risk, we require that potential vulnerabilities are kept
@@ -16,7 +15,3 @@ contributions.
 ## Reporting a vulnerability
 
 To report any security related issues, please communicate with the CometChat Pro security team by sending an email to security@cometchat.com
-
-
-
-

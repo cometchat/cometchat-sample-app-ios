@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BubblesComponent" customModule="Sample_App" customModuleProvider="target">
+            <connections>
+                <outlet property="container" destination="vr7-ce-O7n" id="JEI-OB-fKn"/>
+                <outlet property="heightConstraint" destination="Ryx-7z-w7b" id="STw-MQ-f7M"/>
+                <outlet property="shadowView" destination="qxz-Ug-A4C" id="lNP-dX-2CA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxz-Ug-A4C">
+                    <rect key="frame" x="20" y="246" width="335" height="200"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vr7-ce-O7n">
+                            <rect key="frame" x="25" y="50" width="285" height="120"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Lp-59-RJw">
+                            <rect key="frame" x="295" y="10" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="dmE-iR-Cjx"/>
+                                <constraint firstAttribute="width" constant="30" id="nto-nH-B8Y"/>
+                            </constraints>
+                            <color key="tintColor" name="label1"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="close"/>
+                            <connections>
+                                <action selector="didBackButtonPressed:" destination="-1" eventType="touchUpInside" id="ul2-dq-bH7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="2Lp-59-RJw" firstAttribute="top" secondItem="qxz-Ug-A4C" secondAttribute="top" constant="10" id="73P-xD-iwi"/>
+                        <constraint firstAttribute="bottom" secondItem="vr7-ce-O7n" secondAttribute="bottom" constant="30" id="D9n-EL-ii0"/>
+                        <constraint firstItem="vr7-ce-O7n" firstAttribute="top" secondItem="2Lp-59-RJw" secondAttribute="bottom" constant="10" id="M88-pZ-p7q"/>
+                        <constraint firstAttribute="trailing" secondItem="vr7-ce-O7n" secondAttribute="trailing" constant="25" id="SjK-5g-lkx"/>
+                        <constraint firstItem="vr7-ce-O7n" firstAttribute="leading" secondItem="qxz-Ug-A4C" secondAttribute="leading" constant="25" id="WMY-IJ-EiG"/>
+                        <constraint firstAttribute="trailing" secondItem="2Lp-59-RJw" secondAttribute="trailing" constant="10" id="dET-l0-Lne"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qxz-Ug-A4C" secondAttribute="trailing" constant="20" id="FOS-1g-0WZ"/>
+                <constraint firstItem="qxz-Ug-A4C" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="Ryx-7z-w7b"/>
+                <constraint firstItem="qxz-Ug-A4C" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="jKh-DW-OOq"/>
+                <constraint firstItem="qxz-Ug-A4C" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="lfS-V6-A6x"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="67.938931297709928" y="20.774647887323944"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close" width="15.5" height="15.5"/>
+        <namedColor name="label1">
+            <color red="0.15700000524520874" green="0.21199999749660492" blue="0.24300000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

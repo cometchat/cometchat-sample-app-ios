@@ -1,4 +1,3 @@
-
 <div style="width:100%">
     <div style="width:50%; display:inline-block">
         <p align="center">
@@ -8,131 +7,129 @@
 </div>
 </div>
 
-</br></br>
-> **Note**
+</br>
 
-Version 4 CometChat UI Kits 
+  <h2 align="left">CometChat iOS Swift Sample App</h3>
 
-We’ve introduced a major update to CometChat UI kits. Version 4 features a modular architecture that gives you enhanced flexibility to build and customize your web and mobile apps. Please switch to the branch [v4](https://github.com/cometchat-pro/cometchat-chat-sample-app-ios-swift/tree/v4) to check out the sample app based on this version. [Visit our documentation](https://www.cometchat.com/docs/ios-v4-uikit/overview) to read more about this.
-<br/><br/>
+  <p align="left">
+    CometChat Kitchen Sink Sample App (built using <b>CometChat UI Kits</b>) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
+    <br />
+    <a href="https://www.cometchat.com/docs/v4/ios-uikit/overview"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/cometchat-pro/cometchat-chat-sample-app-ios-swift/issues">Report Bug</a>
+  </p>
+</p>
 
-
-# iOS Swift Chat App
 
 <p align="left">
 
-<a href=""><img src="https://img.shields.io/badge/Repo%20Size-15.6%20MB-brightgreen" /></a>
-<a href=""> <img src="https://img.shields.io/badge/Contributors-5-yellowgreen" /></a>
-<a href=" "> <img src="https://img.shields.io/badge/Version-3.0.912--1-red" /></a>
-<a href=""> <img src="https://img.shields.io/github/stars/cometchat-pro/ios-swift-chat-app?style=social" /></a>
-<a href=""> <img src="https://img.shields.io/twitter/follow/cometchat?style=social" /></a>
+ <a href="https://github.com/cometchat-pro/ios-swift-chat-ui-kit/releases" alt="Releases">
+  <img src="https://img.shields.io/github/v/release/cometchat-pro/android-java-chat-app" />
+    </a>
+<a href=""><img src="https://img.shields.io/badge/language-Objective--C%20%7C%20Swift-orange.svg" /></a>
+ <a href="https://twitter.com/CometChat">
+        <img src="https://img.shields.io/twitter/follow/CometChat?label=CometChat&style=social" />
+    </a>
 
 </p>
 </br></br>
 
-<div>
-<img align="left" src="https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v2/Screenshots/appScreenshot.jpg">  </div>
+<!-- TABLE OF CONTENTS -->
 
-<br></br><br></br>
+## Table of Contents
 
-CometChat Kitchen Sink Sample App (built using **CometChat UIKit**) is a fully functional messaging app capable of **one-on-one** (private) and **group** messaging as well as Calling. This sample app enables users to send **text** and **multimedia messages like  images, videos, documents**. Also, users can make  **Audio** and **Video** calls to other users or groups.
+- [About the Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Dependencies](#dependencies)
+  - [Installing](#installing)
+  - [Usage](#usage)
+    - [Run locally](#run-project-locally)
+  - [Help](#help)
+- [Contributing](#contributing)
+- [Support](#support)
+- [License](#license)
+- [About Authors](#about-authors)
 
-___
+<!-- ABOUT THE PROJECT -->
 
-## Prerequisites
+## About The Project
 
-Before you begin, ensure you have met the following requirements:
+CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
 
-- You have installed the latest version of Xcode. (Above Xcode 12 Recommended)
+### Built With
 
-- iOS Swift Chat App works for the iOS devices from iOS 11 and above.
+- [Swift](https://developer.apple.com/swift/)
+- [CometChat](https://cometchat.com)
 
-NOTE: Please install the latest pod version on your Mac to avoid integration issues
+<!-- GETTING STARTED -->
 
-```bash
-Please follow the below steps:
+## Getting Started
 
-sudo gem update cocoapods --pre
-pod update
-clean
-build
+Simply clone this repo and run it using the instructions below to see all features in action. Or use it as a starter template/boilerplate and make edits to suit your needs.
 
-```
-___
+## Dependencies
 
-## Installing iOS Swift Chat App
-      
-1. Simply clone the project from [ios-swift-chat-app](https://github.com/cometchat-pro-samples/ios-chat-ui-kit-app/archive/master.zip) repository. After cloning the repository:
+- CometChat - [Sign up for CometChat](https://app.cometchat.com) and create an app to obtain your keys and other credentials
 
-2. Navigate to project's folder and use below command to install the require dependancies.
+## Installing
+
+1. Clone the repo
+
+   ```sh
+   git clone https://github.com/cometchat-pro/cometchat-chat-sample-app-ios-swift.git -b v4
    
    ```
-   $ pod install
-   ```
+2. Replace `APP_ID`, `REGION`, and `AUTH_KEY` with your CometChat `App ID`, `Region`, and `Auth Key` in the `AppConstants.swift` file.
 
-3. If you're facing any issues while installing pods, then kindly use the below command to install dependancies.
-   
-    ```
-   pod install --repo-update
-   ```
+   ![Studio Guide](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v2/Screenshots/Auth.png)
 
-4. Build and run the Sample App.
-___
+<!-- USAGE EXAMPLES -->
 
-## Running the sample app
+## Usage
 
-To Run to sample app you have to do the following changes by Adding **AppID**, **AuthKey** and  **Region**.
-   
-   You can obtain your  *App ID*, *Auth Key* and *Region* from [CometChat-Pro Dashboard](https://app.cometchat.io/). Create new app and head over to the Quick Start or API & Auth Keys section and note the `App ID`, `Auth Key`,  and  `Region`.
-          
-   - Open the project in Xcode. 
-          
-   - Go to CometChatSwift -->  **AppConstants.swift**.
-                  
-   - Modify *App ID* and *Auth Key*  and *Region* with your own **App ID**, **Auth Key** and **Region**.
+This app contains all features offered by CometChat through its UI Kit. [Read more about the Swift chat UI Kit here.](https://www.cometchat.com/docs/v4/ios-uikit/overview)
 
-   -  Select demo users or enter the **UID** at the time of login once the app is launched. 
+### Run project locally
 
-![Studio Guide](https://github.com/cometchat-pro-samples/ios-swift-chat-app/blob/v2/Screenshots/Auth.png)    
+- Open the project in Xcode.
 
----
+   - Build and run the Sample App.
+   -  Select demo users or enter the **UID** at the time of login once the app is launched.
 
-## Add UI Kit to your project
+To learn about Swift UI Kit Integration, please [click here](https://www.cometchat.com/docs/v4/ios-uikit/integration).
 
-Learn more about how to integrate [UI Kit](https://github.com/cometchat-pro/ios-chat-uikit) inside your app. 
+## Help
 
----
+To learn more about our UI kits, visit our [documentation](https://www.cometchat.com/docs/v4/uikits).
 
-# Troubleshooting
+If you are still facing issues while running this project or integrating with our UI Kits, please connect with our real-time support via the [CometChat Dashboard](https://app.cometchat.com/).
 
-- To read the full dcoumentation on UI Kit integration visit our [Documentation](https://prodocs.cometchat.com/docs/ios-ui-kit)  .
+<!-- CONTRIBUTING -->
 
-- Facing any issues while integrating or installing the UI Kit please <a href="https://app.cometchat.io/"> connect with us via real time support present in CometChat Dashboard.</a>
+## Contributing
 
----
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. Sincere thanks to all our [contributors](https://github.com/cometchat-pro/ios-swift-chat-app/graphs/contributors)!
 
-# Contributors
+You are requested to follow the contribution guidelines specified in [CONTRIBUTING.md](./CONTRIBUTING.md) while contributing to the project :smile:.
 
-Thanks to the following people who have contributed to this project:
+## Support
 
-[@pushpsenairekar2911 👨‍💻](https://github.com/pushpsenairekar2911) <br>
-[@ghanshyammansata 👨‍💻](https://github.com/ghanshyammansata)<br>
-[@jeetkapadia 👨‍💻](https://github.com/jeetkapadia)<br>
-[@NishantTiwarins 👨‍💻](https://github.com/NishantTiwarins)<br>
-[@AbdullahAnsarri 👨‍💻](https://github.com/AbdullahAnsarri) <br>
-[@ajayv-cometchat 👨‍💻](https://github.com/ajayv-cometchat) 
+Please connect with our real-time support via the [CometChat Dashboard](https://app.cometchat.com/).
 
----
+<!-- LICENSE -->
 
-# Contact
+## License
 
-Contact us via real time support present in [CometChat Dashboard.](https://app.cometchat.io/)
+This project is licensed under the MIT License - see the [LICENSE](./License.md) file for details.
 
----
+## About Authors
 
-# License
+`cometchat-chat-sample-app-ios-swift` is created & maintained by CometChat.
 
----
+The names and logos for CometChat are trademarks of CometChat, Inc.
 
-This project uses the following [license](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/License.md).
+We love open-source software! See [our other projects](https://github.com/cometchat-pro) or [sign up with us](https://app.cometchat.com) to start using our product.
+
 
