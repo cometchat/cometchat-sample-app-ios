@@ -67,13 +67,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func initialization() {
-        if(Constants.appId.contains("Enter") || Constants.appId.contains("ENTER") || Constants.appId.contains("NULL") || Constants.appId.contains("null") || Constants.appId.count == 0) {
+        if(AppConstants.APP_ID.contains("Enter") || AppConstants.APP_ID.contains("ENTER") || AppConstants.APP_ID.contains("NULL") || AppConstants.APP_ID.contains("null") || AppConstants.APP_ID.count == 0) {
 
         } else {
             let uikitSettings = UIKitSettings()
-            uikitSettings.set(appID: Constants.appId)
-                .set(authKey: Constants.authKey)
-                .set(region: Constants.region)
+            uikitSettings.set(appID: AppConstants.APP_ID)
+                .set(authKey: AppConstants.AUTH_KEY)
+                .set(region: AppConstants.REGION)
                 .subscribePresenceForAllUsers()
                 .build()
             

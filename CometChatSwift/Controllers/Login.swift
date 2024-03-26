@@ -99,7 +99,7 @@ class Login: UIViewController {
         DispatchQueue.main.async {
             CustomLoader.instance.showLoaderView()
         }
-        if(Constants.authKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.authKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.authKey.contains("NULL") || Constants.authKey.contains("null") || Constants.authKey.count == 0) {
+        if(AppConstants.AUTH_KEY.contains(NSLocalizedString("Enter", comment: "")) || AppConstants.AUTH_KEY.contains(NSLocalizedString("ENTER", comment: "")) || AppConstants.AUTH_KEY.contains("NULL") || AppConstants.AUTH_KEY.contains("null") || AppConstants.AUTH_KEY.count == 0) {
             DispatchQueue.main.async {
                 CustomLoader.instance.hideLoaderView()
                 self.showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and AUTH-KEY in Constants.swift file.", comment: ""))

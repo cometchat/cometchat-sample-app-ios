@@ -80,7 +80,7 @@ class CreateUser: UIViewController {
     
     private func createUser() {
         guard let name = name.text else { return }
-        if(Constants.authKey.contains(NSLocalizedString("Enter", comment: "")) || Constants.authKey.contains(NSLocalizedString("ENTER", comment: "")) || Constants.authKey.contains("NULL") || Constants.authKey.contains("null") || Constants.authKey.count == 0) {
+        if(AppConstants.AUTH_KEY.contains(NSLocalizedString("Enter", comment: "")) || AppConstants.AUTH_KEY.contains(NSLocalizedString("ENTER", comment: "")) || AppConstants.AUTH_KEY.contains("NULL") || AppConstants.AUTH_KEY.contains("null") || AppConstants.AUTH_KEY.count == 0) {
             showAlert(title: NSLocalizedString("Warning!", comment: ""), msg: NSLocalizedString("Please fill the APP-ID and AUTH-KEY in Constants.swift file.", comment: ""))
         } else {
             if (name.count == 0 ) {

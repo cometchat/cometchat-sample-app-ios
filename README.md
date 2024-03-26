@@ -27,15 +27,15 @@ This reference application showcases the integration of [**CometChat's iOS UI Ki
 
 4. In Xcode, open the project by opening `cometchat-sample-app-ios-java/CometChatSwift/CometChatSwift.xcworkspace`
 
-5. Enter your CometChat _`App ID`_, _`Region`_, and _`Auth Key`_ in the [CometChatSwift/CometChatSwift/AppConstants.swift](https://github.com/cometchat/cometchat-sample-app-ios/blob/v4/CometChatSwift/CometChatSwift/AppConstants.swift) file:
+5. Enter your CometChat _`App ID`_, _`Region`_, and _`Auth Key`_ in the [CometChatSwift/AppConstants.swift](CometChatSwift/AppConstants.swift) file:
     ```swift
-      static var appId = "<# Enter Your App ID Here #>"
-      static var authKey = "<# Enter Your AuthKey Here #>"
-      static var region = "<# Enter Your Region Code Here #>"
+      static var appId = "Enter Your App ID Here"
+      static var authKey = "Enter Your AuthKey Here"
+      static var region = "Enter Your Region Code Here"
     ```
 6. Run the app on a device or emulator.
    
-![image (3)](https://github.com/cometchat/cometchat-sample-app-ios/assets/2210730/4a027f43-f4f4-46ac-8b21-64d1dc5a6371)
+<img src="Screenshots/loginScreen.png" width="200" height="370">
 
 
 ## Help and Support
