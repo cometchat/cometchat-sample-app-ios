@@ -130,7 +130,7 @@
 		DB544EBC23F3C53E0099A153 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		DBED2A3C23AA50750058D5BF /* UIComponentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentsCell.swift; sourceTree = "<group>"; };
 		DBED2A3D23AA50750058D5BF /* UIComponentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIComponentsCell.xib; sourceTree = "<group>"; };
-		DBFBC46A23A7B9230027938E /* CometChatSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CometChatSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBFBC46A23A7B9230027938E /* CometChatSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CometChatSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFBC47223A7B9230027938E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBFBC47423A7B9240027938E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBFBC47723A7B9240027938E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 		E5A21B2488FB967FF3347AB1 /* Pods_CometChat_KitchenSink_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CometChat_KitchenSink_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA2930E2434D9A7006DCCA1 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConstants.swift; path = CometChatSwift/AppConstants.swift; sourceTree = SOURCE_ROOT; };
 		FBA2930F2434D9A7006DCCA1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CometChatSwift/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		FBEECE232493050700C44B94 /* CometChat KitchenSink.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CometChat KitchenSink.entitlements"; sourceTree = "<group>"; };
+		FBEECE232493050700C44B94 /* CometChatSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CometChatSwift.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,7 +444,7 @@
 		DBFBC46B23A7B9230027938E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DBFBC46A23A7B9230027938E /* CometChatSampleApp.app */,
+				DBFBC46A23A7B9230027938E /* CometChatSwift.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -452,7 +452,7 @@
 		DBFBC46C23A7B9230027938E /* CometChatSwift */ = {
 			isa = PBXGroup;
 			children = (
-				FBEECE232493050700C44B94 /* CometChat KitchenSink.entitlements */,
+				FBEECE232493050700C44B94 /* CometChatSwift.entitlements */,
 				FBA2930E2434D9A7006DCCA1 /* AppConstants.swift */,
 				FBA2930F2434D9A7006DCCA1 /* AppDelegate.swift */,
 				84B4048F28A6776600F6C5E3 /* Components */,
@@ -500,7 +500,7 @@
 			);
 			name = CometChatSwift;
 			productName = Demo;
-			productReference = DBFBC46A23A7B9230027938E /* CometChatSampleApp.app */;
+			productReference = DBFBC46A23A7B9230027938E /* CometChatSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -831,7 +831,7 @@
 			baseConfigurationReference = 0053D271C703BE79DAB7846F /* Pods-CometChatSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "CometChatSwift/CometChat KitchenSink.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CometChatSwift/CometChatSwift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = K456T8RD7Z;
@@ -852,7 +852,7 @@
 				);
 				MARKETING_VERSION = 4.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev2;
-				PRODUCT_NAME = CometChatSampleApp;
+				PRODUCT_NAME = CometChatSwift;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -863,7 +863,7 @@
 			baseConfigurationReference = 9C8BF35EEB5B7BDC2E2D4FA2 /* Pods-CometChatSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "CometChatSwift/CometChat KitchenSink.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CometChatSwift/CometChatSwift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = K456T8RD7Z;
@@ -885,7 +885,7 @@
 				MARKETING_VERSION = 4.3.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev2;
-				PRODUCT_NAME = CometChatSampleApp;
+				PRODUCT_NAME = CometChatSwift;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
