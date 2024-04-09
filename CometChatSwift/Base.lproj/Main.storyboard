@@ -866,10 +866,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMw-M0-kmD">
-                                <rect key="frame" x="20" y="213.99999999999997" width="335" height="335.33333333333326"/>
+                                <rect key="frame" x="20" y="213.99999999999997" width="335" height="348.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="bottom" semanticContentAttribute="playback" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="O7f-tC-WpD">
-                                        <rect key="frame" x="15" y="30" width="305" height="275.33333333333331"/>
+                                        <rect key="frame" x="15" y="30" width="305" height="288.33333333333331"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="bottom" semanticContentAttribute="playback" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DYg-Kp-otx">
                                                 <rect key="frame" x="0.0" y="0.0" width="305" height="163.33333333333334"/>
@@ -945,7 +945,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ekD-5r-zWe">
-                                                <rect key="frame" x="0.0" y="183.33333333333331" width="305" height="22"/>
+                                                <rect key="frame" x="0.0" y="183.33333333333331" width="305" height="35"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpi-g5-ZeT">
                                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -962,7 +962,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by clicking on this checkbox, UID will be generated automatically." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2W-ky-Uy0">
-                                                        <rect key="frame" x="37" y="0.0" width="268" height="22"/>
+                                                        <rect key="frame" x="37" y="0.0" width="268" height="35"/>
                                                         <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -970,7 +970,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZS-TE-DVW">
-                                                <rect key="frame" x="0.0" y="225.33333333333331" width="305" height="50"/>
+                                                <rect key="frame" x="0.0" y="238.33333333333331" width="305" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="SSZ-zs-ZDj" customClass="GradientImageView" customModule="CometChatSwift">
                                                         <rect key="frame" x="0.0" y="0.0" width="305" height="50"/>
