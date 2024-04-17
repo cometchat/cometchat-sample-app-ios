@@ -8,7 +8,7 @@ This reference application showcases the integration of [**CometChat's iOS UI Ki
 
 ## Prerequisites
 
-- XCode 
+- Xcode 
 - pod (CocoaPods)
 - Sign up for a [CometChat](https://app.cometchat.com/) account to get your app credentials: _`App ID`_, _`Region`_, and _`Auth Key`_
 
@@ -28,18 +28,19 @@ This reference application showcases the integration of [**CometChat's iOS UI Ki
     ```sh
       pod install
     ```
-    If you are getting some error try running 
-        ```sh
+
+4. If you're facing any issues while installing pods then use the below command.
+    ```sh
       pod install --repo-update
     ```
 
-4. In Xcode, open the project by opening `cometchat-sample-app-ios/CometChatSwift.xcworkspace`
+5. In Xcode, open the project by opening `cometchat-sample-app-ios/CometChatSwift.xcworkspace`
 
-5. Enter your CometChat _`App ID`_, _`Region`_, and _`Auth Key`_ in the [CometChatSwift/AppConstants.swift](CometChatSwift/AppConstants.swift) file:
+6. Enter your CometChat _`App ID`_, _`Region`_, and _`Auth Key`_ in the [CometChatSwift/AppConstants.swift](CometChatSwift/AppConstants.swift) file:
    https://github.com/cometchat/cometchat-sample-app-ios/blob/6cfa6cd2896f862ddeee7589ea4d9a70ea3f16d8/CometChatSwift/AppConstants.swift#L9-L13
 
 
-6. Run the app on a device or emulator.
+7. Run the app on a device or emulator.
    
 <img src="Screenshots/loginScreen.png" width="200" height="370">
 
