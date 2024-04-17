@@ -28,6 +28,10 @@ This reference application showcases the integration of [**CometChat's iOS UI Ki
     ```sh
       pod install
     ```
+    If you are getting some error try running 
+        ```sh
+      pod install --repo-update
+    ```
 
 4. In Xcode, open the project by opening `cometchat-sample-app-ios/CometChatSwift.xcworkspace`
 
