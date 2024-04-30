@@ -6,7 +6,7 @@ target 'CometChatSwift' do
   use_frameworks!
 
   # Pods for CometChatSwift
-  pod 'CometChatUIKitSwift', '4.3.5'
+  pod 'CometChatUIKitSwift', '4.3.6'
   pod 'CometChatCallsSDK', '4.0.4'
 
 end
