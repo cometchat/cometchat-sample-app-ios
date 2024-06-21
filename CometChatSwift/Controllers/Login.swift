@@ -15,30 +15,22 @@ class Login: UIViewController {
     //MARK: OUTLETS
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var superHero1View: UIView!
-    @IBOutlet weak var superHero2View: UIView!
-    @IBOutlet weak var superHero3View: UIView!
-    @IBOutlet weak var superHero4View: UIView!
-    @IBOutlet weak var superHero1Background: GradientImageView!
-    @IBOutlet weak var superHero2Background: GradientImageView!
-    @IBOutlet weak var superHero3Background: GradientImageView!
-    @IBOutlet weak var superHero4Background: GradientImageView!
     @IBOutlet weak var uidView: UIView!
     @IBOutlet weak var uid: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginBackground: GradientImageView!
     
+    @IBOutlet weak var loginButtons: UIStackView!
+    
     //MARK: LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        addObservers()
         registerObservers()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        reloadGradients()
     }
     
     
@@ -59,41 +51,16 @@ class Login: UIViewController {
         uid.leftPadding()
         uidView.roundViewCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 10)
         signUpButton.roundViewCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 10)
-    }
-    
-    fileprivate func addObservers() {
-        let tapOnSuperHero1 = UITapGestureRecognizer(target: self, action: #selector(LoginWithSuperHero1(tapGestureRecognizer:)))
-        superHero1View.isUserInteractionEnabled = true
-        superHero1View.addGestureRecognizer(tapOnSuperHero1)
         
-        let tapOnSuperHero2 = UITapGestureRecognizer(target: self, action: #selector(LoginWithSuperHero2(tapGestureRecognizer:)))
-        superHero2View.isUserInteractionEnabled = true
-        superHero2View.addGestureRecognizer(tapOnSuperHero2)
-        
-        let tapOnSuperHero3 = UITapGestureRecognizer(target: self, action: #selector(LoginWithSuperHero3(tapGestureRecognizer:)))
-        superHero3View.isUserInteractionEnabled = true
-        superHero3View.addGestureRecognizer(tapOnSuperHero3)
-        
-        let tapOnSuperHero4 = UITapGestureRecognizer(target: self, action: #selector(LoginWithSuperHero4(tapGestureRecognizer:)))
-        superHero4View.isUserInteractionEnabled = true
-        superHero4View.addGestureRecognizer(tapOnSuperHero4)
+        self.loginButtons.axis = .vertical
+        self.loginButtons.alignment = .fill
+        self.loginButtons.distribution = .fillEqually
+        self.loginButtons.spacing = 10 // Optional: Add spacing between views
+        self.loginButtons.translatesAutoresizingMaskIntoConstraints = false
+        fetchSampleLoginData()
+       
     }
     
-    @objc func LoginWithSuperHero1(tapGestureRecognizer: UITapGestureRecognizer) {
-        loginWithUID(UID: "superhero1")
-    }
-    
-    @objc func LoginWithSuperHero2(tapGestureRecognizer: UITapGestureRecognizer) {
-        loginWithUID(UID: "superhero2")
-    }
-    
-    @objc func LoginWithSuperHero3(tapGestureRecognizer: UITapGestureRecognizer) {
-        loginWithUID(UID: "superhero3")
-    }
-    
-    @objc func LoginWithSuperHero4(tapGestureRecognizer: UITapGestureRecognizer) {
-        loginWithUID(UID: "superhero4")
-    }
     
     private func loginWithUID(UID:String) {
         DispatchQueue.main.async {
@@ -139,29 +106,110 @@ class Login: UIViewController {
        
     }
     
+    func fetchSampleLoginData(){
+        let url = URL(string: "https://assets.cometchat.io/sampleapp/sampledata.json")!
+          URLSession.shared.fetchData(for: url) { (result: Result<SampleUsers, Error>) in
+            switch result {
+            case .success(let users):
+                self.constructLoginButtons(users.users)
+                
+            case .failure(let error):
+                if let data = self.loadJson(filename: "sample_user_data"){
+                    self.constructLoginButtons(data.users)
+                } else {
+                    print("error occured is \(error.localizedDescription)")
+                }
+                
+          }
+        }
+    }
+    
+    func constructLoginButtons(_ users : [SampleUser]){
+        DispatchQueue.main.async {
+            var count = 0
+            var row = UIStackView()
+            row.axis = .horizontal
+            row.alignment = .fill
+            row.distribution = .equalSpacing
+            row.spacing = 2 // Optional: Add spacing between views
+            row.translatesAutoresizingMaskIntoConstraints = false
+            for user in users{
+                count+=1
+                // Create the background view
+                        let backgroundView = UIView()
+                        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+                backgroundView.backgroundColor = CometChatTheme.palatte.secondary.withAlphaComponent(0.16)
+                        backgroundView.layer.cornerRadius = 15.0
+                backgroundView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMaxYCorner,.layerMaxXMinYCorner]
+                        backgroundView.layer.masksToBounds = true // Ensure the corners are clipped
+                
+                let customButton = CustomLoginButton()
+                    .set(title: user.name)
+                    .set(subtitle: user.uid)
+                    .set(avatar: user.avatar)
+                    .set(onTap: { [weak self] in
+                        guard let this = self else { return }
+                        this.loginWithUID(UID: user.uid)
+                    })
+                
+                
+                backgroundView.addSubview(customButton)
+                
+                row.addArrangedSubview(backgroundView)
+                // Set constraints for the background view
+                      NSLayoutConstraint.activate([
+                          backgroundView.widthAnchor.constraint(equalToConstant: 161.8),
+                          backgroundView.heightAnchor.constraint(equalToConstant: 50)
+                      ])
+                      
+                      // Set constraints for the button to match the size of the background view
+                      NSLayoutConstraint.activate([
+                          customButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
+                          customButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
+                          customButton.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+                          customButton.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor)
+                      ])
+                
+                if count%2==0 {
+                    self.loginButtons.addArrangedSubview(row)
+                    row = UIStackView()
+                    row.axis = .horizontal
+                    row.alignment = .fill
+                    row.distribution = .equalSpacing
+                    row.spacing = 2 // Optional: Add spacing between views
+                    row.translatesAutoresizingMaskIntoConstraints = false
+                }
+            }
+            
+            if count%2 != 0{
+                row.addArrangedSubview(UIView(frame: CGRect(x: 0, y: 0, width: 152, height: 50)))
+                self.loginButtons.addArrangedSubview(row)
+            }
+            
+        }
+    }
+    
+    func loadJson(filename fileName: String) -> SampleUsers? {
+        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(SampleUsers.self, from: data)
+                return jsonData
+            } catch {
+                print("error occurred while loading JSON:\(error.localizedDescription)")
+            }
+        }
+        return nil
+    }
+    
     @IBAction func signUpButton_Pressed(_ sender: UIButton) {
         if let mainVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateUser") as? CreateUser {
             self.navigationController?.pushViewController(mainVC, animated: true)
         }
     }
     
-    private func reloadGradients() {
-        DispatchQueue.main.async {
-            let gradLayer = self.loginBackground.layer.sublayers?.compactMap { $0 as? CAGradientLayer }
-            gradLayer?.first?.frame = self.loginBackground.bounds
-            let gradLayerSuperHero1 = self.superHero1Background.layer.sublayers?.compactMap { $0 as? CAGradientLayer }
-            gradLayerSuperHero1?.first?.frame = self.superHero1Background.bounds
 
-            let gradLayerSuperHero2 = self.superHero2Background.layer.sublayers?.compactMap { $0 as? CAGradientLayer }
-            gradLayerSuperHero2?.first?.frame = self.superHero2Background.bounds
-
-            let gradLayerSuperHero3 = self.superHero3Background.layer.sublayers?.compactMap { $0 as? CAGradientLayer }
-            gradLayerSuperHero3?.first?.frame = self.superHero3Background.bounds
-
-            let gradLayerSuperHero4 = self.superHero4Background.layer.sublayers?.compactMap { $0 as? CAGradientLayer }
-            gradLayerSuperHero4?.first?.frame = self.superHero4Background.bounds
-        }
-    }
     
     fileprivate func registerObservers(){
         //Register Notifications

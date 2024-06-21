@@ -27,6 +27,11 @@
 		843DA76028ED5B610038A43C /* LoadingGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DA75F28ED5B610038A43C /* LoadingGif.swift */; };
 		843DA76428ED61770038A43C /* customLoading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 843DA76328ED61770038A43C /* customLoading.gif */; };
 		8466966028ACC98C00163187 /* JsonDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466965F28ACC98C00163187 /* JsonDecoding.swift */; };
+		84A6DBD12C1FF58000487C83 /* SampleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6DBD02C1FF58000487C83 /* SampleUser.swift */; };
+		84A6DBD32C1FF5F500487C83 /* SampleUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6DBD22C1FF5F500487C83 /* SampleUsers.swift */; };
+		84A6DBD62C1FF69A00487C83 /* ApiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6DBD52C1FF69A00487C83 /* ApiCall.swift */; };
+		84A6DBD92C1FFBC800487C83 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6DBD82C1FFBC800487C83 /* LoginButton.swift */; };
+		84A6DBDB2C203EC100487C83 /* sample_user_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 84A6DBDA2C203EC100487C83 /* sample_user_data.json */; };
 		84B041842B2C57A70015C5D4 /* DummyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B041832B2C57A70015C5D4 /* DummyObject.swift */; };
 		84B402BA28A6479700F6C5E3 /* ViewTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4014728A6479700F6C5E3 /* ViewTransformation.swift */; };
 		84B403CB28A64BD700F6C5E3 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B403C828A64BD700F6C5E3 /* ShowAlert.swift */; };
@@ -98,6 +103,11 @@
 		843DA75F28ED5B610038A43C /* LoadingGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingGif.swift; sourceTree = "<group>"; };
 		843DA76328ED61770038A43C /* customLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = customLoading.gif; sourceTree = "<group>"; };
 		8466965F28ACC98C00163187 /* JsonDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecoding.swift; sourceTree = "<group>"; };
+		84A6DBD02C1FF58000487C83 /* SampleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleUser.swift; sourceTree = "<group>"; };
+		84A6DBD22C1FF5F500487C83 /* SampleUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleUsers.swift; sourceTree = "<group>"; };
+		84A6DBD52C1FF69A00487C83 /* ApiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCall.swift; sourceTree = "<group>"; };
+		84A6DBD82C1FFBC800487C83 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		84A6DBDA2C203EC100487C83 /* sample_user_data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sample_user_data.json; sourceTree = "<group>"; };
 		84B041832B2C57A70015C5D4 /* DummyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyObject.swift; sourceTree = "<group>"; };
 		84B4014728A6479700F6C5E3 /* ViewTransformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTransformation.swift; sourceTree = "<group>"; };
 		84B403C828A64BD700F6C5E3 /* ShowAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
@@ -197,6 +207,7 @@
 				8428692928A521FA0076EF58 /* CustomJsonModel.swift */,
 				8466965F28ACC98C00163187 /* JsonDecoding.swift */,
 				84B041832B2C57A70015C5D4 /* DummyObject.swift */,
+				84A6DBDA2C203EC100487C83 /* sample_user_data.json */,
 			);
 			path = CustomJson;
 			sourceTree = "<group>";
@@ -237,6 +248,31 @@
 			path = LoadingGif;
 			sourceTree = "<group>";
 		};
+		84A6DBCF2C1FF54400487C83 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				84A6DBD02C1FF58000487C83 /* SampleUser.swift */,
+				84A6DBD22C1FF5F500487C83 /* SampleUsers.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		84A6DBD42C1FF65300487C83 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				84A6DBD52C1FF69A00487C83 /* ApiCall.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		84A6DBD72C1FFBB300487C83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84A6DBD82C1FFBC800487C83 /* LoginButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		84B4014628A6479700F6C5E3 /* View Transformation */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +292,8 @@
 		84B4048028A65CDA00F6C5E3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				84A6DBD72C1FFBB300487C83 /* Views */,
+				84A6DBD42C1FF65300487C83 /* Networking */,
 				843DA75E28ED5B610038A43C /* LoadingGif */,
 				842B179928EAF88600BE86F1 /* Gradient */,
 				8428692628A51E4A0076EF58 /* CustomJson */,
@@ -452,6 +490,7 @@
 		DBFBC46C23A7B9230027938E /* CometChatSwift */ = {
 			isa = PBXGroup;
 			children = (
+				84A6DBCF2C1FF54400487C83 /* Models */,
 				FBEECE232493050700C44B94 /* CometChatSwift.entitlements */,
 				FBA2930E2434D9A7006DCCA1 /* AppConstants.swift */,
 				FBA2930F2434D9A7006DCCA1 /* AppDelegate.swift */,
@@ -493,6 +532,7 @@
 				4335774724D9A4CF00E1D246 /* Embed Frameworks */,
 				43446B7224DC21560000481E /* ShellScript */,
 				4926593601698742D9A973A7 /* [CP] Embed Pods Frameworks */,
+				972C87BB5E804C651B96A212 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -564,6 +604,7 @@
 				84B4048E28A672FF00F6C5E3 /* MesaageComposerComponent.xib in Resources */,
 				84EB324C28B5E368005D7C20 /* BadgeCountModification.xib in Resources */,
 				DBFBC47523A7B9240027938E /* Assets.xcassets in Resources */,
+				84A6DBDB2C203EC100487C83 /* sample_user_data.json in Resources */,
 				84C15EF628C742E80064E183 /* MessageHeaderComponent.xib in Resources */,
 				843DA76428ED61770038A43C /* customLoading.gif in Resources */,
 				84EB325028B5E399005D7C20 /* StatusIndicatorModification.xib in Resources */,
@@ -612,6 +653,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CometChatSwift/Pods-CometChatSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		972C87BB5E804C651B96A212 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CometChatSwift/Pods-CometChatSwift-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CometChatSwift/Pods-CometChatSwift-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CometChatSwift/Pods-CometChatSwift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CEE70DA5BAD30C86BDEAB042 /* [CP] Check Pods Manifest.lock */ = {
@@ -664,6 +722,7 @@
 				8428692A28A521FA0076EF58 /* CustomJsonModel.swift in Sources */,
 				84B5A7CF28C0DADF00B621C7 /* DeviceDetection.swift in Sources */,
 				8439543428F6700A00E8F805 /* Home + LaunchDelegate.swift in Sources */,
+				84A6DBD12C1FF58000487C83 /* SampleUser.swift in Sources */,
 				840D4C6D2A2516C900E579AE /* CallButtonsComponent.swift in Sources */,
 				843A561928A8985D0023BCF2 /* ThemeComponent.swift in Sources */,
 				8466966028ACC98C00163187 /* JsonDecoding.swift in Sources */,
@@ -673,8 +732,11 @@
 				84EB324728B5E345005D7C20 /* AvatarModification.swift in Sources */,
 				DBED2A3E23AA50750058D5BF /* UIComponentsCell.swift in Sources */,
 				84B5A7C728C0BB3900B621C7 /* SoundManagerComponent.swift in Sources */,
+				84A6DBD32C1FF5F500487C83 /* SampleUsers.swift in Sources */,
 				84C15F0128C751BB0064E183 /* ListItem.swift in Sources */,
+				84A6DBD62C1FF69A00487C83 /* ApiCall.swift in Sources */,
 				FBA293102434D9A7006DCCA1 /* AppConstants.swift in Sources */,
+				84A6DBD92C1FFBC800487C83 /* LoginButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,7 +912,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3.1;
+				MARKETING_VERSION = 4.3.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev2;
 				PRODUCT_NAME = CometChatSwift;
 				SWIFT_VERSION = 5.0;
@@ -882,7 +944,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3.1;
+				MARKETING_VERSION = 4.3.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat.dev2;
 				PRODUCT_NAME = CometChatSwift;
