@@ -12,15 +12,10 @@
 		181664A02C858FFC009F53B7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816649F2C858FFC009F53B7 /* UIView+Extensions.swift */; };
 		1819C9CC2CB41C1A00F77CDA /* CometChatMessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1819C9CB2CB41C1200F77CDA /* CometChatMessageComposer.swift */; };
 		1830373E2D19424B00DB2B07 /* MessageComposerViewModel+UsersEventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830373D2D19424B00DB2B07 /* MessageComposerViewModel+UsersEventListener.swift */; };
-		18364DB02D25B0CD00769643 /* CometChatUIKitSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8466DBFF2AA7B5DD00093E91 /* CometChatUIKitSwift.framework */; };
-		18364DB32D25B17300769643 /* CometChatUIKitSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8466DBFF2AA7B5DD00093E91 /* CometChatUIKitSwift.framework */; };
-		18364DB42D25B17300769643 /* CometChatUIKitSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8466DBFF2AA7B5DD00093E91 /* CometChatUIKitSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18583DAB2C7D0D8800B3E11C /* CometChatTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18583DAA2C7D0D8800B3E11C /* CometChatTheme.swift */; };
 		18583DAE2C7D190000B3E11C /* CometChatColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18583DAD2C7D190000B3E11C /* CometChatColorExtensions.swift */; };
 		18583DB12C7D1AD500B3E11C /* CometChatSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18583DB02C7D1AD500B3E11C /* CometChatSpacing.swift */; };
 		18583DB42C7D1E3C00B3E11C /* CometChatTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18583DB32C7D1E3C00B3E11C /* CometChatTypography.swift */; };
-		186592752D25BAEA00B5C767 /* CometChatUIKitSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8466DBFF2AA7B5DD00093E91 /* CometChatUIKitSwift.framework */; };
-		186592762D25BAEA00B5C767 /* CometChatUIKitSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8466DBFF2AA7B5DD00093E91 /* CometChatUIKitSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		187B47F32C1CD00B003B6523 /* CometChatMessageEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B47F22C1CD00B003B6523 /* CometChatMessageEvents.swift */; };
 		187B47F62C1D8D19003B6523 /* CometChatCallEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B47F52C1D8D19003B6523 /* CometChatCallEvents.swift */; };
 		187B47F92C1D8DBF003B6523 /* CometChatUIEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B47F82C1D8DBF003B6523 /* CometChatUIEvents.swift */; };
@@ -477,13 +472,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		183038912D19483000DB2B07 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8466DBF62AA7B5DD00093E91 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8466DBFE2AA7B5DD00093E91;
-			remoteInfo = CometChatUIKitSwift;
-		};
 		18364DB52D25B17300769643 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8466DBF62AA7B5DD00093E91 /* Project object */;
@@ -491,39 +479,7 @@
 			remoteGlobalIDString = 8466DBFE2AA7B5DD00093E91;
 			remoteInfo = CometChatUIKitSwift;
 		};
-		186592772D25BAEA00B5C767 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8466DBF62AA7B5DD00093E91 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8466DBFE2AA7B5DD00093E91;
-			remoteInfo = CometChatUIKitSwift;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		18364DB72D25B17300769643 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				18364DB42D25B17300769643 /* CometChatUIKitSwift.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		186592792D25BAEB00B5C767 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				186592762D25BAEA00B5C767 /* CometChatUIKitSwift.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0251A31FADB041CA46A42480 /* Pods_SampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1053,7 +1009,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				186592752D25BAEA00B5C767 /* CometChatUIKitSwift.framework in Frameworks */,
 				610AD492E3045DFAFFAB4A07 /* Pods_SampleApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1062,8 +1017,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18364DB32D25B17300769643 /* CometChatUIKitSwift.framework in Frameworks */,
-				18364DB02D25B0CD00769643 /* CometChatUIKitSwift.framework in Frameworks */,
 				BA902494C789E215976A2DCB /* Pods_SampleAppPushNotificationAPNs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2802,12 +2755,10 @@
 				186590D42D25B9E500B5C767 /* Resources */,
 				EA0F259A9830179E46D16567 /* [CP] Embed Pods Frameworks */,
 				0E78A8969871E197343B7C5B /* [CP] Copy Pods Resources */,
-				186592792D25BAEB00B5C767 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				186592782D25BAEA00B5C767 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				186590D72D25B9E500B5C767 /* SampleApp */,
@@ -2828,12 +2779,10 @@
 				23E821562955E89ACAF0A208 /* [CP] Embed Pods Frameworks */,
 				FAE46BD087EDCDA29B7A59D7 /* [CP] Copy Pods Resources */,
 				188844AD2CE244BF0054F074 /* ShellScript */,
-				18364DB72D25B17300769643 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				183038922D19483000DB2B07 /* PBXTargetDependency */,
 				18364DB62D25B17300769643 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -3559,20 +3508,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		183038922D19483000DB2B07 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8466DBFE2AA7B5DD00093E91 /* CometChatUIKitSwift */;
-			targetProxy = 183038912D19483000DB2B07 /* PBXContainerItemProxy */;
-		};
 		18364DB62D25B17300769643 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8466DBFE2AA7B5DD00093E91 /* CometChatUIKitSwift */;
 			targetProxy = 18364DB52D25B17300769643 /* PBXContainerItemProxy */;
-		};
-		186592782D25BAEA00B5C767 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8466DBFE2AA7B5DD00093E91 /* CometChatUIKitSwift */;
-			targetProxy = 186592772D25BAEA00B5C767 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
