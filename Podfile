@@ -6,7 +6,7 @@ target 'SampleAppPushNotificationAPNs' do
 
   pod 'CometChatCallsSDK'
   pod 'CometChatSDK'
-  pod 'CometChatUIKitSwift', '5.0.0-alpha1'
+  pod 'CometChatUIKitSwift', '5.0.0-beta.2'
 
 end
 
@@ -17,7 +17,7 @@ target 'SampleApp' do
 
   pod 'CometChatCallsSDK'
   pod 'CometChatSDK'
-  pod 'CometChatUIKitSwift', '5.0.0-alpha1'
+  pod 'CometChatUIKitSwift', '5.0.0-beta.2'
 
 end
 
