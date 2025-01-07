@@ -62,7 +62,7 @@ class ChangeAppCredentialsVC: UIViewController {
         let button = UIButton()
         button.addTarget(self, action: #selector(onRegionSelected(_ :)), for: .primaryActionTriggered)
         button.setTitle("  India", for: .normal)
-        button.setImage(UIImage(named: "india-flag"), for: .normal)
+        button.setImage(UIImage(named: "India-flag"), for: .normal)
         button.titleLabel?.font = CometChatTypography.Button.medium
         button.setTitleColor(CometChatTheme.textColorSecondary, for: .normal)
         button.layer.borderWidth = 0.8
