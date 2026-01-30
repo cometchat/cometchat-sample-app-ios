@@ -53,7 +53,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="CnF-KW-ZEF" firstAttribute="top" secondItem="Y4Z-7A-O2m" secondAttribute="top" constant="2" id="Jdb-Vc-j5A"/>
-                                    <constraint firstAttribute="height" constant="15" id="NGa-Eo-uo4"/>
+                                    <constraint firstAttribute="height" constant="15" priority="750" id="NGa-Eo-uo4"/>
                                     <constraint firstItem="CnF-KW-ZEF" firstAttribute="leading" secondItem="Y4Z-7A-O2m" secondAttribute="leading" id="cvF-XB-gQc"/>
                                 </constraints>
                             </view>
@@ -61,7 +61,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="250" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="2TK-xH-0oj"/>
-                                    <constraint firstAttribute="height" constant="180" id="n20-yu-6oR"/>
+                                    <constraint firstAttribute="height" constant="180" priority="750" id="n20-yu-6oR"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

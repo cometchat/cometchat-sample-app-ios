@@ -13,7 +13,7 @@ CometChatGroupListItem: This component will be the class of UITableViewCell with
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 protocol  DetailViewDelegate : AnyObject  {
     
@@ -36,7 +36,7 @@ class CometChatDetailItem: UITableViewCell {
     
     // MARK: - Declaration of Variables
     weak var detailViewDelegate: DetailViewDelegate?
-    weak var user: CometChatPro.User? {
+    weak var user: CometChatSDK.User? {
        didSet {
         if let currentUser = user {
             name.text = currentUser.name
@@ -84,7 +84,7 @@ class CometChatDetailItem: UITableViewCell {
     }
     }
     
-    weak var group: CometChatPro.Group? {
+    weak var group: CometChatSDK.Group? {
         didSet {
             if let currentGroup = group {
                 name.text = currentGroup.name

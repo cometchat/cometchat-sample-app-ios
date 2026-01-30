@@ -7,7 +7,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 
@@ -25,7 +25,7 @@ public class CometChatIncomingCall: UIViewController {
     
     // MARK: - Declaration of Variables
     
-    var currentCall: CometChatPro.Call?
+    var currentCall: CometChatSDK.Call?
     var callSetting: CallSettings?
     
     // MARK: - View controller lifecycle methods
@@ -59,7 +59,7 @@ public class CometChatIncomingCall: UIViewController {
     - Author: CometChat Team
     - Copyright:  ©  2020 CometChat Inc.
     */
-    @objc public func setCall(call: CometChatPro.Call){
+    @objc public func setCall(call: CometChatSDK.Call){
         currentCall = call
     }
     
@@ -71,7 +71,7 @@ public class CometChatIncomingCall: UIViewController {
        - Author: CometChat Team
        - Copyright:  ©  2020 CometChat Inc.
        */
-    private func setupAppearance(forCall: CometChatPro.Call?) {
+    private func setupAppearance(forCall: CometChatSDK.Call?) {
         acceptButton.setTitle("ACCEPT".localized(), for: .normal)
         declineButton.setTitle("DECLINE".localized(), for: .normal)
         CometChatSoundManager().play(sound: .incomingCall, bool: true)
@@ -80,19 +80,19 @@ public class CometChatIncomingCall: UIViewController {
         if let call = forCall {
             switch call.receiverType {
             case .user where call.callType == .audio:
-                if let user = call.callInitiator as? CometChatPro.User {
+                if let user = call.callInitiator as? CometChatSDK.User {
                     self.set(name: user.name?.capitalized ?? "", avatarURL: user.avatar ?? "", callStatus: "INCOMING_AUDIO_CALL".localized(), callStatusIcon: UIImage(named: "incomingAudio", in: UIKitSettings.bundle, compatibleWith: nil)!)
                 }
             case .user where call.callType == .video:
-                if let user = call.callInitiator as? CometChatPro.User {
+                if let user = call.callInitiator as? CometChatSDK.User {
                     self.set(name: user.name?.capitalized ?? "", avatarURL: user.avatar ?? "", callStatus: "INCOMING_VIDEO_CALL".localized(), callStatusIcon: UIImage(named: "incomingVideo", in: UIKitSettings.bundle, compatibleWith: nil)!)
                 }
             case .group where call.callType == .audio:
-                if let group = call.callReceiver as? CometChatPro.Group {
+                if let group = call.callReceiver as? CometChatSDK.Group {
                     self.set(name: group.name?.capitalized ?? "", avatarURL: group.icon ?? "", callStatus: "INCOMING_AUDIO_CALL".localized(), callStatusIcon: UIImage(named: "incomingAudio", in: UIKitSettings.bundle, compatibleWith: nil)!)
                 }
             case .group where call.callType == .video:
-                if let group = call.callReceiver as? CometChatPro.Group {
+                if let group = call.callReceiver as? CometChatSDK.Group {
                     self.set(name: group.name?.capitalized ?? "", avatarURL: group.icon ?? "", callStatus: "INCOMING_VIDEO_CALL".localized(), callStatusIcon: UIImage(named: "incomingVideo", in: UIKitSettings.bundle, compatibleWith: nil)!)
                 }
             case .user:  break
@@ -130,7 +130,7 @@ public class CometChatIncomingCall: UIViewController {
         self.callStatus.text = callStatus
         self.callStatusIcon.image = callStatusIcon
     }
-    public func acceptCall(withCall: CometChatPro.Call?) {
+    public func acceptCall(withCall: CometChatSDK.Call?) {
         if let call = withCall  {
             CometChatSoundManager().play(sound: .incomingCall, bool: false)
             CometChat.acceptCall(sessionID: call.sessionID ?? "", onSuccess: { (acceptedCall) in
@@ -252,7 +252,7 @@ extension CometChatIncomingCall: IncomingCallDelegate {
     - Author: CometChat Team
     - Copyright:  ©  2020 CometChat Inc.
     */
-    public func onIncomingCallReceived(incomingCall: CometChatPro.Call, error: CometChatException?) {
+    public func onIncomingCallReceived(incomingCall: CometChatSDK.Call, error: CometChatException?) {
         self.setupAppearance(forCall: incomingCall)
     }
     
@@ -264,7 +264,7 @@ extension CometChatIncomingCall: IncomingCallDelegate {
        - Author: CometChat Team
        - Copyright:  ©  2020 CometChat Inc.
        */
-    public func onIncomingCallCancelled(canceledCall: CometChatPro.Call, error: CometChatException?) {
+    public func onIncomingCallCancelled(canceledCall: CometChatSDK.Call, error: CometChatException?) {
         if canceledCall != nil {
             if let session = canceledCall.sessionID {
                 CometChat.rejectCall(sessionID: session, status: .cancelled, onSuccess: {(cancelledCall) in
@@ -302,7 +302,7 @@ extension CometChatIncomingCall: OutgoingCallDelegate {
        - Author: CometChat Team
        - Copyright:  ©  2020 CometChat Inc.
        */
-    public func onOutgoingCallAccepted(acceptedCall: CometChatPro.Call, error: CometChatException?) {
+    public func onOutgoingCallAccepted(acceptedCall: CometChatSDK.Call, error: CometChatException?) {
         DispatchQueue.main.async {
             if acceptedCall.sender?.uid == LoggedInUser.uid {
                 self.dismiss()
@@ -318,7 +318,7 @@ extension CometChatIncomingCall: OutgoingCallDelegate {
        - Author: CometChat Team
        - Copyright:  ©  2020 CometChat Inc.
        */
-    public func onOutgoingCallRejected(rejectedCall: CometChatPro.Call, error: CometChatException?) {
+    public func onOutgoingCallRejected(rejectedCall: CometChatSDK.Call, error: CometChatException?) {
         DispatchQueue.main.async {
             if rejectedCall.sender?.uid == LoggedInUser.uid {
                 self.dismiss()

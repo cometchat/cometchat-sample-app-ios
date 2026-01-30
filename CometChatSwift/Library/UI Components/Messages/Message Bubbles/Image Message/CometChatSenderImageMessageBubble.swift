@@ -7,7 +7,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 protocol MediaDelegate: NSObject {
     func didOpenMedia(forMessage: MediaMessage, cell: UITableViewCell)

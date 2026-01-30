@@ -254,16 +254,16 @@
                     <rect key="frame" x="0.0" y="822" width="414" height="40"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gnw-U9-ha3" customClass="AudioVisualizationView" customModule="CometChat_KitchenSink" customModuleProvider="target">
-                            <rect key="frame" x="55" y="5" width="304" height="40"/>
+                            <rect key="frame" x="55" y="5" width="304" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="jYR-3x-Cjz"/>
+                                <constraint firstAttribute="height" constant="30" priority="750" id="jYR-3x-Cjz"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkY-zB-Yyw">
                             <rect key="frame" x="48" y="28" width="311" height="12"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="12" id="pPX-gW-5d1"/>
+                                <constraint firstAttribute="height" constant="12" priority="750" id="pPX-gW-5d1"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" systemColor="systemGrayColor"/>
@@ -290,10 +290,9 @@
                         <constraint firstItem="Gnw-U9-ha3" firstAttribute="leading" secondItem="qTh-yh-vWd" secondAttribute="trailing" constant="15" id="KLO-Nd-a3A"/>
                         <constraint firstItem="qTh-yh-vWd" firstAttribute="centerY" secondItem="aOW-hx-amp" secondAttribute="centerY" id="MxH-hE-zZ3"/>
                         <constraint firstAttribute="trailing" secondItem="rkY-zB-Yyw" secondAttribute="trailing" constant="55" id="NXS-BN-lcF"/>
-                        <constraint firstAttribute="bottom" secondItem="rkY-zB-Yyw" secondAttribute="bottom" id="OOM-LA-tRo"/>
+                        <constraint firstAttribute="bottom" secondItem="rkY-zB-Yyw" secondAttribute="bottom" priority="750" id="OOM-LA-tRo"/>
                         <constraint firstAttribute="trailing" secondItem="Gnw-U9-ha3" secondAttribute="trailing" constant="55" id="R9i-lY-T7e"/>
-                        <constraint firstItem="Gnw-U9-ha3" firstAttribute="top" secondItem="aOW-hx-amp" secondAttribute="top" constant="5" id="WbV-OI-LlY"/>
-                        <constraint firstAttribute="bottom" secondItem="Gnw-U9-ha3" secondAttribute="bottom" constant="5" id="vPS-Hv-QlM"/>
+                        <constraint firstItem="Gnw-U9-ha3" firstAttribute="centerY" secondItem="aOW-hx-amp" secondAttribute="centerY" id="WbV-OI-LlY"/>
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmw-KX-M2d">

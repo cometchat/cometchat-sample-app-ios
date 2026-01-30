@@ -7,12 +7,12 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 
 protocol  MeetingDelegate: NSObject {
     
-    func didJoinPressed(forSessionID: String, type: CometChatPro.CometChat.CallType)
+    func didJoinPressed(forSessionID: String, type: CometChatSDK.CometChat.CallType)
 }
 
 /*  ----------------------------------------------------------------------------------------- */

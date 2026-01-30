@@ -8,7 +8,7 @@
 
 import UIKit
 import WebKit
-import CometChatPro
+import CometChatSDK
 
 // MARK: - Importing Protocols.
 

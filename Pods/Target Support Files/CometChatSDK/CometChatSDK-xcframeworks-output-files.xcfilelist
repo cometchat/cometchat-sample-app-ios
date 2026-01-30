@@ -1,0 +1,2 @@
+${PODS_XCFRAMEWORKS_BUILD_DIR}/CometChatSDK/CometChatSDK.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/CometChatSDK/CometChatStarscream.framework

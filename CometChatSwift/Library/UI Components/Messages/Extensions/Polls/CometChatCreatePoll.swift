@@ -7,7 +7,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 
@@ -27,8 +27,8 @@ class CometChatCreatePoll: UIViewController {
     // MARK: - Declaration of Variables
     
     let modelName = UIDevice.modelName
-    var user : CometChatPro.User?
-    var group : CometChatPro.Group?
+    var user : CometChatSDK.User?
+    var group : CometChatSDK.Group?
     var documentsUrl: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }

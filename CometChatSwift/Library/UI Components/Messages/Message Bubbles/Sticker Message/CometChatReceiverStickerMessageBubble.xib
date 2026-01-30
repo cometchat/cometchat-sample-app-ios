@@ -51,7 +51,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnF-KW-ZEF">
                                         <rect key="frame" x="0.0" y="2" width="34.5" height="15"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="h43-SW-g6j"/>
+                                            <constraint firstAttribute="height" constant="15" priority="750" id="h43-SW-g6j"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
@@ -61,7 +61,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="CnF-KW-ZEF" firstAttribute="top" secondItem="Y4Z-7A-O2m" secondAttribute="top" constant="2" id="Jdb-Vc-j5A"/>
-                                    <constraint firstAttribute="height" constant="15" id="NGa-Eo-uo4"/>
+                                    <constraint firstAttribute="height" constant="15" priority="750" id="NGa-Eo-uo4"/>
                                     <constraint firstItem="CnF-KW-ZEF" firstAttribute="leading" secondItem="Y4Z-7A-O2m" secondAttribute="leading" id="cvF-XB-gQc"/>
                                 </constraints>
                             </view>
@@ -69,7 +69,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="TsQ-H5-mic"/>
+                                    <constraint firstAttribute="height" constant="120" priority="750" id="TsQ-H5-mic"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" restorationIdentifier="reactionView" translatesAutoresizingMaskIntoConstraints="NO" id="flk-6h-qNA" customClass="CometChatMessageReactions" customModule="CometChat_KitchenSink" customModuleProvider="target">
@@ -123,7 +123,7 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="dqz-0h-F2f" secondAttribute="bottom" constant="3" id="3Sb-cC-E9e"/>
+                    <constraint firstAttribute="bottom" secondItem="dqz-0h-F2f" secondAttribute="bottom" constant="3" priority="750" id="3Sb-cC-E9e"/>
                     <constraint firstItem="dqz-0h-F2f" firstAttribute="leading" secondItem="nh5-Fy-nN1" secondAttribute="trailing" constant="3" id="cSR-AP-6Pp"/>
                     <constraint firstItem="nh5-Fy-nN1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="jnS-5w-aIh"/>
                     <constraint firstItem="S9F-LR-9j4" firstAttribute="bottom" secondItem="44x-Mi-r94" secondAttribute="bottom" id="kXE-5l-9kD"/>

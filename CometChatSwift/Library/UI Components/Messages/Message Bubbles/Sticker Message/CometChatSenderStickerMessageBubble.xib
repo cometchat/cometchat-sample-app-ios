@@ -37,13 +37,13 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="THm-eu-230"/>
-                                            <constraint firstAttribute="height" constant="120" id="X13-6C-pVd"/>
+                                            <constraint firstAttribute="height" constant="120" priority="750" id="X13-6C-pVd"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="Gri-zP-oJM"/>
+                                    <constraint firstAttribute="height" constant="120" priority="750" id="Gri-zP-oJM"/>
                                     <constraint firstItem="xEA-H6-jk8" firstAttribute="top" secondItem="q6r-Il-FVP" secondAttribute="top" id="KvZ-gv-Jd6"/>
                                     <constraint firstItem="xEA-H6-jk8" firstAttribute="leading" secondItem="q6r-Il-FVP" secondAttribute="leading" id="ZHg-Gg-f1r"/>
                                     <constraint firstAttribute="bottom" secondItem="xEA-H6-jk8" secondAttribute="bottom" id="kGV-1T-dbo"/>
@@ -103,7 +103,7 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="chB-ix-hEc" secondAttribute="bottom" constant="3" id="BXf-GJ-aNe"/>
+                    <constraint firstAttribute="bottom" secondItem="chB-ix-hEc" secondAttribute="bottom" constant="3" priority="750" id="BXf-GJ-aNe"/>
                     <constraint firstItem="ngZ-4g-SAC" firstAttribute="bottom" secondItem="xEA-H6-jk8" secondAttribute="bottom" id="D0e-ca-R44"/>
                     <constraint firstAttribute="trailing" secondItem="chB-ix-hEc" secondAttribute="trailing" constant="15" id="fjZ-gh-qiM"/>
                     <constraint firstItem="chB-ix-hEc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jPS-Ku-783"/>

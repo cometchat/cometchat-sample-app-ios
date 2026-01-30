@@ -224,6 +224,11 @@ open class GrowingTextView: UIView {
         textView.contentMode = .redraw
         return textView
     }()
+    
+    /// Guard to prevent infinite layout loops when height changes trigger layout passes
+    fileprivate var isUpdatingHeight = false
+    /// Track the last calculated height to avoid redundant updates
+    fileprivate var lastCalculatedHeight: CGFloat = 0
 
     // MARK: - Initialization
     public override init(frame: CGRect) {
@@ -250,7 +255,12 @@ extension GrowingTextView {
         updateTextViewFrame()
         updateMaxHeight()
         updateMinHeight()
-        updateHeight()
+        
+        // Only update height if not already in an update cycle
+        // This prevents infinite layout loops when height changes trigger parent layout
+        if !isUpdatingHeight {
+            updateHeight()
+        }
     }
 
     open override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -291,34 +301,51 @@ extension GrowingTextView {
     }
 
     public func updateHeight() {
+        // Prevent re-entrant calls that cause infinite layout loops
+        guard !isUpdatingHeight else { return }
+        
         let updatedHeightInfo = updatedHeight()
         let newHeight = updatedHeightInfo.newHeight
         let difference = updatedHeightInfo.difference
 
-        if difference != 0 {
-            if newHeight == maxHeight {
-                if !textView.isScrollEnabled {
-                    textView.isScrollEnabled = true
-                    textView.flashScrollIndicators()
-                }
-            } else {
-                textView.isScrollEnabled = isScrollEnabled
+        // Skip if no actual change or if height is the same as last calculated
+        if difference == 0 || abs(newHeight - lastCalculatedHeight) < 0.5 {
+            updateScrollPosition(animated: false)
+            textView.shouldDisplayPlaceholder = textView.text.isEmpty && isPlaceholderEnabled
+            return
+        }
+        
+        // Set guard flag before making changes that could trigger layout
+        isUpdatingHeight = true
+        lastCalculatedHeight = newHeight
+        
+        defer {
+            // Always reset the flag when done
+            isUpdatingHeight = false
+        }
+        
+        if newHeight == maxHeight {
+            if !textView.isScrollEnabled {
+                textView.isScrollEnabled = true
+                textView.flashScrollIndicators()
             }
+        } else {
+            textView.isScrollEnabled = isScrollEnabled
+        }
 
-            if isGrowingAnimationEnabled {
-                UIView.animate(withDuration: animationDuration, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState], animations: {
-                    self.updateGrowingTextView(newHeight: newHeight, difference: difference)
-                    }, completion: { (_) in
-                        if let delegate = self.delegate, delegate.responds(to: DelegateSelectors.didChangeHeight) {
-                            delegate.growingTextView!(self, didChangeHeight: newHeight, difference: difference)
-                        }
-                })
-            } else {
-                updateGrowingTextView(newHeight: newHeight, difference: difference)
+        if isGrowingAnimationEnabled {
+            UIView.animate(withDuration: animationDuration, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState], animations: {
+                self.updateGrowingTextView(newHeight: newHeight, difference: difference)
+                }, completion: { (_) in
+                    if let delegate = self.delegate, delegate.responds(to: DelegateSelectors.didChangeHeight) {
+                        delegate.growingTextView!(self, didChangeHeight: newHeight, difference: difference)
+                    }
+            })
+        } else {
+            updateGrowingTextView(newHeight: newHeight, difference: difference)
 
-                if let delegate = delegate, delegate.responds(to: DelegateSelectors.didChangeHeight) {
-                    delegate.growingTextView!(self, didChangeHeight: newHeight, difference: difference)
-                }
+            if let delegate = delegate, delegate.responds(to: DelegateSelectors.didChangeHeight) {
+                delegate.growingTextView!(self, didChangeHeight: newHeight, difference: difference)
             }
         }
 

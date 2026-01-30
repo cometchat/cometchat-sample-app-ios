@@ -14,7 +14,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 // MARK: - Declaring Protocol.
 
@@ -247,7 +247,7 @@ public class CometChatForwardMessageList: UIViewController {
                             switch message.messageType {
                             case .text:
                                 if let message = message as? TextMessage {
-                                    message.receiverUid = (conversation.conversationWith as? CometChatPro.User)?.uid ?? ""
+                                    message.receiverUid = (conversation.conversationWith as? CometChatSDK.User)?.uid ?? ""
                                     message.receiverType = .user
                                     CometChat.sendTextMessage(message: message, onSuccess: { (message) in
                                         DispatchQueue.main.async {
@@ -255,7 +255,7 @@ public class CometChatForwardMessageList: UIViewController {
                                         }
                                     }) { (error) in
                                         DispatchQueue.main.async {
-                                            if let name = (conversation.conversationWith as? CometChatPro.User)?.name {
+                                            if let name = (conversation.conversationWith as? CometChatSDK.User)?.name {
                                                
                                                     CometChatSnackBoard.display(message:  "UNABLE_TO_FORWARD" .localized() + name, mode: .error, duration: .short)
                                                 
@@ -265,7 +265,7 @@ public class CometChatForwardMessageList: UIViewController {
                                 }
                             case .image, .video , .audio, .file:
                                 if let message = message as? MediaMessage {
-                                    let message = MediaMessage(receiverUid: (conversation.conversationWith as? CometChatPro.User)?.uid ?? "", fileurl: message.attachment?.fileUrl ?? "", messageType: message.messageType, receiverType: .user)
+                                    let message = MediaMessage(receiverUid: (conversation.conversationWith as? CometChatSDK.User)?.uid ?? "", fileurl: message.attachment?.fileUrl ?? "", messageType: message.messageType, receiverType: .user)
                                     message.receiverType = .user
                                     CometChat.sendMediaMessage(message: message, onSuccess: { (message) in
                                         DispatchQueue.main.async {
@@ -273,7 +273,7 @@ public class CometChatForwardMessageList: UIViewController {
                                         }
                                     }) { (error) in
                                         DispatchQueue.main.async {
-                                            if let name = (conversation.conversationWith as? CometChatPro.User)?.name {
+                                            if let name = (conversation.conversationWith as? CometChatSDK.User)?.name {
                                                CometChatSnackBoard.display(message:  "UNABLE_TO_FORWARD" .localized() + name, mode: .error, duration: .short)
                                              
                                             }
@@ -282,7 +282,7 @@ public class CometChatForwardMessageList: UIViewController {
                                 }
                             case .custom:
                                 if let message = message as? CustomMessage, let customData = message.customData {
-                                    let message = CustomMessage(receiverUid: (conversation.conversationWith as? CometChatPro.User)?.uid ?? "", receiverType: .user, customData: customData, type: message.type)
+                                    let message = CustomMessage(receiverUid: (conversation.conversationWith as? CometChatSDK.User)?.uid ?? "", receiverType: .user, customData: customData, type: message.type)
                                     message.receiverType = .user
                                     
                                     CometChat.sendCustomMessage(message: message, onSuccess: { (message) in
@@ -291,7 +291,7 @@ public class CometChatForwardMessageList: UIViewController {
                                         }
                                     }) { (error) in
                                         DispatchQueue.main.async {
-                                            if let name = (conversation.conversationWith as? CometChatPro.User)?.name {
+                                            if let name = (conversation.conversationWith as? CometChatSDK.User)?.name {
                                                
                                                     CometChatSnackBoard.display(message:  "UNABLE_TO_FORWARD" .localized() + name, mode: .error, duration: .short)
                                              
@@ -306,7 +306,7 @@ public class CometChatForwardMessageList: UIViewController {
                         case .call: break
                         case .custom:
                             if let message = message as? CustomMessage, let customData = message.customData {
-                               let message = CustomMessage(receiverUid: (conversation.conversationWith as? CometChatPro.User)?.uid ?? "", receiverType: .user, customData: customData, type: message.type)
+                               let message = CustomMessage(receiverUid: (conversation.conversationWith as? CometChatSDK.User)?.uid ?? "", receiverType: .user, customData: customData, type: message.type)
                                 message.receiverType = .user
                                 
                                 CometChat.sendCustomMessage(message: message, onSuccess: { (message) in
@@ -315,7 +315,7 @@ public class CometChatForwardMessageList: UIViewController {
                                     }
                                 }) { (error) in
                                     DispatchQueue.main.async {
-                                        if let name = (conversation.conversationWith as? CometChatPro.User)?.name {
+                                        if let name = (conversation.conversationWith as? CometChatSDK.User)?.name {
                                            
                                                 CometChatSnackBoard.display(message:  "UNABLE_TO_FORWARD" .localized() + name, mode: .error, duration: .short)
                                          
@@ -331,7 +331,7 @@ public class CometChatForwardMessageList: UIViewController {
                             switch message.messageType {
                             case .text:
                                 if let message = message as? TextMessage {
-                                    message.receiverUid = (conversation.conversationWith as? CometChatPro.Group)?.guid ?? ""
+                                    message.receiverUid = (conversation.conversationWith as? CometChatSDK.Group)?.guid ?? ""
                                     message.receiverType = .group
                                     CometChat.sendTextMessage(message: message, onSuccess: { (message) in
                                         DispatchQueue.main.async {
@@ -339,7 +339,7 @@ public class CometChatForwardMessageList: UIViewController {
                                         }
                                     }) { (error) in
                                         DispatchQueue.main.async {
-                                            if let name = (conversation.conversationWith as? CometChatPro.Group)?.name {
+                                            if let name = (conversation.conversationWith as? CometChatSDK.Group)?.name {
                                                 CometChatSnackBoard.display(message:  "UNABLE_TO_FORWARD" .localized() + name, mode: .error, duration: .short)
                                             }
                                         }
@@ -347,7 +347,7 @@ public class CometChatForwardMessageList: UIViewController {
                                 }
                             case .image, .video , .audio, .file:
                                 if let message = message as? MediaMessage {
-                                    let message = MediaMessage(receiverUid: (conversation.conversationWith as? CometChatPro.Group)?.guid ?? "", fileurl: message.attachment?.fileUrl ?? "", messageType: message.messageType, receiverType: .group)
+                                    let message = MediaMessage(receiverUid: (conversation.conversationWith as? CometChatSDK.Group)?.guid ?? "", fileurl: message.attachment?.fileUrl ?? "", messageType: message.messageType, receiverType: .group)
                                     message.receiverType = .group
                                     CometChat.sendMediaMessage(message: message, onSuccess: { (message) in
                                       DispatchQueue.main.async {
@@ -355,7 +355,7 @@ public class CometChatForwardMessageList: UIViewController {
                                         }
                                     }) { (error) in
                                         DispatchQueue.main.async {
-                                            if let name = (conversation.conversationWith as? CometChatPro.Group)?.name {
+                                            if let name = (conversation.conversationWith as? CometChatSDK.Group)?.name {
                                                 CometChatSnackBoard.display(message:  "UNABLE_TO_FORWARD" .localized() + name, mode: .error, duration: .short)
                                             }
                                         }
@@ -363,7 +363,7 @@ public class CometChatForwardMessageList: UIViewController {
                                 }
                             case .custom:
                                 if let message = message as? CustomMessage, let customData = message.customData  {
-                                    let message = CustomMessage(receiverUid: (conversation.conversationWith as? CometChatPro.Group)?.guid ?? "", receiverType: .group, customData: customData, type: message.type)
+                                    let message = CustomMessage(receiverUid: (conversation.conversationWith as? CometChatSDK.Group)?.guid ?? "", receiverType: .group, customData: customData, type: message.type)
                                     message.receiverType = .group
                                     CometChat.sendCustomMessage(message: message, onSuccess: { (message) in
                                       DispatchQueue.main.async {
@@ -371,7 +371,7 @@ public class CometChatForwardMessageList: UIViewController {
                                         }
                                     }) { (error) in
                                         DispatchQueue.main.async {
-                                            if let name = (conversation.conversationWith as? CometChatPro.Group)?.name {
+                                            if let name = (conversation.conversationWith as? CometChatSDK.Group)?.name {
                                                 CometChatSnackBoard.display(message:  "UNABLE_TO_FORWARD" .localized() + name, mode: .error, duration: .short)
                                             }
                                         }
@@ -386,7 +386,7 @@ public class CometChatForwardMessageList: UIViewController {
                         case .custom:
                             
                             if let message = message as? CustomMessage, let customData = message.customData  {
-                                let message = CustomMessage(receiverUid: (conversation.conversationWith as? CometChatPro.Group)?.guid ?? "", receiverType: .group, customData: customData, type: message.type)
+                                let message = CustomMessage(receiverUid: (conversation.conversationWith as? CometChatSDK.Group)?.guid ?? "", receiverType: .group, customData: customData, type: message.type)
                                 message.receiverType = .group
                                 CometChat.sendCustomMessage(message: message, onSuccess: { (message) in
                                   DispatchQueue.main.async {
@@ -394,7 +394,7 @@ public class CometChatForwardMessageList: UIViewController {
                                     }
                                 }) { (error) in
                                     DispatchQueue.main.async {
-                                        if let name = (conversation.conversationWith as? CometChatPro.Group)?.name {
+                                        if let name = (conversation.conversationWith as? CometChatSDK.Group)?.name {
                                             CometChatSnackBoard.display(message:  "UNABLE_TO_FORWARD" .localized() + name, mode: .error, duration: .short)
                                         }
                                     }
@@ -549,10 +549,10 @@ extension CometChatForwardMessageList : CometChatMessageDelegate {
      [CometChatForwardMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-3-comet-chat-conversation-list)
      */
     public func onTypingStarted(_ typingDetails: TypingIndicator) {
-        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatPro.User)?.uid == typingDetails.sender?.uid && $0.conversationType.rawValue == typingDetails.receiverType.rawValue }) {
+        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatSDK.User)?.uid == typingDetails.sender?.uid && $0.conversationType.rawValue == typingDetails.receiverType.rawValue }) {
             let indexPath = IndexPath(row: row, section: 0)
             DispatchQueue.main.async {
-                if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem,  (cell.conversation?.conversationWith as? CometChatPro.User)?.uid == typingDetails.sender?.uid {
+                if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem,  (cell.conversation?.conversationWith as? CometChatSDK.User)?.uid == typingDetails.sender?.uid {
                     if cell.message.isHidden == false {
                         cell.typing.isHidden = false
                         cell.message.isHidden = true
@@ -561,7 +561,7 @@ extension CometChatForwardMessageList : CometChatMessageDelegate {
                 }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem,  (cell.conversation?.conversationWith as? CometChatPro.User)?.uid == typingDetails.sender?.uid {
+                if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem,  (cell.conversation?.conversationWith as? CometChatSDK.User)?.uid == typingDetails.sender?.uid {
                     if cell.typing.isHidden == false {
                         cell.typing.isHidden = true
                         cell.message.isHidden = false
@@ -570,10 +570,10 @@ extension CometChatForwardMessageList : CometChatMessageDelegate {
                 }
             }
         }
-        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatPro.Group)?.guid == typingDetails.receiverID && $0.conversationType.rawValue == typingDetails.receiverType.rawValue}) {
+        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatSDK.Group)?.guid == typingDetails.receiverID && $0.conversationType.rawValue == typingDetails.receiverType.rawValue}) {
             let indexPath = IndexPath(row: row, section: 0)
             DispatchQueue.main.async {
-                if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem, (cell.conversation?.conversationWith as? CometChatPro.Group)?.guid == typingDetails.receiverID {
+                if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem, (cell.conversation?.conversationWith as? CometChatSDK.Group)?.guid == typingDetails.receiverID {
                     let user = typingDetails.sender?.name
                     cell.typing.text = user! + "IS_TYPING".localized()
                     if cell.message.isHidden == false{
@@ -584,7 +584,7 @@ extension CometChatForwardMessageList : CometChatMessageDelegate {
                 }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem, (cell.conversation?.conversationWith as? CometChatPro.Group)?.guid == typingDetails.receiverID {
+                if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem, (cell.conversation?.conversationWith as? CometChatSDK.Group)?.guid == typingDetails.receiverID {
                     let user = typingDetails.sender?.name
                     cell.typing.text = user! + "IS_TYPING".localized()
                     if cell.typing.isHidden == false{
@@ -606,7 +606,7 @@ extension CometChatForwardMessageList : CometChatMessageDelegate {
      [CometChatForwardMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-3-comet-chat-conversation-list)
      */
     public func onTypingEnded(_ typingDetails: TypingIndicator) {
-        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatPro.User)?.uid == typingDetails.sender?.uid && $0.conversationType.rawValue == typingDetails.receiverType.rawValue}) {
+        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatSDK.User)?.uid == typingDetails.sender?.uid && $0.conversationType.rawValue == typingDetails.receiverType.rawValue}) {
             let indexPath = IndexPath(row: row, section: 0)
             DispatchQueue.main.async {
                 if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem {
@@ -618,7 +618,7 @@ extension CometChatForwardMessageList : CometChatMessageDelegate {
                 }
             }
         }
-        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatPro.Group)?.guid == typingDetails.receiverID && $0.conversationType.rawValue == typingDetails.receiverType.rawValue}) {
+        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatSDK.Group)?.guid == typingDetails.receiverID && $0.conversationType.rawValue == typingDetails.receiverType.rawValue}) {
             let indexPath = IndexPath(row: row, section: 0)
             DispatchQueue.main.async {
                 if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem {
@@ -646,8 +646,8 @@ extension CometChatForwardMessageList : CometChatUserDelegate {
      - See Also:
      [CometChatForwardMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-3-comet-chat-conversation-list)
      */
-    public func onUserOnline(user: CometChatPro.User) {
-        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatPro.User)?.uid == user.uid}) {
+    public func onUserOnline(user: CometChatSDK.User) {
+        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatSDK.User)?.uid == user.uid}) {
             let indexPath = IndexPath(row: row, section: 0)
             DispatchQueue.main.async {
                 if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem {
@@ -666,8 +666,8 @@ extension CometChatForwardMessageList : CometChatUserDelegate {
      - See Also:
      [CometChatForwardMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-3-comet-chat-conversation-list)
      */
-    public func onUserOffline(user: CometChatPro.User) {
-        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatPro.User)?.uid == user.uid}) {
+    public func onUserOffline(user: CometChatSDK.User) {
+        if let row = self.conversations.firstIndex(where: {($0.conversationWith as? CometChatSDK.User)?.uid == user.uid}) {
             let indexPath = IndexPath(row: row, section: 0)
             DispatchQueue.main.async {
                 if let cell = self.tableView.cellForRow(at: indexPath) as? CometChatConversationListItem {
@@ -696,7 +696,7 @@ extension CometChatForwardMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatForwardMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-3-comet-chat-conversation-list)
      */
-    public func onGroupMemberJoined(action: ActionMessage, joinedUser: CometChatPro.User, joinedGroup: CometChatPro.Group) {
+    public func onGroupMemberJoined(action: ActionMessage, joinedUser: CometChatSDK.User, joinedGroup: CometChatSDK.Group) {
         refreshConversations()
     }
     
@@ -711,7 +711,7 @@ extension CometChatForwardMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatForwardMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-3-comet-chat-conversation-list)
      */
-    public func onGroupMemberLeft(action: ActionMessage, leftUser: CometChatPro.User, leftGroup: CometChatPro.Group) {
+    public func onGroupMemberLeft(action: ActionMessage, leftUser: CometChatSDK.User, leftGroup: CometChatSDK.Group) {
         refreshConversations()
     }
     
@@ -727,7 +727,7 @@ extension CometChatForwardMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatForwardMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-3-comet-chat-conversation-list)
      */
-    public func onGroupMemberKicked(action: ActionMessage, kickedUser: CometChatPro.User, kickedBy: CometChatPro.User, kickedFrom: CometChatPro.Group) {
+    public func onGroupMemberKicked(action: ActionMessage, kickedUser: CometChatSDK.User, kickedBy: CometChatSDK.User, kickedFrom: CometChatSDK.Group) {
         refreshConversations()
     }
     
@@ -743,7 +743,7 @@ extension CometChatForwardMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatForwardMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-3-comet-chat-conversation-list)
      */
-    public func onGroupMemberBanned(action: ActionMessage, bannedUser: CometChatPro.User, bannedBy: CometChatPro.User, bannedFrom: CometChatPro.Group) {
+    public func onGroupMemberBanned(action: ActionMessage, bannedUser: CometChatSDK.User, bannedBy: CometChatSDK.User, bannedFrom: CometChatSDK.Group) {
         refreshConversations()
     }
     
@@ -759,7 +759,7 @@ extension CometChatForwardMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatForwardMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-3-comet-chat-conversation-list)
      */
-    public func onGroupMemberUnbanned(action: ActionMessage, unbannedUser: CometChatPro.User, unbannedBy: CometChatPro.User, unbannedFrom: CometChatPro.Group) {
+    public func onGroupMemberUnbanned(action: ActionMessage, unbannedUser: CometChatSDK.User, unbannedBy: CometChatSDK.User, unbannedFrom: CometChatSDK.Group) {
         refreshConversations()
     }
     
@@ -777,7 +777,7 @@ extension CometChatForwardMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatForwardMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-3-comet-chat-conversation-list)
      */
-    public func onGroupMemberScopeChanged(action: ActionMessage, scopeChangeduser: CometChatPro.User, scopeChangedBy: CometChatPro.User, scopeChangedTo: String, scopeChangedFrom: String, group: CometChatPro.Group) {
+    public func onGroupMemberScopeChanged(action: ActionMessage, scopeChangeduser: CometChatSDK.User, scopeChangedBy: CometChatSDK.User, scopeChangedTo: String, scopeChangedFrom: String, group: CometChatSDK.Group) {
         refreshConversations()
     }
     
@@ -788,7 +788,7 @@ extension CometChatForwardMessageList : CometChatGroupDelegate {
     ///   - addedBy: Specifies `User` Object
     ///   - addedUser: Specifies `User` Object
     ///   - addedTo: Specifies `Group` Object
-    public func onMemberAddedToGroup(action: ActionMessage, addedBy: CometChatPro.User, addedUser: CometChatPro.User, addedTo: CometChatPro.Group) {
+    public func onMemberAddedToGroup(action: ActionMessage, addedBy: CometChatSDK.User, addedUser: CometChatSDK.User, addedTo: CometChatSDK.Group) {
         refreshConversations()
     }
 }

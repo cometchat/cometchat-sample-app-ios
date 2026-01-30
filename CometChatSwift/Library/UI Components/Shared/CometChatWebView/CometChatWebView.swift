@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 import WebKit
 
 enum WebViewType {
@@ -23,7 +23,7 @@ class CometChatWebView: UIViewController , WKNavigationDelegate {
     
      var url: String?
      var webViewType: WebViewType = .whiteboard
-     var user: CometChatPro.User?
+     var user: CometChatSDK.User?
     
     override func viewDidLoad() {
         super.viewDidLoad()

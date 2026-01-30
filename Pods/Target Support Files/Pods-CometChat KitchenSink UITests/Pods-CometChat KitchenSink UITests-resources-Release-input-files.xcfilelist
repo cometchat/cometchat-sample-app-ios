@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-CometChat KitchenSink UITests/Pods-CometChat KitchenSink UITests-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/CometChatCallsSDK/CometChatCallsSDK.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/CometChatSDK/CometChatSDK.bundle

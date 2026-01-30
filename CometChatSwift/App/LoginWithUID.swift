@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 class LoginWithUID: UIViewController, UITextFieldDelegate {
 

@@ -8,7 +8,7 @@
 
 import UIKit
 import EventKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 

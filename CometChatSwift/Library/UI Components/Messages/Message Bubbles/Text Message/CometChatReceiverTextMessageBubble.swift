@@ -7,7 +7,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 protocol CometChatReceiverTextMessageBubbleDelegate: AnyObject {
     func didTapOnSentimentAnalysisViewForLeftBubble(indexPath: IndexPath)

@@ -10,7 +10,7 @@ import UIKit
 import QuickLook
 import AVKit
 import AVFoundation
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 
@@ -24,8 +24,8 @@ class CometChatUserDetails: UIViewController {
     var actionsItems:[Int] = [Int]()
     var supportItems:[Int] = [Int]()
     var isPresentedFromMessageList: Bool?
-    var currentUser: CometChatPro.User?
-    var currentGroup: CometChatPro.Group?
+    var currentUser: CometChatSDK.User?
+    var currentGroup: CometChatSDK.Group?
     lazy var previewItem = NSURL()
     var quickLook = QLPreviewController()
     
@@ -55,7 +55,7 @@ class CometChatUserDetails: UIViewController {
      - Author: CometChat Team
      - Copyright:  ©  2020 CometChat Inc.
      */
-    public func set(user: CometChatPro.User){
+    public func set(user: CometChatSDK.User){
         currentUser = user
         CometChat.getUser(UID: user.uid ?? "", onSuccess: { (updatedUser) in
             self.currentUser = updatedUser
@@ -408,7 +408,7 @@ extension CometChatUserDetails: UITableViewDelegate , UITableViewDataSource {
                 
             case CometChatUserDetails.ADD_TO_CONTACTS_CELL:
                 
-                CometChat.addMembersToGroup(guid: currentGroup?.guid ?? "", groupMembers: [CometChatPro.GroupMember(UID: currentUser?.uid ?? "", groupMemberScope: .participant)], onSuccess: { (sucess) in
+                CometChat.addMembersToGroup(guid: currentGroup?.guid ?? "", groupMembers: [CometChatSDK.GroupMember(UID: currentUser?.uid ?? "", groupMemberScope: .participant)], onSuccess: { (sucess) in
                     DispatchQueue.main.async {
                         
                         let data:[String: String] = ["guid": self.currentGroup?.guid ?? ""]

@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 protocol  LocationCellDelegate: NSObject {

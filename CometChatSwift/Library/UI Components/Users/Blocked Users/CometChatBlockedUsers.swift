@@ -7,7 +7,7 @@
 // MARK: - Importing Frameworks
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 
@@ -15,7 +15,7 @@ class CometChatBlockedUsers: UIViewController {
     
     // MARK: - Declaration of Variables
     
-    var blockedUsers:[CometChatPro.User] = [CometChatPro.User]()
+    var blockedUsers:[CometChatSDK.User] = [CometChatSDK.User]()
     var blockedUserRequest = BlockedUserRequest.BlockedUserRequestBuilder(limit: 20).build()
     var tableView: UITableView! = nil
     var safeArea: UILayoutGuide!

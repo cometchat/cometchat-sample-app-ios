@@ -1,0 +1,11 @@
+framework module CometChatCallsSDK {
+  umbrella header "CometChatCallsSDK.h"
+  export *
+
+  module * { export * }
+}
+
+module CometChatCallsSDK.Swift {
+  header "CometChatCallsSDK-Swift.h"
+  requires objc
+}

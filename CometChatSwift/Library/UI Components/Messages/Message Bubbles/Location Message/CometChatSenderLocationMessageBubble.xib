@@ -43,7 +43,7 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="160" id="9Te-po-Inr"/>
+                                                                    <constraint firstAttribute="height" constant="160" priority="750" id="9Te-po-Inr"/>
                                                                     <constraint firstItem="5Iw-Js-l7i" firstAttribute="top" secondItem="dZz-Gs-mXj" secondAttribute="top" id="VXq-f6-y51"/>
                                                                     <constraint firstAttribute="bottom" secondItem="5Iw-Js-l7i" secondAttribute="bottom" id="Vlv-cZ-edg"/>
                                                                     <constraint firstAttribute="trailing" secondItem="5Iw-Js-l7i" secondAttribute="trailing" id="ecc-LV-yjB"/>

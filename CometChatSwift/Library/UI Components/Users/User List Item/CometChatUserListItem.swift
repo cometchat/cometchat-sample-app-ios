@@ -14,7 +14,7 @@ CometChatUserListItem: This component will be the class of UITableViewCell with 
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 protocol CometChatUserListItemDelegate: NSObject {
@@ -37,7 +37,7 @@ class CometChatUserListItem: UITableViewCell {
     // MARK: - Declaration of Variables
     weak var delegate: CometChatUserListItemDelegate?
     
-    var user: CometChatPro.User? {
+    var user: CometChatSDK.User? {
         didSet {
             userName.text = user?.name
             /// Set the avatar for user.

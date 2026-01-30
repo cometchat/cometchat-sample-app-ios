@@ -13,7 +13,7 @@ CometChatGroupListItem: This component will be the class of UITableViewCell with
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 
@@ -28,7 +28,7 @@ class CometChatGroupListItem: UITableViewCell {
     
     // MARK: - Declaration of Variables
     
-    weak var group: CometChatPro.Group? {
+    weak var group: CometChatSDK.Group? {
         didSet {
             
             if let currentGroup = group {

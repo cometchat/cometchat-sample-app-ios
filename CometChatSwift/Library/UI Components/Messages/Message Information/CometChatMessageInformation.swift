@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-import CometChatPro
+import CometChatSDK
 
 class CometChatMessageInformation: UIViewController {
     
@@ -441,7 +441,7 @@ extension CometChatMessageInformation: UITableViewDelegate, UITableViewDataSourc
                     return actionMessageCell
                 }else if message.messageCategory == .call {
                     //  CallMessage Cell
-                    if let call = message as? CometChatPro.Call {
+                    if let call = message as? CometChatSDK.Call {
                         let  actionMessageCell = tableView.dequeueReusableCell(withIdentifier: "CometChatActionMessageBubble", for: indexPath) as! CometChatActionMessageBubble
                         actionMessageCell.call = call
                         return actionMessageCell

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 protocol PollExtensionDelegate: NSObject {
     func voteForPoll(pollID: String, with option: String, cell: UITableViewCell)

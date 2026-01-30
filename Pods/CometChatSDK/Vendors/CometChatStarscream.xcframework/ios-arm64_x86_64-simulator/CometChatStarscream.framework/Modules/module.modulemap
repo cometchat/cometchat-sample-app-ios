@@ -1,0 +1,4 @@
+framework module CometChatStarscream {
+  header "CometChatStarscream-Swift.h"
+  requires objc
+}

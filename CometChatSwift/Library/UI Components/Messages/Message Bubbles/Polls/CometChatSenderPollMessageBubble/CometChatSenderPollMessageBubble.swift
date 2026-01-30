@@ -6,7 +6,7 @@
 //  Copyright © 2020 MacMini-03. All rights reserved.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 class CometChatSenderPollMessageBubble: UITableViewCell {
     

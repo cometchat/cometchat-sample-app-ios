@@ -7,7 +7,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 
@@ -90,7 +90,7 @@ public class CometChatUserProfile: UIViewController {
               alert.view.addSubview(loadingIndicator)
               self.present(alert, animated: true, completion: nil)
           }
-          let user = CometChatPro.User(uid: uid, name: name)
+          let user = CometChatSDK.User(uid: uid, name: name)
 
         CometChat.updateCurrentUserDetails(user: user) { (user) in
             DispatchQueue.main.async {

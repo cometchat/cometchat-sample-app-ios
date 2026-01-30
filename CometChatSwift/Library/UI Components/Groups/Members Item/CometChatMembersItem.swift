@@ -8,7 +8,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 
@@ -23,8 +23,8 @@ class CometChatMembersItem: UITableViewCell {
     
     // MARK: - Declaration of Variables
     
-    var group: CometChatPro.Group?
-    weak var member: CometChatPro.GroupMember? {
+    var group: CometChatSDK.Group?
+    weak var member: CometChatSDK.GroupMember? {
         didSet {
             if let currentMember = member {
                 if currentMember.uid == LoggedInUser.uid {

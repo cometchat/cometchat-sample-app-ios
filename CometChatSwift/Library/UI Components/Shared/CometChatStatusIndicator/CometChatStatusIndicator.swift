@@ -13,7 +13,7 @@
 
 import Foundation
 import  UIKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 
@@ -119,7 +119,7 @@ import CometChatPro
      - See Also:
      [CometChatStatusIndicator Documentation](https://prodocs.cometchat.com/docs/ios-ui-components#section-2-status-indicator)
      */
-    @objc  func set(status: CometChatPro.CometChat.UserStatus) -> CometChatStatusIndicator {
+    @objc  func set(status: CometChatSDK.CometChat.UserStatus) -> CometChatStatusIndicator {
         switch status {
         case .online:
             self.backgroundColor = #colorLiteral(red: 0.231372549, green: 0.8745098039, blue: 0.1843137255, alpha: 1)

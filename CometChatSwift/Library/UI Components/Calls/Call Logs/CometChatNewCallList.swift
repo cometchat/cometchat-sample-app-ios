@@ -13,7 +13,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 
 // MARK: - Declaring Protocol.
@@ -28,7 +28,7 @@ public protocol NewCallListDelegate: AnyObject {
      - Copyright:  ©  2020 CometChat Inc.
     
      */
-    func didSelectUserAtIndexPath(user: CometChatPro.User, indexPath: IndexPath)
+    func didSelectUserAtIndexPath(user: CometChatSDK.User, indexPath: IndexPath)
 }
 
 /*  ----------------------------------------------------------------------------------------- */
@@ -40,15 +40,15 @@ public class CometChatNewCallList: UIViewController {
     var userRequest : UsersRequest?
     var tableView: UITableView! = nil
     var safeArea: UILayoutGuide!
-    var users: [[CometChatPro.User]] = [[CometChatPro.User]]()
-    var filteredUsers: [CometChatPro.User] = [CometChatPro.User]()
+    var users: [[CometChatSDK.User]] = [[CometChatSDK.User]]()
+    var filteredUsers: [CometChatSDK.User] = [CometChatSDK.User]()
     weak var delegate : NewCallListDelegate?
     var activityIndicator:UIActivityIndicatorView?
     var searchController:UISearchController = UISearchController(searchResultsController: nil)
     var sectionTitle : UILabel?
     var sections = [String]()
     var sortedKeys = [String]()
-    var globalGroupedUsers: [String : [CometChatPro.User]] = [:]
+    var globalGroupedUsers: [String : [CometChatSDK.User]] = [:]
     // MARK: - View controller lifecycle methods
     
     override public func loadView() {
@@ -178,7 +178,7 @@ public class CometChatNewCallList: UIViewController {
          }
     }
     
-    private func groupUsers(users: [CometChatPro.User]){
+    private func groupUsers(users: [CometChatSDK.User]){
         DispatchQueue.main.async {  [weak self] in
             guard let strongSelf = self else { return }
             if strongSelf.users.isEmpty { strongSelf.tableView?.setEmptyMessage("NO_USERS_FOUND".localized())
@@ -194,7 +194,7 @@ public class CometChatNewCallList: UIViewController {
             if !sortedKeys.contains(key) { sortedKeys.append(key) }
         }
         sortedKeys = sortedKeys.sorted{ $0.lowercased() < $1.lowercased()}
-        var staticUsers: [[CometChatPro.User]] = [[CometChatPro.User]]()
+        var staticUsers: [[CometChatSDK.User]] = [[CometChatSDK.User]]()
         sortedKeys.forEach { (key) in
             if let value = globalGroupedUsers[key] {
                 staticUsers.append(value)

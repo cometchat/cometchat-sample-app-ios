@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 private let globalInstance = CometChatSnackBoard()
 

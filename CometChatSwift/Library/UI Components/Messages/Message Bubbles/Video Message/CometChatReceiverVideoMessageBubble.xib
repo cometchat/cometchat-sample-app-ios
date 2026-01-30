@@ -43,7 +43,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnF-KW-ZEF">
                                         <rect key="frame" x="0.0" y="2" width="34.5" height="15"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="h43-SW-g6j"/>
+                                            <constraint firstAttribute="height" constant="15" priority="750" id="h43-SW-g6j"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
@@ -53,7 +53,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="CnF-KW-ZEF" firstAttribute="top" secondItem="Y4Z-7A-O2m" secondAttribute="top" constant="2" id="Jdb-Vc-j5A"/>
-                                    <constraint firstAttribute="height" constant="15" id="NGa-Eo-uo4"/>
+                                    <constraint firstAttribute="height" constant="15" priority="750" id="NGa-Eo-uo4"/>
                                     <constraint firstItem="CnF-KW-ZEF" firstAttribute="leading" secondItem="Y4Z-7A-O2m" secondAttribute="leading" id="cvF-XB-gQc"/>
                                 </constraints>
                             </view>
@@ -62,7 +62,7 @@
                                 <color key="backgroundColor" red="0.20064641499999999" green="0.20064641499999999" blue="0.20064641499999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="2TK-xH-0oj"/>
-                                    <constraint firstAttribute="height" constant="180" id="n20-yu-6oR"/>
+                                    <constraint firstAttribute="height" constant="180" priority="750" id="n20-yu-6oR"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

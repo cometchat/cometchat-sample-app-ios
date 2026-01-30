@@ -250,10 +250,10 @@
                     <rect key="frame" x="0.0" y="822" width="414" height="40"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLy-tA-jTT" customClass="AudioVisualizationView" customModule="CometChat_KitchenSink" customModuleProvider="target">
-                            <rect key="frame" x="55" y="5" width="304" height="40"/>
+                            <rect key="frame" x="55" y="5" width="304" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="WDp-pg-R6o"/>
+                                <constraint firstAttribute="height" constant="30" priority="750" id="WDp-pg-R6o"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2L-9m-dVm">
@@ -281,13 +281,12 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="jLy-tA-jTT" firstAttribute="top" secondItem="SOQ-Im-IIm" secondAttribute="top" constant="5" id="2R8-fX-jf6"/>
+                        <constraint firstItem="jLy-tA-jTT" firstAttribute="centerY" secondItem="SOQ-Im-IIm" secondAttribute="centerY" id="2R8-fX-jf6"/>
                         <constraint firstItem="jLy-tA-jTT" firstAttribute="leading" secondItem="Jtw-wc-hyO" secondAttribute="trailing" constant="15" id="BIO-6x-Pau"/>
                         <constraint firstAttribute="trailing" secondItem="jLy-tA-jTT" secondAttribute="trailing" constant="55" id="E4x-Xo-jfb"/>
                         <constraint firstAttribute="trailing" secondItem="F2L-9m-dVm" secondAttribute="trailing" constant="55" id="MhU-QG-6tU"/>
-                        <constraint firstAttribute="bottom" secondItem="jLy-tA-jTT" secondAttribute="bottom" constant="5" id="aFV-Pn-olU"/>
                         <constraint firstItem="F2L-9m-dVm" firstAttribute="leading" secondItem="Jtw-wc-hyO" secondAttribute="trailing" constant="8" id="d8y-Xn-GSL"/>
-                        <constraint firstAttribute="bottom" secondItem="F2L-9m-dVm" secondAttribute="bottom" id="gNt-rG-9kZ"/>
+                        <constraint firstAttribute="bottom" secondItem="F2L-9m-dVm" secondAttribute="bottom" priority="750" id="gNt-rG-9kZ"/>
                         <constraint firstItem="Jtw-wc-hyO" firstAttribute="leading" secondItem="SOQ-Im-IIm" secondAttribute="leading" constant="10" id="nX8-u1-x1B"/>
                         <constraint firstItem="Jtw-wc-hyO" firstAttribute="centerY" secondItem="SOQ-Im-IIm" secondAttribute="centerY" id="vCe-3G-53u"/>
                     </constraints>

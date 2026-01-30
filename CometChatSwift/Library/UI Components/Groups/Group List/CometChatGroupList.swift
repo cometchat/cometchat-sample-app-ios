@@ -13,7 +13,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 // MARK: - Declaration of Protocol.
 
@@ -28,7 +28,7 @@ public protocol GroupListDelegate: AnyObject {
      - See Also:
      [CometChatGroupList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-2-comet-chat-group-list)
      */
-    func didSelectGroupAtIndexPath(group: CometChatPro.Group, indexPath: IndexPath)
+    func didSelectGroupAtIndexPath(group: CometChatSDK.Group, indexPath: IndexPath)
 }
 
 /*  ----------------------------------------------------------------------------------------- */
@@ -39,8 +39,8 @@ public class CometChatGroupList: UIViewController {
     var groupRequest = GroupsRequest.GroupsRequestBuilder(limit: 20).build()
     var tableView: UITableView! = nil
     var safeArea: UILayoutGuide!
-    var groups: [CometChatPro.Group] = [CometChatPro.Group]()
-    var filteredGroups: [CometChatPro.Group] = [CometChatPro.Group]()
+    var groups: [CometChatSDK.Group] = [CometChatSDK.Group]()
+    var filteredGroups: [CometChatSDK.Group] = [CometChatSDK.Group]()
     weak var delegate: GroupListDelegate?
     var storedVariable: String?
     var activityIndicator:UIActivityIndicatorView?
@@ -195,7 +195,7 @@ public class CometChatGroupList: UIViewController {
      */
     @objc func didGroupCreated(_ notification: NSNotification) {
         
-        if let group = notification.userInfo?["group"] as? CometChatPro.Group {
+        if let group = notification.userInfo?["group"] as? CometChatSDK.Group {
             self.refreshGroups()
             let messageList = CometChatMessageList()
             messageList.set(conversationWith: group, type: .group)
@@ -529,7 +529,7 @@ extension CometChatGroupList: UITableViewDelegate , UITableViewDataSource {
     ///   - section: An index number identifying a section of tableView.
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CometChatGroupListItem", for: indexPath) as! CometChatGroupListItem
-        let group: CometChatPro.Group?
+        let group: CometChatSDK.Group?
         
         if  groups.count != 0 {
             if isSearching() {

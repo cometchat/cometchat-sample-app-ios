@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import  CometChatPro
+import CometChatSDK
 
 protocol CometChatCallingCellDelegate: class {
     func didMakeCallButtonPressed(_ sender: UIButton, with userSegment: UISegmentedControl, typeSegment: UISegmentedControl, callTypeSegment: UISegmentedControl)

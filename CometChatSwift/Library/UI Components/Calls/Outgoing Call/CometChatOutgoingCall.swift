@@ -7,7 +7,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 import  AVFoundation
 
 /*  ----------------------------------------------------------------------------------------- */
@@ -19,9 +19,9 @@ import  AVFoundation
     @IBOutlet weak var endButton: UIButton!
     
      // MARK: - Declaration of Variables
-    var currentUser: CometChatPro.User?
-    var currentGroup: CometChatPro.Group?
-    var currentCall: CometChatPro.Call?
+    var currentUser: CometChatSDK.User?
+    var currentGroup: CometChatSDK.Group?
+    var currentCall: CometChatSDK.Call?
     var callSetting: CallSettings?
      // MARK: - View controller lifecycle methods
     
@@ -58,7 +58,7 @@ import  AVFoundation
         - Copyright:  ©  2020 CometChat Inc.
         */
     public func makeCall(call: CometChat.CallType , to: AppEntity) {
-        if let user = (to as? CometChatPro.User), let name = user.name {
+        if let user = (to as? CometChatSDK.User), let name = user.name {
             self.currentUser = user
             let call = Call(receiverId: user.uid ?? "", callType: call, receiverType: .user)
             CometChat.initiateCall(call: call, onSuccess: { (ongoingCall) in
@@ -75,9 +75,9 @@ import  AVFoundation
                 }
             }
         }
-        if let group = (to as? CometChatPro.Group) , let name = group.name {
+        if let group = (to as? CometChatSDK.Group) , let name = group.name {
             self.currentGroup = group
-            let call = CometChatPro.Call(receiverId: group.guid , callType: call, receiverType: .group)
+            let call = CometChatSDK.Call(receiverId: group.guid , callType: call, receiverType: .group)
             CometChat.initiateCall(call: call, onSuccess: { (ongoingCall) in
                 self.currentCall = ongoingCall
                 DispatchQueue.main.async {
@@ -101,8 +101,8 @@ import  AVFoundation
     - Copyright:  ©  2020 CometChat Inc.
     */
     private func setupAppearance(forEntity: AppEntity){
-        if let user = forEntity as? CometChatPro.User { avatar.set(entity: user) }
-        if let group = forEntity as? CometChatPro.Group { avatar.set(entity: group) }
+        if let user = forEntity as? CometChatSDK.User { avatar.set(entity: user) }
+        if let group = forEntity as? CometChatSDK.Group { avatar.set(entity: group) }
     }
     
     /**
@@ -162,7 +162,7 @@ extension CometChatOutgoingCall: OutgoingCallDelegate {
     - Author: CometChat Team
     - Copyright:  ©  2020 CometChat Inc.
     */
-    public func onOutgoingCallAccepted(acceptedCall: CometChatPro.Call, error: CometChatException?) {
+    public func onOutgoingCallAccepted(acceptedCall: CometChatSDK.Call, error: CometChatException?) {
         CometChatSoundManager().play(sound: .outgoingCall, bool: false)
         if acceptedCall != nil {
             if let session = acceptedCall.sessionID {
@@ -228,7 +228,7 @@ extension CometChatOutgoingCall: OutgoingCallDelegate {
        - Author: CometChat Team
        - Copyright:  ©  2020 CometChat Inc.
        */
-    public func onOutgoingCallRejected(rejectedCall: CometChatPro.Call, error: CometChatException?) {
+    public func onOutgoingCallRejected(rejectedCall: CometChatSDK.Call, error: CometChatException?) {
         
         if rejectedCall != nil {
             if let session = rejectedCall.sessionID {

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 class CometChatMeetingView: UIViewController {
 
@@ -33,7 +33,7 @@ class CometChatMeetingView: UIViewController {
     }
     
     
-    public func performCall(with sessionID: String, type: CometChatPro.CometChat.CallType){
+    public func performCall(with sessionID: String, type: CometChatSDK.CometChat.CallType){
 
         switch type {
         case .audio:

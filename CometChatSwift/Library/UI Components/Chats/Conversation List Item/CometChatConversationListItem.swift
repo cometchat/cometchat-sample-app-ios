@@ -14,7 +14,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 
@@ -49,7 +49,7 @@ class CometChatConversationListItem: UITableViewCell {
                 unreadBadgeCount.backgroundColor = UIKitSettings.primaryColor
                 switch currentConversation.conversationType {
                 case .user:
-                    guard let user =  currentConversation.conversationWith as? CometChatPro.User else {
+                    guard let user =  currentConversation.conversationWith as? CometChatSDK.User else {
                         return
                     }
                     name.attributedText = addBoldText(fullString: user.name! as NSString, boldPartOfString: searchedText as NSString, font: normalTitlefont, boldFont: boldTitlefont)
@@ -65,7 +65,7 @@ class CometChatConversationListItem: UITableViewCell {
                         }
                     }
                 case .group:
-                    guard let group =  currentConversation.conversationWith as? CometChatPro.Group else {
+                    guard let group =  currentConversation.conversationWith as? CometChatSDK.Group else {
                         return
                     }
                     name.attributedText = addBoldText(fullString: group.name! as NSString, boldPartOfString: searchedText as NSString, font: normalTitlefont, boldFont: boldTitlefont)
@@ -273,6 +273,15 @@ class CometChatConversationListItem: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Fix AutoLayout constraint conflicts by ensuring content hugging/compression resistance
+        // allows labels to compress when cell height is calculated automatically
+        name.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        name.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        message.setContentHuggingPriority(.defaultLow, for: .vertical)
+        message.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        isThread.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        isThread.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -333,6 +342,7 @@ func parseProfanityFilter(forMessage: TextMessage){
                         message.attributedText =  addBoldText(fullString: forMessage.text as NSString, boldPartOfString: searchedText as NSString, font: normalSubtitlefont, boldFont: boldSubtitlefont)
                     }
                 case .text, .image, .video, .audio, .file, .custom,.groupMember: break
+                @unknown default: break
                 }
             }
         }else{
@@ -345,6 +355,7 @@ func parseProfanityFilter(forMessage: TextMessage){
                     message.attributedText =  addBoldText(fullString: text, boldPartOfString: searchedText as NSString, font: normalSubtitlefont, boldFont: boldSubtitlefont)
                 }
             case .text, .image, .video, .audio, .file, .custom,.groupMember: break
+            @unknown default: break
             }
         }
     }else{
@@ -357,6 +368,7 @@ func parseProfanityFilter(forMessage: TextMessage){
                 message.attributedText =  addBoldText(fullString: text, boldPartOfString: searchedText as NSString, font: normalSubtitlefont, boldFont: boldSubtitlefont)
             }
         case .text, .image, .video, .audio, .file, .custom,.groupMember: break
+        @unknown default: break
         }
     }
 }

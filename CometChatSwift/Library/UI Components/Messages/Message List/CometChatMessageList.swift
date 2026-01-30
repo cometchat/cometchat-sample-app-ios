@@ -20,7 +20,7 @@ import QuickLook
 import MessageUI
 import SafariServices
 import AudioToolbox
-import CometChatPro
+import CometChatSDK
 
 enum MessageMode {
     case edit
@@ -116,8 +116,8 @@ public class CometChatMessageList: UIViewController, AVAudioRecorderDelegate, AV
     
     // MARK: - Declaration of Variables
     
-    var currentUser: CometChatPro.User?
-    var currentGroup: CometChatPro.Group?
+    var currentUser: CometChatSDK.User?
+    var currentGroup: CometChatSDK.Group?
     var currentReaction: LiveReaction = .heart
     var currentEntity: CometChat.ReceiverType?
     var messageRequest:MessagesRequest?
@@ -219,12 +219,12 @@ public class CometChatMessageList: UIViewController, AVAudioRecorderDelegate, AV
         switch type {
         case .user:
             isGroupIs = false
-            guard let user = conversationWith as? CometChatPro.User else{ return }
+            guard let user = conversationWith as? CometChatSDK.User else{ return }
             currentUser = user
             currentEntity = .user
             fetchUserInfo(user: user)
             
-            switch (conversationWith as? CometChatPro.User)!.status {
+            switch (conversationWith as? CometChatSDK.User)!.status {
             case .online:
                 setupNavigationBar(withTitle: user.name?.capitalized ?? "")
                 setupNavigationBar(withSubtitle: "ONLINE".localized())
@@ -243,7 +243,7 @@ public class CometChatMessageList: UIViewController, AVAudioRecorderDelegate, AV
             self.addCallingButtons(bool: true)
         case .group:
             isGroupIs = true
-            guard let group = conversationWith as? CometChatPro.Group else{
+            guard let group = conversationWith as? CometChatSDK.Group else{
                 return
             }
             currentGroup = group
@@ -610,7 +610,7 @@ public class CometChatMessageList: UIViewController, AVAudioRecorderDelegate, AV
      - See Also:
      [CometChatMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-4-comet-chat-message-list)
      */
-    private func fetchUserInfo(user: CometChatPro.User){
+    private func fetchUserInfo(user: CometChatSDK.User){
         CometChat.getUser(UID: user.uid ?? "", onSuccess: { [weak self] (user) in
             guard let strongSelf = self else { return }
             if  user?.blockedByMe == true {
@@ -2297,6 +2297,11 @@ public class CometChatMessageList: UIViewController, AVAudioRecorderDelegate, AV
         messageComposer.internalDelegate = self
         textView.delegate = self
         
+        // Fix constraint conflict: Lower priority of AudioVisualizationView height constraint
+        // and audioNoteView padding constraints to prevent infinite layout loop
+        // when messageComposer height changes dynamically
+        fixAudioVisualizationConstraints()
+        
         if #available(iOS 13.0, *) {
             let edit = UIImage(named: "send-message-filled.png", in: UIKitSettings.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
             send.setImage(edit, for: .normal)
@@ -2957,7 +2962,7 @@ extension CometChatMessageList: UITableViewDelegate , UITableViewDataSource {
                     return actionMessageCell
                 }else if message.messageCategory == .call {
                     //  CallMessage Cell
-                    if let call = message as? CometChatPro.Call {
+                    if let call = message as? CometChatSDK.Call {
                         let  actionMessageCell = tableView.dequeueReusableCell(withIdentifier: "CometChatActionMessageBubble", for: indexPath) as! CometChatActionMessageBubble
                         actionMessageCell.call = call
                         return actionMessageCell
@@ -3545,6 +3550,8 @@ extension CometChatMessageList: UITableViewDelegate , UITableViewDataSource {
 
 extension CometChatMessageList: GrowingTextViewDelegate {
     public func growingTextView(_ growingTextView: GrowingTextView, willChangeHeight height: CGFloat, difference: CGFloat) {
+        // Only update if there's an actual meaningful change to prevent layout loops
+        guard abs(inputBarHeight.constant - height) > 0.5 else { return }
         inputBarHeight.constant = height
     }
     
@@ -4043,6 +4050,7 @@ extension CometChatMessageList : CometChatMessageComposerInternalDelegate {
         if messageMode == .edit {
             guard let textMessage = selectedMessage as? TextMessage else { return }
             guard let indexPath = selectedIndexPath else { return }
+            let originalText = textMessage.text // Save original text for potential restore
             CometChatSoundManager().play(sound: .outgoingMessage, bool: true)
             if let message:String = textView.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
                 textMessage.text = message
@@ -4064,11 +4072,10 @@ extension CometChatMessageList : CometChatMessageComposerInternalDelegate {
                 }) { (error) in
                     DispatchQueue.main.async{ [weak self] in
                         guard let strongSelf = self else { return }
-                        strongSelf.hide(view: .editMessageView, true)
-                        strongSelf.hide(view: .smartRepliesView, true)
-                        strongSelf.didPreformCancel()
-                        strongSelf.messageMode = .send
-                        strongSelf.textView.text = ""
+                        // Restore original text on the message object
+                        textMessage.text = originalText
+                        // Keep the edit view visible and text in input so user can retry
+                        strongSelf.send.isEnabled = true
                         if let error = error as? CometChatException{
                             CometChatSnackBoard.showErrorMessage(for: error)
                         }
@@ -4092,10 +4099,10 @@ extension CometChatMessageList : CometChatMessageComposerInternalDelegate {
                 if chatMessages.count == 0 {
                     self.addNewGroupedMessage(messages: [textMessage!])
                     self.filteredMessages.append(textMessage!)
-                    guard let indicator = typingIndicator else {
-                        return
+                    // Don't return early - just skip endTyping if indicator is nil
+                    if let indicator = typingIndicator {
+                        CometChat.endTyping(indicator: indicator)
                     }
-                    CometChat.endTyping(indicator: indicator)
                 } else {
                     
                     if let firstMessage = self.chatMessages[lastSection].last , let textMessage = textMessage {
@@ -4104,10 +4111,10 @@ extension CometChatMessageList : CometChatMessageComposerInternalDelegate {
                         dateFormatter.dateFormat = "d MMM, yyyy"
                         let dateString = String().checkNewMessageDate(time: textMessage.sentAt)
                         if String().compareDates(newTimeInterval: textMessage.sentAt, currentTimeInterval: firstMessage.sentAt) || (calendar.isDateInToday(currentDate) && dateString == "1 Jan, 1970") {
-                            guard let indicator = typingIndicator else {
-                                return
+                            // Don't return early - just skip endTyping if indicator is nil
+                            if let indicator = typingIndicator {
+                                CometChat.endTyping(indicator: indicator)
                             }
-                            CometChat.endTyping(indicator: indicator)
                             DispatchQueue.main.async { [weak self] in
                                 guard let strongSelf = self else { return }
                                 strongSelf.chatMessages[lastSection].append(textMessage)
@@ -4122,10 +4129,10 @@ extension CometChatMessageList : CometChatMessageComposerInternalDelegate {
                             }
                         } else {
                             self.filteredMessages.append(textMessage)
-                            guard let indicator = self.typingIndicator else {
-                                return
+                            // Don't return early - just skip endTyping if indicator is nil
+                            if let indicator = self.typingIndicator {
+                                CometChat.endTyping(indicator: indicator)
                             }
-                            CometChat.endTyping(indicator: indicator)
                             DispatchQueue.main.async { [weak self] in
                                 guard let strongSelf = self else { return }
                                 strongSelf.tableView?.beginUpdates()
@@ -4164,10 +4171,21 @@ extension CometChatMessageList : CometChatMessageComposerInternalDelegate {
                             }
                         }
                     }
-                }) { (error) in
+                }) { [weak self] (error) in
+                    guard let strongSelf = self else { return }
+                    let failedMessageText = textMessage?.text ?? ""
                     DispatchQueue.main.async {
                         if let error = error {
                             CometChatSnackBoard.showErrorMessage(for: error)
+                        }
+                        // Re-enable send button on error so user can retry
+                        strongSelf.send.isEnabled = true
+                        // Remove the failed message from UI
+                        if let muid = textMessage?.muid, let indexpath = strongSelf.chatMessages.indexPath(where: {$0.muid == muid}) {
+                            strongSelf.chatMessages[indexpath.section].remove(at: indexpath.row)
+                            strongSelf.tableView?.reloadData()
+                            // Restore the text so user can retry
+                            strongSelf.textView.text = failedMessageText
                         }
                     }
                 }
@@ -4186,10 +4204,10 @@ extension CometChatMessageList : CometChatMessageComposerInternalDelegate {
                 textMessage?.senderUid = LoggedInUser.uid
                 if chatMessages.count == 0 {
                     self.addNewGroupedMessage(messages: [textMessage!])
-                    guard let indicator = typingIndicator else {
-                        return
+                    // Don't return early - just skip endTyping if indicator is nil
+                    if let indicator = typingIndicator {
+                        CometChat.endTyping(indicator: indicator)
                     }
-                    CometChat.endTyping(indicator: indicator)
                 } else {
                     
                     if let firstMessage = self.chatMessages[lastSection].last , let textMessage = textMessage {
@@ -4198,10 +4216,10 @@ extension CometChatMessageList : CometChatMessageComposerInternalDelegate {
                         dateFormatter.dateFormat = "d MMM, yyyy"
                         let dateString = String().checkNewMessageDate(time: textMessage.sentAt)
                         if String().compareDates(newTimeInterval: textMessage.sentAt, currentTimeInterval: firstMessage.sentAt) || (calendar.isDateInToday(currentDate) && dateString == "1 Jan, 1970") {
-                            guard let indicator = typingIndicator else {
-                                return
+                            // Don't return early - just skip endTyping if indicator is nil
+                            if let indicator = typingIndicator {
+                                CometChat.endTyping(indicator: indicator)
                             }
-                            CometChat.endTyping(indicator: indicator)
                             DispatchQueue.main.async {  [weak self] in
 
                                 guard let strongSelf = self else { return }
@@ -4230,10 +4248,10 @@ extension CometChatMessageList : CometChatMessageComposerInternalDelegate {
                             self.tableView?.insertRows(at: [IndexPath.init(row: self.chatMessages[lastSection].count - 1, section: lastSection)], with: .automatic)
                             self.tableView?.endUpdates()
                             self.filteredMessages.append(textMessage)
-                            guard let indicator = typingIndicator else {
-                                return
+                            // Don't return early - just skip endTyping if indicator is nil
+                            if let indicator = typingIndicator {
+                                CometChat.endTyping(indicator: indicator)
                             }
-                            CometChat.endTyping(indicator: indicator)
                             DispatchQueue.main.async {  [weak self] in
                                 guard let strongSelf = self else { return }
                                 strongSelf.tableView?.scrollToBottomRow()
@@ -4268,9 +4286,19 @@ extension CometChatMessageList : CometChatMessageComposerInternalDelegate {
                     }
                 }
             }) { (error) in
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let strongSelf = self else { return }
                     if let error = error {
                         CometChatSnackBoard.showErrorMessage(for: error)
+                    }
+                    // Re-enable send button on error so user can retry
+                    strongSelf.send.isEnabled = true
+                    // Remove the failed message from UI
+                    if let indexpath = strongSelf.chatMessages.indexPath(where: {$0.muid == message.muid}) {
+                        strongSelf.chatMessages[indexpath.section].remove(at: indexpath.row)
+                        strongSelf.tableView?.reloadData()
+                        // Restore the text so user can retry
+                        strongSelf.textView.text = message.text
                     }
                 }
             }
@@ -4995,7 +5023,7 @@ extension Array where Element : Collection, Element.Index == Int {
 extension CometChatMessageList : CometChatUserDelegate {
     
     
-    public func onUserOnline(user: CometChatPro.User) {
+    public func onUserOnline(user: CometChatSDK.User) {
         if user.uid == currentUser?.uid {
             DispatchQueue.main.async {
                 self.setupNavigationBar(withSubtitle: "ONLINE".localized())
@@ -5004,7 +5032,7 @@ extension CometChatMessageList : CometChatUserDelegate {
         }
     }
     
-    public func onUserOffline(user: CometChatPro.User) {
+    public func onUserOffline(user: CometChatSDK.User) {
         if user.uid == currentUser?.uid {
             DispatchQueue.main.async {
                 self.setupNavigationBar(withSubtitle: "OFFLINE".localized())
@@ -5037,7 +5065,7 @@ extension CometChatMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-4-comet-chat-message-list)
      */
-    public func onGroupMemberJoined(action: ActionMessage, joinedUser: CometChatPro.User, joinedGroup: CometChatPro.Group) {
+    public func onGroupMemberJoined(action: ActionMessage, joinedUser: CometChatSDK.User, joinedGroup: CometChatSDK.Group) {
         CometChat.markAsDelivered(baseMessage: action)
         if action.receiverUid == self.currentGroup?.guid && action.receiverType == .group {
             self.fetchGroup(group: joinedGroup.guid)
@@ -5057,7 +5085,7 @@ extension CometChatMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-4-comet-chat-message-list)
      */
-    public func onGroupMemberLeft(action: ActionMessage, leftUser: CometChatPro.User, leftGroup: CometChatPro.Group) {
+    public func onGroupMemberLeft(action: ActionMessage, leftUser: CometChatSDK.User, leftGroup: CometChatSDK.Group) {
         CometChat.markAsDelivered(baseMessage: action)
         if action.receiverUid == self.currentGroup?.guid && action.receiverType == .group {
             self.fetchGroup(group: leftGroup.guid)
@@ -5077,7 +5105,7 @@ extension CometChatMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-4-comet-chat-message-list)
      */
-    public func onGroupMemberKicked(action: ActionMessage, kickedUser: CometChatPro.User, kickedBy: CometChatPro.User, kickedFrom: CometChatPro.Group) {
+    public func onGroupMemberKicked(action: ActionMessage, kickedUser: CometChatSDK.User, kickedBy: CometChatSDK.User, kickedFrom: CometChatSDK.Group) {
         CometChat.markAsDelivered(baseMessage: action)
         if action.receiverUid == self.currentGroup?.guid && action.receiverType == .group {
             self.fetchGroup(group: kickedFrom.guid)
@@ -5097,7 +5125,7 @@ extension CometChatMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-4-comet-chat-message-list)
      */
-    public func onGroupMemberBanned(action: ActionMessage, bannedUser: CometChatPro.User, bannedBy: CometChatPro.User, bannedFrom: CometChatPro.Group) {
+    public func onGroupMemberBanned(action: ActionMessage, bannedUser: CometChatSDK.User, bannedBy: CometChatSDK.User, bannedFrom: CometChatSDK.Group) {
         CometChat.markAsDelivered(baseMessage: action)
         if action.receiverUid == self.currentGroup?.guid && action.receiverType == .group {
             
@@ -5117,7 +5145,7 @@ extension CometChatMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-4-comet-chat-message-list)
      */
-    public func onGroupMemberUnbanned(action: ActionMessage, unbannedUser: CometChatPro.User, unbannedBy: CometChatPro.User, unbannedFrom: CometChatPro.Group) {
+    public func onGroupMemberUnbanned(action: ActionMessage, unbannedUser: CometChatSDK.User, unbannedBy: CometChatSDK.User, unbannedFrom: CometChatSDK.Group) {
         CometChat.markAsDelivered(baseMessage: action)
         if action.receiverUid == self.currentGroup?.guid && action.receiverType == .group {
            
@@ -5139,7 +5167,7 @@ extension CometChatMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-4-comet-chat-message-list)
      */
-    public func onGroupMemberScopeChanged(action: ActionMessage, scopeChangeduser: CometChatPro.User, scopeChangedBy: CometChatPro.User, scopeChangedTo: String, scopeChangedFrom: String, group: CometChatPro.Group) {
+    public func onGroupMemberScopeChanged(action: ActionMessage, scopeChangeduser: CometChatSDK.User, scopeChangedBy: CometChatSDK.User, scopeChangedTo: String, scopeChangedFrom: String, group: CometChatSDK.Group) {
         CometChat.markAsDelivered(baseMessage: action)
         if action.receiverUid == self.currentGroup?.guid && action.receiverType == .group {
           
@@ -5159,7 +5187,7 @@ extension CometChatMessageList : CometChatGroupDelegate {
      - See Also:
      [CometChatMessageList Documentation](https://prodocs.cometchat.com/docs/ios-ui-screens#section-4-comet-chat-message-list)
      */
-    public func onMemberAddedToGroup(action: ActionMessage, addedBy: CometChatPro.User, addedUser: CometChatPro.User, addedTo: CometChatPro.Group) {
+    public func onMemberAddedToGroup(action: ActionMessage, addedBy: CometChatSDK.User, addedUser: CometChatSDK.User, addedTo: CometChatSDK.Group) {
         CometChat.markAsDelivered(baseMessage: action)
         if action.receiverUid == self.currentGroup?.guid && action.receiverType == .group {
             self.fetchGroup(group: addedTo.guid)
@@ -5197,10 +5225,10 @@ extension CometChatMessageList : CometChatSmartRepliesPreviewDelegate {
             self.chatMessages[lastSection].append(textMessage!)
             self.filteredMessages.append(textMessage!)
             self.hide(view: .smartRepliesView, true)
-            guard let indicator = typingIndicator else {
-                return
+            // Don't return early - just skip endTyping if indicator is nil
+            if let indicator = typingIndicator {
+                CometChat.endTyping(indicator: indicator)
             }
-            CometChat.endTyping(indicator: indicator)
             DispatchQueue.main.async {  [weak self] in
                 guard let strongSelf = self else { return }
                 let indexpath = IndexPath.init(row: strongSelf.chatMessages[lastSection].count - 1, section: lastSection)
@@ -5220,10 +5248,17 @@ extension CometChatMessageList : CometChatSmartRepliesPreviewDelegate {
                     guard let strongSelf = self else { return }
                     strongSelf.tableView?.reloadData()
                 }
-            }) { (error) in
+            }) { [weak self] (error) in
+                guard let strongSelf = self else { return }
                 DispatchQueue.main.async {
                     if let error = error {
                         CometChatSnackBoard.showErrorMessage(for: error)
+                    }
+                    // Re-enable send button and remove failed message
+                    strongSelf.send.isEnabled = true
+                    if let muid = textMessage?.muid, let row = strongSelf.chatMessages[lastSection].firstIndex(where: {$0.muid == muid}) {
+                        strongSelf.chatMessages[lastSection].remove(at: row)
+                        strongSelf.tableView?.reloadData()
                     }
                 }
             }
@@ -5237,10 +5272,10 @@ extension CometChatMessageList : CometChatSmartRepliesPreviewDelegate {
             self.chatMessages[lastSection].append(textMessage!)
             self.filteredMessages.append(textMessage!)
             self.hide(view: .smartRepliesView, true)
-            guard let indicator = typingIndicator else {
-                return
+            // Don't return early - just skip endTyping if indicator is nil
+            if let indicator = typingIndicator {
+                CometChat.endTyping(indicator: indicator)
             }
-            CometChat.endTyping(indicator: indicator)
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
                 let indexpath = IndexPath.init(row: strongSelf.chatMessages[lastSection].count - 1, section: lastSection)
@@ -5258,9 +5293,18 @@ extension CometChatMessageList : CometChatSmartRepliesPreviewDelegate {
                 DispatchQueue.main.async{ [weak self] in
                     guard let strongSelf = self else { return }
                     strongSelf.tableView?.reloadData() }
-            }) { (error) in
-                if let error = error {
-                    CometChatSnackBoard.showErrorMessage(for: error)
+            }) { [weak self] (error) in
+                guard let strongSelf = self else { return }
+                DispatchQueue.main.async {
+                    if let error = error {
+                        CometChatSnackBoard.showErrorMessage(for: error)
+                    }
+                    // Re-enable send button and remove failed message
+                    strongSelf.send.isEnabled = true
+                    if let muid = textMessage?.muid, let row = strongSelf.chatMessages[lastSection].firstIndex(where: {$0.muid == muid}) {
+                        strongSelf.chatMessages[lastSection].remove(at: row)
+                        strongSelf.tableView?.reloadData()
+                    }
                 }
             }
         }
@@ -6442,5 +6486,77 @@ extension CometChatMessageList: MediaDelegate {
         case .groupMember:break
         @unknown default:break
         }
+    }
+}
+
+// MARK: - Constraint Fix Extension
+extension CometChatMessageList {
+    
+    /// Fixes the AutoLayout constraint conflict between CometChatMessageComposer and AudioVisualizationView
+    /// 
+    /// The issue: AudioVisualizationView was configured with height=40 plus 5pt top/bottom padding (total 50pt needed)
+    /// but messageComposer is only 40pt, creating unsatisfiable constraints that cause infinite layout loops.
+    ///
+    /// Solution: 
+    /// 1. XIB now uses centerY alignment instead of top+bottom pinning
+    /// 2. Height constraint priority lowered to 750 (high but breakable)
+    /// 3. This runtime method ensures constraints are properly configured even if XIB changes are not picked up
+    private func fixAudioVisualizationConstraints() {
+        guard let audioNoteView = audioNoteView else { return }
+        
+        // Lower priority of ALL height constraints in audioNoteView and its subviews
+        // This prevents infinite layout loops when messageComposer height changes dynamically
+        func lowerHeightPriorities(in view: UIView) {
+            for constraint in view.constraints {
+                if constraint.firstAttribute == .height || constraint.secondAttribute == .height {
+                    if constraint.priority.rawValue > 750 {
+                        constraint.priority = UILayoutPriority(750)
+                    }
+                }
+                // Also lower bottom constraints that could cause conflicts
+                if constraint.firstAttribute == .bottom || constraint.secondAttribute == .bottom {
+                    if constraint.priority.rawValue > 750 {
+                        constraint.priority = UILayoutPriority(750)
+                    }
+                }
+            }
+            for subview in view.subviews {
+                lowerHeightPriorities(in: subview)
+            }
+        }
+        
+        lowerHeightPriorities(in: audioNoteView)
+        
+        // Remove any top/bottom constraints between audioVisualizationView and audioNoteView
+        // These cause the infinite layout loop when combined with fixed heights
+        var constraintsToRemove: [NSLayoutConstraint] = []
+        for constraint in audioNoteView.constraints {
+            let involvesAudioViz = constraint.secondItem === audioVisualizationView || constraint.firstItem === audioVisualizationView
+            let isVerticalPinning = constraint.firstAttribute == .top || constraint.firstAttribute == .bottom
+            
+            if involvesAudioViz && isVerticalPinning {
+                constraintsToRemove.append(constraint)
+            }
+        }
+        
+        // Remove problematic constraints
+        for constraint in constraintsToRemove {
+            audioNoteView.removeConstraint(constraint)
+        }
+        
+        // Add centerY constraint if not already present
+        let hasCenterY = audioNoteView.constraints.contains { constraint in
+            let involvesAudioViz = constraint.secondItem === audioVisualizationView || constraint.firstItem === audioVisualizationView
+            let isCenterY = constraint.firstAttribute == .centerY || constraint.secondAttribute == .centerY
+            return involvesAudioViz && isCenterY
+        }
+        
+        if !hasCenterY {
+            audioVisualizationView.centerYAnchor.constraint(equalTo: audioNoteView.centerYAnchor).isActive = true
+        }
+        
+        // Force layout update
+        audioNoteView.setNeedsLayout()
+        audioVisualizationView.setNeedsLayout()
     }
 }

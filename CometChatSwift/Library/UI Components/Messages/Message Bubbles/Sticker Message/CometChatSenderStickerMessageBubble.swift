@@ -7,7 +7,7 @@
 // MARK: - Importing Frameworks.
 
 import UIKit
-import CometChatPro
+import CometChatSDK
 
 /*  ----------------------------------------------------------------------------------------- */
 
@@ -115,6 +115,10 @@ class CometChatSenderStickerMessageBubble: UITableViewCell {
         } else {
             selectionColor = .white
         }
+        
+        // Fix AutoLayout constraint conflicts by setting content compression resistance
+        // to allow the image to compress when cell height is calculated automatically
+        imageMessage.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
     }
     
      override func setSelected(_ selected: Bool, animated: Bool) {

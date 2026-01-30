@@ -83,7 +83,7 @@
                                                                     <constraint firstAttribute="trailing" secondItem="l4r-6t-uu2" secondAttribute="trailing" id="J4P-Sf-kOi"/>
                                                                     <constraint firstItem="l4r-6t-uu2" firstAttribute="leading" secondItem="nrC-dQ-G0J" secondAttribute="leading" id="bt1-Gl-2ed"/>
                                                                     <constraint firstAttribute="bottom" secondItem="l4r-6t-uu2" secondAttribute="bottom" id="leZ-IW-L54"/>
-                                                                    <constraint firstAttribute="height" constant="160" id="sm8-dd-EhE"/>
+                                                                    <constraint firstAttribute="height" constant="160" priority="750" id="sm8-dd-EhE"/>
                                                                 </constraints>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qBa-YN-apW">

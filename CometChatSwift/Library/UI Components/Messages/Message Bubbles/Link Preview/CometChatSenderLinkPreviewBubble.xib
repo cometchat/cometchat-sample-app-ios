@@ -31,7 +31,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="160"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="4Vt-pU-Fud"/>
-                                                    <constraint firstAttribute="height" constant="160" id="Ylf-Rr-eGm"/>
+                                                    <constraint firstAttribute="height" constant="160" priority="750" id="Ylf-Rr-eGm"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyY-cA-xgS">
@@ -51,7 +51,7 @@
                                             <constraint firstItem="h3V-ga-gVB" firstAttribute="top" secondItem="372-98-BIa" secondAttribute="top" id="1NX-A2-Wp2"/>
                                             <constraint firstItem="h3V-ga-gVB" firstAttribute="leading" secondItem="372-98-BIa" secondAttribute="leading" id="AjA-B9-dK2"/>
                                             <constraint firstAttribute="width" constant="250" id="Kim-3N-2J5"/>
-                                            <constraint firstAttribute="height" constant="160" id="ORf-Oh-4kK"/>
+                                            <constraint firstAttribute="height" constant="160" priority="750" id="ORf-Oh-4kK"/>
                                             <constraint firstItem="CyY-cA-xgS" firstAttribute="centerY" secondItem="372-98-BIa" secondAttribute="centerY" id="SZ9-g0-nth"/>
                                             <constraint firstItem="CyY-cA-xgS" firstAttribute="centerX" secondItem="372-98-BIa" secondAttribute="centerX" id="gX9-K2-ijG"/>
                                             <constraint firstAttribute="bottom" secondItem="h3V-ga-gVB" secondAttribute="bottom" id="mdS-ef-av5"/>

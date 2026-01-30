@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-CometChat KitchenSink UITests/Pods-CometChat KitchenSink UITests-frameworks.sh
+${PODS_XCFRAMEWORKS_BUILD_DIR}/CometChatCallsSDK/CometChatCallsSDK.framework/CometChatCallsSDK
+${PODS_XCFRAMEWORKS_BUILD_DIR}/CometChatSDK/CometChatSDK.framework/CometChatSDK
+${PODS_XCFRAMEWORKS_BUILD_DIR}/CometChatSDK/CometChatStarscream.framework/CometChatStarscream
+${PODS_XCFRAMEWORKS_BUILD_DIR}/CometChatWebRTC/WebRTC.framework/WebRTC
